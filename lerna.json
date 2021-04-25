@@ -1,5 +1,5 @@
 {
-  "packages": ["packages/*"],
+  "packages": ["packages/*", "apps/*"],
   "version": "0.0.1",
   "command": {
     "bootstrap": {

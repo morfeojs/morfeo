@@ -30,8 +30,13 @@ const ADDITIONAL_PARSERS = {
   ...componentsParses,
 };
 
+const INITIAL_PARSERS = {
+  ...DEFAULT_PARSERS,
+  ...ADDITIONAL_PARSERS,
+};
+
 function createParsers() {
-  let context = { ...DEFAULT_PARSERS, ...ADDITIONAL_PARSERS };
+  let context = { ...INITIAL_PARSERS };
 
   function get() {
     return context;
@@ -42,7 +47,7 @@ function createParsers() {
   }
 
   function reset() {
-    context = { ...DEFAULT_PARSERS, ...ADDITIONAL_PARSERS };
+    context = { ...INITIAL_PARSERS };
   }
 
   // @TODO: type value based on property
@@ -64,7 +69,7 @@ function createParsers() {
     return { [property]: value };
   }
 
-  function resolve({ style = {} }: ResolverParams) {
+  function resolve({ style = {} }: ResolverParams): any {
     const { componentName, ...rest } = style;
     const properties = Object.keys(rest);
 

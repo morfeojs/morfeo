@@ -2,6 +2,7 @@ export * from './theme';
 export * from './radii';
 export * from './fonts';
 export * from './sizes';
+export * from './style';
 export * from './spaces';
 export * from './colors';
 export * from './borders';

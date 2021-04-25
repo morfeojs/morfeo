@@ -12,7 +12,10 @@ const THEME: Theme = {
   },
   components: {
     Button: {
-      bg: 'primary',
+      style: {
+        bg: 'primary',
+        componentTag: 'button',
+      },
       variants: {
         primary: {
           color: 'secondary',
@@ -28,6 +31,14 @@ describe('components', () => {
   });
   afterAll(() => {
     theme.reset();
+  });
+
+  test('should hide the attribute `componentTag` from the generated style', () => {
+    const result = components({
+      property: 'componentName',
+      value: 'Button',
+    });
+    expect(result.componentTag).not.toBeDefined();
   });
 
   test('should return the default components style with an empty ', () => {
@@ -64,5 +75,24 @@ describe('components', () => {
       style: { bg: 'secondary', componentName: 'Button' },
     });
     expect(result).toEqual({ backgroundColor: '#000' });
+  });
+
+  test('should extends the style of another component', () => {
+    theme.set({
+      ...THEME,
+      components: {
+        ...THEME.components,
+        Typography: {
+          style: {
+            componentName: 'Button',
+            color: 'secondary',
+          },
+        },
+      },
+    });
+    const result = parsers.resolve({
+      style: { componentName: 'Typography' },
+    });
+    expect(result).toEqual({ color: '#000', backgroundColor: '#e3e3e3' });
   });
 });

@@ -1,17 +1,25 @@
-import { AllProperties } from './properties';
-import { BaseTheme } from './theme';
+import { Style } from './style';
 
-export type VariantStyle = {
-  [K in keyof AllProperties]?: keyof BaseTheme[AllProperties[K]];
+type ComponentStyle = Style & {
+  componentTag?: string;
 };
 
-export type ComponentStyle<V extends string = string> = VariantStyle & {
-  variants: Record<V, VariantStyle>;
+export type ComponentConfig<
+  T extends string = string,
+  V extends string = string
+> = {
+  style: ComponentStyle;
+  variants?: Record<V, ComponentStyle>;
 };
-
 export interface Components {
-  Button: ComponentStyle;
-  Typography: ComponentStyle;
+  Button: ComponentConfig;
+  Typography: ComponentConfig;
 }
 
 export type Component = keyof Components;
+
+export type ComponentProps<C extends Component = Component> = {
+  componentName?: C;
+  // variant?: keyof Components[C]['variants'];
+  variant?: string;
+};

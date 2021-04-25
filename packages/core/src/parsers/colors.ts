@@ -1,4 +1,4 @@
-import { colorProperties } from '../../../spec/src';
+import { colorProperties } from '@morfeo/spec';
 import { SliceParsers } from '../types';
 import { baseParser } from './baseParser';
 

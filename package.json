@@ -3,9 +3,10 @@
   "private": true,
   "scripts": {
     "clean": "lerna clean --yes",
-    "build": "lerna run build",
+    "build": "lerna run build --ignore=web-sandbox",
     "watch": "lerna run watch",
     "reset": "npm run clean && npm i && lerna bootstrap && npm run build",
+    "start:web-sandbox": "npm start --prefix apps/web-sandbox",
     "prepare": "husky install",
     "prettify": "npm run prettify:js && npm run prettify:ts",
     "prettify:js": "npx prettier --write \"**/*.js\"",

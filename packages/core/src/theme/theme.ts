@@ -1,6 +1,6 @@
 import { Theme, ThemeKey } from '@morfeo/spec';
 
-type ThemeListener = (theme: Theme) => undefined;
+type ThemeListener = (theme: Theme) => void;
 
 function createTheme() {
   let context: Theme = {} as any;

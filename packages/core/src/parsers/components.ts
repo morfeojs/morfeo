@@ -1,17 +1,16 @@
 import { theme } from '../theme';
-import { ComponentStyle } from '@morfeo/spec';
+import { ComponentConfig } from '@morfeo/spec';
 import { ParserParams } from '../types';
 import { parsers } from './parsers';
 
-function removeVariantsAndStates({ variants, ...style }: ComponentStyle) {
-  return style;
-}
-
-function getVariantStyle({ variants }: ComponentStyle, variant?: string) {
-  if (!variant || !variants[variant]) {
+function getVariantStyle(
+  variants: ComponentConfig['variants'],
+  variant?: string,
+) {
+  if (!variant || !variants || !variants[variant]) {
     return {};
   }
-  return removeVariantsAndStates(variants[variant] as ComponentStyle);
+  return variants[variant];
 }
 
 export function components({
@@ -19,9 +18,11 @@ export function components({
   style,
 }: ParserParams<'components', 'componentName'>) {
   const { variant } = style || {};
-  const componentDefaultStyle = theme.getValue('components', value);
-  const componentStyle = removeVariantsAndStates(componentDefaultStyle);
-  const variantStyle = getVariantStyle(componentDefaultStyle, variant);
+  const { style: componentStyle, variants } = theme.getValue(
+    'components',
+    value,
+  );
+  const variantStyle = getVariantStyle(variants, variant);
 
   return parsers.resolve({
     style: {
@@ -34,4 +35,5 @@ export function components({
 export const componentsParses = {
   componentName: components,
   variant: () => {},
+  componentTag: () => {},
 };

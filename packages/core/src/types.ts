@@ -1,16 +1,6 @@
-import { AllProperties, Components, Theme, ThemeKey } from '@morfeo/spec';
+import { AllProperties, Style, Theme, ThemeKey } from '@morfeo/spec';
 
 export type ParserProperty = keyof AllProperties;
-
-type ComponentStyle = {
-  componentName?: keyof Components;
-  variant?: string;
-};
-
-type Style = {
-  [K in ParserProperty]?: keyof Theme[AllProperties[K]];
-} &
-  ComponentStyle;
 
 export type ResolverParams = {
   style?: Style;
