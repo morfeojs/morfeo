@@ -22,14 +22,14 @@ describe('parsers', () => {
   });
 
   test('should add new parser with the add method', () => {
-    parsers.add('testParser', jest.fn());
+    parsers.add('testParser' as any, jest.fn());
     const result = parsers.get();
     expect(result['testParser']).toBeDefined();
   });
 
   test('should resolve the value of the property `bgColor` if the new parser is added', () => {
     parsers.add(
-      'bgColor',
+      'bgColor' as any,
       props =>
         baseParser({
           ...props,
@@ -44,7 +44,7 @@ describe('parsers', () => {
   });
 
   test('should remove the custom parser after the reset', () => {
-    parsers.add('custom', jest.fn());
+    parsers.add('custom' as any, jest.fn());
     const allParsers = parsers.get();
     expect(allParsers['custom']).toBeDefined();
     parsers.reset();

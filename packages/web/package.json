@@ -20,7 +20,6 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/core": "^0.0.1",
-    "@morfeo/spec": "^0.0.1"
+    "@morfeo/core": "^0.0.1"
   }
 }

@@ -22,13 +22,20 @@ const lightTheme = {
   borderWidths: {
     s: '2px',
   },
+  breakpoints: {
+    md: '900px',
+    lg: '1300px',
+  },
   components: {
     Button: {
       style: {
         componentTag: 'button',
         height: 'm',
         width: 'm',
-        bg: 'primary',
+        bg: {
+          md: 'red',
+          lg: 'primary',
+        },
         color: 'secondary',
         borderRadius: 'm',
         '&:hover': {
@@ -62,7 +69,7 @@ theme.set(lightTheme as any);
 function customStyled(component: Component) {
   const { components } = theme.get();
   const config = components[component];
-  const tag = config.style.componentTag || 'div';
+  const tag = config.style.componentTag || component;
 
   return (props: any = {}) => {
     const variant: any = props.variant as any;
@@ -81,12 +88,6 @@ function customStyled(component: Component) {
     return <Component {...props} />;
   };
 }
-
-// const Button = styled.button(({ theme, ...style }) =>
-//   parsers.resolve({
-//     style: { ...(style as any), componentName: 'Button' },
-//   }),
-// );
 
 const Button = customStyled('Button');
 

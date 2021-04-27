@@ -13,15 +13,11 @@ function getVariantStyle(
   return variants[variant];
 }
 
-export function components({
-  value,
-  style,
-}: ParserParams<'components', 'componentName'>) {
+export function components({ value, style }: ParserParams<'componentName'>) {
   const { variant } = style || {};
-  const { style: componentStyle, variants } = theme.getValue(
-    'components',
-    value,
-  );
+  const { style: componentStyle, variants } = value
+    ? theme.getValue('components', value) || {}
+    : ({} as any);
   const variantStyle = getVariantStyle(variants, variant);
 
   return parsers.resolve({

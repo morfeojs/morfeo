@@ -39,12 +39,21 @@ describe('theme', () => {
     expect(theme.get().colors.primary).toEqual('white');
   });
 
-  test('should call the listener each time the theme is updated', () => {
-    const listener = jest.fn();
-    theme.listen(listener);
-    theme.set({ colors: { primary: 'white' } as any });
-    theme.set({ space: { l: '50px' } as any });
-    expect(listener).toHaveBeenCalledTimes(2);
+  test('should add a value inside the theme.colors slice', () => {
+    theme.setValue('colors', 'secondary', 'white');
+
+    expect(theme.get().colors.secondary).toEqual('white');
+  });
+
+  test('should call all the added listeners each time the theme is updated', () => {
+    const firstListener = jest.fn();
+    const secondListener = jest.fn();
+    theme.listen(firstListener);
+    theme.listen(secondListener);
+    theme.setSlice('colors', { primary: 'white' });
+    theme.setSlice('space', { l: '50px' });
+    expect(firstListener).toHaveBeenCalledTimes(2);
+    expect(secondListener).toHaveBeenCalledTimes(2);
   });
 
   test('should reset the theme', () => {

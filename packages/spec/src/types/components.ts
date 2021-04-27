@@ -4,10 +4,7 @@ type ComponentStyle = Style & {
   componentTag?: string;
 };
 
-export type ComponentConfig<
-  T extends string = string,
-  V extends string = string
-> = {
+export type ComponentConfig<V extends string = string> = {
   style: ComponentStyle;
   variants?: Record<V, ComponentStyle>;
 };

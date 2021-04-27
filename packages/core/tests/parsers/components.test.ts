@@ -41,12 +41,27 @@ describe('components', () => {
     expect(result.componentTag).not.toBeDefined();
   });
 
-  test('should return the default components style with an empty ', () => {
+  test('should return the default components style', () => {
     const result = components({
       property: 'componentName',
       value: 'Button',
     });
     expect(result).toEqual({ backgroundColor: '#e3e3e3' });
+  });
+
+  test('should return an empty object if the component does not exist', () => {
+    const result = components({
+      property: 'componentName',
+      value: 'Not Found' as any,
+    });
+    expect(result).toEqual({});
+  });
+
+  test('should return an empty object if the componentName is not specified', () => {
+    const result = components({
+      property: 'componentName',
+    } as any);
+    expect(result).toEqual({});
   });
 
   test('should take the style of the component from the theme', () => {

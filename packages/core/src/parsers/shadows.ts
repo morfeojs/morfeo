@@ -1,9 +1,8 @@
 import { ParserParams, SliceParsers } from '../types';
-import { shadowsProperties } from '@morfeo/spec';
+import { ShadowProperty, shadowsProperties } from '@morfeo/spec';
 import { theme } from '../theme';
 
-type ShadowsParsers = SliceParsers<typeof shadowsProperties, 'shadows'>;
-type ShadowProperties = keyof typeof shadowsProperties;
+type ShadowsParsers = SliceParsers<typeof shadowsProperties, ShadowProperty>;
 
 function removePixels(value?: string | number): number {
   if (typeof value === 'number' || value === undefined) {
@@ -13,12 +12,9 @@ function removePixels(value?: string | number): number {
   return Number.parseInt(number, 10);
 }
 
-export function shadows({
-  value,
-  property,
-}: ParserParams<'shadows', ShadowProperties>) {
+export function shadows({ value, property }: ParserParams<ShadowProperty>) {
   const slice = theme.getSlice('shadows');
-  const config = slice[value];
+  const config = slice[value as ShadowProperty];
   if (!config) {
     return {};
   }

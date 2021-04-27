@@ -12,3 +12,4 @@ export * from './opacities';
 export * from './components';
 export * from './properties';
 export * from './transitions';
+export * from './breakpoints';

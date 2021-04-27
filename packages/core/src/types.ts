@@ -1,30 +1,28 @@
-import { AllProperties, Style, Theme, ThemeKey } from '@morfeo/spec';
+import { AllProperties, Style } from '@morfeo/spec';
 
 export type ParserProperty = keyof AllProperties;
 
 export type ResolverParams = {
   style?: Style;
 };
-
-export type ParserParams<T extends ThemeKey, P extends string> = {
-  value: keyof Theme[T];
+export interface ParserParams<P extends keyof Style> {
+  value: Style[P];
   property: P;
   style?: Style;
-};
+}
 
 // @TODO: type the return value based on the property
-export type Parser<T extends ThemeKey, P extends string = ParserProperty> = (
-  params: ParserParams<T, P>,
+export type Parser<P extends ParserProperty = ParserProperty> = (
+  params: ParserParams<P>,
 ) => Record<string, any>;
 
 export type SliceParsers<
   M extends Record<string, string>,
-  T extends ThemeKey,
-  P extends string = ParserProperty
+  P extends ParserProperty = ParserProperty
 > = {
-  [K in keyof M]: Parser<T, P>;
+  [K in keyof M]: Parser<P>;
 };
 
 export type AllParsers = {
-  [K in keyof AllProperties]: Parser<AllProperties[K], K>;
+  [K in ParserProperty]: Parser<K>;
 };
