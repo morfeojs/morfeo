@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme, parsers, Component } from '@morfeo/web';
-import './App.css';
+import { useTheme } from '@morfeo/hooks';
 
 const lightTheme = {
   colors: {
@@ -10,6 +10,7 @@ const lightTheme = {
   },
   radii: {
     m: '10px',
+    round: '50%',
   },
   space: {
     s: '40px',
@@ -18,6 +19,7 @@ const lightTheme = {
   sizes: {
     s: '10px',
     m: '100px',
+    xl: '200px',
   },
   borderWidths: {
     s: '2px',
@@ -26,10 +28,14 @@ const lightTheme = {
     md: '900px',
     lg: '1300px',
   },
+  transitions: {
+    light: 'all 0.5s',
+  },
   components: {
     Button: {
       style: {
         componentTag: 'button',
+        transition: 'light',
         height: 'm',
         width: 'm',
         bg: {
@@ -38,6 +44,9 @@ const lightTheme = {
         },
         color: 'secondary',
         borderRadius: 'm',
+        borderWidth: 's',
+        borderStyle: 'solid',
+        borderColor: 'primary',
         '&:hover': {
           bg: 'secondary',
           color: 'primary',
@@ -45,12 +54,16 @@ const lightTheme = {
       },
       variants: {
         primary: {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          componentTag: 'div',
-          borderColor: 'white',
-          borderWidth: 's',
+          bg: 'secondary',
+          borderColor: 'primary',
+          color: 'primary',
+          '&:hover': {
+            bg: 'primary',
+            color: 'secondary',
+          },
+        },
+        round: {
+          borderRadius: 'round',
         },
       },
     },
@@ -79,10 +92,11 @@ function customStyled(component: Component) {
         : tag;
 
     const Component = styled<any>(variantTag || (tag as any))(
-      ({ theme: styledTheme, ...style }) =>
-        parsers.resolve({
+      ({ theme: styledTheme, ...style }) => {
+        return parsers.resolve({
           style: { ...(style as any), componentName: component },
-        }),
+        });
+      },
     );
 
     return <Component {...props} />;
@@ -92,11 +106,7 @@ function customStyled(component: Component) {
 const Button = customStyled('Button');
 
 const StyledProvider: React.FC = ({ children }) => {
-  const [currentTheme, setTheme] = React.useState(theme.get());
-
-  React.useEffect(() => {
-    theme.listen(updatedTheme => setTheme(updatedTheme));
-  }, []);
+  const currentTheme = useTheme();
 
   return <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>;
 };
@@ -119,13 +129,14 @@ function App() {
             display: 'flex',
             height: '100vh',
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'space-evenly',
+            transition: 'light',
           } as any,
         })}
       >
-        <Button onClick={onClick} variant={light ? 'primary' : undefined}>
-          {light ? `🌙` : `☀️`}
-        </Button>
+        <Button onClick={onClick}>{light ? `🌙` : `☀️`}</Button>
+        <Button variant="primary">Primary variant</Button>
+        <Button variant="round">Round variant</Button>
       </div>
     </StyledProvider>
   );

@@ -5,7 +5,7 @@ type ThemeListener = (theme: Theme) => void;
 
 function createTheme() {
   let context: Theme = {} as any;
-  let listeners: ThemeListener[] = [];
+  let listeners: [ThemeListener, string][] = [];
 
   function get() {
     return context;
@@ -23,7 +23,7 @@ function createTheme() {
   }
 
   function callListeners() {
-    listeners.map(listener => listener(context));
+    listeners.map(([listener]) => listener(context));
   }
 
   function set(theme: Partial<Theme>) {
@@ -48,8 +48,32 @@ function createTheme() {
     callListeners();
   }
 
-  function listen(callback: ThemeListener) {
-    listeners.push(callback);
+  function getSafeUid(uid?: string, suffix: number = 0): string {
+    const listenersCount = listeners.length;
+    const safeUid = uid || listenersCount.toString();
+
+    const alreadyExists = listeners.find(
+      ([_, listenerUid]) => listenerUid === safeUid,
+    );
+    if (alreadyExists) {
+      return getSafeUid(`${safeUid}-${suffix}`, suffix + 1);
+    }
+
+    return safeUid;
+  }
+
+  function listen(callback: ThemeListener, uid?: string) {
+    const safeUid = getSafeUid(uid);
+    listeners.push([callback, safeUid]);
+    return safeUid;
+  }
+
+  function cleanUp(uid?: string) {
+    if (uid) {
+      listeners = listeners.filter(([_, listenerUid]) => uid !== listenerUid);
+      return;
+    }
+    listeners = [];
   }
 
   return {
@@ -57,6 +81,7 @@ function createTheme() {
     set,
     reset,
     listen,
+    cleanUp,
     getSlice,
     setSlice,
     getValue,

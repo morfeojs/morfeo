@@ -9,9 +9,13 @@ export type ResponsiveValue<V extends any> = {
 
 export type PropertyValue<P extends Property> = keyof Theme[AllProperties[P]];
 
-type BaseStyle = {
+export interface CustomStyle {}
+
+type ThemeStyle = {
   [K in Property]?: PropertyValue<K> | ResponsiveValue<PropertyValue<K>>;
 } &
   ComponentProps;
+
+type BaseStyle = Omit<CustomStyle, keyof ThemeStyle> & ThemeStyle;
 
 export interface Style extends BaseStyle {}

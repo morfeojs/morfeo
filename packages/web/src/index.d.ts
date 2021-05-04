@@ -1,10 +1,12 @@
 import { Style } from '@morfeo/core';
+import { Properties } from 'csstype';
 import { PseudoProperty } from './types';
 
-type PseudoStyle = {
-  [K in PseudoProperty]?: Style;
-};
+type WebStyle = Properties<string | number> &
+  {
+    [K in PseudoProperty]?: Style;
+  };
 
 declare module '@morfeo/core' {
-  export interface Style extends PseudoStyle {}
+  export interface CustomStyle extends WebStyle {}
 }

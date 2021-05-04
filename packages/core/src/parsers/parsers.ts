@@ -1,4 +1,4 @@
-import { ThemeKey, allProperties, AllProperties, Property } from '@morfeo/spec';
+import { allProperties, AllProperties, Property } from '@morfeo/spec';
 import { Parser, AllParsers, ParserParams, ResolverParams } from '../types';
 import { baseParser } from './baseParser';
 import { sizeParsers } from './sizes';

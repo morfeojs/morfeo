@@ -11,11 +11,12 @@ const defaultTheme: Theme = {
 } as any;
 
 describe('theme', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     theme.set(defaultTheme);
+    theme.cleanUp();
   });
 
-  afterAll(() => {
+  afterEach(() => {
     theme.reset();
   });
 
@@ -60,5 +61,25 @@ describe('theme', () => {
     theme.reset();
 
     expect(theme.get()).toEqual({});
+  });
+
+  test('should generate a unique id for each listener', () => {
+    const firstUid = theme.listen(jest.fn(), 'test');
+    const secondUid = theme.listen(jest.fn(), 'test');
+    const thirdUid = theme.listen(jest.fn());
+
+    expect(firstUid).toBe('test');
+    expect(secondUid).toBe('test-0');
+    expect(thirdUid).toBe('2');
+  });
+
+  test('should remove the specified listener with the cleanUp method', () => {
+    const listener = jest.fn();
+    const uid = theme.listen(listener, 'test');
+
+    theme.cleanUp(uid);
+    theme.setValue('colors', 'primary', 'black');
+
+    expect(listener).not.toHaveBeenCalled();
   });
 });
