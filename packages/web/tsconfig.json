@@ -2,7 +2,6 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./build",
-    "declaration": true,
   },
   "include": ["./src", "./src/index.d.ts"],
   "exclude": ["./node_modules", "./src/**/*.test.ts", "./src/**/*.spec.ts"]

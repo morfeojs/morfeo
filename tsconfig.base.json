@@ -9,7 +9,7 @@
     "allowJs": true,
     "sourceMap": true,
     "diagnostics": false,
-    "declaration": false, 
+    "declaration": true, 
     "skipLibCheck": true,
     "importHelpers": true,
     "noImplicitAny": false,

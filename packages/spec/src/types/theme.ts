@@ -14,6 +14,7 @@ import { Borders, BorderWidths, BorderStyles } from './borders';
 import { Opacities } from './opacities';
 import { Transitions } from './transitions';
 import { ZIndices } from './zIndices';
+import { MediaQueries } from './mediaQueries';
 import { Components } from './components';
 
 export type BaseTheme = {
@@ -32,6 +33,7 @@ export type BaseTheme = {
   breakpoints: BreakPoints;
   transitions: Transitions;
   borderWidths: BorderWidths;
+  mediaQueries: MediaQueries;
   borderStyles: BorderStyles;
   letterSpacings: LetterSpacings;
 };

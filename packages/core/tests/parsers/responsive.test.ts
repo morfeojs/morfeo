@@ -41,7 +41,7 @@ describe('pseudos', () => {
     });
 
     expect(result).toEqual({
-      [`@media (max-width: 600px)`]: {
+      [`@media (min-width: 600px)`]: {
         color: '#e3e3e3',
       },
     });
@@ -60,7 +60,7 @@ describe('pseudos', () => {
     });
 
     expect(result).toEqual({
-      [`@media (max-width: 600px)`]: {
+      [`@media (min-width: 600px)`]: {
         color: '#e3e3e3',
         padding: '10px',
       },
@@ -75,7 +75,7 @@ describe('pseudos', () => {
     });
 
     expect(result).toEqual({
-      [`@media (max-width: 600px)`]: {
+      [`@media (min-width: 600px)`]: {
         padding: '10px',
       },
     });
