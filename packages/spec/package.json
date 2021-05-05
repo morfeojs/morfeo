@@ -19,5 +19,8 @@
     "build": "rimraf build && tsc",
     "watch": "tsc -w"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "publishConfig": {
+    "access": "public"
+  }
 }

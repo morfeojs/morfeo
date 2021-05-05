@@ -22,5 +22,8 @@
   "dependencies": {
     "@morfeo/core": "^0.0.1",
     "csstype": "^3.0.8"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
