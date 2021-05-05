@@ -7,6 +7,7 @@ const lightTheme = {
   colors: {
     primary: 'white',
     secondary: 'black',
+    danger: 'red',
   },
   radii: {
     m: '10px',
@@ -39,7 +40,7 @@ const lightTheme = {
         height: 'm',
         width: 'm',
         bg: {
-          md: 'red',
+          md: 'danger',
           lg: 'primary',
         },
         color: 'secondary',
@@ -111,6 +112,16 @@ const StyledProvider: React.FC = ({ children }) => {
   return <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>;
 };
 
+function getStyle(component: Component, variant?: string) {
+  const { style, variants } = theme.getValue('components', component);
+
+  if (variant && variants && variants[variant]) {
+    return JSON.stringify(variants[variant], undefined, 2);
+  }
+
+  return JSON.stringify(style, undefined, 2);
+}
+
 function App() {
   const [light, setLight] = React.useState(true);
 
@@ -118,6 +129,21 @@ function App() {
     theme.set(light ? (darkTheme as any) : (lightTheme as any));
     setLight(prev => !prev);
   }, [light]);
+
+  const containerStyle = parsers.resolve({
+    style: {
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'space-evenly',
+      height: '100%' as any,
+    },
+  });
+
+  const codeStyle = parsers.resolve({
+    style: { color: 'primary', display: 'block', py: 's' },
+  });
 
   return (
     <StyledProvider>
@@ -134,9 +160,18 @@ function App() {
           } as any,
         })}
       >
-        <Button onClick={onClick}>{light ? `🌙` : `☀️`}</Button>
-        <Button variant="primary">Primary variant</Button>
-        <Button variant="round">Round variant</Button>
+        <div style={containerStyle}>
+          <Button onClick={onClick}>{light ? `🌙` : `☀️`}</Button>
+          <pre style={codeStyle}>{getStyle('Button')}</pre>
+        </div>
+        <div style={containerStyle}>
+          <Button variant="primary">Primary variant</Button>
+          <pre style={codeStyle}>{getStyle('Button', 'primary')}</pre>
+        </div>
+        <div style={containerStyle}>
+          <Button variant="round">Round variant</Button>
+          <pre style={codeStyle}>{getStyle('Button', 'round')}</pre>
+        </div>
       </div>
     </StyledProvider>
   );
