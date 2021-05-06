@@ -1,6 +1,6 @@
 import { Style } from '@morfeo/core';
 import { Properties } from 'csstype';
-import { PseudoProperty } from './types';
+import { PseudoProperty } from './pseudos';
 
 type WebStyle = Properties<string | number> &
   {
