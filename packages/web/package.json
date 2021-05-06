@@ -9,8 +9,8 @@
   "license": "MIT",
   "main": "build/index.js",
   "module": "build/index.js",
-  "types": "src/index",
-  "typings": "src/index",
+  "types": "build/index",
+  "typings": "build/index",
   "keywords": [
     "design",
     "system"
