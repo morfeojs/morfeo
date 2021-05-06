@@ -15,7 +15,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges",
-    "publish": "npx lerna publish from-package --yes"
+    "publish": "npx lerna publish from-package --yes",
+    "version": "npx lerna version patch --no-push --no-git-tag-version --conventional-commits"
   },
   "dependencies": {
     "react": "^17.0.2",
