@@ -1,1 +1,1 @@
-export const shadowsMap = ['boxShadow', 'textShadow'] as const;
+export const shadowsMap = ['boxShadow', 'textShadow', 'shadow'] as const;

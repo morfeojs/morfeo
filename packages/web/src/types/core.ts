@@ -9,4 +9,5 @@ type WebStyle = Properties<string | number> &
 
 declare module '@morfeo/core' {
   export interface CustomStyle extends WebStyle {}
+  export interface ResolvedStyle extends Properties<string | number> {}
 }

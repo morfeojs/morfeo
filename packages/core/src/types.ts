@@ -2,6 +2,8 @@ import { AllProperties, Style } from '@morfeo/spec';
 
 export type ParserProperty = keyof AllProperties;
 
+export interface ResolvedStyle {}
+
 export type ResolverParams = {
   style?: Style;
 };

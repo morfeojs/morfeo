@@ -1,5 +1,11 @@
 import { allProperties, AllProperties, Property } from '@morfeo/spec';
-import { Parser, AllParsers, ParserParams, ResolverParams } from '../types';
+import {
+  Parser,
+  AllParsers,
+  ParserParams,
+  ResolvedStyle,
+  ResolverParams,
+} from '../types';
 import { baseParser } from './baseParser';
 import { sizeParsers } from './sizes';
 import { colorsParsers } from './colors';
@@ -35,6 +41,7 @@ const ADDITIONAL_PARSERS = {
 const INITIAL_PARSERS = {
   ...DEFAULT_PARSERS,
   ...ADDITIONAL_PARSERS,
+  children: () => ({}),
 };
 
 type ParsersContext = {
@@ -108,7 +115,7 @@ function createParsers() {
     return { [property]: value };
   }
 
-  function resolve({ style = {} }: ResolverParams): any {
+  function resolve({ style = {} }: ResolverParams): ResolvedStyle {
     const { componentName, ...rest } = style;
     const properties = Object.keys(rest);
 

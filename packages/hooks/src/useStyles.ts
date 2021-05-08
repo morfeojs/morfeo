@@ -1,4 +1,4 @@
-import { Style, parsers } from '@morfeo/core';
+import { Style, ResolvedStyle, parsers } from '@morfeo/core';
 
 export function useStyles<K extends string>(styles: Record<K, Style>) {
   const styleKeys = Object.keys(styles);
@@ -9,7 +9,7 @@ export function useStyles<K extends string>(styles: Record<K, Style>) {
       [curr]: parsers.resolve({ style: styles[curr] }),
     }),
     {},
-  ) as Record<K, any>;
+  ) as Record<K, ResolvedStyle>;
 }
 
 export function useStyle(style: Style) {

@@ -20,10 +20,6 @@
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": "error",
     "@typescript-eslint/no-use-before-define": ["error"],
-    "prettier/prettier": [
-      "error",
-      { "singleQuote": true, "endOfLine": "auto" }
-    ],
     "import/extensions": "off",
     "import/prefer-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": "off",

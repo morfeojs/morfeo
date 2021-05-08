@@ -1,0 +1,91 @@
+export const typography = {
+  style: {},
+  variants: {
+    hero: {
+      fontSize: 'l',
+      fontWeight: 'bold',
+      lineHeight: 'l',
+      color: 'grey/dark',
+    },
+    'hero/gradient': {
+      fontSize: 'l',
+      fontWeight: 'bold',
+      lineHeight: 'l',
+      color: 'grey/dark',
+      gradient: 'primary',
+    },
+    h1: {
+      fontSize: 'xl',
+      lineHeight: 'xl',
+      fontWeight: 'bold',
+      color: 'grey/dark',
+    },
+    'h1/gradient': {
+      fontSize: 'xl',
+      lineHeight: 'xl',
+      fontWeight: 'bold',
+      gradient: 'primary',
+    },
+    h2: {
+      fontSize: 'l',
+      lineHeight: 'm',
+      fontWeight: 'bold',
+      color: 'grey/dark',
+    },
+    h3: {
+      fontSize: 'm',
+      lineHeight: 's',
+      fontWeight: 'bold',
+      color: 'grey/dark',
+    },
+    p1: {
+      fontSize: 'm',
+      lineHeight: 'm',
+      fontWeight: 'regular',
+      color: 'grey/dark',
+    },
+    p2: {
+      fontSize: 's',
+      lineHeight: 'm',
+      fontWeight: 'regular',
+      color: 'grey/dark',
+    },
+    p3: {
+      fontSize: 'xs',
+      lineHeight: 's',
+      fontWeight: 'regular',
+      color: 'grey/dark',
+    },
+    caption: {
+      color: 'grey/dark',
+      fontSize: 'xs',
+      lineHeight: 'xs',
+      fontStyle: 'italic',
+    },
+    cta: {
+      color: 'positive',
+      fontWeight: 'bold',
+      fontSize: 'm',
+      lineHeight: 's',
+      textDecorationLine: 'underline',
+      textDecorationColor: 'positive',
+    },
+    overline: {
+      fontSize: 's',
+      lineHeight: 'm',
+      color: 'grey/dark',
+      fontWeight: 'bold',
+      textTransform: 'uppercase',
+    },
+    link: {
+      fontSize: 's',
+      color: 'primary',
+      fontWeight: 'medium',
+    },
+    totalAmount: {
+      fontSize: 'xxl',
+      color: 'dark',
+      fontWeight: 'black',
+    },
+  },
+};

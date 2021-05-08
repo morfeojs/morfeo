@@ -48,3 +48,6 @@ export const shadowsParsers: ShadowsParsers = Object.keys(
   }),
   {} as ShadowsParsers,
 );
+
+shadowsParsers.shadow = ({ property, ...props }) =>
+  shadows({ property: 'boxShadow', ...props });
