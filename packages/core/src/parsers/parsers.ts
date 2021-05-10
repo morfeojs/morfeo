@@ -48,7 +48,7 @@ type ParsersContext = {
 };
 
 function createParsers() {
-  let context = ({ ...INITIAL_PARSERS } as any) as ParsersContext;
+  let context = { ...INITIAL_PARSERS } as any as ParsersContext;
 
   function get() {
     return context;
@@ -59,7 +59,7 @@ function createParsers() {
   }
 
   function reset() {
-    context = ({ ...INITIAL_PARSERS } as any) as ParsersContext;
+    context = { ...INITIAL_PARSERS } as any as ParsersContext;
   }
 
   function resolveResponsiveProperty({

@@ -20,7 +20,7 @@ export type Parser<P extends ParserProperty = ParserProperty> = (
 
 export type SliceParsers<
   M extends Record<string, string>,
-  P extends ParserProperty = ParserProperty
+  P extends ParserProperty = ParserProperty,
 > = {
   [K in keyof M]: Parser<P>;
 };

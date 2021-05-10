@@ -2,32 +2,29 @@ import { parsers, theme, Theme, Style, Component } from '@morfeo/web';
 import styled, { StyledInterface, StyledComponent } from 'styled-components';
 
 type ComponentTag = keyof StyledInterface | Component;
-type MorfeoStyledComponent<
-  K extends keyof StyledInterface,
-  P extends Style
-> = StyledComponent<K, Theme, P>;
+type MorfeoStyledComponent<K extends keyof StyledInterface, P extends Style> =
+  StyledComponent<K, Theme, P>;
 
 type MorfeoStyledCallback = <P extends Style = Style>(
   tag: keyof StyledInterface,
 ) => MorfeoStyledComponent<typeof tag, P>;
 
-type MorfeoStyled<
-  P extends Style | TemplateStringsArray = Style
-> = MorfeoStyledCallback &
-  {
-    [K in keyof StyledInterface]: (
-      props: P | TemplateStringsArray,
-    ) => P extends Style
-      ? MorfeoStyledComponent<K, P>
-      : MorfeoStyledComponent<K, any>;
-  } &
-  {
-    [K in Component]: (
-      props: P | TemplateStringsArray,
-    ) => P extends Style
-      ? MorfeoStyledComponent<keyof StyledInterface, P>
-      : MorfeoStyledComponent<any, any>;
-  };
+type MorfeoStyled<P extends Style | TemplateStringsArray = Style> =
+  MorfeoStyledCallback &
+    {
+      [K in keyof StyledInterface]: (
+        props: P | TemplateStringsArray,
+      ) => P extends Style
+        ? MorfeoStyledComponent<K, P>
+        : MorfeoStyledComponent<K, any>;
+    } &
+    {
+      [K in Component]: (
+        props: P | TemplateStringsArray,
+      ) => P extends Style
+        ? MorfeoStyledComponent<keyof StyledInterface, P>
+        : MorfeoStyledComponent<any, any>;
+    };
 
 function isStyleProps(arg: any): arg is Style {
   return !Array.isArray(arg) && typeof arg === 'object';
