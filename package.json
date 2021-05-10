@@ -12,9 +12,9 @@
     "prettify": "npm run prettify:js && npm run prettify:ts",
     "prettify:js": "npx prettier --write \"**/*.js\"",
     "prettify:ts": "npx prettier --write \"**/*.ts\"",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "jest --updateSnapshot",
+    "test:watch": "jest --watch --updateSnapshot",
+    "test:coverage": "jest --coverage --updateSnapshot",
     "test:badges": "npm run test:coverage  && jest-coverage-badges",
     "publish": "npx lerna publish from-package --yes",
     "version": "npx lerna version patch --no-push --no-git-tag-version --conventional-commits"

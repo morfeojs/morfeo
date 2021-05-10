@@ -38,7 +38,7 @@ describe('components', () => {
       property: 'componentName',
       value: 'Button',
     });
-    expect(result.componentTag).not.toBeDefined();
+    expect((result as any).componentTag).not.toBeDefined();
   });
 
   test('should return the default components style', () => {

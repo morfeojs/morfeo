@@ -1,6 +1,6 @@
 import { Theme } from '@morfeo/spec';
 import { shadows } from '../../src/parsers/shadows';
-import { theme } from '../../src';
+import { parsers, theme } from '../../src';
 
 const THEME: Theme = {
   colors: {
@@ -50,6 +50,13 @@ describe('shadows', () => {
 
   test('should generate the property `boxShadow` based on the strong shadow', () => {
     const result = shadows({ property: 'boxShadow', value: 'strong' });
+    expect(result).toEqual({
+      boxShadow: '10px 10px 30px white',
+    });
+  });
+
+  test('should generate the property `boxShadow` if the prop `shadow` is passed', () => {
+    const result = parsers.resolve({ style: { shadow: 'strong' } });
     expect(result).toEqual({
       boxShadow: '10px 10px 30px white',
     });

@@ -41,7 +41,6 @@ const ADDITIONAL_PARSERS = {
 const INITIAL_PARSERS = {
   ...DEFAULT_PARSERS,
   ...ADDITIONAL_PARSERS,
-  children: () => ({}),
 };
 
 type ParsersContext = {

@@ -1,6 +1,7 @@
 import {
-  parsers,
   theme,
+  parsers,
+  Style,
   Shadows,
   ParserParams,
   ShadowProperty,
@@ -43,17 +44,8 @@ export function shadowOffset({ value }) {
 }
 
 export function shadows({ value }: ParserParams<ShadowProperty>) {
-  if (
-    !theme ||
-    !theme.getSlice('shadows') ||
-    !theme.getValue('shadows', value as keyof Shadows)
-  ) {
-    return {};
-  }
-  const { color, offset, opacity, radius, elevation } = theme.getValue(
-    'shadows',
-    value as keyof Shadows,
-  );
+  const { color, offset, opacity, radius, elevation } =
+    theme.getValue('shadows', value as keyof Shadows) || {};
 
   return parsers.resolve({
     style: {
@@ -62,6 +54,6 @@ export function shadows({ value }: ParserParams<ShadowProperty>) {
       ...(offset ? { shadowOffset: offset } : {}),
       ...(radius ? { shadowRadius: radius } : {}),
       ...(opacity ? { shadowOpacity: opacity } : {}),
-    } as any,
+    } as Style,
   });
 }

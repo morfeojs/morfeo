@@ -1,13 +1,12 @@
 import { useState, useCallback, FC } from 'react';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from '@morfeo/styled-components-web';
 import { theme, Component } from '@morfeo/web';
 import { useTheme, useStyles } from '@morfeo/hooks';
-import { customStyled } from './styled';
 import { darkTheme, lightTheme } from './theme';
 
 theme.set(lightTheme);
 
-const Button = customStyled('Button');
+const Button = styled.Button({});
 
 const StyledProvider: FC = ({ children }) => {
   const currentTheme = useTheme();
