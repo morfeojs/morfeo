@@ -1,8 +1,8 @@
 import React from 'react';
-import { Style, ResolvedStyle } from '@morfeo/native';
-import { withTypography } from './Typography';
 import { Pressable } from 'react-native';
+import { Style, ResolvedStyle } from '@morfeo/native';
 import { useStyle } from '@morfeo/hooks';
+import { withTypography } from './Typography';
 
 type Props = Style & {
   style?: ResolvedStyle;
@@ -13,11 +13,13 @@ export const Button: React.FC<Props> = ({
   children,
   textStyle = {},
   color,
+  style,
   ...props
 }) => {
-  const style = useStyle(props);
+  const defaultStyle = useStyle(props);
+
   return (
-    <Pressable style={style}>
+    <Pressable style={[style, defaultStyle]}>
       {withTypography(children, { ...textStyle, color })}
     </Pressable>
   );

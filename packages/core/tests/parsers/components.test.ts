@@ -11,7 +11,7 @@ const THEME: Theme = {
     m: '10px',
   },
   components: {
-    Button: {
+    Box: {
       style: {
         bg: 'primary',
         componentTag: 'button',
@@ -36,7 +36,7 @@ describe('components', () => {
   test('should hide the attribute `componentTag` from the generated style', () => {
     const result = components({
       property: 'componentName',
-      value: 'Button',
+      value: 'Box',
     });
     expect((result as any).componentTag).not.toBeDefined();
   });
@@ -44,7 +44,7 @@ describe('components', () => {
   test('should return the default components style', () => {
     const result = components({
       property: 'componentName',
-      value: 'Button',
+      value: 'Box',
     });
     expect(result).toEqual({ backgroundColor: '#e3e3e3' });
   });
@@ -66,28 +66,28 @@ describe('components', () => {
 
   test('should take the style of the component from the theme', () => {
     const result = parsers.resolve({
-      style: { componentName: 'Button' },
+      style: { componentName: 'Box' },
     });
     expect(result).toEqual({ backgroundColor: '#e3e3e3' });
   });
 
   test('should merge the base component style with the variant primary', () => {
     const result = parsers.resolve({
-      style: { componentName: 'Button', variant: 'primary' },
+      style: { componentName: 'Box', variant: 'primary' },
     });
     expect(result).toEqual({ backgroundColor: '#e3e3e3', color: '#000' });
   });
 
   test('should merge the base component style with rest of the style', () => {
     const result = parsers.resolve({
-      style: { componentName: 'Button', p: 'm' },
+      style: { componentName: 'Box', p: 'm' },
     });
     expect(result).toEqual({ backgroundColor: '#e3e3e3', padding: '10px' });
   });
 
   test('should override the base component style with rest of the style', () => {
     const result = parsers.resolve({
-      style: { bg: 'secondary', componentName: 'Button' },
+      style: { bg: 'secondary', componentName: 'Box' },
     });
     expect(result).toEqual({ backgroundColor: '#000' });
   });
@@ -99,14 +99,14 @@ describe('components', () => {
         ...THEME.components,
         Typography: {
           style: {
-            componentName: 'Button',
+            componentName: 'Box',
             color: 'secondary',
           },
         },
-      },
+      } as any,
     });
     const result = parsers.resolve({
-      style: { componentName: 'Typography' },
+      style: { componentName: 'Typography' as any },
     });
     expect(result).toEqual({ color: '#000', backgroundColor: '#e3e3e3' });
   });

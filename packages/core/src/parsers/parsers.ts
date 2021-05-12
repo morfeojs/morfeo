@@ -13,6 +13,7 @@ import { spacesParsers } from './spaces';
 import { shadowsParsers } from './shadows';
 import { componentsParses } from './components';
 import { deepMerge, isResponsiveValue } from '../utils';
+import { FALLBACK_PARSERS } from '../constants';
 import { theme } from '../theme';
 
 const allPropertiesKeys = Object.keys(allProperties) as (keyof AllProperties)[];
@@ -39,6 +40,7 @@ const ADDITIONAL_PARSERS = {
 };
 
 const INITIAL_PARSERS = {
+  ...FALLBACK_PARSERS,
   ...DEFAULT_PARSERS,
   ...ADDITIONAL_PARSERS,
 };
@@ -111,7 +113,7 @@ function createParsers() {
       });
     }
 
-    return { [property]: value };
+    return {};
   }
 
   function resolve({ style = {} }: ResolverParams): ResolvedStyle {

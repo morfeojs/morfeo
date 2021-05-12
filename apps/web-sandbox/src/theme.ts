@@ -48,6 +48,10 @@ export const lightTheme = {
           color: 'primary',
         },
       },
+      props: {
+        'aria-label': 'button',
+        type: 'submit',
+      },
       variants: {
         primary: {
           bg: 'secondary',
@@ -64,7 +68,7 @@ export const lightTheme = {
       },
     },
   },
-} as any;
+};
 
 export const darkTheme = {
   colors: {

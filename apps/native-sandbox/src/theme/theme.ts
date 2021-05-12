@@ -1,3 +1,4 @@
+import { Theme } from '@morfeo/native';
 import { button, typography } from './components';
 import { colors } from './colors';
 import { space } from './space';
@@ -22,4 +23,4 @@ export const defaultTheme = {
     Button: button,
     Typography: typography,
   },
-} as any;
+} as const;

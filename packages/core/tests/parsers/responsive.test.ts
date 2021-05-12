@@ -13,7 +13,7 @@ const THEME: Theme = {
     lg: '600px',
   },
   components: {
-    Button: {
+    Box: {
       style: {
         p: {
           lg: 'm',
@@ -70,7 +70,7 @@ describe('pseudos', () => {
   test('should generate media queries from default components', () => {
     const result = parsers.resolve({
       style: {
-        componentName: 'Button',
+        componentName: 'Box',
       },
     });
 

@@ -4,7 +4,7 @@ export const button = {
     height: 'm',
     bg: 'white',
     borderRadius: 's',
-    borderWidth: 'xxs',
+    shadow: 'strong',
     borderColor: 'grey',
     alignSelf: 'center',
     alignItems: 'center',

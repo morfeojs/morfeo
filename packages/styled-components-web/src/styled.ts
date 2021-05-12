@@ -1,5 +1,9 @@
 import { parsers, theme, Theme, Style, Component } from '@morfeo/web';
-import styled, { StyledInterface, StyledComponent } from 'styled-components';
+import styled, {
+  StyledInterface,
+  StyledComponent,
+  ThemedStyledFunction,
+} from 'styled-components';
 
 type ComponentTag = keyof StyledInterface | Component;
 type MorfeoStyledComponent<K extends keyof StyledInterface, P extends Style> =
@@ -32,8 +36,7 @@ function isStyleProps(arg: any): arg is Style {
 
 export function propsParser(...props: any[]) {
   const allProps = props.reduce((acc, currentProps) => {
-    const { theme: _, children, ...rest } = currentProps;
-    const currentStyle = parsers.resolve({ style: rest });
+    const currentStyle = parsers.resolve({ style: currentProps });
     return {
       ...acc,
       ...currentStyle,
@@ -44,9 +47,14 @@ export function propsParser(...props: any[]) {
 }
 
 const morfeoStyledHandler: MorfeoStyled = ((tag: ComponentTag) => {
-  const { style } = theme.getValue('components', tag as any) || {};
+  const { style, props: defaultComponentProps } =
+    theme.getValue('components', tag as any) || {};
   const componentTag = style?.componentTag || tag;
-  const styledFunction = styled[componentTag];
+  const styledFunction = styled[componentTag] as ThemedStyledFunction<
+    keyof StyledInterface,
+    Theme,
+    Style
+  >;
 
   if (typeof styledFunction === 'function') {
     return (componentProps: Style | TemplateStringsArray = {}) => {
@@ -54,7 +62,9 @@ const morfeoStyledHandler: MorfeoStyled = ((tag: ComponentTag) => {
         return styledFunction(componentProps);
       }
 
-      return styledFunction(
+      // TODO: get props from variant
+
+      return styledFunction.attrs(defaultComponentProps as any)(
         props =>
           propsParser({ componentName: tag, ...props }, componentProps) as any,
       );

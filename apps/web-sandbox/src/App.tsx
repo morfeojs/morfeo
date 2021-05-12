@@ -1,10 +1,10 @@
 import { useState, useCallback, FC } from 'react';
 import styled, { ThemeProvider } from '@morfeo/styled-components-web';
-import { theme, Component } from '@morfeo/web';
+import { theme, Component, Components } from '@morfeo/web';
 import { useTheme, useStyles } from '@morfeo/hooks';
 import { darkTheme, lightTheme } from './theme';
 
-theme.set(lightTheme);
+theme.set(lightTheme as any);
 
 const Button = styled.Button({});
 
@@ -14,7 +14,10 @@ const StyledProvider: FC = ({ children }) => {
   return <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>;
 };
 
-function getStyle(component: Component, variant?: string) {
+function getStyle<C extends Component = Component>(
+  component: C,
+  variant?: keyof Components['Button']['variants'],
+) {
   const { style, variants } = theme.getValue('components', component);
 
   if (variant && variants && variants[variant]) {

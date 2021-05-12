@@ -1,5 +1,5 @@
 import { Color, Opacity, Space } from '@morfeo/core';
-import { ViewStyle, ImageStyle, TextStyle } from 'react-native';
+import { ViewStyle, ImageStyle, TextStyle, StyleProp } from 'react-native';
 
 type CustomNativeStyle = {
   shadowColor?: Color;

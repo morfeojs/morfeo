@@ -11,8 +11,9 @@ beforeAll(() => {
       secondary: 'white',
     },
     components: {
-      Button: {
-        style: { color: 'primary', componentTag: 'button' },
+      Box: {
+        style: { color: 'primary', componentTag: 'div' },
+        props: { 'aria-label': 'test' },
       },
     },
   } as any);
@@ -29,24 +30,22 @@ describe('morfeoStyled', () => {
   });
 
   test('should resolve values from the theme if CSSObject is passed', () => {
-    const MorfeoButton = morfeoStyled.Button({});
-    const tree = renderer.create(<MorfeoButton>Test</MorfeoButton>).toJSON();
+    const Box = morfeoStyled.Box({});
+    const tree = renderer.create(<Box>Test</Box>).toJSON();
     expect(tree).toMatchSnapshot();
     expect(tree).toHaveStyleRule('color', 'black');
   });
 
   test('should resolve values passed from props', () => {
     // @ts-ignore
-    const MorfeoButton = morfeoStyled.Button();
-    const tree = renderer
-      .create(<MorfeoButton bg="secondary">Test</MorfeoButton>)
-      .toJSON();
+    const Box = morfeoStyled.Box();
+    const tree = renderer.create(<Box bg="secondary">Test</Box>).toJSON();
     expect(tree).toMatchSnapshot();
     expect(tree).toHaveStyleRule('backgroundColor');
   });
 
   test('should not be a component if the tag is invalid', () => {
-    const InvalidButton = morfeoStyled.prototype;
-    expect(typeof InvalidButton).not.toBe('function');
+    const InvalidComponent = morfeoStyled.prototype;
+    expect(typeof InvalidComponent).not.toBe('function');
   });
 });
