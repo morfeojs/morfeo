@@ -1,6 +1,7 @@
-import { morfeoStyled, propsParser } from './styled';
+import { morfeoStyled, propsParser, attributesParser } from './styled';
 export * from 'styled-components';
 export * from './types';
 
-export { propsParser };
+export { propsParser, attributesParser };
 export default morfeoStyled;
+export { ThemeProvider } from './ThemeProvider';

@@ -1,30 +1,26 @@
-import { useState, useCallback, FC } from 'react';
-import styled, { ThemeProvider } from '@morfeo/styled-components-web';
-import { theme, Component, Components } from '@morfeo/web';
-import { useTheme, useStyles } from '@morfeo/hooks';
+import { useState, useCallback } from 'react';
+import { ThemeProvider } from '@morfeo/styled-components-web';
+import { theme, Component, Variant } from '@morfeo/web';
+import { useStyles } from '@morfeo/hooks';
 import { darkTheme, lightTheme } from './theme';
-
-theme.set(lightTheme as any);
-
-const Button = styled.Button({});
-
-const StyledProvider: FC = ({ children }) => {
-  const currentTheme = useTheme();
-
-  return <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>;
-};
+import { Box, Button, Typography } from './components';
 
 function getStyle<C extends Component = Component>(
   component: C,
-  variant?: keyof Components['Button']['variants'],
+  variant?: Variant<C>,
 ) {
-  const { style, variants } = theme.getValue('components', component);
-
+  // @ts-ignore
+  const { style, tag, props, variants } = theme.getValue(
+    'components',
+    component,
+  );
+  // @ts-ignore
   if (variant && variants && variants[variant]) {
+    // @ts-ignore
     return JSON.stringify(variants[variant], undefined, 2);
   }
 
-  return JSON.stringify(style, undefined, 2);
+  return JSON.stringify({ style, tag, props }, undefined, 2);
 }
 
 function App() {
@@ -54,29 +50,34 @@ function App() {
       height: '100%' as any,
     },
     codeStyle: {
-      color: 'primary',
       display: 'block',
       py: 's',
     },
   });
 
   return (
-    <StyledProvider>
-      <div style={containerStyle}>
-        <div style={blockStyle}>
+    <ThemeProvider>
+      <Box style={containerStyle}>
+        <Box style={blockStyle}>
           <Button onClick={onClick}>{light ? `🌙` : `☀️`}</Button>
-          <pre style={codeStyle}>{getStyle('Button')}</pre>
-        </div>
-        <div style={blockStyle}>
+          <Typography variant="code" style={codeStyle}>
+            {getStyle('Button')}
+          </Typography>
+        </Box>
+        <Box style={blockStyle}>
           <Button variant="primary">Primary variant</Button>
-          <pre style={codeStyle}>{getStyle('Button', 'primary')}</pre>
-        </div>
-        <div style={blockStyle}>
+          <Typography variant="code" style={codeStyle}>
+            {getStyle('Button', 'primary')}
+          </Typography>
+        </Box>
+        <Box style={blockStyle}>
           <Button variant="round">Round variant</Button>
-          <pre style={codeStyle}>{getStyle('Button', 'round')}</pre>
-        </div>
-      </div>
-    </StyledProvider>
+          <Typography variant="code" style={codeStyle}>
+            {getStyle('Button', 'round')}
+          </Typography>
+        </Box>
+      </Box>
+    </ThemeProvider>
   );
 }
 

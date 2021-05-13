@@ -10,14 +10,20 @@ function getVariantStyle(
   if (!variant || !variants || !variants[variant]) {
     return {};
   }
-  return variants[variant];
+  return variants[variant].style;
 }
 
 export function components({ value, style }: ParserParams<'componentName'>) {
   const { variant } = style || {};
-  const { style: componentStyle, variants } = value
-    ? theme.getValue('components', value) || {}
-    : ({} as any);
+  if (!value || !theme.getValue('components', value)) {
+    return {};
+  }
+
+  const { style: componentStyle, variants } = theme.getValue(
+    'components',
+    value,
+  );
+
   const variantStyle = getVariantStyle(variants, variant);
 
   return parsers.resolve({
@@ -30,6 +36,4 @@ export function components({ value, style }: ParserParams<'componentName'>) {
 
 export const componentsParses = {
   componentName: components,
-  variant: () => {},
-  componentTag: () => {},
 };

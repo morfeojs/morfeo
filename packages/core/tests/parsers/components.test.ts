@@ -18,7 +18,7 @@ const THEME: Theme = {
       },
       variants: {
         primary: {
-          color: 'secondary',
+          style: { color: 'secondary' },
         },
       },
     },

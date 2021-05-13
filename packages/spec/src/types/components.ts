@@ -1,16 +1,16 @@
 import { Style } from './style';
 
-type ComponentStyle = Style & {
-  componentTag?: string;
+type ComponentStyle<Props extends Style = Style> = {
+  tag?: string;
+  style: Style;
+  props: Props;
 };
 
 export type ComponentConfig<
   Variant extends string = string,
   Props extends Style = Style,
-> = {
-  style: ComponentStyle;
-  props: Props;
-  variants: Record<Variant, ComponentStyle>;
+> = ComponentStyle<Props> & {
+  variants: Record<Variant, ComponentStyle<Props>>;
 };
 export interface Components {
   Box: ComponentConfig;
@@ -18,7 +18,9 @@ export interface Components {
 
 export type Component = keyof Components;
 
+export type Variant<C extends Component> = keyof Components[C]['variants'];
+
 export type ComponentProps<C extends Component = Component> = {
   componentName?: C;
-  variant?: keyof Components[C]['variants'];
+  variant?: Variant<C>;
 };
