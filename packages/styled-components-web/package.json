@@ -5,7 +5,7 @@
     "email": "mauro@vlkstudio.com"
   },
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "main": "build/index.js",
   "module": "build/index.js",
@@ -35,6 +35,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@morfeo/web": "^0.0.3"
+    "@morfeo/web": "^0.0.4"
   }
 }
