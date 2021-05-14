@@ -3,7 +3,7 @@
     "packages/*",
     "apps/web-sandbox"
   ],
-  "version": "0.0.6",
+  "version": "0.0.7",
   "command": {
     "bootstrap": {
       "npmClientArgs": [

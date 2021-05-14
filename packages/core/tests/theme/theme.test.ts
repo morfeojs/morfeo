@@ -8,6 +8,15 @@ const defaultTheme: Theme = {
   space: {
     m: '10px',
   },
+  breakpoints: {
+    sm: '400px',
+    md: '600px',
+    lg: '900px',
+  },
+  mediaQueries: {
+    md: '@media screen and (min-width: {{md}}) and (max-width: {{lg}})',
+    lg: '@media screen (min-width: {{lg}})',
+  },
 } as any;
 
 describe('theme', () => {
@@ -81,5 +90,27 @@ describe('theme', () => {
     theme.setValue('colors', 'primary', 'black');
 
     expect(listener).not.toHaveBeenCalled();
+  });
+
+  test('should recognize a response value', () => {
+    expect(theme.isResponsive({ lg: 'any value' })).toBeTruthy();
+  });
+
+  test('should return false for a plain value', () => {
+    expect(theme.isResponsive('any value')).toBeFalsy();
+  });
+
+  test('should return false for a non-compliant object', () => {
+    expect(theme.isResponsive({ foo: 'any value' })).toBeFalsy();
+  });
+
+  test('should get the mediaquery based on the breakpoint', () => {
+    expect(theme.resolveMediaQuery('md')).toBe(
+      '@media screen and (min-width: 600px) and (max-width: 900px)',
+    );
+  });
+
+  test("should get the default mediaquery if it's not specified inside the theme", () => {
+    expect(theme.resolveMediaQuery('sm')).toBe('@media (min-width: 400px)');
   });
 });
