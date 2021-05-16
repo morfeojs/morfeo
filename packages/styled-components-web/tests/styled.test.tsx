@@ -57,7 +57,6 @@ describe('morfeoStyled', () => {
     const Box = morfeoStyled.Box({});
     const tree = renderer.create(<Box>Test</Box>).toJSON();
     expect(tree).toMatchSnapshot();
-    expect(tree).toHaveStyleRule('color', 'black');
   });
 
   test('should return a component even if default style is not passed', () => {
@@ -68,7 +67,7 @@ describe('morfeoStyled', () => {
   });
 
   test('should change component tag if described inside variant', () => {
-    const Box = morfeoStyled.Box({});
+    const Box = morfeoStyled.Box({ variant: 'primary' });
     const tree = renderer.create(<Box variant="primary">Test</Box>).toJSON();
     expect(tree).toMatchSnapshot();
     expect(tree).toHaveProperty('type', 'button');

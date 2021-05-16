@@ -1,10 +1,14 @@
-const path = require('path');
-const fs = require('fs');
-const os = require('os');
+import path from 'path';
+import fs from 'fs';
+import os from 'os';
+
+const args = process.argv.slice(2);
+const [APP_NAME] = args;
 
 const symlinkType = os.platform() === 'win32' ? 'junction' : 'dir';
-const packagesPath = path.join(__dirname, '../../packages');
-const rootPath = path.join(__dirname, './node_modules/@morfeo');
+const packagesPath = path.join('./packages');
+const appPath = path.join('apps', APP_NAME);
+const rootPath = path.join(appPath, './node_modules/@morfeo');
 
 function getAllInternalPackages() {
   return fs
@@ -15,7 +19,7 @@ function getAllInternalPackages() {
 
 function getAppInternalPackages() {
   const packages = getAllInternalPackages();
-  const packageJsonFile = fs.readFileSync(path.join(__dirname, 'package.json'));
+  const packageJsonFile = fs.readFileSync(path.join(appPath, 'package.json'));
   const packageJson = JSON.parse(packageJsonFile);
   const { dependencies, peerDependencies, devDependencies } = packageJson;
   const allDependencies = {
@@ -45,11 +49,11 @@ function linkLocalPack(packName) {
   }
 
   fs.symlink(
-    path.join(packagesPath, packName),
-    path.join(rootPath, packName),
+    path.resolve(packagesPath, packName),
+    path.resolve(rootPath, packName),
     symlinkType,
     function (err) {
-      console.log(err || packName);
+      console.log(err || `@morfeo/${packName} symlink done ✅`);
     },
   );
 }

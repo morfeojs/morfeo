@@ -6,6 +6,7 @@ export interface ResolvedStyle {}
 
 export type ResolverParams = {
   style?: Style;
+  cache?: boolean;
 };
 export interface ParserParams<P extends keyof Style> {
   value: Style[P];

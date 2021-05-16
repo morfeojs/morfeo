@@ -1,14 +1,9 @@
 {
-  "packages": [
-    "packages/*",
-    "apps/web-sandbox"
-  ],
+  "packages": ["packages/*"],
   "version": "0.0.7",
   "command": {
     "bootstrap": {
-      "npmClientArgs": [
-        "--no-package-lock"
-      ]
+      "npmClientArgs": ["--no-package-lock"]
     }
   }
 }

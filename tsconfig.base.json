@@ -5,7 +5,7 @@
     "watch": false,
     "strict": true,
     "target": "es6",
-    "module": "es6",
+    "module": "CommonJS",
     "allowJs": true,
     "sourceMap": true,
     "diagnostics": false,

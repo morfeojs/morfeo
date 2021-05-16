@@ -76,7 +76,7 @@ function runBootstrap(appName) {
   removeInternalPackagesFromPackageJson(appName);
   shellCommand(`npm`, ['install'], { cwd: `./apps/${appName}` });
   restorePackageJson(appName);
-  shellCommand(`npm`, ['run', 'link'], { cwd: `./apps/${appName}` });
+  shellCommand(`node`, ['./scripts/symlink-packages.mjs', appName]);
 }
 
 runBootstrap(APP_NAME);

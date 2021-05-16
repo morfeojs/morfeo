@@ -1,0 +1,21 @@
+{
+  "name": "benchmarks",
+  "version": "0.0.7",
+  "private": true,
+  "author": {
+    "name": "Mauro Erta",
+    "email": "mauro@vlkstudio.com"
+  },
+  "scripts": {
+    "morfeo-vs": "node src/morfeo-vs/index.js",
+    "core": "node src/core/index.js",
+    "all": "npm run core && npm run morfeo-vs"
+  },
+  "devDependencies": {
+    "benchmark": "^2.1.4"
+  },
+  "dependencies": {
+    "@morfeo/core": "^0.0.7",
+    "styled-system": "5.1.5"
+  }
+}

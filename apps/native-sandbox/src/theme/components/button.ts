@@ -12,39 +12,46 @@ export const button = {
   },
   variants: {
     primary: {
-      bg: 'positive',
-      textStyle: {
-        variant: 'p1',
-        color: 'white',
+      style: {
+        bg: 'positive',
+      },
+      props: {
+        textStyle: {
+          variant: 'p1',
+          color: 'white',
+        },
       },
     },
     'primary/negative': {
-      bg: 'negative',
-      textStyle: {
-        variant: 'p1',
-        color: 'positive',
+      style: {
+        bg: 'negative',
+      },
+      props: {
+        textStyle: {
+          variant: 'p1',
+          color: 'positive',
+        },
       },
     },
     secondary: {
-      bg: 'transparent',
-      borderWidth: 'xs',
-      borderColor: 'positive',
-      textStyle: {
-        variant: 'p1',
-        color: 'positive',
+      style: { bg: 'transparent', borderWidth: 'xs', borderColor: 'positive' },
+      props: {
+        textStyle: {
+          variant: 'p1',
+          color: 'positive',
+        },
       },
     },
     'secondary/negative': {
-      bg: 'transparent',
-      borderWidth: 'xs',
-      borderColor: 'negative',
-      textStyle: {
-        color: 'negative',
+      style: { bg: 'transparent', borderWidth: 'xs', borderColor: 'negative' },
+      props: {
+        textStyle: {
+          color: 'negative',
+        },
       },
     },
     round: {
-      bg: 'dark',
-      borderRadius: 'round',
+      style: { bg: 'dark', borderRadius: 'round' },
     },
   },
 };

@@ -19,7 +19,7 @@ export const Button: React.FC<Props> = ({
   const defaultStyle = useStyle(props);
 
   return (
-    <Pressable style={[style, defaultStyle]}>
+    <Pressable style={[style, defaultStyle] as any[]}>
       {withTypography(children, { ...textStyle, color })}
     </Pressable>
   );

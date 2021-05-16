@@ -43,18 +43,11 @@ const THEME = {
   },
 } as any;
 
-afterAll(() => {
+beforeAll(() => {
   theme.set(THEME);
 });
 
 describe('shadows', () => {
-  beforeAll(() => {
-    theme.set(THEME);
-  });
-  afterAll(() => {
-    theme.reset();
-  });
-
   test('should generate the property `boxShadow` based on the strong shadow', () => {
     const result = parsers.resolve({ style: { shadow: 'strong' } });
     expect(result).toEqual({
@@ -77,6 +70,7 @@ describe('shadows', () => {
 
   test('should generate the property `shadow` based on the medium shadow', () => {
     const result = parsers.resolve({ style: { shadow: 'medium' } });
+    console.log(parsers.cache);
     expect(result).toEqual({
       elevation: 2,
       shadowColor: 'white',

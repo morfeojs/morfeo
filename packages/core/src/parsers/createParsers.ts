@@ -56,6 +56,7 @@ type ParsersContext = {
 
 export function createParsers() {
   let context = { ...INITIAL_PARSERS } as any as ParsersContext;
+  let cache: any = {};
 
   function get() {
     return context;
@@ -67,6 +68,14 @@ export function createParsers() {
 
   function reset() {
     context = { ...INITIAL_PARSERS } as any as ParsersContext;
+  }
+
+  function getCache() {
+    return cache;
+  }
+
+  function resetCache() {
+    cache = {};
   }
 
   function resolveResponsiveProperty({
@@ -121,7 +130,10 @@ export function createParsers() {
     return {};
   }
 
-  function resolve({ style = {} }: ResolverParams): ResolvedStyle {
+  function resolve({
+    style = {},
+    cache: cacheEnabled = true,
+  }: ResolverParams): ResolvedStyle {
     const { componentName, ...rest } = style;
     const properties = Object.keys(rest);
 
@@ -131,23 +143,50 @@ export function createParsers() {
           value: componentName,
           style,
         })
-      : {};
+      : undefined;
+
+    function getPropertyStyle(property: string) {
+      const value = style[property];
+      const params = {
+        property,
+        value,
+        style,
+      };
+      if (
+        cacheEnabled &&
+        (typeof value === 'string' || typeof value === 'number')
+      ) {
+        if (cache[property] === undefined) {
+          cache[property] = {};
+        }
+        if (cache[property][value] !== undefined) {
+          return cache[property][value];
+        }
+        cache[property][value] = resolveProperty(params);
+        return cache[property][value];
+      }
+
+      return resolveProperty(params);
+    }
 
     const parsedStyle = properties.reduce((acc, property) => {
-      return deepMerge(
-        acc,
-        resolveProperty({ property, value: style[property], style }),
-      );
+      return deepMerge(acc, getPropertyStyle(property));
     }, {});
 
-    return deepMerge(defaultComponentStyle, parsedStyle);
+    return defaultComponentStyle
+      ? deepMerge(defaultComponentStyle, parsedStyle)
+      : parsedStyle;
   }
+
+  theme.listen(resetCache);
 
   const parsers = {
     get,
     add,
     reset,
     resolve,
+    getCache,
+    resetCache,
     resolveProperty,
   };
 

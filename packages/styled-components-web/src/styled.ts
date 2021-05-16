@@ -41,6 +41,14 @@ export function attributesParser<P extends Style>(
   };
 }
 
+function getDisplayName(componentName: string, variant?: string) {
+  if (variant) {
+    return `${componentName}.${variant}`;
+  }
+
+  return componentName;
+}
+
 const morfeoStyledHandler: MorfeoStyled = ((tag: ComponentTag) => {
   const { tag: themeTag } = theme.getValue('components', tag as any) || {};
   const componentTag = themeTag || tag;
@@ -57,9 +65,11 @@ const morfeoStyledHandler: MorfeoStyled = ((tag: ComponentTag) => {
         return styledFunction(componentProps);
       }
 
-      return styledFunction.attrs(props =>
-        attributesParser(props as any, tag as any),
-      )(
+      return styledFunction
+        .withConfig({
+          displayName: getDisplayName(tag, componentProps.variant),
+        } as any)
+        .attrs(props => attributesParser(props as any, tag as any))(
         props =>
           propsParser({ componentName: tag }, componentProps, props) as any,
       );
