@@ -5,7 +5,7 @@
     "email": "mauro@vlkstudio.com"
   },
   "private": false,
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "MIT",
   "main": "build/index.js",
   "module": "build/index.js",
@@ -23,7 +23,7 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/core": "^0.0.8",
+    "@morfeo/core": "^0.0.9",
     "@types/react-native": "^0.64.4"
   },
   "peerDependencies": {
