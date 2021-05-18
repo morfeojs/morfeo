@@ -1,6 +1,6 @@
 {
   "name": "benchmarks",
-  "version": "0.0.7",
+  "version": "0.0.1",
   "private": true,
   "author": {
     "name": "Mauro Erta",
@@ -9,13 +9,15 @@
   "scripts": {
     "morfeo-vs": "node src/morfeo-vs/index.js",
     "core": "node src/core/index.js",
-    "all": "npm run core && npm run morfeo-vs"
+    "jss": "node src/jss/index.js",
+    "all": "npm run core && npm run jss && npm run morfeo-vs"
   },
   "devDependencies": {
     "benchmark": "^2.1.4"
   },
   "dependencies": {
-    "@morfeo/core": "^0.0.7",
+    "@morfeo/core": "^0.0.8",
+    "@morfeo/jss": "^0.0.8",
     "styled-system": "5.1.5"
   }
 }

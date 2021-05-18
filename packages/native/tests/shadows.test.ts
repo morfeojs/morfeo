@@ -70,7 +70,7 @@ describe('shadows', () => {
 
   test('should generate the property `shadow` based on the medium shadow', () => {
     const result = parsers.resolve({ style: { shadow: 'medium' } });
-    console.log(parsers.cache);
+
     expect(result).toEqual({
       elevation: 2,
       shadowColor: 'white',
