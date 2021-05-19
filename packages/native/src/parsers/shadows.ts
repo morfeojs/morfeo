@@ -48,12 +48,10 @@ export function shadows({ value }: ParserParams<ShadowProperty>) {
     theme.getValue('shadows', value as keyof Shadows) || {};
 
   return parsers.resolve({
-    style: {
-      ...(elevation ? { elevation } : {}),
-      ...(color ? { shadowColor: color } : {}),
-      ...(offset ? { shadowOffset: offset } : {}),
-      ...(radius ? { shadowRadius: radius } : {}),
-      ...(opacity ? { shadowOpacity: opacity } : {}),
-    } as Style,
-  });
+    ...(elevation ? { elevation } : {}),
+    ...(color ? { shadowColor: color } : {}),
+    ...(offset ? { shadowOffset: offset } : {}),
+    ...(radius ? { shadowRadius: radius } : {}),
+    ...(opacity ? { shadowOpacity: opacity } : {}),
+  } as Style);
 }

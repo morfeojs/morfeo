@@ -1,5 +1,5 @@
 import { Theme, theme } from '@morfeo/web';
-import { getStyle, getStyleSheet } from '../src';
+import { getStyles, getStyleSheet } from '../src';
 
 const THEME: Theme = {
   colors: {
@@ -29,7 +29,7 @@ describe('jss', () => {
   });
 
   test('should generate the classnames', () => {
-    const classes = getStyle({
+    const classes = getStyles({
       button: {
         bg: 'primary',
       },

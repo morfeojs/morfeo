@@ -7,9 +7,7 @@ type PseudoParsers = {
 };
 
 export function pseudos({ value, property }: PseudosParserParams) {
-  const style = parsers.resolve({
-    style: value,
-  });
+  const style = parsers.resolve(value);
 
   return {
     [property]: style,

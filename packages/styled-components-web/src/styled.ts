@@ -11,7 +11,7 @@ export function propsParser(...props: any[]) {
     (acc, currentProps) => ({ ...acc, ...currentProps }),
     {},
   );
-  return parsers.resolve({ style: mergedProps });
+  return parsers.resolve(mergedProps);
 }
 
 export function attributesParser<P extends Style>(

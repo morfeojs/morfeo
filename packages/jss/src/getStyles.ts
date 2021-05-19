@@ -10,14 +10,14 @@ export function getStyleSheet<K extends string>(
     const style = styles[key];
     return {
       ...acc,
-      [key]: parsers.resolve({ style }),
+      [key]: parsers.resolve(style),
     };
   }, {} as Record<K, ResolvedStyle>);
 
   return jss.createStyleSheet<K>(parsedStyle as any, options);
 }
 
-export function getStyle<K extends string>(
+export function getStyles<K extends string>(
   styles: Record<K, Style>,
   options?: StyleSheetFactoryOptions,
 ) {

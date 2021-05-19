@@ -18,9 +18,7 @@ describe('cache', () => {
   });
 
   test('should set the cache after resolving a style', () => {
-    parsers.resolve({
-      style: { color: 'primary' },
-    });
+    parsers.resolve({ color: 'primary' });
 
     expect(parsers.getCache()).toEqual({
       color: { primary: { color: 'white' } },
@@ -28,9 +26,7 @@ describe('cache', () => {
   });
 
   test('should reset the cache after a change of the theme', () => {
-    parsers.resolve({
-      style: { color: 'primary' },
-    });
+    parsers.resolve({ color: 'primary' });
 
     theme.set({
       colors: {
@@ -42,18 +38,14 @@ describe('cache', () => {
   });
 
   test('should return a different value for the same style if the theme is updated', () => {
-    const firstStyle = parsers.resolve({
-      style: { color: 'primary' },
-    });
+    const firstStyle = parsers.resolve({ color: 'primary' });
     theme.set({
       colors: {
         primary: 'black',
         secondary: 'white',
       },
     } as any);
-    const secondStyle = parsers.resolve({
-      style: { color: 'primary' },
-    });
+    const secondStyle = parsers.resolve({ color: 'primary' });
     expect(firstStyle).toEqual({ color: 'white' });
     expect(secondStyle).toEqual({ color: 'black' });
     expect(parsers.getCache()).toEqual({
@@ -62,20 +54,16 @@ describe('cache', () => {
   });
 
   test('should return a different value for the same style if the theme is updated and the cache is disabled', () => {
-    const firstStyle = parsers.resolve({
-      style: { color: 'primary' },
-      cache: false,
-    });
+    parsers.disableCache();
+    const firstStyle = parsers.resolve({ color: 'primary' });
+    parsers.enableCache();
     theme.set({
       colors: {
         primary: 'black',
         secondary: 'white',
       },
     } as any);
-    const secondStyle = parsers.resolve({
-      style: { color: 'primary' },
-      cache: false,
-    });
+    const secondStyle = parsers.resolve({ color: 'primary' });
     expect(firstStyle).toEqual({ color: 'white' });
     expect(secondStyle).toEqual({ color: 'black' });
   });

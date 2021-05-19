@@ -8,9 +8,9 @@
 }
 ```
 
-**regular parsing**  1,674,079 ops/sec ±1.28% (92 runs sampled)
+**regular parsing**  1,560,270 ops/sec ±2.01% (84 runs sampled)
 
-**with cache enabled**  3,336,631 ops/sec ±0.36% (91 runs sampled)
+**with cache enabled**  2,950,728 ops/sec ±0.88% (89 runs sampled)
 
 Fastest is **with cache enabled**
 
@@ -23,9 +23,9 @@ Fastest is **with cache enabled**
 }
 ```
 
-**regular parsing**  875,625 ops/sec ±0.87% (92 runs sampled)
+**regular parsing**  822,836 ops/sec ±0.63% (93 runs sampled)
 
-**with cache enabled**  1,735,908 ops/sec ±0.43% (90 runs sampled)
+**with cache enabled**  1,763,224 ops/sec ±1.10% (85 runs sampled)
 
 Fastest is **with cache enabled**
 
@@ -38,9 +38,9 @@ Fastest is **with cache enabled**
 }
 ```
 
-**regular parsing**  238,443 ops/sec ±0.67% (91 runs sampled)
+**regular parsing**  136,781 ops/sec ±1.19% (92 runs sampled)
 
-**with cache enabled**  241,772 ops/sec ±0.59% (90 runs sampled)
+**with cache enabled**  245,730 ops/sec ±0.96% (92 runs sampled)
 
 Fastest is **with cache enabled**
 
@@ -58,8 +58,8 @@ Fastest is **with cache enabled**
 }
 ```
 
-**regular parsing**  71,908 ops/sec ±0.51% (92 runs sampled)
+**regular parsing**  58,332 ops/sec ±1.22% (85 runs sampled)
 
-**with cache enabled**  94,384 ops/sec ±0.90% (88 runs sampled)
+**with cache enabled**  96,209 ops/sec ±0.86% (91 runs sampled)
 
 Fastest is **with cache enabled**

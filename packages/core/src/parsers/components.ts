@@ -27,10 +27,8 @@ export function components({ value, style }: ParserParams<'componentName'>) {
   const variantStyle = getVariantStyle(variants, variant);
 
   return parsers.resolve({
-    style: {
-      ...componentStyle,
-      ...variantStyle,
-    },
+    ...componentStyle,
+    ...variantStyle,
   });
 }
 

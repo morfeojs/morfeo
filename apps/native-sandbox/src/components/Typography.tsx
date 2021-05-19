@@ -4,9 +4,7 @@ import { CSSObject } from 'styled-components';
 import styled from 'styled-components/native';
 
 const Container = styled.Text<Style>(({ theme: _, ...props }) => {
-  return parsers.resolve({
-    style: props,
-  }) as CSSObject;
+  return parsers.resolve(props) as CSSObject;
 });
 
 export const Typography: React.FC<Style> = ({ children, ...props }) => {

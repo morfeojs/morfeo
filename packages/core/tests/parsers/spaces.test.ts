@@ -18,7 +18,11 @@ describe('spaces', () => {
 
   test('should resolve the value of the padding aliases', () => {
     const result = parsers.resolve({
-      style: { p: 'm', pt: 'l', pl: 'm', pr: 'l', pb: 'm' },
+      p: 'm',
+      pt: 'l',
+      pl: 'm',
+      pr: 'l',
+      pb: 'm',
     });
 
     expect(result).toEqual({
@@ -32,7 +36,11 @@ describe('spaces', () => {
 
   test('should resolve the value of the margin aliases', () => {
     const result = parsers.resolve({
-      style: { m: 'm', mt: 'l', ml: 'm', mr: 'l', mb: 'm' },
+      m: 'm',
+      mt: 'l',
+      ml: 'm',
+      mr: 'l',
+      mb: 'm',
     });
 
     expect(result).toEqual({
@@ -46,7 +54,8 @@ describe('spaces', () => {
 
   test('should resolve the value of mx, px aliases', () => {
     const result = parsers.resolve({
-      style: { px: 'm', mx: 'l' },
+      px: 'm',
+      mx: 'l',
     });
 
     expect(result).toEqual({
@@ -59,7 +68,8 @@ describe('spaces', () => {
 
   test('should resolve the value of my, py aliases', () => {
     const result = parsers.resolve({
-      style: { py: 'm', my: 'l' },
+      py: 'm',
+      my: 'l',
     });
 
     expect(result).toEqual({

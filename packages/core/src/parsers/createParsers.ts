@@ -1,16 +1,11 @@
 import {
-  allProperties,
-  AllProperties,
-  BreakPoint,
+  Style,
   Property,
+  BreakPoint,
+  AllProperties,
+  allProperties,
 } from '@morfeo/spec';
-import {
-  Parser,
-  AllParsers,
-  ParserParams,
-  ResolvedStyle,
-  ResolverParams,
-} from '../types';
+import { Parser, AllParsers, ParserParams, ResolvedStyle } from '../types';
 import { baseParser } from './baseParser';
 import { sizeParsers } from './sizes';
 import { colorsParsers } from './colors';
@@ -57,6 +52,7 @@ type ParsersContext = {
 export function createParsers() {
   let context = { ...INITIAL_PARSERS } as any as ParsersContext;
   let cache: any = {};
+  let cacheEnabled = true;
 
   function get() {
     return context;
@@ -66,8 +62,12 @@ export function createParsers() {
     context[property as any] = parser;
   }
 
-  function reset() {
-    context = { ...INITIAL_PARSERS } as any as ParsersContext;
+  function enableCache() {
+    cacheEnabled = true;
+  }
+
+  function disableCache() {
+    cacheEnabled = false;
   }
 
   function getCache() {
@@ -76,6 +76,11 @@ export function createParsers() {
 
   function resetCache() {
     cache = {};
+  }
+
+  function reset() {
+    context = { ...INITIAL_PARSERS } as any as ParsersContext;
+    resetCache();
   }
 
   function resolveResponsiveProperty({
@@ -130,10 +135,7 @@ export function createParsers() {
     return {};
   }
 
-  function resolve({
-    style = {},
-    cache: cacheEnabled = true,
-  }: ResolverParams): ResolvedStyle {
+  function resolve(style: Style): ResolvedStyle {
     const { componentName, ...rest } = style;
     const properties = Object.keys(rest);
 
@@ -187,6 +189,8 @@ export function createParsers() {
     resolve,
     getCache,
     resetCache,
+    enableCache,
+    disableCache,
     resolveProperty,
   };
 

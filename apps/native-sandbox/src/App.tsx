@@ -10,7 +10,7 @@ LogBox.ignoreAllLogs();
 
 theme.set(defaultTheme as any);
 
-const Box = styled.View<Style>(style => parsers.resolve({ style }) as any);
+const Box = styled.View<Style>(style => parsers.resolve(style) as any);
 
 const StyleProvider: React.FC = ({ children }) => {
   const currentTheme = useTheme();

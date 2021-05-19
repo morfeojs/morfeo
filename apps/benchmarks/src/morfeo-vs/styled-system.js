@@ -54,7 +54,7 @@ writeMdTitle(mdPath, `# @morfeo/core vs styled-system`);
 
 suite
   .add('morfeo', () => {
-    parsers.resolve({ style, cache: true });
+    parsers.resolve(style);
   })
   .add('styled system', () => {
     allProps({ ...style, theme: defaultTheme });

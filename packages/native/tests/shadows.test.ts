@@ -49,7 +49,7 @@ beforeAll(() => {
 
 describe('shadows', () => {
   test('should generate the property `boxShadow` based on the strong shadow', () => {
-    const result = parsers.resolve({ style: { shadow: 'strong' } });
+    const result = parsers.resolve({ shadow: 'strong' });
     expect(result).toEqual({
       shadowColor: 'black',
       shadowOffset: { height: 10, width: 10 },
@@ -59,7 +59,7 @@ describe('shadows', () => {
   });
 
   test('should generate the property `shadow` based on the light shadow', () => {
-    const result = parsers.resolve({ style: { shadow: 'light' } });
+    const result = parsers.resolve({ shadow: 'light' });
     expect(result).toEqual({
       shadowColor: 'white',
       shadowOffset: { height: 0, width: 40 },
@@ -69,7 +69,7 @@ describe('shadows', () => {
   });
 
   test('should generate the property `shadow` based on the medium shadow', () => {
-    const result = parsers.resolve({ style: { shadow: 'medium' } });
+    const result = parsers.resolve({ shadow: 'medium' });
 
     expect(result).toEqual({
       elevation: 2,
@@ -80,13 +80,13 @@ describe('shadows', () => {
   });
 
   test('should return an empty object if the shadow is not found', () => {
-    const result = parsers.resolve({ style: { shadow: 'none' } });
+    const result = parsers.resolve({ shadow: 'none' });
     expect(result).toEqual({});
   });
 
   test('should use custom colors if they are not inside the theme', () => {
     const result = parsers.resolve({
-      style: { shadow: 'custom' as any },
+      shadow: 'custom' as any,
     });
     expect(result).toEqual({
       shadowColor: 'not inside theme',
@@ -95,7 +95,7 @@ describe('shadows', () => {
 
   test('should not put any value with any empty configuration', () => {
     const result = parsers.resolve({
-      style: { shadow: 'noOffset' as any },
+      shadow: 'noOffset' as any,
     });
     expect(result).toEqual({});
   });

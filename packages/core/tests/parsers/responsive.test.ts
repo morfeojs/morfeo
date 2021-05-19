@@ -33,10 +33,8 @@ describe('pseudos', () => {
 
   test('should generate media queries', () => {
     const result = parsers.resolve({
-      style: {
-        color: {
-          lg: 'primary',
-        },
+      color: {
+        lg: 'primary',
       },
     });
 
@@ -49,13 +47,11 @@ describe('pseudos', () => {
 
   test('should merge multiple media queries', () => {
     const result = parsers.resolve({
-      style: {
-        color: {
-          lg: 'primary',
-        },
-        p: {
-          lg: 'm',
-        },
+      color: {
+        lg: 'primary',
+      },
+      p: {
+        lg: 'm',
       },
     });
 
@@ -69,9 +65,7 @@ describe('pseudos', () => {
 
   test('should generate media queries from default components', () => {
     const result = parsers.resolve({
-      style: {
-        componentName: 'Box',
-      },
+      componentName: 'Box',
     });
 
     expect(result).toEqual({

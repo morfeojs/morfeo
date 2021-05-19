@@ -18,10 +18,8 @@ describe('pseudos', () => {
 
   test('should generate the style for the pseudo attribute', () => {
     const result = parsers.resolve({
-      style: {
-        '&:hover': {
-          bg: 'primary',
-        },
+      '&:hover': {
+        bg: 'primary',
       },
     });
     expect(result).toEqual({

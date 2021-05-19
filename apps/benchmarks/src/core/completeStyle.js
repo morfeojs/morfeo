@@ -15,10 +15,12 @@ const style = {
 
 suite
   .add('regular parsing', () => {
-    parsers.resolve({ style, cache: false });
+    parsers.disableCache();
+    parsers.resolve(style);
   })
   .add('with cache enabled', () => {
-    parsers.resolve({ style, cache: true });
+    parsers.enableCache();
+    parsers.resolve(style);
   })
   .on('start', () => onStart('parsing a complete style', style))
   .on('cycle', onCycle)

@@ -30,9 +30,7 @@ afterAll(() => {
 describe('fonts', () => {
   test('should generate a style with fontFamily property', () => {
     const result = parsers.resolve({
-      style: {
-        fontFamily: 'regular',
-      },
+      fontFamily: 'regular',
     });
     expect(result).toEqual({
       fontFamily: 'Any font',
@@ -42,7 +40,7 @@ describe('fonts', () => {
 
 describe('fontSizes', () => {
   test('should generate a style with fontSize property', () => {
-    const result = parsers.resolve({ style: { fontSize: 'l' } });
+    const result = parsers.resolve({ fontSize: 'l' });
     expect(result).toEqual({
       fontSize: '30px',
     });
@@ -51,9 +49,7 @@ describe('fontSizes', () => {
 
 describe('fontWeights', () => {
   test('should generate a style with fontWeight property', () => {
-    const result = parsers.resolve({
-      style: { fontWeight: 'bold' },
-    });
+    const result = parsers.resolve({ fontWeight: 'bold' });
     expect(result).toEqual({
       fontWeight: '900',
     });
@@ -62,9 +58,7 @@ describe('fontWeights', () => {
 
 describe('letterSpacings', () => {
   test('should generate a style with letterSpacing property', () => {
-    const result = parsers.resolve({
-      style: { letterSpacing: 'body' },
-    });
+    const result = parsers.resolve({ letterSpacing: 'body' });
     expect(result).toEqual({
       letterSpacing: '10px',
     });
@@ -73,9 +67,7 @@ describe('letterSpacings', () => {
 
 describe('lineHeights', () => {
   test('should generate a style with lineHeight property', () => {
-    const result = parsers.resolve({
-      style: { lineHeight: 'body' },
-    });
+    const result = parsers.resolve({ lineHeight: 'body' });
     expect(result).toEqual({
       lineHeight: '40px',
     });

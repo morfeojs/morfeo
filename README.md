@@ -2,7 +2,7 @@
 
 Morfeo it's a set of tools that helps you to build **consistent UIs** based on a single source of truth: the **theme**.
 
-You can use it with any framework like `React`, `React Native`, `Vue`, `Angular`, `svelte` or `vanilla`.
+You can use it with any framework like [React](https://reactjs.org/), [React Native](https://reactnative.dev/), [Vue](https://v3.vuejs.org/), [Angular](https://angular.io/), [Svelte](https://svelte.dev/) or just Vanilla JS/TS.
 
 In other words, morfeo will transform this:
 

@@ -8,10 +8,12 @@ const style = { shadow: 'light' };
 
 suite
   .add('regular parsing', () => {
-    parsers.resolve({ style, cache: false });
+    parsers.disableCache();
+    parsers.resolve(style);
   })
   .add('with cache enabled', () => {
-    parsers.resolve({ style, cache: true });
+    parsers.enableCache();
+    parsers.resolve(style);
   })
   .on('start', () => onStart('single complex property parser', style))
   .on('cycle', onCycle)

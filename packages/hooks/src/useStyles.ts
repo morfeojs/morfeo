@@ -6,12 +6,12 @@ export function useStyles<K extends string>(styles: Record<K, Style>) {
   return styleKeys.reduce(
     (acc, curr) => ({
       ...acc,
-      [curr]: parsers.resolve({ style: styles[curr] }),
+      [curr]: parsers.resolve(styles[curr]),
     }),
     {},
   ) as Record<K, ResolvedStyle>;
 }
 
 export function useStyle(style: Style) {
-  return parsers.resolve({ style });
+  return parsers.resolve(style);
 }

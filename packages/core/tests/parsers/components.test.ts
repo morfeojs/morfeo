@@ -65,30 +65,25 @@ describe('components', () => {
   });
 
   test('should take the style of the component from the theme', () => {
-    const result = parsers.resolve({
-      style: { componentName: 'Box' },
-    });
+    const result = parsers.resolve({ componentName: 'Box' });
     expect(result).toEqual({ backgroundColor: '#e3e3e3' });
   });
 
   test('should merge the base component style with the variant primary', () => {
     const result = parsers.resolve({
-      style: { componentName: 'Box', variant: 'primary' },
+      componentName: 'Box',
+      variant: 'primary',
     });
     expect(result).toEqual({ backgroundColor: '#e3e3e3', color: '#000' });
   });
 
   test('should merge the base component style with rest of the style', () => {
-    const result = parsers.resolve({
-      style: { componentName: 'Box', p: 'm' },
-    });
+    const result = parsers.resolve({ componentName: 'Box', p: 'm' });
     expect(result).toEqual({ backgroundColor: '#e3e3e3', padding: '10px' });
   });
 
   test('should override the base component style with rest of the style', () => {
-    const result = parsers.resolve({
-      style: { bg: 'secondary', componentName: 'Box' },
-    });
+    const result = parsers.resolve({ bg: 'secondary', componentName: 'Box' });
     expect(result).toEqual({ backgroundColor: '#000' });
   });
 
@@ -105,9 +100,7 @@ describe('components', () => {
         },
       } as any,
     });
-    const result = parsers.resolve({
-      style: { componentName: 'Typography' as any },
-    });
+    const result = parsers.resolve({ componentName: 'Typography' as any });
     expect(result).toEqual({ color: '#000', backgroundColor: '#e3e3e3' });
   });
 });

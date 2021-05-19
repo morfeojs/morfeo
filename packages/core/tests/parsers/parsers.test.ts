@@ -37,9 +37,7 @@ describe('parsers', () => {
           property: 'backgroundColor',
         } as any) as any,
     );
-    const result = parsers.resolve({
-      style: { bgColor: 'primary' } as any,
-    });
+    const result = parsers.resolve({ bgColor: 'primary' } as any);
     expect(result).toEqual({ backgroundColor: '#e3e3e3' });
   });
 
@@ -53,23 +51,12 @@ describe('parsers', () => {
   });
 
   test('should return the passed value for not regular css properties', () => {
-    const result = parsers.resolve({
-      style: { flexDirection: 'column' } as any,
-    });
+    const result = parsers.resolve({ flexDirection: 'column' } as any);
     expect(result).toEqual({ flexDirection: 'column' });
   });
 
   test('should return an empty object if there is no parser for that property', () => {
-    const result = parsers.resolve({
-      style: { custom: 'not found' } as any,
-    });
-    expect(result).toEqual({});
-  });
-
-  test('should return an empty object if style is not provided', () => {
-    const result = parsers.resolve({
-      style: undefined,
-    });
+    const result = parsers.resolve({ custom: 'not found' } as any);
     expect(result).toEqual({});
   });
 });

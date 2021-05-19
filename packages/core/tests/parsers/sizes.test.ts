@@ -18,7 +18,7 @@ describe('sizes', () => {
 
   test('should resolve the value of the property `size`', () => {
     const result = parsers.resolve({
-      style: { size: 'm' },
+      size: 'm',
     });
     expect(result).toEqual({ height: '10px', width: '10px' });
   });

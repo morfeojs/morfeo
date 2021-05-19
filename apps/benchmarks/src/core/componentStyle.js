@@ -8,10 +8,12 @@ const style = { componentName: 'Box' };
 
 suite
   .add('regular parsing', () => {
-    parsers.resolve({ style, cache: false });
+    parsers.disableCache();
+    parsers.resolve(style);
   })
   .add('with cache enabled', () => {
-    parsers.resolve({ style, cache: true });
+    parsers.enableCache();
+    parsers.resolve(style);
   })
   .on('start', () => onStart('parsing the style of a theme component', style))
   .on('cycle', onCycle)

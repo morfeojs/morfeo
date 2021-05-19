@@ -56,7 +56,7 @@ describe('shadows', () => {
   });
 
   test('should generate the property `boxShadow` if the prop `shadow` is passed', () => {
-    const result = parsers.resolve({ style: { shadow: 'strong' } });
+    const result = parsers.resolve({ shadow: 'strong' });
     expect(result).toEqual({
       boxShadow: '10px 10px 30px white',
     });

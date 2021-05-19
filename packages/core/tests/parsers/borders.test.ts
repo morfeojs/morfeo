@@ -24,7 +24,7 @@ afterAll(() => {
 
 describe('borders', () => {
   test('should generate a style with border property', () => {
-    const result = parsers.resolve({ style: { border: 'primary' } });
+    const result = parsers.resolve({ border: 'primary' });
     expect(result).toEqual({
       border: '1px solid red',
     });
@@ -33,9 +33,7 @@ describe('borders', () => {
 
 describe('borderStyles', () => {
   test('should generate a style with fontSize property', () => {
-    const result = parsers.resolve({
-      style: { borderStyle: 'solid' },
-    });
+    const result = parsers.resolve({ borderStyle: 'solid' });
     expect(result).toEqual({
       borderStyle: 'solid',
     });
@@ -44,9 +42,7 @@ describe('borderStyles', () => {
 
 describe('borderWidths', () => {
   test('should generate a style with fontWeight property', () => {
-    const result = parsers.resolve({
-      style: { borderWidth: 'm' },
-    });
+    const result = parsers.resolve({ borderWidth: 'm' });
     expect(result).toEqual({
       borderWidth: '3px',
     });

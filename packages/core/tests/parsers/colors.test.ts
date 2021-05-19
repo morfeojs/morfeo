@@ -17,9 +17,7 @@ describe('colors', () => {
   });
 
   test('should resolve the value of the property `bg` and `color` from the colors slice', () => {
-    const result = parsers.resolve({
-      style: { bg: 'secondary', color: 'primary' },
-    });
+    const result = parsers.resolve({ bg: 'secondary', color: 'primary' });
     expect(result).toEqual({ backgroundColor: '#000', color: '#e3e3e3' });
   });
 });
