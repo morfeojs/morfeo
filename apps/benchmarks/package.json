@@ -20,8 +20,8 @@
     "benchmark": "^2.1.4"
   },
   "dependencies": {
-    "@morfeo/core": "^0.1.0",
-    "@morfeo/jss": "^0.1.0",
+    "@morfeo/core": "^0.1.1",
+    "@morfeo/jss": "^0.1.1",
     "styled-system": "5.1.5"
   }
 }
