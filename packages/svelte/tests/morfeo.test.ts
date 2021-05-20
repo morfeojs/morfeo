@@ -54,4 +54,11 @@ describe('morfeo', () => {
     destroy();
     expect(typeof destroy).toBe('function');
   });
+
+  test('should return a function that will update the style on changes', () => {
+    const element = document.createElement('div');
+    const { update } = morfeo(element);
+    update({} as any);
+    expect(typeof update).toBe('function');
+  });
 });

@@ -1,14 +1,14 @@
-function merge<T>(oldState: T, newState: T): T {
+function merge<T>(oldState: T, newState?: T): T {
   if (typeof oldState !== typeof newState) {
     return newState || oldState;
   }
 
   if (Array.isArray(newState)) {
-    return newState;
+    return newState as T;
   }
 
   if (typeof newState !== 'object') {
-    return newState;
+    return newState as T;
   }
 
   const keys = Object.keys(newState);

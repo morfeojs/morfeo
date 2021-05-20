@@ -29,12 +29,18 @@ describe('jss', () => {
   });
 
   test('should generate the classnames', () => {
-    const classes = getStyles({
+    const { classes } = getStyles({
       button: {
         bg: 'primary',
       },
     });
 
     expect(classes).toHaveProperty('button');
+  });
+
+  test('should detach the sheet', () => {
+    const { destroy, sheet } = getStyles({});
+    destroy();
+    expect(sheet.attached).toBeFalsy();
   });
 });

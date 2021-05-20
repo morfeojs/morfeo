@@ -8,6 +8,6 @@
   }
 </script>
 
-<div use:morfeo={{...style, ...$$props}}>
+<div use:morfeo={{...style, ...$$restProps}}>
   <slot></slot>
 </div>

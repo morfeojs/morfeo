@@ -1,5 +1,5 @@
-import { getRawStyles } from '@morfeo/jss';
-import { Style, theme } from '@morfeo/web';
+import { getStyles } from '@morfeo/jss';
+import { Style } from '@morfeo/web';
 
 function getElementName({ componentName, variant }: Style) {
   if (componentName && variant) {
@@ -11,13 +11,14 @@ function getElementName({ componentName, variant }: Style) {
 
 export function morfeo(node: HTMLElement, props: Style = {}) {
   const elementName = getElementName(props);
-  const { classes, uid } = getRawStyles({ [elementName]: props });
+  let { classes, update, destroy } = getStyles({ [elementName]: props });
 
   node.classList.add(classes[elementName]);
 
   return {
-    destroy() {
-      theme.cleanUp(uid);
+    update(nextProps: Style) {
+      update({ [elementName]: nextProps });
     },
+    destroy,
   };
 }

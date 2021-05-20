@@ -1,4 +1,4 @@
-import { parsers, Style, ResolvedStyle, theme } from '@morfeo/web';
+import { parsers, Style, ResolvedStyle, theme, deepMerge } from '@morfeo/web';
 import jss, { StyleSheetFactoryOptions } from 'jss';
 import './initJSS';
 
@@ -17,7 +17,7 @@ export function getStyleSheet<K extends string>(
   return jss.createStyleSheet<K>(parsedStyle as any, options);
 }
 
-export function getRawStyles<K extends string>(
+export function getStyles<K extends string>(
   styles: Record<K, Style>,
   options?: StyleSheetFactoryOptions,
 ) {
@@ -25,26 +25,25 @@ export function getRawStyles<K extends string>(
   sheet.attach();
 
   const classes = sheet.classes;
+  let currentStyles = { ...styles };
 
-  const uid = theme.subscribe(() => {
+  const update = (props?: Record<K, Style>) => {
     sheet.detach();
-    sheet = getStyleSheet(styles, {
+    currentStyles = deepMerge(currentStyles, props) as Record<K, Style>;
+    sheet = getStyleSheet(currentStyles, {
       ...options,
       generateId: rule => {
         return classes[rule.key];
       },
     });
     sheet.attach();
-  });
+  };
+  const uid = theme.subscribe(() => update());
 
-  return { classes, sheet, uid };
-}
+  const destroy = () => {
+    sheet.detach();
+    theme.cleanUp(uid);
+  };
 
-export function getStyles<K extends string>(
-  styles: Record<K, Style>,
-  options?: StyleSheetFactoryOptions,
-) {
-  const { classes } = getRawStyles(styles, options);
-
-  return classes;
+  return { classes, sheet, destroy, update };
 }
