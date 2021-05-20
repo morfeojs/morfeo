@@ -12,5 +12,8 @@ declare global {
   }
 }
 
-export const parsers: ParserHandler =
-  globalThis.__MORFEO_PARSERS || createParsers();
+const parsers: ParserHandler = globalThis.__MORFEO_PARSERS || createParsers();
+
+Object.freeze(parsers);
+
+export default parsers;

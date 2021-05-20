@@ -58,8 +58,8 @@ describe('theme', () => {
   test('should call all the added listeners each time the theme is updated', () => {
     const firstListener = jest.fn();
     const secondListener = jest.fn();
-    theme.listen(firstListener);
-    theme.listen(secondListener);
+    theme.subscribe(firstListener);
+    theme.subscribe(secondListener);
     theme.setSlice('colors', { primary: 'white' });
     theme.setSlice('space', { l: '50px' });
     expect(firstListener).toHaveBeenCalledTimes(2);
@@ -73,9 +73,9 @@ describe('theme', () => {
   });
 
   test('should generate a unique id for each listener', () => {
-    const firstUid = theme.listen(jest.fn(), 'test');
-    const secondUid = theme.listen(jest.fn(), 'test');
-    const thirdUid = theme.listen(jest.fn());
+    const firstUid = theme.subscribe(jest.fn(), 'test');
+    const secondUid = theme.subscribe(jest.fn(), 'test');
+    const thirdUid = theme.subscribe(jest.fn());
 
     expect(firstUid).toBe('test');
     expect(secondUid).toBe('test-0');
@@ -84,7 +84,7 @@ describe('theme', () => {
 
   test('should remove the specified listener with the cleanUp method', () => {
     const listener = jest.fn();
-    const uid = theme.listen(listener, 'test');
+    const uid = theme.subscribe(listener, 'test');
 
     theme.cleanUp(uid);
     theme.setValue('colors', 'primary', 'black');

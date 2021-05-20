@@ -7,12 +7,16 @@
     "email": "mauro@vlkstudio.com"
   },
   "scripts": {
-    "morfeo-vs": "node src/morfeo-vs/index.js",
-    "core": "node src/core/index.js",
-    "jss": "node src/jss/index.js",
-    "all": "npm run core && npm run jss && npm run morfeo-vs"
+    "build": "rimraf build && babel ./src/ --out-dir build/ --ignore ./node_modules",
+    "morfeo-vs": "node build/morfeo-vs/index.js",
+    "core": "node build/core/index.js",
+    "jss": "node build/jss/index.js",
+    "all": "npm run build && npm run core && npm run jss && npm run morfeo-vs"
   },
   "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
     "benchmark": "^2.1.4"
   },
   "dependencies": {

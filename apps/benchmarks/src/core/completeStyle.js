@@ -1,6 +1,6 @@
 const Benchmark = require('benchmark');
 const { parsers } = require('@morfeo/core');
-const { onCycle, onComplete, onStart, appendInMd } = require('./utils');
+const { onCycle, onComplete, onStart } = require('./utils');
 
 const suite = new Benchmark.Suite();
 

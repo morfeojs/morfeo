@@ -12,7 +12,7 @@ export function createTheme() {
   }
 
   function getSlice<T extends ThemeKey>(slice: T) {
-    return context[slice] || {};
+    return get()[slice] || {};
   }
 
   function getValue<T extends ThemeKey, K extends keyof Theme[T]>(
@@ -88,7 +88,7 @@ export function createTheme() {
     return safeUid;
   }
 
-  function listen(callback: ThemeListener, uid?: string) {
+  function subscribe(callback: ThemeListener, uid?: string) {
     const safeUid = getSafeUid(uid);
     listeners.push([callback, safeUid]);
     return safeUid;
@@ -106,12 +106,12 @@ export function createTheme() {
     get,
     set,
     reset,
-    listen,
     cleanUp,
     getSlice,
     setSlice,
     getValue,
     setValue,
+    subscribe,
     isResponsive,
     resolveMediaQuery,
   };

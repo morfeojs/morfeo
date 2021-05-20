@@ -1,5 +1,5 @@
 {
-  "name": "@morfeo/jss",
+  "name": "@morfeo/svelte",
   "author": {
     "name": "Mauro Erta",
     "email": "mauro@vlkstudio.com"
@@ -14,15 +14,14 @@
   "keywords": [
     "design",
     "system",
-    "jss"
+    "svelte"
   ],
   "scripts": {
     "build": "rimraf build && tsc",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "jss": "^10.6.0",
-    "jss-preset-default": "^10.6.0"
+    "@morfeo/jss": "^0.1.0"
   },
   "peerDependencies": {
     "@morfeo/web": "^0.1.0"

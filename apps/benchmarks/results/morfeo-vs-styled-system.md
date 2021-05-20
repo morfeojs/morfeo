@@ -11,8 +11,8 @@
 }
 ```
 
-**morfeo**  415,502 ops/sec ±0.98% (94 runs sampled)
+**morfeo**  411,153 ops/sec ±1.25% (93 runs sampled)
 
-**styled system**  331,424 ops/sec ±1.17% (89 runs sampled)
+**styled system**  279,202 ops/sec ±0.84% (91 runs sampled)
 
 Fastest is **morfeo**

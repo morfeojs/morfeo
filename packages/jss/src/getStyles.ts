@@ -1,4 +1,4 @@
-import { parsers, Style, ResolvedStyle } from '@morfeo/web';
+import { parsers, Style, ResolvedStyle, theme } from '@morfeo/web';
 import jss, { StyleSheetFactoryOptions } from 'jss';
 import './initJSS';
 
@@ -17,12 +17,34 @@ export function getStyleSheet<K extends string>(
   return jss.createStyleSheet<K>(parsedStyle as any, options);
 }
 
+export function getRawStyles<K extends string>(
+  styles: Record<K, Style>,
+  options?: StyleSheetFactoryOptions,
+) {
+  let sheet = getStyleSheet<K>(styles, options);
+  sheet.attach();
+
+  const classes = sheet.classes;
+
+  const uid = theme.subscribe(() => {
+    sheet.detach();
+    sheet = getStyleSheet(styles, {
+      ...options,
+      generateId: rule => {
+        return classes[rule.key];
+      },
+    });
+    sheet.attach();
+  });
+
+  return { classes, sheet, uid };
+}
+
 export function getStyles<K extends string>(
   styles: Record<K, Style>,
   options?: StyleSheetFactoryOptions,
 ) {
-  const sheet = getStyleSheet<K>(styles, options);
-  sheet.attach();
+  const { classes } = getRawStyles(styles, options);
 
-  return sheet.classes;
+  return classes;
 }

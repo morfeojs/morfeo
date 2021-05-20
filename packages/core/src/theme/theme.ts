@@ -12,4 +12,8 @@ declare global {
   }
 }
 
-export const theme: ThemeHandler = globalThis.__MORFEO_THEME || createTheme();
+const theme: ThemeHandler = globalThis.__MORFEO_THEME || createTheme();
+
+Object.freeze(theme);
+
+export default theme;

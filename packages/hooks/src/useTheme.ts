@@ -9,7 +9,7 @@ export function useTheme() {
   const [t, setTheme] = useState(theme.get());
 
   useEffect(() => {
-    const uid = theme.listen(setTheme);
+    const uid = theme.subscribe(setTheme);
     return () => {
       theme.cleanUp(uid);
     };

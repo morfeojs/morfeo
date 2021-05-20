@@ -7,9 +7,11 @@
     "watch": "lerna run watch",
     "reset": "npm run clean && npm i && lerna bootstrap && npm run build",
     "init:web-sandbox": "node scripts/bootstrap-app.mjs web-sandbox",
+    "init:svelte-sandbox": "node scripts/bootstrap-app.mjs svelte-sandbox",
     "init:native-sandbox": "node scripts/bootstrap-app.mjs native-sandbox",
     "init:benchmarks": "node scripts/bootstrap-app.mjs benchmarks",
     "start:web-sandbox": "npm start --prefix apps/web-sandbox",
+    "start:svelte-sandbox": "npm run dev --prefix apps/svelte-sandbox",
     "start:benchmarks": "npm run all --prefix apps/benchmarks",
     "prepare": "husky install",
     "prettify": "npm run prettify:js && npm run prettify:ts",
@@ -19,7 +21,7 @@
     "test:watch": "jest --watch --updateSnapshot",
     "test:coverage": "jest --coverage --updateSnapshot",
     "test:badges": "npm run test:coverage  && jest-coverage-badges output \"./assets/badges\"",
-    "publish": "npx lerna publish from-package --yes",
+    "publish": "npm run build && npx lerna publish from-package --yes",
     "version": "npx lerna version patch --no-push --no-git-tag-version --conventional-commits"
   },
   "dependencies": {

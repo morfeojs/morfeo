@@ -1,7 +1,7 @@
 import { theme } from '../theme';
 import { ComponentConfig } from '@morfeo/spec';
 import { ParserParams } from '../types';
-import { parsers } from './parsers';
+import parsers from './parsers';
 
 function getVariantStyle(
   variants: ComponentConfig['variants'],

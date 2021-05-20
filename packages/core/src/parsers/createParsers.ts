@@ -180,7 +180,7 @@ export function createParsers() {
       : parsedStyle;
   }
 
-  theme.listen(resetCache);
+  theme.subscribe(resetCache);
 
   const parsers = {
     get,
