@@ -1,6 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { theme } from '@morfeo/core';
 import { useStyles, useStyle } from '../src';
+import { act } from 'react-test-renderer';
 
 const THEME = {
   colors: {
@@ -35,5 +36,20 @@ describe('useStyle', () => {
     const { result } = renderHook(() => useStyle({ p: 's' }));
 
     expect(result.current).toEqual({ padding: '10px' });
+  });
+
+  test('should change the result after theme update', async () => {
+    const { result } = renderHook(() => useStyle({ color: 'primary' }));
+    expect(result.current).toEqual({ color: 'black' });
+
+    act(() =>
+      theme.set({
+        colors: {
+          primary: 'white',
+          secondary: 'black',
+        },
+      }),
+    );
+    expect(result.current).toEqual({ color: 'white' });
   });
 });

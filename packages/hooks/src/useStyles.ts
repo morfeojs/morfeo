@@ -1,8 +1,9 @@
 import { Style, ResolvedStyle, parsers } from '@morfeo/core';
+import { useMemo, useState } from 'react';
+import { useSubscribe } from './useSubscribe';
 
-export function useStyles<K extends string>(styles: Record<K, Style>) {
+function parseStyles<K extends string>(styles: Record<K, Style>) {
   const styleKeys = Object.keys(styles);
-
   return styleKeys.reduce(
     (acc, curr) => ({
       ...acc,
@@ -12,6 +13,16 @@ export function useStyles<K extends string>(styles: Record<K, Style>) {
   ) as Record<K, ResolvedStyle>;
 }
 
+export function useStyles<K extends string>(styles: Record<K, Style>) {
+  const [_, setForceRender] = useState(0);
+  useSubscribe(() => {
+    setForceRender(prev => prev + 1);
+  });
+  return useMemo(() => parseStyles(styles), [styles]);
+}
+
 export function useStyle(style: Style) {
-  return parsers.resolve(style);
+  const { style: parsedStyle } = useStyles({ style });
+
+  return parsedStyle;
 }

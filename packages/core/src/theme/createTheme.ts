@@ -52,7 +52,11 @@ export function createTheme() {
     listeners.map(([listener]) => listener(context));
   }
 
-  function set(theme: Partial<Theme>) {
+  function set(
+    theme: {
+      [TK in ThemeKey]?: Partial<Theme[TK]>;
+    },
+  ) {
     context = deepMerge(context, theme) as Theme;
     callListeners();
   }

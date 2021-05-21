@@ -1,6 +1,7 @@
 # @morfeo
 
-Morfeo it's a set of tools that helps you to build **consistent UIs** based on a single source of truth: the **theme**.
+morfeo is a framework-agnostic set of tools that will help you to build your next **design system**
+based on a single source of truth: the **theme**.
 
 You can use it with any framework like [React](https://reactjs.org/), [React Native](https://reactnative.dev/), [Vue](https://v3.vuejs.org/), [Angular](https://angular.io/), [Svelte](https://svelte.dev/) or just Vanilla JS/TS.
 
@@ -48,11 +49,13 @@ morfeo is cross-framework, but to have a faster implementation and a better deve
 
 **@morfeo/native** perfect for React native
 
+**@morfeo/svelte** made for svelte
+
 **@morfeo/styled-components-web** deep integration with styled-components
 
 **@morfeo/angular** **_coming soon_**
 
-**@morfeo/jss** perfect for svelte
+**@morfeo/jss** to generate plain css from _cssinjs_
 
 **@morfeo/hooks** hook for React/React Native
 
@@ -62,7 +65,7 @@ morfeo is cross-framework, but to have a faster implementation and a better deve
 
 ## Motivations
 
-When your application start to grow, maintain UI consistency it's not easy.
+When your application starts to grow, maintain UI consistency it's not easy.
 Even in popular applications we often face **wrong typographies**, different **color pallettes** used across different pages or inconsistent **spacings** in each component.
 
 These problems are even more frequent in large applications where different teams works on different features (maybe with different technologies and frameworks).
@@ -73,7 +76,9 @@ These problems are even more frequent in large applications where different team
 
 The main concepts around morfeo are 2 entities, **theme** and **parsers**:
 
-`theme` it's an handler that contains the **design language** of your application, for example a set of colors, spacings, shadows, sizes and gradients, and example of theme could be the following:
+`theme` it's an handler that contains the **design language** of your application, for example a set of colors, spacings, shadows, sizes and gradients, and the base style of your components.
+
+An example of theme could be the following:
 
 ```typescript
 import { theme } from '@morfeo/core';
@@ -126,7 +131,7 @@ function Button() {
 }
 ```
 
-Or if you want, you can use the hooks inside the package `@morfeo/hook`
+Or if you want, you can use the hooks inside the package `@morfeo/hooks`
 
 ```tsx
 import { theme } from '@morfeo/core';

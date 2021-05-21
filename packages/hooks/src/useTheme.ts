@@ -1,5 +1,6 @@
 import { theme, ThemeKey, Theme } from '@morfeo/core';
 import { useEffect, useState } from 'react';
+import { useSubscribe } from './useSubscribe';
 
 /**
  * Same as `theme.get()` but connected it will cause a re-render
@@ -8,12 +9,7 @@ import { useEffect, useState } from 'react';
 export function useTheme() {
   const [t, setTheme] = useState(theme.get());
 
-  useEffect(() => {
-    const uid = theme.subscribe(setTheme);
-    return () => {
-      theme.cleanUp(uid);
-    };
-  }, []);
+  useSubscribe(setTheme);
 
   return t;
 }
