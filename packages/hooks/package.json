@@ -32,5 +32,13 @@
   },
   "files": [
     "build"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/hooks"
+  },
+  "homepage": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/hooks",
+  "bugs": {
+    "url": "https://github.com/VLK-STUDIO/morfeo/issues"
+  }
 }

@@ -1,9 +1,13 @@
 {
   "name": "root",
   "private": true,
+  "author": {
+    "name": "Mauro Erta",
+    "email": "mauro@vlkstudio.com"
+  },
   "scripts": {
     "clean": "lerna clean --yes",
-    "build": "lerna run build --ignore=web-sandbox",
+    "build": "lerna run build",
     "watch": "lerna run watch",
     "reset": "npm run clean && npm i && lerna bootstrap && npm run build",
     "init:web-sandbox": "node scripts/bootstrap-app.mjs web-sandbox",
@@ -57,5 +61,13 @@
     "ts-jest": "^26.5.4",
     "tslib": "^2.2.0",
     "typescript": "^4.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VLK-STUDIO/morfeo"
+  },
+  "homepage": "https://github.com/VLK-STUDIO/morfeo",
+  "bugs": {
+    "url": "https://github.com/VLK-STUDIO/morfeo/issues"
   }
 }

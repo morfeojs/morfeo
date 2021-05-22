@@ -1,7 +1,14 @@
-# @morfeo
+<center>
+<h1>morfeo</h1>
+</center>
+[morfeo](https://github.com/VLK-STUDIO/morfeo) is a framework-agnostic set of tools that will help you to build your next <b>design system</b> based on a single source of truth: the <b>theme</b>.
 
-morfeo is a framework-agnostic set of tools that will help you to build your next **design system**
-based on a single source of truth: the **theme**.
+<center>
+  <a href="https://github.com/VLK-STUDIO/morfeo">Documentation</a> |
+  <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
+  <a href="https://github.com/VLK-STUDIO/morfeo">Contributing</a> |
+  <a href="https://morfeo.slack.com">Slack</a>
+</center>
 
 You can use it with any framework like [React](https://reactjs.org/), [React Native](https://reactnative.dev/), [Vue](https://v3.vuejs.org/), [Angular](https://angular.io/), [Svelte](https://svelte.dev/) or just Vanilla JS/TS.
 
