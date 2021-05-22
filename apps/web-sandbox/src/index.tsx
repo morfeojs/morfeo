@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { lightTheme } from './theme';
-import './index.css';
 
 theme.set(lightTheme as any);
 
