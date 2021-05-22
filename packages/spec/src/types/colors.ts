@@ -4,6 +4,8 @@ export interface Colors {
   dark: string;
   light: string;
   error: string;
+  success: string;
+  warning: string;
   primary: string;
   secondary: string;
   background: string;

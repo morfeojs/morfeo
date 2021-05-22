@@ -1,6 +1,6 @@
 import { radiiMap } from '../properties';
 
-export type Radii = {
+export interface Radii {
   xxs: string;
   xs: string;
   s: string;
@@ -10,7 +10,7 @@ export type Radii = {
   xxl: string;
   none: string;
   round: string;
-};
+}
 
 export type Radius = keyof Radii;
 
