@@ -52,19 +52,19 @@ By using a bit of magic explained [here](#how-it-works)
 
 morfeo is cross-framework, but to have a faster implementation and a better developer experience we create a set of packages that integrates morfeo with the most used frameworks like:
 
-**@morfeo/web** required if you're run in a browser
+**[@morfeo/web](https://www.npmjs.com/package/@morfeo/web)** required if you're using it in a browser
 
-**@morfeo/native** perfect for React native
+**[@morfeo/native](https://www.npmjs.com/package/@morfeo/native)** perfect for React native
 
-**@morfeo/svelte** made for svelte
+**[@morfeo/svelte](https://www.npmjs.com/package/@morfeo/svelte)** made for svelte
 
-**@morfeo/styled-components-web** deep integration with styled-components
+**[@morfeo/styled-components-web](https://www.npmjs.com/package/@morfeo/styled-components-web)** deep integration with styled-components
 
-**@morfeo/angular** **_coming soon_**
+**[@morfeo/angular** **_coming soon_**
 
-**@morfeo/jss** to generate plain css from _cssinjs_
+**[@morfeo/jss](https://www.npmjs.com/package/@morfeo/jss)** to generate plain css from _cssinjs_
 
-**@morfeo/hooks** hook for React/React Native
+**[@morfeo/hooks](https://www.npmjs.com/package/@morfeo/hooks)** hook for React/React Native
 
 | Branches                                    | Functions                                    | Lines                                    | Statements                                    |
 | ------------------------------------------- | -------------------------------------------- | ---------------------------------------- | --------------------------------------------- |
@@ -132,7 +132,7 @@ This is an example with React
 import { theme, parsers } from '@morfeo/core';
 
 function Button() {
-  const style = parsers.resolve({ style: { componentName: 'Button' } });
+  const style = parsers.resolve({ componentName: 'Button' });
 
   return <button style={style}>Click me</button>;
 }
