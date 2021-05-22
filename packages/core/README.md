@@ -1,7 +1,7 @@
 <div align="center">
 <h1>@morfeo/core</h1>
 </div>
-<a href="https://github.com/VLK-STUDIO/morfeo">morfeo</a> is a framework-agnostic set of tools that will help you to build your next **design system** based on a single source of truth: the **theme**.
+<a href="https://github.com/VLK-STUDIO/morfeo">morfeo</a> is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the <strong>theme</strong>.
 
 <div align="center">
   <a href="https://github.com/VLK-STUDIO/morfeo">Documentation</a> |
@@ -9,6 +9,7 @@
   <a href="https://github.com/VLK-STUDIO/morfeo">Contributing</a> |
   <a href="https://morfeo.slack.com">Slack</a>
 </div>
+
 ## Table of contents
 
 #### [Installation](#installation)
@@ -182,11 +183,14 @@ this will create the following style:
 
 ```json
 {
-  "@media (min-width: 300px)": {},
-  "@media (min-width: 600px)": {},
+  "@media (min-width: 300px)": {
+    "padding": "32px"
+  },
+  "@media (min-width: 600px)": {
+    "padding": "40px"
+  },
   "@media (min-width: 900px)": {
-    "width": "100%",
-    "height": "100%"
+   "padding": "48px"
   }
 }
 ```
