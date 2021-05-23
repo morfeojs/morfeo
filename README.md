@@ -60,7 +60,7 @@ morfeo is cross-framework, but to have a faster implementation and a better deve
 
 **[@morfeo/native](https://www.npmjs.com/package/@morfeo/native)** perfect for React native :calling::atom_symbol: ​
 
-**[@morfeo/svelte](https://www.npmjs.com/package/@morfeo/svelte)** matches perfectly with with svelte :fire:
+**[@morfeo/svelte](https://www.npmjs.com/package/@morfeo/svelte)** matches perfectly with svelte :fire:
 
 **[@morfeo/styled-components-web](https://www.npmjs.com/package/@morfeo/styled-components-web)** deep integration with styled-components :nail_care:
 
