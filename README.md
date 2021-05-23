@@ -56,7 +56,7 @@ By using a bit of magic explained [here](#how-it-works)
 
 morfeo is cross-framework, but to have a faster implementation and a better developer experience we create a set of packages that integrates morfeo with the most used frameworks like:
 
-**[@morfeo/react](https://www.npmjs.com/package/@morfeo/web)** made for React :atom_symbol:
+**[@morfeo/react](https://www.npmjs.com/package/@morfeo/react)** made for React :atom_symbol:
 
 **[@morfeo/native](https://www.npmjs.com/package/@morfeo/native)** perfect for React native :calling::atom_symbol: ​
 
