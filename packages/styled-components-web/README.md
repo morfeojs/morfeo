@@ -22,7 +22,7 @@
 ## Installation
 
 ```bash
-npm i @morfeo/styled-components-web @morfeo/web
+npm i @morfeo/styled-components-web @morfeo/react
 ```
 
 Remember that **@morfeo/styled-components-web** has **styled-components** as _peerDependencies_ so you need to install it separately.
@@ -241,8 +241,12 @@ function App() {
   return (
     <>
       <Button>Submit</Button>; // <button type="submit" />
-      <Button variant="cancel">Cancel</Button>; // <button type="button"aria-label="cancel" />
-      <CancelButton>Cancel</CancelButton>; // <button type="button" aria-label="cancel" />
+      <Button variant="cancel">Cancel</Button>; // <button
+        type="button"
+        aria-label="cancel"
+      />
+      <CancelButton>Cancel</CancelButton>; //{' '}
+      <button type="button" aria-label="cancel" />
     </>
   );
 }

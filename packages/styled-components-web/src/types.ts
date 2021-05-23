@@ -1,4 +1,4 @@
-import { Theme, Style, Component, Variant } from '@morfeo/web';
+import { Theme, Style, Component, Variant } from '@morfeo/react';
 import { StyledComponentBase } from 'styled-components';
 
 export type ComponentTag = keyof JSX.IntrinsicElements | Component;

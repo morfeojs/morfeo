@@ -4,6 +4,8 @@
 
 [morfeo]("https://github.com/VLK-STUDIO/morfeo") is a framework-agnostic set of tools that will help you to build your next **design system** based on a single source of truth: the **theme**.
 
+---
+
 <div align="center">
   <a href="https://github.com/VLK-STUDIO/morfeo">Documentation</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
@@ -11,19 +13,24 @@
   <a href="https://morfeo.slack.com">Slack</a>
 </div>
 
+---
+
 ## Table of contents
 
 #### [Installation](#installation)
 
 #### [Usage](#usage)
 
-[theme](#theme)
+- [theme](#theme)
 
-[parsers](#parsers)
+- [parsers](#parsers)
 
-[responsive](#responsive)
+- [responsive](#responsive)
 
 #### [Advanced](#advanced)
+
+- [Augmenting Typescript definitions](#augmenting-typescript-definitions)
+- [Add a custom parser](#add-a-custom-parser)
 
 ## Installation
 
@@ -41,15 +48,20 @@ yarn add @morfeo/core
 
 ## Usage
 
-**@morfeo/core** expose the 2 entities that encapsulates all the logic of morfeo which are the **theme** handler and the **parsers** handler.
+**@morfeo/core** exposes the 2 entities that encapsulate all the logic of morfeo which are the **theme** handler and the **parsers** handler.
 
 > [Here](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec) you can find an explanation of the morfeo's theme specification; check it out to understand in deep all the properties your theme should have.
 
+:warning: Warning
+
+> You'll probably never use *directly*  `@morfeo/core`, instead, you'll more likely to use [@morfeo/react](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/react), [@morfeo/svelte](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/svelte), [@morfeo/jss](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/jss), or other packages that offer better integration of the morfeo eco-system in your framework of choice.
+> In this particular case, it's important to know that you cannot define media queries as inline-style, that's why you need some other tool like JSS or Styled Components to handle this behavior. Likely, we already thought about it, so feel free to check out our packages.
+
 ### theme
 
-The `theme` handler is a singleton that will share across all your application/website the theme, so you can use it to refer colors, spacing, shadow (and [more..](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec)), and most importanlty the styles of your **components**.
+The `theme` handler is a singleton that will share across all your application/website the theme, so you can use it to refer colors, spacing, shadow (and [more..](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec)), and most importantly the styles of your **components**.
 
-For exampel, lets begin by defining your **design language** , imagine it like a single source of truth of your design, so it contains all the colors your using, all the spacings, sizes an so on:
+For example, let's begin by defining your **design language**, imagine it like a single source of truth of your design, so it contains all the colors your using, all the spacings, sizes, and so on:
 
 ```typescript
 import { Theme } from "@morfeo/core";
@@ -123,7 +135,7 @@ Sharing a theme all around your application it's incredibly important to ensure 
 
 ### parsers
 
-The `parsers` singleton will covert a CSS IN JS object that uses the values of the theme into a valid Css in JS object that you can use to directly style your components or passing to other tools like jss or styled components to style your components:
+The `parsers` singleton will covert a CSS in JS object that uses the values of the theme into a valid CSS in JS object that you can use to directly style your components or passing to other tools like JSS or styled components to style your components:
 
 ```typescript
 const style = parsers.resolve({
@@ -133,7 +145,7 @@ const style = parsers.resolve({
 });
 ```
 
-style will be equals to:
+the style will be equals to:
 
 ```typescript
 {
@@ -146,7 +158,7 @@ style will be equals to:
 
 > In this example we are using the property "px" that it's an alias for paddingLeft and paddingRight, check all the aliases [here](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec)
 
-Your can even retrieve the style of component by using the properties `componentName` and` variant`
+You can even retrieve the style of a component by using the properties `componentName` and` variant`
 
 ```typescript
 // { color: '#00000', backgroundColor: "#fffff" }
@@ -168,7 +180,7 @@ As you can see you can retrieve any component style, any component variant style
 
 ### responsive
 
-What if you need to apply a style only to specific resolutions? morfeo enable you to do this in a pretty simple way.
+What if you need to apply a style only to specific resolutions? morfeo enables you to do this in a pretty simple way.
 
 ```typescript
 parsers.resolve({
@@ -196,18 +208,18 @@ this will create the following style:
 }
 ```
 
-The theme specification provides 2 slices that helps you to customize this result: `breakpoints` and `mediaQueries`.
+The theme specification provides 2 slices that help you to customize this result: `breakpoints` and `mediaQueries`.
 In breakpoints you can set the breakpoints corresponding to `xs`, `sm`, `md`, `lg` or your custom breakpoints, in `mediaQueries` you can (optionally) customize the media queries that will be generated.
 
 ### Advanced
 
-Both theme and parsers singleton are extendible, in this way your can define custom parsers for your custom properties of even create new theme slices to customize your design language.
+Both theme and parsers singletons are extendible, in this way you can define custom parsers for your custom properties or even create new theme slices to customize your design language.
 
-Extending morfeo it's pretty easy but to ensure you follow the best practice, here you'll find some advanced topic that will may help you:
+Extending morfeo it's pretty easy but to ensure you follow the best practice, here you'll find some advanced topic that may help you:
 
 #### Augmenting Typescript definitions
 
-We loves typescript, in fact morfeo is competely written in typescript! Since you can define new theme slices or add other values to each slice in your theme, this customization shoul match the theme definition. To do that we suggest to use [Declaration Merging and Module Augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) to customize the definition of the interface Theme.
+We :heart: typescript, in fact, morfeo is completely written in typescript! Since you can define new theme slices or add other values to each slice in your theme, this customization should match the theme definition. To do that we suggest using [Declaration Merging and Module Augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) to customize the definition of the Theme interface.
 
 Create a declaration file (for example `morfeo.d.ts` or `types.d.ts`):
 
@@ -215,7 +227,7 @@ Create a declaration file (for example `morfeo.d.ts` or `types.d.ts`):
 import '@morfeo/core';
 import { defaultTheme } from './theme';
 
-// you can use your theme to direcly obtain the type
+// you can use your theme to directly obtain the type
 type MyComponents = typeof defaultTheme.components;
 
 declare module '@morfeo/core' {
@@ -232,7 +244,7 @@ declare module '@morfeo/core' {
 }
 ```
 
-Here it is the result:
+Here is the result:
 
 [![augmentation.gif](https://i.postimg.cc/MGhkFk5X/augmentation.gif)](https://postimg.cc/yJXrDbwz)
 
@@ -263,13 +275,13 @@ parsers.add('fullSize', ({ property, value, style }) => {
 const style = parsers.resolve({ fullSize: true }); // { width: '100%', height: '100%' }
 ```
 
-the `add` method needs 2 parameters, the first is the property that should be handled, the second is a callback that wil be called each time the property should be resolved; The callback receive an object with 3 parameters:
+the `add` method needs 2 parameters, the first is the property that should be handled, the second is a callback that will be called each time the property should be resolved; The callback receives an object with 3 attributes:
 
 `property`: the name of the property
 `value`: the value passed
-`style`: all the style passed insided the resolve function
+`style`: all the style passed inside the resolve function
 
-In our example this object will be equals to:
+In our example, this object will be equals to:
 
 ```json
 {
@@ -293,7 +305,7 @@ const style = parsers.resolve({
 });
 ```
 
-Morfeo will automatically creates all the media queries:
+Morfeo will automatically create all the media queries:
 
 ```json
 {

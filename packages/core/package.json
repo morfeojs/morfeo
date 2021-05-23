@@ -13,7 +13,9 @@
   "typings": "build/index",
   "keywords": [
     "design",
-    "system"
+    "system",
+    "morfeo",
+    "morfeo-js"
   ],
   "scripts": {
     "build": "rimraf build && tsc",

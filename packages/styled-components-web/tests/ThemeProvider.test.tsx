@@ -1,8 +1,8 @@
 import React from 'react';
-import { ThemeProvider } from '../src';
+import { theme } from '@morfeo/react';
 import renderer from 'react-test-renderer';
+import { ThemeProvider } from '../src';
 import 'jest-styled-components';
-import { theme } from '@morfeo/web';
 
 describe('ThemeProvider', () => {
   test('should match the snapshot', () => {

@@ -22,14 +22,14 @@
     "watch": "tsc -w"
   },
   "peerDependencies": {
-    "@morfeo/web": "^0.1.4",
+    "@morfeo/react": "^0.1.4",
     "csstype": "^3.0.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
-    "@morfeo/web": "^0.1.4"
+    "@morfeo/react": "^0.1.4"
   },
   "publishConfig": {
     "access": "public"
@@ -44,5 +44,8 @@
   "homepage": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/styled-components-web",
   "bugs": {
     "url": "https://github.com/VLK-STUDIO/morfeo/issues"
+  },
+  "dependencies": {
+    "@morfeo/react": "^0.1.4"
   }
 }
