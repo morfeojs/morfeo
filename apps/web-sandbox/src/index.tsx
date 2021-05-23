@@ -1,5 +1,5 @@
 import React from 'react';
-import { theme } from '@morfeo/web';
+import { theme } from '@morfeo/react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';

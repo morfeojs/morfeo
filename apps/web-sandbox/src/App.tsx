@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 import { ThemeProvider } from '@morfeo/styled-components-web';
-import { theme, Component, Variant } from '@morfeo/web';
-import { useStyles } from '@morfeo/hooks';
+import { theme, Component, Variant, useStyles } from '@morfeo/react';
 import { darkTheme, lightTheme } from './theme';
 import { Box, Button, Typography } from './components';
 

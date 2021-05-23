@@ -1,5 +1,5 @@
 {
-  "name": "@morfeo/core",
+  "name": "@morfeo/react",
   "author": {
     "name": "Mauro Erta",
     "email": "mauro@vlkstudio.com"
@@ -15,17 +15,19 @@
     "design",
     "system",
     "morfeo",
-    "morfeo-js"
+    "morfeo-js",
+    "react"
   ],
   "scripts": {
     "build": "rimraf build && tsc",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/spec": "^0.1.4"
+    "@morfeo/web": "^0.1.4",
+    "@morfeo/hooks": "^0.1.4"
   },
   "peerDependencies": {
-    "tslib": "^2.2.0"
+    "csstype": "^3.0.8"
   },
   "publishConfig": {
     "access": "public"
@@ -35,9 +37,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/core"
+    "url": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/web"
   },
-  "homepage": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/core",
+  "homepage": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/web",
   "bugs": {
     "url": "https://github.com/VLK-STUDIO/morfeo/issues"
   }

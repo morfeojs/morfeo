@@ -1,5 +1,5 @@
 import React from 'react';
-import { theme } from '@morfeo/web';
+import { theme } from '@morfeo/react';
 import morfeoStyled from '../src';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';

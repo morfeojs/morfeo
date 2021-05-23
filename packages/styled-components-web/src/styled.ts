@@ -1,4 +1,4 @@
-import { parsers, theme, Theme, Style, Component } from '@morfeo/web';
+import { parsers, theme, Theme, Style, Component } from '@morfeo/react';
 import styled, { ThemedStyledFunction } from 'styled-components';
 import { MorfeoStyled, ComponentTag } from './types';
 

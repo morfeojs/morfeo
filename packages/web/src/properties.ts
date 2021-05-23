@@ -24,4 +24,6 @@ export const pseudosProperties = [
   '&:target',
   '&:valid',
   '&:visited',
+  '&::after',
+  '&::before',
 ] as const;

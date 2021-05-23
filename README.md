@@ -3,12 +3,16 @@
 </div>
 <a href="https://github.com/VLK-STUDIO/morfeo">morfeo</a> is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the <strong>theme</strong>.
 
+---
+
 <div align="center">
   <a href="https://github.com/VLK-STUDIO/morfeo">Documentation</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo">Contributing</a> |
   <a href="https://morfeo.slack.com">Slack</a>
 </div>
+
+---
 
 You can use it with any framework like [React](https://reactjs.org/), [React Native](https://reactnative.dev/), [Vue](https://v3.vuejs.org/), [Angular](https://angular.io/), [Svelte](https://svelte.dev/) or just Vanilla JS/TS.
 
@@ -52,19 +56,17 @@ By using a bit of magic explained [here](#how-it-works)
 
 morfeo is cross-framework, but to have a faster implementation and a better developer experience we create a set of packages that integrates morfeo with the most used frameworks like:
 
-**[@morfeo/web](https://www.npmjs.com/package/@morfeo/web)** required if you're using it in a browser
+**[@morfeo/react](https://www.npmjs.com/package/@morfeo/web)** made for React :atom_symbol:
 
-**[@morfeo/native](https://www.npmjs.com/package/@morfeo/native)** perfect for React native
+**[@morfeo/native](https://www.npmjs.com/package/@morfeo/native)** perfect for React native :calling::atom_symbol: ​
 
-**[@morfeo/svelte](https://www.npmjs.com/package/@morfeo/svelte)** made for svelte
+**[@morfeo/svelte](https://www.npmjs.com/package/@morfeo/svelte)** matches perfectly with with svelte :fire:
 
-**[@morfeo/styled-components-web](https://www.npmjs.com/package/@morfeo/styled-components-web)** deep integration with styled-components
+**[@morfeo/styled-components-web](https://www.npmjs.com/package/@morfeo/styled-components-web)** deep integration with styled-components :nail_care:
 
-**[@morfeo/angular** **_coming soon_**
+**@morfeo/angular** **_coming soon_**
 
-**[@morfeo/jss](https://www.npmjs.com/package/@morfeo/jss)** to generate plain css from _cssinjs_
-
-**[@morfeo/hooks](https://www.npmjs.com/package/@morfeo/hooks)** hook for React/React Native
+**[@morfeo/jss](https://www.npmjs.com/package/@morfeo/jss)** will generate plain css from _css-in-js_
 
 | Branches                                    | Functions                                    | Lines                                    | Statements                                    |
 | ------------------------------------------- | -------------------------------------------- | ---------------------------------------- | --------------------------------------------- |
