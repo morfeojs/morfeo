@@ -1,7 +1,8 @@
 <div align="center">
 <h1>@morfeo/core</h1>
 </div>
-<a href="https://github.com/VLK-STUDIO/morfeo">morfeo</a> is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the <strong>theme</strong>.
+
+[morfeo]("https://github.com/VLK-STUDIO/morfeo") is a framework-agnostic set of tools that will help you to build your next **design system** based on a single source of truth: the **theme**.
 
 <div align="center">
   <a href="https://github.com/VLK-STUDIO/morfeo">Documentation</a> |
@@ -60,11 +61,11 @@ export const defaultTheme: Theme = {
   ...,
   space: {
     ...,
-  	s: "32px",
-  	m: "40px",
+    s: "32px",
+    m: "40px",
     l: "48px",
     ...,
-	},
+  },
   colors: {
     ...,
     primary: '#00000',
@@ -138,7 +139,7 @@ style will be equals to:
 {
   color: "#00000",
   backgroundColor: "#fffff",
- 	paddingLeft: "40px",
+  paddingLeft: "40px",
   paddingRight: "40px"
 }
 ```
@@ -190,7 +191,7 @@ this will create the following style:
     "padding": "40px"
   },
   "@media (min-width: 900px)": {
-   "padding": "48px"
+    "padding": "48px"
   }
 }
 ```
@@ -239,9 +240,7 @@ Here it is the result:
 
 Imagine `parsers` as a set of smaller parsers, one for each property you can pass to the resolve method, for example there is parser that recognize the `bg` property and returns a valid css-in-js style by referreing the value to the `colors` slice of the theme:
 
-```
-bg: primary ---> { backgroundColor: theme.getValue('colors', 'primary') }
-```
+`bg: primary ---> { backgroundColor: theme.getValue('colors', 'primary') }`
 
 `parsers` exposes other methods other than resolve, with the `add` method you can define a new parser.
 
