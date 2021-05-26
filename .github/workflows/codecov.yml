@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Bootstrap packages
-        run: npm run reser
+        run: npm run reset
       
       # Runs tests
       - name: Run tests
