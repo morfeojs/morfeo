@@ -5,6 +5,10 @@
 
 ---
 
+[![codecov](https://codecov.io/gh/VLK-STUDIO/morfeo/branch/main/graph/badge.svg?token=CZBHY8J802)](https://codecov.io/gh/VLK-STUDIO/morfeo)
+
+---
+
 > :warning: ​We are working to optimize the packages and make the documentation clear and complete.  :warning:
 >
 > Soon we'll provide documentation for each package, sandboxes with use cases, and a website full of articles.
@@ -74,10 +78,6 @@ morfeo is cross-framework, but to have a faster implementation and a better deve
 **@morfeo/angular** **_coming soon_**
 
 **[@morfeo/jss](https://www.npmjs.com/package/@morfeo/jss)** will generate plain css from _css-in-js_
-
-| Branches                                    | Functions                                    | Lines                                    | Statements                                    |
-| ------------------------------------------- | -------------------------------------------- | ---------------------------------------- | --------------------------------------------- |
-| ![logo](./assets/badges/badge-branches.svg) | ![logo](./assets/badges/badge-functions.svg) | ![logo](./assets/badges/badge-lines.svg) | ![logo](./assets/badges/badge-statements.svg) |
 
 ## Motivations
 
