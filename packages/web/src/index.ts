@@ -6,6 +6,9 @@ pseudosProperties.forEach(property => {
   parsers.add(property as Property, pseudosParses[property] as any);
 });
 
+export * from './types';
+
 /** re-export of @morfeo/core */
 export * from '@morfeo/core';
-export * from './types';
+/** re-export of @morfeo/jss */
+export * from '@morfeo/jss';

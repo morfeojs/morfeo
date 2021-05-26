@@ -3,6 +3,11 @@
 </div>
 <a href="https://github.com/VLK-STUDIO/morfeo">morfeo</a> is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the <strong>theme</strong>.
 
+> :warning: ​We are working to optimize the packages and make the documentation clear and complete.  :warning:
+>
+> Soon we'll provide documentation for each package, sandboxes with use cases, and a website full of articles.
+> If you want to start using morfeo we'll love to have your feedback, feel free to contribute by opening a pull request or just sending some love in our slack chat.
+
 ---
 
 <div align="center">

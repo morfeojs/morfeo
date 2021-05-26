@@ -1,20 +1,17 @@
-import { parsers, Style, ResolvedStyle, theme, deepMerge } from '@morfeo/web';
-import jss, { StyleSheetFactoryOptions } from 'jss';
-import './initJSS';
+import { Style, theme, deepMerge } from '@morfeo/core';
+import { StyleSheetFactoryOptions } from 'jss';
+import jss from './initJSS';
 
 export function getStyleSheet<K extends string>(
   styles: Record<K, Style>,
   options?: StyleSheetFactoryOptions,
 ) {
-  const parsedStyle = Object.keys(styles).reduce((acc, key) => {
-    const style = styles[key];
-    return {
-      ...acc,
-      [key]: parsers.resolve(style),
-    };
-  }, {} as Record<K, ResolvedStyle>);
+  const sheet = jss.createStyleSheet<K>(styles as any, {
+    ...options,
+    link: true,
+  });
 
-  return jss.createStyleSheet<K>(parsedStyle as any, options);
+  return sheet;
 }
 
 export function getStyles<K extends string>(
@@ -24,26 +21,40 @@ export function getStyles<K extends string>(
   let sheet = getStyleSheet<K>(styles, options);
   sheet.attach();
 
-  const classes = sheet.classes;
+  let classes = sheet.classes;
   let currentStyles = { ...styles };
 
-  const update = (props?: Record<K, Style>) => {
+  function onThemeChange() {
     sheet.detach();
-    currentStyles = deepMerge(currentStyles, props) as Record<K, Style>;
     sheet = getStyleSheet(currentStyles, {
       ...options,
-      generateId: rule => {
-        return classes[rule.key];
-      },
+      generateId: ({ key }) => classes[key],
     });
     sheet.attach();
+  }
+
+  const update = (props: Record<K, Style>): Record<K, string> => {
+    currentStyles = deepMerge(currentStyles, props) as Record<K, Style>;
+    sheet.addRules(currentStyles as any, {
+      ...options,
+      generateId: rule => {
+        // We need to ignore this line because the JSS's RuleOptions interface is (apparently) wrong
+        // and it doesn't expose the attribute name.
+        // @ts-ignore
+        const ruleName = rule.options.name;
+        return classes[ruleName];
+      },
+    });
+
+    classes = sheet.classes;
+    return classes;
   };
-  const uid = theme.subscribe(() => update());
+  const uid = theme.subscribe(onThemeChange);
 
   const destroy = () => {
     sheet.detach();
     theme.cleanUp(uid);
   };
 
-  return { classes, sheet, destroy, update };
+  return { classes, sheet, jss, destroy, update };
 }
