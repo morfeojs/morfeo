@@ -32,7 +32,7 @@ const projects = packages.map(package => {
 module.exports = {
   projects,
   coverageDirectory: './coverage',
-  coverageReporters: ['json-summary', 'text', 'html'],
+  coverageReporters: ['json-summary', 'text', 'html', 'lcov'],
   collectCoverageFrom: [
     '<rootDir>/src/**/**',
     '!<rootDir>/src/**/**/index.ts',

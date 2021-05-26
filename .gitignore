@@ -4,7 +4,6 @@ __snapshots__
 
 # dependencies
 node_modules
-package-lock.json
 yarn.lock
 signold
 
