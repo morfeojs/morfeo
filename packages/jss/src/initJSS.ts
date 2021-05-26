@@ -1,4 +1,8 @@
-import jss from 'jss';
-import preset from 'jss-preset-default';
+import { create } from 'jss';
+import { morfeoJSSPreset } from './morfeoJSS';
 
-jss.setup(preset());
+const jss = create();
+
+jss.setup(morfeoJSSPreset);
+
+export default jss;

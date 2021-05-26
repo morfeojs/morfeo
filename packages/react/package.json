@@ -27,7 +27,9 @@
     "@morfeo/web": "^0.1.5"
   },
   "peerDependencies": {
-    "csstype": "^3.0.8"
+    "csstype": "^3.0.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "publishConfig": {
     "access": "public"

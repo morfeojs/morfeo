@@ -1,4 +1,4 @@
-import { Theme, theme } from '@morfeo/web';
+import { Theme, theme } from '@morfeo/core';
 import { getStyles, getStyleSheet } from '../src';
 
 const THEME: Theme = {
@@ -42,5 +42,17 @@ describe('jss', () => {
     const { destroy, sheet } = getStyles({});
     destroy();
     expect(sheet.attached).toBeFalsy();
+  });
+
+  test('should return a function to update the stylesheet', () => {
+    const { sheet, update } = getStyles({
+      button: {
+        bg: 'primary',
+      },
+    });
+
+    update({ button: { bg: 'secondary' } });
+
+    expect(sheet.toString()).toContain('background-color: #000;');
   });
 });

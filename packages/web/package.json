@@ -20,7 +20,8 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/core": "^0.1.5"
+    "@morfeo/core": "^0.1.5",
+    "@morfeo/jss": "^0.1.5"
   },
   "peerDependencies": {
     "csstype": "^3.0.8"

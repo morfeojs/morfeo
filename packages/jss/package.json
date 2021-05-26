@@ -25,10 +25,10 @@
     "jss-preset-default": "^10.6.0"
   },
   "peerDependencies": {
-    "@morfeo/web": "^0.1.5"
+    "@morfeo/core": "^0.1.5"
   },
   "devDependencies": {
-    "@morfeo/web": "^0.1.5"
+    "@morfeo/core": "^0.1.5"
   },
   "publishConfig": {
     "access": "public"

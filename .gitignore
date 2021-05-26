@@ -26,8 +26,5 @@ lerna-debug.log
 # Webstorm
 .idea
 
-# transpiled after run
-*.css
-
 # Flow
 flow-typed/npm
