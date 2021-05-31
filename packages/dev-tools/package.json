@@ -1,0 +1,47 @@
+{
+  "name": "@morfeo/dev-tools",
+  "author": {
+    "name": "Mauro Erta",
+    "email": "mauro@vlkstudio.com"
+  },
+  "private": false,
+  "version": "0.1.5",
+  "license": "MIT",
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "types": "build/index",
+  "typings": "build/index",
+  "keywords": [
+    "design",
+    "system",
+    "morfeo",
+    "morfeo-js",
+    "dev-tools",
+    "chrome"
+  ],
+  "scripts": {
+    "build": "npx snowpack build && cp src/manifest.json build/manifest.json"
+  },
+  "dependencies": {
+    "@morfeo/jss": "^0.1.5",
+    "@morfeo/web": "^0.1.5"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.143",
+    "snowpack": "^3.5.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VLK-STUDIO/morfeo"
+  },
+  "homepage": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/dev-tools",
+  "bugs": {
+    "url": "https://github.com/VLK-STUDIO/morfeo/issues"
+  }
+}
