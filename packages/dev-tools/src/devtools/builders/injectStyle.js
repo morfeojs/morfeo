@@ -1,4 +1,4 @@
-import { parsers } from '@morfeo/core';
+import { parsers } from '@morfeo/web';
 
 export function injectStyle(element, style) {
   const parsedStyle = parsers.resolve(style);
