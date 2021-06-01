@@ -1,3 +1,5 @@
+import { GET_THEME_ACTION, MORFEO_DEVTOOLS } from '../constants';
+
 function onSuccess() {
   const title = document.getElementById('title');
   const text = document.getElementById('text');
@@ -32,12 +34,16 @@ function setResult(response) {
 
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   if (tabs && tabs[0]) {
-    chrome.tabs.sendMessage(tabs[0].id, { action: 'GET_THEME' }, setResult);
+    chrome.tabs.sendMessage(
+      tabs[0].id,
+      { action: GET_THEME_ACTION },
+      setResult,
+    );
   }
 });
 
 chrome.runtime.onConnect.addListener(function (port) {
-  if (port.name === 'MORFEO_DEVTOOLS') {
+  if (port.name === MORFEO_DEVTOOLS) {
     port.onMessage.addListener(setResult);
   }
 });

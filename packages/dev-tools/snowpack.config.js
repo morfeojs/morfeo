@@ -15,7 +15,7 @@ module.exports = {
       static: true,
     },
     'src/views': {
-      url: '/',
+      url: '/views',
       static: true,
     },
     'src/backgrounds': {
@@ -25,6 +25,9 @@ module.exports = {
       url: '/',
       static: true,
       resolve: false,
+    },
+    src: {
+      url: '/',
     },
   },
   buildOptions: {
