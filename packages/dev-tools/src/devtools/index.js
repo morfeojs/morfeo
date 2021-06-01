@@ -1,7 +1,7 @@
 import { theme } from '@morfeo/web';
-import { colors, components } from './builders';
+import { colors, components, spaces, sizes } from './builders';
 
-const builders = [colors, components];
+const builders = [colors, spaces, sizes, components];
 
 function reset() {
   const dynamicContents = document.querySelectorAll('.dynamic');
