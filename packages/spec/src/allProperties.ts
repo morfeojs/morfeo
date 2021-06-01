@@ -9,6 +9,7 @@ import {
   zIndicesMap,
   fontSizesMap,
   opacitiesMap,
+  gradientsMap,
   fontWeightsMap,
   lineHeightsMap,
   transitionsMap,
@@ -23,6 +24,10 @@ export const fontProperties = createPropertiesMap(fontsMap, 'fonts');
 export const spacesProperties = createPropertiesMap(spacesMap, 'space');
 export const sizesProperties = createPropertiesMap(sizesMap, 'sizes');
 export const colorProperties = createPropertiesMap(colorsMap, 'colors');
+export const gradientProperties = createPropertiesMap(
+  gradientsMap,
+  'gradients',
+);
 export const shadowsProperties = createPropertiesMap(shadowsMap, 'shadows');
 export const fontSizeProperties = createPropertiesMap(
   fontSizesMap,
@@ -69,6 +74,7 @@ export const allProperties = {
   ...bordersProperties,
   ...fontSizeProperties,
   ...zIndicesProperties,
+  ...gradientProperties,
   ...opacitiesProperties,
   ...fontWeightProperties,
   ...lineHeightProperties,

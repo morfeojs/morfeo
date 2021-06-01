@@ -1,9 +1,39 @@
+export const gradients = {
+  primary: {
+    start: 0,
+    angle: 90,
+    end: 100,
+    colors: ['success', 'accent'],
+    kind: 'linear',
+  },
+  secondary: {
+    start: 0,
+    end: 100,
+    angle: 0,
+    colors: ['accent', 'success'],
+    kind: 'linear',
+  },
+  loading: {
+    start: 0,
+    end: 100,
+    angle: 90,
+    colors: ['transparent', 'grey', 'transparent'],
+    kind: 'linear',
+  },
+};
+
 export const lightTheme = {
   colors: {
+    grey: '#bdc3c7',
     primary: 'white',
+    danger: '#e74c3c',
     secondary: 'black',
-    danger: 'red',
+    success: '#2ecc71',
+    accent: '#3498db',
+    warning: '#f39c12',
+    transparent: 'transparent',
   },
+  gradients,
   radii: {
     m: '10px',
     round: '50%',
@@ -48,7 +78,7 @@ export const lightTheme = {
         borderStyle: 'solid',
         borderColor: 'primary',
         '&:hover': {
-          bg: 'secondary',
+          gradient: 'secondary',
           color: 'primary',
         },
       },
