@@ -14,6 +14,7 @@ import { Borders, BorderWidths, BorderStyles } from './borders';
 import { Opacities } from './opacities';
 import { Transitions } from './transitions';
 import { ZIndices } from './zIndices';
+import { Gradients } from './gradients';
 import { MediaQueries } from './mediaQueries';
 import { Components } from './components';
 
@@ -27,6 +28,7 @@ export type BaseTheme = {
   borders: Borders;
   zIndices: ZIndices;
   fontSizes: FontSizes;
+  gradients: Gradients;
   opacities: Opacities;
   fontWeights: FontWeights;
   lineHeights: LineHeights;

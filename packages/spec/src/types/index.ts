@@ -9,6 +9,7 @@ export * from './borders';
 export * from './shadows';
 export * from './zIndices';
 export * from './opacities';
+export * from './gradients';
 export * from './components';
 export * from './properties';
 export * from './transitions';
