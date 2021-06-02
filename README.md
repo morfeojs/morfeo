@@ -7,6 +7,7 @@
 
 [![codecov](https://codecov.io/gh/VLK-STUDIO/morfeo/branch/main/graph/badge.svg?token=CZBHY8J802)](https://codecov.io/gh/VLK-STUDIO/morfeo)
 [![Codecov](https://github.com/VLK-STUDIO/morfeo/actions/workflows/codecov.yml/badge.svg)](https://github.com/VLK-STUDIO/morfeo/actions/workflows/codecov.yml)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ---
 
