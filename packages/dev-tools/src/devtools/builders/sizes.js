@@ -1,9 +1,11 @@
-import { makeRow } from './makeRow';
+export const space = {
+  slice: 'space',
+  property: 'width',
+  priority: 3,
+};
 
-export function spaces() {
-  makeRow({ slice: 'space', property: 'width' });
-}
-
-export function sizes() {
-  makeRow({ slice: 'sizes', property: 'width' });
-}
+export const sizes = {
+  slice: 'sizes',
+  property: 'width',
+  priority: 4,
+};

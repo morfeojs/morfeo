@@ -1,22 +1,16 @@
 import { radii } from './radii';
 import { colors } from './colors';
 import { gradients } from './gradients';
-import { sizes, spaces } from './sizes';
-import { components } from './components';
+import { sizes, space } from './sizes';
 import { shadows } from './shadows';
 
-export * from './sizes';
-export * from './radii';
-export * from './colors';
-export * from './gradients';
-export * from './components';
-
-export const all = [
+export const config = {
   colors,
   sizes,
   radii,
-  spaces,
+  space,
   shadows,
   gradients,
-  components,
-];
+};
+
+export * from './components';

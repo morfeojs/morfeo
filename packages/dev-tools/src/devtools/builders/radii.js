@@ -1,8 +1,5 @@
-import { makeRow } from './makeRow';
-
-export function radii() {
-  makeRow({
-    slice: 'radii',
-    property: 'borderRadius',
-  });
-}
+export const radii = {
+  slice: 'radii',
+  property: 'borderRadius',
+  priority: 2,
+};

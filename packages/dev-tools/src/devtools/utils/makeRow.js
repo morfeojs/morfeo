@@ -1,17 +1,13 @@
 import { theme } from '@morfeo/web';
 import { injectStyle } from './injectStyle';
 
-export function makeRow({
-  slice,
-  kind = 'square',
-  property,
-  showValue = true,
-  getValue,
-  style = {},
-}) {
+export function makeRow(
+  sliceElement,
+  { slice, kind = 'square', property, showValue = true, getValue, style = {} },
+) {
   const themeSlice = theme.getSlice(slice);
   const sliceKeys = Object.keys(themeSlice);
-  const sliceElement = document.getElementById(slice);
+
   sliceKeys.forEach(key => {
     const block = document.createElement('div');
     block.classList.add('item', 'column', 'centered');

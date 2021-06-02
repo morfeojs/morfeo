@@ -1,9 +1,6 @@
-import { makeRow } from './makeRow';
-
-export function colors() {
-  makeRow({
-    slice: 'colors',
-    property: 'bg',
-    kind: 'circle',
-  });
-}
+export const colors = {
+  slice: 'colors',
+  property: 'bg',
+  kind: 'circle',
+  priority: 0,
+};

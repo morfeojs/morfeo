@@ -1,22 +1,10 @@
 import { theme } from '@morfeo/web';
 import { GET_THEME_ACTION, MORFEO_DEVTOOLS } from '../constants';
-import { all } from './builders';
-import './events';
+import { makeSlices } from './utils';
 
-function reset() {
-  const dynamicContents = document.querySelectorAll('.dynamic');
-  dynamicContents.forEach(element => {
-    element.innerHTML = '';
-  });
-}
+theme.subscribe(makeSlices);
 
-function build() {
-  all.forEach(builder => builder());
-}
-
-theme.subscribe(build);
-
-function onPanelCreate(panel) {
+function onPanelCreate() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     if (tabs && tabs[0]) {
       chrome.tabs.sendMessage(
@@ -35,7 +23,6 @@ function onPanelCreate(panel) {
     if (port.name === MORFEO_DEVTOOLS) {
       port.onMessage.addListener(function (message) {
         if (message.theme) {
-          reset();
           theme.set(message.theme);
         }
       });
@@ -45,7 +32,7 @@ function onPanelCreate(panel) {
 
 function createPanel() {
   chrome.devtools.panels.create(
-    'morfeo',
+    `Ⓜ️ Morfeo`,
     'images/logo.png',
     'views/index.html',
     onPanelCreate,
