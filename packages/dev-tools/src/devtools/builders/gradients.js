@@ -1,23 +1,13 @@
-import { theme } from '@morfeo/web';
-import { injectStyle } from './injectStyle';
+import { parsers } from '@morfeo/web';
+import { makeRow } from './makeRow';
 
 export function gradients() {
-  const gradients = theme.getSlice('gradients');
-  const gradientKeys = Object.keys(gradients);
-  const gradientSlice = document.getElementById('gradients');
-  gradientKeys.forEach(key => {
-    const gradientBlock = document.createElement('div');
-    gradientBlock.classList.add('item', 'column', 'centered');
-    const circle = document.createElement('div');
-    circle.classList.add('circle');
-    const gradientName = document.createElement('span');
-
-    injectStyle(circle, { gradient: key });
-
-    gradientName.innerHTML = key;
-
-    gradientBlock.appendChild(gradientName);
-    gradientBlock.appendChild(circle);
-    gradientSlice.appendChild(gradientBlock);
+  makeRow({
+    slice: 'gradients',
+    property: 'gradient',
+    kind: 'circle',
+    getValue(_, value) {
+      return parsers.resolve({ gradient: value })['background'];
+    },
   });
 }

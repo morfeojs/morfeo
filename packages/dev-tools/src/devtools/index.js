@@ -1,8 +1,7 @@
 import { theme } from '@morfeo/web';
 import { GET_THEME_ACTION, MORFEO_DEVTOOLS } from '../constants';
-import { colors, components, spaces, sizes, gradients } from './builders';
-
-const builders = [colors, spaces, sizes, gradients, components];
+import { all } from './builders';
+import './events';
 
 function reset() {
   const dynamicContents = document.querySelectorAll('.dynamic');
@@ -12,7 +11,7 @@ function reset() {
 }
 
 function build() {
-  builders.forEach(builder => builder());
+  all.forEach(builder => builder());
 }
 
 theme.subscribe(build);
