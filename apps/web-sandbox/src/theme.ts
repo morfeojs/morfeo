@@ -50,6 +50,35 @@ export const lightTheme = {
   borderWidths: {
     s: '2px',
   },
+  shadows: {
+    none: {
+      color: 'transparent',
+      offset: { width: 0, height: 0 },
+      opacity: 0,
+      elevation: 0,
+    },
+    soft: {
+      color: 'accent',
+      offset: { width: 0, height: 2 },
+      opacity: 0.2,
+      radius: 4,
+      elevation: 2,
+    },
+    medium: {
+      color: 'black',
+      offset: { width: 0, height: 3 },
+      opacity: 0.3,
+      radius: 4,
+      elevation: 3,
+    },
+    strong: {
+      color: 'black',
+      offset: { width: 0, height: 4 },
+      opacity: 0.4,
+      radius: 4,
+      elevation: 4,
+    },
+  },
   breakpoints: {
     md: '900px',
     lg: '1300px',

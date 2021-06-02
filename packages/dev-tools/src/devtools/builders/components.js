@@ -21,8 +21,7 @@ function makeComponent(tag, componentName, variant) {
   return container;
 }
 
-function makeComponentRow(componentName) {
-  const componentsSlice = document.getElementById('components');
+function makeComponentRow(componentsSlice, componentName) {
   const { tag, variants = {} } = theme.getValue('components', componentName);
   const componentBlock = document.createElement('div');
   const componentRow = document.createElement('div');
@@ -47,8 +46,8 @@ function makeComponentRow(componentName) {
   componentsSlice.appendChild(componentBlock);
 }
 
-export function components() {
+export function components(container) {
   const { components } = theme.get();
   const componentKeys = Object.keys(components);
-  componentKeys.forEach(makeComponentRow);
+  componentKeys.forEach(component => makeComponentRow(container, component));
 }
