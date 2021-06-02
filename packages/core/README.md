@@ -22,9 +22,8 @@
 #### [Usage](#usage)
 
 - [theme](#theme)
-
 - [parsers](#parsers)
-
+- [component](#component)
 - [responsive](#responsive)
 
 #### [Advanced](#advanced)
@@ -54,7 +53,7 @@ yarn add @morfeo/core
 
 :warning: Warning
 
-> You'll probably never use *directly*  `@morfeo/core`, instead, you'll more likely to use [@morfeo/react](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/react), [@morfeo/svelte](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/svelte), [@morfeo/jss](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/jss), or other packages that offer better integration of the morfeo eco-system in your framework of choice.
+> You'll probably never use _directly_ `@morfeo/core`, instead, you'll more likely to use [@morfeo/react](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/react), [@morfeo/svelte](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/svelte), [@morfeo/jss](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/jss), or other packages that offer better integration of the morfeo eco-system in your framework of choice.
 > In this particular case, it's important to know that you cannot define media queries as inline-style, that's why you need some other tool like JSS or Styled Components to handle this behavior. Likely, we already thought about it, so feel free to check out our packages.
 
 ### theme
@@ -178,6 +177,52 @@ const customButtonStyle = parsers.resolve({
 
 As you can see you can retrieve any component style, any component variant style, override its style definition or add other properties.
 
+### component
+
+To access the properties of a component you can always use the [theme](#theme) handler:
+
+```typescript
+const componentConfig = theme.getValue('components', 'Button');
+```
+
+But what if you need to access a particular variant of the component?
+You can always manipulate the component variable, though it's a bit tricky:
+
+```typescript
+const primaryVariant = componentConfig.variants.primary;
+// This is only the style of the primary variant, is not merged with the base style
+const props = primaryVariant.style;
+```
+
+To avoid this complexity and make the access to any component or variant easier, morfeo exposes a function called `component`:
+
+```typescript
+import { component } from '@morfeo/core';
+
+const componentConfig = component('Button').get();
+const primaryStyle = component('Button', 'primary').getStyle(); // merged with the base style
+```
+
+This is a complete exmple of what you can do with the `component` function:
+
+```typescript
+const componentConfig = component('Button').get();
+const componentTag = component('Button').getTag();
+const componentStyle = component('Button').getStyle();
+const componentProps = component('Button').getProps();
+const componentVariants = component('Button').getVariants();
+
+const primaryConfig = component('Button', 'primary').get();
+const primarTag = component('Button', 'primary').getTag();
+const primaryStyle = component('Button', 'primary').getStyle();
+const primaryProps = component('Button', 'primary').getProps();
+
+// since a component variant cannot have any other variants inside his configuration
+// if you execute `getVariants` in this case you'll receive the variants
+// of the parent component
+const primaryVariants = component('Button', 'primary').getVariants();
+```
+
 ### responsive
 
 What if you need to apply a style only to specific resolutions? morfeo enables you to do this in a pretty simple way.
@@ -293,7 +338,7 @@ In our example, this object will be equals to:
 
 ##### **what about responsive behavior in this case?**
 
-Don't worry, morfeo will think about responsive under the hood, feel free to you use your custom parser like this:
+Don't worry, **morfeo** will think about responsive under the hood, feel free to you use your custom parser like this:
 
 ```typescript
 const style = parsers.resolve({
