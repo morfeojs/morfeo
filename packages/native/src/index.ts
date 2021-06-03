@@ -6,7 +6,9 @@ parsers.add('shadowOpacity', props =>
   baseParser({ ...props, scale: 'opacities' }),
 );
 parsers.add('shadowOffset', shadowOffset);
-parsers.add('shadowRadius', props => baseParser({ ...props, scale: 'space' }));
+parsers.add('shadowRadius', props =>
+  baseParser({ ...props, scale: 'spacings' }),
+);
 parsers.add('shadow', shadows);
 
 /** re-export of @morfeo/core */

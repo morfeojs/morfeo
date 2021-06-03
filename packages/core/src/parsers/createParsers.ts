@@ -5,12 +5,18 @@ import {
   AllProperties,
   allProperties,
 } from '@morfeo/spec';
-import { Parser, AllParsers, ParserParams, ResolvedStyle } from '../types';
+import {
+  Parser,
+  AllParsers,
+  ParserParams,
+  ResolvedStyle,
+  ParsersContext,
+} from '../types';
 import { baseParser } from './baseParser';
 import { sizeParsers } from './sizes';
 import { colorsParsers } from './colors';
-import { spacesParsers } from './spaces';
 import { shadowsParsers } from './shadows';
+import { spacingsParsers } from './spacings';
 import { componentsParses } from './components';
 import { deepMerge } from '../utils';
 import { FALLBACK_PARSERS } from '../constants';
@@ -34,8 +40,8 @@ const DEFAULT_PARSERS = allPropertiesKeys.reduce(
 const ADDITIONAL_PARSERS = {
   ...sizeParsers,
   ...colorsParsers,
-  ...spacesParsers,
   ...shadowsParsers,
+  ...spacingsParsers,
   ...componentsParses,
 };
 
@@ -43,10 +49,6 @@ const INITIAL_PARSERS = {
   ...FALLBACK_PARSERS,
   ...DEFAULT_PARSERS,
   ...ADDITIONAL_PARSERS,
-};
-
-type ParsersContext = {
-  [P in Property]: Parser<P>;
 };
 
 export function createParsers() {

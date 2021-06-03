@@ -1,5 +1,5 @@
-export const space = {
-  slice: 'space',
+export const spacings = {
+  slice: 'spacings',
   property: 'width',
   priority: 3,
 };

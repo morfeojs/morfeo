@@ -7,7 +7,7 @@ const THEME: Theme = {
     primary: '#e3e3e3',
     secondary: '#000',
   },
-  space: {
+  spacings: {
     m: '10px',
   },
   components: {

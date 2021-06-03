@@ -10,7 +10,7 @@ theme.set({
     primary: 'black',
     secondary: 'white',
   },
-  space: {
+  spacings: {
     s: '10px',
     m: '20px',
   },

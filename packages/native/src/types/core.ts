@@ -1,17 +1,17 @@
-import { Color, Opacity, Space } from '@morfeo/core';
-import { ViewStyle, ImageStyle, TextStyle, StyleProp } from 'react-native';
+import { Color, Opacity, Spacing } from '@morfeo/core';
+import { ViewStyle, ImageStyle, TextStyle } from 'react-native';
 
 type CustomNativeStyle = {
   shadowColor?: Color;
-  shadowOffset?: Space;
-  shadowRadius?: Space;
+  shadowOffset?: Spacing;
+  shadowRadius?: Spacing;
   shadowOpacity?: Opacity;
 };
 
 type CustomNativeProperties = {
   shadowColor: 'colors';
-  shadowOffset: 'space';
-  shadowRadius: 'space';
+  shadowOffset: 'spacings';
+  shadowRadius: 'spacings';
   shadowOpacity: 'opacities';
 };
 
@@ -21,7 +21,7 @@ type NativeCustomStyle = Omit<NativeStyle, keyof CustomNativeStyle> &
   CustomNativeStyle;
 
 interface NativeShadowConfig {
-  elevation?: Space;
+  elevation?: Spacing;
 }
 
 declare module '@morfeo/core' {

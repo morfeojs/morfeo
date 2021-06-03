@@ -25,10 +25,12 @@ export function shadows({ value, property }: ParserParams<ShadowProperty>) {
 
   const { width, height } = config.offset || { width: 0, height: 0 };
   const parsedWidth = removePixels(
-    theme.getSlice('space')[width] || theme.getSlice('sizes')[width] || width,
+    theme.getSlice('spacings')[width] ||
+      theme.getSlice('sizes')[width] ||
+      width,
   );
   const parsedHeight = removePixels(
-    theme.getSlice('space')[height] ||
+    theme.getSlice('spacings')[height] ||
       theme.getSlice('sizes')[height] ||
       height,
   );

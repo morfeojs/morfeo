@@ -3,9 +3,9 @@ import {
   radiiMap,
   sizesMap,
   colorsMap,
-  spacesMap,
   shadowsMap,
   bordersMap,
+  spacingsMap,
   zIndicesMap,
   fontSizesMap,
   opacitiesMap,
@@ -21,7 +21,7 @@ import { createPropertiesMap } from './createPropertiesMap';
 
 export const radiiProperties = createPropertiesMap(radiiMap, 'radii');
 export const fontProperties = createPropertiesMap(fontsMap, 'fonts');
-export const spacesProperties = createPropertiesMap(spacesMap, 'space');
+export const spacingsProperties = createPropertiesMap(spacingsMap, 'spacings');
 export const sizesProperties = createPropertiesMap(sizesMap, 'sizes');
 export const colorProperties = createPropertiesMap(colorsMap, 'colors');
 export const gradientProperties = createPropertiesMap(
@@ -69,10 +69,10 @@ export const allProperties = {
   ...radiiProperties,
   ...colorProperties,
   ...sizesProperties,
-  ...spacesProperties,
   ...shadowsProperties,
   ...bordersProperties,
   ...fontSizeProperties,
+  ...spacingsProperties,
   ...zIndicesProperties,
   ...gradientProperties,
   ...opacitiesProperties,

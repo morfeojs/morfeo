@@ -1,15 +1,15 @@
 import { radii } from './radii';
 import { colors } from './colors';
 import { gradients } from './gradients';
-import { sizes, space } from './sizes';
+import { sizes, spacings } from './sizes';
 import { shadows } from './shadows';
 
 export const config = {
   colors,
   sizes,
   radii,
-  space,
   shadows,
+  spacings,
   gradients,
 };
 

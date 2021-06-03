@@ -7,7 +7,7 @@ const THEME: Theme = {
     primary: 'white',
     secondary: 'white',
   },
-  space: {
+  spacings: {
     s: '10px',
     m: '20px',
   },

@@ -12,20 +12,21 @@ import {
 } from './fonts';
 import { Borders, BorderWidths, BorderStyles } from './borders';
 import { Opacities } from './opacities';
-import { Transitions } from './transitions';
+import { Spacings } from './spacings';
 import { ZIndices } from './zIndices';
 import { Gradients } from './gradients';
+import { Transitions } from './transitions';
 import { MediaQueries } from './mediaQueries';
 import { Components } from './components';
 
 export type BaseTheme = {
   radii: Radii;
-  space: Sizes;
   sizes: Sizes;
   fonts: Fonts;
   colors: Colors;
   shadows: Shadows;
   borders: Borders;
+  spacings: Spacings;
   zIndices: ZIndices;
   fontSizes: FontSizes;
   gradients: Gradients;

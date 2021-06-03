@@ -38,7 +38,7 @@ export const lightTheme = {
     m: '10px',
     round: '50%',
   },
-  space: {
+  spacings: {
     s: '40px',
     m: '100px',
   },

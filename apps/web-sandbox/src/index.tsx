@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { lightTheme } from './theme';
+import { enableMorfeoDevTool } from '@morfeo/dev-tools';
+
+enableMorfeoDevTool();
 
 theme.set(lightTheme as any);
 

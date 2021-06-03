@@ -1,4 +1,4 @@
-import { AllProperties, Style } from '@morfeo/spec';
+import { AllProperties, Property, Style } from '@morfeo/spec';
 
 export type ParserProperty = keyof AllProperties;
 
@@ -24,4 +24,8 @@ export type SliceParsers<
 
 export type AllParsers = {
   [K in ParserProperty]: Parser<K>;
+};
+
+export type ParsersContext = {
+  [P in Property]: Parser<P>;
 };

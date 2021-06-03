@@ -8,7 +8,7 @@ const THEME = {
     primary: 'black',
     secondary: 'white',
   },
-  space: {
+  spacings: {
     s: '10px',
   },
 } as any;
