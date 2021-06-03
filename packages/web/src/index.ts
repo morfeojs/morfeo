@@ -10,7 +10,7 @@ Object.keys(gradientParsers).forEach(property => {
   parsers.add(property as Property, gradientParsers[property] as any);
 });
 
-export * from './utils'
+export * from './utils';
 
 export * from './types';
 

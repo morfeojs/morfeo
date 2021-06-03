@@ -1,1 +1,1 @@
-export * from './resetCss'
+export * from './resetCss';

@@ -249,18 +249,18 @@ textarea {
  color: #000;
  padding: 0.2em 0;
 }
-`
+`;
 
 /**
- * @description 
+ * @description
  * reset base css
- * 
+ *
  * @example
  * ```
  * import { resetCss } from '@morfeo/web':
  * import { theme } from '@morfeo/core';
  * import { myTheme } from './myTheme';
- * 
+ *
  * resetCss();
  * theme.set(myTheme)
  * ```
@@ -273,6 +273,6 @@ export function resetCss() {
     <style>
       ${cssReset}
     </style>
-  `
+  `;
   head.innerHTML += newStyle;
 }
