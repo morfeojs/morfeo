@@ -22,12 +22,12 @@ export function shadowOffset({ value }) {
   const { width, height } = value || { width: 0, height: 0 };
   const parsedWidth = getFirstValidNumber(
     theme.getValue('sizes', width),
-    theme.getValue('space', width),
+    theme.getValue('spacings', width),
     width,
   );
   const parsedHeight = getFirstValidNumber(
     theme.getValue('sizes', height),
-    theme.getValue('space', height),
+    theme.getValue('spacings', height),
     height,
   );
 

@@ -1,4 +1,4 @@
-export const space = {
+export const spacings = {
   auto: 'auto',
   none: 0,
   xxs: 8,

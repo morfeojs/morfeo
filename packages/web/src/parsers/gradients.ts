@@ -2,16 +2,10 @@ import {
   theme,
   Gradient,
   ParserParams,
-  SliceParsers,
   GradientConfig,
-  gradientProperties,
+  ParsersContext,
   GradientProperty,
 } from '@morfeo/core';
-
-type GradientsParsers = SliceParsers<
-  typeof gradientProperties,
-  keyof typeof gradientProperties
->;
 
 function getGradientPercentages({
   start = 0,
@@ -71,7 +65,7 @@ function textGradient({ value }: ParserParams<GradientProperty>) {
   };
 }
 
-export const gradientParsers: GradientsParsers = {
+export const gradientParsers: Partial<ParsersContext> = {
   gradient: gradient,
   bgGradient: gradient,
   textGradient: textGradient,

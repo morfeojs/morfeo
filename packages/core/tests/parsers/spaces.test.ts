@@ -2,13 +2,13 @@ import { Theme } from '@morfeo/spec';
 import { parsers, theme } from '../../src';
 
 const THEME: Theme = {
-  space: {
+  spacings: {
     m: '10px',
     l: '20px',
   },
 } as any;
 
-describe('spaces', () => {
+describe('spacings', () => {
   beforeAll(() => {
     theme.set(THEME);
   });

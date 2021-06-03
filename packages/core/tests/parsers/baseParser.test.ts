@@ -28,7 +28,7 @@ describe('baseParser', () => {
   test('should return the not resolved value if the theme slice is not found', () => {
     const result = baseParser({
       property: 'padding',
-      scale: 'space',
+      scale: 'spacings',
       value: '10px' as any,
     });
 

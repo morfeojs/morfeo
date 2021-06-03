@@ -5,7 +5,7 @@ const defaultTheme: Theme = {
   colors: {
     primary: 'black',
   },
-  space: {
+  spacings: {
     m: '10px',
   },
   breakpoints: {
@@ -61,7 +61,7 @@ describe('theme', () => {
     theme.subscribe(firstListener);
     theme.subscribe(secondListener);
     theme.setSlice('colors', { primary: 'white' });
-    theme.setSlice('space', { l: '50px' });
+    theme.setSlice('spacings', { l: '50px' });
     expect(firstListener).toHaveBeenCalledTimes(2);
     expect(secondListener).toHaveBeenCalledTimes(2);
   });

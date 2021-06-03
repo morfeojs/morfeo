@@ -1,4 +1,4 @@
-export const spacesMap = [
+export const spacingsMap = [
   'm',
   'mt',
   'ml',

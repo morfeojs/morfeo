@@ -1,19 +1,18 @@
-import { Theme } from '@morfeo/native';
 import { button, typography } from './components';
 import { colors } from './colors';
-import { space } from './space';
+import { spacings } from './spacings';
 import { radii, borderWidths } from './borders';
 import { fonts, fontSizes, fontWeights, lineHeights } from './fonts';
 import { gradients } from './gradients';
 import { shadows } from './shadows';
 
 export const defaultTheme = {
-  sizes: space,
-  space,
+  sizes: spacings,
   radii,
   fonts,
   colors,
   shadows,
+  spacings,
   fontSizes,
   gradients,
   fontWeights,
