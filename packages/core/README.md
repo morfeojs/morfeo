@@ -70,7 +70,7 @@ import { Theme } from "@morfeo/core";
  */
 export const defaultTheme: Theme = {
   ...,
-  space: {
+  spacings: {
     ...,
     s: "32px",
     m: "40px",
