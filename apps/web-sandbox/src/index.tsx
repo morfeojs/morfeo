@@ -1,5 +1,5 @@
 import React from 'react';
-import { theme } from '@morfeo/react';
+import { theme, resetCss } from '@morfeo/react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -8,6 +8,7 @@ import { enableMorfeoDevTool } from '@morfeo/dev-tools';
 
 enableMorfeoDevTool();
 
+resetCss();
 theme.set(lightTheme as any);
 
 ReactDOM.render(
