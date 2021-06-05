@@ -1,8 +1,8 @@
 {
-  "name": "@morfeo/web",
+  "name": "@morfeo/fonts",
   "author": {
-    "name": "Mauro Erta",
-    "email": "mauro@vlkstudio.com"
+    "name": "Andrea Simone Porceddu",
+    "email": "andrea@vlkstudio.com"
   },
   "private": false,
   "version": "0.1.5",
@@ -13,19 +13,13 @@
   "typings": "build/index",
   "keywords": [
     "design",
-    "system"
+    "system",
+    "font",
+    "load"
   ],
   "scripts": {
     "build": "rimraf build && tsc",
     "watch": "tsc -w"
-  },
-  "dependencies": {
-    "@morfeo/core": "^0.1.5",
-    "@morfeo/jss": "^0.1.5",
-    "@morfeo/fonts": "^0.1.5"
-  },
-  "peerDependencies": {
-    "csstype": "^3.0.8"
   },
   "publishConfig": {
     "access": "public"
