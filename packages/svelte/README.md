@@ -1,6 +1,7 @@
 <div align="center">
 <h1>@morfeo/svelte</h1>
 </div>
+
 **@morfeo/svelte** is part of the [morfeo](https://github.com/VLK-STUDIO/morfeo) eco-system: a framework-agnostic set of tools that will help you to build your next **design system** based on a single source of truth: the **theme**.
 
 ---
