@@ -7,7 +7,7 @@
     "email": "mauro@vlkstudio.com"
   },
   "scripts": {
-    "build": "rimraf build && babel ./src/ --out-dir build/ --ignore ./node_modules",
+    "build": "rimraf build && babel ./src/ --out-dir build/",
     "morfeo-vs": "node build/morfeo-vs/index.js",
     "core": "node build/core/index.js",
     "jss": "node build/jss/index.js",

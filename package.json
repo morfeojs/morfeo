@@ -8,6 +8,7 @@
   "scripts": {
     "clean": "lerna clean --yes",
     "build": "lerna run build",
+    "build:commonjs": "lerna run build:commonjs",
     "watch": "lerna run watch",
     "reset": "npm run clean && npm i && lerna bootstrap && npm run build",
     "init:web-sandbox": "node scripts/bootstrap-app.mjs web-sandbox",
@@ -16,7 +17,7 @@
     "init:benchmarks": "node scripts/bootstrap-app.mjs benchmarks",
     "start:web-sandbox": "npm start --prefix apps/web-sandbox",
     "start:svelte-sandbox": "npm run dev --prefix apps/svelte-sandbox",
-    "start:benchmarks": "npm run all --prefix apps/benchmarks",
+    "start:benchmarks": "npm run build:commonjs && npm run all --prefix apps/benchmarks",
     "prepare": "husky install",
     "prettify": "npm run prettify:js && npm run prettify:ts",
     "prettify:js": "npx prettier --write \"**/*.js\"",
