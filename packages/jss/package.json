@@ -18,6 +18,7 @@
   ],
   "scripts": {
     "build": "rimraf build && tsc",
+    "build:commonjs": "rimraf build && tsc --module CommonJS",
     "watch": "tsc -w"
   },
   "dependencies": {
