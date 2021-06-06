@@ -11,6 +11,14 @@ const THEME: Theme = {
       style: {
         bg: 'secondary',
       },
+      variants: {
+        span: {
+          style: {},
+          props: {
+            'data-test': 'additional prop',
+          },
+        },
+      },
     },
   },
 } as any;
@@ -60,5 +68,28 @@ describe('morfeo', () => {
     const { update } = morfeo(element);
     update({} as any);
     expect(typeof update).toBe('function');
+  });
+
+  test('should set the default properties to the element', () => {
+    const element = document.createElement('div');
+    morfeo(element, {
+      componentName: 'Box',
+      variant: 'span',
+    });
+
+    expect(element.getAttribute('data-test')).toBe('additional prop');
+  });
+
+  test('should update the default properties of to the element', () => {
+    const element = document.createElement('div');
+    const { update } = morfeo(element, {
+      componentName: 'Box',
+    });
+
+    expect(element.getAttribute('data-test')).toBeFalsy();
+
+    update({ variant: 'span' });
+
+    expect(element.getAttribute('data-test')).toBe('additional prop');
   });
 });
