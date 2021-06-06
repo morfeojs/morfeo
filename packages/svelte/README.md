@@ -75,8 +75,8 @@ const myTheme = {
         primary: {
           style: {
             bg: 'primary',
-          	borderWidth: 's',
-         		borderColor: 'secondary',
+            borderWidth: 's',
+            borderColor: 'secondary',
           },
         },
         submit: {
