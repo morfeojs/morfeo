@@ -1,1 +1,1 @@
-export const transitionsMap = ['transition'] as const;
+export const zIndicesMap = ['zIndex'] as const;

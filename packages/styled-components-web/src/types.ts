@@ -3,19 +3,23 @@ import { StyledComponentBase } from 'styled-components';
 
 export type ComponentTag = keyof JSX.IntrinsicElements | Component;
 
-type PropByTag<P extends Style | TemplateStringsArray, K extends ComponentTag> =
-  K extends Component
-    ? P extends Style
-      ? Omit<P, 'variant'> & { variant?: Variant<K> }
-      : P
-    : P;
+type PropByTag<
+  P extends Style | TemplateStringsArray,
+  K extends ComponentTag,
+> = K extends Component
+  ? P extends Style
+    ? Omit<P, 'variant'> & { variant?: Variant<K> }
+    : P
+  : P;
 
-export type MorfeoStyledComponent<K extends ComponentTag, P extends Style> =
-  StyledComponentBase<
-    K extends Component ? keyof JSX.IntrinsicElements : K,
-    Theme,
-    PropByTag<P, K>
-  >;
+export type MorfeoStyledComponent<
+  K extends ComponentTag,
+  P extends Style,
+> = StyledComponentBase<
+  K extends Component ? keyof JSX.IntrinsicElements : K,
+  Theme,
+  PropByTag<P, K>
+>;
 
 export type MorfeoStyledCallback<
   P extends Style = Style,
