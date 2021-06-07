@@ -1,14 +1,14 @@
-import { theme, Font } from "@morfeo/core";
+import { theme, Font } from '@morfeo/core';
 import { MountFontParams, mountFont } from '@morfeo/fonts';
 
-export type LoadFontParams = Omit<MountFontParams, 'name'> & { name: Font }
+export type LoadFontParams = Omit<MountFontParams, 'name'> & { name: Font };
 /**
  * Load a fontFace on document head style and add it to the morfeo theme
- * 
+ *
  * ---
- * 
+ *
  * ### load a google font
- * 
+ *
  * ```ts
  * loadFont({
  *   urls: [{
@@ -19,11 +19,11 @@ export type LoadFontParams = Omit<MountFontParams, 'name'> & { name: Font }
  *   name: 'bold',
  * })
  * ```
- * 
+ *
  * ---
- * 
+ *
  * ### load a local font
- * 
+ *
  *  ```ts
  * loadFont({
  *   urls: [
@@ -43,7 +43,7 @@ export type LoadFontParams = Omit<MountFontParams, 'name'> & { name: Font }
  * ```
  */
 
- export function loadFont(font: LoadFontParams) {
-  mountFont(font)
-  theme.setValue('fonts', font.name, font.family)
-};
+export function loadFont(font: LoadFontParams) {
+  mountFont(font);
+  theme.setValue('fonts', font.name, font.family);
+}

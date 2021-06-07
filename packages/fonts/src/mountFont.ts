@@ -6,7 +6,7 @@ export type FontUrl = {
 };
 
 export type MountFontParams = {
-  name: string; 
+  name: string;
   urls: FontUrl[];
   family: string;
   /**
@@ -23,15 +23,15 @@ export function unmountFont(name: string) {
   if (currentFontStyle) {
     currentFontStyle.remove();
   }
-} 
+}
 
 /**
  * Mount a fontFace on document head style
- * 
+ *
  * ---
- * 
+ *
  * ### mount a google font
- * 
+ *
  * ```ts
  * mountFont({
  *   urls: [{
@@ -42,11 +42,11 @@ export function unmountFont(name: string) {
  *   name: 'bold',
  * })
  * ```
- * 
+ *
  * ---
- * 
+ *
  * ### mount a local font
- * 
+ *
  *  ```ts
  * mountFont({
  *   urls: [
@@ -68,15 +68,11 @@ export function unmountFont(name: string) {
 
 export function mountFont(font: MountFontParams) {
   let newFontFaceContent = '';
-  
 
   if (font.importFontFace) {
     newFontFaceContent += `
-    @import ${font.urls.reduce(
-          (_, value) => `url(${value.url})`,
-          '',
-        )}
-    `
+    @import ${font.urls.reduce((_, value) => `url(${value.url})`, '')}
+    `;
   }
 
   if (!font.importFontFace) {
@@ -85,7 +81,10 @@ export function mountFont(font: MountFontParams) {
       font-family: ${font.family};
       ${font.weight ? `font-weight: ${font.weight};` : ''}
       url: ${font.urls.reduce(
-        (acc, value) => `${acc ? acc + '\n' : acc} url('${value.url}') ${value.format ? `format('${value.format}')` : ''}`,
+        (acc, value) =>
+          `${acc ? acc + '\n' : acc} url('${value.url}') ${
+            value.format ? `format('${value.format}')` : ''
+          }`,
         '',
       )}
     }
@@ -96,9 +95,9 @@ export function mountFont(font: MountFontParams) {
     <style id="font-${font.name}">
       ${newFontFaceContent}
     </style>
-  `
+  `;
 
-  unmountFont(font.name)
+  unmountFont(font.name);
 
-  document.head.innerHTML += newFontStyle
+  document.head.innerHTML += newFontStyle;
 }

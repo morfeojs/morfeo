@@ -46,13 +46,13 @@ export const lightTheme = {
     m: '100px',
   },
   lineHeights: {
-    s: 1.7
+    s: 1.7,
   },
   letterSpacings: {
-    s: 1.6
+    s: 1.6,
   },
   fontSizes: {
-    s: '14px'
+    s: '14px',
   },
   sizes: {
     s: '10px',
@@ -153,7 +153,7 @@ export const lightTheme = {
         fontFamily: 'regular',
         fontSize: 's',
         lineHeight: 's',
-        letterSpacing: 's'
+        letterSpacing: 's',
       },
       variants: {
         h1: {

@@ -5,12 +5,14 @@ import { lightTheme } from './theme';
 
 loadFont({
   importFontFace: true,
-  urls: [{
-    url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap'
-  }],
+  urls: [
+    {
+      url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap',
+    },
+  ],
   name: 'regular',
   family: 'Roboto',
-})
+});
 enableMorfeoDevTool();
 resetCss();
 theme.set(lightTheme);
