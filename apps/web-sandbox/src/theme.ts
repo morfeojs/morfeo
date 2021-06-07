@@ -33,6 +33,9 @@ export const lightTheme = {
     warning: '#f39c12',
     transparent: 'transparent',
   },
+  fontFamilies: {
+    regular: 'Roboto',
+  },
   gradients,
   radii: {
     m: '10px',
@@ -41,6 +44,15 @@ export const lightTheme = {
   spacings: {
     s: '40px',
     m: '100px',
+  },
+  lineHeights: {
+    s: 1.7,
+  },
+  letterSpacings: {
+    s: 1.6,
+  },
+  fontSizes: {
+    s: '14px',
   },
   sizes: {
     s: '10px',
@@ -137,7 +149,12 @@ export const lightTheme = {
     },
     Typography: {
       tag: 'p',
-      style: {},
+      style: {
+        fontFamily: 'regular',
+        fontSize: 's',
+        lineHeight: 's',
+        letterSpacing: 's',
+      },
       variants: {
         h1: {
           tag: 'h1',

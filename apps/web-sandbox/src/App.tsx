@@ -33,12 +33,14 @@ function App() {
   const { containerStyle, blockStyle, codeStyle } = useStyles({
     containerStyle: {
       bg: 'secondary',
-      width: '100vw' as any,
+      width: '100%' as any,
       display: 'flex',
-      height: '100vh' as any,
+      minHeight: '100vh' as any,
       alignItems: 'center',
       justifyContent: 'space-evenly',
       transition: 'light',
+      pt: 's',
+      pb: 's'
     },
     blockStyle: {
       flex: 1,

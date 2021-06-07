@@ -18,3 +18,5 @@ export * from './types';
 export * from '@morfeo/core';
 /** re-export of @morfeo/jss */
 export * from '@morfeo/jss';
+/** re-export of @morfeo/fonts */
+export * from '@morfeo/fonts';
