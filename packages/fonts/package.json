@@ -29,9 +29,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/web"
+    "url": "https://github.com/VLK-STUDIO/morfeo"
   },
-  "homepage": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/web",
+  "homepage": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/fonts",
   "bugs": {
     "url": "https://github.com/VLK-STUDIO/morfeo/issues"
   }
