@@ -1,0 +1,57 @@
+---
+sidebar_position: 2
+id: framework-agnostic
+title: Framework Agnostic
+description: Introduction > Framework Agnostic
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+The goal of morfeo is to completely separate the _style_ of your App to its _business logic_, that's why it was made to be
+independent from any library or framework. To provide the best developer experience possible we already build a set of packages that will helps you to integrate Morfeo in your app, but if you want you can always to the [core](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/core) API:
+
+<Tabs
+  defaultValue="react"
+  values={[
+    { label: 'React', value: 'react' },
+    { label: 'React Native', value: 'react-native' },
+    { label: 'Styled Components', value: 'styled-components' },
+    { label: 'Svelte', value: 'svelte' },
+    { label: 'Vanilla', value: 'vanilla' },
+  ]}
+>
+  <TabItem value="react">
+    With npm
+    <pre>npm i @morfeo/react</pre>
+    With yarn
+    <pre>yarn add @morfeo/react</pre>
+  </TabItem>
+  <TabItem value="react-native">
+    With npm
+    <pre>npm i @morfeo/native</pre>
+    With yarn
+    <pre>yarn add @morfeo/native</pre>
+  </TabItem>
+  <TabItem value="styled-components">
+    With npm
+    <pre>npm i styled-components @morfeo/web @morfeo/styled-components-web</pre>
+    With yarn
+    <pre>
+      yarn add styled-components @morfeo/web @morfeo/styled-components-web
+    </pre>
+  </TabItem>
+  <TabItem value="svelte">
+    With npm
+    <pre>npm i @morfeo/web @morfeo/svelte</pre>
+    With yarn
+    <pre>yarn add @morfeo/web @morfeo/svelte</pre>
+  </TabItem>
+  <TabItem value="vanilla">
+    With npm
+    <pre>npm i @morfeo/web</pre>
+    With yarn
+    <pre>yarn add @morfeo/web</pre>* You can use @morfeo/web with in any framework/library
+    thats works
+  </TabItem>
+</Tabs>
