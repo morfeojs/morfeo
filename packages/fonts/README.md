@@ -4,14 +4,14 @@
 
 **@morfeo/fonts** provide 2 helpers to easily load a font on your document style and your mofeo theme both.
 
-**@morfeo/fonts** is part of the [@morfeo](https://github.com/VLK-STUDIO/morfeo) eco-system, a set of **framework-agnostic** tools that help you to create beautiful design systems for your web and mobile apps.
+**@morfeo/fonts** is part of the [@morfeo](https://morfeo.dev) eco-system, a set of **framework-agnostic** tools that help you to create beautiful design systems for your web and mobile apps.
 
 ---
 
 <div align="center">
-  <a href="https://github.com/VLK-STUDIO/morfeo">Documentation</a> |
+  <a href="https://morfeo.dev">Documentation</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
-  <a href="https://github.com/VLK-STUDIO/morfeo">Contributing</a> |
+  <a href="https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md">Contributing</a> |
   <a href="https://morfeo.slack.com">Slack</a>
 </div>
 
@@ -24,9 +24,9 @@
 #### [APIS](#apis-1)
 
 - [mountFont](#mountFont)
-    - [@import fontFace](#@import)
-    - [define fontFace](#@fontFace)
-    - [references](#@references)
+  - [@import fontFace](#@import)
+  - [define fontFace](#@fontFace)
+  - [references](#@references)
 
 ---
 
@@ -48,7 +48,7 @@ or [yarn](https://yarn.pm/@morfeo/fonts):
 
 ---
 
-## Apis 
+## Apis
 
 ### mountFont
 
@@ -68,13 +68,13 @@ import { mountFont } from '@morfeo/fonts';
 mountFont({
   urls: [
     {
-      url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap'
+      url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap',
     },
   ],
   name: 'bold',
-  family: 'Roboto', 
+  family: 'Roboto',
   importFontFace: true,
-})
+});
 ```
 
 #### @fontFace
@@ -89,17 +89,17 @@ mountFont({
   urls: [
     {
       url: 'src/fonts/Roboto-bold.woff',
-      format: 'woff'
+      format: 'woff',
     },
     {
       url: 'src/fonts/Roboto-bold.woff2',
-      format: 'woff2'
+      format: 'woff2',
     },
   ],
   name: 'bold',
-  family: 'Roboto', 
-  weight: 'bold'
-})
+  family: 'Roboto',
+  weight: 'bold',
+});
 ```
 
 #### References
@@ -113,11 +113,10 @@ export type FontUrl = {
 };
 
 export type MountFontParams = {
-  name: string; 
+  name: string;
   urls: FontUrl[];
   family: string;
   importFontFace?: boolean;
   weight?: string;
 };
 ```
-

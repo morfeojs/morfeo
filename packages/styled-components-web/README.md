@@ -11,9 +11,9 @@
 ---
 
 <div align="center">
-  <a href="https://github.com/VLK-STUDIO/morfeo">Documentation</a> |
+  <a href="https://morfeo.dev">Documentation</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
-  <a href="https://github.com/VLK-STUDIO/morfeo">Contributing</a> |
+  <a href="https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md">Contributing</a> |
   <a href="https://morfeo.slack.com">Slack</a>
 </div>
 

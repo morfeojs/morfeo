@@ -7,7 +7,7 @@
 ---
 
 <div align="center">
-  <a href="https://github.com/VLK-STUDIO/morfeo">Documentation</a> |
+  <a href="https://morfeo.dev">Documentation</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md">Contributing</a> |
   <a href="https://morfeo.slack.com">Slack</a>
@@ -69,7 +69,7 @@ const myTheme = {
         py: 'xxs',
       },
       props: {
-      	type: 'submit'
+        type: 'submit',
       },
       variants: {
         primary: {
@@ -81,10 +81,10 @@ const myTheme = {
         },
         submit: {
           style: {
-            bg: 'secondary'
+            bg: 'secondary',
           },
           props: {
-            type: 'submit'
+            type: 'submit',
           },
         },
       },
@@ -105,4 +105,3 @@ const myTheme = {
   <Button variant="submit">Submit button</Button>
 </div>
 ```
-

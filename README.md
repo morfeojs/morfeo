@@ -1,7 +1,7 @@
 <div align="center">
 <h1>morfeo</h1>
 </div>
-<a href="https://github.com/VLK-STUDIO/morfeo">morfeo</a> is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the <strong>theme</strong>.
+<a href="https://morfeo.dev">morfeo</a> is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the <strong>theme</strong>.
 
 ---
 
@@ -13,7 +13,7 @@
 
 ---
 
-> :warning: ​We are working to optimize the packages and make the documentation clear and complete.  :warning:
+> :warning: ​We are working to optimize the packages and make the documentation clear and complete. :warning:
 >
 > Soon we'll provide documentation for each package, sandboxes with use cases, and a website full of articles.
 > If you want to start using morfeo we'll love to have your feedback, feel free to contribute by opening a pull request or just sending some love in our slack chat.
@@ -21,7 +21,7 @@
 ---
 
 <div align="center">
-  <a href="https://github.com/VLK-STUDIO/morfeo">Documentation</a> |
+  <a href="https://morfeo.dev">Documentation</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md">Contributing</a> |
   <a href="https://morfeo.slack.com">Slack</a>
