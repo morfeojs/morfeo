@@ -26,9 +26,7 @@ function filterInternalDependencies(dependencies = {}) {
 }
 
 function getPackageJsonWithoutInternalDependencies(appName) {
-  const packageJsonFile = fs.readFileSync(
-    path.join('apps', appName, 'package.json'),
-  );
+  const packageJsonFile = fs.readFileSync(path.join(appName, 'package.json'));
   const packageJson = JSON.parse(packageJsonFile);
 
   const { dependencies, peerDependencies, devDependencies } = packageJson;
@@ -45,9 +43,9 @@ function getPackageJsonWithoutInternalDependencies(appName) {
 }
 
 function removeInternalPackagesFromPackageJson(appName) {
-  const packageJsonPath = path.join('apps', appName, 'package.json');
+  const packageJsonPath = path.join(appName, 'package.json');
   const packageJsonFile = fs.readFileSync(packageJsonPath);
-  const tempPackageJsonPath = path.join('apps', appName, 'package.tmp.json');
+  const tempPackageJsonPath = path.join(appName, 'package.tmp.json');
   const newPackageJson = getPackageJsonWithoutInternalDependencies(appName);
   fs.writeFileSync(tempPackageJsonPath, packageJsonFile);
   fs.writeFileSync(
@@ -57,8 +55,8 @@ function removeInternalPackagesFromPackageJson(appName) {
 }
 
 function restorePackageJson(appName) {
-  const packageJsonPath = path.join('apps', appName, 'package.json');
-  const tempPackageJsonPath = path.join('apps', appName, 'package.tmp.json');
+  const packageJsonPath = path.join(appName, 'package.json');
+  const tempPackageJsonPath = path.join(appName, 'package.tmp.json');
   const packageJsonFile = fs.readFileSync(tempPackageJsonPath);
   fs.writeFileSync(packageJsonPath, packageJsonFile);
   fs.unlinkSync(tempPackageJsonPath);
@@ -74,7 +72,7 @@ function shellCommand(command, params = [], options = {}) {
 
 function runBootstrap(appName) {
   removeInternalPackagesFromPackageJson(appName);
-  shellCommand(`npm`, ['install'], { cwd: `./apps/${appName}` });
+  shellCommand(`npm`, ['install'], { cwd: `./${appName}` });
   restorePackageJson(appName);
   shellCommand(`node`, ['./scripts/symlink-packages.mjs', appName]);
 }

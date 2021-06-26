@@ -1,0 +1,42 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+.preview {
+  display: flex;
+  padding: var(--space-s);
+  align-items: center;
+  justify-content: center;
+}
+
+.codeContainer {
+  height: 20rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.code {
+  flex: 1;
+  position: relative;
+  border-radius: var(--radius-m);
+  border: 2px solid aliceblue;
+  overflow: hidden;
+  padding: 0;
+  margin: 0 var(--space-xxs);
+  height: 15rem;
+  background-color: rgb(41, 45, 62);
+}
+
+.description {
+  padding-top: var(--space-s);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 1440px) {
+  .row {
+    flex-direction: column;
+  }
+}

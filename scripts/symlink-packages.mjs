@@ -7,7 +7,7 @@ const [APP_NAME] = args;
 
 const symlinkType = os.platform() === 'win32' ? 'junction' : 'dir';
 const packagesPath = path.join('./packages');
-const appPath = path.join('apps', APP_NAME);
+const appPath = path.join('./', APP_NAME);
 const rootPath = path.join(appPath, './node_modules/@morfeo');
 
 function getAllInternalPackages() {
@@ -29,6 +29,7 @@ function getAppInternalPackages() {
   };
   const keys = Object.keys(allDependencies);
   const filteredKeys = keys
+    .filter(name => name.includes('@morfeo/'))
     .map(name => name.replace('@morfeo/', ''))
     .filter(dependency => packages.includes(dependency));
 
