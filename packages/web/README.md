@@ -9,9 +9,9 @@
 ---
 
 <div align="center">
-  <a href="https://github.com/VLK-STUDIO/morfeo">Documentation</a> |
+  <a href="https://morfeo.dev">Documentation</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
-  <a href="https://github.com/VLK-STUDIO/morfeo">Contributing</a> |
+  <a href="https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md">Contributing</a> |
   <a href="https://morfeo.slack.com">Slack</a>
 </div>
 
@@ -44,7 +44,7 @@ yarn add @morfeo/web
 
 ## Usage
 
-**@morfeo/web** re-export all the **@morfeo/core** library, check out its [documentation](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/core) before continue.
+**@morfeo/web** re-export all the **@morfeo/core** library, check out its [documentation](https://morfeo.dev/docs/Packages/core) before continue.
 
 In addition to the core library, the web package adds the parsers to handle **pseudo classes**, **pseudo elements** and **gradients**.
 
@@ -93,7 +93,7 @@ const { classes } = getStyles({
 element.classList.add(classes.button);
 ```
 
-In this case, @morfeo will generate plain css. To understand more about this topic we suggest you check our documentation about [@morfeo/jss](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/jss), in fact, the function `getStyles` is re-exported from `@morfeo/jss`.
+In this case, @morfeo will generate plain css. To understand more about this topic we suggest you check our documentation about [@morfeo/jss](https://morfeo.dev/docs/Packages/jss), in fact, the function `getStyles` is re-exported from `@morfeo/jss`.
 
 #### Supported Pseudos
 

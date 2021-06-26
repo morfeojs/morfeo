@@ -1,12 +1,12 @@
 <div align="center">
 <h1>@morfeo/spec</h1>
 </div>
-<a href="https://github.com/VLK-STUDIO/morfeo">morfeo</a> is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the <strong>theme</strong>.
+<a href="https://morfeo.dev">morfeo</a> is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the <strong>theme</strong>.
 
 ---
 
 <div align="center">
-  <a href="https://github.com/VLK-STUDIO/morfeo">Documentation</a> |
+  <a href="https://morfeo.dev">Documentation</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
   <a href="https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md">Contributing</a> |
   <a href="https://morfeo.slack.com">Slack</a>
@@ -59,46 +59,46 @@ The main difference between morfeo's theme and others is the **components** slic
 
 In this table, for each slice, are indicated the css properties that will be resolved with values of that slice:
 
-| slice          | properties                                                   |
-| :------------- | ------------------------------------------------------------ |
-| colors         | **bg**, fill, color, stroke, caretColor, borderColor, outlineColor, borderTopColor, backgroundColor, columnRuleColor, borderLeftColor, borderRightColor, borderBottomColor |
-| radii          | borderRadius, borderEndEndRadius, borderTopLeftRadius, borderEndStartRadius, borderTopRightRadius, borderStartEndRadius, borderStartStartRadius, borderBottomLeftRadius, borderBottomRightRadius |
-| sizes          | **size**, width, height, minWidth, maxWidth, minHeight, maxHeight, flexBasis, blockSize, inlineSize, maxBlockSize, minBlockSize, minInlineSize, maxInlineSize |
-| fonts          | fontFamily                                                   |
-| shadows        | boxShadow, textShadow, shadow                                |
-| borders        | border, borderTop, borderLeft, borderRight, borderBlock, borderBottom, borderInline, borderBlockEnd, borderInlineEnd, borderBlockStart, borderInlineStart |
+| slice          | properties                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| :------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| colors         | **bg**, fill, color, stroke, caretColor, borderColor, outlineColor, borderTopColor, backgroundColor, columnRuleColor, borderLeftColor, borderRightColor, borderBottomColor                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| radii          | borderRadius, borderEndEndRadius, borderTopLeftRadius, borderEndStartRadius, borderTopRightRadius, borderStartEndRadius, borderStartStartRadius, borderBottomLeftRadius, borderBottomRightRadius                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| sizes          | **size**, width, height, minWidth, maxWidth, minHeight, maxHeight, flexBasis, blockSize, inlineSize, maxBlockSize, minBlockSize, minInlineSize, maxInlineSize                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| fonts          | fontFamily                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| shadows        | boxShadow, textShadow, shadow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| borders        | border, borderTop, borderLeft, borderRight, borderBlock, borderBottom, borderInline, borderBlockEnd, borderInlineEnd, borderBlockStart, borderInlineStart                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | spacings       | **m, mt, ml, mr, mb, mx, my,** margin, marginTop, marginRight, marginBottom, marginLeft, marginBlock, marginBlockEnd, marginBlockStart, marginInline, marginInlineEnd, marginInlineStart, **p, pt, pl, pr, pb, px, py,** padding, paddingTop, paddingLeft, paddingRight, paddingBottom, paddingBlock, paddingBlockEnd, paddingBlockStart, paddingInline, paddingInlineEnd, paddingInlineStart, scrollPadding, scrollPaddingTop, scrollPaddingRight, scrollPaddingBottom, scrollPaddingLeft, inset, insetBlock, insetBlockEnd, insetBlockStart, insetInline, insetInlineEnd, insetInlineStart, top, right, bottom, left, gridGap, gridColumnGap, gridRowGap, gap, columnGap, rowGap |
-| zIndices       | zIndex                                                       |
-| fontSizes      | fontSize                                                     |
-| gradients      | **gradient, bgGradient, textGradient**                       |
-| opacities      | opacity                                                      |
-| fontWeights    | fontWeight                                                   |
-| lineHeights    | lineHeight                                                   |
-| breakpoints    | -                                                            |
-| transitions    | transition                                                   |
-| borderWidths   | borderWidth, borderTopWidth, borderLeftWidth, borderRightWidth, borderBlockWidth, borderBottomWidth, borderInlineWidth, borderBlockEndWidth, borderInlineEndWidth, borderBlockStartWidth, borderInlineStartWidth |
-| mediaQueries   | -                                                            |
-| borderStyles   | borderStyle, borderTopStyle, borderLeftStyle, borderRightStyle, borderBlockStyle, borderBottomStyle, borderInlineStyle, borderBlockEndStyle, borderInlineEndStyle, borderBlockStartStyle, borderInlineStartStyle |
-| letterSpacings | letterSpacing                                                |
-| components     | **componentName, variant**                                   |
+| zIndices       | zIndex                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| fontSizes      | fontSize                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| gradients      | **gradient, bgGradient, textGradient**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| opacities      | opacity                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| fontWeights    | fontWeight                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| lineHeights    | lineHeight                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| breakpoints    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| transitions    | transition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| borderWidths   | borderWidth, borderTopWidth, borderLeftWidth, borderRightWidth, borderBlockWidth, borderBottomWidth, borderInlineWidth, borderBlockEndWidth, borderInlineEndWidth, borderBlockStartWidth, borderInlineStartWidth                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| mediaQueries   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| borderStyles   | borderStyle, borderTopStyle, borderLeftStyle, borderRightStyle, borderBlockStyle, borderBottomStyle, borderInlineStyle, borderBlockEndStyle, borderInlineEndStyle, borderBlockStartStyle, borderInlineStartStyle                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| letterSpacings | letterSpacing                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| components     | **componentName, variant**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 > :information_source: Notice
 
 Some of the properties do not correspond to any CSS rule but they will be resolved to valid CSS rules.
 This table will clarify better:
 
-| property             | resolved                                                     |
-| -------------------- | ------------------------------------------------------------ |
-| bg                   | backgroundColor                                              |
-| size                 | height + width                                               |
-| m, mt, ml, mr, mb    | margin, marginTop, marginLeft, marginRight, marginBottom     |
-| mx                   | marginLeft + marginRight                                     |
-| my                   | marginTop + marginBottom                                     |
+| property             | resolved                                                      |
+| -------------------- | ------------------------------------------------------------- |
+| bg                   | backgroundColor                                               |
+| size                 | height + width                                                |
+| m, mt, ml, mr, mb    | margin, marginTop, marginLeft, marginRight, marginBottom      |
+| mx                   | marginLeft + marginRight                                      |
+| my                   | marginTop + marginBottom                                      |
 | p, pt, pl, pr, pb    | padding, paddingTop, paddingLeft, paddingRight, paddingBottom |
-| px                   | paddingLeft + paddingRight                                   |
-| py                   | paddingTop + paddingBottom                                   |
-| gradient, bgGradient | background                                                   |
-| textGradient         | background + backgroundClip + textFillColor                  |
+| px                   | paddingLeft + paddingRight                                    |
+| py                   | paddingTop + paddingBottom                                    |
+| gradient, bgGradient | background                                                    |
+| textGradient         | background + backgroundClip + textFillColor                   |
 
 **componentName, variant** will be explained better later in the [components slice](#components) section.
 
@@ -126,7 +126,7 @@ In this case the style `{ bg: 'primary', px: 'xs' }` will be resolved in:
 {
   "backgroundColor": "#fefefe",
   "paddingLeft": "16px",
-  "paddingRight": "16px",
+  "paddingRight": "16px"
 }
 ```
 
@@ -135,7 +135,7 @@ In this case the style `{ bg: 'primary', px: 'xs' }` will be resolved in:
 if your using typescript, all the previous properties, and the corresponding possible values are mapped inside a type called `Style`:
 
 ```typescript
-import { Style } from "@morfeo/spec";
+import { Style } from '@morfeo/spec';
 ```
 
 > :warning: since @morfeo/spec is re-exported by the other morfeo packages, you don't need to install directly @morfeo/spec to use it.
@@ -150,11 +150,19 @@ All the other slices are meant to make it easier to follow a `design language` b
 const Button = styled.button({});
 
 function ConfirmButton({ children }) {
-  return <Button px="s" bg="success">{children}</Button>
+  return (
+    <Button px="s" bg="success">
+      {children}
+    </Button>
+  );
 }
 
 function CancelButton({ children }) {
-  return <Button px="m" py="xs" bg="danger" color="primary">{children}</Button>
+  return (
+    <Button px="m" py="xs" bg="danger" color="primary">
+      {children}
+    </Button>
+  );
 }
 ```
 
@@ -204,11 +212,11 @@ Let's repeat the previous example to see the advantages of having components ins
 const Button = styled.button({ componentName: 'Button' });
 
 function ConfirmButton({ children }) {
-  return <Button variant="success">{children}</Button>
+  return <Button variant="success">{children}</Button>;
 }
 
 function CancelButton({ children }) {
-  return <Button variant="cancel">{children}</Button>
+  return <Button variant="cancel">{children}</Button>;
 }
 ```
 
@@ -243,11 +251,11 @@ type ComponentConfig = {
   variants?: {
     [key: string]: {
       tag?: string;
-  		style: Style;
-  		props?: any;
-    }
-  }
-}
+      style: Style;
+      props?: any;
+    };
+  };
+};
 ```
 
 - tag indicates the HTML tag used to render the component
@@ -255,7 +263,7 @@ type ComponentConfig = {
 - props indicates a set of attributes to be passed to the component
 - variants is an object where the key is the name of the variant and the value is the configuration for that variant.
 
-> It's important to know that the style generated for each component or component variant will **always** be consinstent with what is inside the configuration, *tag* and *props* instead are information that you can specify or not to properly render the component, libraries like **@morfeo/styled-components-web** uses this information to render the right tag an pass it the base properties.
+> It's important to know that the style generated for each component or component variant will **always** be consinstent with what is inside the configuration, _tag_ and _props_ instead are information that you can specify or not to properly render the component, libraries like **@morfeo/styled-components-web** uses this information to render the right tag an pass it the base properties.
 
 ## Typescript
 
@@ -263,8 +271,6 @@ type ComponentConfig = {
 
 The **Theme** interface and each slice are extendible, in this way you can define new theme slices or add other aliases to each slice.
 To do that we suggest using [Declaration Merging and Module Augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) to customize the definition of the Theme interface.
-
-
 
 Create a declaration file (for example `morfeo.d.ts` or `types.d.ts`):
 
@@ -274,14 +280,14 @@ import { ComponentConfig } from '@morfeo/spec';
 declare module '@morfeo/spec' {
   // add a new Components
   export interface Components extends MyComponents {
-    Title: ComponentConfig<'h1', 'h2', 'h3'>,
-    Text: ComponentConfig<'p1', 'p2', 'p3'>,
+    Title: ComponentConfig<'h1', 'h2', 'h3'>;
+    Text: ComponentConfig<'p1', 'p2', 'p3'>;
   }
-	// add a new color
+  // add a new color
   export interface Colors {
     myColor: string;
   }
-  
+
   // new theme slice
   export interface Theme {
     myCustomSlice: {

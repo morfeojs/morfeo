@@ -7,7 +7,7 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'VLK Studio',
+  organizationName: 'VLK-STUDIO',
   projectName: 'morfeo',
   themeConfig: {
     navbar: {
@@ -90,11 +90,11 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/VLK-STUDIO/morfeo/edit/main',
+          editUrl: 'https://github.com/VLK-STUDIO/morfeo/edit/main/docs/',
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/VLK-STUDIO/morfeo/edit/main',
+          editUrl: 'https://github.com/VLK-STUDIO/morfeo/edit/main/docs/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
