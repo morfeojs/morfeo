@@ -10,6 +10,9 @@ module.exports = {
   organizationName: 'VLK-STUDIO',
   projectName: 'morfeo',
   themeConfig: {
+    colorMode: {
+      defaultMode: 'dark',
+    },
     navbar: {
       title: '',
       logo: {
