@@ -40,3 +40,16 @@
     flex-direction: column;
   }
 }
+
+@media (max-width: 966px) {
+  .preview {
+    flex-direction: column;
+  }
+  .codeContainer span {
+    text-align: center;
+  }
+
+  .codeContainer {
+    margin-top: var(--space-xs);
+  }
+}
