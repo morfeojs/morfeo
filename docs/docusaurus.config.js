@@ -10,9 +10,6 @@ module.exports = {
   organizationName: 'VLK-STUDIO',
   projectName: 'morfeo',
   themeConfig: {
-    colorMode: {
-      defaultMode: 'dark',
-    },
     navbar: {
       title: '',
       logo: {
@@ -86,6 +83,24 @@ module.exports = {
        */
       playgroundPosition: 'bottom',
     },
+    colorMode: {
+      defaultMode: 'dark',
+    },
+    // algolia: {
+    //   apiKey: 'YOUR_API_KEY',
+    //   indexName: 'YOUR_INDEX_NAME',
+
+    //   // Optional: see doc section below
+    //   contextualSearch: true,
+
+    //   // Optional: see doc section below
+    //   appId: 'YOUR_APP_ID',
+
+    //   // Optional: Algolia search parameters
+    //   searchParameters: {},
+
+    //   //... other Algolia params
+    // },
   },
   presets: [
     [
@@ -101,6 +116,9 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        gtag: {
+          trackingId: 'G-Y3GE1C055X',
         },
       },
     ],
