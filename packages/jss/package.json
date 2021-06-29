@@ -14,7 +14,10 @@
   "keywords": [
     "design",
     "system",
-    "jss"
+    "morfeo",
+    "morfeo-js",
+    "jss",
+    "css-in-jss"
   ],
   "scripts": {
     "build": "rimraf build && tsc",
@@ -41,7 +44,7 @@
     "type": "git",
     "url": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/jss"
   },
-  "homepage": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/jss",
+  "homepage": "https://morfeo.dev",
   "bugs": {
     "url": "https://github.com/VLK-STUDIO/morfeo/issues"
   }

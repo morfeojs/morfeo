@@ -5,9 +5,6 @@ title: Getting started with Morfeo
 description: Introduction > Getting started
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 Morfeo it's a tool to build design systems based on a theme.
 
 It helps you to _follow a design language_ and write consistent UIs, whatever it is the framework of your choice.
@@ -72,7 +69,7 @@ Once you have a centralized theme, you need to parse this theme to generate the 
 This is an example with React
 
 ```tsx
-import { theme, parsers } from '@morfeo/core';
+import { parsers } from '@morfeo/web';
 
 function Button() {
   const style = parsers.resolve({ componentName: 'Button' });
@@ -81,11 +78,10 @@ function Button() {
 }
 ```
 
-Or if you want, you can use the hooks inside the package `@morfeo/hooks`
+In the case of `React`, we built a package that suites it better: [@morfeo/react](https://morfeo.dev/docs/Packages/react)
 
 ```tsx
-import { theme } from '@morfeo/core';
-import { useStyle } from '@morfeo/hooks';
+import { useStyle } from '@morfeo/react';
 
 function Button() {
   const style = useStyle({ componentName: 'Button' });

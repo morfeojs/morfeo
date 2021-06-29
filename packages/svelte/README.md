@@ -1,17 +1,12 @@
-<div align="center">
-<h1>@morfeo/svelte</h1>
-</div>
+# @morfeo/svelte
+
+![Morfeo logo](https://morfeo.dev/img/morfeo.png)
 
 **@morfeo/svelte** is part of the [morfeo](https://github.com/VLK-STUDIO/morfeo) eco-system: a framework-agnostic set of tools that will help you to build your next **design system** based on a single source of truth: the **theme**.
 
 ---
 
-<div align="center">
-  <a href="https://morfeo.dev">Documentation</a> |
-  <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
-  <a href="https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md">Contributing</a> |
-  <a href="https://morfeo.slack.com">Slack</a>
-</div>
+[Documentation](https://morfeo.dev) | [API](https://github.com/VLK-STUDIO/morfeo) | [Contributing](https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md) | [Slack](https://morfeo.slack.com)
 
 ---
 
@@ -99,9 +94,9 @@ const myTheme = {
 </script>
 
 <div>
-  <Button>Regular button</Button>
-  <Button variant="primary">Primary button</Button>
+  <button>Regular button</button>
+  <button variant="primary">Primary button</button>
   <!-- This will be rendered with the attribute type="submit" -->
-  <Button variant="submit">Submit button</Button>
+  <button variant="submit">Submit button</button>
 </div>
 ```

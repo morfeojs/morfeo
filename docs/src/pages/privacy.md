@@ -1,5 +1,5 @@
 ---
-title: Landing
+title: Privacy Policy
 ---
 
 ## Privacy Policy for morfeo
