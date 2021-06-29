@@ -11,10 +11,11 @@ module.exports = {
   projectName: 'morfeo',
   themeConfig: {
     gtag: {
-      trackingId: 'G-Y3GE1C055X',
+      trackingID: 'G-Y3GE1C055X',
+      anonymizeIP: true,
     },
     googleAnalytics: {
-      trackingId: 'UA-200678898-1',
+      trackingID: 'UA-200678898-1',
       anonymizeIP: true,
     },
     navbar: {
