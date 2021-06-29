@@ -1,21 +1,14 @@
-<div align="center">
-  <h1>@morfeo/styled-components-web</h1>
-</div>
+# @morfeo/styled-components-web
+
+![Morfeo logo](https://morfeo.dev/img/morfeo.png)
 
 **@morfeo/styled-components-web** is a wrapper of the **styled-components** library that allows you to quickly create **styled components** based on **the morfeo theme**.
 
-**@morfeo/styled-components-web** is part of the **@morfeo** eco-system, a set of **framework-agnostic** tools that help you to create beautiful design systems for your web and mobile apps.
-
-:information_source: Look at <a href="https://github.com/VLK-STUDIO/morfeo" target="_blank"><b>morfeo</b></a> to know more about **morfeo**
+**@morfeo/styled-components-web** is part of the [morfeo](https://morfeo.dev) eco-system, a set of **framework-agnostic** tools that help you to create beautiful design systems for your web and mobile apps.
 
 ---
 
-<div align="center">
-  <a href="https://morfeo.dev">Documentation</a> |
-  <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
-  <a href="https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md">Contributing</a> |
-  <a href="https://morfeo.slack.com">Slack</a>
-</div>
+[Documentation](https://morfeo.dev) | [API](https://github.com/VLK-STUDIO/morfeo) | [Contributing](https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md) | [Slack](https://morfeo.slack.com)
 
 ---
 

@@ -1,7 +1,6 @@
-<div align="center">
-<h1>morfeo</h1>
-</div>
-<a href="https://morfeo.dev">morfeo</a> is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the <strong>theme</strong>.
+![Morfeo logo](https://morfeo.dev/img/morfeo.png)
+
+[morfeo](https://morfeo.dev) is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the **theme**.
 
 ---
 
@@ -14,84 +13,23 @@
 
 ---
 
-> :warning: ​We are working to optimize the packages and make the documentation clear and complete. :warning:
->
-> Soon we'll provide documentation for each package, sandboxes with use cases, and a website full of articles.
-> If you want to start using morfeo we'll love to have your feedback, feel free to contribute by opening a pull request or just sending some love in our slack chat.
+[Documentation](https://morfeo.dev) | [API](https://github.com/VLK-STUDIO/morfeo) | [Contributing](https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md) | [Slack](https://morfeo.slack.com)
 
 ---
 
-<div align="center">
-  <a href="https://morfeo.dev">Documentation</a> |
-  <a href="https://github.com/VLK-STUDIO/morfeo">API</a> |
-  <a href="https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md">Contributing</a> |
-  <a href="https://morfeo.slack.com">Slack</a>
-</div>
+Morfeo it's a tool to build design systems based on a theme.
 
----
+It helps you to _follow a design language_ and write consistent UIs, whatever it is the framework of your choice.
 
-You can use it with any framework like [React](https://reactjs.org/), [React Native](https://reactnative.dev/), [Vue](https://v3.vuejs.org/), [Angular](https://angular.io/), [Svelte](https://svelte.dev/) or just Vanilla JS/TS.
+It's easy to use and, with the **browser extension**, your theme and your components are automatically documented.
 
-In other words, morfeo will transform this:
+## Features
 
-```typescript
-{
-  componentName: 'Button',
-  variant: 'primary',
-}
-```
-
-into this:
-
-```typescript
-{
-  color: '#e3e3e3',
-  backgroundColor: '#fff',
-  borderRadius: '20px',
-  '&:hover': {
-    opacity: 0.4,
-  },
-}
-```
-
-Or, into a plain css:
-
-```css
-.button-primary {
-  color: #e3e3e3;
-  background-color: #fff;
-  border-radius: 20px;
-}
-
-.button-primary:hover {
-  opacity: 0.4;
-}
-```
-
-By using a bit of magic explained [here](#how-it-works)
-
-morfeo is cross-framework, but to have a faster implementation and a better developer experience we create a set of packages that integrates morfeo with the most used frameworks like:
-
-**[@morfeo/react](https://www.npmjs.com/package/@morfeo/react)** made for React :atom_symbol:
-
-**[@morfeo/native](https://www.npmjs.com/package/@morfeo/native)** perfect for React native :calling::atom_symbol: ​
-
-**[@morfeo/svelte](https://www.npmjs.com/package/@morfeo/svelte)** matches perfectly with svelte :fire:
-
-**[@morfeo/styled-components-web](https://www.npmjs.com/package/@morfeo/styled-components-web)** deep integration with styled-components :nail_care:
-
-**@morfeo/angular** **_coming soon_**
-
-**[@morfeo/jss](https://www.npmjs.com/package/@morfeo/jss)** will generate plain css from _css-in-js_
-
-## Motivations
-
-When your application starts to grow, maintain UI consistency it's not easy.
-Even in popular applications we often face **wrong typographies**, different **color pallettes** used across different pages or inconsistent **spacings** in each component.
-
-These problems are even more frequent in large applications where different teams works on different features (maybe with different technologies and frameworks).
-
-**morfeo** solves this problem by sharing across all the application a customizable `theme` that contains the "language" of the application design and a `parser` that generate styles based on this language, in this way the UIs an the components are always consistent.
+- [Framework Agnostic](https://morfeo.dev/docs/Introduction/framework-agnostic)
+- [Single source of truth](https://morfeo.dev/docs/Introduction/single-source-of-truth)
+- [Dev Tool](https://morfeo.dev/docs/Introduction/dev-tool)
+- [Extendible](https://morfeo.dev/docs/Introduction/extendible)
+- [Easy to test](https://morfeo.dev/docs/Introduction/easy-to-testhttps://morfeo.dev/docs/Introduction/easy-to-test)
 
 ## How it works
 
@@ -143,7 +81,7 @@ Once you have a centralized theme, you need to parse this theme to generate the 
 This is an example with React
 
 ```tsx
-import { theme, parsers } from '@morfeo/core';
+import { parsers } from '@morfeo/core';
 
 function Button() {
   const style = parsers.resolve({ componentName: 'Button' });
@@ -152,11 +90,10 @@ function Button() {
 }
 ```
 
-Or if you want, you can use the hooks inside the package `@morfeo/hooks`
+In the case of `React`, we built a package that suites it better: [@morfeo/react](../Packages/react)
 
 ```tsx
-import { theme } from '@morfeo/core';
-import { useStyle } from '@morfeo/hooks';
+import { useStyle } from '@morfeo/react';
 
 function Button() {
   const style = useStyle({ componentName: 'Button' });
@@ -174,6 +111,11 @@ The value of `style` will be in this example equals to:
 }
 ```
 
-## Features
+## Motivations
 
-WIP
+When your application starts to grow, maintain UI consistency it's not easy.
+Even in popular applications we often face **wrong typographies**, different **color pallettes** used across different pages or inconsistent **spacings** in each component.
+
+These problems are even more frequent in large applications where different teams works on different features (maybe with different technologies and frameworks).
+
+**morfeo** solves this problem by sharing across all the application a customizable `theme` that contains the "language" of the application design and a `parser` that generate styles based on this language, in this way the UIs an the components are always consistent.
