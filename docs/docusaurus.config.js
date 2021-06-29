@@ -38,8 +38,20 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'core',
-              to: '/docs/introduction/getting-started',
+              label: 'Getting Started',
+              to: '/docs/Introduction/getting-started',
+            },
+            {
+              label: 'Dev Tool',
+              to: '/docs/Introduction/dev-tool',
+            },
+            {
+              label: 'Theme specification',
+              to: '/docs/theme-specification',
+            },
+            {
+              label: 'Packages',
+              to: '/docs/Packages/core',
             },
           ],
         },
@@ -71,6 +83,10 @@ module.exports = {
               label: 'GitHub',
               href: 'https://github.com/VLK-STUDIO/morfeo',
             },
+            {
+              label: 'Privacy Policy',
+              href: '/privacy',
+            },
           ],
         },
       ],
@@ -89,17 +105,9 @@ module.exports = {
     // algolia: {
     //   apiKey: 'YOUR_API_KEY',
     //   indexName: 'YOUR_INDEX_NAME',
-
-    //   // Optional: see doc section below
     //   contextualSearch: true,
-
-    //   // Optional: see doc section below
     //   appId: 'YOUR_APP_ID',
-
-    //   // Optional: Algolia search parameters
     //   searchParameters: {},
-
-    //   //... other Algolia params
     // },
   },
   presets: [
@@ -119,6 +127,10 @@ module.exports = {
         },
         gtag: {
           trackingId: 'G-Y3GE1C055X',
+        },
+        googleAnalytics: {
+          trackingId: 'UA-200678898-1',
+          anonymizeIP: true,
         },
       },
     ],
