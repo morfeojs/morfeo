@@ -10,6 +10,14 @@ module.exports = {
   organizationName: 'VLK-STUDIO',
   projectName: 'morfeo',
   themeConfig: {
+    gtag: {
+      trackingID: 'G-Y3GE1C055X',
+      anonymizeIP: true,
+    },
+    googleAnalytics: {
+      trackingID: 'UA-200678898-1',
+      anonymizeIP: true,
+    },
     navbar: {
       title: '',
       logo: {
@@ -124,13 +132,6 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-        },
-        gtag: {
-          trackingId: 'G-Y3GE1C055X',
-        },
-        googleAnalytics: {
-          trackingId: 'UA-200678898-1',
-          anonymizeIP: true,
         },
       },
     ],
