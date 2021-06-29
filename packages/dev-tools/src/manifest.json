@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "morfeo",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Developer Tools for @morfeo",
   "author": "Mauro Erta",
   "devtools_page": "./views/index.html",
@@ -24,8 +24,7 @@
   "externally_connectable": {
     "ids": ["*"]
   },
-  "permissions": ["storage", "scripting", "activeTab"],
-  "host_permissions": ["*://*/*"],
+  "permissions": ["storage"],
   "background": {
     "service_worker": "background.js"
   },
