@@ -3,10 +3,11 @@ import { theme } from '@morfeo/web';
 
 export function enableMorfeoDevTool() {
   theme.subscribe(newTheme => {
-    // @ts-ignore
-    window.postMessage({
-      type: MORFEO_DEVTOOLS,
-      theme: newTheme,
-    });
+    if (globalThis && globalThis.postMessage) {
+      globalThis.postMessage({
+        type: MORFEO_DEVTOOLS,
+        theme: newTheme,
+      });
+    }
   });
 }
