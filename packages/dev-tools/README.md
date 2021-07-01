@@ -13,7 +13,7 @@
 One of the most important feature of morfeo is the [dev-tool](https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl),
 with the dev tool yuo'always be able to see your theme and play with it.
 
-![dev tool](https:morfeo.dev/static/img/devtool/hero.jpeg)
+![dev tool](https://morfeo.dev/img/devtool/hero.jpeg)
 
 ## Installation
 
@@ -25,7 +25,7 @@ You can install the dev tool by going to chrome webstore and add it to your plug
 Once you have done the installation, open the chrome devtool by inspecting the page or simply typing:
 `alt + cmd + j`, you'll see a new tab called `Ⓜ️ Morfeo`:
 
-![dev tool](https:morfeo.dev/static/img/devtool/tabs.png)
+![dev tool](https://morfeo.dev/img/devtool/tabs.png)
 
 Try it right now to see a sample theme provided by us!
 
@@ -51,9 +51,7 @@ enableMorfeoDevTool();
 theme.set(myTheme);
 ```
 
-:::info
-In a future release the dev tool will probably be always enabled by default
-:::
+>In a future release the dev tool will probably be always enabled by default
 
 ## Contribute
 
