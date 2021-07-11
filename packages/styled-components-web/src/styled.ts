@@ -1,4 +1,4 @@
-import { parsers, theme, Theme, Style, Component } from '@morfeo/react';
+import { parsers, component, Theme, Style, Component } from '@morfeo/react';
 import styled, { ThemedStyledFunction } from 'styled-components';
 import { MorfeoStyled, ComponentTag } from './types';
 
@@ -18,11 +18,9 @@ export function attributesParser<P extends Style>(
   props: P,
   componentName: Component,
 ) {
-  const {
-    tag: componentTag,
-    props: componentProps = {},
-    variants = {},
-  } = theme.getValue('components', componentName);
+  const { tag: componentTag, props: componentProps = {} } =
+    component(componentName).get() || {};
+  const variants = component(componentName).getVariants();
   const variant = props.variant || componentProps.variant;
   if (!variant || !variants || !variants[variant]) {
     return {
@@ -50,7 +48,7 @@ function getDisplayName(componentName: string, variant?: string) {
 }
 
 const morfeoStyledHandler: MorfeoStyled = ((tag: ComponentTag) => {
-  const { tag: themeTag } = theme.getValue('components', tag as any) || {};
+  const { tag: themeTag } = component(tag as any).get() || {};
   const componentTag = themeTag || tag;
   const styledFunction =
     (styled[componentTag] as ThemedStyledFunction<
