@@ -101,4 +101,10 @@ describe('morfeoStyled', () => {
     const tree = renderer.create(<Incomplete />).toJSON();
     expect(tree).toHaveProperty('type', 'div');
   });
+
+  test('should create a component if the specified tag is valid but not related to a theme component', () => {
+    const RegularButton = morfeoStyled.button({});
+    const tree = renderer.create(<RegularButton />).toJSON();
+    expect(tree).toHaveProperty('type', 'button');
+  });
 });

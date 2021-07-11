@@ -1,6 +1,8 @@
-import { Component, ComponentConfig, Variant } from '@morfeo/spec';
+import { Component, ComponentConfig, Style, Variant } from '@morfeo/spec';
 import { deepMerge } from '../utils';
 import theme from './theme';
+
+type ComponentStyle = Omit<ComponentConfig, 'variants'>;
 
 type GetConfigProperty<C extends Component> = {
   name: C;
@@ -55,7 +57,7 @@ export function component<C extends Component>(name: C, variant?: Variant<C>) {
     return getConfig({ name, variant, property: 'tag' });
   }
 
-  function getStyle() {
+  function getStyle(): Style {
     return getConfig({ name, variant, property: 'style' });
   }
 
@@ -63,7 +65,7 @@ export function component<C extends Component>(name: C, variant?: Variant<C>) {
     return getConfig({ name, variant, property: 'props' });
   }
 
-  function getVariants() {
+  function getVariants(): Record<Variant<C>, ComponentStyle> {
     return getConfig({ name, property: 'variants' });
   }
 
