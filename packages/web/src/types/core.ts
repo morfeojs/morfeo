@@ -1,10 +1,16 @@
-import { Style } from '@morfeo/core';
-import { Properties } from 'csstype';
+import { Style, ResponsiveValue } from '@morfeo/core';
+import { Properties, StandardProperties } from 'csstype';
 import { PseudoProperty } from './pseudos';
 
-type WebStyle = Properties<string | number> &
+type CssTypeProperties = Properties<string | number>;
+
+type WebStyle = {
+  [K in PseudoProperty]?: Style;
+} &
   {
-    [K in PseudoProperty]?: Style;
+    [K in keyof CssTypeProperties]:
+      | CssTypeProperties[K]
+      | ResponsiveValue<CssTypeProperties[K]>;
   };
 
 declare module '@morfeo/core' {
