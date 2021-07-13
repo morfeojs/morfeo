@@ -92,6 +92,8 @@ export const lightTheme = {
     },
   },
   breakpoints: {
+    xs: '300px',
+    sm: '600px',
     md: '900px',
     lg: '1300px',
   },
