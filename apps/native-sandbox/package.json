@@ -10,8 +10,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@morfeo/native": "^0.1.6",
-    "@morfeo/hooks": "^0.1.6",
+    "@morfeo/native": "^0.1.7",
+    "@morfeo/hooks": "^0.1.7",
     "@types/styled-components-react-native": "^5.1.1",
     "react": "17.0.1",
     "react-native": "0.64.0",
