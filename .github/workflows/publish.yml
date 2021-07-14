@@ -15,6 +15,13 @@ jobs:
         with:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
+      - bash: |
+         for i in $(find -name package.json); do
+           git update-index --assume-unchanged $i
+         done
+         git update-index --assume-unchanged lerna.json
+
+        displayName: 'Publish preparation'
       - run: npm run reset
       # Publish to npm
       - run: npx lerna publish from-package --yes --no-verify-access
