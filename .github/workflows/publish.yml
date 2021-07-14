@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Publish packages
 on:
   release:
     types: [created]
@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
-      - bash: |
+      - run: |
          for i in $(find -name package.json); do
            git update-index --assume-unchanged $i
          done
