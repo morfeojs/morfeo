@@ -3,9 +3,9 @@
   "version": "0.0.7",
   "private": true,
   "dependencies": {
-    "@morfeo/react": "^0.1.6",
-    "@morfeo/dev-tools": "^0.1.6",
-    "@morfeo/styled-components-web": "^0.1.6",
+    "@morfeo/react": "^0.1.7",
+    "@morfeo/dev-tools": "^0.1.7",
+    "@morfeo/styled-components-web": "^0.1.7",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",

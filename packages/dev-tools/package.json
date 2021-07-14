@@ -5,7 +5,7 @@
     "email": "mauro@vlkstudio.com"
   },
   "private": false,
-  "version": "0.1.6",
+  "version": "0.1.7",
   "license": "MIT",
   "main": "build/index.js",
   "module": "build/index.js",
@@ -25,8 +25,8 @@
     "build": "npx snowpack build && npm run copy:manifest && npm run copy:typings"
   },
   "dependencies": {
-    "@morfeo/jss": "^0.1.6",
-    "@morfeo/web": "^0.1.6"
+    "@morfeo/jss": "^0.1.7",
+    "@morfeo/web": "^0.1.7"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.143",
