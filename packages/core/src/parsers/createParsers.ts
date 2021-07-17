@@ -14,6 +14,7 @@ import {
 } from '../types';
 import { baseParser } from './baseParser';
 import { sizeParsers } from './sizes';
+import { radiiParsers } from './radii';
 import { colorsParsers } from './colors';
 import { shadowsParsers } from './shadows';
 import { spacingsParsers } from './spacings';
@@ -39,6 +40,7 @@ const DEFAULT_PARSERS = allPropertiesKeys.reduce(
 
 const ADDITIONAL_PARSERS = {
   ...sizeParsers,
+  ...radiiParsers,
   ...colorsParsers,
   ...shadowsParsers,
   ...spacingsParsers,

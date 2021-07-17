@@ -8,4 +8,13 @@ export const radiiMap = [
   'borderStartStartRadius',
   'borderBottomLeftRadius',
   'borderBottomRightRadius',
+  'corner',
+  'cornerEndEnd',
+  'cornerTopLeft',
+  'cornerEndStart',
+  'cornerTopRight',
+  'cornerStartEnd',
+  'cornerStartStart',
+  'cornerBottomLeft',
+  'cornerBottomRight',
 ] as const;
