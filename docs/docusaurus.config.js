@@ -71,12 +71,8 @@ module.exports = {
               href: 'https://stackoverflow.com/questions/tagged/morfeo',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Slack',
+              href: 'https://app.slack.com/client/T0233Q163MF/C022XARRCA0',
             },
           ],
         },

@@ -1,8 +1,7 @@
-import { useState, useCallback } from 'react';
 import { ThemeProvider } from '@morfeo/styled-components-web';
 import { theme, Component, Variant, useStyles } from '@morfeo/react';
+import { Box, Button, Typography, ThemeToggle } from './components';
 import { darkTheme, lightTheme } from './theme';
-import { Box, Button, Typography } from './components';
 
 function getStyle<C extends Component = Component>(
   component: C,
@@ -23,13 +22,6 @@ function getStyle<C extends Component = Component>(
 }
 
 function App() {
-  const [light, setLight] = useState(true);
-
-  const onClick = useCallback(() => {
-    theme.set(light ? darkTheme : lightTheme);
-    setLight(prev => !prev);
-  }, [light]);
-
   const { containerStyle, blockStyle, codeStyle } = useStyles({
     containerStyle: {
       bg: 'secondary',
@@ -40,7 +32,7 @@ function App() {
       justifyContent: 'space-evenly',
       transition: 'light',
       pt: 's',
-      pb: 's'
+      pb: 's',
     },
     blockStyle: {
       flex: 1,
@@ -60,7 +52,7 @@ function App() {
     <ThemeProvider>
       <Box style={containerStyle}>
         <Box style={blockStyle}>
-          <Button onClick={onClick}>{light ? `🌙` : `☀️`}</Button>
+          <ThemeToggle light={lightTheme as any} dark={darkTheme as any} />
           <Typography variant="code" style={codeStyle}>
             {getStyle('Button')}
           </Typography>

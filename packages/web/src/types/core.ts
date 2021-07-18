@@ -1,5 +1,5 @@
 import { Style, ResponsiveValue } from '@morfeo/core';
-import { Properties, StandardProperties } from 'csstype';
+import { Properties } from 'csstype';
 import { PseudoProperty } from './pseudos';
 
 type CssTypeProperties = Properties<string | number>;
