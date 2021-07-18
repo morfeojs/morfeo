@@ -253,39 +253,3 @@ type ComponentConfig = {
 :::info
 It's important to know that the style generated for each component or component variant will **always** be consinstent with what is inside the configuration, _tag_ and _props_ instead are information that you can specify or not to properly render the component, libraries like **@morfeo/styled-components-web** uses this information to render the right tag an pass it the base properties.
 :::
-
-## Typescript
-
-**@morfeo/spec** is completely written in typescript, all the interfaces used to describe each theme slice can be found in the [theme-specification](#theme-specification) section.
-
-The **Theme** interface and each slice are extendible, in this way you can define new theme slices or add other aliases to each slice.
-To do that we suggest using [Declaration Merging and Module Augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) to customize the definition of the Theme interface.
-
-Create a declaration file (for example `morfeo.d.ts` or `types.d.ts`):
-
-```typescript
-import { ComponentConfig } from '@morfeo/spec';
-
-declare module '@morfeo/spec' {
-  // add a new Components
-  export interface Components extends MyComponents {
-    Title: ComponentConfig<'h1', 'h2', 'h3'>;
-    Text: ComponentConfig<'p1', 'p2', 'p3'>;
-  }
-  // add a new color
-  export interface Colors {
-    myColor: string;
-  }
-
-  // new theme slice
-  export interface Theme {
-    myCustomSlice: {
-      customValue: string;
-    };
-  }
-}
-```
-
-Here is the result:
-
-[![spec-augmentation.gif](https://i.postimg.cc/L6WmdNX2/spec-augmentation.gif)](https://postimg.cc/sv5k7P7N)
