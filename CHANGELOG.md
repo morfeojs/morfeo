@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.8 (2021-07-19)
+
+
+### Bug Fixes
+
+* benchmarks fixed ([fc59036](https://github.com/VLK-STUDIO/morfeo/commit/fc59036327137cae1b3886c3b6e0a5ca239e5d9f))
+* documentation ([31c7c6a](https://github.com/VLK-STUDIO/morfeo/commit/31c7c6a54e423e33134133ff3b582f61e5c7ac15))
+* fix wrong import on web-sandbox ([91cebec](https://github.com/VLK-STUDIO/morfeo/commit/91cebec1f7be8b2e33516801ec4a1220e1824033))
+* fixed typing of  packages ([57267c5](https://github.com/VLK-STUDIO/morfeo/commit/57267c5f904cbeece433e7bb2573fd9d7a4b3fd4))
+* fixed wrong import inside @morfeo/dev-tools package ([a7796e9](https://github.com/VLK-STUDIO/morfeo/commit/a7796e973ae77c07900dc6461105b542b93068bf))
+* google analytics ([fdc31af](https://github.com/VLK-STUDIO/morfeo/commit/fdc31af46602eed2955febede7e898a759299c22))
+* google analytics ([3e68797](https://github.com/VLK-STUDIO/morfeo/commit/3e68797ba6928b3a993b40ac9ba65d3bd1ce6954))
+* package-lock re-introduced ([658b335](https://github.com/VLK-STUDIO/morfeo/commit/658b33533b316b51b55799be916830df7daaa5a9))
+* prettier ([2c39593](https://github.com/VLK-STUDIO/morfeo/commit/2c395934ac63ba5ef7b816a3eb400ebc281298f6))
+* readme files fix and licenses added ([c71286a](https://github.com/VLK-STUDIO/morfeo/commit/c71286acf948e65eacb5e0ac808cc9425d576351))
+* responsive fix and blog post added ([ce4ecd5](https://github.com/VLK-STUDIO/morfeo/commit/ce4ecd5bd2420e4457aad607a2132198f3afdc8b))
+* responsive values typing ([648c4b1](https://github.com/VLK-STUDIO/morfeo/commit/648c4b18d7752344a6b9eda4f5b48e4bb6e5b95e)), closes [#46](https://github.com/VLK-STUDIO/morfeo/issues/46)
+* styled-components-web packages ([9f41713](https://github.com/VLK-STUDIO/morfeo/commit/9f417138f21bd433783d8e95b922d391ced089e9)), closes [#42](https://github.com/VLK-STUDIO/morfeo/issues/42)
+* used globalThis instead of window inside the dev tool ([6f028eb](https://github.com/VLK-STUDIO/morfeo/commit/6f028eb4f2f1e42f14755bc8c41c26e7bbaf9a3c))
+* **fonts:** fix package.json repo urls ([1f0cafe](https://github.com/VLK-STUDIO/morfeo/commit/1f0cafe9822ed8fe6b127bc6296b3443830f575e))
+* **fonts:** prettier ([c97f825](https://github.com/VLK-STUDIO/morfeo/commit/c97f8250b6eae14753ceade69f03484c25d40e66))
+
+
+### Features
+
+* added docusaurus and morfeo logo ([3dc54f4](https://github.com/VLK-STUDIO/morfeo/commit/3dc54f4cf0037c3afd93678f8f3004bcf07398ae))
+* added privacy policy page ([162a75a](https://github.com/VLK-STUDIO/morfeo/commit/162a75a48b2ec8aa395a004716da84ab83484ddd))
+* added pubish config to packages ([23241fc](https://github.com/VLK-STUDIO/morfeo/commit/23241fcb4a1ef76615661e5b8e9e4ed53060b912))
+* added slices and optimizations to dev tool ([a53f5e8](https://github.com/VLK-STUDIO/morfeo/commit/a53f5e801f2b3a9baca5adc5a45c112de628b086))
+* added slices handled by dev tools ([392779f](https://github.com/VLK-STUDIO/morfeo/commit/392779f9a122965b852a9af85508060c5d71dd59))
+* all css props mapped and styled components package improved ([c3771c6](https://github.com/VLK-STUDIO/morfeo/commit/c3771c64b02fc7bbfa6137bff70d1acae8e7932a))
+* cache and benchmarks ([aa360dd](https://github.com/VLK-STUDIO/morfeo/commit/aa360ddfb44ce2be66a0513783ddec1ff6b42e09))
+* closes [#51](https://github.com/VLK-STUDIO/morfeo/issues/51) ([0ab4270](https://github.com/VLK-STUDIO/morfeo/commit/0ab4270a0d054bd67f42c2d74fdecee24349de1a))
+* component utility introduced ([d502a59](https://github.com/VLK-STUDIO/morfeo/commit/d502a59f3cd72ebcf0d387a092e4ca43a70da9ac))
+* cookie acceptance added to docusaurus website ([b7b5b23](https://github.com/VLK-STUDIO/morfeo/commit/b7b5b23f27ac5e349f404a8e35a0c4c4c4496a53))
+* dev tool documentation added ([0c18f58](https://github.com/VLK-STUDIO/morfeo/commit/0c18f58b7c52840e652b12704c9379cf557c0214))
+* dev tool refactor ([669d709](https://github.com/VLK-STUDIO/morfeo/commit/669d709f312f919cab51375b4c465aa6584b8898))
+* dev tools improvements ([3b5b9d9](https://github.com/VLK-STUDIO/morfeo/commit/3b5b9d96b94a06bf32ee3cebe9351a1e4c9660e0))
+* docs improvements ([c25202e](https://github.com/VLK-STUDIO/morfeo/commit/c25202ee79424cfb020606f7509755168186308e))
+* documentation improvements ([4ad3b5d](https://github.com/VLK-STUDIO/morfeo/commit/4ad3b5d7f35cd9c1ad1532e5367dec21594d8ff4))
+* flatted parser.resolve method ([5ce2c10](https://github.com/VLK-STUDIO/morfeo/commit/5ce2c101097b7ab28d985b108ee079e07f8bacce))
+* hooks package added ([0637789](https://github.com/VLK-STUDIO/morfeo/commit/0637789d23e12bb3dfb295039e92d2a4f815927a))
+* introucing svelte package and sandbox ([0e8e9e2](https://github.com/VLK-STUDIO/morfeo/commit/0e8e9e22f38576730c73442714c1a611847d9bc7))
+* jss package and fix to native test ([30b6c4a](https://github.com/VLK-STUDIO/morfeo/commit/30b6c4a1551ee7feb66a31c48f38e1841a6ebdb2))
+* native package ([356cbd6](https://github.com/VLK-STUDIO/morfeo/commit/356cbd6de9084be2a02db90073fb8fcbb8191641))
+* readme files added to all the packages ([819e60b](https://github.com/VLK-STUDIO/morfeo/commit/819e60bb536be471f373c8d3f7cbd5b331c1434c))
+* replacement of assets inside docs and dev-tool, wip of algolia search ([c15efe1](https://github.com/VLK-STUDIO/morfeo/commit/c15efe1b92d38f27ce62d0738bbeabf0cc800e9e))
+* website link replaced inside readme files ([1e55a6d](https://github.com/VLK-STUDIO/morfeo/commit/1e55a6d458d2873d09efd5fad5100cbbae382057))
+* **@morfeo/web:** reset css utility ([41c291a](https://github.com/VLK-STUDIO/morfeo/commit/41c291a2b319f58ace13295e5af4a0d35a5ed97d))
+* **@morfeo/web:** reset css utility prettier ([6695398](https://github.com/VLK-STUDIO/morfeo/commit/6695398ceff2b26c76a885f9e6091563411563cd))
+* **fonts:** new @morfeo/fonts package ([68ba391](https://github.com/VLK-STUDIO/morfeo/commit/68ba39193db598b0506cc584f79e3c08facbb4da))
+* **react:** import replacing ([d07c084](https://github.com/VLK-STUDIO/morfeo/commit/d07c08454adc890be71bcd577c7922eff7da043d))
+* **svelte:** added support to default properties, docs and tests ([a734021](https://github.com/VLK-STUDIO/morfeo/commit/a73402130efa829bee3d8c5a72b636ca445148bc))
+* gradients parsers added to @morfeo/web package ([9bcac4e](https://github.com/VLK-STUDIO/morfeo/commit/9bcac4e9dbccd52afc53b5308bb7273659a58c19))
+* lcov reeporter added ([2be77a6](https://github.com/VLK-STUDIO/morfeo/commit/2be77a6c26e66c1b024c04fa50bee201efd65060))
+* morfeo dev tool init ([e7975d7](https://github.com/VLK-STUDIO/morfeo/commit/e7975d772a368a1cf5cd2e300953bfefa70baa42))
+* replaced space slice with spacings ([9aaf30a](https://github.com/VLK-STUDIO/morfeo/commit/9aaf30a705261c32c778e82d51ca7651c9263457))
+* **react:** introducing react package ([f99da40](https://github.com/VLK-STUDIO/morfeo/commit/f99da40a8b8fe0c440002e1065dbc73f7376f732))
+* styled components for web ([e5dee4c](https://github.com/VLK-STUDIO/morfeo/commit/e5dee4c65277089b282b3ba7da3696451c559b83))
+* update callback to jss function ([6218907](https://github.com/VLK-STUDIO/morfeo/commit/62189076da38078df33796fb16576b13ecdeeb85))
+* useStyles hooks added ([fee9d48](https://github.com/VLK-STUDIO/morfeo/commit/fee9d48fdd60cbcc4a8ef9221df93f566371d032))
+* useSubscribe hook introduced ([8de68f2](https://github.com/VLK-STUDIO/morfeo/commit/8de68f25ed0118009d0c26c913acb6cbca697020))
+* web sandbox improvement ([d25758c](https://github.com/VLK-STUDIO/morfeo/commit/d25758c76b2769d55c8852c9f124ce1c4fe3c7b8))
+* web styled-components package introduced ([a7677c3](https://github.com/VLK-STUDIO/morfeo/commit/a7677c3a8f3c561101b0eba0b87e7fa983677cf9))
+
+
+### Reverts
+
+* Revert "Update getting-started.mdx" ([8a275d9](https://github.com/VLK-STUDIO/morfeo/commit/8a275d91fe9bf9a20bc68c32976bdcdb72db9c40))
+
+
+
+
+
 ## 0.1.7 (2021-07-14)
 
 
