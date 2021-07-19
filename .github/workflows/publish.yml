@@ -32,6 +32,6 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: '@morfeo'
       # Publish to GitHub Packages
-      - run: npm run publish
+      - run: npx lerna publish from-package --yes --no-verify-access
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
