@@ -106,13 +106,11 @@ module.exports = {
     colorMode: {
       defaultMode: 'dark',
     },
-    // algolia: {
-    //   apiKey: 'YOUR_API_KEY',
-    //   indexName: 'YOUR_INDEX_NAME',
-    //   contextualSearch: true,
-    //   appId: 'YOUR_APP_ID',
-    //   searchParameters: {},
-    // },
+    algolia: {
+      apiKey: 'ec3249f2a49ea66e665613d20d693336',
+      indexName: 'morfeo',
+      algoliaOptions: {},
+    },
   },
   presets: [
     [
