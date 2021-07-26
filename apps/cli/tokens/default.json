@@ -1,0 +1,174 @@
+{
+  "colors": {
+    "grey": {
+      "value": "#bdc3c7",
+      "comment": "value referred to morfeo's `colors` theme slice"
+    },
+    "primary": {
+      "value": "white",
+      "comment": "value referred to morfeo's `colors` theme slice"
+    },
+    "danger": {
+      "value": "#e74c3c",
+      "comment": "value referred to morfeo's `colors` theme slice"
+    },
+    "secondary": {
+      "value": "black",
+      "comment": "value referred to morfeo's `colors` theme slice"
+    },
+    "success": {
+      "value": "#2ecc71",
+      "comment": "value referred to morfeo's `colors` theme slice"
+    },
+    "accent": {
+      "value": "#3498db",
+      "comment": "value referred to morfeo's `colors` theme slice"
+    },
+    "warning": {
+      "value": "#f39c12",
+      "comment": "value referred to morfeo's `colors` theme slice"
+    },
+    "transparent": {
+      "value": "transparent",
+      "comment": "value referred to morfeo's `colors` theme slice"
+    }
+  },
+  "mediaQueries": {
+    "xs": {
+      "value": "\"@media (min-width: 300px)\"",
+      "comment": "value referred to morfeo's `mediaQueries` theme slice"
+    },
+    "sm": {
+      "value": "\"@media (min-width: 600px)\"",
+      "comment": "value referred to morfeo's `mediaQueries` theme slice"
+    },
+    "md": {
+      "value": "\"@media (min-width: 900px)\"",
+      "comment": "value referred to morfeo's `mediaQueries` theme slice"
+    },
+    "lg": {
+      "value": "\"@media (min-width: 1300px)\"",
+      "comment": "value referred to morfeo's `mediaQueries` theme slice"
+    }
+  },
+  "fonts": {
+    "regular": {
+      "value": "Roboto",
+      "comment": "value referred to morfeo's `fonts` theme slice"
+    }
+  },
+  "gradients": {
+    "primary": {
+      "value": "linear-gradient(90deg, #2ecc71 0%, #3498db 100%)",
+      "comment": "value referred to morfeo's `gradients` theme slice"
+    },
+    "secondary": {
+      "value": "linear-gradient(0deg, #3498db 0%, #2ecc71 100%)",
+      "comment": "value referred to morfeo's `gradients` theme slice"
+    },
+    "loading": {
+      "value": "linear-gradient(90deg, transparent 0%, #bdc3c7 50%, transparent 100%)",
+      "comment": "value referred to morfeo's `gradients` theme slice"
+    }
+  },
+  "radii": {
+    "m": {
+      "value": "10px",
+      "comment": "value referred to morfeo's `radii` theme slice"
+    },
+    "round": {
+      "value": "50%",
+      "comment": "value referred to morfeo's `radii` theme slice"
+    }
+  },
+  "spacings": {
+    "s": {
+      "value": "40px",
+      "comment": "value referred to morfeo's `spacings` theme slice"
+    },
+    "m": {
+      "value": "100px",
+      "comment": "value referred to morfeo's `spacings` theme slice"
+    }
+  },
+  "lineHeights": {
+    "s": {
+      "value": 1.7,
+      "comment": "value referred to morfeo's `lineHeights` theme slice"
+    }
+  },
+  "letterSpacings": {
+    "s": {
+      "value": 1.6,
+      "comment": "value referred to morfeo's `letterSpacings` theme slice"
+    }
+  },
+  "fontSizes": {
+    "s": {
+      "value": "14px",
+      "comment": "value referred to morfeo's `fontSizes` theme slice"
+    }
+  },
+  "sizes": {
+    "s": {
+      "value": "10px",
+      "comment": "value referred to morfeo's `sizes` theme slice"
+    },
+    "m": {
+      "value": "100px",
+      "comment": "value referred to morfeo's `sizes` theme slice"
+    },
+    "xl": {
+      "value": "200px",
+      "comment": "value referred to morfeo's `sizes` theme slice"
+    }
+  },
+  "borderWidths": {
+    "s": {
+      "value": "2px",
+      "comment": "value referred to morfeo's `borderWidths` theme slice"
+    }
+  },
+  "shadows": {
+    "none": {
+      "value": "0px 0px 0px transparent",
+      "comment": "value referred to morfeo's `shadows` theme slice"
+    },
+    "soft": {
+      "value": "0px 2px 4px #3498db",
+      "comment": "value referred to morfeo's `shadows` theme slice"
+    },
+    "medium": {
+      "value": "0px 3px 4px black",
+      "comment": "value referred to morfeo's `shadows` theme slice"
+    },
+    "strong": {
+      "value": "0px 4px 4px black",
+      "comment": "value referred to morfeo's `shadows` theme slice"
+    }
+  },
+  "breakpoints": {
+    "xs": {
+      "value": "300px",
+      "comment": "value referred to morfeo's `breakpoints` theme slice"
+    },
+    "sm": {
+      "value": "600px",
+      "comment": "value referred to morfeo's `breakpoints` theme slice"
+    },
+    "md": {
+      "value": "900px",
+      "comment": "value referred to morfeo's `breakpoints` theme slice"
+    },
+    "lg": {
+      "value": "1300px",
+      "comment": "value referred to morfeo's `breakpoints` theme slice"
+    }
+  },
+  "transitions": {
+    "light": {
+      "value": "all 0.5s",
+      "comment": "value referred to morfeo's `transitions` theme slice"
+    }
+  }
+}

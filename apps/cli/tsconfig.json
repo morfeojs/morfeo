@@ -1,12 +1,10 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "declaration": true,
-    "importHelpers": true,
-    "module": "commonjs",
+    "composite": true,
     "outDir": "lib",
     "rootDir": "src",
-    "strict": true,
-    "target": "es2017"
+    "module": "commonjs",
   },
   "include": [
     "src/**/*"

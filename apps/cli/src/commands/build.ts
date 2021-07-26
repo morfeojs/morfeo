@@ -1,10 +1,7 @@
 import * as path from 'path';
-import * as StyleDictionary from 'style-dictionary';
 import { Command, flags } from '@oclif/command';
-import { parser } from '../utils';
-
-StyleDictionary.extend(path.join(__dirname, '../..', 'config.json'));
-StyleDictionary.cleanAllPlatforms();
+import { morfeoToStyleDictionary } from '../utils';
+import { theme } from '@morfeo/web';
 
 export default class Build extends Command {
   static description = 'build design tokens based on your theme';
@@ -41,10 +38,10 @@ export default class Build extends Command {
       this.printMissingThemeError();
     }
 
-    const localThemes = require(path.resolve(themePath));
+    const localTheme = require(path.resolve(themePath));
 
-    const css = parser(localThemes.lightTheme, flags.name);
+    theme.set(localTheme.default);
 
-    this.log(css);
+    morfeoToStyleDictionary(flags.name);
   }
 }

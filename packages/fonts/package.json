@@ -7,7 +7,7 @@
   "private": false,
   "version": "0.1.8",
   "license": "MIT",
-  "main": "build/index.js",
+  "main": "commonjs/index.js",
   "module": "build/index.js",
   "types": "build/index",
   "typings": "build/index",
@@ -21,6 +21,7 @@
   ],
   "scripts": {
     "build": "rimraf build && tsc",
+    "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
     "watch": "tsc -w"
   },
   "publishConfig": {

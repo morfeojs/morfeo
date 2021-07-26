@@ -1,28 +1,4 @@
-const gradients = {
-  primary: {
-    start: 0,
-    angle: 90,
-    end: 100,
-    colors: ['success', 'accent'],
-    kind: 'linear',
-  },
-  secondary: {
-    start: 0,
-    end: 100,
-    angle: 0,
-    colors: ['accent', 'success'],
-    kind: 'linear',
-  },
-  loading: {
-    start: 0,
-    end: 100,
-    angle: 90,
-    colors: ['transparent', 'grey', 'transparent'],
-    kind: 'linear',
-  },
-};
-
-export const lightTheme = {
+export default {
   colors: {
     grey: '#bdc3c7',
     primary: 'white',
@@ -36,7 +12,29 @@ export const lightTheme = {
   fonts: {
     regular: 'Roboto',
   },
-  gradients,
+  gradients: {
+    primary: {
+      start: 0,
+      angle: 90,
+      end: 100,
+      colors: ['success', 'accent'],
+      kind: 'linear',
+    },
+    secondary: {
+      start: 0,
+      end: 100,
+      angle: 0,
+      colors: ['accent', 'success'],
+      kind: 'linear',
+    },
+    loading: {
+      start: 0,
+      end: 100,
+      angle: 90,
+      colors: ['transparent', 'grey', 'transparent'],
+      kind: 'linear',
+    },
+  },
   radii: {
     m: '10px',
     round: '50%',
@@ -92,6 +90,8 @@ export const lightTheme = {
     },
   },
   breakpoints: {
+    xs: '300px',
+    sm: '600px',
     md: '900px',
     lg: '1300px',
   },

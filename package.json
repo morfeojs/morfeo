@@ -7,7 +7,7 @@
   },
   "scripts": {
     "clean": "lerna clean --yes",
-    "build": "lerna run build",
+    "build": "lerna run build && npm run build:commonjs",
     "build:commonjs": "lerna run build:commonjs",
     "watch": "lerna run watch",
     "reset": "npm run clean && npm i && lerna bootstrap && npm run build",
