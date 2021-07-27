@@ -1,22 +1,54 @@
 import { expect, test } from '@oclif/test';
 import * as path from 'path';
 import * as fs from 'fs';
+import { rmdir } from '../utils/rmdir';
 
 const THEME_PATH = path.join(__dirname, '../utils/theme.ts');
-const BUILD_PATH = path.join(__dirname, '../../build');
-const TOKENS_PATH = path.join(__dirname, '../../tokens');
+const BUILD_PATH = path.join(__dirname, '../../morfeo');
 const THEME_NAME = 'light';
 
-function fileExists(themeName: string) {
-  const tokenPath = path.join(TOKENS_PATH, `${themeName}.json`);
-  return fs.existsSync(tokenPath);
+function fileExists(fileName: string) {
+  const filePath = path.join(BUILD_PATH, `${fileName}`);
+  return fs.existsSync(filePath);
 }
+
+describe('should create a folder called `morfeo` is it does not exists', () => {
+  beforeEach(() => {
+    rmdir(BUILD_PATH);
+  });
+
+  test
+    .command(['build', THEME_PATH])
+    .it(`should create a file called style.css`, () => {
+      const exists = fileExists('');
+
+      expect(exists).to.be.true;
+    });
+});
 
 describe('build command', () => {
   test
+    .stderr()
+    .command(['build'])
+    .catch(err => {
+      expect(err.message).to.contain(
+        'You need to specify the path to the theme',
+      );
+    })
+    .it(`should fail if no theme is passed`);
+
+  test
     .command(['build', THEME_PATH])
-    .it(`should create a file called default.json if no name is passed`, () => {
-      const exists = fileExists('default');
+    .it(`should create a file called variables.css`, () => {
+      const exists = fileExists('variables.css');
+
+      expect(exists).to.be.true;
+    });
+
+  test
+    .command(['build', THEME_PATH])
+    .it(`should create a file called style.css`, () => {
+      const exists = fileExists('style.css');
 
       expect(exists).to.be.true;
     });
@@ -24,42 +56,13 @@ describe('build command', () => {
   test
     .command(['build', THEME_PATH, '--name', THEME_NAME])
     .it(
-      `should create a file called ${THEME_NAME}.json inside tokens directory`,
+      `should exist a scoped block with css variables inside the file "variables.css"`,
       () => {
-        const exists = fileExists(THEME_NAME);
+        const css = fs.readFileSync(path.join(BUILD_PATH, 'variables.css'), {
+          encoding: 'utf8',
+        });
 
-        expect(exists).to.be.true;
+        expect(css).to.contain(`data-morfeo-theme="${THEME_NAME}"`);
       },
     );
-
-  test
-    .stdout()
-    .stderr()
-    .command(['build'])
-    .catch(console.log)
-    .it('should fail if no theme path is passed', ctx => {
-      expect(ctx.stdout).to.contain(
-        'You need to specify the path to the theme like:',
-      );
-    });
-});
-
-describe('when build and tokens folder already exists', () => {
-  before(() => {
-    const paths = [BUILD_PATH, TOKENS_PATH];
-
-    paths.forEach(dirPath => {
-      if (!fs.existsSync(dirPath)) {
-        fs.mkdirSync(dirPath);
-      }
-    });
-  });
-
-  test
-    .stdout()
-    .command(['build', THEME_PATH])
-    .it('should remove build and tokens folder', ctx => {
-      expect(ctx.stdout).to.contain('old build directory removed');
-      expect(ctx.stdout).to.contain('old tokens directory removed');
-    });
 });

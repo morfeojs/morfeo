@@ -1,6 +1,6 @@
 import * as path from 'path';
 import { Command, flags } from '@oclif/command';
-import { morfeoToStyleDictionary } from '../utils';
+import { parseTheme } from '../utils';
 import { theme } from '@morfeo/web';
 
 export default class Build extends Command {
@@ -42,6 +42,6 @@ export default class Build extends Command {
 
     theme.set(localTheme.default);
 
-    morfeoToStyleDictionary(flags.name);
+    parseTheme(flags.name);
   }
 }

@@ -1,1 +1,1 @@
-export * from './morfeoToStyleDictionary';
+export * from './parseTheme';

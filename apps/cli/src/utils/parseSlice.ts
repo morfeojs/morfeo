@@ -1,18 +1,19 @@
-import {
-  deepMerge,
-  theme,
-  parsers,
-  Theme,
-  ThemeKey,
-  BreakPoint,
-} from '@morfeo/web';
-import { TO_BE_PARSED_SLICES_LIST } from '../constants';
+import { Theme, theme, parsers, ThemeKey } from '@morfeo/web';
+import { paramCase } from 'change-case';
+import { SLICES_TO_BE_PARSED } from '../constants';
 
-function getValue<Key extends ThemeKey>(
+function getVariableName<Key extends ThemeKey>(
+  sliceName: Key,
+  value: keyof Theme[Key],
+) {
+  return `--${paramCase(`${sliceName}-${value}`)}`;
+}
+
+function getCssValue<Key extends ThemeKey>(
   sliceName: Key,
   attribute: keyof Theme[Key],
 ) {
-  const toBeParsed = TO_BE_PARSED_SLICES_LIST.find(
+  const toBeParsed = SLICES_TO_BE_PARSED.find(
     config => config.name === sliceName,
   );
   if (toBeParsed) {
@@ -26,62 +27,37 @@ function getValue<Key extends ThemeKey>(
   return theme.getValue(sliceName, attribute);
 }
 
-function getConfig<Key extends ThemeKey>(
+function getValue<Key extends ThemeKey>(
   sliceName: Key,
   attribute: keyof Theme[Key],
 ) {
-  const value = getValue(sliceName, attribute);
-  const attributeConfig = {
-    [attribute]: {
-      value,
-      comment: `value referred to morfeo's \`${sliceName}\` theme slice`,
-    },
-  };
+  const variableName = getVariableName(sliceName, attribute);
 
-  return { [sliceName]: attributeConfig };
-}
-
-function makeMediaQueriesSlice() {
-  const breakpoints = theme.getSlice('breakpoints');
-  const keys = Object.keys(breakpoints) as BreakPoint[];
-
-  const values = keys.reduce(
-    (acc, curr) => {
-      return {
-        bg: {
-          ...acc.bg,
-          [curr]: 'any value',
-        },
-      };
-    },
-    { bg: {} },
+  const toBeParsed = SLICES_TO_BE_PARSED.find(
+    config => config.name === sliceName,
   );
-
-  const style = parsers.resolve(values);
-  const mediaQueries = Object.keys(style);
-
-  return {
-    mediaQueries: keys.reduce(
-      (acc, curr, index) => ({
-        ...acc,
-        [curr]: {
-          value: `"${mediaQueries[index]}"`,
-          comment: "value referred to morfeo's `mediaQueries` theme slice",
-        },
-      }),
-      {},
-    ),
-  };
+  return toBeParsed
+    ? theme.getValue(sliceName, attribute)
+    : `var(${variableName})`;
 }
 
 export function parseSlice<Key extends ThemeKey>(sliceName: Key) {
   const slice = theme.getSlice(sliceName);
-  const values = Object.keys(slice) as (keyof Theme[Key])[];
+  const aliases = Object.keys(slice) as (keyof Theme[Key])[];
+  let css = ``;
+  let object = {};
 
-  const object = values.reduce((acc, curr) => {
-    const config = getConfig(sliceName, curr);
-    return deepMerge(acc, config);
-  }, {});
+  aliases.forEach(curr => {
+    const variableName = getVariableName(sliceName, curr);
+    const cssValue = getCssValue(sliceName, curr);
+    const value = getValue(sliceName, curr);
 
-  return deepMerge(object, makeMediaQueriesSlice());
+    object = {
+      ...object,
+      [curr]: value,
+    };
+    css += `\n\t${variableName}: ${cssValue};`;
+  }, object);
+
+  return { css, object };
 }

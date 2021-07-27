@@ -6,9 +6,15 @@ type SliceToBeParsed = {
   property: string;
 };
 
-export const BLACK_LIST: ThemeKey[] = ['components', 'mediaQueries'];
+/**
+ * The values of these slices can't be represent as css variables
+ */
+export const SLICES_TO_BE_EXCLUDED: ThemeKey[] = ['components', 'mediaQueries'];
 
-export const TO_BE_PARSED_SLICES_LIST: SliceToBeParsed[] = [
+/**
+ * The value of those theme slices has to be parsed before to become css variables
+ */
+export const SLICES_TO_BE_PARSED: SliceToBeParsed[] = [
   {
     name: 'shadows',
     styleProp: 'shadow',
