@@ -33,23 +33,25 @@ USAGE
 # Commands
 
 <!-- commands -->
-* [`morfeo build path/to/theme.(ts|js|json) [--name="theme name"]`](#morfeo-build-pathtothemetsjsjson---nametheme-name)
+* [`morfeo build path/to/theme`](#morfeo-build-pathtotheme)
 * [`morfeo help [COMMAND]`](#morfeo-help-command)
 
-## `morfeo build path/to/theme.(ts|js|json) [--name="theme name"]`
+## `morfeo build path/to/theme`
 
-build design tokens based on your theme
+build css styles based on your themes
 
 ```
 USAGE
-  $ morfeo build path/to/theme.(ts|js|json) [--name="theme name"]
+  $ morfeo build path/to/theme
 
 OPTIONS
-  -h, --help       show CLI help
-  -n, --name=name  [default: default] an identifier for the passed theme, for example "light", "dark"
+  -b, --build=build    the path where the generated css files will be placed
+  -c, --config=config  [default: .morfeorc] the path to the configuration file
+  -h, --help           build css styles based on your themes
+  -n, --name=name      [default: default] an identifier for the passed theme, for example "light", "dark"
 
 EXAMPLE
-  $ morfeo build path/to/theme.ts
+  $ morfeo build path/to/theme.ts --name="light"
 ```
 
 _See code: [src/commands/build.ts](https://github.com/VLK-STUDIO/morfeo/blob/v0.0.0/src/commands/build.ts)_

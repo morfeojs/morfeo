@@ -7,7 +7,7 @@ type SliceToBeParsed = {
 };
 
 /**
- * The values of these slices can't be represent as css variables
+ * The values of these slices can't be represented as css variables
  */
 export const SLICES_TO_BE_EXCLUDED: ThemeKey[] = ['components', 'mediaQueries'];
 

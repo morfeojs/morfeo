@@ -1,13 +1,11 @@
 import { theme, getStyles, Component } from '@morfeo/web';
-import * as fs from 'fs';
-import * as path from 'path';
 
-const CSS_PATH = path.join(__dirname, '../../morfeo/style.css');
+function getComponentCSS(componentName: Component, variant?: string) {
+  let componentId = `morfeo-${componentName.toLowerCase()}`;
 
-function appendCss(componentName: Component, variant?: string) {
-  const componentId = `morfeo-${componentName.toLowerCase()}${
-    variant ? `-${variant.toLowerCase()}` : ''
-  }`;
+  if (variant) {
+    componentId += `-${variant.toLowerCase()}`;
+  }
 
   const { sheet } = getStyles(
     { [componentName]: { componentName, variant } },
@@ -18,24 +16,24 @@ function appendCss(componentName: Component, variant?: string) {
 
   const componentCss = sheet.toString();
 
-  fs.appendFileSync(CSS_PATH, `\n${componentCss}\n`);
+  return `\n${componentCss}\n`;
 }
 
-export function makeClasses() {
+export function getCSSClasses() {
   const { components } = theme.get();
   const componentNames = Object.keys(components) as Component[];
 
-  const importLine = `@import "./variables.css";\n`;
-
-  fs.writeFileSync(CSS_PATH, importLine);
+  let css = `@import "./variables.css";\n`;
 
   componentNames.forEach(componentName => {
     const { variants } = components[componentName];
     const variantKeys = Object.keys(variants || {});
-    appendCss(componentName);
+    css += getComponentCSS(componentName);
 
     variantKeys.forEach(variant => {
-      appendCss(componentName, variant);
+      css += getComponentCSS(componentName, variant);
     });
   });
+
+  return css;
 }

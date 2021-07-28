@@ -3,7 +3,7 @@
 /.nyc_output
 /dist
 /lib
-/morfeo
+/test/builds
 /tmp
 /yarn.lock
 node_modules

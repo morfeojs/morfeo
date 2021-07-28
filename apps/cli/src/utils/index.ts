@@ -1,1 +1,1 @@
-export * from './parseTheme';
+export * from './buildTheme';

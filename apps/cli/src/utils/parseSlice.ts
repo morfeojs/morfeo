@@ -44,7 +44,7 @@ function getValue<Key extends ThemeKey>(
 export function parseSlice<Key extends ThemeKey>(sliceName: Key) {
   const slice = theme.getSlice(sliceName);
   const aliases = Object.keys(slice) as (keyof Theme[Key])[];
-  let css = ``;
+  let css: string[] = [];
   let object = {};
 
   aliases.forEach(curr => {
@@ -56,8 +56,9 @@ export function parseSlice<Key extends ThemeKey>(sliceName: Key) {
       ...object,
       [curr]: value,
     };
-    css += `\n\t${variableName}: ${cssValue};`;
+
+    css.push(`${variableName}: ${cssValue};`);
   }, object);
 
-  return { css, object };
+  return { css: css.join('\n'), object };
 }
