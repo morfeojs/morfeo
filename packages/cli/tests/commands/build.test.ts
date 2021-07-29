@@ -20,8 +20,12 @@ function fileExists(fileName: string) {
 
 describe('build command', () => {
   afterEach(() => {
-    // rmdir(process.cwd() + '/tests');
     rmdir(BUILD_PATH);
+  });
+
+  beforeEach(() => {
+    // Needed because the initialization takes a lot of time.
+    jest.setTimeout(150000);
   });
 
   describe(`if the build folder does not exists`, () => {
