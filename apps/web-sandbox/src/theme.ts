@@ -33,7 +33,7 @@ export const lightTheme = {
     warning: '#f39c12',
     transparent: 'transparent',
   },
-  fontFamilies: {
+  fonts: {
     regular: 'Roboto',
   },
   gradients,
