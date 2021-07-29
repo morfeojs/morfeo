@@ -15,10 +15,8 @@ const projects = packages.map(package => {
   const packageJson = JSON.parse(
     fs.readFileSync(`./packages/${package}/package.json`),
   );
-  if (fs.existsSync(`./packages/${package}/jest.config`)) {
-    packageConfig = JSON.parse(
-      fs.readFileSync(`./packages/${package}/jest.config`),
-    );
+  if (fs.existsSync(`./packages/${package}/jest.config.js`)) {
+    packageConfig = require(`./packages/${package}/jest.config.js`);
   }
 
   return {

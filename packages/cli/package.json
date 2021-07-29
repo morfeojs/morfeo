@@ -1,14 +1,17 @@
 {
   "name": "@morfeo/cli",
   "description": "a command line interface to use morfeo",
-  "version": "0.0.0",
-  "author": "Mauro Erta <mauro.erta@gmail.com>",
+  "version": "0.1.8",
+  "author": {
+    "name": "Mauro Erta",
+    "email": "mauro@vlkstudio.com"
+  },
+  "private": false,
   "bin": {
     "morfeo": "./bin/run"
   },
-  "bugs": "https://github.com/VLK-STUDIO/morfeo/issues",
   "dependencies": {
-    "@morfeo/web": "^0.1.6",
+    "@morfeo/web": "^0.1.8",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",
@@ -22,28 +25,27 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.17.60",
     "chai": "^4.3.4",
-    "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.1.0",
     "eslint-config-prettier": "^8.3.0",
     "globby": "^10.0.2",
     "mocha": "^5.2.0",
     "nyc": "^14.1.1",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.10"
+    "ts-node": "^8.10.2"
   },
   "engines": {
     "node": ">=8.0.0"
   },
-  "files": [
-    "/bin",
-    "/lib",
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json"
-  ],
-  "homepage": "https://morfeo.dev",
   "keywords": [
-    "oclif"
+    "css",
+    "cli",
+    "oclif",
+    "morfeo",
+    "design",
+    "system",
+    "morfeo",
+    "builder",
+    "morfeo-js"
   ],
   "license": "MIT",
   "main": "lib/index.js",
@@ -54,12 +56,27 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": "https://github.com/VLK-STUDIO/morfeo",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-    "test": "nyc --extension .ts mocha \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
-  "types": "lib/index.d.ts"
+  "types": "lib/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/core"
+  },
+  "homepage": "https://morfeo.dev",
+  "bugs": {
+    "url": "https://github.com/VLK-STUDIO/morfeo/issues"
+  }
 }

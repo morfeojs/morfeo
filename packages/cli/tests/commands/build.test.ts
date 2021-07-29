@@ -4,12 +4,12 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { rmdir } from '../utils/rmdir';
 
-const THEME_PATH = 'test/utils/theme';
-const THEME_JSON_PATH = 'test/utils/themejson';
-const BUILD_PATH = 'test/builds';
-const CONFIG_PATH = 'test/utils/.morfeorc';
-const CONFIG_JSON_PATH = 'test/utils/.morfeorcjson';
-const CONFIG_WITH_THEMES_PATH = 'test/utils/.morfeorcWithThemes';
+const THEME_PATH = 'packages/cli/tests/utils/theme';
+const THEME_JSON_PATH = 'packages/cli/tests/utils/themejson';
+const BUILD_PATH = 'packages/cli/tests/builds';
+const CONFIG_PATH = 'packages/cli/tests/utils/.morfeorc';
+const CONFIG_JSON_PATH = 'packages/cli/tests/utils/.morfeorcjson';
+const CONFIG_WITH_THEMES_PATH = 'packages/cli/tests/utils/.morfeorcWithThemes';
 const THEME_NAME = 'light';
 
 function fileExists(fileName: string) {
@@ -19,6 +19,11 @@ function fileExists(fileName: string) {
 }
 
 describe('build command', () => {
+  afterEach(() => {
+    // rmdir(process.cwd() + '/tests');
+    rmdir(BUILD_PATH);
+  });
+
   describe(`if the build folder does not exists`, () => {
     beforeEach(() => {
       rmdir(BUILD_PATH);

@@ -16,7 +16,6 @@
     "init:svelte-sandbox": "node scripts/bootstrap-app.mjs apps/svelte-sandbox",
     "init:native-sandbox": "node scripts/bootstrap-app.mjs apps/native-sandbox",
     "init:benchmarks": "node scripts/bootstrap-app.mjs apps/benchmarks",
-    "init:cli": "node scripts/bootstrap-app.mjs apps/cli",
     "start:docs": "npm start --prefix docs",
     "start:web-sandbox": "npm start --prefix apps/web-sandbox",
     "start:svelte-sandbox": "npm run dev --prefix apps/svelte-sandbox",
