@@ -1,14 +1,20 @@
 import * as path from 'path';
 import { Command, flags } from '@oclif/command';
 import { buildTheme } from '../utils';
-import { theme } from '@morfeo/web';
+import { deepMerge, theme } from '@morfeo/web';
+import { getConfiguration } from '../utils/getConfiguration';
+import { getBuildConfiguration } from '../utils/getBuildConfiguration';
 
 export default class Build extends Command {
   static description = 'build css styles based on your themes';
 
-  static examples = [`$ morfeo build path/to/theme.ts --name="light"`];
+  static examples = [
+    `$ morfeo build`,
+    `$ morfeo build --config="configurations/.morfeorc"`,
+    `$ morfeo build path/to/theme.ts --name="light"`,
+  ];
 
-  static usage = 'build path/to/theme';
+  static usage = 'build';
 
   static flags = {
     help: flags.help({ char: 'h', description: Build.description }),
@@ -35,25 +41,68 @@ export default class Build extends Command {
 
   printMissingThemeError() {
     this.error(
-      `You need to specify the path to the theme like:\n${Build.examples.join(
-        '\n',
-      )}`,
+      [
+        `No theme specified`,
+        `You need to specify the path to the theme like:\n${Build.examples.join(
+          '\n',
+        )}`,
+        `Or place your themes inside the configuration file:`,
+        '// .morfeorc',
+        JSON.stringify(
+          {
+            themes: {
+              light: 'path/to/theme/light',
+              dark: 'path/to/theme/dark',
+            },
+          },
+          undefined,
+          2,
+        ),
+      ].join('\n'),
     );
   }
 
-  async run() {
+  getThemes() {
     const { args, flags } = this.parse(Build);
-    const { name, build, config } = flags;
+    const { name, config } = flags;
+    const { themes } = getConfiguration(config);
 
     const themePath = args.theme;
-    if (!themePath) {
+    let themeFromCli = {};
+
+    if (themePath) {
+      themeFromCli = {
+        [name]: themePath,
+      };
+    }
+
+    return deepMerge(themes || {}, themeFromCli);
+  }
+
+  async run() {
+    const { flags } = this.parse(Build);
+    const { build, config } = flags;
+
+    const allThemes = this.getThemes();
+    const themeKeys = Object.keys(allThemes);
+
+    if (themeKeys.length === 0) {
       this.printMissingThemeError();
     }
 
-    const localTheme = require(path.join(process.cwd(), themePath));
+    const buildConfiguration = getBuildConfiguration({
+      buildPath: build,
+      configPath: config,
+    });
 
-    theme.set(localTheme.default ? localTheme.default : localTheme);
+    themeKeys.forEach(currentTheme => {
+      const localTheme = require(path.join(
+        process.cwd(),
+        allThemes[currentTheme],
+      ));
 
-    buildTheme({ name, buildPath: build, configPath: config });
+      theme.set(localTheme.default ? localTheme.default : localTheme);
+      buildTheme({ ...buildConfiguration, name: currentTheme });
+    });
   }
 }

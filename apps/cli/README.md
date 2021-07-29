@@ -33,16 +33,16 @@ USAGE
 # Commands
 
 <!-- commands -->
-* [`morfeo build path/to/theme`](#morfeo-build-pathtotheme)
+* [`morfeo build`](#morfeo-build)
 * [`morfeo help [COMMAND]`](#morfeo-help-command)
 
-## `morfeo build path/to/theme`
+## `morfeo build`
 
 build css styles based on your themes
 
 ```
 USAGE
-  $ morfeo build path/to/theme
+  $ morfeo build
 
 OPTIONS
   -b, --build=build    the path where the generated css files will be placed
@@ -50,7 +50,9 @@ OPTIONS
   -h, --help           build css styles based on your themes
   -n, --name=name      [default: default] an identifier for the passed theme, for example "light", "dark"
 
-EXAMPLE
+EXAMPLES
+  $ morfeo build
+  $ morfeo build --config="configurations/.morfeorc"
   $ morfeo build path/to/theme.ts --name="light"
 ```
 

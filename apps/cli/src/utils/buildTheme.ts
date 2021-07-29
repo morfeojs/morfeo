@@ -1,15 +1,25 @@
 import { theme, ThemeKey } from '@morfeo/web';
+import * as fs from 'fs';
 import * as path from 'path';
+import { paramCase } from 'change-case';
 import { SLICES_TO_BE_EXCLUDED } from '../constants';
 import { getCSSClasses } from './getCSSClasses';
 import { safeWrite } from './safeWrite';
 import { parseSlice } from './parseSlice';
 import { BuildConfig } from '../types';
-import { getConfiguration } from './getConfiguration';
 
-function getStylePaths(buildPath: string) {
-  const variablesPath = path.join(process.cwd(), buildPath, 'variables.css');
-  const stylePath = path.join(process.cwd(), buildPath, 'style.css');
+function getStylePaths(buildPath: string, themeName: string) {
+  const variablesPath = path.join(
+    process.cwd(),
+    buildPath,
+    `${paramCase(themeName)}-variables.css`,
+  );
+
+  const stylePath = path.join(
+    process.cwd(),
+    buildPath,
+    `${paramCase(themeName)}-style.css`,
+  );
 
   return {
     variablesPath,
@@ -17,14 +27,32 @@ function getStylePaths(buildPath: string) {
   };
 }
 
+function writeIndexCss(buildPath: string) {
+  const buildDirectory = path.join(process.cwd(), buildPath);
+  const indexPath = path.join(buildDirectory, `index.css`);
+  const files = fs.readdirSync(buildDirectory, { withFileTypes: true });
+  const cssFiles = files
+    .filter(file => file.name.indexOf('.css') > 0)
+    .filter(file => file.name !== 'index.css')
+    .map(file => file.name)
+    .sort(
+      (first, second) =>
+        second.indexOf('variables.css') - first.indexOf('variables.css'),
+    );
+
+  const css = cssFiles.reduce((acc, curr) => {
+    return acc + `@import "./${curr}";\n`;
+  }, '');
+
+  safeWrite(indexPath, css);
+}
+
 function wrapWithScope(name: string, css: string) {
   const parsedCss = css.replace(/\n/g, '\n\t');
   return `:root, html[data-morfeo-theme="${name}"] {\n\t${parsedCss}\n}\n`;
 }
 
-export function buildTheme(config: BuildConfig) {
-  const { name, buildPath } = getConfiguration(config);
-
+export function buildTheme({ name, buildPath }: BuildConfig) {
   const currentTheme = theme.get();
   const slices = Object.keys(currentTheme) as ThemeKey[];
   const filtered = slices.filter(
@@ -42,7 +70,7 @@ export function buildTheme(config: BuildConfig) {
     };
   }, currentTheme);
 
-  const { stylePath, variablesPath } = getStylePaths(buildPath as string);
+  const { stylePath, variablesPath } = getStylePaths(buildPath as string, name);
 
   safeWrite(variablesPath, wrapWithScope(name, cssText));
 
@@ -58,6 +86,8 @@ export function buildTheme(config: BuildConfig) {
   const componentStyle = getCSSClasses();
 
   safeWrite(stylePath, componentStyle);
+
+  writeIndexCss(buildPath as string);
 
   /**
    * restored the old theme
