@@ -3,8 +3,16 @@ import { theme, resetCss, loadFont } from '@morfeo/react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { lightTheme } from './theme';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
+import { lightTheme } from '@morfeo/preset-default';
+import { lightTheme as localTheme } from './theme';
+
+
+enableMorfeoDevTool();
+resetCss();
+
+theme.set(lightTheme);
+theme.set(localTheme as any)
 
 loadFont({
   importFontFace: true,
@@ -14,9 +22,6 @@ loadFont({
   name: 'regular',
   family: 'Roboto',
 })
-enableMorfeoDevTool();
-resetCss();
-theme.set(lightTheme as any);
 
 ReactDOM.render(
   <React.StrictMode>

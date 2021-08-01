@@ -42,7 +42,7 @@ export function createTheme() {
 
     const breakPointsKey = Object.keys(breakPoints);
     breakPointsKey.forEach(bp => {
-      mediaQuery = mediaQuery.replace(`{{${bp}}}`, breakPoints[bp]);
+      mediaQuery = (mediaQuery as string).replace(`{{${bp}}}`, breakPoints[bp]);
     });
 
     return mediaQuery;
