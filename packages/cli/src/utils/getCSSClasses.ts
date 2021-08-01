@@ -1,4 +1,5 @@
 import { theme, getStyles, Component } from '@morfeo/web';
+import { paramCase } from 'param-case';
 
 function getComponentCSS(componentName: Component, variant?: string) {
   let componentId = `morfeo-${componentName.toLowerCase()}`;
@@ -19,11 +20,11 @@ function getComponentCSS(componentName: Component, variant?: string) {
   return `\n${componentCss}\n`;
 }
 
-export function getCSSClasses() {
+export function getCSSClasses(themeName: string) {
   const { components } = theme.get();
   const componentNames = Object.keys(components) as Component[];
 
-  let css = `@import "./variables.css";\n`;
+  let css = `@import "./${paramCase(themeName)}-variables.css";\n`;
 
   componentNames.forEach(componentName => {
     const { variants } = components[componentName];

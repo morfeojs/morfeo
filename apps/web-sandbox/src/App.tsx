@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@morfeo/styled-components-web';
 import { theme, Component, Variant, useStyles } from '@morfeo/react';
-import { darkTheme, lightTheme } from '@morfeo/preset-default';
 import { Box, Button, Typography, ThemeToggle } from './components';
 
 function getStyle<C extends Component = Component>(
@@ -52,7 +51,7 @@ function App() {
     <ThemeProvider>
       <Box style={containerStyle}>
         <Box style={blockStyle}>
-          <ThemeToggle light={lightTheme as any} dark={darkTheme as any} />
+          <ThemeToggle />
           <Typography variant="code" style={codeStyle}>
             {getStyle('Button')}
           </Typography>

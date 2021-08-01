@@ -253,20 +253,18 @@ textarea {
 `;
 
 /**
- * @description
  * reset base css
  *
  * @example
  * ```
  * import { resetCss } from '@morfeo/web':
- * import { theme } from '@morfeo/core';
+ * import { morfeo } from '@morfeo/core';
  * import { myTheme } from './myTheme';
  *
  * resetCss();
- * theme.set(myTheme)
+ * morfeo.setTheme(myTheme);
  * ```
  */
-
 export function resetCss() {
   const head = document.head;
 

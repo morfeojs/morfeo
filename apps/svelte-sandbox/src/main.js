@@ -1,7 +1,11 @@
-import { theme, resetCss, loadFont } from '@morfeo/web';
+import { morfeo, resetCss, loadFont } from '@morfeo/web';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
+import { lightTheme, darkTheme } from '@morfeo/preset-default';
+import { components } from './theme';
 import App from './App.svelte';
-import { lightTheme } from './theme';
+
+enableMorfeoDevTool();
+resetCss();
 
 loadFont({
   importFontFace: true,
@@ -13,9 +17,11 @@ loadFont({
   name: 'regular',
   family: 'Roboto',
 });
-enableMorfeoDevTool();
-resetCss();
-theme.set(lightTheme);
+
+morfeo.addTheme('light', { ...lightTheme, components });
+morfeo.addTheme('dark', { ...darkTheme, components });
+
+morfeo.useTheme('light');
 
 const app = new App({
   target: document.body,

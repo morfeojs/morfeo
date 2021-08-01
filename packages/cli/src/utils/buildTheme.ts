@@ -83,7 +83,7 @@ export function buildTheme({ name, buildPath }: BuildConfig) {
    * getCSSClasses will return a css class for each component and foreach variant using
    * the new theme with css variables as values
    */
-  const componentStyle = getCSSClasses();
+  const componentStyle = getCSSClasses(name);
 
   safeWrite(stylePath, componentStyle);
 

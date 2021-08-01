@@ -1,11 +1,11 @@
-const { theme } = require('@morfeo/core');
+const { morfeo } = require('@morfeo/core');
 const { writeMdTitle } = require('./utils');
 const singlePropertySuite = require('./singleProperty');
 const singleComplexPropertySuite = require('./singleComplexProperty');
 const componentSuite = require('./componentStyle');
 const completeStyleSuite = require('./completeStyle');
 
-theme.set({
+morfeo.setTheme({
   colors: {
     primary: 'black',
     secondary: 'white',

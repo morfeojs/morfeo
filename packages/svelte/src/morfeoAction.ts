@@ -1,5 +1,5 @@
 import { getStyles } from '@morfeo/jss';
-import { Component, component, Style } from '@morfeo/web';
+import { component, Style } from '@morfeo/web';
 
 function getElementName({ componentName, variant }: Style) {
   if (componentName && variant) {
@@ -24,7 +24,7 @@ function setAdditionalProps(
   Object.keys(props).forEach(prop => node.setAttribute(prop, props[prop]));
 }
 
-export function morfeo(node: HTMLElement, props: Style = {}) {
+export function morfeoStyle(node: HTMLElement, props: Style = {}) {
   const elementName = getElementName(props);
   let { classes, update, destroy } = getStyles({ [elementName]: props });
 

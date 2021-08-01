@@ -1,27 +1,30 @@
 import React from 'react';
-import { theme, resetCss, loadFont } from '@morfeo/react';
+import { morfeo, resetCss, loadFont } from '@morfeo/react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
-import { lightTheme } from '@morfeo/preset-default';
-import { lightTheme as localTheme } from './theme';
-
+import { lightTheme, darkTheme } from '@morfeo/preset-default';
+import { components } from './theme';
 
 enableMorfeoDevTool();
 resetCss();
 
-theme.set(lightTheme);
-theme.set(localTheme as any)
+morfeo.addTheme('light', { ...lightTheme, components } as any);
+morfeo.addTheme('dark', { ...darkTheme, components } as any);
+
+morfeo.useTheme('light');
 
 loadFont({
   importFontFace: true,
-  urls: [{
-    url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap'
-  }],
+  urls: [
+    {
+      url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap',
+    },
+  ],
   name: 'regular',
   family: 'Roboto',
-})
+});
 
 ReactDOM.render(
   <React.StrictMode>

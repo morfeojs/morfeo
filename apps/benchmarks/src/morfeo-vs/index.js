@@ -1,7 +1,7 @@
-const { theme } = require('@morfeo/core');
+const { morfeo } = require('@morfeo/core');
 const defaultTheme = require('./theme');
 const styledSystemSuite = require('./styled-system');
 
-theme.set(defaultTheme);
+morfeo.setTheme(defaultTheme);
 
 styledSystemSuite.run({ async: false });

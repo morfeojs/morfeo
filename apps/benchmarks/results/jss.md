@@ -10,8 +10,8 @@
 }
 ```
 
-**regular parsing**  549,704 ops/sec ±1.01% (92 runs sampled)
+**regular parsing**  577,507 ops/sec ±0.32% (90 runs sampled)
 
-**jss**  206,599 ops/sec ±2.35% (92 runs sampled)
+**jss**  5,456 ops/sec ±22.17% (24 runs sampled)
 
 Fastest is **regular parsing**

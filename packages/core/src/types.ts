@@ -1,4 +1,4 @@
-import { AllProperties, Property, Style } from '@morfeo/spec';
+import { AllProperties, Property, Style, Theme } from '@morfeo/spec';
 
 export type ParserProperty = keyof AllProperties;
 
@@ -29,3 +29,20 @@ export type AllParsers = {
 export type ParsersContext = {
   [P in Property]: Parser<P>;
 };
+
+export interface Themes {
+  default?: Theme;
+}
+
+export type ThemeName = keyof Themes;
+
+declare global {
+  interface Window {
+    __MORFEO_THEMES: Themes;
+  }
+  module NodeJS {
+    interface Global {
+      __MORFEO_THEMES: Themes;
+    }
+  }
+}

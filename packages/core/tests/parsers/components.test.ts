@@ -33,14 +33,6 @@ describe('components', () => {
     theme.reset();
   });
 
-  test('should hide the attribute `componentTag` from the generated style', () => {
-    const result = components({
-      property: 'componentName',
-      value: 'Box',
-    });
-    expect((result as any).componentTag).not.toBeDefined();
-  });
-
   test('should return the default components style', () => {
     const result = components({
       property: 'componentName',

@@ -1,4 +1,4 @@
-import { theme } from '@morfeo/react';
+import { morfeo } from '@morfeo/react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -14,20 +14,22 @@ const light = {
   },
 } as any;
 
+morfeo.addTheme('light', light);
+morfeo.addTheme('dark', dark);
+
 beforeEach(() => {
-  theme.reset();
-  theme.set(light);
+  morfeo.useTheme('light');
 });
 
 test('should be light by default', () => {
-  render(<ThemeToggle light={light} dark={dark} />);
+  render(<ThemeToggle />);
   const button = screen.getByText(/🌙/i);
   expect(button).toBeDefined();
-  expect(theme.getValue('colors', 'primary')).toBe('white');
+  expect(morfeo.getTheme()['colors']['primary']).toBe('white');
 });
 
 test('should switch the theme to `dark` after the click', () => {
-  render(<ThemeToggle light={light} dark={dark} />);
+  render(<ThemeToggle />);
   const button = screen.getByText(/🌙/i);
   fireEvent(
     button,
@@ -36,5 +38,5 @@ test('should switch the theme to `dark` after the click', () => {
       cancelable: true,
     }),
   );
-  expect(theme.getValue('colors', 'primary')).toBe('black');
+  expect(morfeo.getTheme()['colors']['primary']).toBe('black');
 });

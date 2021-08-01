@@ -1,16 +1,11 @@
 <script>
-  import { theme } from "@morfeo/web";
+  import { morfeo } from "@morfeo/web";
   import Button from "./Button.svelte";
-  import { lightTheme, darkTheme } from "../theme";
 
   let darkMode = false;
 
   function handleClick() {
-    if (darkMode) {
-      theme.set(lightTheme);
-    } else {
-      theme.set(darkTheme);
-    }
+    morfeo.useTheme(darkMode ? 'light' : 'dark');
     darkMode = !darkMode;
   }
 </script>

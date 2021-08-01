@@ -1,5 +1,5 @@
-import { Theme, theme } from '@morfeo/web';
-import { morfeo } from '../src';
+import { Theme, morfeo } from '@morfeo/web';
+import { morfeoStyle } from '../src';
 
 const THEME: Theme = {
   colors: {
@@ -25,54 +25,54 @@ const THEME: Theme = {
 
 describe('morfeo', () => {
   beforeAll(() => {
-    theme.set(THEME);
+    morfeo.setTheme(THEME);
   });
 
   test('should add default className to the element', () => {
     const element = document.createElement('div');
-    morfeo(element, { bg: 'primary' });
+    morfeoStyle(element, { bg: 'primary' });
 
     expect(element.className).toContain('morfeo-element');
   });
 
   test('should add custom className if componentName is specified', () => {
     const element = document.createElement('div');
-    morfeo(element, { componentName: 'Box' });
+    morfeoStyle(element, { componentName: 'Box' });
 
     expect(element.className).toContain('Box');
   });
 
   test('should add custom className if componentName and variant is specified', () => {
     const element = document.createElement('div');
-    morfeo(element, { componentName: 'Box', variant: 'primary' });
+    morfeoStyle(element, { componentName: 'Box', variant: 'primary' });
 
     expect(element.className).toContain('Box-primary');
   });
 
   test('should not crash if style is not specified', () => {
     const element = document.createElement('div');
-    morfeo(element);
+    morfeoStyle(element);
 
     expect(element.className).toContain('morfeo-element');
   });
 
   test('should return a function that will remove the listener from the theme', () => {
     const element = document.createElement('div');
-    const { destroy } = morfeo(element);
+    const { destroy } = morfeoStyle(element);
     destroy();
     expect(typeof destroy).toBe('function');
   });
 
   test('should return a function that will update the style on changes', () => {
     const element = document.createElement('div');
-    const { update } = morfeo(element);
+    const { update } = morfeoStyle(element);
     update({} as any);
     expect(typeof update).toBe('function');
   });
 
   test('should set the default properties to the element', () => {
     const element = document.createElement('div');
-    morfeo(element, {
+    morfeoStyle(element, {
       componentName: 'Box',
       variant: 'span',
     });
@@ -82,7 +82,7 @@ describe('morfeo', () => {
 
   test('should update the default properties of to the element', () => {
     const element = document.createElement('div');
-    const { update } = morfeo(element, {
+    const { update } = morfeoStyle(element, {
       componentName: 'Box',
     });
 
