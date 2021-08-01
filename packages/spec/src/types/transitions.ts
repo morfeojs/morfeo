@@ -1,10 +1,10 @@
 import { transitionsMap } from '../properties';
 
 export interface Transitions {
-  none: string | number;
-  light: string | number;
-  strong: string | number;
-  medium: string | number;
+  none: string;
+  slow: string;
+  medium: string;
+  fast: string;
 }
 
 export type Transition = keyof Transitions;

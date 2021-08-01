@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@morfeo/styled-components-web';
 import { theme, Component, Variant, useStyles } from '@morfeo/react';
+import { darkTheme, lightTheme } from '@morfeo/preset-default';
 import { Box, Button, Typography, ThemeToggle } from './components';
-import { darkTheme, lightTheme } from './theme';
 
 function getStyle<C extends Component = Component>(
   component: C,
@@ -24,13 +24,13 @@ function getStyle<C extends Component = Component>(
 function App() {
   const { containerStyle, blockStyle, codeStyle } = useStyles({
     containerStyle: {
-      bg: 'secondary',
+      bg: 'background',
       width: '100%' as any,
       display: 'flex',
       minHeight: '100vh' as any,
       alignItems: 'center',
       justifyContent: 'space-evenly',
-      transition: 'light',
+      transition: 'slow',
       pt: 's',
       pb: 's',
     },

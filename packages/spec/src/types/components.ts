@@ -3,7 +3,7 @@ import { Style } from './style';
 type ComponentStyle<Props extends Style = Style> = {
   tag?: string;
   style: Style;
-  props: Props;
+  props?: Props;
 };
 
 export type ComponentConfig<

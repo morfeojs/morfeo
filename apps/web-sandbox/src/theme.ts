@@ -1,105 +1,4 @@
-export const gradients = {
-  primary: {
-    start: 0,
-    angle: 90,
-    end: 100,
-    colors: ['success', 'accent'],
-    kind: 'linear',
-  },
-  secondary: {
-    start: 0,
-    end: 100,
-    angle: 0,
-    colors: ['accent', 'success'],
-    kind: 'linear',
-  },
-  loading: {
-    start: 0,
-    end: 100,
-    angle: 90,
-    colors: ['transparent', 'grey', 'transparent'],
-    kind: 'linear',
-  },
-};
-
 export const lightTheme = {
-  colors: {
-    grey: '#bdc3c7',
-    primary: 'white',
-    danger: '#e74c3c',
-    secondary: 'black',
-    success: '#2ecc71',
-    accent: '#3498db',
-    warning: '#f39c12',
-    transparent: 'transparent',
-  },
-  fonts: {
-    regular: 'Roboto',
-  },
-  gradients,
-  radii: {
-    m: '10px',
-    round: '50%',
-  },
-  spacings: {
-    s: '40px',
-    m: '100px',
-  },
-  lineHeights: {
-    s: 1.7,
-  },
-  letterSpacings: {
-    s: 1.6,
-  },
-  fontSizes: {
-    s: '14px',
-  },
-  sizes: {
-    s: '10px',
-    m: '100px',
-    xl: '200px',
-  },
-  borderWidths: {
-    s: '2px',
-  },
-  shadows: {
-    none: {
-      color: 'transparent',
-      offset: { width: 0, height: 0 },
-      opacity: 0,
-      elevation: 0,
-    },
-    soft: {
-      color: 'accent',
-      offset: { width: 0, height: 2 },
-      opacity: 0.2,
-      radius: 4,
-      elevation: 2,
-    },
-    medium: {
-      color: 'black',
-      offset: { width: 0, height: 3 },
-      opacity: 0.3,
-      radius: 4,
-      elevation: 3,
-    },
-    strong: {
-      color: 'black',
-      offset: { width: 0, height: 4 },
-      opacity: 0.4,
-      radius: 4,
-      elevation: 4,
-    },
-  },
-  breakpoints: {
-    xs: '300px',
-    sm: '600px',
-    md: '900px',
-    lg: '1300px',
-  },
-  transitions: {
-    light: 'all 0.5s',
-  },
   components: {
     Box: {
       tag: 'div',
@@ -108,20 +7,19 @@ export const lightTheme = {
     Button: {
       tag: 'button',
       style: {
-        transition: 'light',
-        height: 'm',
-        width: 'm',
+        transition: 'slow',
+        height: 'xxl',
+        width: 'xxl',
         bg: {
-          md: 'danger',
+          md: 'primary',
           lg: 'primary',
         },
-        color: 'secondary',
+        color: 'white',
         borderRadius: 'm',
-        borderWidth: 's',
         borderStyle: 'solid',
         borderColor: 'primary',
         '&:hover': {
-          gradient: 'secondary',
+          bg: 'transparent',
           color: 'primary',
         },
       },
@@ -135,17 +33,27 @@ export const lightTheme = {
             'aria-label': 'primary button',
           },
           style: {
-            bg: 'secondary',
-            borderColor: 'primary',
-            color: 'primary',
+            width: '200px',
+            bg: 'primary',
+            color: 'white',
             '&:hover': {
-              bg: 'primary',
-              color: 'secondary',
+              bg: 'transparent',
+              color: 'primary',
             },
           },
         },
         round: {
-          style: { borderRadius: 'round' },
+          style: {
+            bg: 'secondary',
+            height: '150px',
+            width: '150px',
+            borderRadius: 'round',
+            borderColor: 'secondary',
+            '&:hover': {
+              bg: 'transparent',
+              color: 'secondary',
+            },
+          },
         },
       },
     },
@@ -153,35 +61,29 @@ export const lightTheme = {
       tag: 'p',
       style: {
         fontFamily: 'regular',
-        fontSize: 's',
-        lineHeight: 's',
-        letterSpacing: 's',
+        fontSize: 'm',
+        lineHeight: 'm',
+        letterSpacing: 'm',
+        color: 'textColor',
       },
       variants: {
         h1: {
           tag: 'h1',
-          style: { color: 'red' },
+          style: { color: 'headTextColor' },
         },
         h2: {
           tag: 'h1',
-          style: { color: 'green' },
+          style: { color: 'headTextColor' },
         },
         h3: {
           tag: 'h3',
-          style: { color: 'blue' },
+          style: { color: 'headTextColor' },
         },
         code: {
           tag: 'pre',
-          style: { color: 'primary' },
+          style: { color: 'textColor' },
         },
       },
     },
   },
 };
-
-export const darkTheme = {
-  colors: {
-    primary: 'black',
-    secondary: 'white',
-  },
-} as any;
