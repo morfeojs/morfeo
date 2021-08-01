@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useSubscribe } from './useSubscribe';
 
 /**
- * Same as `theme.get()` but it will cause a re-render
+ * Same as `morfeo.getTheme()` but it will cause a re-render
  * each the theme is updated anywhere in your application.
  *
  * @returns the theme object
@@ -17,7 +17,7 @@ export function useTheme() {
 }
 
 /**
- * Same as `theme.getSlice(slice)` but it will cause a re-render
+ * Same as `morfeo.getTheme()[slice]` but it will cause a re-render
  * each the theme is updated anywhere in your application.
  *
  * @returns the theme slice
@@ -27,7 +27,7 @@ export function useThemeSlice<TK extends ThemeKey>(slice: TK) {
 }
 
 /**
- * Same as `theme.getValue(slice, value)` but it will cause a re-render
+ * Same as `morfeo.getTheme()[slice][value]` but it will cause a re-render
  * each the theme is updated anywhere in your application.
  *
  * @returns the theme slice value

@@ -1,5 +1,5 @@
 const Benchmark = require('benchmark');
-const { parsers } = require('@morfeo/core');
+const { morfeo } = require('@morfeo/core');
 const { getStyles } = require('@morfeo/jss');
 const { onCycle, onComplete, onStart } = require('./utils');
 
@@ -13,7 +13,7 @@ suite
       const style = styles[key];
       return {
         ...acc,
-        [key]: parsers.resolve(style),
+        [key]: morfeo.resolve(style),
       };
     }, {});
   })

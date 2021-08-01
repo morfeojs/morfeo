@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, LogBox } from 'react-native';
-import { theme, parsers, Style } from '@morfeo/native';
+import { morfeo, Style } from '@morfeo/native';
 import { useTheme, useStyle } from '@morfeo/hooks';
 import styled, { ThemeProvider } from 'styled-components/native';
 import { defaultTheme } from './theme';
@@ -8,9 +8,9 @@ import { Button } from './components';
 
 LogBox.ignoreAllLogs();
 
-theme.set(defaultTheme as any);
+morfeo.setTheme(defaultTheme as any);
 
-const Box = styled.View<Style>(style => parsers.resolve(style) as any);
+const Box = styled.View<Style>(style => morfeo.resolve(style) as any);
 
 const StyleProvider: React.FC = ({ children }) => {
   const currentTheme = useTheme();

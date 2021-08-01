@@ -1,5 +1,5 @@
 <script>
-	import { morfeo } from "@morfeo/svelte";
+	import { morfeoStyle } from "@morfeo/svelte";
 
   const style = {
     display: 'flex',
@@ -8,6 +8,6 @@
   }
 </script>
 
-<div use:morfeo={{...style, ...$$restProps}}>
+<div use:morfeoStyle={{...style, ...$$restProps}}>
   <slot></slot>
 </div>

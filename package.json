@@ -26,7 +26,7 @@
     "prettify:ts": "npx prettier --write \"**/*.ts\"",
     "test": "jest --updateSnapshot",
     "test:watch": "jest --watch --updateSnapshot",
-    "test:coverage": "jest --coverage --updateSnapshot",
+    "test:coverage": "jest --verbose --coverage --updateSnapshot",
     "publish": "npm run reset && npx lerna publish from-package --yes",
     "version": "npx lerna version patch --no-push --no-git-tag-version --conventional-commits"
   },

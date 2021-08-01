@@ -1,10 +1,10 @@
-import { parsers, Style } from '@morfeo/native';
+import { morfeo, Style } from '@morfeo/native';
 import React from 'react';
 import { CSSObject } from 'styled-components';
 import styled from 'styled-components/native';
 
 const Container = styled.Text<Style>(({ theme: _, ...props }) => {
-  return parsers.resolve(props) as CSSObject;
+  return morfeo.resolve(props) as CSSObject;
 });
 
 export const Typography: React.FC<Style> = ({ children, ...props }) => {
