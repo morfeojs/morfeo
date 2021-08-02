@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { theme, parsers } from '@morfeo/react';
+import { morfeo } from '@morfeo/react';
 
 const themes = {
   theme1: {
     colors: {
-      'primary.300': '#16a085',
+      primary: '#16a085',
     },
     radii: {
       m: '30px',
@@ -15,7 +15,7 @@ const themes = {
   },
   theme2: {
     colors: {
-      'primary.300': '#e67e22',
+      primary: '#e67e22',
     },
     radii: {
       m: '30px',
@@ -26,7 +26,7 @@ const themes = {
   },
   theme3: {
     colors: {
-      'primary.300': '#8e44ad',
+      primary: '#8e44ad',
     },
     radii: {
       m: '30px',
@@ -37,15 +37,17 @@ const themes = {
   },
 };
 
+Object.keys(themes).forEach(name => morfeo.setTheme(name, themes[name]));
+
 export function ThemeSelect({ style: baseStyle }) {
   const [selected, setSelected] = useState();
-  const style = parsers.resolve({
+  const style = morfeo.resolve({
     ...baseStyle,
     transition: 'all 0.5s',
   });
   const applyTheme = name => {
     return () => {
-      theme.set(themes[name]);
+      morfeo.useTheme(name);
       setSelected(name);
     };
   };
@@ -55,8 +57,8 @@ export function ThemeSelect({ style: baseStyle }) {
         className="button button--primary button--lg margin--sm"
         onClick={applyTheme('theme1')}
         style={{
-          backgroundColor: themes['theme1'].colors['primary.300'],
-          borderColor: themes['theme1'].colors['primary.300'],
+          backgroundColor: themes['theme1'].colors['primary'],
+          borderColor: themes['theme1'].colors['primary'],
         }}
       >
         Apply theme #1
@@ -65,8 +67,8 @@ export function ThemeSelect({ style: baseStyle }) {
         className="button button--primary button--lg margin--sm"
         onClick={applyTheme('theme2')}
         style={{
-          backgroundColor: themes['theme2'].colors['primary.300'],
-          borderColor: themes['theme2'].colors['primary.300'],
+          backgroundColor: themes['theme2'].colors['primary'],
+          borderColor: themes['theme2'].colors['primary'],
         }}
       >
         Apply theme #2
@@ -75,13 +77,13 @@ export function ThemeSelect({ style: baseStyle }) {
         className="button button--primary button--lg margin--sm"
         onClick={applyTheme('theme3')}
         style={{
-          backgroundColor: themes['theme3'].colors['primary.300'],
-          borderColor: themes['theme3'].colors['primary.300'],
+          backgroundColor: themes['theme3'].colors['primary'],
+          borderColor: themes['theme3'].colors['primary'],
         }}
       >
         Apply theme #3
       </button>
-      {selected && <div style={parsers.resolve(style)}></div>}
+      {selected && <div style={morfeo.resolve(style)}></div>}
     </>
   );
 }

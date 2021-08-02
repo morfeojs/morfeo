@@ -22,8 +22,8 @@ function createMorfeo() {
    * Get the themes added to morfeo:
    * @example
    *
-   * morfeo.addTheme("light", lightTheme);
-   * morfeo.addTheme("dark", darkTheme);
+   * morfeo.setTheme("light", lightTheme);
+   * morfeo.setTheme("dark", darkTheme);
    *
    * const themes = morfeo.getThemes();
    * // {
@@ -33,26 +33,6 @@ function createMorfeo() {
    */
   function getThemes() {
     return themes;
-  }
-
-  /**
-   * It adds a new theme the can be used with the `useTheme` method:
-   * @example
-   *
-   * morfeo.addTheme("light", { colors: { primary: "#DDFCAD" }, ...rest});
-   * morfeo.addTheme("dark", { colors: { primary: "#304F03" }, ...rest});
-   *
-   * morfeo.useTheme("light");
-   *
-   * console.log(morfeo.getTheme().colors.primary); // #DDFCAD
-   *
-   * morfeo.useTheme("dark");
-   *
-   * console.log(morfeo.get().colors.primary); // #304F03
-   */
-  function addTheme(themeName: ThemeName, newTheme: Theme) {
-    themes[themeName] = deepMerge(themes[themeName] || {}, newTheme) as Theme;
-    current = current || themeName;
   }
 
   /**
@@ -69,25 +49,38 @@ function createMorfeo() {
       return false;
     }
 
-    theme.reset();
+    if (current !== themeName) {
+      theme.reset();
+      current = themeName;
+    }
     theme.set(themeToBeUsed);
-    current = themeName;
 
     return true;
   }
 
   /**
-   * It updated the current theme with new values:
+   * It adds or update a new theme the can be used with the `useTheme` method:
    * @example
    *
-   * morfeo.setTheme({ colors: { primary: "#06f" }});
-   * const theme = morfeo.getTheme();
+   * morfeo.setTheme("light", { colors: { primary: "#DDFCAD" }, ...rest});
+   * morfeo.setTheme("dark", { colors: { primary: "#304F03" }, ...rest});
    *
-   * console.log(theme.colors.primary); // #06f
+   * morfeo.useTheme("light");
+   *
+   * console.log(morfeo.getTheme().colors.primary); // #DDFCAD
+   *
+   * morfeo.useTheme("dark");
+   *
+   * console.log(morfeo.get().colors.primary); // #304F03
    */
-  function setTheme(...params: Parameters<typeof theme.set>) {
-    theme.set(...params);
-    themes[current || 'default'] = theme.get();
+  function setTheme(
+    themeName: ThemeName,
+    newTheme: Parameters<typeof theme.set>[0],
+  ) {
+    themes[themeName] = deepMerge(themes[themeName] || {}, newTheme) as Theme;
+    if (!current) {
+      useTheme(themeName);
+    }
   }
 
   /**
@@ -136,7 +129,6 @@ function createMorfeo() {
   return Object.freeze({
     resolve,
     useTheme,
-    addTheme,
     setTheme,
     getTheme,
     getThemes,
@@ -155,7 +147,7 @@ export type Morfeo = ReturnType<typeof createMorfeo>;
  *
  * import { lightTheme } from "./themes";
  *
- * morfeo.addTheme("light", lightTheme);
+ * morfeo.setTheme("light", lightTheme);
  *
  * morfeo.useTheme("light")
  *

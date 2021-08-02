@@ -50,7 +50,7 @@ const MyComponent: React.FC = () => {
 };
 ```
 
-> If you already know the [core API](./core) useTheme is the equivalent of `theme.get()`, the main difference is that useTheme react
+> If you already know the [core API](./core) useTheme is the equivalent of `morfeo.getTheme()`, the main difference is that useTheme react
 > to theme changes and force a re-render of the component.
 
 Most of the time you don't need all theme, but just a slice or single value, in this cases [useThemeSlice](#useThemeSlice) and [useThemeValue](#useThemeValue) can will give you only the part of the theme you want:
@@ -121,12 +121,12 @@ const AgreeButton: React.FC = ({ children }) => {
 };
 ```
 
-> Just like useTheme, **useStyles** and **useStyle** are the equivalent of the [core API's](./core) `parsers.resove(style)`
+> Just like useTheme, **useStyles** and **useStyle** are the equivalent of the [core API's](./core) `morfeo.resolve(style)`
 > but they force a re-render when the theme changes.
 
 ## useProps
 
-Use it to get the default props of a components, a common use is to merge the defaut props with the current props:
+Use it to get the default props of a components, a common use is to merge the default props with the current props:
 
 ```jsx
 function MyButton(props) {

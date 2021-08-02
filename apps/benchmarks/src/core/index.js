@@ -5,7 +5,7 @@ const singleComplexPropertySuite = require('./singleComplexProperty');
 const componentSuite = require('./componentStyle');
 const completeStyleSuite = require('./completeStyle');
 
-morfeo.setTheme({
+morfeo.setTheme('default', {
   colors: {
     primary: 'black',
     secondary: 'white',

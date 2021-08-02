@@ -115,10 +115,10 @@ To set your own Theme use the **@morfeo/web theme API** instead.
 // App.js
 
 import { ThemeProvider } from '@morfeo/styled-components-web';
-import { theme } from '@morfeo/web';
+import { morfeo } from '@morfeo/web';
 import { myTheme } from './myTheme';
 
-theme.set(myTheme);
+morfeo.setTheme('default', myTheme);
 
 export const App = () => {
   return (

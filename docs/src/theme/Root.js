@@ -1,15 +1,13 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
-import { parsers, theme } from '@morfeo/react';
+import { morfeo } from '@morfeo/react';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
+import '@morfeo/preset-default';
 import CookieConsent from 'react-cookie-consent';
-import { lightTheme } from './theme';
 
 enableMorfeoDevTool();
 
-theme.set(lightTheme);
-
-const buttonStyle = parsers.resolve({ borderRadius: 'm' });
+const buttonStyle = morfeo.resolve({ corner: 'm' });
 
 function Root({ children }) {
   return (

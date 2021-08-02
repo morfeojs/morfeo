@@ -48,9 +48,9 @@ In addition to the core library, the web package adds the parsers to handle **ps
 You can pass to the `resolve` method any pseudo class with the format '&:{pseudo}', for example:
 
 ```typescript
-import { parsers } from '@morfeo/web';
+import { morfeo } from '@morfeo/web';
 
-const style = parsers.resolve({
+const style = morfeo.resolve({
   bg: 'primary',
   '&:hover': {
     bg: 'secondary',

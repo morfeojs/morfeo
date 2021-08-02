@@ -14,8 +14,8 @@ const light = {
   },
 } as any;
 
-morfeo.addTheme('light', light);
-morfeo.addTheme('dark', dark);
+morfeo.setTheme('light', light);
+morfeo.setTheme('dark', dark);
 
 beforeEach(() => {
   morfeo.useTheme('light');

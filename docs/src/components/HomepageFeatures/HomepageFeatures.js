@@ -1,6 +1,6 @@
 import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
-import { theme, parsers } from '@morfeo/react';
+import { morfeo } from '@morfeo/react';
 import styles from './HomepageFeatures.module.css';
 
 const exampleStyle = {
@@ -19,8 +19,8 @@ const exampleTheme = {
   },
 };
 
-theme.set(exampleTheme);
-const resultStyle = parsers.resolve(exampleStyle);
+morfeo.setTheme(morfeo.getCurrent(), exampleTheme);
+const resultStyle = morfeo.resolve(exampleStyle);
 
 export function HomepageFeatures() {
   return (

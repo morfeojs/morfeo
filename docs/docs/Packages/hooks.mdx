@@ -46,7 +46,7 @@ const MyComponent: React.FC = () => {
 ```
 
 :::note
-If you already know the [core API](./core) useTheme is the equivalent of `theme.get()`, the main difference is that useTheme react
+If you already know the [core API](./core) useTheme is the equivalent of `morfeo.getTheme()`, the main difference is that useTheme react
 to theme changes and force a re-render of the component.
 :::
 
@@ -119,7 +119,7 @@ const AgreeButton: React.FC = ({ children }) => {
 ```
 
 :::note
-Just like useTheme, **useStyles** and **useStyle** are the equivalent of the [core API's](./core) `parsers.resove(style)`
+Just like useTheme, **useStyles** and **useStyle** are the equivalent of the [core API's](./core) `morfeo.resolve(style)`
 but they force a re-render when the theme changes.
 :::
 

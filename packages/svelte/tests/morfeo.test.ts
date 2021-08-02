@@ -25,7 +25,7 @@ const THEME: Theme = {
 
 describe('morfeo', () => {
   beforeAll(() => {
-    morfeo.setTheme(THEME);
+    morfeo.setTheme('default', THEME);
   });
 
   test('should add default className to the element', () => {

@@ -102,13 +102,13 @@ export const defaultTheme: Theme = {
 Once you set your design language you can start to use it by using the theme handler:
 
 ```typescript
-import { theme } from '@morfeo/core';
+import { morfeo } from '@morfeo/core';
 import { defaultTheme } from './my-theme';
 
 /**
  * from now on your design language will be available across all your application
  */
-theme.set(defaultTheme);
+morfeo.setTheme("default", defaultTheme);
 ```
 
 To use the theme in your application just use the `get`, `getSlice` or `getValue` method of the theme singleton:
