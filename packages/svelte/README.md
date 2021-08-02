@@ -30,23 +30,23 @@ yarn add @morfeo/web @morfeo/svelte
 
 ```html
 <script>
-	import { morfeo } from "@morfeo/svelte";
+  import { morfeoStyle } from "@morfeo/svelte";
 </script>
 
-<button use:morfeo={{...$$restProps, componentName: 'Button' }}>
+<button use:morfeoStyle={{...$$restProps, componentName: 'Button' }}>
   <slot></slot>
 </button>
 ```
 
 This component can now be stylized referring to the theme with inline style.
 
-```html
+```jsx
 <script>
   import Button from './Button.svelte';
 </script>
 
 <div>
-  <button bg="dark" borerRadius="m" px="xs" py="xxs">Click me</button>
+  <Button bg="dark" borerRadius="m" px="xs" py="xxs">Click me</Button>
 </div>
 ```
 
@@ -88,15 +88,15 @@ const myTheme = {
 };
 ```
 
-```html
+```jsx
 <script>
   import Button from './Button.svelte';
 </script>
 
 <div>
-  <button>Regular button</button>
-  <button variant="primary">Primary button</button>
+  <Button>Regular button</Button>
+  <Button variant="primary">Primary button</Button>
   <!-- This will be rendered with the attribute type="submit" -->
-  <button variant="submit">Submit button</button>
+  <Button variant="submit">Submit button</Button>
 </div>
 ```

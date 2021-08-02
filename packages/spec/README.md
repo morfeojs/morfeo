@@ -103,19 +103,19 @@ This table will clarify better:
 ### example
 
 ```typescript
-theme.set({
+morfeo.setTheme("light", {
   colors: { primary: '#fefefe', ... },
   spacings: { xxs: '8px', xs: '16px', ... },
-	...
+  ...rest
 });
 // @morfeo/core
-const style = parsers.resolve({ bg: 'primary', px: 'xs' });
+const style = morfeo.resolve({ bg: 'primary', px: 'xs' });
 // @morfeo/styled-components-web
 const Button = styled.button({ bg: 'primary', px: 'xs' });
 // @morfeo/react
 const style = useStyle({ bg: 'primary', px: 'xs' });
 // @morfeo/svelte
-<button use:morfeo={{ bg: 'primary', px: 'xs' }} />
+<button use:morfeoStyle={{ bg: 'primary', px: 'xs' }} />
 ```
 
 In this case the style `{ bg: 'primary', px: 'xs' }` will be resolved in:

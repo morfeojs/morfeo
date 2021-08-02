@@ -44,11 +44,11 @@ the in your app, before setting the theme, just add:
 
 ```typescript
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
-import { myTheme } from './myTheme';
+import { morfeo } from './myTheme';
 
 enableMorfeoDevTool();
 
-theme.set(myTheme);
+morfeo.setTheme("default", myTheme);
 ```
 
 >In a future release the dev tool will probably be always enabled by default

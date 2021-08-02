@@ -18,8 +18,8 @@ loadFont({
   family: 'Roboto',
 });
 
-morfeo.addTheme('light', { ...lightTheme, components });
-morfeo.addTheme('dark', { ...darkTheme, components });
+morfeo.setTheme('light', { ...lightTheme, components });
+morfeo.setTheme('dark', { ...darkTheme, components });
 
 morfeo.useTheme('light');
 

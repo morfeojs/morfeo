@@ -23,7 +23,13 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/spec": "^0.1.6"
+    "@morfeo/spec": "^0.1.8"
+  },
+  "peerDependencies": {
+    "@morfeo/core": "^0.1.8"
+  },
+  "devDependencies": {
+    "@morfeo/core": "^0.1.8"
   },
   "publishConfig": {
     "access": "public"

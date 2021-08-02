@@ -262,7 +262,7 @@ textarea {
  * import { myTheme } from './myTheme';
  *
  * resetCss();
- * morfeo.setTheme(myTheme);
+ * morfeo.setTheme('themeName', myTheme);
  * ```
  */
 export function resetCss() {

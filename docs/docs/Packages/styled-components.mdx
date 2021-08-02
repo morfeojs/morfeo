@@ -94,7 +94,7 @@ It's the same as defining it in this way:
 export const Button = styled.button({ componentName: 'Button' });
 ```
 
-In fact, under the hood morfeo will find the component "Button" inside your theme and its specification will use the right [tag](#custom-tag), style, and [properties](#custom-props)
+In fact, under the hood morfeo will find the component "Button" inside your theme and its specification will use the right [tag](#custom-tag), style, and [properties](#custom-props). (If the component tag is not specified the default will be `div`).
 
 ---
 
@@ -110,10 +110,10 @@ To set your own Theme use the **@morfeo/web theme API** instead.
 // App.js
 
 import { ThemeProvider } from '@morfeo/styled-components-web';
-import { theme } from '@morfeo/web';
+import { morfeo } from '@morfeo/web';
 import { myTheme } from './myTheme';
 
-theme.set(myTheme);
+morfeo.setTheme('default', myTheme);
 
 export const App = () => {
   return (

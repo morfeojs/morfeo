@@ -1,11 +1,15 @@
 import { theme, getStyles, Component } from '@morfeo/web';
 import { paramCase } from 'param-case';
 
-function getComponentCSS(componentName: Component, variant?: string) {
-  let componentId = `morfeo-${componentName.toLowerCase()}`;
+function getComponentCSS(
+  themeName: string,
+  componentName: Component,
+  variant?: string,
+) {
+  let componentId = `morfeo-${paramCase(componentName)}`;
 
   if (variant) {
-    componentId += `-${variant.toLowerCase()}`;
+    componentId += `-${paramCase(variant)}`;
   }
 
   const { sheet } = getStyles(
@@ -15,7 +19,9 @@ function getComponentCSS(componentName: Component, variant?: string) {
     },
   );
 
-  const componentCss = sheet.toString();
+  const componentCss = sheet
+    .toString()
+    .replace(/\.morfeo-/g, `html[data-morfeo-theme="${themeName}"] .morfeo-`);
 
   return `\n${componentCss}\n`;
 }
@@ -29,10 +35,10 @@ export function getCSSClasses(themeName: string) {
   componentNames.forEach(componentName => {
     const { variants } = components[componentName];
     const variantKeys = Object.keys(variants || {});
-    css += getComponentCSS(componentName);
+    css += getComponentCSS(themeName, componentName);
 
     variantKeys.forEach(variant => {
-      css += getComponentCSS(componentName, variant);
+      css += getComponentCSS(themeName, componentName, variant);
     });
   });
 

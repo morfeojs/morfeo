@@ -1,17 +1,17 @@
 import React from 'react';
+import '@morfeo/preset-default';
 import { morfeo, resetCss, loadFont } from '@morfeo/react';
+import { enableMorfeoDevTool } from '@morfeo/dev-tools';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { enableMorfeoDevTool } from '@morfeo/dev-tools';
-import { lightTheme, darkTheme } from '@morfeo/preset-default';
 import { components } from './theme';
 
 enableMorfeoDevTool();
 resetCss();
 
-morfeo.addTheme('light', { ...lightTheme, components } as any);
-morfeo.addTheme('dark', { ...darkTheme, components } as any);
+morfeo.setTheme('light', { components } as any);
+morfeo.setTheme('dark', { components } as any);
 
 morfeo.useTheme('light');
 

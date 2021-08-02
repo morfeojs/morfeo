@@ -8,7 +8,7 @@ import { Button } from './components';
 
 LogBox.ignoreAllLogs();
 
-morfeo.setTheme(defaultTheme as any);
+morfeo.setTheme('default', defaultTheme as any);
 
 const Box = styled.View<Style>(style => morfeo.resolve(style) as any);
 
