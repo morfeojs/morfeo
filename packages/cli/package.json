@@ -1,7 +1,7 @@
 {
   "name": "@morfeo/cli",
   "description": "a command line interface to use morfeo",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "author": {
     "name": "Mauro Erta",
     "email": "mauro@vlkstudio.com"
@@ -11,7 +11,7 @@
     "morfeo": "./bin/run"
   },
   "dependencies": {
-    "@morfeo/web": "^0.1.8",
+    "@morfeo/web": "^0.2.0",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",
@@ -73,7 +73,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/core"
+    "url": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/cli"
   },
   "homepage": "https://morfeo.dev",
   "bugs": {
