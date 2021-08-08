@@ -7,103 +7,82 @@ description: Introduction > Getting started
 
 Morfeo it's a tool to build design systems based on a theme.
 
-It helps you to _follow a design language_ and write consistent UIs, whatever it is the framework of your choice.
+It helps you to _follow a design language_ and write consistent UIs, whatever is the framework of your choice.
 
-It's easy to use and, with the **browser extension**, your theme and your components are automatically documented.
+It's easy to use and, with the [**browser extension**](https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl), your theme and your components are automagically documented.
 
 ## Features
 
-- [Framework Agnostic](./framework-agnostic)
-- [Single source of truth](./single-source-of-truth.mdx)
-- [Dev Tool](./dev-tool.mdx)
-- [Extendible](./extendible.mdx)
-- [Easy to test](./easy-to-test.mdx)
+- [Framework Agnostic](../Features/framework-agnostic)
+- [Single source of truth](../Features/single-source-of-truth.mdx)
+- [Multi theming](../Features/multi-theming)
+- [Dev Tool](../Features/dev-tool.mdx)
+- [CLI](../Features/cli.mdx)
+- [Extendible](../Features/extendible.mdx)
+- [Easy to test](../Features/easy-to-test.mdx)
 
 ## How it works
 
-The main concepts around morfeo are 2 entities, **theme** and **parsers**:
+You can start using morfeo in 30 seconds:
 
-`theme` it's an handler that contains the **design language** of your application, for example a set of colors, spacings, shadows, sizes and gradients, and the base style of your components.
+- install
 
-An example of theme could be the following:
+  ```bash
+  # or @morfeo/(react | svelte | native | web) depending on your framework of choice
+  npm i @morfeo/core
+  # or with yarn
+  yarn add @morfeo/core
+  ```
 
-```typescript
-import { theme } from '@morfeo/core';
+- set the theme (you can create your own or use our [preset](../Packages/preset-default.mdx))
 
-const defaultTheme = {
-  colors: {
-    primary: '#000',
-    secondary: '#e3e3e3',
-    danger: '#eb2f06',
-    success: '#78e08f',
-    warning: '#fa983a',
-  },
-  space: {
-    xxs: '8px',
-    xs: '16px',
-    s: '24px',
-    m: '32px',
-    l: '40px',
-    xl: '48px',
-    xxl: '56px',
-  },
-  components: {
-    Button: {
-      style: {
-        color: 'primary',
-        padding: 's',
-      },
-    },
-  },
-};
+  ```typescript
+  import { morfeo } from '@morfeo/core';
+  import { darkTheme, lightTheme } from './themes';
 
-// From now on the theme will be available in all your application
-theme.set(defaultTheme);
+  morfeo.setTheme('light', lightTheme);
+  morfeo.setTheme('dark', darkTheme);
+  ```
 
-console.log(theme.get()); // will log an object equals to `defaultTheme`
-console.log(theme.getValue('colors', 'primary')); // will log #000
-```
+  or simply:
 
-Once you have a centralized theme, you need to parse this theme to generate the style for your components an layouts, here is where the `parsers` handler start to play!
+  ```typescript
+  // automatically adds two default light and dark themes.
+  import '@morfeo/preset-default';
+  ```
 
-This is an example with React
+- Use it everywhere to resolve a [morfeo style object](../theme-specification.mdx#morfeo-style-object) into a valid `css-in-js` object:
 
-```tsx
-import { parsers } from '@morfeo/web';
+  ```tsx
+  import { morfeo } from '@morfeo/core';
 
-function Button() {
-  const style = parsers.resolve({ componentName: 'Button' });
+  /**
+   * {
+   *   "paddingLeft": "40px",
+   *   "paddingRight": "40px"
+   *   "borderRadius": "50%"
+   *   "background-color": "#06f"
+   * }
+   */
+  const style = morfeo.resolve({
+    px: 'l',
+    corner: 'round',
+    bg: 'primary',
+  });
+  ```
 
-  return <button style={style}>Click me</button>;
-}
-```
+Morfeo works everywhere, [no matter what's the framework or library you're using](../Features/framework-agnostic), not only as a `run time` parser but even as a static css generator thanks to our `CLI` ([@morfeo/cli](../Features/cli.mdx)).
 
-In the case of `React`, we built a package that suites it better: [@morfeo/react](https://morfeo.dev/docs/Packages/react)
+Checkout all our packages and choose the one that fits better your needs:
 
-```tsx
-import { useStyle } from '@morfeo/react';
+- [@morfeo/react](../Packages/react)
+- [@morfeo/native](../Packages/native)
+- [@morfeo/styled-components-web](../Packages/styled-components-web)
+- [@morfeo/svelte](../Packages/svelte)
+- [@morfeo/jss](../Packages/jss)
+- And more ...
 
-function Button() {
-  const style = useStyle({ componentName: 'Button' });
+And even more are coming soon:
 
-  return <button style={style}>Click me</button>;
-}
-```
-
-The value of `style` will be in this example equals to:
-
-```json
-{
-  "color": "#000",
-  "padding": "16px"
-}
-```
-
-## Motivations
-
-When your application starts to grow, maintain UI consistency it's not easy.
-Even in popular applications we often face **wrong typographies**, different **color pallettes** used across different pages or inconsistent **spacings** in each component.
-
-These problems are even more frequent in large applications where different teams works on different features (maybe with different technologies and frameworks).
-
-**morfeo** solves this problem by sharing across all the application a customizable `theme` that contains the "language" of the application design and a `parser` that generate styles based on this language, in this way the UIs an the components are always consistent.
+- _@morfeo/angular_ **coming soon**
+- _@morfeo/styled-components-native_ **coming soon**

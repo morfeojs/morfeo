@@ -2,8 +2,14 @@
 sidebar_position: 5
 id: extendible
 title: Extendible
-description: Introduction > Extendible
+description: Features > Extendible
 ---
+
+The main function of morfeo described [here](../Introduction/base-api.mdx) it's none other than 2 other functions combined called `theme` and `parsers`.
+The `theme` function is responsible for the providing of the design language across the application;
+The `parsers` function instead, is responsible of how a `morfeo style object` is resolved into a valid `css-in-js` object based on this theme.
+
+Both these functions can be extended, adding typings or new functionalities.
 
 ## Extend the theme
 
@@ -41,18 +47,19 @@ Here is the result:
 
 [![spec-augmentation.gif](https://i.postimg.cc/L6WmdNX2/spec-augmentation.gif)](https://postimg.cc/sv5k7P7N)
 
-## Extend parsers
+## Extend the parsers
 
-The `parsers` singleton is componsed by a set of smaller parsers, one for each property you can pass to the resolve method, for example there is a parser that recognize the `bg` property and returns a valid css-in-js style by referreing the value to the `colors` slice of the theme:
+The `parsers` singleton is composed by a set of smaller parsers, one for each property you can pass to the `resolve` method;
+For example there is a parser that recognize the `bg` property and returns a valid style by referring the value to the `colors` slice of the theme:
 
-`{ bg: "primary" } ---> { backgroundColor: theme.getValue('colors', 'primary') }`
+`{ bg: "primary" } ---> { backgroundColor: morfeo.getTheme().colors.primary }`
 
 `parsers` exposes other methods other than resolve, with the `add` method you can define a new parser.
 
 Let's say you want to add a parser for the property `"fullSize"`, if this property it's `true` the parsers will return `width: '100%'`and `height: '100%'`, nothing instead:
 
 ```typescript
-import { parsers, theme, ParserParams } from '@morfeo/core';
+import { parsers, morfeo, ParserParams } from '@morfeo/core';
 
 parsers.add(
   'fullSize',
@@ -68,7 +75,7 @@ parsers.add(
   },
 );
 
-const style = parsers.resolve({ fullSize: true }); // { width: '100%', height: '100%' }
+const style = morfeo.resolve({ fullSize: true }); // { width: '100%', height: '100%' }
 ```
 
 the `add` method needs 2 parameters, the first is the property that should be handled, the second is a callback that will be called each time the property should be resolved; The callback receives an object with 3 attributes:
@@ -92,7 +99,7 @@ In our example, this object will be equals to:
 Don't worry, **morfeo** will think about responsive under the hood, feel free to you use your custom parser like this:
 
 ```typescript
-const style = parsers.resolve({
+const style = morfeo.resolve({
   fullSize: {
     sm: false,
     md: false,

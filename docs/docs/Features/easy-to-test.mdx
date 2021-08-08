@@ -2,13 +2,13 @@
 sidebar_position: 6
 id: easy-to-test
 title: Easy to test
-description: Introduction > Easy to test
+description: Features > Easy to test
 ---
 
 Testing components made with morfeo it's pretty easy, let's give some examples in different frameworks to make it clear:
 
 :::info
-The following examples are made using `jest` and `@testing-library/react` and the components are made in a `React` and `styled-components` but you can apply the same rules and principles to other frameworks too.
+The following examples are made using `jest` and `@testing-library/react` and the components are made in `React` and `styled-components` but you can apply the same rules and principles to other frameworks too.
 :::
 
 ## Example #1
@@ -26,12 +26,12 @@ export const Button = styled.button({
 We can write a simple test to ensure that the style of our button is the same as the one defined inside the theme
 
 ```tsx title="Button.spec.tsx"
-import { theme } from '@morfeo/react';
+import { morfeo } from '@morfeo/react';
 import { render, screen } from '@testing-library/react';
 import { Button } from './Button';
 
 beforeAll(() => {
-  theme.set({
+  morfefo.setTheme('default', {
     colors: {
       primary: 'blue',
     },
@@ -42,7 +42,7 @@ beforeAll(() => {
         },
       },
     },
-  } as any);
+  });
 });
 
 test('should have the style defined inside the theme', () => {
@@ -58,19 +58,14 @@ The following component is used to switch the theme from light to dark and vice-
 
 ```tsx title="ThemeToggle.tsx"
 import { useState, useCallback } from 'react';
-import { Theme, theme } from '@morfeo/react';
+import { Theme, morfeo } from '@morfeo/react';
 import { Button } from './Button';
 
-type Props = {
-  light: Theme;
-  dark: Theme;
-};
-
-export const ThemeToggle: React.FC<Props> = ({ light, dark }) => {
-  const [isLight, setIsLight] = useState(true);
+export const ThemeToggle: React.FC = () => {
+  const [isLight, setIsLight] = useState(morfeo.getCurrent() === 'light');
 
   const onClick = useCallback(() => {
-    theme.set(isLight ? dark : light);
+    morfeo.useTheme(isLight ? 'dark' : 'light');
     setIsLight(!isLight);
   }, [isLight, light, dark]);
 
@@ -81,7 +76,7 @@ export const ThemeToggle: React.FC<Props> = ({ light, dark }) => {
 We can test if the button is working properly with the following test:
 
 ```tsx title="ThemeToggle.spec.tsx"
-import { theme } from '@morfeo/react';
+import { morfeo } from '@morfeo/react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -89,28 +84,32 @@ const dark = {
   colors: {
     primary: 'black',
   },
-} as any;
+};
 
 const light = {
   colors: {
     primary: 'white',
   },
-} as any;
+};
+
+beforeAll(() => {
+  morfeo.setTheme('light', light);
+  morfeo.setTheme('dark', dark);
+});
 
 beforeEach(() => {
-  theme.reset();
-  theme.set(light);
+  morfeo.useTheme('light', dark);
 });
 
 test('should be light by default', () => {
-  render(<ThemeToggle light={light} dark={dark} />);
+  render(<ThemeToggle />);
   const button = screen.getByText(/🌙/i);
   expect(button).toBeDefined();
-  expect(theme.getValue('colors', 'primary')).toBe('white');
+  expect(morfeo.getTheme().colors.primary).toBe('white');
 });
 
 test('should switch the theme to `dark` after the click', () => {
-  render(<ThemeToggle light={light} dark={dark} />);
+  render(<ThemeToggle />);
   const button = screen.getByText(/🌙/i);
   fireEvent(
     button,
@@ -119,6 +118,6 @@ test('should switch the theme to `dark` after the click', () => {
       cancelable: true,
     }),
   );
-  expect(theme.getValue('colors', 'primary')).toBe('black');
+  expect(morfeo.getTheme().colors.primary).toBe('black');
 });
 ```

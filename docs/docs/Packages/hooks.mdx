@@ -46,11 +46,10 @@ const MyComponent: React.FC = () => {
 ```
 
 :::note
-If you already know the [core API](./core) useTheme is the equivalent of `morfeo.getTheme()`, the main difference is that useTheme react
-to theme changes and force a re-render of the component.
+If you already know the [core API](./core) useTheme is the equivalent of `morfeo.getTheme()`, the main difference is that useTheme subscribes your component to theme changes and force a re-render when they'll happen, for example when dark mode is triggered.
 :::
 
-Most of the time you don't need all theme, but just a slice or single value, in this cases [useThemeSlice](#useThemeSlice) and [useThemeValue](#useThemeValue) can will give you only the part of the theme you want:
+Most of the time you don't need the whole theme, but just a slice or single value, in this cases [useThemeSlice](#useThemeSlice) and [useThemeValue](#useThemeValue) will give you only the part of the theme you want:
 
 ### useThemeSlice
 
@@ -83,7 +82,7 @@ const MyComponent: React.FC = () => {
 
 ## useStyles
 
-Most of the times you don't need the theme, but you need to generate a style based on the theme; The hooks `useStyles` and `useStyle` are made for this reason:
+If you don't need the theme, but to generate a style based on the theme; The hooks `useStyles` and `useStyle` are made for this reason:
 
 ```jsx
 const MyComponent: React.FC = () => {

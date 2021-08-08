@@ -40,7 +40,9 @@ yarn add @morfeo/core
 
 ## Usage
 
-**@morfeo/core** exposes the 2 entities that encapsulate all the logic of morfeo which are the **theme** handler and the **parsers** handler.
+**@morfeo/core** has 2 main entities that encapsulate all the logic of morfeo which are the **theme** handler and the **parsers** handler, these 2 entities are exposed by a single, simple and easy to use interface called **morfeo**.
+
+With the function **morfeo** you can handle the theme object and resolve a [morfeo style object](https://morfeo.dev/docs/theme-specification#morfeo-style-object) info a valid css-in-js object.
 
 > [Here](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec) you can find an explanation of the morfeo's theme specification; check it out to understand in deep all the properties your theme should have.
 
@@ -49,10 +51,14 @@ yarn add @morfeo/core
 > You'll probably never use _directly_ `@morfeo/core`, instead, you'll more likely to use [@morfeo/react](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/react), [@morfeo/svelte](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/svelte), [@morfeo/jss](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/jss), or other packages that offer better integration of the morfeo eco-system in your framework of choice.
 > In this particular case, it's important to know that you cannot define media queries as inline-style, that's why you need some other tool like JSS or Styled Components to handle this behavior. Likely, we already thought about it, so feel free to check out our packages.
 
-### theme
+### handling the theme: set, use and get.
 
 The `theme` handler is a singleton that will share across all your application/website the theme, so you can use it to refer colors, spacing, shadow (and [more..](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec)), and most importantly the styles of your **components**.
 
+This singleton is exported by `@morfeo` but, 99% of the time, you don't need to use it directly, `morfeo` exposes a set of methods that cover most
+of the common scenarios like `setting` one or more themes, `getting` the current theme, `using` a theme instead of another one.
+
+Anyway it's important to understand what the theme singleton does and how we can extend it.
 For example, let's begin by defining your **design language**, imagine it like a single source of truth of your design, so it contains all the colors your using, all the spacings, sizes, and so on:
 
 ```typescript
@@ -99,33 +105,38 @@ export const defaultTheme: Theme = {
 }
 ```
 
-Once you set your design language you can start to use it by using the theme handler:
+Once you set your design language you can start to use it by using the morfeo handler:
 
 ```typescript
 import { morfeo } from '@morfeo/core';
 import { defaultTheme } from './my-theme';
 
 /**
+ * the theme is added and it can be used.
+ */
+morfeo.setTheme('default', defaultTheme);
+/**
  * from now on your design language will be available across all your application
  */
-morfeo.setTheme("default", defaultTheme);
+morfeo.useTheme('default');
 ```
 
-To use the theme in your application just use the `get`, `getSlice` or `getValue` method of the theme singleton:
+To use the theme in your application just use the `getTheme` method of the morfeo singleton:
 
 ```typescript
-const myTheme = theme.get(); // will return all your theme
-const colors = theme.getSlice('colors'); // { primary: "#000000", secondary: "#ffffff", ... }
-const primaryColor = theme.getValue('colors', 'primary'); // #000000
+const myTheme = morfeo.getTheme(); // will return all your theme
+const colors = morfeo.getTheme('colors'); // { primary: "#000000", secondary: "#ffffff", ... }
+const primaryColor = morfeo.getTheme('colors', 'primary'); // #000000
 // You can access any value or slice of your theme
-const themeButton = theme.getValue('components', 'Button');
+const themeButton = morfeo.getTheme('components', 'Button');
 ```
 
 #### Why it's important?
 
-Sharing a theme all around your application it's incredibly important to ensure consistency in your UIs and components, but the most important usage of the theme singleton is hidden inside the other singleton exposed by the morfeo library: **parsers**
+Sharing a theme all around your application it's incredibly important to ensure consistency in your UIs and components, but the most important usage of the theme singleton is hidden inside the other singleton exposed by the morfeo library: **parsers**. Even in this case, except for advanced usage,
+the only method of the parsers you'll need is the `resolve` method, that's why is re-exposed by the unified API `morfeo`.
 
-### parsers
+### handling the parsers: the resolve method
 
 The `parsers` singleton will covert a CSS in JS object that uses the values of the theme into a valid CSS in JS object that you can use to directly style your components or passing to other tools like JSS or styled components to style your components:
 
@@ -148,20 +159,20 @@ the style will be equals to:
 }
 ```
 
-> In this example we are using the property "px" that it's an alias for paddingLeft and paddingRight, check all the aliases [here](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec)
+> In this example we are using the property "px" that it's an alias for paddingLeft and paddingRight, check all the aliases [here](https://morfeo.dev/docs/theme-specification#properties)
 
-You can even retrieve the style of a component by using the properties `componentName` and` variant`
+You can even retrieve the style of a component by using the properties `componentName` and `variant`:
 
 ```typescript
 // { color: '#00000', backgroundColor: "#fffff" }
-const buttonStyle = parsers.resolve({ componentName: 'Button' });
+const buttonStyle = morfeo.resolve({ componentName: 'Button' });
 // { color: '#fffff', backgroundColor: "#00000" }
-const invertedButtonStyle = parsers.resolve({
+const invertedButtonStyle = morfeo.resolve({
   componentName: 'Button',
   variant: 'inverted',
 });
 // { color: "#00000", backgroundColor: "#e74c3c", padding: "32px" }
-const customButtonStyle = parsers.resolve({
+const customButtonStyle = morfeo.resolve({
   componentName: 'Button',
   bg: 'danger',
   padding: 's',
@@ -172,10 +183,10 @@ As you can see you can retrieve any component style, any component variant style
 
 ### component
 
-To access the properties of a component you can always use the [theme](#theme) handler:
+To access the properties of a component you can always use the [morfeo.getTheme](#handling-the-theme-set-use-and-get) method:
 
 ```typescript
-const componentConfig = theme.getValue('components', 'Button');
+const componentConfig = morfeo.getTheme.components.Button;
 ```
 
 But what if you need to access a particular variant of the component?
@@ -196,7 +207,7 @@ const componentConfig = component('Button').get();
 const primaryStyle = component('Button', 'primary').getStyle(); // merged with the base style
 ```
 
-This is a complete exmple of what you can do with the `component` function:
+This is a complete example of what you can do with the `component` function:
 
 ```typescript
 const componentConfig = component('Button').get();
@@ -206,7 +217,7 @@ const componentProps = component('Button').getProps();
 const componentVariants = component('Button').getVariants();
 
 const primaryConfig = component('Button', 'primary').get();
-const primarTag = component('Button', 'primary').getTag();
+const primaryTag = component('Button', 'primary').getTag();
 const primaryStyle = component('Button', 'primary').getStyle();
 const primaryProps = component('Button', 'primary').getProps();
 
@@ -221,7 +232,7 @@ const primaryVariants = component('Button', 'primary').getVariants();
 What if you need to apply a style only to specific resolutions? morfeo enables you to do this in a pretty simple way.
 
 ```typescript
-parsers.resolve({
+morfeo.resolve({
   padding: {
     sm: 's',
     md: 'm',
@@ -310,7 +321,7 @@ parsers.add('fullSize', ({ property, value, style }) => {
   return {};
 });
 
-const style = parsers.resolve({ fullSize: true }); // { width: '100%', height: '100%' }
+const style = morfeo.resolve({ fullSize: true }); // { width: '100%', height: '100%' }
 ```
 
 the `add` method needs 2 parameters, the first is the property that should be handled, the second is a callback that will be called each time the property should be resolved; The callback receives an object with 3 attributes:
@@ -334,7 +345,7 @@ In our example, this object will be equals to:
 Don't worry, **morfeo** will think about responsive under the hood, feel free to you use your custom parser like this:
 
 ```typescript
-const style = parsers.resolve({
+const style = morfeo.resolve({
   fullSize: {
     sm: false,
     md: false,

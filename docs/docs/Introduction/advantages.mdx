@@ -1,0 +1,80 @@
+---
+sidebar_position: 3
+id: advantages
+title: Advantages
+description: Introduction > Advantages
+---
+
+The main goals of morfeo are:
+
+- create a single source of truth for the style of your application
+- separate the style of a component from its logic.
+
+The first goal is reached by stylize your components using aliases instead of values, for example `color: "primary"`instead of `color: "#06f"` as better explained [here](../Features/single-source-of-truth.mdx).
+
+To understand the second goal, let me show you an example:
+
+```typescript
+const successButtonStyle = morfeo.resolve({
+  bg: 'success',
+  corner: 'm', // <----
+  borderWidth: 'xs', // <----
+  borderColor: 'success.darkest',
+});
+
+const dangerButtonStyle = morfeo.resolve({
+  bg: 'error',
+  corner: 'l', // <----
+  borderWidth: 'xxs', // <----
+  borderColor: 'errror.darkest',
+});
+```
+
+As you can see, in this example each style is following the design language, but the buttons where these styles will be applied will still look **inconsistent** since they have different `borderRadius` and `borderWidths`.
+
+:::info The truth is
+**following a design language is not enough to ensure consistency**
+:::
+
+Thats why morfeo natively support components inside the theme, let's rewrite the example above:
+
+```typescript
+// inside the theme object
+const theme = {
+  ...restOfTheTheme,
+  components: {
+    Button: {
+      style: {
+        corner: 'm',
+        borderWidth: 'xs',
+      },
+      variants: {
+        success: {
+          style: {
+            bg: 'success',
+            borderColor: 'success.darkest',
+          },
+        },
+        error: {
+          style: {
+            bg: 'error',
+            borderColor: 'error.darkest',
+          },
+        },
+      },
+    },
+  },
+};
+
+const successButtonStyle = morfeo.resolve({
+  componentName: 'Button',
+  variant: 'success',
+});
+
+const dangerButtonStyle = morfeo.resolve({
+  componentName: 'Button',
+  variant: 'error',
+});
+```
+
+As you can see, now the style of the buttons is centralized inside the theme, the generated styles are not based on a style object but instead by referring to theme components, and this is a **huge** advantage since now you can apply these styles to every button you have all-around your application, no matter why they are built for.

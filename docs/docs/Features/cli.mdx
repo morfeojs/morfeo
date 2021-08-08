@@ -1,0 +1,103 @@
+---
+sidebar_position: 1
+id: morfeo-cli
+title: CLI
+description: Features > CLI
+---
+
+If you don't need to generate style `run time` or you don't want to use `javascript` at all, but you still want to benefit the morfeo eco-system and a centralized theme,
+the `morfeo CLI` is what you need!
+
+Morfeo CLI has (for now) only one command called `build`, with this command you can generate CSS based on a theme.
+
+## Example
+
+```typescript title="theme.tsx"
+const theme = {
+  colors: {
+    primary: '#1abc9c',
+    secondary: '#3498db',
+  },
+  ...restOfTheTheme,
+  components: {
+    Button: {
+      ...,
+      style: {
+        ...,
+        bg: "primary",
+      },
+      variants: {
+        secondary: {
+          ...,
+          style: {
+            bg: "secondary"
+          },
+        },
+      },
+    },
+  },
+};
+```
+
+After running this command:
+
+```bash
+morfeo build theme.tsx --name="themeName"
+```
+
+Will generate the CSS:
+
+```css
+:root,
+html[data-morfeo-theme='themeName'] {
+  /* all the other variables */
+  --colors-primary: #1abc9c;
+  --colors-secondary: #3498db;
+}
+
+html[data-morfeo-theme='themeName'] .morfeo-button {
+  background-color: var(--colors-primary);
+}
+
+html[data-morfeo-theme='themeName'] .morfeo-button-secondary {
+  background-color: var(--colors-secondary);
+}
+```
+
+:::note
+Notice that the generated css starts with `html[data-morfeo-theme="themeName"]`, this enables you to generate multiple css styles for different themes and still have multi-theming even in this case, make sure to put the data-attribute `data-morfeo-theme` in the html tag
+:::
+
+After this, you can include the generated style in your application and use it to stylize your component or in custom css classes:
+
+```tsx
+import 'path/to/generated/styles';
+
+function Button() {
+  return <button className="morfeo-button" />;
+}
+```
+
+an example in plain vanilla javascript could be the following
+
+```typescript
+const button = document.createElement('button');
+button.classList.add('morfeo-button');
+```
+
+Or even in simple old school HTML:
+
+```html
+<html data-morfeo-theme="themeName">
+  <head>
+    <link rel="stylesheet" href="path/to/generated/styles" />
+  </head>
+  <body>
+    <button class="morfeo-button">No Javascript needed</button>
+  </body>
+</html>
+```
+
+## Specification
+
+The details about all the flags and the configurations of @morfeo/cli can be found in the packages section, [here](../Packages/cli.mdx).
