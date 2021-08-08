@@ -2,19 +2,19 @@
 sidebar_position: 4
 id: dev-tool
 title: Dev Tool
-description: Introduction > Dev Tool
+description: Features > Dev Tool
 ---
 
 import Link from '@docusaurus/Link';
 
 One of the most important feature of morfeo is the [dev-tool](https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl),
-with the dev tool yuo'always be able to see your theme and play with it.
+with the dev tool you'll always be able to see your theme and play with it.
 
 ![dev tool](../../static/img/devtool/hero.jpeg)
 
 ## Installation
 
-You can install the dev tool by going to chrome webstore and add it to your plugins:
+You can install the dev tool by going to chrome web store and add it to your plugins:
 
 <Link
   className="button button--primary button--lg"
@@ -44,7 +44,7 @@ npm i @morfeo/dev-tools
 yarn add @morfeo/dev-tools
 ```
 
-the in your app, before setting the theme, just add:
+then in your app, just call the function `enableMorfeoDevTool`:
 
 ```typescript
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
@@ -52,7 +52,7 @@ import { myTheme } from './myTheme';
 
 enableMorfeoDevTool();
 
-theme.set(myTheme);
+morfeo.setTheme('light', myTheme);
 ```
 
 :::info
@@ -63,11 +63,11 @@ In a future release the dev tool will probably be always enabled by default
 
 We want to improve the dev tool as much as possible and add functionalities like:
 
-- change the application theme from the theme
+- change the application theme from the dev tool
 - increase the supported theme slices
 - a UI to easily generate the style based on the theme
-- theme storage to apply theme presets to your application
+- handle multi-theming
 
 If you want to help us, check our [GitHub](https://github.com/VLK-STUDIO/morfeo)!
 
-If you want a particular funcionality or you found a bug, open an issue [here](https://github.com/VLK-STUDIO/morfeo/issues)
+If you want a particular functionality or you found a bug, please, open an issue [here](https://github.com/VLK-STUDIO/morfeo/issues)

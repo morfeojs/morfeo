@@ -86,7 +86,7 @@ const MyComponent: React.FC = () => {
 
 ## useStyles
 
-Most of the times you don't need the theme, but you need to generate a style based on the theme; The hooks `useStyles` and `useStyle` are made for this reason:
+If you don't need the theme, but to generate a style based on the theme; The hooks `useStyles` and `useStyle` are made for this reason:
 
 ```jsx
 const MyComponent: React.FC = () => {
@@ -121,7 +121,7 @@ const AgreeButton: React.FC = ({ children }) => {
 };
 ```
 
-> Just like useTheme, **useStyles** and **useStyle** are the equivalent of the [core API's](./core) `morfeo.resolve(style)`
+> Just like useTheme, **useStyles** and **useStyle** are the equivalent of the [core API's](https://morfeo.dev/docs/Packages/core) `morfeo.resolve(style)`
 > but they force a re-render when the theme changes.
 
 ## useProps

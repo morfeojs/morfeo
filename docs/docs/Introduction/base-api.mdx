@@ -1,0 +1,52 @@
+---
+sidebar_position: 4
+id: base-api
+title: Base API
+description: Introduction > Base API
+---
+
+Morfeo was made to be easy to use, fast and extendible.
+In the advanced section you can learn morfeo in deep and know better how to use it in corner cases or special situations, but 99% of the time
+the following API will cover you up!
+
+```typescript
+import { morfeo } from '@morfeo/core';
+
+/**
+ * Add a new theme with a given name:
+ */
+morfeo.setTheme('light', lightTheme);
+morfeo.setTheme('dark', darkTheme);
+
+/**
+ * Set the theme to use (default is the first added)
+ */
+morfeo.useTheme('dark');
+
+/**
+ * Get the theme current theme
+ */
+morfeo.getTheme();
+/**
+ * Or the specified theme
+ */
+morfeo.getTheme('light');
+
+/**
+ * Get the current theme name
+ */
+const currentThemeName = morfeo.getCurrent(); // dark
+
+/**
+ * Get all the added themes
+ */
+morfeo.getThemes(); // { "light": {...}, "dark": {...} };
+
+/**
+ * Parse a morfeo style object and generate a valid `css-in-js` object.
+ */
+const style = morfeo.resolve({
+  px: 'm',
+  gradient: 'primary',
+});
+```

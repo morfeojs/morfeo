@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { morfeo } from '@morfeo/react';
+import { morfeo, deepMerge } from '@morfeo/react';
+import { lightTheme } from '@morfeo/preset-default';
 
 const themes = {
-  theme1: {
+  theme1: deepMerge(lightTheme, {
     colors: {
       primary: '#16a085',
     },
@@ -12,8 +13,8 @@ const themes = {
     spacings: {
       s: '30px',
     },
-  },
-  theme2: {
+  }),
+  theme2: deepMerge(lightTheme, {
     colors: {
       primary: '#e67e22',
     },
@@ -23,8 +24,8 @@ const themes = {
     spacings: {
       s: '20px',
     },
-  },
-  theme3: {
+  }),
+  theme3: deepMerge(lightTheme, {
     colors: {
       primary: '#8e44ad',
     },
@@ -34,7 +35,7 @@ const themes = {
     spacings: {
       s: '40px',
     },
-  },
+  }),
 };
 
 Object.keys(themes).forEach(name => morfeo.setTheme(name, themes[name]));

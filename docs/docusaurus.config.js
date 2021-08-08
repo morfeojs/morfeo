@@ -6,6 +6,10 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+  customFields: {
+    description:
+      'Morfeo is a tool to build design systems based on a single source of truth.',
+  },
   favicon: 'img/favicon.ico',
   organizationName: 'VLK-STUDIO',
   projectName: 'morfeo',
@@ -31,11 +35,18 @@ module.exports = {
           position: 'right',
           label: 'Docs',
         },
+        {
+          to: 'docs/Packages/core',
+          label: 'Packages',
+          position: 'right',
+          activeBaseRegex: `/packages/`,
+        },
         { to: '/blog', label: 'Blog', position: 'right' },
         {
           href: 'https://github.com/VLK-STUDIO/morfeo',
-          label: 'GitHub',
           position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
@@ -51,7 +62,7 @@ module.exports = {
             },
             {
               label: 'Dev Tool',
-              to: '/docs/Introduction/dev-tool',
+              to: '/docs/Features/dev-tool',
             },
             {
               label: 'Theme specification',

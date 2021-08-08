@@ -36,7 +36,7 @@ interface Theme {
 
 The main difference between morfeo's theme and others is the **components** slice that will contain the specification of your components.
 
-### properties
+### Properties
 
 In this table, for each slice, are indicated the css properties that will be resolved with values of that slice:
 
@@ -63,9 +63,8 @@ In this table, for each slice, are indicated the css properties that will be res
 | letterSpacings | letterSpacing                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | components     | **componentName, variant**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
-:::info
-Custom Properties
-:::
+## Custom Properties
+
 Some of the properties do not correspond to any CSS rule but they will be resolved to valid CSS rules.
 This table will clarify better:
 
@@ -88,19 +87,19 @@ This table will clarify better:
 ### example
 
 ```typescript
-theme.set({
+morfeo.setTheme("default", {
   colors: { primary: '#fefefe', ... },
   spacings: { xxs: '8px', xs: '16px', ... },
 	...
 });
-// @morfeo/core
-const style = parsers.resolve({ bg: 'primary', px: 'xs' });
+// @morfeo/core | @morfeo/web
+const style = morfeo.resolve({ bg: 'primary', px: 'xs' });
 // @morfeo/styled-components-web
 const Button = styled.button({ bg: 'primary', px: 'xs' });
 // @morfeo/react
 const style = useStyle({ bg: 'primary', px: 'xs' });
 // @morfeo/svelte
-<button use:morfeo={{ bg: 'primary', px: 'xs' }} />
+<button use:morfeoStyle={{ bg: 'primary', px: 'xs' }} />
 ```
 
 In this case the style `{ bg: 'primary', px: 'xs' }` will be resolved in:
@@ -113,13 +112,37 @@ In this case the style `{ bg: 'primary', px: 'xs' }` will be resolved in:
 }
 ```
 
-## the style type
+## Morfeo Style Object
 
-if your using typescript, all the previous properties, and the corresponding possible values are mapped inside a type called `Style`:
+The object passed to `morfeo.resolve` (core api), `useStyle` (react) or `use:morfeoStyle` (svelte), is called `morfeo style object`,
+if your using typescript, this object is described by the type `Style`:
 
 ```typescript
 import { Style } from '@morfeo/spec';
+
+const morfeoStyleObject: Style = {
+  bg: 'primary',
+  p: 'm',
+  ...,
+}
+
+const style = morfeo.resolve(morfeoStyleObject);
+// or if you're using React
+// const style = useStyle({ bg: 'primary', px: 'xs' });
 ```
+
+The differences between a `morfeo style object` and a `css-in-js` object are:
+
+- the values inside a morfeo style object refer the theme;
+- the keys of a morfeo style object could be aliases
+
+After the parsing by morfeo, a "morfeo style object" is converted into a valid `css-in-js` that you can use to stylize a component or an html element.
+
+| morfeo style object           | css in js object                                                          |
+| ----------------------------- | ------------------------------------------------------------------------- |
+| `{ p: 'm' }`                  | `{ padding: '20px' }`                                                     |
+| `{ color: 'primary' }`        | `{ color: '#06f' }`                                                       |
+| `{ componentName: 'Button' }` | `{ bacckgroundColor: '#06f', paddingLeft: '40px', paddingRight: '40px' }` |
 
 :::note
 since @morfeo/spec is re-exported by the other morfeo packages, you don't need to install directly @morfeo/spec to use it.
@@ -167,17 +190,17 @@ the component's theme slice is an object where the `key` is the name of the comp
 const myTheme = {
   ...,
   components: {
-  	Button: {
-  		style: { height: 'm', px: 's', borderRadius: 'm' },
+    Button: {
+      style: { height: 'm', px: 's', borderRadius: 'm' },
       variants: {
         cancel: {
           style: { bg: 'danger' },
         },
         confirm: {
           style: { bg: 'success' },
-        },
+       },
       },
-		},
+    },
     Typography: {
       style: { fontFamily: 'regular' },
       variants: {
@@ -189,7 +212,7 @@ const myTheme = {
         }
       },
     },
-	},
+  },
 }
 ```
 
@@ -250,6 +273,6 @@ type ComponentConfig = {
 - props indicates a set of attributes to be passed to the component
 - variants is an object where the key is the name of the variant and the value is the configuration for that variant.
 
-:::info
-It's important to know that the style generated for each component or component variant will **always** be consinstent with what is inside the configuration, _tag_ and _props_ instead are information that you can specify or not to properly render the component, libraries like **@morfeo/styled-components-web** uses this information to render the right tag an pass it the base properties.
+:::note
+It's important to know that the style generated for each component or component variant will **always** be consistent with what is inside the attribute `style` of the configuration. `tag` and `props` attributes instead are information that you can specify or not to properly render the component. Libraries like **@morfeo/styled-components-web** uses this information to render the right tag an pass it the base properties.
 :::

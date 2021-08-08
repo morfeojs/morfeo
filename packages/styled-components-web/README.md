@@ -183,18 +183,17 @@ export const Button = styled.Button({});
 And then, it will result in this way:
 
 ```tsx
-import styled, { useTheme } from '@morfeo/styled-components-web'
-import { Button } from './components'
+import styled, { useTheme } from '@morfeo/styled-components-web';
+import { Button } from './components';
 
 const MyComponent = () => {
-
   return (
     <>
-    <Button variant="primary" /> // <button .../>
-    <Button variant="link" /> // <a .../>
+      <Button variant="primary" /> {/*<button .../>*/}
+      <Button variant="link" /> {/*<a .../>*/}
     </>
-  )
-}
+  );
+};
 ```
 
 ## Custom Props
@@ -233,13 +232,12 @@ const CancelButton = styled.Button({
 function App() {
   return (
     <>
-      <Button>Submit</Button>; // <button type="submit" />
-      <Button variant="cancel">Cancel</Button>; // <button
-        type="button"
-        aria-label="cancel"
-      />
-      <CancelButton>Cancel</CancelButton>; //{' '}
-      <button type="button" aria-label="cancel" />
+      <Button>Submit</Button>
+      {/*<button type="submit" />*/}
+      <Button variant="cancel">Cancel</Button>
+      {/*<button type="button" aria-label="cancel" />*/}
+      <CancelButton>Cancel</CancelButton>
+      {/*<button type="button" aria-label="cancel" />*/}
     </>
   );
 }

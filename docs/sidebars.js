@@ -3,13 +3,12 @@ module.exports = {
     {
       type: 'category',
       label: 'Introduction',
+      collapsed: false,
       items: [
         'Introduction/getting-started',
-        'Introduction/framework-agnostic',
-        'Introduction/single-source-of-truth',
-        'Introduction/dev-tool',
-        'Introduction/extendible',
-        'Introduction/easy-to-test',
+        'Introduction/motivations',
+        'Introduction/advantages',
+        'Introduction/base-api',
       ],
     },
     {
@@ -19,17 +18,80 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Packages',
+      label: 'Features',
+      collapsed: false,
       items: [
-        'Packages/core',
-        'Packages/web',
-        'Packages/react',
-        'Packages/hooks',
-        'Packages/native',
-        'Packages/svelte',
-        'Packages/styled-components',
-        'Packages/fonts',
-        'Packages/jss',
+        'Features/framework-agnostic',
+        'Features/single-source-of-truth',
+        'Features/multi-theming',
+        'Features/dev-tool',
+        'Features/morfeo-cli',
+        'Features/extendible',
+        'Features/easy-to-test',
+      ],
+    },
+  ],
+  packagesSidebar: [
+    {
+      type: 'category',
+      label: 'Packages',
+      collapsed: false,
+      items: [
+        {
+          type: 'doc',
+          id: 'Packages/preset-default',
+          label: '📦 @morfeo/preset-default',
+        },
+        {
+          type: 'doc',
+          id: 'Packages/core',
+          label: '📦 @morfeo/core',
+        },
+        {
+          type: 'doc',
+          id: 'Packages/web',
+          label: '📦 @morfeo/web',
+        },
+        {
+          type: 'doc',
+          id: 'Packages/cli',
+          label: '📦 @morfeo/cli',
+        },
+        {
+          type: 'doc',
+          id: 'Packages/react',
+          label: '📦 @morfeo/react',
+        },
+        {
+          type: 'doc',
+          id: 'Packages/hooks',
+          label: '📦 @morfeo/hooks',
+        },
+        {
+          type: 'doc',
+          id: 'Packages/native',
+          label: '📦 @morfeo/native',
+        },
+        {
+          type: 'doc',
+          id: 'Packages/svelte',
+          label: '📦 @morfeo/svelte',
+        },
+        {
+          type: 'doc',
+          id: 'Packages/styled-components',
+          label: '📦 @morfeo/styled-components-web',
+        },
+        {
+          type: 'doc',
+          id: 'Packages/fonts',
+          label: '📦 @morfeo/fonts',
+        },
+        {
+          type: 'doc',
+          id: 'Packages/jss',
+          label: '📦 @morfeo/jss',
+        },
       ],
     },
   ],
