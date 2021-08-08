@@ -22,7 +22,7 @@ $ npm install -g @morfeo/cli
 $ morfeo COMMAND
 running command...
 $ morfeo (-v|--version|version)
-@morfeo/cli/0.0.0 darwin-x64 node-v14.16.0
+@morfeo/cli/0.2.0 darwin-x64 node-v14.16.0
 $ morfeo --help [COMMAND]
 USAGE
   $ morfeo COMMAND
@@ -55,8 +55,6 @@ EXAMPLES
   $ morfeo build --config="configurations/.morfeorc"
   $ morfeo build path/to/theme.ts --name="light"
 ```
-
-_See code: [src/commands/build.ts](https://github.com/VLK-STUDIO/morfeo/blob/v0.0.0/src/commands/build.ts)_
 
 ## `morfeo help [COMMAND]`
 
