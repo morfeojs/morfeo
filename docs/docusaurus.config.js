@@ -62,7 +62,7 @@ module.exports = {
             },
             {
               label: 'Dev Tool',
-              to: '/docs/Introduction/dev-tool',
+              to: '/docs/Features/dev-tool',
             },
             {
               label: 'Theme specification',

@@ -89,7 +89,7 @@ Checkout all our packages and choose the one that fits better your needs:
 
 - [@morfeo/react](https://morfeo.dev/docs/Packages/react)
 - [@morfeo/native](https://morfeo.dev/docs/Packages/native)
-- [@morfeo/styled-components-web](https://morfeo.dev/docs/Packages/styled-components-web)
+- [@morfeo/styled-components-web](https://morfeo.dev/docs/Packages/styled-components)
 - [@morfeo/svelte](https://morfeo.dev/docs/Packages/svelte)
 - [@morfeo/jss](https://morfeo.dev/docs/Packages/jss)
 - And more ...
