@@ -24,7 +24,8 @@
   },
   "dependencies": {
     "@morfeo/hooks": "^0.2.0",
-    "@morfeo/web": "^0.2.0"
+    "@morfeo/web": "^0.2.0",
+    "fast-safe-stringify": "^2.0.8"
   },
   "peerDependencies": {
     "csstype": "^3.0.8",
