@@ -12,7 +12,7 @@ export function useClassNames<Key extends string>(styles: Record<Key, Style>) {
   return classes as Record<Key, string>;
 }
 
-export function useClassName(style: Style = {}) {
+export function useClassName(style: Style) {
   const classes = useClassNames({ component: style });
 
   return classes.component;
