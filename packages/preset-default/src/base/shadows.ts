@@ -8,7 +8,7 @@ export const shadows: Shadows = {
       height: 'xxs',
       width: 'xxs',
     },
-    radius: 16,
+    radius: 'm',
   },
   medium: {
     color: 'dark',
@@ -17,7 +17,7 @@ export const shadows: Shadows = {
       height: 'xxs',
       width: 'xxs',
     },
-    radius: 16,
+    radius: 'm',
   },
   none: {
     color: 'dark',
@@ -26,7 +26,7 @@ export const shadows: Shadows = {
       height: 'none',
       width: 'none',
     },
-    radius: 0,
+    radius: 'none',
   },
   strong: {
     color: 'dark',
@@ -35,6 +35,6 @@ export const shadows: Shadows = {
       height: 'none',
       width: 'none',
     },
-    radius: 10,
+    radius: 's',
   },
 };

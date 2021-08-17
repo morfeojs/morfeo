@@ -1,20 +1,28 @@
 import { ParserParams, SliceParsers } from '../types';
-import { ShadowProperty, shadowsProperties } from '@morfeo/spec';
+import {
+  Radius,
+  Shadow,
+  ShadowProperty,
+  shadowsProperties,
+  Size,
+  Spacing,
+} from '@morfeo/spec';
 import { theme } from '../theme';
 
 type ShadowsParsers = SliceParsers<typeof shadowsProperties, ShadowProperty>;
 
-function removePixels(value?: string | number): number {
-  if (typeof value === 'number' || value === undefined) {
-    return value || 0;
+function firstValid(...params: (string | number | undefined)[]) {
+  for (const param of params) {
+    if (param) {
+      return param;
+    }
   }
-  const [number] = value.split('px');
-  return Number.parseInt(number, 10);
+
+  return 0;
 }
 
 export function shadows({ value, property }: ParserParams<ShadowProperty>) {
-  const slice = theme.getSlice('shadows');
-  const config = slice[value as ShadowProperty];
+  const config = theme.getValue('shadows', value as Shadow);
   if (!config) {
     return {};
   }
@@ -24,20 +32,23 @@ export function shadows({ value, property }: ParserParams<ShadowProperty>) {
     : 'black';
 
   const { width, height } = config.offset || { width: 0, height: 0 };
-  const parsedWidth = removePixels(
-    theme.getSlice('spacings')[width] ||
-      theme.getSlice('sizes')[width] ||
-      width,
+  const parsedWidth = firstValid(
+    theme.getValue('spacings', width as Spacing),
+    theme.getValue('sizes', width as Size),
+    width,
   );
-  const parsedHeight = removePixels(
-    theme.getSlice('spacings')[height] ||
-      theme.getSlice('sizes')[height] ||
-      height,
+  const parsedHeight = firstValid(
+    theme.getValue('spacings', height as Spacing),
+    theme.getValue('sizes', height as Size),
+    height,
   );
-  const radius = removePixels(config.radius || 0);
+  const radius = firstValid(
+    theme.getValue('radii', config.radius as Radius),
+    config.radius,
+  );
 
   return {
-    [property]: `${parsedWidth}px ${parsedHeight}px ${radius}px ${color}`,
+    [property]: `${parsedWidth} ${parsedHeight} ${radius} ${color}`,
   };
 }
 

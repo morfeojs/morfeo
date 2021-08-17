@@ -1,6 +1,7 @@
 import { shadowsMap } from '../properties';
 import { Color } from './colors';
 import { Opacity } from './opacities';
+import { Radius } from './radii';
 import { Size } from './sizes';
 
 export interface ShadowConfig {
@@ -9,7 +10,7 @@ export interface ShadowConfig {
     width: Size;
     height: Size;
   };
-  radius?: number;
+  radius?: Radius;
   opacity?: Opacity;
 }
 

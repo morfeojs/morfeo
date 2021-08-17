@@ -15,18 +15,21 @@ const THEME: Theme = {
     l: '30px',
     xl: '40px',
   },
+  radii: {
+    m: '30px',
+  },
   shadows: {
     strong: {
       color: 'primary',
       offset: { height: 's', width: 's' },
       opacity: 0.4,
-      radius: 30,
+      radius: '30px',
     },
     light: {
       color: 'secondary',
       offset: { height: 'l', width: 'xl' },
       opacity: 0.4,
-      radius: 30,
+      radius: 'm',
     },
     medium: {
       color: 'secondary',
@@ -72,7 +75,7 @@ describe('shadows', () => {
   test('should generate the property `boxShadow` based on the medium shadow', () => {
     const result = shadows({ property: 'boxShadow', value: 'medium' });
     expect(result).toEqual({
-      boxShadow: '0px 30px 0px white',
+      boxShadow: '0 30 0 white',
     });
   });
 
@@ -87,7 +90,7 @@ describe('shadows', () => {
       value: 'custom' as any,
     });
     expect(result).toEqual({
-      boxShadow: '0px 0px 0px not inside theme',
+      boxShadow: '0 0 0 not inside theme',
     });
   });
 
@@ -97,7 +100,7 @@ describe('shadows', () => {
       value: 'noColor' as any,
     });
     expect(result).toEqual({
-      boxShadow: '0px 0px 0px black',
+      boxShadow: '0 0 0 black',
     });
   });
 });
