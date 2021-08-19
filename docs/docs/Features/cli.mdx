@@ -5,7 +5,7 @@ title: CLI
 description: Features > CLI
 ---
 
-If you don't need to generate style `run time` or you don't want to use `javascript` at all, but you still want to benefit the morfeo eco-system and a centralized theme,
+If you don't need to generate styles `run time` or you don't want to use `javascript` at all, but you still want to benefit the morfeo eco-system and a centralized theme,
 the `morfeo CLI` is what you need!
 
 Morfeo CLI has (for now) only one command called `build`, with this command you can generate CSS based on a theme.
@@ -42,30 +42,79 @@ const theme = {
 After running this command:
 
 ```bash
-morfeo build theme.tsx --name="themeName"
+morfeo build theme.ts --name="themeName"
 ```
 
-Will generate the CSS:
+Will generate the 3 CSS files:
 
-```css
+- {themeName}-variables.css
+- {themeName}-components.css
+- classes.css
+
+```css title="{themeName}-variables.css"
 :root,
-html[data-morfeo-theme='themeName'] {
-  /* all the other variables */
+[data-morfeo-theme='themeName'] {
   --colors-primary: #1abc9c;
   --colors-secondary: #3498db;
+  --gradients-primary: linear-gradient(90deg, #1abc9c 0%, #3498db 100%);
+  --gradients-secondary: linear-gradient(0deg, #3498db 0%, #2ecc71 100%);
+  /* all the other variables */
 }
+```
 
-html[data-morfeo-theme='themeName'] .morfeo-button {
+:::info
+This file contain a css variables for each value of each theme slice, the name of those variables it's simply:
+`--{slice-name}-{alias}`, for example `--colors-primary`, `--spacings-m` or `border-widths-s`
+:::
+
+```css title="{themeName}-components.css"
+[data-morfeo-theme='themeName'] .morfeo-button {
   background-color: var(--colors-primary);
 }
 
-html[data-morfeo-theme='themeName'] .morfeo-button-secondary {
+[data-morfeo-theme='themeName'] .morfeo-button-primary {
+  background-color: var(--colors-primary);
+}
+
+[data-morfeo-theme='themeName'] .morfeo-button-secondary {
   background-color: var(--colors-secondary);
 }
+
+/* all the other components */
 ```
 
-:::note
-Notice that the generated css starts with `html[data-morfeo-theme="themeName"]`, this enables you to generate multiple css styles for different themes and still have multi-theming even in this case, make sure to put the data-attribute `data-morfeo-theme` in the html tag
+:::info
+This file contain a class for each of component and each component variant, the name of those classes it's simply:
+`.morfeo-{component-name}` or `.morfeo-{component-name}-{variant}`, for example `.morfeo-button` or `.morfeo-button-primary`
+:::
+
+```css title="classes.css"
+.bg-primary {
+  background-color: var(--colors-primary);
+}
+.px-xxs {
+  padding-left: var(--spacings-xxs);
+  padding-right: var(--spacings-xxs);
+}
+
+/* all the other classes */
+```
+
+:::info
+This last file contains a class for each combination of `css-attribute` / `morfeo theme value`, to understand all the possible combination it's easier to look at this table:
+
+| property     | slice     | values                      | classes                                                            |
+| ------------ | --------- | --------------------------- | ------------------------------------------------------------------ |
+| padding      | spacings  | xxs, xs, s, m, l, xl, xxl   | `.padding-xxs`, `.padding-xs`, ...., `.padding-xxl`                |
+| padding-left | spacings  | xxs, xs, s, m, l, xl, xxl   | `.padding-left-xxs`, `.padding-left-xs`, ...., `.padding-left-xxl` |
+| px           | spacings  | xxs, xs, s, m, l, xl, xxl   | `.px-xxs`, `.px-xs`, ...., `.px-xxl`                               |
+| ...          | ...       | ...                         | ...                                                                |
+| bg           | colors    | primary, secondary, grey    | `.bg-primary`, `.bg-secondary`, ...., `.bg-grey`                   |
+| color        | colors    | primary, secondary, grey    | `.color-primary`, `.color-secondary`, ...., `.color-grey`          |
+| ...          | ...       | ...                         | ...                                                                |
+| gradient     | gradients | primary, secondary, loading | `.gradient-primary`, `.gradient-secondary`, `.gradient-loading`    |
+
+All the possibles properties can be found here in [this table](../theme-specification.mdx#properties)
 :::
 
 After this, you can include the generated style in your application and use it to stylize your component or in custom css classes:
@@ -74,9 +123,27 @@ After this, you can include the generated style in your application and use it t
 import 'path/to/generated/styles';
 
 function Button() {
+  // Same as:
+  // morfeo.resolve({ componentName: 'Button' });
   return <button className="morfeo-button" />;
 }
+
+function PrimaryButton() {
+  // Same as:
+  // morfeo.resolve({ componentName: 'Button', variant: 'primary' });
+  return <button className="morfeo-button-primary" />;
+}
+
+function CustomButton() {
+  // Same as:
+  // morfeo.resolve({ componentName: 'Button', px: 'm', shadow: 'light' });
+  return <button className="morfeo-button px-m shadow-light" />;
+}
 ```
+
+:::note
+Notice that the generated css starts with `[data-morfeo-theme="themeName"]`, this enables you to generate multiple css styles for different themes and still have multi-theming even in this case, make sure to put the data-attribute `data-morfeo-theme` in the html tag or in the top level component that wraps your website.
+:::
 
 an example in plain vanilla javascript could be the following
 
@@ -88,14 +155,59 @@ button.classList.add('morfeo-button');
 Or even in simple old school HTML:
 
 ```html
-<html data-morfeo-theme="themeName">
+<html>
+  <head>
+    <link rel="stylesheet" href="path/to/generated/styles" />
+  </head>
+  <body data-morfeo-theme="themeName">
+    <div class="py-s px-m">
+      <button class="morfeo-button">No Javascript needed</button>
+    </div>
+  </body>
+</html>
+```
+
+## Multi Theming
+
+As you could notice, inside the files `*-variables.css` and `*-components.css` the css is scoped with `[data-morfeo-theme="themeName"]`; This means that if you have multiple themes, for example `light` and `dark`, the **value** of these variables and classes will change if you're under an HTML element (or component) with the data-attribute `morfeo-theme` equals to light or dark:
+
+```html title="plain html example"
+<html>
   <head>
     <link rel="stylesheet" href="path/to/generated/styles" />
   </head>
   <body>
-    <button class="morfeo-button">No Javascript needed</button>
+    <div data-morfeo-theme="light">
+      <div class="py-s px-m">
+        <button class="morfeo-button">Button under Light mode</button>
+      </div>
+    </div>
+    <div data-morfeo-theme="dark">
+      <div class="py-s px-m">
+        <button class="morfeo-button">Button under dark mode</button>
+      </div>
+    </div>
   </body>
 </html>
+```
+
+```tsx title="Example in React"
+function App({ children }) {
+  const [themeName, setThemeName] = useState('light');
+
+  const toggleThemeName = () => {
+    setThemeName(prev => (prev === 'light' ? 'dark' : 'light'));
+  };
+
+  return (
+    <div data-morfeo-theme={themeName}>
+      {children}
+      <button className="morfeo-button-primary" onClick={toggleThemeName}>
+        Toggle {themeName === 'light' ? 'dark' : 'light'} mode
+      </button>
+    </div>
+  );
+}
 ```
 
 ## Specification

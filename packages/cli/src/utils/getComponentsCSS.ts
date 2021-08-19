@@ -21,16 +21,16 @@ function getComponentCSS(
 
   const componentCss = sheet
     .toString()
-    .replace(/\.morfeo-/g, `html[data-morfeo-theme="${themeName}"] .morfeo-`);
+    .replace(/\.morfeo-/g, `[data-morfeo-theme="${themeName}"] .morfeo-`);
 
-  return `\n${componentCss}\n`;
+  return `${componentCss}\n`;
 }
 
-export function getCSSClasses(themeName: string) {
+export function getComponentsCSS(themeName: string) {
   const { components } = theme.get();
   const componentNames = Object.keys(components) as Component[];
 
-  let css = `@import "./${paramCase(themeName)}-variables.css";\n`;
+  let css = '';
 
   componentNames.forEach(componentName => {
     const { variants } = components[componentName];
