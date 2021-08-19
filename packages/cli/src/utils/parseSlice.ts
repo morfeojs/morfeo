@@ -9,7 +9,7 @@ function getVariableName<Key extends ThemeKey>(
   return `--${paramCase(`${sliceName}-${value}`)}`;
 }
 
-function getCssValue<Key extends ThemeKey>(
+export function getCssValue<Key extends ThemeKey>(
   sliceName: Key,
   attribute: keyof Theme[Key],
 ) {
@@ -57,8 +57,8 @@ export function parseSlice<Key extends ThemeKey>(sliceName: Key) {
       [curr]: value,
     };
 
-    css.push(`${variableName}: ${cssValue};`);
+    css.push(`\t${variableName}: ${cssValue};`);
   }, object);
 
-  return { css: css.join('\n'), object };
+  return { css: css.join('\n') + '\n', object };
 }

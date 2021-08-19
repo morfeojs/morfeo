@@ -86,7 +86,15 @@ describe('build command', () => {
   test
     .command(['build', THEME_PATH, '--build', BUILD_PATH])
     .it(`should create a file called default-style.css`, () => {
-      const exists = fileExists(`default-style.css`);
+      const exists = fileExists(`default-components.css`);
+
+      expect(exists).to.be.true;
+    });
+
+  test
+    .command(['build', THEME_PATH, '--build', BUILD_PATH])
+    .it(`should create a file called classes.css`, () => {
+      const exists = fileExists(`classes.css`);
 
       expect(exists).to.be.true;
     });

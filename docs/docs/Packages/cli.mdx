@@ -19,9 +19,7 @@ or [yarn](https://yarn.pm/@morfeo/cli):
 yarn global add @morfeo/cli
 ```
 
-# Usage
-
-<!-- usage -->
+## Usage
 
 ```sh-session
 $ npm install -g @morfeo/cli
@@ -32,73 +30,19 @@ $ morfeo (-v|--version|version)
 $ morfeo --help [COMMAND]
 USAGE
   $ morfeo COMMAND
-...
+  ...
 ```
 
-# Commands
+## Commands
 
 - [`morfeo build`](#morfeo-build)
 - [`morfeo help [COMMAND]`](#morfeo-help-command)
 
-## `morfeo build`
+### `morfeo build`
 
-This command will build css styles based on your themes.
+This command will build css styles based on your themes. more details [here](../Features/cli.mdx)
 
-### Example
-
-```typescript title="theme.tsx"
-const theme = {
-  colors: {
-    primary: '#1abc9c',
-    secondary: '#3498db',
-  },
-  ...restOfTheTheme,
-  components: {
-    Button: {
-      ...,
-      style: {
-        ...,
-        bg: "primary",
-      },
-      variants: {
-        secondary: {
-          ...,
-          style: {
-            bg: "secondary"
-          },
-        },
-      },
-    },
-  },
-};
-```
-
-After running this command:
-
-```bash
-morfeo build theme.tsx --name="themeName"
-```
-
-Will generate the CSS:
-
-```css
-:root,
-html[data-morfeo-theme='themeName'] {
-  /* all the other variables */
-  --colors-primary: #1abc9c;
-  --colors-secondary: #3498db;
-}
-
-html[data-morfeo-theme='themeName'] .morfeo-button {
-  background-color: var(--colors-primary);
-}
-
-html[data-morfeo-theme='themeName'] .morfeo-button-secondary {
-  background-color: var(--colors-secondary);
-}
-```
-
-### Specification
+#### Specification
 
 ```bash
 USAGE
@@ -116,7 +60,7 @@ EXAMPLES
   $ morfeo build path/to/theme.ts --name="light"
 ```
 
-## `morfeo help [COMMAND]`
+### `morfeo help [COMMAND]`
 
 display help for morfeo
 
@@ -131,4 +75,65 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-<!-- commandsstop -->
+## Configuration
+
+Global configuration could be specified in a file called by default `.morfeorc.(js|json|ts)`, this file should export an object
+that follow this structure:
+
+````typescript
+type MorfeoConfig = {
+  /**
+   * the path where the generated css files will be placed
+   */
+  buildPath?: string;
+  /**
+   * An object where the key is the theme name and the value is the path to the theme.
+   * @example
+   * ```json
+   * {
+   *  "dark": "path/to/darkTheme",
+   *  "light": "path/to/lightTheme",
+   * }
+   * ```
+   */
+  themes?: Record<string, string>;
+};
+````
+
+for example these formats are all valid configurations:
+
+```typescript title=".morfeorc.ts"
+export default {
+  buildPath: './src/styles',
+  themes: {
+    light: './src/themes/lightTheme.ts',
+    dark: './src/themes/darkTheme.ts',
+  },
+};
+```
+
+```javascript title=".morfeorc.js"
+module.exports = {
+  buildPath: './src/styles',
+  themes: {
+    light: './src/themes/lightTheme.ts',
+    dark: './src/themes/darkTheme.ts',
+  },
+};
+```
+
+```json title=".morfeorc.json"
+{
+  "buildPath": "./src/styles",
+  "themes": {
+    "light": "./src/themes/lightTheme.ts",
+    "dark": "./src/themes/darkTheme.ts",
+  },
+};
+```
+
+:::info
+with the flag -c or ---config you can specify a different path for the configuration, for example:
+
+`morfeo build --config=src/configs/morfeo.config.ts`
+:::

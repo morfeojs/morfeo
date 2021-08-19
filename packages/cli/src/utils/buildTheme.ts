@@ -3,27 +3,33 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { paramCase } from 'change-case';
 import { SLICES_TO_BE_EXCLUDED } from '../constants';
-import { getCSSClasses } from './getCSSClasses';
+import { getComponentsCSS } from './getComponentsCSS';
 import { safeWrite } from './safeWrite';
 import { parseSlice } from './parseSlice';
 import { BuildConfig } from '../types';
+import { getClassesCSS } from './getClassesCSS';
 
 function getStylePaths(buildPath: string, themeName: string) {
+  const themeNameInParamCase = paramCase(themeName);
+
   const variablesPath = path.join(
     process.cwd(),
     buildPath,
-    `${paramCase(themeName)}-variables.css`,
+    `${themeNameInParamCase}-variables.css`,
   );
 
-  const stylePath = path.join(
+  const componentsPath = path.join(
     process.cwd(),
     buildPath,
-    `${paramCase(themeName)}-style.css`,
+    `${themeNameInParamCase}-components.css`,
   );
 
+  const classesPath = path.join(process.cwd(), buildPath, `classes.css`);
+
   return {
+    componentsPath,
     variablesPath,
-    stylePath,
+    classesPath,
   };
 }
 
@@ -48,8 +54,7 @@ function writeIndexCss(buildPath: string) {
 }
 
 function wrapWithScope(name: string, css: string) {
-  const parsedCss = css.replace(/\n/g, '\n\t');
-  return `:root, html[data-morfeo-theme="${name}"] {\n\t${parsedCss}\n}\n`;
+  return `:root, [data-morfeo-theme="${name}"] {\n${css}}\n`;
 }
 
 export function buildTheme({ name, buildPath }: BuildConfig) {
@@ -70,7 +75,10 @@ export function buildTheme({ name, buildPath }: BuildConfig) {
     };
   }, currentTheme);
 
-  const { stylePath, variablesPath } = getStylePaths(buildPath as string, name);
+  const { componentsPath, variablesPath, classesPath } = getStylePaths(
+    buildPath as string,
+    name,
+  );
 
   safeWrite(variablesPath, wrapWithScope(name, cssText));
 
@@ -80,13 +88,21 @@ export function buildTheme({ name, buildPath }: BuildConfig) {
   theme.set(newTheme);
 
   /**
-   * getCSSClasses will return a css class for each component and foreach variant using
-   * the new theme with css variables as values
+   * getComponentsCSS will return a css class for each component and for each variant
    */
-  const componentStyle = getCSSClasses(name);
+  const componentStyle = getComponentsCSS(name);
+  safeWrite(componentsPath, componentStyle);
 
-  safeWrite(stylePath, componentStyle);
+  /**
+   * getClassesCSS will return a css class for all the combinations of properties-theme value handled by morfeo
+   */
+  const classesStyle = getClassesCSS();
 
+  safeWrite(classesPath, classesStyle);
+
+  /**
+   * It writes the index.css file where all the generated styles are imported
+   */
   writeIndexCss(buildPath as string);
 
   /**
