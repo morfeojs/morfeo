@@ -1,19 +1,5 @@
 import { bordersMap, borderStylesMap, borderWidthsMap } from '../properties';
-
-export interface Borders {
-  primary: string;
-  secondary: string;
-}
-
-export type Border = keyof Borders;
-
-type BaseBorderProps = {
-  [K in typeof bordersMap[number]]: Border;
-};
-
-export interface BorderProps extends BaseBorderProps {}
-
-export type BorderProperty = keyof BorderProps;
+import { Color } from './colors';
 
 export interface BorderWidths {
   xxs: string;
@@ -55,3 +41,24 @@ type BaseBorderStyleProps = {
 export interface BorderStyleProps extends BaseBorderStyleProps {}
 
 export type BorderStyleProperty = keyof BorderStyleProps;
+
+export type BorderConfig = {
+  width?: BorderWidth;
+  color?: Color;
+  style?: BorderStyle;
+};
+
+export interface Borders {
+  primary: BorderConfig;
+  secondary: BorderConfig;
+}
+
+export type Border = keyof Borders;
+
+type BaseBorderProps = {
+  [K in typeof bordersMap[number]]: Border;
+};
+
+export interface BorderProps extends BaseBorderProps {}
+
+export type BorderProperty = keyof BorderProps;

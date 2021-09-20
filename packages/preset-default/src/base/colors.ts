@@ -1,5 +1,3 @@
-import { Colors } from '@morfeo/spec';
-
 export const baseColors = {
   dark: '#2f2f2f',
   error: '#d10343',

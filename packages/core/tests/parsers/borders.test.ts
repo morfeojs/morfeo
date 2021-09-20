@@ -3,7 +3,18 @@ import { parsers, theme } from '../../src';
 
 const THEME: Theme = {
   borders: {
-    primary: '1px solid red',
+    primary: {
+      width: 'm',
+      style: 'solid',
+      color: 'primary',
+    },
+    secondary: {
+      width: 'l',
+      color: 'primary',
+    },
+  },
+  colors: {
+    primary: 'red',
   },
   borderWidths: {
     m: '3px',
@@ -26,7 +37,21 @@ describe('borders', () => {
   test('should generate a style with border property', () => {
     const result = parsers.resolve({ border: 'primary' });
     expect(result).toEqual({
-      border: '1px solid red',
+      border: '3px solid red',
+    });
+  });
+
+  test('should generate a border style without borderStyle', () => {
+    const result = parsers.resolve({ border: 'secondary' } as any);
+    expect(result).toEqual({
+      border: '5px red',
+    });
+  });
+
+  test('should generate a border style from a regular css string', () => {
+    const result = parsers.resolve({ border: '4px dotted blue' } as any);
+    expect(result).toEqual({
+      border: '4px dotted blue',
     });
   });
 });
