@@ -10,6 +10,7 @@
 [![GitHub license](https://img.shields.io/github/license/VLK-STUDIO/morfeo)](https://github.com/VLK-STUDIO/morfeo/blob/main/LICENSE)
 [![Contributing](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/93b009d2-94be-4d40-baa3-9f86a51922ce/deploy-status)](https://app.netlify.com/sites/cocky-kare-d8d81e/deploys)
+[![DeepScan grade](https://deepscan.io/api/teams/15451/projects/18608/branches/460695/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=15451&pid=18608&bid=460695)
 
 ---
 
