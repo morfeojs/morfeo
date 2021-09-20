@@ -6,12 +6,11 @@ type CssTypeProperties = Properties<string | number>;
 
 type WebStyle = {
   [K in PseudoProperty]?: Style;
-} &
-  {
-    [K in keyof CssTypeProperties]:
-      | CssTypeProperties[K]
-      | ResponsiveValue<CssTypeProperties[K]>;
-  };
+} & {
+  [K in keyof CssTypeProperties]:
+    | CssTypeProperties[K]
+    | ResponsiveValue<CssTypeProperties[K]>;
+};
 
 declare module '@morfeo/core' {
   export interface CustomStyle extends WebStyle {}
