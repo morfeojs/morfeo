@@ -17,6 +17,7 @@ import { sizeParsers } from './sizes';
 import { radiiParsers } from './radii';
 import { colorsParsers } from './colors';
 import { shadowsParsers } from './shadows';
+import { bordersParsers } from './borders';
 import { spacingsParsers } from './spacings';
 import { componentsParses } from './components';
 import { deepMerge } from '../utils';
@@ -43,6 +44,7 @@ const ADDITIONAL_PARSERS = {
   ...radiiParsers,
   ...colorsParsers,
   ...shadowsParsers,
+  ...bordersParsers,
   ...spacingsParsers,
   ...componentsParses,
 };

@@ -9,14 +9,10 @@ export const components = {
       transition: 'slow',
       height: 'xxl',
       width: 'xxl',
-      bg: {
-        md: 'primary',
-        lg: 'primary',
-      },
+      bg: 'primary',
       color: 'white',
       borderRadius: 'm',
-      borderStyle: 'solid',
-      borderColor: 'primary',
+      border: 'primary',
       '&:hover': {
         bg: 'transparent',
         color: 'primary',

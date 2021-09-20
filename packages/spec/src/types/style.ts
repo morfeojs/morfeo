@@ -13,8 +13,7 @@ export interface CustomStyle {}
 
 type ThemeStyle = {
   [K in Property]?: PropertyValue<K> | ResponsiveValue<PropertyValue<K>>;
-} &
-  ComponentProps;
+} & ComponentProps;
 
 type BaseStyle = Omit<CustomStyle, keyof ThemeStyle> & ThemeStyle;
 
