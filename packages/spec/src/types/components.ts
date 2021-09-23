@@ -1,9 +1,15 @@
 import { Style } from './style';
 
+export interface ComponentMeta {
+  description?: string;
+  tags?: string[];
+}
+
 type ComponentStyle<Props extends Style = Style> = {
   tag?: string;
   style: Style;
   props?: Props;
+  meta?: ComponentMeta;
 };
 
 export type ComponentConfig<
