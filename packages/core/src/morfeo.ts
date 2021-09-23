@@ -126,7 +126,7 @@ function createMorfeo() {
     theme.reset();
   }
 
-  return Object.freeze({
+  const instance = Object.freeze({
     resolve,
     useTheme,
     setTheme,
@@ -135,6 +135,10 @@ function createMorfeo() {
     getCurrent,
     __dangerousReset,
   });
+
+  globalThis.__MORFEO_INSTANCE = instance;
+
+  return instance;
 }
 
 export type Morfeo = ReturnType<typeof createMorfeo>;
@@ -158,4 +162,15 @@ export type Morfeo = ReturnType<typeof createMorfeo>;
  *
  * const currentTheme = morfeo.getTheme();
  */
-export const morfeo: Morfeo = createMorfeo();
+export const morfeo: Morfeo = globalThis.__MORFEO_INSTANCE || createMorfeo();
+
+declare global {
+  interface Window {
+    __MORFEO_INSTANCE: Morfeo;
+  }
+  module NodeJS {
+    interface Global {
+      __MORFEO_INSTANCE: Morfeo;
+    }
+  }
+}
