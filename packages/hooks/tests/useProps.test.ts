@@ -1,7 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { theme } from '@morfeo/core';
 import { useProps } from '../src';
-import { act } from 'react-test-renderer';
 
 const THEME = {
   colors: {

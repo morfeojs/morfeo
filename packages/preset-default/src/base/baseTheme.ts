@@ -3,7 +3,6 @@ import { borderStyles } from './borderStyles';
 import { borderWidths } from './borderWidths';
 import { borders } from './borders';
 import { breakpoints } from './breakpoints';
-import { baseColors } from './colors';
 import { fontSizes } from './fontSizes';
 import { fontWeights } from './fontWeights';
 import { gradients } from './gradients';

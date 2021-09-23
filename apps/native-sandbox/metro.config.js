@@ -6,7 +6,6 @@
  */
 const fs = require('fs');
 const getDevPaths = require('get-dev-paths');
-const path = require('path');
 const projectRoot = __dirname;
 
 module.exports = {
