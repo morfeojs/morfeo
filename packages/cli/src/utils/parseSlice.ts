@@ -58,7 +58,7 @@ export function parseSlice<Key extends ThemeKey>(sliceName: Key) {
     };
 
     css.push(`\t${variableName}: ${cssValue};`);
-  }, object);
+  });
 
   return { css: css.join('\n') + '\n', object };
 }

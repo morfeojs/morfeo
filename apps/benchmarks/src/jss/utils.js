@@ -15,11 +15,11 @@ function writeInMd(text) {
 }
 
 function appendInMd(text) {
-  appendInMd(mdPath, `\n\n${text}`);
+  _appendInMd(mdPath, `\n\n${text}`);
 }
 
 function writeMdTitle(title) {
-  _writeInMd(mdPath, `${title}`);
+  _writeMdTitle(mdPath, `${title}`);
 }
 
 function onStart(title, style) {
