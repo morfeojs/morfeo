@@ -35,14 +35,3 @@ export interface Themes {
 }
 
 export type ThemeName = keyof Themes;
-
-declare global {
-  interface Window {
-    __MORFEO_THEMES: Themes;
-  }
-  module NodeJS {
-    interface Global {
-      __MORFEO_THEMES: Themes;
-    }
-  }
-}
