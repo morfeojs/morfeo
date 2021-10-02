@@ -20,7 +20,7 @@ export function makeMorfeoStyleFiles() {
 
   const customComponentStyle = `export const componentName = 'Custom';
 
-export const theme = 'light';
+export const themeName = 'light';
 
 export default {
   style: {

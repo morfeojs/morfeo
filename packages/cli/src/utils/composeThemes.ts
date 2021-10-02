@@ -2,12 +2,13 @@ import { Theme, ThemeKey } from '@morfeo/web';
 import * as fs from 'fs';
 import * as path from 'path';
 import { THEME_KEYS } from '../constants';
+import { MorfeoStyleFile } from '../types';
 
 function resolvePath(filePath: string) {
   return path.join(process.cwd(), filePath);
 }
 
-function getConfigsFromFiles(files: string[]) {
+function getConfigsFromFiles(files: string[]): MorfeoStyleFile[] {
   return files
     .filter(file => typeof file === 'string')
     .map(file => {
@@ -15,16 +16,16 @@ function getConfigsFromFiles(files: string[]) {
       const [defaultName] = path.basename(file).split('.') as ThemeKey[];
       const {
         default: value,
-        theme,
+        themeName,
         sliceName = defaultName,
         componentName = defaultName,
       } = require(file);
 
       if (THEME_KEYS.includes(defaultName) || THEME_KEYS.includes(sliceName)) {
-        return { value, theme, sliceName };
+        return { value, themeName, sliceName };
       }
 
-      return { value, theme, componentName };
+      return { value, themeName, componentName };
     });
 }
 
@@ -53,18 +54,18 @@ export function composeThemes(themes: Record<string, string>, files: string[]) {
   const themeNames = Object.keys(themes);
   const themeObjects = getThemes(themes);
 
-  objects.forEach(({ value, theme, sliceName, componentName }) => {
-    const filteredThemeNames = theme ? [theme] : themeNames;
+  objects.forEach(({ value, themeName, sliceName, componentName }) => {
+    const filteredThemeNames = themeName ? [themeName] : themeNames;
 
-    filteredThemeNames.forEach(themeName => {
+    filteredThemeNames.forEach(currentThemeName => {
       const themeSlice = sliceName ? { [sliceName]: value } : {};
       const componentSlice = componentName ? { [componentName]: value } : {};
 
-      themeObjects[themeName] = {
-        ...themeObjects[themeName],
+      themeObjects[currentThemeName] = {
+        ...themeObjects[currentThemeName],
         ...themeSlice,
         components: {
-          ...themeObjects[themeName].components,
+          ...themeObjects[currentThemeName].components,
           ...componentSlice,
         },
       };

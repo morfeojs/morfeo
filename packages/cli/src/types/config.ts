@@ -1,3 +1,12 @@
+import { ThemeKey } from '@morfeo/web';
+
+export type MorfeoStyleFile = {
+  value: any;
+  themeName?: string;
+  sliceName?: ThemeKey;
+  componentName?: string;
+};
+
 export type BuildConfig = {
   /**
    * an identifier for the passed theme, for example "light", "dark"
