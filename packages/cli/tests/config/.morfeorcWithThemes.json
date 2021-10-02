@@ -1,6 +1,6 @@
 {
   "buildPath": "packages/cli/tests/builds",
   "themes": {
-    "light": "packages/cli/tests/utils/theme.ts"
+    "light": "packages/cli/tests/config/theme.ts"
   }
 }

@@ -31,5 +31,5 @@ export type MorfeoConfig = {
    * }
    * ```
    */
-  themes?: Record<string, string>;
+  themes: Record<string, string>;
 };
