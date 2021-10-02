@@ -1,6 +1,6 @@
 import * as path from 'path';
 import { Command, flags } from '@oclif/command';
-import { buildTheme } from '../utils';
+import { buildTheme, logFooter, logThemesBuilded } from '../utils';
 import { deepMerge, theme } from '@morfeo/web';
 import { getConfiguration } from '../utils/getConfiguration';
 import { getBuildConfiguration } from '../utils/getBuildConfiguration';
@@ -104,5 +104,11 @@ export default class Build extends Command {
       theme.set(localTheme.default ? localTheme.default : localTheme);
       buildTheme({ ...buildConfiguration, name: currentTheme });
     });
+
+    console.clear();
+
+    logThemesBuilded();
+
+    logFooter();
   }
 }
