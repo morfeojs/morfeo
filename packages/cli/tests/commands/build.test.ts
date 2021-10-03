@@ -2,14 +2,14 @@ import { expect, test } from '@oclif/test';
 import { paramCase } from 'change-case';
 import * as path from 'path';
 import * as fs from 'fs';
-import { rmdir } from '../utils/rmdir';
+import { rmdir } from '../utils';
 
-const THEME_PATH = 'packages/cli/tests/utils/theme';
-const THEME_JSON_PATH = 'packages/cli/tests/utils/themejson';
+const THEME_PATH = 'packages/cli/tests/config/theme';
+const THEME_JSON_PATH = 'packages/cli/tests/config/themejson';
 const BUILD_PATH = 'packages/cli/tests/builds';
-const CONFIG_PATH = 'packages/cli/tests/utils/.morfeorc';
-const CONFIG_JSON_PATH = 'packages/cli/tests/utils/.morfeorcjson';
-const CONFIG_WITH_THEMES_PATH = 'packages/cli/tests/utils/.morfeorcWithThemes';
+const CONFIG_PATH = 'packages/cli/tests/config/.morfeorc';
+const CONFIG_JSON_PATH = 'packages/cli/tests/config/.morfeorcjson';
+const CONFIG_WITH_THEMES_PATH = 'packages/cli/tests/config/.morfeorcWithThemes';
 const THEME_NAME = 'light';
 
 function fileExists(fileName: string) {

@@ -25,7 +25,16 @@ module.exports = {
         'Features/single-source-of-truth',
         'Features/multi-theming',
         'Features/dev-tool',
-        'Features/morfeo-cli',
+        {
+          type: 'category',
+          label: 'CLI',
+          collapsed: false,
+          items: [
+            'Features/CLI/morfeo-cli-introduction',
+            'Features/CLI/morfeo-cli-build',
+            'Features/CLI/morfeo-cli-compose',
+          ],
+        },
         'Features/extendible',
         'Features/easy-to-test',
       ],

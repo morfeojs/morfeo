@@ -1,16 +1,13 @@
 ---
 sidebar_position: 1
-id: morfeo-cli
-title: CLI
-description: Features > CLI
+id: morfeo-cli-build
+title: Build command
+description: Features > CLI > Build
 ---
 
-If you don't need to generate styles `run time` or you don't want to use `javascript` at all, but you still want to benefit the morfeo eco-system and a centralized theme,
-the `morfeo CLI` is what you need!
-
-Morfeo CLI has (for now) only one command called `build`, with this command you can generate CSS based on a theme.
-
 ## Example
+
+Let's start by converting a simple theme to css files, for example:
 
 ```typescript title="theme.tsx"
 const theme = {
@@ -45,12 +42,13 @@ After running this command:
 morfeo build theme.ts --name="themeName"
 ```
 
-Will generate the 3 CSS files:
+Will generate 3 CSS files:
 
-- {themeName}-variables.css
-- {themeName}-components.css
-- classes.css
+- {themeName}-variables.css [with css variables based on your theme(s)](#variables)
+- {themeName}-components.css [with css classes based on your components](#components)
+- classes.css [with useful classes to easily use the variables](#classes)
 
+### Variables
 ```css title="{themeName}-variables.css"
 :root,
 [data-morfeo-theme='themeName'] {
@@ -66,6 +64,8 @@ Will generate the 3 CSS files:
 This file contain a css variables for each value of each theme slice, the name of those variables it's simply:
 `--{slice-name}-{alias}`, for example `--colors-primary`, `--spacings-m` or `border-widths-s`
 :::
+
+### Components
 
 ```css title="{themeName}-components.css"
 [data-morfeo-theme='themeName'] .morfeo-button {
@@ -87,6 +87,8 @@ This file contain a css variables for each value of each theme slice, the name o
 This file contain a class for each of component and each component variant, the name of those classes it's simply:
 `.morfeo-{component-name}` or `.morfeo-{component-name}-{variant}`, for example `.morfeo-button` or `.morfeo-button-primary`
 :::
+
+### Classes
 
 ```css title="classes.css"
 .bg-primary {
@@ -114,7 +116,7 @@ This last file contains a class for each combination of `css-attribute` / `morfe
 | ...          | ...       | ...                         | ...                                                                |
 | gradient     | gradients | primary, secondary, loading | `.gradient-primary`, `.gradient-secondary`, `.gradient-loading`    |
 
-All the possibles properties can be found here in [this table](../theme-specification.mdx#properties)
+All the possibles properties can be found here in [this table](../../theme-specification.mdx#properties)
 :::
 
 After this, you can include the generated style in your application and use it to stylize your component or in custom css classes:
@@ -169,7 +171,7 @@ Or even in simple old school HTML:
 
 ## Multi Theming
 
-As you could notice, inside the files `*-variables.css` and `*-components.css` the css is scoped with `[data-morfeo-theme="themeName"]`; This means that if you have multiple themes, for example `light` and `dark`, the **value** of these variables and classes will change if you're under an HTML element (or component) with the data-attribute `morfeo-theme` equals to light or dark:
+As you could notice, inside the files `*-variables.css` and `*-components.css` the css is scoped with `[data-morfeo-theme="themeName"]`; This means that if you have multiple themes, for example `light` and `dark`, the **value** of these variables and classes will change if you're under an HTML element with the data-attribute `morfeo-theme` equals to light or dark:
 
 ```html title="plain html example"
 <html>
@@ -212,4 +214,4 @@ function App({ children }) {
 
 ## Specification
 
-The details about all the flags and the configurations of @morfeo/cli can be found in the packages section, [here](../Packages/cli.mdx).
+The details about all the flags and the configurations of @morfeo/cli can be found in the packages section, [here](../../Packages/cli.mdx#morfeo-build).
