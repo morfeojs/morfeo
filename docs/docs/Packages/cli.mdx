@@ -11,23 +11,21 @@ with [npm](https://www.npmjs.com/package/@morfeo/cli):
 
 ```bash
 npm install -g @morfeo/cli
+# or npm install --save-dev @morfeo/cli
 ```
 
 or [yarn](https://yarn.pm/@morfeo/cli):
 
 ```bash
 yarn global add @morfeo/cli
+# or yarn add --dev @morfeo/cli
 ```
 
 ## Usage
 
-```sh-session
-$ npm install -g @morfeo/cli
-$ morfeo COMMAND
-running command...
-$ morfeo (-v|--version|version)
-@morfeo/cli/0.0.0 darwin-x64 node-v14.16.0
-$ morfeo --help [COMMAND]
+```bash
+morfeo --help [COMMAND]
+# or npx morfeo --help [COMMAND]
 USAGE
   $ morfeo COMMAND
   ...
@@ -36,13 +34,12 @@ USAGE
 ## Commands
 
 - [`morfeo build`](#morfeo-build)
+- [`morfeo compose`](#morfeo-compose)
 - [`morfeo help [COMMAND]`](#morfeo-help-command)
 
 ### `morfeo build`
 
-This command will build css styles based on your themes. more details [here](../Features/cli.mdx)
-
-#### Specification
+build css styles based on your themes
 
 ```bash
 USAGE
@@ -58,6 +55,24 @@ EXAMPLES
   $ morfeo build
   $ morfeo build --config="configurations/.morfeorc"
   $ morfeo build path/to/theme.ts --name="light"
+```
+
+### `morfeo compose`
+
+compose morfeo style files into themes
+
+```bash
+USAGE
+  $ morfeo compose
+
+OPTIONS
+  -c, --config=config  [default: .morfeorc] the path to the configuration file
+  -h, --help           compose morfeo style files into themes
+  -w, --watch          watch file changes
+
+EXAMPLES
+  $ morfeo compose
+  $ morfeo compose --watch
 ```
 
 ### `morfeo help [COMMAND]`
@@ -96,7 +111,7 @@ type MorfeoConfig = {
    * }
    * ```
    */
-  themes?: Record<string, string>;
+  themes: Record<string, string>;
 };
 ````
 
