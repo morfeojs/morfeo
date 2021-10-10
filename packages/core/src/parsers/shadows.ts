@@ -1,9 +1,8 @@
 import { ParserParams, SliceParsers } from '../types';
 import {
-  BorderWidth,
-  Opacity,
   Radius,
   Shadow,
+  BorderWidth,
   ShadowProperty,
   shadowsProperties,
 } from '@morfeo/spec';
