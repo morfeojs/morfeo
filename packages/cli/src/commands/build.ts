@@ -95,15 +95,15 @@ export default class Build extends Command {
       configPath: config,
     });
 
-    themeKeys.forEach(currentTheme => {
+    for (const currentTheme of themeKeys) {
       const localTheme = require(path.join(
         process.cwd(),
         allThemes[currentTheme],
       ));
-
+      theme.reset();
       theme.set(localTheme.default ? localTheme.default : localTheme);
       buildTheme({ ...buildConfiguration, name: currentTheme });
-    });
+    }
 
     console.clear();
 

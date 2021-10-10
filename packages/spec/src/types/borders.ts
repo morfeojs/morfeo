@@ -49,6 +49,7 @@ export type BorderConfig = {
 };
 
 export interface Borders {
+  none: BorderConfig;
   primary: BorderConfig;
   secondary: BorderConfig;
 }
