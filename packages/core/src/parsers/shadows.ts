@@ -1,11 +1,11 @@
 import { ParserParams, SliceParsers } from '../types';
 import {
+  BorderWidth,
+  Opacity,
   Radius,
   Shadow,
   ShadowProperty,
   shadowsProperties,
-  Size,
-  Spacing,
 } from '@morfeo/spec';
 import { theme } from '../theme';
 
@@ -24,7 +24,9 @@ function firstValid(...params: (string | number | undefined)[]) {
 export function shadows({ value, property }: ParserParams<ShadowProperty>) {
   const config = theme.getValue('shadows', value as Shadow);
   if (!config) {
-    return {};
+    return {
+      [property]: value,
+    };
   }
 
   const color = config.color
@@ -33,13 +35,11 @@ export function shadows({ value, property }: ParserParams<ShadowProperty>) {
 
   const { width, height } = config.offset || { width: 0, height: 0 };
   const parsedWidth = firstValid(
-    theme.getValue('spacings', width as Spacing),
-    theme.getValue('sizes', width as Size),
+    theme.getValue('borderWidths', width as BorderWidth),
     width,
   );
   const parsedHeight = firstValid(
-    theme.getValue('spacings', height as Spacing),
-    theme.getValue('sizes', height as Size),
+    theme.getValue('borderWidths', height as BorderWidth),
     height,
   );
   const radius = firstValid(

@@ -25,4 +25,9 @@ export const SLICES_TO_BE_PARSED: SliceToBeParsed[] = [
     styleProp: 'bgGradient',
     property: 'background',
   },
+  {
+    name: 'borders',
+    styleProp: 'border',
+    property: 'border',
+  },
 ];

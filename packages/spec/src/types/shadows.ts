@@ -1,14 +1,14 @@
 import { shadowsMap } from '../properties';
+import { BorderWidth } from './borders';
 import { Color } from './colors';
 import { Opacity } from './opacities';
 import { Radius } from './radii';
-import { Size } from './sizes';
 
 export interface ShadowConfig {
   color?: Color;
   offset?: {
-    width: Size;
-    height: Size;
+    width: BorderWidth;
+    height: BorderWidth;
   };
   radius?: Radius;
   opacity?: Opacity;

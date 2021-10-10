@@ -7,11 +7,9 @@ const THEME: Theme = {
     primary: 'white',
     secondary: 'white',
   },
-  spacings: {
+  borderWidths: {
     s: '10px',
     m: '20px',
-  },
-  sizes: {
     l: '30px',
     xl: '40px',
   },
@@ -79,9 +77,12 @@ describe('shadows', () => {
     });
   });
 
-  test('should return an empty object if the shadow is not found', () => {
-    const result = shadows({ property: 'boxShadow', value: 'none' });
-    expect(result).toEqual({});
+  test('should return the passed value if the shadow is not found', () => {
+    const result = shadows({
+      property: 'boxShadow',
+      value: 'invalid box shadow' as any,
+    });
+    expect(result).toEqual({ boxShadow: 'invalid box shadow' });
   });
 
   test('should use custom colors if they are not inside the theme', () => {
