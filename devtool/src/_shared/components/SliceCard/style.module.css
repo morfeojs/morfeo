@@ -1,0 +1,7 @@
+.sliceCard {
+  display: flex;
+  flex-direction: column;
+  margin: var(--spacings-xs);
+  width: 7rem;
+  height: 7rem;
+}

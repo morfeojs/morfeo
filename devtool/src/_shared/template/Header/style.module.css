@@ -1,0 +1,24 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-indices-strong);
+  height: 5rem;
+  width: 100%;
+  background-color: var(--colors-primary);
+  color: var(--colors-inverted-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.backButton {
+  position: absolute;
+  left: var(--spacings-m);
+}
+
+.title {
+  flex: 1;
+  align-items: center;
+  text-align: center;
+}

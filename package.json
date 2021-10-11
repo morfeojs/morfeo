@@ -12,6 +12,7 @@
     "watch": "lerna run watch",
     "reset": "npm run clean && npm i && lerna bootstrap && npm run build",
     "init:docs": "node scripts/bootstrap-app.mjs docs",
+    "init:devtool": "node scripts/bootstrap-app.mjs devtool",
     "init:web-sandbox": "node scripts/bootstrap-app.mjs apps/web-sandbox",
     "init:svelte-sandbox": "node scripts/bootstrap-app.mjs apps/svelte-sandbox",
     "init:native-sandbox": "node scripts/bootstrap-app.mjs apps/native-sandbox",

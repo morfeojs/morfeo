@@ -1,0 +1,25 @@
+.colorsSection {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 5rem;
+  justify-content: center;
+}
+
+.colorContainer {
+  width: 8rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-left: var(--spacings-xxs);
+  padding-right: var(--spacings-xxs);
+  margin: var(--spacings-xxs);
+}
+
+.circle {
+  border-radius: var(--radii-round);
+  width: 50px;
+  height: 50px;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+}
