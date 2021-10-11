@@ -76,8 +76,8 @@
 	--transitions-fast: .3s ease;
 	--transitions-none: 0s;
 	--z-indices-none: 0;
-	--z-indices-light: 0;
-	--z-indices-medium: 10;
+	--z-indices-light: 10;
+	--z-indices-medium: 50;
 	--z-indices-strong: 90;
 	--colors-dark: #6C6C6C;
 	--colors-light: #A3A3A3;
