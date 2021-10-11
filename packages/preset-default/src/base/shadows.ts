@@ -1,26 +1,8 @@
 import { Shadows } from '@morfeo/spec';
 
 export const shadows: Shadows = {
-  light: {
-    color: 'dark',
-    opacity: 'light',
-    offset: {
-      height: 'xxs',
-      width: 'xxs',
-    },
-    radius: 'm',
-  },
-  medium: {
-    color: 'dark',
-    opacity: 'light',
-    offset: {
-      height: 'xxs',
-      width: 'xxs',
-    },
-    radius: 'm',
-  },
   none: {
-    color: 'dark',
+    color: 'gray',
     opacity: 'light',
     offset: {
       height: 'none',
@@ -28,11 +10,29 @@ export const shadows: Shadows = {
     },
     radius: 'none',
   },
-  strong: {
-    color: 'dark',
+  light: {
+    color: 'gray',
     opacity: 'light',
     offset: {
-      height: 'none',
+      height: 's',
+      width: 'none',
+    },
+    radius: 'xxs',
+  },
+  medium: {
+    color: 'gray',
+    opacity: 'light',
+    offset: {
+      height: 'm',
+      width: 'none',
+    },
+    radius: 'xs',
+  },
+  strong: {
+    color: 'gray',
+    opacity: 'light',
+    offset: {
+      height: 'l',
       width: 'none',
     },
     radius: 's',
