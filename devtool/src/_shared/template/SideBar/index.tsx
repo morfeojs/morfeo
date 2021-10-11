@@ -1,11 +1,11 @@
-import React, { useCallback } from "react";
-import { Link } from "../../components";
-import { RouteName } from "../../contexts";
-import { useMemo } from "react";
-import clsx from "clsx";
+import React, { useCallback } from 'react';
+import { Icon, Link } from '../../components';
+import { RouteName } from '../../contexts';
+import { useMemo } from 'react';
+import clsx from 'clsx';
 
-import { useThemeSlices } from "../../hooks";
-import styles from "./style.module.css";
+import { useThemeSlices } from '../../hooks';
+import styles from './style.module.css';
 
 type Props = {
   open?: boolean;
@@ -17,7 +17,7 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
 
   const renderedSlices = useMemo(
     () =>
-      slices.map((slice) => (
+      slices.map(slice => (
         <Link
           key={slice}
           to={slice as RouteName}
@@ -26,7 +26,7 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
           {slice}
         </Link>
       )),
-    [setOpen, slices]
+    [setOpen, slices],
   );
 
   const toggle = useCallback(() => {
@@ -37,10 +37,13 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
     <div className={clsx(styles.sidebar, open && styles.open)}>
       <div className={styles.linksContainer}>{renderedSlices}</div>
       <button
-        className={clsx("morfeo-button-round", styles.toggle)}
+        className={clsx('morfeo-button-round', styles.toggle)}
         onClick={toggle}
       >
-        {open ? "-" : "+"}
+        <Icon
+          name={open ? 'leftDoubleChevron' : 'rightDoubleChevron'}
+          color="background"
+        />
       </button>
     </div>
   );

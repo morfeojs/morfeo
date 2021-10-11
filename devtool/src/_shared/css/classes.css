@@ -4393,3 +4393,12 @@
 .border-bottom-color-inverted-head-text-color {
   border-bottom-color: var(--colors-inverted-head-text-color);
 }
+.font-family-bold {
+  font-family: var(--fonts-bold);
+}
+.font-family-medium {
+  font-family: var(--fonts-medium);
+}
+.font-family-regular {
+  font-family: var(--fonts-regular);
+}

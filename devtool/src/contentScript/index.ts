@@ -1,6 +1,6 @@
 import { Theme } from '@morfeo/react';
 import browser from 'webextension-polyfill';
-import { MORFEO_DEVTOOLS } from '../constants';
+import { MORFEO_DEVTOOLS } from '../_shared/constants';
 import { ActionType } from '../_shared/types';
 
 function sendTheme(theme: Theme) {

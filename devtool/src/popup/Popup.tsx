@@ -1,26 +1,9 @@
-import browser from "webextension-polyfill";
-import { useEffect, useMemo, useState } from "react";
-import { getThemeFromApp } from "../_shared/utils";
-import "./Popup.css";
-import { MorfeoDevToolAction } from "../_shared/types";
+import { useMemo } from 'react';
+import { useIsUsingMorfeo } from '../_shared/hooks';
+import './Popup.css';
 
-const IS_MORFEO_MESSAGE = "✅ This page is using morfeo.";
+const IS_MORFEO_MESSAGE = '✅ This page is using morfeo.';
 const IS_NOT_MORFEO_MESSAGE = "😢 This page doesn't appear to use morfeo.";
-
-function useIsUsingMorfeo() {
-  const [isUsingMorfeo, setIsUsingMorfeo] = useState<boolean>();
-
-  const onMessage = (message?: MorfeoDevToolAction) => {
-    setIsUsingMorfeo(!!message && !!message.theme);
-  };
-
-  useEffect(() => {
-    getThemeFromApp().then(onMessage);
-    browser.runtime.onMessage.addListener(onMessage);
-  }, []);
-
-  return isUsingMorfeo;
-}
 
 function Popup() {
   const isUsingMorfeo = useIsUsingMorfeo();

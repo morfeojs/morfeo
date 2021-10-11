@@ -115,4 +115,7 @@
 	--colors-inverted-text-color: #ececec;
 	--colors-head-text-color: #000000;
 	--colors-inverted-head-text-color: #ffffff;
+	--fonts-bold: Montserrat, sans-serif;
+	--fonts-medium: Montserrat, sans-serif;
+	--fonts-regular: Montserrat, sans-serif;
 }

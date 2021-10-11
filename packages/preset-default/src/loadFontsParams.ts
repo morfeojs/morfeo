@@ -6,7 +6,7 @@ export const loadFontsParams = [
       },
     ],
     importFontFace: true,
-    fontFamily: 'IBM Plex Sans',
+    family: 'IBM Plex Sans',
     name: 'regular',
   },
   {
@@ -16,7 +16,7 @@ export const loadFontsParams = [
       },
     ],
     importFontFace: true,
-    fontFamily: 'IBM Plex Sans',
+    family: 'IBM Plex Sans',
     name: 'medium',
   },
   {
@@ -26,7 +26,7 @@ export const loadFontsParams = [
       },
     ],
     importFontFace: true,
-    fontFamily: 'IBM Plex Sans',
+    family: 'IBM Plex Sans',
     name: 'bold',
   },
 ];

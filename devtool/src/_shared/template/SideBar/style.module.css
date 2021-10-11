@@ -28,10 +28,12 @@
 
 .toggle {
   position: absolute;
-  width: var(--sizes-l);
-  height: var(--sizes-l);
+  width: var(--sizes-xl);
+  height: var(--sizes-xl);
   line-height: var(--sizes-l);
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--colors-primary);
   top: 50%;
   right: calc(var(--spacings-xxl) * -1);

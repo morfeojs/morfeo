@@ -1,7 +1,9 @@
 import { ComponentConfig } from '@morfeo/react';
 
 export const Typography: ComponentConfig = {
-  style: {},
+  style: {
+    fontFamily: 'regular',
+  },
   variants: {
     hero: {
       tag: 'h1',
