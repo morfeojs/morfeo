@@ -19,6 +19,7 @@
 
 .title {
   flex: 1;
+  color: var(--color-inverted-text-color) !important;
   align-items: center;
   text-align: center;
 }

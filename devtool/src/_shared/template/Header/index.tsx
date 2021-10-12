@@ -19,7 +19,7 @@ export const Header: React.FC = () => {
             cursor: 'pointer',
           }}
         >
-          <Icon name="leftChevron" color="background" />
+          <Icon name="chevron.left" color="background" />
         </BackLink>
       );
     }
@@ -29,9 +29,7 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       {backButton}
-      <h1 className={clsx('color-inverted-text-color', styles.title)}>
-        morfeo
-      </h1>
+      <h1 className={clsx('morfeo-typography-hero', styles.title)}>Morfeo</h1>
     </header>
   );
 };

@@ -26,7 +26,7 @@ export const LeftDoubleChevron: React.FC<IconProps> = props => {
   return (
     <RightDoubleChevron
       {...props}
-      style={{ ...props.style, transform: 'rotate(0deg)' }}
+      style={{ ...props.style, transform: 'rotate(180deg)' }}
     />
   );
 };

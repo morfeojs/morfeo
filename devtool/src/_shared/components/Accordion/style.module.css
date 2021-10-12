@@ -1,0 +1,35 @@
+.labelContainer {
+  display: flex;
+  align-items: center;
+}
+
+.toggle {
+  transform: rotate(0deg);
+  transition: var(--transitions-fast);
+  margin-right: var(--spacings-xs);
+}
+
+.open .toggle {
+  transform: rotate(90deg);
+}
+
+.icon {
+  margin-right: var(--spacings-xxs);
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  width: 100%;
+  max-height: 0px;
+  height: fit-content;
+  overflow: hidden;
+  transition: var(--transitions-fast);
+}
+
+.open .content {
+  max-height: 500px;
+}

@@ -23,7 +23,7 @@ export const Colors: React.FC = () => {
           key={`colors-${key}`}
           className={clsx('morfeo-card', styles.colorContainer)}
         >
-          <h3>{key}</h3>
+          <h3 className="morfeo-typography-h3">{key}</h3>
           <div
             className={styles.circle}
             style={
@@ -32,7 +32,7 @@ export const Colors: React.FC = () => {
               }) as React.CSSProperties
             }
           />
-          <h3>{slice[key]}</h3>
+          <h3 className="morfeo-typography-h3">{slice[key]}</h3>
         </div>
       );
     });

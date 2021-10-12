@@ -1,9 +1,8 @@
-import React, { useCallback } from 'react';
-import { Icon, Link } from '../../components';
-import { RouteName } from '../../contexts';
-import { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
+import { Color } from '@morfeo/react';
 import clsx from 'clsx';
-
+import { Accordion, Icon, Link } from '../../components';
+import { RouteName } from '../../contexts';
 import { useThemeSlices } from '../../hooks';
 import styles from './style.module.css';
 
@@ -22,6 +21,10 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
           key={slice}
           to={slice as RouteName}
           onNavigate={() => setOpen(false)}
+          style={{
+            color: 'var(--color-inverted-text-color)',
+            marginBottom: 'var(--spacings-xxs)',
+          }}
         >
           {slice}
         </Link>
@@ -35,15 +38,14 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
 
   return (
     <div className={clsx(styles.sidebar, open && styles.open)}>
-      <div className={styles.linksContainer}>{renderedSlices}</div>
+      <Accordion label="Slices" icon="slice">
+        <div className={styles.linksContainer}>{renderedSlices}</div>
+      </Accordion>
       <button
         className={clsx('morfeo-button-round', styles.toggle)}
         onClick={toggle}
       >
-        <Icon
-          name={open ? 'leftDoubleChevron' : 'rightDoubleChevron'}
-          color="background"
-        />
+        <Icon name="doubleChevron.right" color={'invertedTextColor' as Color} />
       </button>
     </div>
   );

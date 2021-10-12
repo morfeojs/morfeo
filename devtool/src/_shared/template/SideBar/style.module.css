@@ -4,26 +4,28 @@
   height: 100vh;
   display: flex;
   position: fixed;
+  color: white;
   z-index: var(--z-indices-strong);
   max-width: 300px;
   transform: translateX(-100%);
   transition: var(--transitions-fast);
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  background-color: var(--colors-background);
+  justify-content: flex-start;
+  padding-top: calc(2 * var(--sizes-xxl));
+  background-color: var(--colors-primary);
 }
 
 .linksContainer {
-  height: 60%;
+  height: 'fit-content';
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .open.sidebar {
   transform: translateX(0%);
-  box-shadow: var(--border-widths-xs) var(--border-widths-none) var(--radii-xxs) var(--colors-gray);
 }
 
 .toggle {
@@ -34,12 +36,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--colors-primary);
+  background-color: var(--colors-primary-dark) !important;
   top: 50%;
-  right: calc(var(--spacings-xxl) * -1);
+  right: calc(var(--spacings-xl) * -1);
   transform: translateY(-50%);
+  transition: var(--transitions-fast);
 }
 
 .open .toggle {
-  transform: translateY(-50%) rotate(180deg);
+  transform: translateY(-50%) translateX(50%) rotate(180deg);
+  right: 0;
 }
