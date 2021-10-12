@@ -72,7 +72,7 @@
 	--spacings-xxl: 56px;
 	--spacings-none: 0px;
 	--transitions-slow: 1s ease;
-	--transitions-medium: .6 ease;
+	--transitions-medium: .6s ease;
 	--transitions-fast: .3s ease;
 	--transitions-none: 0s;
 	--z-indices-none: 0;

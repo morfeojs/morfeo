@@ -3,15 +3,9 @@
   color: var(--colors-text-color);
   cursor: pointer;
   display: flex;
-  padding: var(--spacings-xs);
-  box-shadow: var(--border-widths-none) var(--border-widths-s) var(--radii-xxs) var(--colors-gray);
   align-items: center;
   border-radius: var(--radii-s);
   flex-direction: column;
-  background-color: var(--colors-background);
-}
-[data-morfeo-theme="light"] .morfeo-card:hover {
-  box-shadow: var(--border-widths-none) var(--border-widths-m) var(--radii-xs) var(--colors-gray);
 }
 [data-morfeo-theme="light"] .morfeo-card-small {
   color: var(--colors-text-color);
@@ -19,15 +13,9 @@
   cursor: pointer;
   height: 100px;
   display: flex;
-  padding: var(--spacings-xs);
-  box-shadow: var(--border-widths-none) var(--border-widths-s) var(--radii-xxs) var(--colors-gray);
   align-items: center;
   border-radius: var(--radii-s);
   flex-direction: column;
-  background-color: var(--colors-background);
-}
-[data-morfeo-theme="light"] .morfeo-card-small:hover {
-  box-shadow: var(--border-widths-none) var(--border-widths-m) var(--radii-xs) var(--colors-gray);
 }
 [data-morfeo-theme="light"] .morfeo-card-medium {
   color: var(--colors-text-color);
@@ -35,15 +23,9 @@
   cursor: pointer;
   height: 200px;
   display: flex;
-  padding: var(--spacings-xs);
-  box-shadow: var(--border-widths-none) var(--border-widths-s) var(--radii-xxs) var(--colors-gray);
   align-items: center;
   border-radius: var(--radii-s);
   flex-direction: column;
-  background-color: var(--colors-background);
-}
-[data-morfeo-theme="light"] .morfeo-card-medium:hover {
-  box-shadow: var(--border-widths-none) var(--border-widths-m) var(--radii-xs) var(--colors-gray);
 }
 [data-morfeo-theme="light"] .morfeo-card-large {
   color: var(--colors-text-color);
@@ -51,15 +33,9 @@
   cursor: pointer;
   height: 300px;
   display: flex;
-  padding: var(--spacings-xs);
-  box-shadow: var(--border-widths-none) var(--border-widths-s) var(--radii-xxs) var(--colors-gray);
   align-items: center;
   border-radius: var(--radii-s);
   flex-direction: column;
-  background-color: var(--colors-background);
-}
-[data-morfeo-theme="light"] .morfeo-card-large:hover {
-  box-shadow: var(--border-widths-none) var(--border-widths-m) var(--radii-xs) var(--colors-gray);
 }
 [data-morfeo-theme="light"] .morfeo-button {
   color: var(--colors-inverted-text-color);

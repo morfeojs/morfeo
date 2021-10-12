@@ -24,7 +24,7 @@
   "externally_connectable": {
     "ids": ["*"]
   },
-  "permissions": ["storage", "activeTab"],
+  "permissions": ["storage", "activeTab", "clipboardWrite", "clipboardRead"],
   "background": {
     "service_worker": "background.bundle.js"
   },

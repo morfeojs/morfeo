@@ -1,16 +1,21 @@
 .container {
   top: 0;
+  width: fit-content;
   height: 100vh;
   position: fixed;
-  width: fit-content;
+  z-index: var(--z-indices-strong);
   transform: translateX(-100%);
   transition: var(--transitions-fast);
-  z-index: var(--z-indices-strong);
 }
 
 .menuItem {
   display: flex;
+  transition: var(--transitions-fast);
   align-items: center;
+}
+
+.menuItem:hover {
+  transform: translateX(10px);
 }
 
 .sidebar {
@@ -34,7 +39,6 @@
   justify-content: flex-start;
   padding-left: var(--spacings-m);
   padding-right: var(--spacings-m);
-
 }
 
 .linksContainer {
@@ -44,6 +48,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding-left: var(--spacings-l);
+  padding-right: var(--spacings-l);
 }
 
 .open.container {

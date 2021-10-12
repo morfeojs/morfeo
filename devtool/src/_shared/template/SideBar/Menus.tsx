@@ -33,6 +33,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ text, icon, onNavigate }) => {
           color: 'var(--color-inverted-text-color)',
           marginBottom: 'var(--spacings-none)',
           marginLeft: 'var(--spacings-xxs)',
+          cursor: 'pointer',
         }}
       >
         {text}

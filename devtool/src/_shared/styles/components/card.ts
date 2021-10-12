@@ -3,18 +3,12 @@ import { ComponentConfig } from '@morfeo/react';
 export const Card: ComponentConfig = {
   tag: 'div',
   style: {
-    p: 'xs',
-    bg: 'background',
     cursor: 'pointer',
     color: 'textColor',
-    shadow: 'light',
     corner: 's',
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    '&:hover': {
-      shadow: 'medium',
-    },
   },
   variants: {
     small: {

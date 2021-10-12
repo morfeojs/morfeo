@@ -1,0 +1,37 @@
+.copyButton {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  align-items: center;
+  width: fit-content;
+  align-self: flex-end;
+  max-width: var(--spacings-s);
+  transition: var(--transitions-medium);
+  background-color: var(--colors-gray-dark);
+  padding: calc(var(--spacings-xxs) / 2);
+  border-top-left-radius: var(--radii-xs);
+  border-bottom-right-radius: var(--radii-xs);
+}
+
+.copyButton p {
+  display: none;
+  opacity: 0;
+  margin-left: var(--spacings-xxs);
+  color: var(--colors-inverted-text-color) !important;
+}
+
+.copyButton:hover, .copyButton.copied {
+  align-self: flex-end;
+  max-width: 10rem;
+}
+
+.copyButton:hover p, .copyButton.copied p {
+  opacity: 1;
+  display: inline-block;
+}
+
+.hiddenText {
+  position: fixed;
+  opacity: 0;
+}

@@ -5,7 +5,6 @@ import { ActionType, MorfeoDevToolAction } from '../types';
 function onMessageReceived(message: MorfeoDevToolAction) {
   if (message && message.type === ActionType.SET) {
     const { themes, current } = message;
-    console.log({ themes, current });
     const themeNames = Object.keys(themes || {}) as ThemeName[];
     themeNames.forEach(themeName => {
       morfeo.setTheme(themeName, themes[themeName] || {});
