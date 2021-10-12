@@ -1,4 +1,4 @@
-import { Theme } from '@morfeo/react';
+import { Themes, ThemeName } from '@morfeo/react';
 
 export enum ActionType {
   SET = 'morfeo/set',
@@ -7,5 +7,6 @@ export enum ActionType {
 
 export type MorfeoDevToolAction = {
   type: ActionType;
-  theme: Theme;
+  themes: Themes;
+  current: ThemeName;
 };

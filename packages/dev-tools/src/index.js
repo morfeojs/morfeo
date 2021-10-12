@@ -1,11 +1,13 @@
 import { MORFEO_DEVTOOLS } from './constants';
-import { theme } from '@morfeo/web';
+import { morfeo, theme } from '@morfeo/web';
 
 function onChange(newTheme) {
   if (globalThis && globalThis.postMessage) {
     globalThis.postMessage({
       type: MORFEO_DEVTOOLS,
       theme: newTheme,
+      themes: morfeo.getThemes(),
+      current: morfeo.getCurrent(),
     });
   }
 }

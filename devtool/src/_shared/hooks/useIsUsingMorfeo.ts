@@ -4,10 +4,12 @@ import { MorfeoDevToolAction } from '../types';
 import { getThemeFromApp } from '../utils';
 
 export function useIsUsingMorfeo() {
-  const [isUsingMorfeo, setIsUsingMorfeo] = useState<boolean>();
+  const [isUsingMorfeo, setIsUsingMorfeo] = useState<boolean | undefined>(
+    undefined,
+  );
 
   const onMessage = (message?: MorfeoDevToolAction) => {
-    setIsUsingMorfeo(!!message && !!message.theme);
+    setIsUsingMorfeo(!!message && !!message.themes && !!message.current);
   };
 
   useEffect(() => {

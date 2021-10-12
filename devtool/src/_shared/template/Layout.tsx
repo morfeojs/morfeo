@@ -1,24 +1,32 @@
 import React, { useState, useMemo } from 'react';
 import clsx from 'clsx';
-import { useTheme } from '@morfeo/react';
 import { RoutingProvider } from '../contexts';
 import { SideBar } from './SideBar';
 import { Header } from './Header';
 
 import styles from './style.module.css';
 import { Icon } from '../components';
+import { useIsUsingMorfeo } from '../hooks';
 
 export const Layout: React.FC = ({ children }) => {
   const [open, setOpen] = useState(false);
-  const theme = useTheme();
-
-  const shouldRender = useMemo(() => !!theme, [theme]);
+  const shouldRender = useIsUsingMorfeo();
 
   const content = useMemo(() => {
-    if (!shouldRender) {
+    if (shouldRender === false) {
       return (
         <div className={styles.loadingContainer}>
           <Icon name="loading" size="xxl" />
+        </div>
+      );
+    }
+
+    if (!shouldRender) {
+      return (
+        <div className={styles.loadingContainer}>
+          <h1 className="morfeo-typography-h1">
+            Morfeo seems to not be used inside this website
+          </h1>
         </div>
       );
     }

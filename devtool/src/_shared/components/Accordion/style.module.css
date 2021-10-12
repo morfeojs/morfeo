@@ -6,7 +6,7 @@
 .toggle {
   transform: rotate(0deg);
   transition: var(--transitions-fast);
-  margin-right: var(--spacings-xs);
+  margin-right: var(--spacings-xxs);
 }
 
 .open .toggle {
@@ -31,5 +31,5 @@
 }
 
 .open .content {
-  max-height: 500px;
+  max-height: 100vh;
 }

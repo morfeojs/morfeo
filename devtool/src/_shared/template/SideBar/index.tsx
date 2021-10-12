@@ -1,9 +1,9 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Color } from '@morfeo/react';
 import clsx from 'clsx';
-import { Accordion, Icon, Link } from '../../components';
-import { RouteName } from '../../contexts';
-import { useThemeSlices } from '../../hooks';
+import { Accordion, Icon } from '../../components';
+
+import { Components, Slices } from './Menus';
 import styles from './style.module.css';
 
 type Props = {
@@ -12,41 +12,47 @@ type Props = {
 };
 
 export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
-  const slices = useThemeSlices();
-
-  const renderedSlices = useMemo(
-    () =>
-      slices.map(slice => (
-        <Link
-          key={slice}
-          to={slice as RouteName}
-          onNavigate={() => setOpen(false)}
-          style={{
-            color: 'var(--color-inverted-text-color)',
-            marginBottom: 'var(--spacings-xxs)',
-          }}
-        >
-          {slice}
-        </Link>
-      )),
-    [setOpen, slices],
-  );
+  const [openMenu, setOpenMenu] = useState<string>();
 
   const toggle = useCallback(() => {
     setOpen(!open);
   }, [open, setOpen]);
 
+  const getAccordionHandler = useCallback((name: string) => {
+    return (isOpen: boolean) => setOpenMenu(isOpen ? name : undefined);
+  }, []);
+
   return (
-    <div className={clsx(styles.sidebar, open && styles.open)}>
-      <Accordion label="Slices" icon="slice">
-        <div className={styles.linksContainer}>{renderedSlices}</div>
-      </Accordion>
-      <button
-        className={clsx('morfeo-button-round', styles.toggle)}
-        onClick={toggle}
-      >
-        <Icon name="doubleChevron.right" color={'invertedTextColor' as Color} />
-      </button>
+    <div className={clsx(styles.container, open && styles.open)}>
+      <div className={styles.sidebar}>
+        <div className={styles.menuContainer}>
+          <Accordion
+            open={openMenu === 'slices'}
+            setOpen={getAccordionHandler('slices')}
+            label="Slices"
+            icon="slice"
+          >
+            <Slices onNavigate={toggle} />
+          </Accordion>
+          <Accordion
+            open={openMenu === 'components'}
+            setOpen={getAccordionHandler('components')}
+            label="Components"
+            icon="component"
+          >
+            <Components onNavigate={toggle} />
+          </Accordion>
+        </div>
+        <button
+          className={clsx('morfeo-button-round', styles.toggle)}
+          onClick={toggle}
+        >
+          <Icon
+            name="doubleChevron.right"
+            color={'invertedTextColor' as Color}
+          />
+        </button>
+      </div>
     </div>
   );
 };

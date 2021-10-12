@@ -23,3 +23,14 @@
   align-items: center;
   text-align: center;
 }
+
+.themeSelect {
+  position: absolute;
+  border-radius: var(--radii-xs);
+  background-color: var(--colors-background);
+  right: var(--spacings-m);
+  padding-left: var(--spacings-m);
+  padding-right: var(--spacings-m);
+  padding-top: var(--spacings-xxs);
+  padding-bottom: var(--spacings-xxs);
+}

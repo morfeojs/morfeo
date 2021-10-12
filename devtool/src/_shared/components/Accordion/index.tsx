@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Color } from '@morfeo/react';
 import { Icon } from '../Icon';
 import styles from './style.module.css';
@@ -8,17 +8,20 @@ import { IconName } from '../Icon/icons';
 type Props = {
   label: string;
   icon?: IconName;
+  open?: boolean;
+  setOpen: (isOpen: boolean) => void;
 };
 
-export const Accordion: React.FC<Props> = ({ label, icon, children }) => {
-  const [open, setOpen] = useState<boolean>(false);
-
+export const Accordion: React.FC<Props> = ({
+  label,
+  icon,
+  children,
+  open = false,
+  setOpen,
+}) => {
   return (
     <div className={clsx(open && styles.open)}>
-      <div
-        className={styles.labelContainer}
-        onClick={() => setOpen(prev => !prev)}
-      >
+      <div className={styles.labelContainer} onClick={() => setOpen(!open)}>
         <Icon
           name="chevron.right"
           size="s"

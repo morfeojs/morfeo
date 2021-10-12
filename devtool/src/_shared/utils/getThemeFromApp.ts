@@ -1,11 +1,16 @@
 import browser from 'webextension-polyfill';
-import { morfeo } from '@morfeo/react';
+import { morfeo, ThemeName } from '@morfeo/react';
 import { ActionType, MorfeoDevToolAction } from '../types';
 
 function onMessageReceived(message: MorfeoDevToolAction) {
   if (message && message.type === ActionType.SET) {
-    morfeo.setTheme('default', message.theme);
-    morfeo.useTheme('default');
+    const { themes, current } = message;
+    console.log({ themes, current });
+    const themeNames = Object.keys(themes || {}) as ThemeName[];
+    themeNames.forEach(themeName => {
+      morfeo.setTheme(themeName, themes[themeName] || {});
+    });
+    morfeo.useTheme(current);
   }
 }
 
