@@ -1,4 +1,3 @@
-import { lightTheme } from '@morfeo/preset-default';
 import { Color, Size } from '@morfeo/react';
 import { paramCase } from 'change-case';
 import React from 'react';
@@ -15,11 +14,11 @@ export const Icon: React.FC<Props> = ({
   name,
   stroke,
   color = 'primary',
-  size = 'l',
+  size: sizeProp = 'l',
   ...props
 }) => {
   const strokeColor = `var(--colors-${paramCase(color)})`;
-  const height = lightTheme.sizes[size];
+  const size = `var(--spacings-${paramCase(sizeProp)})`;
 
   if (!icons[name]) {
     return null;
@@ -27,9 +26,12 @@ export const Icon: React.FC<Props> = ({
 
   return icons[name]({
     ...DEFAULT_ICON_PROPS,
-    height: height,
-    width: height,
     ...props,
     stroke: strokeColor,
+    style: {
+      ...props.style,
+      height: size,
+      width: size,
+    },
   });
 };
