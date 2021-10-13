@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { Color } from '@morfeo/react';
 import clsx from 'clsx';
+import { t } from '../../utils';
 import { Accordion, Icon } from '../../components';
-
 import { Components, Slices } from './Menus';
 import styles from './style.module.css';
 
@@ -29,7 +29,7 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
           <Accordion
             open={openMenu === 'slices'}
             setOpen={getAccordionHandler('slices')}
-            label="Slices"
+            label={t('menu_slices')}
             icon="slice"
           >
             <Slices onNavigate={toggle} />
@@ -37,7 +37,7 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
           <Accordion
             open={openMenu === 'components'}
             setOpen={getAccordionHandler('components')}
-            label="Components"
+            label={t('menu_components')}
             icon="component"
           >
             <Components onNavigate={toggle} />

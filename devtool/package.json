@@ -81,7 +81,7 @@
     "react-dom": "^17.0.2"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "INLINE_RUNTIME_CHUNK=false node scripts/start.js",
     "build": "node scripts/build.js",
     "build:theme": "node_modules/@morfeo/cli/bin/run build --config=./.morfeorc.ts",
     "start:firefox": "node scripts/start.js firefox",

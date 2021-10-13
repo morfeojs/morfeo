@@ -1,0 +1,30 @@
+{
+  "name": {
+    "message": "Morfeo",
+    "description": "The name of the web extension"
+  },
+  "shortName": {
+    "message": "Morfeo",
+    "description": "The short name of the web extension"
+  },
+  "description": {
+    "message": "Developer Tools per Morfeo",
+    "description": "The description of the web extension"
+  },
+  "morfeoNotUsed": {
+    "message": "Questo sito non sembra utillizzare morfeo",
+    "description": "Used when morfeo is not used inside the current website"
+  },
+  "copyAlias": {
+    "message": "Copia alias"
+  },
+  "aliasCopied": {
+    "message": "Copiato!"
+  },
+  "menu_slices": {
+    "message": "Slices"
+  },
+  "menu_components": {
+    "message": "Componenti"
+  }
+}

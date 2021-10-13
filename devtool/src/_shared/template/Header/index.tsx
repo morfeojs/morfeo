@@ -4,9 +4,11 @@ import { Color, morfeo, ThemeName } from '@morfeo/react';
 import { Icon } from '../../components';
 import { useIsUsingMorfeo, useRouter } from '../../hooks';
 import styles from './style.module.css';
+import { t } from '../../utils';
+import { RouteName } from '../../contexts';
 
 export const Header: React.FC = () => {
-  const { history, navigateBack } = useRouter();
+  const { history, navigate, navigateBack } = useRouter();
   const isUsingMorfeo = useIsUsingMorfeo();
   const canGoBack = history.length > 0;
   const themes = useMemo(
@@ -52,8 +54,15 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.leftSide}>
         {backButton}
-        <Icon name="logo" color={'invertedTextColor' as Color} size="xxl" />
-        <h1 className={clsx('morfeo-typography-hero', styles.title)}>Morfeo</h1>
+        <Icon
+          name="logo"
+          color={'invertedTextColor' as Color}
+          size="xxl"
+          onClick={() => navigate(RouteName.HOME)}
+        />
+        <h1 className={clsx('morfeo-typography-hero', styles.title)}>
+          {t('name')}
+        </h1>
       </div>
       <div className={styles.rightSide}>{themeSelect}</div>
     </header>

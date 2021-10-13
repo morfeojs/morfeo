@@ -32,6 +32,7 @@ export const Icon: React.FC<Props> = ({
       ...props.style,
       height: size,
       width: size,
+      ...(props.onClick ? { cursor: 'pointer' } : {}),
     },
   });
 };

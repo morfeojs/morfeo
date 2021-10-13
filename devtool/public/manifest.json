@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "morfeo",
+  "name": "__MSG_name__",
   "version": "1.0.0",
-  "description": "Developer Tools for morfeo",
+  "description": "__MSG_description__",
   "author": "Mauro Erta",
   "devtools_page": "devtool.html",
   "options_page": "options.html",
   "homepage_url": "https://github.com/VLK-STUDIO/morfeo",
+  "default_locale": "en",
   "icons": {
     "16": "img/icon-16.png",
     "48": "img/icon-48.png",

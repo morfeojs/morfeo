@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
-import { morfeo, Color, useTheme } from '@morfeo/react';
-import clsx from 'clsx';
+import { Color, useTheme } from '@morfeo/react';
 
 import styles from './style.module.css';
+import { Card } from '../../../_shared/components';
+import clsx from 'clsx';
 
 export const Colors: React.FC = () => {
   const theme = useTheme();
@@ -19,24 +20,23 @@ export const Colors: React.FC = () => {
   const section = useMemo(() => {
     return sliceKeys.map(key => {
       return (
-        <div
-          key={`colors-${key}`}
-          className={clsx('morfeo-card', styles.colorContainer)}
-        >
-          <h3 className="morfeo-typography-h3">{key}</h3>
-          <div
-            className={styles.circle}
-            style={
-              morfeo.resolve({
-                bg: key,
-              }) as React.CSSProperties
-            }
-          />
-          <h3 className="morfeo-typography-h3">{slice[key]}</h3>
+        <div key={`colors-${key}`} className={styles.colorContainer}>
+          <Card copyText={key} style={{ bg: key }} />
+          <h3 className="morfeo-typography-h2">{key}</h3>
         </div>
       );
     });
-  }, [slice, sliceKeys]);
+  }, [sliceKeys]);
 
-  return <div className={styles.colorsSection}>{section}</div>;
+  return (
+    <div className={styles.page}>
+      <div className={styles.header}>
+        <h1 className="morfeo-typography-h1">Colors</h1>
+        <h2 className={clsx('morfeo-typography-h2', styles.breadcrumb)}>
+          {'slices > colors'}
+        </h2>
+      </div>
+      <div className={styles.colorsSection}>{section}</div>
+    </div>
+  );
 };

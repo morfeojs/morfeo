@@ -7,6 +7,7 @@ import { Header } from './Header';
 import styles from './style.module.css';
 import { Icon } from '../components';
 import { useIsUsingMorfeo } from '../hooks';
+import { t } from '../utils';
 
 export const Layout: React.FC = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -24,9 +25,7 @@ export const Layout: React.FC = ({ children }) => {
     if (!shouldRender) {
       return (
         <div className={styles.loadingContainer}>
-          <h1 className="morfeo-typography-h1">
-            Morfeo seems to not be used inside this website
-          </h1>
+          <h1 className="morfeo-typography-h1">{t('morfeoNotUsed')}</h1>
         </div>
       );
     }
