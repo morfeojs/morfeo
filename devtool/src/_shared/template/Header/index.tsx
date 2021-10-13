@@ -1,39 +1,36 @@
 import React, { useMemo } from 'react';
 import clsx from 'clsx';
-import { morfeo, ThemeName } from '@morfeo/react';
-import { BackLink, Icon } from '../../components';
+import { Color, morfeo, ThemeName } from '@morfeo/react';
+import { Icon } from '../../components';
 import { useIsUsingMorfeo, useRouter } from '../../hooks';
 import styles from './style.module.css';
 
 export const Header: React.FC = () => {
-  const { history } = useRouter();
+  const { history, navigateBack } = useRouter();
   const isUsingMorfeo = useIsUsingMorfeo();
   const canGoBack = history.length > 0;
-  const themes = isUsingMorfeo ? morfeo.getThemes() : {};
+  const themes = useMemo(
+    () => (isUsingMorfeo ? morfeo.getThemes() : {}),
+    [isUsingMorfeo],
+  );
 
   const backButton = useMemo(() => {
     if (canGoBack) {
       return (
-        <BackLink
+        <Icon
+          name="chevron.left"
+          color={'invertedTextColor' as Color}
           className={styles.backButton}
-          style={{
-            color: 'var(--colors-inverted-text-color)',
-            fontSize: 'var(--font-sizes-xxl)',
-            cursor: 'pointer',
-          }}
-        >
-          <Icon name="chevron.left" color="background" />
-        </BackLink>
+          onClick={navigateBack}
+        />
       );
     }
     return undefined;
-  }, [canGoBack]);
+  }, [canGoBack, navigateBack]);
 
-  return (
-    <header className={styles.header}>
-      {backButton}
-      <h1 className={clsx('morfeo-typography-hero', styles.title)}>Morfeo</h1>
-      {isUsingMorfeo && (
+  const themeSelect = useMemo(() => {
+    if (isUsingMorfeo) {
+      return (
         <select
           className={styles.themeSelect}
           onChange={e => {
@@ -46,7 +43,19 @@ export const Header: React.FC = () => {
             </option>
           ))}
         </select>
-      )}
+      );
+    }
+    return undefined;
+  }, [isUsingMorfeo, themes]);
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.leftSide}>
+        {backButton}
+        <Icon name="logo" color={'invertedTextColor' as Color} size="xxl" />
+        <h1 className={clsx('morfeo-typography-hero', styles.title)}>Morfeo</h1>
+      </div>
+      <div className={styles.rightSide}>{themeSelect}</div>
     </header>
   );
 };

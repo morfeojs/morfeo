@@ -3,7 +3,7 @@
   width: fit-content;
   height: 100vh;
   position: fixed;
-  z-index: var(--z-indices-strong);
+  z-index: var(--z-indices-medium);
   transform: translateX(-100%);
   transition: var(--transitions-fast);
 }
