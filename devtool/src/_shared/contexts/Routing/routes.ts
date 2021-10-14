@@ -7,4 +7,4 @@ export const routes = {
   [RouteName.SLICE]: {
     name: RouteName.SLICE,
   },
-}
+};
