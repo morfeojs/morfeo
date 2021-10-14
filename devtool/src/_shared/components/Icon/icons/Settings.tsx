@@ -10,7 +10,7 @@ export const Settings: React.FC<IconProps> = props => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g clip-path="url(#clip0)">
+    <g clipPath="url(#clip0)">
       <path
         d="M37.8349 46.4497C42.9655 46.4497 47.1248 42.2904 47.1248 37.1597C47.1248 32.0291 42.9655 27.8698 37.8349 27.8698C32.7042 27.8698 28.5449 32.0291 28.5449 37.1597C28.5449 42.2904 32.7042 46.4497 37.8349 46.4497Z"
         stroke={props.stroke}

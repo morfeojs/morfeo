@@ -1,9 +1,8 @@
 import React, { useMemo } from 'react';
 import { Color, useTheme } from '@morfeo/react';
-
-import styles from './style.module.css';
-import { Card } from '../../../_shared/components';
 import clsx from 'clsx';
+import { Card } from '../../../_shared/components';
+import styles from './style.module.css';
 
 export const Colors: React.FC = () => {
   const theme = useTheme();

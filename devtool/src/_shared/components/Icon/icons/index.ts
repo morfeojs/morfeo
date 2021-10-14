@@ -21,6 +21,9 @@ import { Support } from './Support';
 import { Close } from './Close';
 import { Loading } from './Loading';
 import { Logo } from './Logo';
+import { Github } from './Github';
+import { Docs } from './Docs';
+import { Credits } from './Credits';
 
 const icons = {
   'arrow.up': UpArrow,
@@ -38,12 +41,15 @@ const icons = {
   copy: Copy,
   grid: Grid,
   info: Info,
+  docs: Docs,
   list: List,
   logo: Logo,
   close: Close,
   slice: Slice,
+  github: Github,
   search: Search,
   filter: Filter,
+  credits: Credits,
   support: Support,
   loading: Loading,
   maximize: Maximize,
