@@ -66,7 +66,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--colors-primary-dark) !important;
+  background-color: var(--colors-primary) !important;
   top: 50%;
   right: calc(var(--spacings-xl) * -1);
   transform: translateY(-50%);
@@ -75,6 +75,10 @@
 
 .open .toggle {
   transform: translateY(-50%) translateX(50%) rotate(180deg);
+  border-top-right-radius: var(--radii-none) !important;
+  border-bottom-right-radius: var(--radii-none) !important;
+  border-top-left-radius: var(--radii-round) !important;
+  border-bottom-left-radius: var(--radii-round) !important;
   right: 0;
 }
 

@@ -2,21 +2,21 @@ import React, { useMemo } from 'react';
 import { Card } from '../../../_shared/components';
 import { RouteName } from '../../../_shared/contexts';
 import { useRouter, useThemeSlices } from '../../../_shared/hooks';
-
-import styles from './style.module.css';
+import { Page } from '../../../_shared/template/Page';
+import { SliceName } from '../../../_shared/contexts/Routing/types';
 
 export const Home: React.FC = () => {
-  const slices = useThemeSlices();
+  const themeSlices = useThemeSlices();
   const { navigate } = useRouter();
 
   const renderedSlices = useMemo(
     () =>
-      slices.map(slice => (
+      themeSlices.map((slice) => (
         <Card
           key={slice}
           copyText={slice}
           style={{ bg: 'primary', m: 'xs' }}
-          onClick={() => navigate(slice as RouteName)}
+          onClick={() => navigate(RouteName.SLICE, { slice: slice as SliceName })}
         >
           <h3
             className="morfeo-typography-h2"
@@ -26,12 +26,12 @@ export const Home: React.FC = () => {
           </h3>
         </Card>
       )),
-    [navigate, slices],
+    [navigate, themeSlices],
   );
 
   return (
-    <div className={styles.homePage}>
-      <div className={styles.slicesContainer}>{renderedSlices}</div>
-    </div>
+    <Page>
+      {renderedSlices}
+    </Page>
   );
 };

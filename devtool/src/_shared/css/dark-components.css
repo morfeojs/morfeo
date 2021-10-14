@@ -41,6 +41,7 @@
   color: var(--colors-inverted-text-color);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
+  outline: none;
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
   padding-top: var(--spacings-xs);
@@ -50,23 +51,29 @@
   padding-bottom: var(--spacings-xs);
   background-color: var(--colors-primary);
 }
-[data-morfeo-theme="dark"] .morfeo-button-round {
+[data-morfeo-theme="dark"] .morfeo-button-side {
   color: var(--colors-inverted-text-color);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
+  outline: none;
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
   padding-top: var(--spacings-none);
   padding-left: var(--spacings-none);
-  border-radius: var(--radii-round);
+  border-radius: var(--radii-xs);
   padding-right: var(--spacings-none);
   padding-bottom: var(--spacings-none);
   background-color: var(--colors-primary);
+  border-top-left-radius: var(--radii-none);
+  border-top-right-radius: var(--radii-round);
+  border-bottom-left-radius: var(--radii-none);
+  border-bottom-right-radius: var(--radii-round);
 }
 [data-morfeo-theme="dark"] .morfeo-button-error {
   color: var(--colors-error);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
+  outline: none;
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
   padding-top: var(--spacings-xs);
@@ -80,6 +87,7 @@
   color: var(--colors-inverted-text-color);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
+  outline: none;
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
   padding-top: var(--spacings-xs);

@@ -5,6 +5,7 @@ import { RouteName } from '../../contexts';
 import { useThemeSlices } from '../../hooks';
 import { IconName } from '../../components/Icon/icons';
 import styles from './style.module.css';
+import { SliceName } from '../../contexts/Routing/types';
 
 type Props = {
   onNavigate?: () => void;
@@ -26,7 +27,8 @@ const MenuItem: React.FC<MenuItemProps> = ({ text, icon, onNavigate }) => {
     <div className={styles.menuItem}>
       <Icon name={icon} color={'invertedTextColor' as Color} size="xs" />
       <Link
-        to={text as RouteName}
+        to={RouteName.SLICE}
+        state={{ slice: text as SliceName }}
         onNavigate={onNavigate}
         className="morfeo-typography-h2"
         style={{

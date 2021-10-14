@@ -1,14 +1,17 @@
 import { useCallback } from 'react';
 import { RouteName } from '../../contexts';
 import { useRouter } from '../../hooks';
+import { RouteState } from '../../contexts/Routing/types';
 
 type Props = React.HTMLProps<HTMLSpanElement> & {
   to: RouteName;
+  state?: RouteState;
   onNavigate?: () => void;
 };
 
 export const Link: React.FC<Props> = ({
   to,
+  state,
   children,
   onNavigate,
   ...props
@@ -16,11 +19,11 @@ export const Link: React.FC<Props> = ({
   const { navigate } = useRouter();
 
   const onClick = useCallback(() => {
-    navigate(to);
+    navigate(to, state);
     if (onNavigate) {
       onNavigate();
     }
-  }, [navigate, onNavigate, to]);
+  }, [navigate, onNavigate, to, state]);
 
   return (
     <span

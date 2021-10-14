@@ -70,7 +70,7 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
           </Accordion>
         </div>
         <button
-          className={clsx('morfeo-button-round', styles.toggle)}
+          className={clsx('morfeo-button-side', styles.toggle)}
           onClick={toggle}
         >
           <Icon

@@ -1,12 +1,16 @@
 import React, { useMemo } from 'react';
 import { Color, useTheme } from '@morfeo/react';
 import clsx from 'clsx';
-import { Card } from '../../../_shared/components';
+import { Card } from '../../Card';
 import styles from './style.module.css';
+import { useRouter } from '../../../hooks/useRouter';
+import { RouteName } from '../../../contexts';
+import { SliceName } from '../../../contexts/Routing/types';
 
 export const Colors: React.FC = () => {
   const theme = useTheme();
   const slice = useMemo(() => (theme || {})['colors'] || {}, [theme]);
+  const { navigate } = useRouter();
 
   const sliceKeys = useMemo(
     () =>
@@ -19,7 +23,11 @@ export const Colors: React.FC = () => {
   const section = useMemo(() => {
     return sliceKeys.map(key => {
       return (
-        <div key={`colors-${key}`} className={styles.colorContainer}>
+        <div
+          key={`colors-${key}`}
+          className={styles.colorContainer}
+          onClick={() => navigate(RouteName.SLICE, { slice: SliceName.COLORS, detailKey: key})}
+        >
           <Card copyText={key} style={{ bg: key }} />
           <h3
             className={clsx('morfeo-typography-h2', styles.colorName)}
@@ -30,17 +38,7 @@ export const Colors: React.FC = () => {
         </div>
       );
     });
-  }, [sliceKeys]);
+  }, [navigate, sliceKeys]);
 
-  return (
-    <div className={styles.page}>
-      <div className={styles.header}>
-        <h1 className="morfeo-typography-h1">Colors</h1>
-        <h2 className={clsx('morfeo-typography-h2', styles.breadcrumb)}>
-          {'slices > colors'}
-        </h2>
-      </div>
-      <div className={styles.colorsSection}>{section}</div>
-    </div>
-  );
+  return <>{section}</>;
 };

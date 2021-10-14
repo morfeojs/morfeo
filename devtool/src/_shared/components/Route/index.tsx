@@ -50,7 +50,7 @@ const TRANSITION_TIMEOUT = {
 
 export const Route: React.FC<Props> = ({ name, children }) => {
   const { route, direction } = useRouter();
-  const isVisible = name === route;
+  const isVisible = name === route.name;
 
   const renderChildren = useCallback(
     (state: TransitionStatus) => (

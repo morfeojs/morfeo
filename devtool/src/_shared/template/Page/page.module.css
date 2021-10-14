@@ -1,0 +1,21 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem;
+}
+
+.header {
+  padding-left: var(--spacings-xs);
+  padding-right: var(--spacings-xs);
+  padding-bottom: var(--spacings-s);
+}
+
+.breadcrumb {
+  color: var(--colors-gray-light) !important;
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

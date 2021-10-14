@@ -21,6 +21,16 @@ export const Button: ComponentConfig = {
         py: 'none',
       },
     },
+    side: {
+      style: {
+        borderTopRightRadius: 'round',
+        borderBottomRightRadius: 'round',
+        borderTopLeftRadius: 'none',
+        borderBottomLeftRadius: 'none',
+        px: 'none',
+        py: 'none',
+      },
+    },
     error: {
       style: {
         bg: 'light',
