@@ -15,7 +15,7 @@ export const Home: React.FC = () => {
         <Card
           key={slice}
           copyText={slice}
-          style={{ bg: 'primary' }}
+          style={{ bg: 'primary', m: 'xs' }}
           onClick={() => navigate(slice as RouteName)}
         >
           <h3

@@ -21,7 +21,12 @@ export const Colors: React.FC = () => {
       return (
         <div key={`colors-${key}`} className={styles.colorContainer}>
           <Card copyText={key} style={{ bg: key }} />
-          <h3 className="morfeo-typography-h2">{key}</h3>
+          <h3
+            className={clsx('morfeo-typography-h2', styles.colorName)}
+            title={key}
+          >
+            {key}
+          </h3>
         </div>
       );
     });
