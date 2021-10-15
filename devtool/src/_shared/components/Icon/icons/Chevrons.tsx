@@ -8,7 +8,7 @@ export const RightChevron: React.FC<IconProps> = props => {
       width="50"
       height="50"
       fill="none"
-      viewBox="0 0 75 75"
+      viewBox="0 0 50 75"
       {...props}
     >
       <path
@@ -26,7 +26,7 @@ export const LeftChevron: React.FC<IconProps> = props => {
   return (
     <RightChevron
       {...props}
-      style={{ ...props.style, transform: 'rotate(180deg)' }}
+      style={{ ...props.style, transform: 'rotate(180deg)', transformOrigin: 'center center' }}
     />
   );
 };
@@ -35,7 +35,7 @@ export const UpChevron: React.FC<IconProps> = props => {
   return (
     <RightChevron
       {...props}
-      style={{ ...props.style, transform: 'rotate(270deg)' }}
+      style={{ ...props.style, transform: 'rotate(270deg)', transformOrigin: 'center center' }}
     />
   );
 };
@@ -44,7 +44,7 @@ export const DownChevron: React.FC<IconProps> = props => {
   return (
     <RightChevron
       {...props}
-      style={{ ...props.style, transform: 'rotate(90deg)' }}
+      style={{ ...props.style, transform: 'rotate(90deg)', transformOrigin: 'center center' }}
     />
   );
 };

@@ -25,10 +25,22 @@ export const Slice: React.FC = () => {
     return <></>;
   }, [state?.detailKey, state?.slice]);
 
+  const title = useMemo(() => {
+    if (state?.detailKey) {
+      return state.detailKey;
+    }
+
+    if (state?.slice) {
+      return slices[state.slice]?.displayName
+    }
+
+    return ''
+  }, [state?.detailKey, state?.slice]);
+
   return (
     <Page
       breadcrumb={['slices', ...breadCrumb]}
-      title={(state && slices[state.slice]?.displayName) || ''}
+      title={title}
     >
       {renderContent}
     </Page>
