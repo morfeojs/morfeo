@@ -7,12 +7,16 @@ import { CopyButton } from '../CopyButton';
 type Props = {
   style?: Style;
   copyText?: string;
+  copyLabel?: string;
+  copiedLabel?: string;
 } & React.HTMLProps<HTMLDivElement>;
 
 export const Card: React.FC<Props> = ({
+  style,
   children,
   copyText,
-  style,
+  copyLabel,
+  copiedLabel,
   className,
   ...props
 }) => {
@@ -24,7 +28,14 @@ export const Card: React.FC<Props> = ({
       {...props}
     >
       {children}
-      {copyText && <CopyButton text={copyText} className={styles.copyButton} />}
+      {copyText && (
+        <CopyButton
+          text={copyText}
+          label={copyLabel}
+          copiedLabel={copiedLabel}
+          className={styles.copyButton}
+        />
+      )}
     </div>
   );
 };

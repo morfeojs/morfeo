@@ -7,6 +7,8 @@ import { t } from '../../utils';
 
 type Props = {
   text: string;
+  label?: string;
+  copiedLabel?: string;
   className?: string;
   style?: React.CSSProperties;
 };
@@ -25,7 +27,13 @@ function copyToClipboard(element: HTMLElement) {
   return false;
 }
 
-export const CopyButton: React.FC<Props> = ({ text, style, className }) => {
+export const CopyButton: React.FC<Props> = ({
+  text,
+  label = t('copyAlias'),
+  copiedLabel = t('aliasCopied'),
+  style,
+  className,
+}) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
   const ref = React.useRef<HTMLSpanElement>(null);
 
@@ -52,9 +60,7 @@ export const CopyButton: React.FC<Props> = ({ text, style, className }) => {
         style={style}
       >
         <Icon name="copy" size="s" color={'invertedTextColor' as Color} />
-        <p className="morfeo-typography-p2">
-          {isCopied ? t('aliasCopied') : t('copyAlias')}
-        </p>
+        <p className="morfeo-typography-p2">{isCopied ? copiedLabel : label}</p>
       </div>
       <span ref={ref} className={styles.hiddenText}>
         {text}

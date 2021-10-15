@@ -1,0 +1,4 @@
+.container {
+  padding: var(--spacings-xs);
+  width: 100%;
+}

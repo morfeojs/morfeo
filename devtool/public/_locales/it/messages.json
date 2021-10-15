@@ -21,6 +21,12 @@
   "aliasCopied": {
     "message": "Copiato!"
   },
+  "copyCode": {
+    "message": "Copia codice"
+  },
+  "codeCopied": {
+    "message": "Copiato!"
+  },
   "menu_slices": {
     "message": "Slices"
   },

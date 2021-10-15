@@ -1,0 +1,12 @@
+.container {
+  width: 100% !important;
+  height: fit-content !important;
+  background-color: var(--colors-gray-darkest);
+  overflow: hidden;
+  min-height: 200px;
+  align-items: flex-start !important;
+}
+
+.pre, .code, .code span {
+  background-color: var(--colors-gray-darkest) !important;
+}
