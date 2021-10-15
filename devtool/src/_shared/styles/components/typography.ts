@@ -3,6 +3,7 @@ import { ComponentConfig } from '@morfeo/react';
 export const Typography: ComponentConfig = {
   style: {
     fontFamily: 'regular',
+    color: 'textColor',
   },
   variants: {
     hero: {
@@ -11,7 +12,6 @@ export const Typography: ComponentConfig = {
         fontSize: 'l',
         fontWeight: 'bold',
         lineHeight: 'heading',
-        color: 'dark',
       },
     },
     h1: {
@@ -21,7 +21,6 @@ export const Typography: ComponentConfig = {
         fontSize: 'xl',
         lineHeight: 'heading',
         fontWeight: 'bold',
-        color: 'dark',
       },
     },
     h2: {
@@ -30,7 +29,6 @@ export const Typography: ComponentConfig = {
         fontSize: 'm',
         lineHeight: 'heading',
         fontWeight: 'bold',
-        color: 'dark',
       },
     },
     h3: {
@@ -39,16 +37,14 @@ export const Typography: ComponentConfig = {
         fontSize: 's',
         lineHeight: 'heading',
         fontWeight: 'bold',
-        color: 'dark',
       },
     },
     h4: {
       tag: 'h4',
       style: {
-        fontSize: 'xs',
+        fontSize: 's',
         lineHeight: 'heading',
         fontWeight: 'bold',
-        color: 'dark',
       },
     },
     p1: {
@@ -57,7 +53,6 @@ export const Typography: ComponentConfig = {
         fontSize: 'm',
         letterSpacing: 'body',
         lineHeight: 'body',
-        color: 'dark',
       },
     },
     p2: {
@@ -66,7 +61,6 @@ export const Typography: ComponentConfig = {
         fontSize: 's',
         letterSpacing: 'body',
         lineHeight: 'body',
-        color: 'dark',
       },
     },
     p3: {
@@ -74,7 +68,6 @@ export const Typography: ComponentConfig = {
       style: {
         fontSize: 'xs',
         lineHeight: 'body',
-        color: 'dark',
       },
     },
     p4: {
@@ -82,7 +75,6 @@ export const Typography: ComponentConfig = {
       style: {
         fontSize: 'xxs',
         lineHeight: 'body',
-        color: 'dark',
       },
     },
     link: {
@@ -102,7 +94,6 @@ export const Typography: ComponentConfig = {
         fontSize: 'xxs',
         lineHeight: 'body',
         fontStyle: 'italic',
-        color: 'dark',
       },
     },
   },

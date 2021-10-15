@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, MouseEvent } from 'react';
 import { Color } from '@morfeo/react';
 import clsx from 'clsx';
 import { Icon } from '../Icon';
@@ -7,6 +7,7 @@ import { t } from '../../utils';
 
 type Props = {
   text: string;
+  className?: string;
   style?: React.CSSProperties;
 };
 
@@ -24,11 +25,12 @@ function copyToClipboard(element: HTMLElement) {
   return false;
 }
 
-export const CopyButton: React.FC<Props> = ({ text, style }) => {
+export const CopyButton: React.FC<Props> = ({ text, style, className }) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
   const ref = React.useRef<HTMLSpanElement>(null);
 
-  const onClick = useCallback(() => {
+  const onClick = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
     const hasBeenCopied = copyToClipboard(ref.current as HTMLSpanElement);
     if (hasBeenCopied) {
       setTimeout(() => {
@@ -41,7 +43,11 @@ export const CopyButton: React.FC<Props> = ({ text, style }) => {
   return (
     <>
       <div
-        className={clsx(styles.copyButton, isCopied && styles.copied)}
+        className={clsx(
+          styles.copyButton,
+          className,
+          isCopied && styles.copied,
+        )}
         onClick={onClick}
         style={style}
       >

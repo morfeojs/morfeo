@@ -3,13 +3,14 @@ import { ComponentConfig } from '@morfeo/react';
 export const Button: ComponentConfig = {
   tag: 'button',
   style: {
-    py: 'xs',
-    px: 's',
+    py: 'xxs',
+    px: 'xs',
     bg: 'primary',
     color: 'invertedTextColor',
     cursor: 'pointer',
     corner: 'xs',
     border: 'none',
+    outline: 'none',
     fontSize: 'm',
     fontWeight: 'bold',
   },

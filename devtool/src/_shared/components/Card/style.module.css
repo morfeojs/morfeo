@@ -8,3 +8,9 @@
   height: 10rem;
 }
 
+.copyButton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+

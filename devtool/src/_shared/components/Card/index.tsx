@@ -23,12 +23,7 @@ export const Card: React.FC<Props> = ({
       {...props}
     >
       {children}
-      {copyText && (
-        <CopyButton
-          text={copyText}
-          style={{ position: 'absolute', bottom: 0, right: 0 }}
-        />
-      )}
+      {copyText && <CopyButton text={copyText} className={styles.copyButton} />}
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { Color, morfeo, ThemeName } from '@morfeo/react';
-import { Icon } from '../../components';
+import { DropDown, Icon } from '../../components';
 import { useIsUsingMorfeo, useRouter } from '../../hooks';
 import styles from './style.module.css';
 import { t } from '../../utils';
@@ -10,12 +10,14 @@ import { RouteName } from '../../contexts';
 export const Header: React.FC = () => {
   const { history, navigate, navigateBack } = useRouter();
   const isUsingMorfeo = useIsUsingMorfeo();
+  const [currentTheme, setCurrentTheme] = useState(
+    isUsingMorfeo ? morfeo.getCurrent() : undefined,
+  );
   const canGoBack = history.length > 0;
   const themes = useMemo(
     () => (isUsingMorfeo ? morfeo.getThemes() : {}),
     [isUsingMorfeo],
   );
-
   const backButton = useMemo(() => {
     if (canGoBack) {
       return (
@@ -33,22 +35,29 @@ export const Header: React.FC = () => {
   const themeSelect = useMemo(() => {
     if (isUsingMorfeo) {
       return (
-        <select
-          className={styles.themeSelect}
-          onChange={e => {
-            morfeo.useTheme(e.target.value as ThemeName);
+        <DropDown
+          title="Theme"
+          value={currentTheme}
+          placeholder="Select theme"
+          onChange={value => {
+            morfeo.useTheme(value as ThemeName);
+            setCurrentTheme(value as ThemeName);
           }}
-        >
-          {Object.keys(themes).map(themeName => (
-            <option key={themeName} value={themeName}>
-              {themeName}
-            </option>
-          ))}
-        </select>
+          options={Object.keys(themes).map(themeName => ({
+            label: themeName,
+            value: themeName,
+          }))}
+        />
       );
     }
     return undefined;
-  }, [isUsingMorfeo, themes]);
+  }, [currentTheme, isUsingMorfeo, themes]);
+
+  useEffect(() => {
+    if (isUsingMorfeo) {
+      setCurrentTheme(morfeo.getCurrent());
+    }
+  }, [isUsingMorfeo]);
 
   return (
     <header className={styles.header}>
