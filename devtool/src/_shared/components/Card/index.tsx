@@ -13,12 +13,13 @@ export const Card: React.FC<Props> = ({
   children,
   copyText,
   style,
+  className,
   ...props
 }) => {
   const cardStyle = useStyle(style || {});
   return (
     <div
-      className={clsx('morfeo-card', styles.container)}
+      className={clsx('morfeo-card', styles.container, className)}
       style={cardStyle as React.CSSProperties}
       {...props}
     >

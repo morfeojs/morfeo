@@ -11,30 +11,30 @@ export const shadows: Shadows = {
     radius: 'none',
   },
   light: {
-    color: 'gray',
+    color: 'gray.lightest',
     opacity: 'light',
     offset: {
-      height: 's',
+      height: 'xl',
       width: 'none',
     },
-    radius: 'xxs',
+    radius: 'l',
   },
   medium: {
-    color: 'gray',
+    color: 'gray.lighter',
     opacity: 'light',
     offset: {
-      height: 'm',
+      height: 'xl',
       width: 'none',
     },
-    radius: 'xs',
+    radius: 'l',
   },
   strong: {
-    color: 'gray',
+    color: 'gray.light',
     opacity: 'light',
     offset: {
-      height: 'l',
+      height: 'xl',
       width: 'none',
     },
-    radius: 's',
+    radius: 'l',
   },
 };

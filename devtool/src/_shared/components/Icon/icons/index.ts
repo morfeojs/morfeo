@@ -24,8 +24,10 @@ import { Logo } from './Logo';
 import { Github } from './Github';
 import { Docs } from './Docs';
 import { Credits } from './Credits';
+import { slices } from './slices';
 
 const icons = {
+  ...slices,
   'arrow.up': UpArrow,
   'arrow.down': DownArrow,
   'arrow.left': LeftArrow,

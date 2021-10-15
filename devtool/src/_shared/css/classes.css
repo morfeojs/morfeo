@@ -1171,31 +1171,31 @@
   box-shadow: var(--border-widths-none) var(--border-widths-none) var(--radii-none) var(--colors-gray);
 }
 .box-shadow-light {
-  box-shadow: var(--border-widths-none) var(--border-widths-s) var(--radii-xxs) var(--colors-gray);
+  box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lightest);
 }
 .text-shadow-light {
-  text-shadow: var(--border-widths-none) var(--border-widths-s) var(--radii-xxs) var(--colors-gray);
+  text-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lightest);
 }
 .shadow-light {
-  box-shadow: var(--border-widths-none) var(--border-widths-s) var(--radii-xxs) var(--colors-gray);
+  box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lightest);
 }
 .box-shadow-medium {
-  box-shadow: var(--border-widths-none) var(--border-widths-m) var(--radii-xs) var(--colors-gray);
+  box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lighter);
 }
 .text-shadow-medium {
-  text-shadow: var(--border-widths-none) var(--border-widths-m) var(--radii-xs) var(--colors-gray);
+  text-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lighter);
 }
 .shadow-medium {
-  box-shadow: var(--border-widths-none) var(--border-widths-m) var(--radii-xs) var(--colors-gray);
+  box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lighter);
 }
 .box-shadow-strong {
-  box-shadow: var(--border-widths-none) var(--border-widths-l) var(--radii-s) var(--colors-gray);
+  box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-light);
 }
 .text-shadow-strong {
-  text-shadow: var(--border-widths-none) var(--border-widths-l) var(--radii-s) var(--colors-gray);
+  text-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-light);
 }
 .shadow-strong {
-  box-shadow: var(--border-widths-none) var(--border-widths-l) var(--radii-s) var(--colors-gray);
+  box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-light);
 }
 .size-xxs {
   width: var(--sizes-xxs);

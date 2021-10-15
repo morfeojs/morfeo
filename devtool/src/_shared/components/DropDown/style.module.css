@@ -52,7 +52,7 @@
   transition: var(--transitions-fast);
 
   padding: 0;
-  box-shadow: var(--shadows-strong);
+  box-shadow: var(--shadows-light);
   border-radius: var(--radii-s);
   background-color: var(--colors-background) !important;
 }
