@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { Color, useTheme } from '@morfeo/react';
 import clsx from 'clsx';
+import { getContrast } from 'polished';
 import { Card } from '../../Card';
 import styles from './style.module.css';
 import { useRouter } from '../../../hooks/useRouter';
@@ -22,6 +23,8 @@ export const Colors: React.FC = () => {
 
   const section = useMemo(() => {
     return sliceKeys.map(key => {
+      const contrastRatio = getContrast(slice[key], '#fff');
+
       return (
         <div
           key={`colors-${key}`}
@@ -39,7 +42,19 @@ export const Colors: React.FC = () => {
             style={{
               bg: key,
             }}
-          />
+          >
+            <h2
+              className="morfeo-typography-h2"
+              style={{
+                color:
+                  contrastRatio < 1.5
+                    ? 'var(--colors-gray-darkest)'
+                    : 'var(--colors-gray-lightest)',
+              }}
+            >
+              {slice[key]}
+            </h2>
+          </Card>
           <h3
             className={clsx('morfeo-typography-h2', styles.colorName)}
             title={key}
@@ -49,7 +64,7 @@ export const Colors: React.FC = () => {
         </div>
       );
     });
-  }, [navigate, sliceKeys]);
+  }, [navigate, slice, sliceKeys]);
 
   return <>{section}</>;
 };
