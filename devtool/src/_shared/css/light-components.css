@@ -7,35 +7,19 @@
   border-radius: var(--radii-s);
   flex-direction: column;
 }
-[data-morfeo-theme="light"] .morfeo-card-small {
+[data-morfeo-theme="light"] .morfeo-card-primary {
   color: var(--colors-text-color);
-  width: 100px;
   cursor: pointer;
-  height: 100px;
   display: flex;
+  box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lightest);
+  transition: var(--transitions-fast);
   align-items: center;
   border-radius: var(--radii-s);
   flex-direction: column;
 }
-[data-morfeo-theme="light"] .morfeo-card-medium {
-  color: var(--colors-text-color);
-  width: 200px;
-  cursor: pointer;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  border-radius: var(--radii-s);
-  flex-direction: column;
-}
-[data-morfeo-theme="light"] .morfeo-card-large {
-  color: var(--colors-text-color);
-  width: 300px;
-  cursor: pointer;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  border-radius: var(--radii-s);
-  flex-direction: column;
+[data-morfeo-theme="light"] .morfeo-card-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lighter);
 }
 [data-morfeo-theme="light"] .morfeo-button {
   color: var(--colors-inverted-text-color);

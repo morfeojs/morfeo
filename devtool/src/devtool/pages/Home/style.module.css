@@ -5,13 +5,6 @@
 }
 
 .sliceCard {
-  box-shadow: var(--shadows-light);
   width: 180px;
   height: 180px;
-  transition: var(--transitions-fast);
-}
-
-.sliceCard:hover {
-  box-shadow: var(--shadows-medium);
-  transform: translateY(-5px);
 }

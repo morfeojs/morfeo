@@ -7,6 +7,7 @@ import { Page } from '../../../_shared/template/Page';
 import { SliceName } from '../../../_shared/contexts/Routing/types';
 import { IconName } from '../../../_shared/components/Icon/icons';
 import styles from './style.module.css';
+import clsx from 'clsx';
 
 export const Home: React.FC = () => {
   const themeSlices = useThemeSlices();
@@ -17,7 +18,7 @@ export const Home: React.FC = () => {
       themeSlices.map(slice => (
         <div key={slice} className={styles.sliceContainer}>
           <Card
-            className={styles.sliceCard}
+            className={clsx('morfeo-card-primary', styles.sliceCard)}
             onClick={() =>
               navigate(RouteName.SLICE, { slice: slice as SliceName })
             }

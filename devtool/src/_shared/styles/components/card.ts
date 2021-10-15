@@ -11,19 +11,14 @@ export const Card: ComponentConfig = {
     flexDirection: 'column',
   },
   variants: {
-    small: {
+    primary: {
       style: {
-        size: '100px' as any,
-      },
-    },
-    medium: {
-      style: {
-        size: '200px' as any,
-      },
-    },
-    large: {
-      style: {
-        size: '300px' as any,
+        shadow: 'light',
+        transition: 'fast',
+        '&:hover': {
+          shadow: 'medium',
+          transform: 'translateY(-5px)',
+        },
       },
     },
   },
