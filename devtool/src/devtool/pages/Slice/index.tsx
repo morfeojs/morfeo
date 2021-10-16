@@ -11,11 +11,12 @@ export const Slice: React.FC = () => {
   const breadCrumbSlice =
     (state && slices[state.slice as SliceName]?.displayName) || 'slice';
   const breadCrumbDetail = state?.detailKey;
-  const breadCrumb = breadCrumbDetail ? [breadCrumbSlice, breadCrumbDetail] : [breadCrumbSlice]
+  const breadCrumb = breadCrumbDetail
+    ? [breadCrumbSlice, breadCrumbDetail]
+    : [breadCrumbSlice];
 
   const renderContent = useMemo(() => {
     if (state?.detailKey) {
-      console.log('renderDetail', slices[state.slice].renderDetail)
       return slices[state.slice].renderDetail || <></>;
     }
 
@@ -32,17 +33,14 @@ export const Slice: React.FC = () => {
     }
 
     if (state?.slice) {
-      return slices[state.slice]?.displayName
+      return slices[state.slice]?.displayName;
     }
 
-    return ''
+    return '';
   }, [state?.detailKey, state?.slice]);
 
   return (
-    <Page
-      breadcrumb={['slices', ...breadCrumb]}
-      title={title}
-    >
+    <Page breadcrumb={['slices', ...breadCrumb]} title={title}>
       {renderContent}
     </Page>
   );

@@ -2,20 +2,29 @@ export function Borders() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="108"
-      height="108"
+      width="96"
+      height="96"
       fill="none"
-      viewBox="0 0 108 108"
+      viewBox="0 0 96 96"
     >
-      <g strokeWidth="5.583" clipPath="url(#clip0_224:5193)">
-        <path stroke="#0F86F9" d="M103.702 104.804V4.313H.978"></path>
-        <path stroke="#D3D3D3" d="M3.211 5.43v98.257h103.841"></path>
+      <g clipPath="url(#clip0_224:5193)">
+        <path
+          stroke="#0F86F9"
+          strokeWidth="5"
+          d="M92.976 93.963v-84a6 6 0 00-6-6h-86"
+        ></path>
+        <path
+          stroke="#0F86F9"
+          strokeWidth="5"
+          d="M2.976 4.963v82a6 6 0 006 6h87"
+          opacity="0.4"
+        ></path>
       </g>
       <defs>
         <clipPath id="clip0_224:5193">
           <path
             fill="#fff"
-            d="M0 0H106.088V106.074H0z"
+            d="M0 0H95.013V95H0z"
             transform="translate(.963 .963)"
           ></path>
         </clipPath>
@@ -56,20 +65,26 @@ export function BorderWidths() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="93"
-      height="93"
+      width="96"
+      height="96"
       fill="none"
-      viewBox="0 0 93 93"
+      viewBox="0 0 96 96"
     >
-      <g fill="#0F86F9" clipPath="url(#clip0_224:5288)">
-        <path d="M63.293 45.292a1 1 0 000 1.415l6.364 6.364a1 1 0 001.414-1.414L65.414 46l5.657-5.657a1 1 0 10-1.414-1.414l-6.364 6.363zM93 45H64v2h29v-2zM27.707 46.708a1 1 0 000-1.414l-6.364-6.365a1 1 0 00-1.414 1.415L25.586 46l-5.657 5.656a1 1 0 101.414 1.415l6.364-6.364zM0 47h27v-2H0v2z"></path>
-        <rect width="17" height="93" x="37" rx="3"></rect>
-      </g>
-      <defs>
-        <clipPath id="clip0_224:5288">
-          <path fill="#fff" d="M0 0H93V93H0z"></path>
-        </clipPath>
-      </defs>
+      <path stroke="#0F86F9" strokeWidth="10" d="M21.013 3L21.013 93"></path>
+      <path
+        stroke="#0F86F9"
+        strokeLinecap="square"
+        strokeWidth="7"
+        d="M49.513 6.5L49.513 89.5"
+        opacity="0.7"
+      ></path>
+      <path
+        stroke="#0F86F9"
+        strokeLinecap="square"
+        strokeWidth="2"
+        d="M77.013 4L77.013 92"
+        opacity="0.4"
+      ></path>
     </svg>
   );
 }

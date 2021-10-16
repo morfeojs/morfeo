@@ -7,6 +7,7 @@ import { Shadows } from './Shadows';
 import { Opacities } from './Opacities';
 import { ZIndices } from './ZIndices';
 import { Transitions } from './Transitions';
+import { Components } from './Components';
 
 export const slices = {
   'slice.borders': Borders,
@@ -24,4 +25,5 @@ export const slices = {
   'slice.opacities': Opacities,
   'slice.zIndices': ZIndices,
   'slice.transitions': Transitions,
+  'slice.components': Components,
 };

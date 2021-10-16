@@ -1,4 +1,4 @@
-import React, { createContext, useState, useMemo } from "react";
+import React, { createContext, useState, useMemo } from 'react';
 import { RouteName, RoutingContextType, RouteType } from './types';
 import { routes } from './routes';
 
@@ -15,7 +15,7 @@ export const RoutingProvider: React.FC = ({ children }) => {
 
   const value = useMemo(
     () => ({ index: RouteName.HOME, current, history, setCurrent, setHistory }),
-    [current, history]
+    [current, history],
   );
 
   return <Provider value={value}>{children}</Provider>;

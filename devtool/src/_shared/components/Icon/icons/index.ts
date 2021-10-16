@@ -25,6 +25,7 @@ import { Github } from './Github';
 import { Docs } from './Docs';
 import { Credits } from './Credits';
 import { slices } from './slices';
+import { Check } from './Check';
 
 const icons = {
   ...slices,
@@ -46,6 +47,7 @@ const icons = {
   docs: Docs,
   list: List,
   logo: Logo,
+  check: Check,
   close: Close,
   slice: Slice,
   github: Github,

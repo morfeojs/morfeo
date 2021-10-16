@@ -11,24 +11,35 @@ type Props = {
   onNavigate?: () => void;
 };
 
-type MenuProps = {
-  items: { text: string; icon: IconName }[];
-  onNavigate?: () => void;
-};
-
-type MenuItemProps = {
-  icon: IconName;
+type MenuItemType = {
   text: string;
+  icon: IconName;
+  route: SliceName;
+  detail?: string;
+};
+
+type MenuProps = {
+  items: MenuItemType[];
   onNavigate?: () => void;
 };
 
-const MenuItem: React.FC<MenuItemProps> = ({ text, icon, onNavigate }) => {
+type MenuItemProps = MenuItemType & {
+  onNavigate?: () => void;
+};
+
+const MenuItem: React.FC<MenuItemProps> = ({
+  text,
+  icon,
+  route,
+  detail,
+  onNavigate,
+}) => {
   return (
     <div className={styles.menuItem}>
       <Icon name={icon} color={'invertedTextColor' as Color} size="xs" />
       <Link
         to={RouteName.SLICE}
-        state={{ slice: text as SliceName }}
+        state={{ slice: route, detailKey: detail?.toLowerCase() }}
         onNavigate={onNavigate}
         className="morfeo-typography-h2"
         style={{
@@ -46,18 +57,26 @@ const MenuItem: React.FC<MenuItemProps> = ({ text, icon, onNavigate }) => {
 
 export const Menu: React.FC<MenuProps> = ({ items, onNavigate }) => (
   <div className={styles.linksContainer}>
-    {items.map(({ text, icon }) => (
-      <MenuItem key={text} icon={icon} text={text} onNavigate={onNavigate} />
+    {items.map(({ text, icon, route, detail }) => (
+      <MenuItem
+        key={`${route}-${detail}`}
+        icon={icon}
+        route={route}
+        detail={detail}
+        text={text}
+        onNavigate={onNavigate}
+      />
     ))}
   </div>
 );
 
 export const Slices: React.FC<Props> = ({ onNavigate }) => {
   const slices = useThemeSlices();
-  const items: MenuProps['items'] = useMemo(
+  const items: MenuItemType[] = useMemo(
     () =>
       slices.map(slice => ({
         text: slice,
+        route: slice as SliceName,
         icon: 'slice',
       })),
     [slices],
@@ -69,10 +88,12 @@ export const Slices: React.FC<Props> = ({ onNavigate }) => {
 export const Components: React.FC<Props> = ({ onNavigate }) => {
   const components = useThemeSlice('components');
 
-  const items: MenuProps['items'] = useMemo(
+  const items: MenuItemType[] = useMemo(
     () =>
       Object.keys(components || {}).map(component => ({
         text: component,
+        route: SliceName.COMPONENTS,
+        detail: component,
         icon: 'component',
       })),
     [components],

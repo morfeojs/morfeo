@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { CopyButton } from '../CopyButton';
 
 type Props = {
+  kind?: 'squared' | 'rounded';
   style?: Style;
   copyText?: string;
   copyLabel?: string;
@@ -12,6 +13,7 @@ type Props = {
 } & React.HTMLProps<HTMLDivElement>;
 
 export const Card: React.FC<Props> = ({
+  kind = 'rounded',
   style,
   children,
   copyText,
@@ -21,10 +23,15 @@ export const Card: React.FC<Props> = ({
   ...props
 }) => {
   const cardStyle = useStyle(style || {});
+  const roundedStyle = kind === 'squared' ? { borderRadius: 0 } : {};
+  const copyButtonStyle =
+    kind === 'squared'
+      ? { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }
+      : {};
   return (
     <div
       className={clsx('morfeo-card', styles.container, className)}
-      style={cardStyle as React.CSSProperties}
+      style={{ ...(cardStyle as React.CSSProperties), ...roundedStyle }}
       {...props}
     >
       {children}
@@ -34,6 +41,7 @@ export const Card: React.FC<Props> = ({
           label={copyLabel}
           copiedLabel={copiedLabel}
           className={styles.copyButton}
+          style={copyButtonStyle}
         />
       )}
     </div>

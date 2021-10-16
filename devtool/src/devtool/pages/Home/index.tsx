@@ -17,10 +17,13 @@ export const Home: React.FC = () => {
   const renderedSlices = useMemo(
     () =>
       themeSlices.map(slice => (
-        <Item>
-          <div key={slice} className={styles.sliceContainer}>
+        <Item key={slice}>
+          <div className={styles.sliceContainer}>
             <Card
-              className={clsx('morfeo-card-primary-clickable', styles.sliceCard)}
+              className={clsx(
+                'morfeo-card-primary-clickable',
+                styles.sliceCard,
+              )}
               onClick={() =>
                 navigate(RouteName.SLICE, { slice: slice as SliceName })
               }

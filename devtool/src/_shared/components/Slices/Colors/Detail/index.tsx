@@ -10,7 +10,7 @@ export const Detail: React.FC = () => {
 
   const theme = useTheme();
   const colorSlice = useMemo(() => (theme || {})['colors'] || {}, [theme]);
-  console.log({ state, theme, colorSlice });
+
   const bgColor = useMemo(
     () =>
       (state?.detailKey && (colorSlice || {})[state.detailKey as Color]) ||

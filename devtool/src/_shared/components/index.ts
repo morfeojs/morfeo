@@ -1,6 +1,7 @@
 export * from './Link';
 export * from './Icon';
 export * from './Code';
+export * from './Grid';
 export * from './Card';
 export * from './Route';
 export * from './Slices';

@@ -59,8 +59,13 @@ export const CopyButton: React.FC<Props> = ({
         onClick={onClick}
         style={style}
       >
-        <Icon name="copy" size="s" color={'invertedTextColor' as Color} />
         <p className="morfeo-typography-p2">{isCopied ? copiedLabel : label}</p>
+        <Icon
+          name={isCopied ? 'check' : 'copy'}
+          size="xs"
+          color={'invertedTextColor' as Color}
+          className={styles.icon}
+        />
       </div>
       <span ref={ref} className={styles.hiddenText}>
         {text}

@@ -1,0 +1,46 @@
+
+.componentContainer {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.previewContainer {
+  width: 100%;
+  height: 125px;
+  box-shadow: none;
+}
+
+.infoContainer {
+  width: 100%;
+  height: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--colors-primary);
+}
+
+.infoHeader {
+  padding: var(--spacings-xs);
+  padding-bottom: none;
+}
+
+.infoTags {
+  padding: var(--spacings-xs);
+  padding-top: none;
+}
+
+.componentName {
+  color: var(--colors-inverted-text-color) !important;
+  max-width: 10rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tag {
+  color: var(--colors-inverted-text-color) !important;
+  font-weight: bold;
+}

@@ -1,11 +1,17 @@
 import { SliceName } from '../../contexts';
-import { Colors, Detail as ColorDetail } from './Colors/index';
+import { Colors, Detail as ColorDetail } from './Colors';
+import { Components } from './Components';
 
 export const slices = {
   [SliceName.COLORS]: {
     render: <Colors />,
     renderDetail: <ColorDetail />,
     displayName: 'colors',
+  },
+  [SliceName.COMPONENTS]: {
+    render: <Components />,
+    renderDetail: <></>,
+    displayName: 'components',
   },
   [SliceName.RADII]: {
     render: <></>,

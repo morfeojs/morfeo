@@ -33,7 +33,10 @@ export const Layout: React.FC = ({ children }) => {
     return (
       <>
         <SideBar open={open} setOpen={setOpen} />
-        <div className={clsx(styles.overlay, open && styles.open)} />
+        <div
+          className={clsx(styles.overlay, open && styles.open)}
+          onClick={() => setOpen(false)}
+        />
         <section className={clsx(styles.content, open && styles.open)}>
           {children}
         </section>

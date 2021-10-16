@@ -2,26 +2,21 @@ export function Gradients() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="97"
-      height="96"
+      width="98"
+      height="98"
       fill="none"
-      viewBox="0 0 97 96"
+      viewBox="0 0 98 98"
     >
+      <path fill="#0F86F9" d="M1 17.093H32.917V79.968H1z"></path>
       <path
         fill="#0F86F9"
-        stroke="#0F86F9"
-        strokeWidth="2"
-        d="M1 17.093H32.917V79.968H1z"
-      ></path>
-      <path
-        stroke="#0F86F9"
-        strokeWidth="2"
         d="M32.917 17.093H64.083V79.968H32.917z"
+        opacity="0.7"
       ></path>
       <path
-        stroke="#0F86F9"
-        strokeWidth="2"
+        fill="#0F86F9"
         d="M64.083 17.093H96V79.968H64.083z"
+        opacity="0.4"
       ></path>
       <path
         fill="#0F86F9"

@@ -1,11 +1,12 @@
 .copyButton {
   display: flex;
-  width: fit-content;
-  padding: calc(var(--spacings-xxs) / 2);
+  width: var(--spacings-s);
+  height: var(--spacings-s);
+  padding-left: calc(var(--spacings-xxs) / 2);
+  padding-right: calc(var(--spacings-xxs) / 2);
   overflow: hidden;
-  max-width: var(--spacings-s);
-  align-self: flex-end;
   align-items: center;
+  justify-content: center;
   white-space: nowrap;
   text-overflow: ellipsis;
   transition: var(--transitions-medium);
@@ -14,21 +15,29 @@
   border-bottom-right-radius: var(--radii-xs);
 }
 
+.icon {
+  width: var(--spacings-s);
+  height: var(--spacings-s);
+}
+
 .copyButton p {
   color: var(--colors-inverted-text-color) !important;
-  opacity: 0;
   max-width: 0;
-  transition: var(--transitions-medium);
-  margin-left: var(--spacings-xxs);
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0s ease, max-width var(--transitions-medium), width var(--transitions-medium);
 }
 
 .copyButton:hover, .copyButton.copied {
-  align-self: flex-end;
   max-width: 10rem;
+  align-self: flex-end;
+  width: fit-content;
 }
 
 .copyButton:hover p, .copyButton.copied p {
   opacity: 1;
+  position: relative;
+  margin-right: var(--spacings-xxs);
   max-width: 10rem;
 }
 
