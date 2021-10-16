@@ -10,7 +10,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   transition: var(--transitions-medium);
-  background-color: var(--colors-gray-dark);
+  background-color: rgba(0, 0, 0, 0.3);
   border-top-left-radius: var(--radii-xs);
   border-bottom-right-radius: var(--radii-xs);
 }
