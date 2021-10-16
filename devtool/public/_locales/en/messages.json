@@ -32,5 +32,8 @@
   },
   "menu_components": {
     "message": "Components"
+  },
+  "sliceCardValues": {
+    "message": "values"
   }
 }

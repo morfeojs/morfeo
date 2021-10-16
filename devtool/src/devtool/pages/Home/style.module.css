@@ -40,6 +40,10 @@
   filter: grayscale(100%);
 }
 
+.empty .sliceName {
+  color: var(--colors-gray-light) !important;
+}
+
 .valueLabel {
   opacity: 0;
   max-width: 0;
