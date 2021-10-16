@@ -25,7 +25,7 @@ export const Card: ComponentConfig = {
           transform: 'translateY(-5px)',
         },
       },
-    }
+    },
   },
   meta: {
     tags: ['container', 'ui'],
