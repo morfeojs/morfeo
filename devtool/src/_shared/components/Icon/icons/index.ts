@@ -26,6 +26,7 @@ import { Docs } from './Docs';
 import { Credits } from './Credits';
 import { slices } from './slices';
 import { Check } from './Check';
+import { Warning } from './Warning';
 
 const icons = {
   ...slices,
@@ -53,6 +54,7 @@ const icons = {
   github: Github,
   search: Search,
   filter: Filter,
+  warning: Warning,
   credits: Credits,
   support: Support,
   loading: Loading,

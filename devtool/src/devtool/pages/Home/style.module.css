@@ -4,4 +4,56 @@
 
 .sliceContainer {
   width: 100%;
+  position: relative;
+}
+
+.valuesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--spacings-xxs) / 2);
+  padding-bottom: calc(var(--spacings-xxs) / 2);
+  padding-left: var(--spacings-xxs);
+  padding-right: var(--spacings-xxs);
+  height: fit-content;
+  background-color: var(--colors-primary-lighter);
+  border-top-left-radius: var(--radii-m);
+  border-bottom-right-radius: var(--radii-m);
+}
+
+.value {
+  color: var(--colors-inverted-text-color) !important;
+}
+
+.empty .value {
+  margin-left: var(--spacings-xxs);
+  color: var(--colors-warning) !important;
+}
+
+.empty .valuesContainer {
+  background-color: var(--colors-gray-light);
+}
+
+.empty svg {
+  filter: grayscale(100%);
+}
+
+.valueLabel {
+  opacity: 0;
+  max-width: 0;
+  position: absolute;
+  margin-left: var(--spacings-xxs);
+  transition: var(--transitions-medium);
+}
+
+.valuesContainer:hover {
+  width: fit-content;
+}
+
+.sliceContainer:hover .valueLabel {
+  max-width: 10rem;
+  opacity: 1;
+  position: relative;
 }

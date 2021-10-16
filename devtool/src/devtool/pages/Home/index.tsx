@@ -1,42 +1,46 @@
 import React, { useMemo } from 'react';
-import { capitalCase, noCase } from 'change-case';
-import { Card, Icon } from '../../../_shared/components';
-import { RouteName } from '../../../_shared/contexts';
-import { useRouter, useThemeSlices } from '../../../_shared/hooks';
 import { Page } from '../../../_shared/template/Page';
-import { SliceName } from '../../../_shared/contexts/Routing/types';
-import { IconName } from '../../../_shared/components/Icon/icons';
-import styles from './style.module.css';
-import clsx from 'clsx';
-import { Grid, Item } from '../../../_shared/components/Grid/index';
+import { Grid, Item } from '../../../_shared/components';
+import { SliceCard } from './SliceCard';
+import { ThemeKey, useTheme } from '@morfeo/react';
+import { THEME_KEYS } from '../../../_shared/constants';
+
+function useSortedThemeSlices() {
+  const theme = useTheme();
+  const countMap: Record<ThemeKey, number> = {} as any;
+
+  THEME_KEYS.forEach(slice => {
+    const config = theme[slice];
+    const number = Object.keys(config || {}).length;
+    countMap[slice] = number;
+  });
+
+  const slices = THEME_KEYS.sort((first, second) => {
+    if (countMap[first] === 0) {
+      return Infinity;
+    }
+
+    if (countMap[second] === 0) {
+      return -Infinity;
+    }
+
+    return first.localeCompare(second);
+  });
+
+  return slices;
+}
 
 export const Home: React.FC = () => {
-  const themeSlices = useThemeSlices();
-  const { navigate } = useRouter();
+  const themeSlices = useSortedThemeSlices();
 
   const renderedSlices = useMemo(
     () =>
       themeSlices.map(slice => (
         <Item key={slice}>
-          <div className={styles.sliceContainer}>
-            <Card
-              className={clsx(
-                'morfeo-card-primary-clickable',
-                styles.sliceCard,
-              )}
-              onClick={() =>
-                navigate(RouteName.SLICE, { slice: slice as SliceName })
-              }
-            >
-              <Icon name={`slice.${slice}` as IconName} />
-            </Card>
-            <h2 className="morfeo-typography-h2 mt-xxs">
-              {capitalCase(noCase(slice))}
-            </h2>
-          </div>
+          <SliceCard slice={slice} />
         </Item>
       )),
-    [navigate, themeSlices],
+    [themeSlices],
   );
 
   return (
