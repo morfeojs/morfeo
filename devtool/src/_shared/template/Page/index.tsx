@@ -22,7 +22,7 @@ export const Page: React.FC<Props> = ({ children, title, breadcrumb }) => {
           </h2>
         </div>
       )}
-      <div className={styles.section}>{children}</div>
+      {children}
     </div>
   );
 };

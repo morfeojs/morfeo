@@ -1,8 +1,6 @@
+
 .colorContainer {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  padding: var(--spacings-xs);
+  width: 100%;
 }
 
 .colorName {
@@ -10,4 +8,11 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.colorSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  box-sizing: border-box;
 }

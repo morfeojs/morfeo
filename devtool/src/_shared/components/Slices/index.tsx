@@ -1,6 +1,5 @@
 import { SliceName } from '../../contexts';
-import { ColorDetail } from './Color';
-import { Colors } from './Colors/index';
+import { Colors, Detail as ColorDetail } from './Colors/index';
 
 export const slices = {
   [SliceName.COLORS]: {

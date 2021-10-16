@@ -12,12 +12,21 @@
   cursor: pointer;
   display: flex;
   box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lightest);
+  align-items: center;
+  border-radius: var(--radii-s);
+  flex-direction: column;
+}
+[data-morfeo-theme="light"] .morfeo-card-primary-clickable {
+  color: var(--colors-text-color);
+  cursor: pointer;
+  display: flex;
+  box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lightest);
   transition: var(--transitions-fast);
   align-items: center;
   border-radius: var(--radii-s);
   flex-direction: column;
 }
-[data-morfeo-theme="light"] .morfeo-card-primary:hover {
+[data-morfeo-theme="light"] .morfeo-card-primary-clickable:hover {
   transform: translateY(-5px);
   box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lighter);
 }

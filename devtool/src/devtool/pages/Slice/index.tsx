@@ -15,6 +15,7 @@ export const Slice: React.FC = () => {
 
   const renderContent = useMemo(() => {
     if (state?.detailKey) {
+      console.log('renderDetail', slices[state.slice].renderDetail)
       return slices[state.slice].renderDetail || <></>;
     }
 

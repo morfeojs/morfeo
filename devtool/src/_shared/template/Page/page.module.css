@@ -13,9 +13,3 @@
 .breadcrumb {
   color: var(--colors-gray-light) !important;
 }
-
-.section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}

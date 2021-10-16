@@ -14,13 +14,18 @@ export const Card: ComponentConfig = {
     primary: {
       style: {
         shadow: 'light',
+      },
+    },
+    'primary.clickable': {
+      style: {
+        shadow: 'light',
         transition: 'fast',
         '&:hover': {
           shadow: 'medium',
           transform: 'translateY(-5px)',
         },
       },
-    },
+    }
   },
   meta: {
     tags: ['container', 'ui'],
