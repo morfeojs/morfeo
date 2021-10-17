@@ -39,7 +39,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
       <Icon name={icon} color={'invertedTextColor' as Color} size="xs" />
       <Link
         to={RouteName.SLICE}
-        state={{ slice: route, detailKey: detail?.toLowerCase() }}
+        state={{ slice: route, detailKey: detail }}
         onNavigate={onNavigate}
         className="morfeo-typography-h2"
         style={{

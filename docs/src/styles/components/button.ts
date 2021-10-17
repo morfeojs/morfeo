@@ -34,7 +34,7 @@ export const Button: ComponentConfig = {
     },
     error: {
       style: {
-        bg: 'light',
+        bg: 'gray.lightest',
         color: 'error',
       },
     },

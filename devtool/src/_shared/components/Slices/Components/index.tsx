@@ -3,6 +3,8 @@ import { Color, Component, useThemeSlice } from '@morfeo/react';
 import { Grid, Item } from '../../Grid';
 import { Preview } from './Preview';
 
+export * from './Detail';
+
 export const Components: React.FC = () => {
   const slice = useThemeSlice('components');
 

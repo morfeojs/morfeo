@@ -1,5 +1,6 @@
 import { ThemeKey } from '@morfeo/react';
 import { SnippetMapCallback } from '../types';
+import { components } from './components';
 import { general } from './general';
 
 const map: Record<ThemeKey, SnippetMapCallback> = {
@@ -58,12 +59,17 @@ const map: Record<ThemeKey, SnippetMapCallback> = {
     general({ slice: 'borderStyles', value, property: 'borderStyle' }),
   letterSpacings: (value: string) =>
     general({ slice: 'letterSpacings', value, property: 'letterSpacings' }),
+  components,
 } as any;
 
-export function getCodeSnippets(slice: ThemeKey, value: string) {
+export function getCodeSnippets(
+  slice: ThemeKey,
+  value: string,
+  params?: object,
+) {
   const getter = map[slice];
   if (getter) {
-    return getter(value);
+    return getter(value, params);
   }
   return [];
 }

@@ -44,7 +44,11 @@ export const Slice: React.FC = () => {
       {renderContent}
       {state && state.detailKey && (
         <div className="my-xxs mx-xs">
-          <CodeSnippets slice={state.slice} value={state.detailKey} />
+          <CodeSnippets
+            slice={state.slice}
+            value={state.detailKey}
+            params={state.params}
+          />
         </div>
       )}
     </Page>

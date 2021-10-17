@@ -4,4 +4,4 @@ export type CodeTab = {
   language?: string;
 };
 
-export type SnippetMapCallback = (value: string) => CodeTab[];
+export type SnippetMapCallback = (value: string, params?: any) => CodeTab[];

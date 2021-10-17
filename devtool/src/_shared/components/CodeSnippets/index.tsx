@@ -8,10 +8,11 @@ import { getCodeSnippets } from './snippets';
 type Props = {
   slice: ThemeKey;
   value: string;
+  params?: any;
 };
 
-export const CodeSnippets: React.FC<Props> = ({ slice, value }) => {
-  const tabs = getCodeSnippets(slice, value);
+export const CodeSnippets: React.FC<Props> = ({ slice, value, params }) => {
+  const tabs = getCodeSnippets(slice, value, params);
   const [selected, setSelected] = useState(tabs[0] ? tabs[0].label : '');
 
   const getOnSelectTab = useCallback((label: string) => {

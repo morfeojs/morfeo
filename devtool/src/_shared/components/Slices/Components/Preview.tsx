@@ -1,56 +1,54 @@
 import React, { useCallback } from 'react';
-import { Component, useThemeValue } from '@morfeo/react';
-import clsx from 'clsx';
+import { Component, component } from '@morfeo/react';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Card } from '../../Card';
-import { Detail } from './Detail';
+import { createMorfeoComponent } from './createMorfeoComponent';
+import clsx from 'clsx';
 
 import styles from './style.module.css';
+import { Tags } from './Tags';
 
 type Props = {
   name: Component;
+  variant?: string;
 };
 
-const Info: React.FC<Props> = ({ name }) => {
-  const { variants, meta } = useThemeValue('components', name);
+const Info: React.FC<Props> = ({ name, variant }) => {
+  const variants = component(name, variant).getVariants();
   const numberOfVariants = Object.keys(variants || {}).length;
-  const { tags = [] } = meta || {};
 
   return (
     <div className={styles.infoContainer}>
       <div className={styles.infoHeader}>
         <h2
           className={clsx('morfeo-typography-h2', styles.componentName)}
-          title={name}
+          title={variant || name}
         >
-          {name}
+          {variant || name}
         </h2>
-        {numberOfVariants > 0 && (
+        {numberOfVariants > 0 && !variant && (
           <p className={clsx('morfeo-typography-p1', styles.componentName)}>
             {numberOfVariants} variants
           </p>
         )}
       </div>
-      <div className={styles.infoTags}>
-        <p className={clsx('morfeo-typography-p1', styles.tag)}>
-          {tags.length > 0 ? `#${tags.join(' #')}` : ''}
-        </p>
-      </div>
+      <Tags name={name} />
     </div>
   );
 };
 
-export const Preview: React.FC<Props> = ({ name }) => {
+export const Preview: React.FC<Props> = ({ name, variant }) => {
   const { navigate } = useRouter();
 
   const onClick = useCallback(() => {
     navigate(RouteName.SLICE, {
       slice: SliceName.COMPONENTS,
       detailKey: name,
+      params: { variant },
     });
-  }, [name, navigate]);
+  }, [name, variant, navigate]);
 
   return (
     <Card
@@ -60,10 +58,14 @@ export const Preview: React.FC<Props> = ({ name }) => {
       )}
       onClick={onClick}
     >
-      <Card kind="squared" className={styles.previewContainer} copyText={name}>
-        <Detail name={name}>{name}</Detail>
+      <Card
+        kind="squared"
+        className={styles.previewContainer}
+        copyText={variant || name}
+      >
+        {createMorfeoComponent({ name, variant, props: {}, children: [name] })}
       </Card>
-      <Info name={name} />
+      <Info name={name} variant={variant} />
     </Card>
   );
 };

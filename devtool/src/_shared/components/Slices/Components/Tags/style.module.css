@@ -1,0 +1,9 @@
+.infoTags {
+  padding: var(--spacings-xs);
+  padding-top: none;
+}
+
+.tag {
+  color: var(--colors-inverted-text-color) !important;
+  font-weight: bold;
+}

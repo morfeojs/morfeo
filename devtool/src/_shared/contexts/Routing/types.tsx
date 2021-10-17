@@ -30,6 +30,7 @@ export enum SliceName {
 
 export type RouteState = {
   slice: SliceName;
+  params?: object;
   detailKey?: string;
 };
 

@@ -1,29 +1,42 @@
-import React from 'react';
-import { morfeo, component, Component } from '@morfeo/react';
+import { Component, component } from '@morfeo/react';
+import { useMemo } from 'react';
+import { useRouter } from '../../../../hooks';
+import { Grid, Item } from '../../../Grid';
+import { createMorfeoComponent } from '../createMorfeoComponent';
+import { Preview } from '../Preview';
 
-function createMorfeoComponent(
-  name: Component,
-  componentProps: any = {},
-  children: React.ReactNode[] = [],
-) {
-  const { tag, style, props = {} } = component(name).get();
+import styles from './style.module.css';
 
-  return React.createElement((tag || 'div') as any, {
-    ...props,
-    ...componentProps,
-    style: {
-      ...(props as any).style,
-      ...componentProps.style,
-      ...morfeo.resolve(style),
-    },
-    children,
-  });
-}
+export const Detail = () => {
+  const { route } = useRouter();
+  const { state } = route;
+  const { detailKey: componentName = '', params = {} as any } = state || {};
+  const variant = params.variant;
+  const variants = component(componentName as Component, variant).getVariants();
+  const variantKeys = Object.keys(variants || {});
 
-type Props = {
-  name: Component;
-};
+  const componentPreview = useMemo(() => {
+    return createMorfeoComponent({
+      name: componentName as Component,
+      props: {},
+      variant,
+      children: [componentName],
+    });
+  }, [componentName, variant]);
 
-export const Detail: React.FC<Props> = ({ name, children, ...props }) => {
-  return createMorfeoComponent(name, props, [children]);
+  return (
+    <div className={styles.container}>
+      <div className={styles.previewContainer}>{componentPreview}</div>
+      <div className={styles.variantsContainer}>
+        <h1 className="morfeo-typography-h1">Variants:</h1>
+        <Grid>
+          {variantKeys.map(name => (
+            <Item key={name}>
+              <Preview name={componentName as Component} variant={name} />
+            </Item>
+          ))}
+        </Grid>
+      </div>
+    </div>
+  );
 };
