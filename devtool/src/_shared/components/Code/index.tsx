@@ -10,11 +10,13 @@ import styles from './style.module.css';
 type Props = {
   children: string;
   language?: string;
+  className?: string;
 };
 
 export const Code: React.FC<Props> = ({
   children,
   language = 'javascript',
+  className,
 }) => {
   useEffect(() => {
     Prism.highlightAll();
@@ -22,7 +24,7 @@ export const Code: React.FC<Props> = ({
 
   return (
     <Card
-      className={styles.container}
+      className={clsx(styles.container, className)}
       copyText={children}
       copyLabel={t('copyCode')}
       copiedLabel={t('codeCopied')}

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Page } from '../../../_shared/template/Page';
 import { useRouter } from '../../../_shared/hooks/useRouter';
-import { slices } from '../../../_shared/components';
+import { CodeSnippets, slices } from '../../../_shared/components';
 import { SliceName } from '../../../_shared/contexts/Routing/types';
 
 export const Slice: React.FC = () => {
@@ -42,6 +42,11 @@ export const Slice: React.FC = () => {
   return (
     <Page breadcrumb={['slices', ...breadCrumb]} title={title}>
       {renderContent}
+      {state && state.detailKey && (
+        <div className="my-xxs mx-xs">
+          <CodeSnippets slice={state.slice} value={state.detailKey} />
+        </div>
+      )}
     </Page>
   );
 };

@@ -35,7 +35,9 @@ export const SliceCard: React.FC<Props> = ({ slice }) => {
         onClick={onClick}
       >
         <div className={styles.valuesContainer}>
-          {isEmpty && <Icon name="warning" size="xs" />}
+          {isEmpty && (
+            <Icon name="warning" className={styles.warningIcon} size="xs" />
+          )}
           <p className={clsx('morfeo-typography-p1', styles.value)}>{values}</p>
           {!isEmpty && (
             <p

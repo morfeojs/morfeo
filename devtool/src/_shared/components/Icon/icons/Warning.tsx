@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconProps } from './props';
 
-export const Warning: React.FC<IconProps> = () => {
+export const Warning: React.FC<IconProps> = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,6 +9,7 @@ export const Warning: React.FC<IconProps> = () => {
       height="14"
       fill="none"
       viewBox="0 0 15 14"
+      className={className}
     >
       <path
         fill="#FAC656"
