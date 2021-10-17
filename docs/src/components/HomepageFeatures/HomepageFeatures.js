@@ -9,20 +9,18 @@ const exampleStyle = {
   borderRadius: 's',
 };
 
-const exampleTheme = {
-  colors: {
-    primary: '#fefefe',
-    secondary: '#fff',
-  },
-  radii: {
-    s: '10px',
-  },
-};
-
-morfeo.setTheme(morfeo.getCurrent(), exampleTheme);
-const resultStyle = morfeo.resolve(exampleStyle);
-
 export function HomepageFeatures() {
+  const exampleTheme = {
+    colors: {
+      primary: morfeo.getTheme().colors.primary,
+      secondary: morfeo.getTheme().colors.secondary,
+    },
+    radii: {
+      s: morfeo.getTheme().radii.s,
+    },
+  };
+
+  const resultStyle = morfeo.resolve(exampleStyle);
   return (
     <section className={styles.features}>
       <div className="container">

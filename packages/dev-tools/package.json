@@ -16,21 +16,16 @@
     "system",
     "morfeo",
     "morfeo-js",
-    "dev-tools",
-    "chrome"
+    "devtool",
+    "web extension"
   ],
   "scripts": {
-    "copy:typings": "cp src/index.d.ts build",
-    "copy:manifest": "cp src/manifest.json build",
-    "build": "npx snowpack build && npm run copy:manifest && npm run copy:typings"
+    "build": "rimraf build && tsc",
+    "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
+    "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/jss": "^0.2.0",
     "@morfeo/web": "^0.2.0"
-  },
-  "devDependencies": {
-    "@types/chrome": "^0.0.143",
-    "snowpack": "^3.5.2"
   },
   "publishConfig": {
     "access": "public"
@@ -40,7 +35,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/VLK-STUDIO/morfeo"
+    "url": "https://github.com/VLK-STUDIO/morfeo",
+    "directory": "packages/dev-tools"
   },
   "homepage": "https://morfeo.dev",
   "bugs": {
