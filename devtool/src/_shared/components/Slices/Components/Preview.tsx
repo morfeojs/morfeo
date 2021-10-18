@@ -4,7 +4,7 @@ import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Card } from '../../Card';
-import { createMorfeoComponent } from './createMorfeoComponent';
+import { MorfeoComponent } from './MorfeoComponent';
 import clsx from 'clsx';
 
 import styles from './style.module.css';
@@ -63,7 +63,9 @@ export const Preview: React.FC<Props> = ({ name, variant }) => {
         className={styles.previewContainer}
         copyText={variant || name}
       >
-        {createMorfeoComponent({ name, variant, props: {}, children: [name] })}
+        <MorfeoComponent name={name} variant={variant}>
+          {name}
+        </MorfeoComponent>
       </Card>
       <Info name={name} variant={variant} />
     </Card>

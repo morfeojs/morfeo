@@ -2,7 +2,7 @@ import { Component, component } from '@morfeo/react';
 import { useMemo } from 'react';
 import { useRouter } from '../../../../hooks';
 import { Grid, Item } from '../../../Grid';
-import { createMorfeoComponent } from '../createMorfeoComponent';
+import { MorfeoComponent } from '../MorfeoComponent';
 import { Preview } from '../Preview';
 
 import styles from './style.module.css';
@@ -16,12 +16,11 @@ export const Detail = () => {
   const variantKeys = Object.keys(variants || {});
 
   const componentPreview = useMemo(() => {
-    return createMorfeoComponent({
-      name: componentName as Component,
-      props: {},
-      variant,
-      children: [componentName],
-    });
+    return (
+      <MorfeoComponent name={componentName as Component} variant={variant}>
+        {componentName}
+      </MorfeoComponent>
+    );
   }, [componentName, variant]);
 
   return (
