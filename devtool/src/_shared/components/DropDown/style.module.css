@@ -16,7 +16,7 @@
 
 .button {
   width: 100%;
-  color: var(--colors-text-color) !important;
+  color: var(--colors-primary) !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,7 +39,6 @@
   height: 0;
   width: 100%;
   max-height: 0px;
-  /* opacity: 0; */
   display: flex;
   overflow: scroll;
   flex-direction: column;
@@ -59,19 +58,36 @@
 
 .option {
   width: 100%;
-  padding-left: var(--spacings-xs);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  padding-top: var(--spacings-xxs);
+  padding-bottom: var(--spacings-xxs);
+}
+
+.option::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: var(--border-widths-xxs);
+  background-color: var(--colors-gray-lighter);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.option:last-child::after {
+  height: 0px;
 }
 
 .option:hover {
-  background-color: var(--colors-gray-lighter);
+  background-color: var(--colors-primary-lightest);
 }
 
 .open .optionsContainer {
-  /* opacity: 1; */
   max-height: 5rem;
   height: fit-content;
-  padding-top: var(--spacings-xs);
-  padding-bottom: var(--spacings-xs);
 }
 
 .option {

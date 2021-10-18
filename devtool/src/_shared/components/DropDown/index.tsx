@@ -42,10 +42,12 @@ export const DropDown: React.FC<Props> = ({
 
   const items = useMemo(() => {
     return options.map(({ label: optionLabel, value: optionValue }) => (
-      <div key={optionLabel} className={styles.option}>
-        <h4 className="morfeo-typography-h4" onClick={getOnClick(optionValue)}>
-          {optionLabel}
-        </h4>
+      <div
+        key={optionLabel}
+        className={styles.option}
+        onClick={getOnClick(optionValue)}
+      >
+        <h4 className="morfeo-typography-h4 ml-xs">{optionLabel}</h4>
       </div>
     ));
   }, [options, getOnClick]);

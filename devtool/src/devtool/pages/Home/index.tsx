@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
+import { ThemeKey, useTheme } from '@morfeo/react';
 import { Page } from '../../../_shared/template/Page';
 import { Grid, Item } from '../../../_shared/components';
 import { SliceCard } from './SliceCard';
-import { ThemeKey, useTheme } from '@morfeo/react';
 import { THEME_KEYS } from '../../../_shared/constants';
 
 function useSortedThemeSlices() {
@@ -27,7 +27,7 @@ function useSortedThemeSlices() {
     return first.localeCompare(second);
   });
 
-  return slices;
+  return slices || [];
 }
 
 export const Home: React.FC = () => {
