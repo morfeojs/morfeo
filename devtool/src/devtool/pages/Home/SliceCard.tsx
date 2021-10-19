@@ -7,8 +7,9 @@ import { useRouter } from '../../../_shared/hooks';
 import { SliceName } from '../../../_shared/contexts/Routing/types';
 import { IconName } from '../../../_shared/components/Icon/icons';
 import clsx from 'clsx';
-import styles from './style.module.css';
 import { t } from '../../../_shared/utils';
+
+import styles from './style.module.css';
 
 type Props = {
   slice: ThemeKey;

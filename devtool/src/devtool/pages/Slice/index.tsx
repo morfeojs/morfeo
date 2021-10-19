@@ -47,7 +47,7 @@ export const Slice: React.FC = () => {
           <CodeSnippets
             slice={state.slice}
             value={state.detailKey}
-            params={state.params}
+            componentVariant={state.componentVariant}
           />
         </div>
       )}

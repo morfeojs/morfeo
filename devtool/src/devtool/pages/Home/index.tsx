@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { ThemeKey, useTheme } from '@morfeo/react';
 import { Page } from '../../../_shared/template/Page';
 import { Grid, Item } from '../../../_shared/components';
-import { SliceCard } from './SliceCard';
 import { THEME_KEYS } from '../../../_shared/constants';
+import { SliceCard } from './SliceCard';
 
 function useSortedThemeSlices() {
   const theme = useTheme();

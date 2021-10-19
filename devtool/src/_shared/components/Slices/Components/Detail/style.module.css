@@ -4,8 +4,6 @@
 }
 
 .previewContainer {
-  border: var(--borders-primary);
-  border-color: var(--colors-primary);
   width: 100%;
   padding-top: var(--spacings-xxl);
   padding-bottom: var(--spacings-xxl);
@@ -13,5 +11,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radii-m);
 }

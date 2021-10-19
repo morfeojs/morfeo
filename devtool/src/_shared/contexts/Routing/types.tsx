@@ -3,6 +3,7 @@ import React from 'react';
 export enum RouteName {
   HOME = 'index',
   SLICE = 'slice',
+  COMPONENT = 'component',
 }
 
 export enum SliceName {
@@ -30,8 +31,8 @@ export enum SliceName {
 
 export type RouteState = {
   slice: SliceName;
-  params?: object;
   detailKey?: string;
+  componentVariant?: string;
 };
 
 export type RouteType = {

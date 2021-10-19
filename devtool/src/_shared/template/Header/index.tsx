@@ -1,23 +1,18 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import clsx from 'clsx';
-import { Color, morfeo, ThemeName } from '@morfeo/react';
+import { Color, morfeo, ThemeName, useTheme } from '@morfeo/react';
 import { DropDown, Icon } from '../../components';
-import { useIsUsingMorfeo, useRouter } from '../../hooks';
+import { useRouter } from '../../hooks';
 import styles from './style.module.css';
 import { t } from '../../utils';
 import { RouteName } from '../../contexts';
 
 export const Header: React.FC = () => {
   const { history, navigate, navigateBack } = useRouter();
-  const isUsingMorfeo = useIsUsingMorfeo();
-  const [currentTheme, setCurrentTheme] = useState(
-    isUsingMorfeo ? morfeo.getCurrent() : undefined,
-  );
+  const theme = useTheme();
+  const [currentTheme, setCurrentTheme] = useState(morfeo.getCurrent());
   const canGoBack = history.length > 0;
-  const themes = useMemo(
-    () => (isUsingMorfeo ? morfeo.getThemes() : {}),
-    [isUsingMorfeo],
-  );
+  const themes = useMemo(() => (theme ? morfeo.getThemes() : {}), [theme]);
   const backButton = useMemo(() => {
     if (canGoBack) {
       return (
@@ -33,12 +28,12 @@ export const Header: React.FC = () => {
   }, [canGoBack, navigateBack]);
 
   const themeSelect = useMemo(() => {
-    if (isUsingMorfeo) {
+    if (theme) {
       return (
         <DropDown
-          title="Theme"
+          title={t('headerMyThemesTitle')}
           value={currentTheme}
-          placeholder="Select theme"
+          placeholder={t('headerMyThemesPlaceholder')}
           onChange={value => {
             morfeo.useTheme(value as ThemeName);
             setCurrentTheme(value as ThemeName);
@@ -51,13 +46,13 @@ export const Header: React.FC = () => {
       );
     }
     return undefined;
-  }, [currentTheme, isUsingMorfeo, themes]);
+  }, [currentTheme, theme, themes]);
 
   useEffect(() => {
-    if (isUsingMorfeo) {
+    if (theme) {
       setCurrentTheme(morfeo.getCurrent());
     }
-  }, [isUsingMorfeo]);
+  }, [theme]);
 
   return (
     <header className={styles.header}>

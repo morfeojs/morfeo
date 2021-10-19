@@ -11,4 +11,16 @@ export const sizeParsers = {
       ...baseParser({ ...props, scale: 'sizes', property: 'height' }),
     };
   },
+  minSize: props => {
+    return {
+      ...baseParser({ ...props, scale: 'sizes', property: 'minWidth' }),
+      ...baseParser({ ...props, scale: 'sizes', property: 'minHeight' }),
+    };
+  },
+  maxSize: props => {
+    return {
+      ...baseParser({ ...props, scale: 'sizes', property: 'maxWidth' }),
+      ...baseParser({ ...props, scale: 'sizes', property: 'maxHeight' }),
+    };
+  },
 } as SizesParsers;

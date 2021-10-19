@@ -8,6 +8,9 @@ const theme = {
     medium: 'Montserrat, sans-serif',
     regular: 'Montserrat, sans-serif',
   },
+  colors: {
+    ...lightTheme.colors,
+  },
   components,
 };
 

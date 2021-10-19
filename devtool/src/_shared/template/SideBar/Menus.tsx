@@ -1,17 +1,18 @@
 import React, { useMemo } from 'react';
 import { Color, useThemeSlice } from '@morfeo/react';
 import { Icon, Link } from '../../components';
-import { RouteName } from '../../contexts';
 import { useThemeSlices } from '../../hooks';
+import { RouteName } from '../../contexts';
+import { SliceName } from '../../contexts/Routing/types';
 import { IconName } from '../../components/Icon/icons';
 import styles from './style.module.css';
-import { SliceName } from '../../contexts/Routing/types';
 
 type Props = {
   onNavigate?: () => void;
 };
 
 type MenuItemType = {
+  to?: RouteName;
   text: string;
   icon: IconName;
   route: SliceName;
@@ -28,6 +29,7 @@ type MenuItemProps = MenuItemType & {
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({
+  to = RouteName.SLICE,
   text,
   icon,
   route,
@@ -38,7 +40,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
     <div className={styles.menuItem}>
       <Icon name={icon} color={'invertedTextColor' as Color} size="xs" />
       <Link
-        to={RouteName.SLICE}
+        to={to}
         state={{ slice: route, detailKey: detail }}
         onNavigate={onNavigate}
         className="morfeo-typography-h2"
@@ -57,13 +59,10 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
 export const Menu: React.FC<MenuProps> = ({ items, onNavigate }) => (
   <div className={styles.linksContainer}>
-    {items.map(({ text, icon, route, detail }) => (
+    {items.map(item => (
       <MenuItem
-        key={`${route}-${detail}`}
-        icon={icon}
-        route={route}
-        detail={detail}
-        text={text}
+        key={`${item.route}-${item.detail}`}
+        {...item}
         onNavigate={onNavigate}
       />
     ))}
@@ -91,6 +90,7 @@ export const Components: React.FC<Props> = ({ onNavigate }) => {
   const items: MenuItemType[] = useMemo(
     () =>
       Object.keys(components || {}).map(component => ({
+        to: RouteName.COMPONENT,
         text: component,
         route: SliceName.COMPONENTS,
         detail: component,

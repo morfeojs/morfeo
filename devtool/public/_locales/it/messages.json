@@ -35,5 +35,11 @@
   },
   "sliceCardValues": {
     "message": "valori"
+  },
+  "headerMyThemesTitle": {
+    "message": "I miei temi"
+  },
+  "headerMyThemesPlaceholder": {
+    "message": "Seleziona..."
   }
 }

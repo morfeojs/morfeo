@@ -1,5 +1,5 @@
 import { theme, Theme } from '@morfeo/core';
-import { DependencyList, useLayoutEffect, useRef, useState } from 'react';
+import { DependencyList, useEffect, useRef, useState } from 'react';
 
 type ThemeSubscriber = (nextTheme: Theme) => void;
 
@@ -16,7 +16,7 @@ export function useSubscribe(
   dependencies: DependencyList = [],
 ) {
   const uid = useRef<string>(theme.subscribe(callback));
-  useLayoutEffect(() => {
+  useEffect(() => {
     return () => {
       theme.cleanUp(uid.current);
     };

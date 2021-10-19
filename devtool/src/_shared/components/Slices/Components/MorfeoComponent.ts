@@ -1,5 +1,5 @@
 import React from 'react';
-import { component, Component, useClassName } from '@morfeo/react';
+import { component, Component, getStyles } from '@morfeo/react';
 import clsx from 'clsx';
 
 type Props = {
@@ -7,16 +7,27 @@ type Props = {
   variant?: string;
 };
 
+type TagName = keyof HTMLElementTagNameMap;
+
 export const MorfeoComponent: React.FC<Props> = ({
   name,
   variant,
   children,
   ...props
 }) => {
-  const { tag, props: componentProps = {} } = component(name, variant).get();
-  const className = useClassName({ componentName: name, variant });
+  const { tag = 'div', props: componentProps = {} } = component(
+    name,
+    variant,
+  ).get();
+  const { classes } = getStyles({
+    [name]: {
+      componentName: name as Component,
+      variant,
+    },
+  });
+  const className = classes[name];
 
-  return React.createElement((tag || 'div') as any, {
+  return React.createElement(tag as TagName, {
     ...componentProps,
     ...props,
     className: clsx(

@@ -43,10 +43,10 @@ export const Preview: React.FC<Props> = ({ name, variant }) => {
   const { navigate } = useRouter();
 
   const onClick = useCallback(() => {
-    navigate(RouteName.SLICE, {
+    navigate(RouteName.COMPONENT, {
       slice: SliceName.COMPONENTS,
       detailKey: name,
-      params: { variant },
+      componentVariant: variant,
     });
   }, [name, variant, navigate]);
 

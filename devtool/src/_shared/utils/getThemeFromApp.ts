@@ -28,8 +28,20 @@ export function getThemeFromApp(): Promise<MorfeoDevToolAction> {
   });
 }
 
-export function getThemeFromAppAndInitMorfeo() {
-  browser.runtime.onMessage.addListener(onMessageReceived);
+export async function getThemeFromAppAndInitMorfeo(
+  callback?: (message: MorfeoDevToolAction) => void,
+) {
+  browser.runtime.onMessage.addListener((message: MorfeoDevToolAction) => {
+    if (callback) {
+      callback(message);
+    }
+    onMessageReceived(message);
+  });
 
-  getThemeFromApp().then(onMessageReceived);
+  getThemeFromApp().then((message: MorfeoDevToolAction) => {
+    if (callback) {
+      callback(message);
+    }
+    onMessageReceived(message);
+  });
 }

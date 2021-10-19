@@ -3,24 +3,19 @@ export function Opacities() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="96"
-      height="95"
+      height="96"
       fill="none"
-      viewBox="0 0 96 95"
+      viewBox="0 0 96 96"
     >
-      <circle
-        cx="48.103"
-        cy="47.5"
-        r="45.746"
-        stroke="#0F86F9"
-        strokeDasharray="21.05 21.05"
-        strokeWidth="3.508"
-      ></circle>
-      <path
+      <rect width="66" height="66" x="30" fill="#005FBA" rx="5"></rect>
+      <rect
+        width="66"
+        height="66"
+        y="30"
         fill="#0F86F9"
-        fillRule="evenodd"
-        d="M47.995 0C21.81.058.602 21.302.602 47.5.603 73.697 21.81 94.94 47.995 95V0z"
-        clipRule="evenodd"
-      ></path>
+        opacity="0.8"
+        rx="5"
+      ></rect>
     </svg>
   );
 }

@@ -20,6 +20,7 @@ export const Button: ComponentConfig = {
         corner: 'round',
         px: 'none',
         py: 'none',
+        size: 'xxl',
       },
     },
     side: {
