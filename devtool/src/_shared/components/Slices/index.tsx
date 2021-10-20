@@ -1,106 +1,113 @@
 import { SliceName } from '../../contexts';
 import { Colors, Detail as ColorDetail } from './Colors';
+import { Gradients, Detail as GradientDetail } from './Gradients';
 import { Components, Detail as ComponentDetail } from './Components';
 
-export const slices = {
+export type SliceConfig = {
+  render: React.FC;
+  displayName: string;
+  renderDetail: React.FC;
+};
+
+export const slices: Record<SliceName, SliceConfig> = {
   [SliceName.COLORS]: {
-    render: <Colors />,
-    renderDetail: <ColorDetail />,
+    render: () => <Colors />,
+    renderDetail: () => <ColorDetail />,
     displayName: 'colors',
   },
   [SliceName.COMPONENTS]: {
-    render: <Components />,
-    renderDetail: <ComponentDetail />,
+    render: () => <Components />,
+    renderDetail: () => <ComponentDetail />,
     displayName: 'components',
   },
   [SliceName.RADII]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'radii',
   },
   [SliceName.SIZES]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'sizes',
   },
   [SliceName.FONTS]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'fonts',
   },
   [SliceName.SHADOWS]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'shadows',
   },
   [SliceName.BORDERS]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'borders',
   },
   [SliceName.SPACINGS]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'spacings',
   },
   [SliceName.Z_INDICES]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'zIndices',
   },
   [SliceName.FONT_SIZES]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'fontSizes',
   },
   [SliceName.GRADIENTS]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <Gradients />,
+    renderDetail: () => <GradientDetail />,
     displayName: 'gradients',
   },
   [SliceName.OPACITIES]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'opacities',
   },
   [SliceName.FONT_WEIGHTS]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'fontWeights',
   },
   [SliceName.LINE_HEIGHTS]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'lineHeights',
   },
   [SliceName.BREAKPOINTS]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'breakpoints',
   },
   [SliceName.TRANSITIONS]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'transitions',
   },
   [SliceName.BORDER_WIDTHS]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'borderWidths',
   },
   [SliceName.MEDIA_QUERIES]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'mediaQueries',
   },
   [SliceName.BORDER_STYLES]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'borderStyles',
   },
   [SliceName.LETTER_SPACINGS]: {
-    render: <></>,
-    renderDetail: <></>,
+    render: () => <></>,
+    renderDetail: () => <></>,
     displayName: 'letterSpacings',
   },
 };

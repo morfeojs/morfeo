@@ -43,6 +43,13 @@ const map: Record<ThemeKey, SnippetMapCallback> = {
       property: 'p',
       cssProperty: 'padding',
     }),
+  gradients: (value: string) =>
+    general({
+      slice: 'gradients',
+      value,
+      property: 'gradient',
+      cssProperty: 'background',
+    }),
   opacities: (value: string) =>
     general({ slice: 'opacities', value, property: 'opacity' }),
   fontSizes: (value: string) =>

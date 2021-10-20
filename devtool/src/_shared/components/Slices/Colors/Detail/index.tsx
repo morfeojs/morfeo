@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { Color, useTheme } from '@morfeo/react';
+import React from 'react';
+import { Color, useStyle } from '@morfeo/react';
 import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
 import styles from './style.module.css';
@@ -41,19 +41,15 @@ export const Detail: React.FC = () => {
   const { route } = useRouter();
   const { state } = route;
 
-  const theme = useTheme();
-  const colorSlice = useMemo(() => (theme || {})['colors'] || {}, [theme]);
-
-  const bgColor = useMemo(
-    () =>
-      (state?.detailKey && (colorSlice || {})[state.detailKey as Color]) ||
-      'white',
-    [colorSlice, state?.detailKey],
-  );
+  const cardStyle = useStyle({ bg: state?.detailKey as Color });
+  const bgColor = cardStyle['background']?.toString() || '#fff';
 
   return (
     <div className={styles.container}>
-      <Card className="morfeo-card-primary" style={{ bg: bgColor as Color }} />
+      <Card
+        className="morfeo-card-primary"
+        style={{ bg: state?.detailKey as Color }}
+      />
       <div className={styles.colorsCodesContainer}>
         <h2 className="morfeo-typography-h2">
           RGBA: {bgColor.includes('#') ? hex2rgba(bgColor) : bgColor}

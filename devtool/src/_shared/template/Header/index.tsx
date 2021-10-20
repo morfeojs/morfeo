@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
 import clsx from 'clsx';
 import { Color, morfeo, ThemeName, useTheme } from '@morfeo/react';
 import { DropDown, Icon } from '../../components';
@@ -47,12 +47,6 @@ export const Header: React.FC = () => {
     }
     return undefined;
   }, [currentTheme, theme, themes]);
-
-  useEffect(() => {
-    if (theme) {
-      setCurrentTheme(morfeo.getCurrent());
-    }
-  }, [theme]);
 
   return (
     <header className={styles.header}>

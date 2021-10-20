@@ -2,7 +2,8 @@ import React, { useMemo } from 'react';
 import { Component } from '@morfeo/react';
 import { Page } from '../../../_shared/template/Page';
 import { useRouter } from '../../../_shared/hooks/useRouter';
-import { CodeSnippets, Grid, Item, slices } from '../../../_shared/components';
+import { CodeSnippets, Grid, Item } from '../../../_shared/components';
+import { Detail } from '../../../_shared/components/Slices/Components/Detail';
 import { SliceName } from '../../../_shared/contexts/Routing/types';
 import { Variants } from '../../../_shared/components/Slices/Components/Variants';
 import { Preview } from '../../../_shared/components/Slices/Components/Preview';
@@ -15,23 +16,10 @@ export const ComponentPage: React.FC = () => {
   const { state } = route;
   const { slice, detailKey, componentVariant } = state || {};
 
-  const breadCrumbSlice = slices[slice as SliceName]?.displayName || 'slice';
   const breadCrumbDetail = detailKey || '';
   const breadCrumb = componentVariant
-    ? [breadCrumbSlice, breadCrumbDetail, componentVariant]
-    : [breadCrumbSlice, breadCrumbDetail];
-
-  const renderContent = useMemo(() => {
-    if (detailKey && slice) {
-      return slices[slice].renderDetail || <></>;
-    }
-
-    if (slice) {
-      return slices[slice].render;
-    }
-
-    return <></>;
-  }, [detailKey, slice]);
+    ? [breadCrumbDetail, componentVariant]
+    : [breadCrumbDetail];
 
   const title = useMemo(() => {
     if (componentVariant) {
@@ -42,16 +30,12 @@ export const ComponentPage: React.FC = () => {
       return detailKey;
     }
 
-    if (slice) {
-      return slices[slice]?.displayName;
-    }
-
     return '';
-  }, [detailKey, slice, componentVariant]);
+  }, [detailKey, componentVariant]);
 
   return (
-    <Page breadcrumb={breadCrumb} title={title}>
-      {renderContent}
+    <Page breadcrumb={['components', ...breadCrumb]} title={title}>
+      <Detail />
       {state && state.detailKey && (
         <div className="my-xxs mx-xs">
           <CodeSnippets

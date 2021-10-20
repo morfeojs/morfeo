@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStyle, Style } from '@morfeo/react';
+import { Style, useStyle } from '@morfeo/react';
 import styles from './style.module.css';
 import clsx from 'clsx';
 import { CopyButton } from '../CopyButton';

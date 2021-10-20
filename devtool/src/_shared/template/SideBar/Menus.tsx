@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import { Color, useThemeSlice } from '@morfeo/react';
 import { Icon, Link } from '../../components';
-import { useThemeSlices } from '../../hooks';
 import { RouteName } from '../../contexts';
 import { SliceName } from '../../contexts/Routing/types';
 import { IconName } from '../../components/Icon/icons';
 import styles from './style.module.css';
+import { THEME_KEYS } from '../../constants';
 
 type Props = {
   onNavigate?: () => void;
@@ -70,7 +70,7 @@ export const Menu: React.FC<MenuProps> = ({ items, onNavigate }) => (
 );
 
 export const Slices: React.FC<Props> = ({ onNavigate }) => {
-  const slices = useThemeSlices();
+  const slices = THEME_KEYS;
   const items: MenuItemType[] = useMemo(
     () =>
       slices.map(slice => ({

@@ -15,10 +15,8 @@ export const MorfeoComponent: React.FC<Props> = ({
   children,
   ...props
 }) => {
-  const { tag = 'div', props: componentProps = {} } = component(
-    name,
-    variant,
-  ).get();
+  const { tag = 'div', props: componentProps = {} } =
+    component(name, variant).get() || {};
   const { classes } = getStyles({
     [name]: {
       componentName: name as Component,
