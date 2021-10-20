@@ -1,6 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks';
-import { theme } from '@morfeo/core';
+import { morfeo } from '@morfeo/core';
 import { useTheme, useThemeSlice, useThemeValue } from '../src';
+import { renderHook } from './customRenderer';
 
 const THEME = {
   colors: {
@@ -13,7 +13,8 @@ const THEME = {
 } as any;
 
 beforeAll(() => {
-  theme.set(THEME);
+  morfeo.setTheme('default', THEME);
+  morfeo.useTheme('default');
 });
 
 describe('useTheme', () => {

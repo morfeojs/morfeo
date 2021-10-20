@@ -1,5 +1,5 @@
 import React from 'react';
-import '@morfeo/preset-default';
+import { lightTheme, darkTheme } from '@morfeo/preset-default';
 import { morfeo, resetCss, loadFont } from '@morfeo/react';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
 import ReactDOM from 'react-dom';
@@ -10,8 +10,8 @@ import { components } from './theme';
 enableMorfeoDevTool();
 resetCss();
 
-morfeo.setTheme('light', { components } as any);
-morfeo.setTheme('dark', { components } as any);
+morfeo.setTheme('light', { ...lightTheme, components } as any);
+morfeo.setTheme('dark', { ...darkTheme, components } as any);
 
 morfeo.useTheme('light');
 

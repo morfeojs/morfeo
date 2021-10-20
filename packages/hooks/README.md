@@ -22,6 +22,7 @@ npm i @morfeo/react
 yarn add @morfeo/react
 ```
 
+- [MorfeoProvider](#morfeo-provider)
 - [useTheme](#usetheme)
   - [useThemeSlice](#usethemeslice)
   - [useThemeValue](#usethemevalue)
@@ -31,7 +32,22 @@ yarn add @morfeo/react
 Advanced
 
 - [useProps](#useprops)
-- [useSubscribe](#usesubscribe)
+
+## Morfeo Provider
+
+To sync morfeo with react you have to first of all wrap you app with the `MorfeoProvider`:
+
+```tsx
+import { MorfeoProvider } from '@morfeo/hooks';
+
+function App() {
+  return (
+    <MorfeoProvider>
+      <YourApp />
+    </MorfeoProvider>
+  );
+}
+```
 
 ## useTheme
 
@@ -133,21 +149,5 @@ function MyButton(props) {
   const defaultProps = useProps('Button', 'primary');
 
   return <button {...defaultProps} {...props} />;
-}
-```
-
-## useSubscribe
-
-If you just need to react to theme changes, `useSubscribe` receive a callback that will be executed every time the theme changes:
-
-```jsx
-function ThemeChangesCounter() {
-  const [counter, setCounter] = useState(0);
-
-  useSubscribe(() => {
-    setCounter(prev => prev + 1);
-  }, []);
-
-  return <div>The theme is changed {counter} times</div>;
 }
 ```

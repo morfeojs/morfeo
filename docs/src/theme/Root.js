@@ -2,11 +2,10 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import { morfeo } from '@morfeo/react';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
-import '@morfeo/preset-default';
 import CookieConsent from 'react-cookie-consent';
 
 import lightTheme from '../styles/lightTheme';
-import darkTheme from '../styles/lightTheme';
+import darkTheme from '../styles/darkTheme';
 
 morfeo.setTheme('light', lightTheme);
 morfeo.setTheme('dark', darkTheme);

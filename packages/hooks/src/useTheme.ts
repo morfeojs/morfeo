@@ -1,6 +1,6 @@
-import { theme, ThemeKey, Theme } from '@morfeo/core';
-import { useState } from 'react';
-import { useSubscribe } from './useSubscribe';
+import { ThemeKey, Theme } from '@morfeo/core';
+import { useContext } from 'react';
+import { MorfeoContext } from './MorfeoContext';
 
 /**
  * Same as `morfeo.getTheme()` but it will cause a re-render
@@ -9,11 +9,7 @@ import { useSubscribe } from './useSubscribe';
  * @returns the theme object
  */
 export function useTheme() {
-  const [t, setTheme] = useState(theme.get());
-
-  useSubscribe(setTheme);
-
-  return t;
+  return useContext(MorfeoContext);
 }
 
 /**

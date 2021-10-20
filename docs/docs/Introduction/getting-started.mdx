@@ -48,7 +48,9 @@ You can start using morfeo in 30 seconds:
 
   ```typescript
   // automatically adds two default light and dark themes.
-  import '@morfeo/preset-default';
+  import { initPreset } from '@morfeo/preset-default';
+
+  initPreset();
   ```
 
 - Use it everywhere to resolve a [morfeo style object](../theme-specification.mdx#morfeo-style-object) into a valid `css-in-js` object:
