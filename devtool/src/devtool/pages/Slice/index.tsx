@@ -52,7 +52,7 @@ export const Slice: React.FC = () => {
     <Page breadcrumb={['slices', ...breadCrumb]} title={title}>
       <Content />
       {state && state.detailKey && (
-        <div className="my-xxs mx-xs">
+        <div className="my-s mx-xs">
           <CodeSnippets
             slice={state.slice}
             value={state.detailKey}

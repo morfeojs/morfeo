@@ -4,6 +4,7 @@ import { Code } from '../Code';
 import styles from './style.module.css';
 import { ThemeKey } from '@morfeo/react';
 import { getCodeSnippets } from './snippets';
+import { t } from '../../utils';
 
 type Props = {
   slice: ThemeKey;
@@ -55,6 +56,7 @@ export const CodeSnippets: React.FC<Props> = ({
 
   return (
     <>
+      <h1 className="morfeo-typography-h1">{t('sliceCodeTitle')}</h1>
       <div className={styles.header}>{renderedHeaders}</div>
       <div>{currentCode}</div>
     </>

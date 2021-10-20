@@ -1,4 +1,5 @@
 import { SliceName } from '../../contexts';
+import { RadiiSlice, Detail as RadiusDetail } from './Radii';
 import { Colors, Detail as ColorDetail } from './Colors';
 import { Gradients, Detail as GradientDetail } from './Gradients';
 import { Components, Detail as ComponentDetail } from './Components';
@@ -21,8 +22,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'components',
   },
   [SliceName.RADII]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <RadiiSlice />,
+    renderDetail: () => <RadiusDetail />,
     displayName: 'radii',
   },
   [SliceName.SIZES]: {

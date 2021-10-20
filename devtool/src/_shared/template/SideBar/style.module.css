@@ -20,7 +20,7 @@
   align-items: center;
 }
 
-.menuItem:hover {
+.menuItem:not(.inactiveItem):hover {
   transform: translateX(10px);
 }
 

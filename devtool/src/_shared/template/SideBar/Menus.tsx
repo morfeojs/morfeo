@@ -4,8 +4,10 @@ import { Icon, Link } from '../../components';
 import { RouteName } from '../../contexts';
 import { SliceName } from '../../contexts/Routing/types';
 import { IconName } from '../../components/Icon/icons';
+import { useSlicesWithStatus } from '../../hooks';
 import styles from './style.module.css';
-import { THEME_KEYS } from '../../constants';
+import { SliceStatus } from '../../types';
+import clsx from 'clsx';
 
 type Props = {
   onNavigate?: () => void;
@@ -17,6 +19,7 @@ type MenuItemType = {
   icon: IconName;
   route: SliceName;
   detail?: string;
+  status?: SliceStatus;
 };
 
 type MenuProps = {
@@ -34,17 +37,30 @@ const MenuItem: React.FC<MenuItemProps> = ({
   icon,
   route,
   detail,
+  status,
   onNavigate,
 }) => {
+  const isNotActive =
+    status && [SliceStatus.INACTIVE, SliceStatus.COMING_SOON].includes(status);
+  const opacityStyle = {
+    opacity: isNotActive ? 'var(--opacities-medium)' : 1,
+  };
   return (
-    <div className={styles.menuItem}>
-      <Icon name={icon} color={'invertedTextColor' as Color} size="xs" />
+    <div className={clsx(styles.menuItem, isNotActive && styles.inactiveItem)}>
+      <Icon
+        name={icon}
+        color={(isNotActive ? 'gray.lighter' : 'invertedTextColor') as Color}
+        size="xs"
+        style={opacityStyle}
+      />
       <Link
         to={to}
         state={{ slice: route, detailKey: detail }}
         onNavigate={onNavigate}
+        disabled={isNotActive}
         className="morfeo-typography-h2"
         style={{
+          ...opacityStyle,
           color: 'var(--color-inverted-text-color)',
           marginBottom: 'var(--spacings-none)',
           marginLeft: 'var(--spacings-xxs)',
@@ -70,13 +86,14 @@ export const Menu: React.FC<MenuProps> = ({ items, onNavigate }) => (
 );
 
 export const Slices: React.FC<Props> = ({ onNavigate }) => {
-  const slices = THEME_KEYS;
+  const slices = useSlicesWithStatus();
   const items: MenuItemType[] = useMemo(
     () =>
       slices.map(slice => ({
-        text: slice,
-        route: slice as SliceName,
+        text: slice.name,
+        route: slice.name as SliceName,
         icon: 'slice',
+        status: slice.status,
       })),
     [slices],
   );

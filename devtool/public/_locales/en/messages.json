@@ -41,5 +41,8 @@
   },
   "headerMyThemesPlaceholder": {
     "message": "Select..."
+  },
+  "sliceCodeTitle": {
+    "message": "Code snippet"
   }
 }

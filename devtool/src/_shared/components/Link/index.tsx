@@ -6,6 +6,7 @@ import { RouteState } from '../../contexts/Routing/types';
 type Props = React.HTMLProps<HTMLSpanElement> & {
   to: RouteName;
   state?: RouteState;
+  disabled?: boolean;
   onNavigate?: () => void;
 };
 
@@ -13,17 +14,21 @@ export const Link: React.FC<Props> = ({
   to,
   state,
   children,
+  disabled,
   onNavigate,
   ...props
 }) => {
   const { navigate } = useRouter();
 
   const onClick = useCallback(() => {
+    if (disabled) {
+      return;
+    }
     navigate(to, state);
     if (onNavigate) {
       onNavigate();
     }
-  }, [navigate, onNavigate, to, state]);
+  }, [disabled, navigate, to, state, onNavigate]);
 
   return (
     <span

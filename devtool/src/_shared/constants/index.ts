@@ -33,3 +33,5 @@ export const THEME_KEYS: ThemeKey[] = [
   'borderStyles',
   'letterSpacings',
 ];
+
+export const COMING_SOON_SLICES: ThemeKey[] = ['transitions', 'breakpoints'];
