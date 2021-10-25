@@ -47,7 +47,9 @@ export const DropDown: React.FC<Props> = ({
         className={styles.option}
         onClick={getOnClick(optionValue)}
       >
-        <h4 className="morfeo-typography-h4 ml-xs">{optionLabel}</h4>
+        <h4 className="morfeo-typography-h4 color-text-color ml-xs">
+          {optionLabel}
+        </h4>
       </div>
     ));
   }, [options, getOnClick]);

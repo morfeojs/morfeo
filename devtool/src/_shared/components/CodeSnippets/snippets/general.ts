@@ -5,6 +5,7 @@ import { CodeTab } from '../types';
 type Params = {
   slice: ThemeKey;
   value: string;
+  htmlTag?: string;
   property: string;
   cssProperty?: string;
 };
@@ -12,6 +13,7 @@ type Params = {
 export function general({
   slice,
   value,
+  htmlTag = 'div',
   property,
   cssProperty,
 }: Params): CodeTab[] {
@@ -38,6 +40,13 @@ export function general({
 }`,
       label: 'CSS',
       language: 'css',
+    },
+    {
+      code: `<${htmlTag} class="${paramCase(property)}-${paramCase(
+        value || '',
+      )}" />`,
+      label: 'HTML',
+      language: 'html',
     },
   ];
 }

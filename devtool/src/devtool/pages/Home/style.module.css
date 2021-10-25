@@ -24,7 +24,7 @@
 }
 
 .valuesContainer.comingSoon {
-  background-color: var(--colors-primary-darker);
+  background-color: var(--colors-primary);
   font-weight: bold;
 }
 
@@ -54,6 +54,7 @@
   max-width: 0;
   position: absolute;
   margin-left: var(--spacings-xxs);
+  margin-right: var(--spacings-xxs);
   transition: var(--transitions-medium);
 }
 

@@ -3,6 +3,7 @@ import { RadiiSlice, Detail as RadiusDetail } from './Radii';
 import { Colors, Detail as ColorDetail } from './Colors';
 import { Gradients, Detail as GradientDetail } from './Gradients';
 import { Components, Detail as ComponentDetail } from './Components';
+import { BordersSlice, Detail as BorderDetail } from './Borders';
 
 export type SliceConfig = {
   render: React.FC;
@@ -42,8 +43,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'shadows',
   },
   [SliceName.BORDERS]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <BordersSlice />,
+    renderDetail: () => <BorderDetail />,
     displayName: 'borders',
   },
   [SliceName.SPACINGS]: {

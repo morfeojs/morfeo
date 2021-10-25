@@ -92,7 +92,7 @@ export function mountFont(font: MountFontParams) {
   }
 
   const newFontStyle = `
-    <style id="font-${font.name}">
+    <style class="morfeo-font" id="font-${font.name}">
       ${newFontFaceContent}
     </style>
   `;

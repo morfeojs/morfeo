@@ -105,18 +105,15 @@
   background-color: var(--colors-success);
 }
 [data-morfeo-theme="light"] .morfeo-typography {
-  color: var(--colors-text-color);
   font-family: var(--fonts-regular);
 }
 [data-morfeo-theme="light"] .morfeo-typography-hero {
-  color: var(--colors-text-color);
   font-size: var(--font-sizes-l);
   font-family: var(--fonts-regular);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
 [data-morfeo-theme="light"] .morfeo-typography-h1 {
-  color: var(--colors-text-color);
   font-size: var(--font-sizes-xl);
   font-family: var(--fonts-regular);
   font-weight: var(--font-weights-bold);
@@ -124,48 +121,41 @@
   letter-spacing: var(--letter-spacings-heading);
 }
 [data-morfeo-theme="light"] .morfeo-typography-h2 {
-  color: var(--colors-text-color);
   font-size: var(--font-sizes-m);
   font-family: var(--fonts-regular);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
 [data-morfeo-theme="light"] .morfeo-typography-h3 {
-  color: var(--colors-text-color);
   font-size: var(--font-sizes-s);
   font-family: var(--fonts-regular);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
 [data-morfeo-theme="light"] .morfeo-typography-h4 {
-  color: var(--colors-text-color);
   font-size: var(--font-sizes-s);
   font-family: var(--fonts-regular);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
 [data-morfeo-theme="light"] .morfeo-typography-p1 {
-  color: var(--colors-text-color);
   font-size: var(--font-sizes-m);
   font-family: var(--fonts-regular);
   line-height: var(--line-heights-body);
   letter-spacing: var(--letter-spacings-body);
 }
 [data-morfeo-theme="light"] .morfeo-typography-p2 {
-  color: var(--colors-text-color);
   font-size: var(--font-sizes-s);
   font-family: var(--fonts-regular);
   line-height: var(--line-heights-body);
   letter-spacing: var(--letter-spacings-body);
 }
 [data-morfeo-theme="light"] .morfeo-typography-p3 {
-  color: var(--colors-text-color);
   font-size: var(--font-sizes-xs);
   font-family: var(--fonts-regular);
   line-height: var(--line-heights-body);
 }
 [data-morfeo-theme="light"] .morfeo-typography-p4 {
-  color: var(--colors-text-color);
   font-size: var(--font-sizes-xxs);
   font-family: var(--fonts-regular);
   line-height: var(--line-heights-body);
@@ -181,7 +171,6 @@
   color: var(--colors-primary-lightest);
 }
 [data-morfeo-theme="light"] .morfeo-typography-caption {
-  color: var(--colors-text-color);
   font-size: var(--font-sizes-xxs);
   font-style: italic;
   font-family: var(--fonts-regular);

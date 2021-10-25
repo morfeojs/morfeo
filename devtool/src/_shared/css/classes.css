@@ -1207,6 +1207,14 @@
 .height-xxs {
   height: var(--sizes-xxs);
 }
+.min-size-xxs {
+  min-width: var(--sizes-xxs);
+  min-height: var(--sizes-xxs);
+}
+.max-size-xxs {
+  max-width: var(--sizes-xxs);
+  max-height: var(--sizes-xxs);
+}
 .min-width-xxs {
   min-width: var(--sizes-xxs);
 }
@@ -1249,6 +1257,14 @@
 }
 .height-xs {
   height: var(--sizes-xs);
+}
+.min-size-xs {
+  min-width: var(--sizes-xs);
+  min-height: var(--sizes-xs);
+}
+.max-size-xs {
+  max-width: var(--sizes-xs);
+  max-height: var(--sizes-xs);
 }
 .min-width-xs {
   min-width: var(--sizes-xs);
@@ -1293,6 +1309,14 @@
 .height-s {
   height: var(--sizes-s);
 }
+.min-size-s {
+  min-width: var(--sizes-s);
+  min-height: var(--sizes-s);
+}
+.max-size-s {
+  max-width: var(--sizes-s);
+  max-height: var(--sizes-s);
+}
 .min-width-s {
   min-width: var(--sizes-s);
 }
@@ -1335,6 +1359,14 @@
 }
 .height-m {
   height: var(--sizes-m);
+}
+.min-size-m {
+  min-width: var(--sizes-m);
+  min-height: var(--sizes-m);
+}
+.max-size-m {
+  max-width: var(--sizes-m);
+  max-height: var(--sizes-m);
 }
 .min-width-m {
   min-width: var(--sizes-m);
@@ -1379,6 +1411,14 @@
 .height-l {
   height: var(--sizes-l);
 }
+.min-size-l {
+  min-width: var(--sizes-l);
+  min-height: var(--sizes-l);
+}
+.max-size-l {
+  max-width: var(--sizes-l);
+  max-height: var(--sizes-l);
+}
 .min-width-l {
   min-width: var(--sizes-l);
 }
@@ -1421,6 +1461,14 @@
 }
 .height-xl {
   height: var(--sizes-xl);
+}
+.min-size-xl {
+  min-width: var(--sizes-xl);
+  min-height: var(--sizes-xl);
+}
+.max-size-xl {
+  max-width: var(--sizes-xl);
+  max-height: var(--sizes-xl);
 }
 .min-width-xl {
   min-width: var(--sizes-xl);
@@ -1465,6 +1513,14 @@
 .height-xxl {
   height: var(--sizes-xxl);
 }
+.min-size-xxl {
+  min-width: var(--sizes-xxl);
+  min-height: var(--sizes-xxl);
+}
+.max-size-xxl {
+  max-width: var(--sizes-xxl);
+  max-height: var(--sizes-xxl);
+}
 .min-width-xxl {
   min-width: var(--sizes-xxl);
 }
@@ -1507,6 +1563,14 @@
 }
 .height-none {
   height: var(--sizes-none);
+}
+.min-size-none {
+  min-width: var(--sizes-none);
+  min-height: var(--sizes-none);
+}
+.max-size-none {
+  max-width: var(--sizes-none);
+  max-height: var(--sizes-none);
 }
 .min-width-none {
   min-width: var(--sizes-none);

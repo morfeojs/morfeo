@@ -3,7 +3,6 @@ import { ComponentConfig } from '@morfeo/react';
 export const Typography: ComponentConfig = {
   style: {
     fontFamily: 'regular',
-    color: 'textColor',
   },
   variants: {
     hero: {
