@@ -1,15 +1,15 @@
-import { theme, Font } from '@morfeo/core';
+import { morfeo, ThemeName, Font } from '@morfeo/core';
 import { MountFontParams, mountFont } from '@morfeo/fonts';
 
 export type LoadFontParams = Omit<MountFontParams, 'name'> & { name: Font };
 /**
- * Load a fontFace on document head style and add it to the morfeo theme
+ * Load a fontFace on document head style and add it to the all morfeo themes
  *
  * ---
  *
  * ### load a google font
  *
- * ```ts
+ * ```typescript
  * loadFont({
  *   urls: [{
  *     url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap'
@@ -24,7 +24,7 @@ export type LoadFontParams = Omit<MountFontParams, 'name'> & { name: Font };
  *
  * ### load a local font
  *
- *  ```ts
+ *  ```typescript
  * loadFont({
  *   urls: [
  *     {
@@ -41,9 +41,23 @@ export type LoadFontParams = Omit<MountFontParams, 'name'> & { name: Font };
  *   name: 'bold',
  * })
  * ```
+ *
+ * ## load fonts only to some themes:
+ *
+ * ```typescript
+ * loadFont({...}, ['dark']);
+ * ```
  */
 
-export function loadFont(font: LoadFontParams) {
+export function loadFont(font: LoadFontParams, themeNames?: ThemeName[]) {
   mountFont(font);
-  theme.setValue('fonts', font.name, font.family);
+  const allThemes = Object.keys(morfeo.getThemes()) as ThemeName[];
+  const filteredThemes =
+    themeNames && themeNames.length > 0
+      ? allThemes.filter(themeName => themeNames.includes(themeName))
+      : allThemes;
+
+  filteredThemes.forEach(themeName => {
+    morfeo.setTheme(themeName, { fonts: { [font.name]: font.family } });
+  });
 }

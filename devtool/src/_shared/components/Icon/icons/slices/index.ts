@@ -8,6 +8,10 @@ import { Opacities } from './Opacities';
 import { ZIndices } from './ZIndices';
 import { Transitions } from './Transitions';
 import { Components } from './Components';
+import { FontSizes } from './FontSizes';
+import { LetterSpacings } from './LetterSpacings';
+import { BreakPoints } from './BreakPoints';
+import { MediaQueries } from './MediaQueries';
 
 export const slices = {
   'slice.borders': Borders,
@@ -26,4 +30,8 @@ export const slices = {
   'slice.zIndices': ZIndices,
   'slice.transitions': Transitions,
   'slice.components': Components,
+  'slice.fontSizes': FontSizes,
+  'slice.letterSpacings': LetterSpacings,
+  'slice.breakpoints': BreakPoints,
+  'slice.mediaQueries': MediaQueries,
 };

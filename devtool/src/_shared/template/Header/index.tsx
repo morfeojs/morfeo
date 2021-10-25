@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import clsx from 'clsx';
 import { Color, morfeo, ThemeName, useTheme } from '@morfeo/react';
 import { DropDown, Icon } from '../../components';
 import { useRouter } from '../../hooks';
@@ -58,9 +57,6 @@ export const Header: React.FC = () => {
           size="xxl"
           onClick={() => navigate(RouteName.HOME)}
         />
-        <h1 className={clsx('morfeo-typography-hero', styles.title)}>
-          {t('name')}
-        </h1>
       </div>
       <div className={styles.rightSide}>{themeSelect}</div>
     </header>

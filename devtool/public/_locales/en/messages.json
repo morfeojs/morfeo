@@ -8,7 +8,7 @@
     "description": "The short name of the web extension"
   },
   "description": {
-    "message": "Developer Tools for Morfeo",
+    "message": "Visualize your design system built with Morfeo",
     "description": "The description of the web extension"
   },
   "morfeoNotUsed": {

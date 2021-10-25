@@ -34,4 +34,19 @@ export const THEME_KEYS: ThemeKey[] = [
   'letterSpacings',
 ];
 
-export const COMING_SOON_SLICES: ThemeKey[] = ['transitions', 'breakpoints'];
+export const COMING_SOON_SLICES: ThemeKey[] = [
+  'sizes',
+  'fonts',
+  'shadows',
+  'spacings',
+  'zIndices',
+  'fontSizes',
+  'opacities',
+  'fontWeights',
+  'transitions',
+  'breakpoints',
+  'lineHeights',
+  'borderWidths',
+  'borderStyles',
+  'letterSpacings',
+];

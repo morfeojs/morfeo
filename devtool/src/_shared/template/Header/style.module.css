@@ -29,14 +29,6 @@
   margin-right: var(--spacings-xs);
 }
 
-.title {
-  flex: 1;
-  color: var(--color-inverted-text-color) !important;
-  align-items: center;
-  text-align: center;
-  margin-left: var(--spacings-xs);
-}
-
 .themeSelect {
   border-radius: var(--radii-xs);
   background-color: var(--colors-background);
