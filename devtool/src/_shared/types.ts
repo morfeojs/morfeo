@@ -22,3 +22,9 @@ export type SliceWithStatus = {
   values: number;
   status: SliceStatus;
 };
+
+export type Author = {
+  name: string;
+  url: string;
+  image?: string;
+};

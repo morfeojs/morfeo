@@ -3,9 +3,10 @@ import { Color } from '@morfeo/react';
 import clsx from 'clsx';
 import browser from 'webextension-polyfill';
 import { t } from '../../utils';
-import { Accordion, Icon } from '../../components';
+import { Accordion, Icon, Link } from '../../components';
 import { Components, Slices } from './Menus';
 import styles from './style.module.css';
+import { RouteName } from '../../contexts';
 
 type Props = {
   open?: boolean;
@@ -82,24 +83,28 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
       <div className={styles.sidebarFooter}>
         <div className={styles.footerItem}>
           <Icon name="docs" size="m" color={'invertedTextColor' as Color} />
-          <ExternalLink to="https://morfeo.dev/">Docs</ExternalLink>
+          <ExternalLink to="https://morfeo.dev/">
+            {t('sidebarDocs')}
+          </ExternalLink>
         </div>
         <div className={styles.footerItem}>
           <Icon name="credits" size="m" color={'invertedTextColor' as Color} />
-          <h2
+          <Link
             className="morfeo-typography-h2 ml-xxs"
             style={{
               cursor: 'pointer',
               color: 'var(--colors-inverted-text-color)',
             }}
+            to={RouteName.CREDITS}
+            onNavigate={toggle}
           >
-            Credits
-          </h2>
+            {t('sidebarCredits')}
+          </Link>
         </div>
         <div className={styles.footerItem}>
           <Icon name="github" size="m" color={'invertedTextColor' as Color} />
           <ExternalLink to="https://github.com/VLK-STUDIO/morfeo">
-            Github
+            {t('sidebarGithub')}
           </ExternalLink>
         </div>
       </div>

@@ -4,6 +4,7 @@ export enum RouteName {
   HOME = 'index',
   SLICE = 'slice',
   COMPONENT = 'component',
+  CREDITS = 'credits',
 }
 
 export enum SliceName {

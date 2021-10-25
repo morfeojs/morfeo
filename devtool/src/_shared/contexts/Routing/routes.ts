@@ -10,4 +10,7 @@ export const routes = {
   [RouteName.COMPONENT]: {
     name: RouteName.COMPONENT,
   },
+  [RouteName.CREDITS]: {
+    name: RouteName.CREDITS,
+  },
 };

@@ -44,5 +44,20 @@
   },
   "sliceCodeTitle": {
     "message": "Code snippet"
+  },
+  "sidebarDocs": {
+    "message": "Docs"
+  },
+  "sidebarCredits": {
+    "message": "Credits"
+  },
+  "sidebarGithub": {
+    "message": "Github"
+  },
+  "creditsTitle": {
+    "message": "Credits"
+  },
+  "creditsAuthors": {
+    "message": "Authors"
   }
 }
