@@ -1,0 +1,27 @@
+.container {
+  padding-left: var(--spacings-xs);
+  padding-right: var(--spacings-xs);
+}
+
+.spacingContainer {
+  display: flex;
+}
+.value::after, .value::before {
+  width: var(--sizes-s);
+  color: var(--colors-text-color);
+  transition: var(--transitions-fast);
+  font-size: var(--font-sizes-m);
+  font-family: var(--fonts-regular);
+  font-weight: var(--font-weights-bold);
+  line-height: var(--line-heights-heading);
+}
+
+.value::after {
+  content: '→';
+  margin-left: calc(var(--spacings-xxs) / 2);
+}
+
+.value::before {
+  content: '←';
+  margin-right: calc(var(--spacings-xxs) / 2);
+}

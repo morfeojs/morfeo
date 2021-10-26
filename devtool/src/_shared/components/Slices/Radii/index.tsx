@@ -1,13 +1,13 @@
 import React, { useMemo, useCallback } from 'react';
-import { Radii, Radius, useThemeSlice } from '@morfeo/react';
+import { Radius, useThemeSlice } from '@morfeo/react';
 import clsx from 'clsx';
-import { getValueAndUnit } from 'polished';
 import { Card } from '../../Card';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Grid, Item } from '../../Grid';
 import styles from './style.module.css';
+import { getSortedSliceValues } from '../../../utils';
 export { Detail } from './Detail';
 
 type Props = {
@@ -52,28 +52,10 @@ const RadiusCard: React.FC<Props> = ({ corner, value }) => {
   );
 };
 
-function getSortedRadii(radii: Radii) {
-  const keys = Object.keys(radii) as Radius[];
-
-  return keys.sort((first, second) => {
-    const [firstValue] = getValueAndUnit(radii[first]);
-    const [secondValue] = getValueAndUnit(radii[second]);
-    if (typeof firstValue !== 'number') {
-      return Infinity;
-    }
-
-    if (typeof secondValue !== 'number') {
-      return -Infinity;
-    }
-
-    return firstValue - secondValue;
-  });
-}
-
 export const RadiiSlice: React.FC = () => {
   const radii = useThemeSlice('radii');
 
-  const radiiKeys = useMemo(() => getSortedRadii(radii || {}), [radii]);
+  const radiiKeys = useMemo(() => getSortedSliceValues(radii || {}), [radii]);
 
   const section = useMemo(() => {
     return radiiKeys.map(key => {

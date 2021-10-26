@@ -6,6 +6,7 @@ import { Components, Detail as ComponentDetail } from './Components';
 import { BordersSlice, Detail as BorderDetail } from './Borders';
 import { GeneralFontsSlice, Detail as FontDetail } from './Fonts';
 import { SizesSlice, Detail as SizeDetail } from './Sizes';
+import { SpacingsSlice, Detail as SpacingDetail } from './Spacings';
 
 export type SliceConfig = {
   render: React.FC;
@@ -50,8 +51,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'borders',
   },
   [SliceName.SPACINGS]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <SpacingsSlice />,
+    renderDetail: () => <SpacingDetail />,
     displayName: 'spacings',
   },
   [SliceName.Z_INDICES]: {

@@ -1,13 +1,13 @@
 import React, { useMemo, useCallback } from 'react';
-import { Size, Sizes, useThemeSlice } from '@morfeo/react';
+import { Size, useThemeSlice } from '@morfeo/react';
 import clsx from 'clsx';
-import { getValueAndUnit } from 'polished';
 import { Card } from '../../Card';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Grid, Item } from '../../Grid';
 import styles from './style.module.css';
+import { getSortedSliceValues } from '../../../utils';
 export { Detail } from './Detail';
 
 type Props = {
@@ -46,28 +46,10 @@ const ItemCard: React.FC<Props> = ({ size, value }) => {
   );
 };
 
-function getSortedSize(sizes: Sizes) {
-  const keys = Object.keys(sizes) as Size[];
-
-  return keys.sort((first, second) => {
-    const [firstValue] = getValueAndUnit(sizes[first]);
-    const [secondValue] = getValueAndUnit(sizes[second]);
-    if (typeof firstValue !== 'number') {
-      return Infinity;
-    }
-
-    if (typeof secondValue !== 'number') {
-      return -Infinity;
-    }
-
-    return firstValue - secondValue;
-  });
-}
-
 export const SizesSlice: React.FC = () => {
   const sizes = useThemeSlice('sizes');
 
-  const sizesKeys = useMemo(() => getSortedSize(sizes || {}), [sizes]);
+  const sizesKeys = useMemo(() => getSortedSliceValues(sizes || {}), [sizes]);
 
   const section = useMemo(() => {
     return sizesKeys.map(key => {
