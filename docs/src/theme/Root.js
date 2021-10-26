@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
-import { morfeo } from '@morfeo/react';
+import { morfeo, loadFont } from '@morfeo/react';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
 import CookieConsent from 'react-cookie-consent';
 
@@ -10,9 +10,44 @@ import darkTheme from '../styles/darkTheme';
 morfeo.setTheme('light', lightTheme);
 morfeo.setTheme('dark', darkTheme);
 
-enableMorfeoDevTool();
-
 const buttonStyle = morfeo.resolve({ corner: 'm' });
+
+const fonts = [
+  {
+    urls: [
+      {
+        url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap',
+      },
+    ],
+    importFontFace: true,
+    name: 'regular',
+    family: 'Montserrat',
+  },
+  {
+    urls: [
+      {
+        url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap',
+      },
+    ],
+    importFontFace: true,
+    name: 'medium',
+    family: 'Montserrat',
+  },
+  {
+    urls: [
+      {
+        url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap',
+      },
+    ],
+    importFontFace: true,
+    name: 'bold',
+    family: 'Montserrat',
+  },
+];
+
+fonts.forEach(font => loadFont(font));
+
+enableMorfeoDevTool();
 
 function Root({ children }) {
   return (

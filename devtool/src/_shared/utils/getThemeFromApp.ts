@@ -2,6 +2,22 @@ import browser from 'webextension-polyfill';
 import { morfeo, ThemeName } from '@morfeo/react';
 import { ActionType, MorfeoDevToolAction } from '../types';
 
+function appendFonts({ fonts }: MorfeoDevToolAction) {
+  if (fonts) {
+    const style = document.createElement('style');
+    style.innerHTML = fonts;
+    const STYLE_ID = 'morfeo-imported-fonts';
+    style.id = STYLE_ID;
+    const oldStyle = document.getElementById(STYLE_ID);
+
+    if (oldStyle) {
+      document.head.removeChild(oldStyle);
+    }
+
+    document.head.appendChild(style);
+  }
+}
+
 function onMessageReceived(message: MorfeoDevToolAction) {
   if (message && message.type === ActionType.SET) {
     const { themes, current } = message;
@@ -10,6 +26,8 @@ function onMessageReceived(message: MorfeoDevToolAction) {
       morfeo.setTheme(themeName, themes[themeName] || {});
     });
     morfeo.useTheme(current);
+
+    appendFonts(message);
   }
 }
 

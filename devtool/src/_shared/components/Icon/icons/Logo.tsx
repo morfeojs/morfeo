@@ -10,7 +10,7 @@ export const Logo: React.FC<IconProps> = props => (
     clipRule="evenodd"
     viewBox="0 0 401 81"
     height={35}
-    width="auto"
+    width={174}
   >
     <g fill="#fff">
       <g fillRule="nonzero">

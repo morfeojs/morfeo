@@ -5,14 +5,16 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { HomepageFeatures } from '../components';
 import styles from './index.module.css';
-import logo from '../../static/img/morfeo.png';
+import Logo from './Logo';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
-        <img src={logo} />
+        <div style={{ margin: '20px auto', width: 200, height: 200 }}>
+          <Logo />
+        </div>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link

@@ -8,6 +8,7 @@ export enum ActionType {
 export type MorfeoDevToolAction = {
   type: ActionType;
   themes: Themes;
+  fonts?: string;
   current: ThemeName;
 };
 

@@ -1,46 +1,19 @@
-# Getting Started with Create React App
+![Morfeo logo](https://morfeo.dev/img/morfeo.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[morfeo](https://morfeo.dev) is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the **theme**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+[![codecov](https://codecov.io/gh/VLK-STUDIO/morfeo/branch/main/graph/badge.svg?token=CZBHY8J802)](https://codecov.io/gh/VLK-STUDIO/morfeo)
+[![Codecov](https://github.com/VLK-STUDIO/morfeo/actions/workflows/codecov.yml/badge.svg)](https://github.com/VLK-STUDIO/morfeo/actions/workflows/codecov.yml)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![GitHub license](https://img.shields.io/github/license/VLK-STUDIO/morfeo)](https://github.com/VLK-STUDIO/morfeo/blob/main/LICENSE)
+[![Contributing](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/93b009d2-94be-4d40-baa3-9f86a51922ce/deploy-status)](https://app.netlify.com/sites/cocky-kare-d8d81e/deploys)
+[![DeepScan grade](https://deepscan.io/api/teams/15451/projects/18608/branches/460695/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=15451&pid=18608&bid=460695)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[Documentation](https://morfeo.dev) | [API](https://github.com/VLK-STUDIO/morfeo) | [Contributing](https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md) | [Slack](https://morfeo.slack.com)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+---

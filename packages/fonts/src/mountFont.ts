@@ -1,28 +1,27 @@
-export type FontType = 'woff' | 'woff2' | 'trueType' | 'embedded-opentype';
+import { MountFontParams } from './types';
+import { unmountFont } from './unmountFont';
 
-export type FontUrl = {
-  url: string;
-  format?: FontType;
-};
-
-export type MountFontParams = {
-  name: string;
-  urls: FontUrl[];
-  family: string;
-  /**
-   * set to true if you are providing a css url with predefined fontFace(example: Google Font)
-   * Please note: it support **one font family** per css import
-   */
-  importFontFace?: boolean;
-  weight?: string;
-};
-
-export function unmountFont(name: string) {
-  const currentFontStyle = document.getElementById(`font-${name}`);
-
-  if (currentFontStyle) {
-    currentFontStyle.remove();
+function getFontCss(font: MountFontParams) {
+  if (font.importFontFace) {
+    const url = font.urls.reduce((_, value) => `url(${value.url})`, '');
+    return `@import ${url};`;
   }
+
+  const url = font.urls.reduce(
+    (acc, value) =>
+      `${acc ? acc + '\n' : acc} url('${value.url}') ${
+        value.format ? `format('${value.format}')` : ''
+      }`,
+    '',
+  );
+
+  return `
+    @fontFace {
+      font-family: ${font.family};
+      ${font.weight ? `font-weight: ${font.weight};` : ''}
+      url: ${url}
+    }
+  `;
 }
 
 /**
@@ -65,35 +64,12 @@ export function unmountFont(name: string) {
  * })
  * ```
  */
-
 export function mountFont(font: MountFontParams) {
-  let newFontFaceContent = '';
-
-  if (font.importFontFace) {
-    newFontFaceContent += `
-    @import ${font.urls.reduce((_, value) => `url(${value.url})`, '')}
-    `;
-  }
-
-  if (!font.importFontFace) {
-    newFontFaceContent += `
-    @fontFace {
-      font-family: ${font.family};
-      ${font.weight ? `font-weight: ${font.weight};` : ''}
-      url: ${font.urls.reduce(
-        (acc, value) =>
-          `${acc ? acc + '\n' : acc} url('${value.url}') ${
-            value.format ? `format('${value.format}')` : ''
-          }`,
-        '',
-      )}
-    }
-  `;
-  }
+  const css = getFontCss(font);
 
   const newFontStyle = `
     <style class="morfeo-font" id="font-${font.name}">
-      ${newFontFaceContent}
+      ${css}
     </style>
   `;
 
