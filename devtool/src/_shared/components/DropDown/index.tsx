@@ -13,6 +13,7 @@ type Props = {
   title?: string;
   value?: string;
   options: Option[];
+  inverted?: boolean;
   placeholder?: string;
   onChange: (value: string) => void;
 };
@@ -21,6 +22,7 @@ export const DropDown: React.FC<Props> = ({
   title,
   value,
   options,
+  inverted,
   placeholder,
   onChange,
 }) => {
@@ -55,7 +57,13 @@ export const DropDown: React.FC<Props> = ({
   }, [options, getOnClick]);
 
   return (
-    <div className={clsx(styles.container, open && styles.open)}>
+    <div
+      className={clsx(
+        styles.container,
+        open && styles.open,
+        inverted && styles.inverted,
+      )}
+    >
       {title && (
         <h3 className={clsx('morfeo-typography-h3', styles.title)}>{title}</h3>
       )}
@@ -67,7 +75,7 @@ export const DropDown: React.FC<Props> = ({
           {value || placeholder}
           <Icon
             name="chevron.right"
-            color={'textColor' as Color}
+            color={(inverted ? 'invertedTextColor' : 'textColor') as Color}
             size="xs"
             className={styles.toggle}
           />

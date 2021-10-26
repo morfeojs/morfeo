@@ -11,6 +11,13 @@ const map: Record<ThemeKey, SnippetMapCallback> = {
       property: 'height',
       cssProperty: 'height',
     }),
+  fonts: (value: string) =>
+    general({
+      slice: 'fonts',
+      value,
+      property: 'font',
+      cssProperty: 'font-family',
+    }),
   radii: (value: string) =>
     general({
       slice: 'radii',
@@ -65,7 +72,7 @@ const map: Record<ThemeKey, SnippetMapCallback> = {
   borderStyles: (value: string) =>
     general({ slice: 'borderStyles', value, property: 'borderStyle' }),
   letterSpacings: (value: string) =>
-    general({ slice: 'letterSpacings', value, property: 'letterSpacings' }),
+    general({ slice: 'letterSpacings', value, property: 'letterSpacing' }),
   components,
 } as any;
 

@@ -59,5 +59,8 @@
   },
   "creditsAuthors": {
     "message": "Authors"
+  },
+  "fontsDetailInputLabel": {
+    "message": "Test text"
   }
 }

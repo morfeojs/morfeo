@@ -4,6 +4,7 @@ import { Colors, Detail as ColorDetail } from './Colors';
 import { Gradients, Detail as GradientDetail } from './Gradients';
 import { Components, Detail as ComponentDetail } from './Components';
 import { BordersSlice, Detail as BorderDetail } from './Borders';
+import { GeneralFontsSlice, Detail as FontDetail } from './Fonts';
 
 export type SliceConfig = {
   render: React.FC;
@@ -33,8 +34,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'sizes',
   },
   [SliceName.FONTS]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <GeneralFontsSlice property="font" />,
+    renderDetail: () => <FontDetail main="fonts" />,
     displayName: 'fonts',
   },
   [SliceName.SHADOWS]: {
@@ -58,8 +59,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'zIndices',
   },
   [SliceName.FONT_SIZES]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <GeneralFontsSlice property="fontSize" />,
+    renderDetail: () => <FontDetail main="fontSizes" />,
     displayName: 'fontSizes',
   },
   [SliceName.GRADIENTS]: {
@@ -73,13 +74,13 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'opacities',
   },
   [SliceName.FONT_WEIGHTS]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <GeneralFontsSlice property="fontWeight" />,
+    renderDetail: () => <FontDetail main="fontWeights" />,
     displayName: 'fontWeights',
   },
   [SliceName.LINE_HEIGHTS]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <GeneralFontsSlice property="lineHeight" />,
+    renderDetail: () => <FontDetail main="lineHeights" />,
     displayName: 'lineHeights',
   },
   [SliceName.BREAKPOINTS]: {
@@ -108,8 +109,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'borderStyles',
   },
   [SliceName.LETTER_SPACINGS]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <GeneralFontsSlice property="letterSpacing" />,
+    renderDetail: () => <FontDetail main="letterSpacings" />,
     displayName: 'letterSpacings',
   },
 };

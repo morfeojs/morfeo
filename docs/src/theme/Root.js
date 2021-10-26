@@ -16,7 +16,7 @@ const fonts = [
   {
     urls: [
       {
-        url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap',
+        url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap',
       },
     ],
     importFontFace: true,

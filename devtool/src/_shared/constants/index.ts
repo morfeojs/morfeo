@@ -36,17 +36,12 @@ export const THEME_KEYS: ThemeKey[] = [
 
 export const COMING_SOON_SLICES: ThemeKey[] = [
   'sizes',
-  'fonts',
   'shadows',
   'spacings',
   'zIndices',
-  'fontSizes',
   'opacities',
-  'fontWeights',
   'transitions',
   'breakpoints',
-  'lineHeights',
   'borderWidths',
   'borderStyles',
-  'letterSpacings',
 ];

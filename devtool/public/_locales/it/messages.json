@@ -59,5 +59,8 @@
   },
   "creditsAuthors": {
     "message": "Autori"
+  },
+  "fontsDetailInputLabel": {
+    "message": "Testo di prova"
   }
 }

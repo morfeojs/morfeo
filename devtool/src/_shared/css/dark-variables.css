@@ -29,9 +29,9 @@
 	--font-sizes-xl: 24px;
 	--font-sizes-xxl: 28px;
 	--font-sizes-none: 0px;
-	--font-weights-regular: regular;
-	--font-weights-medium: medium;
-	--font-weights-bold: bold;
+	--font-weights-regular: 300;
+	--font-weights-medium: 500;
+	--font-weights-bold: 700;
 	--gradients-primary: linear-gradient(180deg, #06f 0%, #db2494 100%);
 	--gradients-secondary: linear-gradient(180deg, #A3A3A3 0%, #ffffff 100%);
 	--letter-spacings-body: 0.2px;

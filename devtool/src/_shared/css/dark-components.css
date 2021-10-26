@@ -30,6 +30,19 @@
   transform: translateY(-5px);
   box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lighter);
 }
+[data-morfeo-theme="dark"] .morfeo-input {
+  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-inverted-background);
+  height: var(--sizes-m);
+  border-color: var(--colors-gray-lightest);
+  padding-left: var(--spacings-xs);
+  border-radius: var(--radii-xxs);
+  padding-right: var(--spacings-xs);
+  background-color: var(--colors-white);
+}
+[data-morfeo-theme="dark"] .morfeo-input:focus {
+  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-inverted-background);
+  border-color: var(--colors-gray-lighter);
+}
 [data-morfeo-theme="dark"] .morfeo-button {
   color: var(--colors-inverted-text-color);
   border: var(--border-widths-none) var(--border-styles-none);

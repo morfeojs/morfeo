@@ -4,6 +4,7 @@ export * from './Code';
 export * from './Grid';
 export * from './Card';
 export * from './Route';
+export * from './Input';
 export * from './Slices';
 export * from './DropDown';
 export * from './Accordion';

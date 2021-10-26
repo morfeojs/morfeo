@@ -1,0 +1,23 @@
+.container {
+  padding-left: var(--spacings-xs);
+  padding-right: var(--spacings-xs);
+}
+
+.text {
+  font-size: 60px;
+}
+
+.input {
+  width: 100%;
+}
+
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacings-s);
+}
+
+.dropdownsContainer {
+  display: flex;
+  justify-content: space-between;
+}
