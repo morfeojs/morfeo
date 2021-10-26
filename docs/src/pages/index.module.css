@@ -23,3 +23,16 @@
   align-items: center;
   justify-content: center;
 }
+
+.logoContainer {
+  margin: 20px auto;
+  width: 150px;
+  height: 150px;
+}
+
+.subtitle {
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

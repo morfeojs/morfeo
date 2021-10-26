@@ -1,7 +1,7 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Morfeo',
-  tagline: 'Framework Agnostic design system',
+  tagline: 'Framework Agnostic theming system',
   url: 'https://morfeo.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -116,6 +116,7 @@ module.exports = {
     },
     colorMode: {
       defaultMode: 'dark',
+      disableSwitch: true,
     },
     algolia: {
       apiKey: 'ec3249f2a49ea66e665613d20d693336',

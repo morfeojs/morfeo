@@ -73,7 +73,8 @@ export function mountFont(font: MountFontParams) {
     </style>
   `;
 
-  unmountFont(font.name);
-
-  document.head.innerHTML += newFontStyle;
+  if (globalThis && globalThis.document) {
+    unmountFont(font.name);
+    document.head.innerHTML += newFontStyle;
+  }
 }

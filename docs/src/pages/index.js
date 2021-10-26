@@ -12,14 +12,17 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
-        <div style={{ margin: '20px auto', width: 200, height: 200 }}>
+        <div className={styles.logoContainer}>
           <Logo />
         </div>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className={clsx('hero__subtitle', styles.subtitle)}>
+          {siteConfig.tagline}
+        </p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
+            className="button button--primary button--lg"
             to="/docs/Introduction/getting-started"
+            style={{ color: 'white' }}
           >
             Get started
           </Link>
