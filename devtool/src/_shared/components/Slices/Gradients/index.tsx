@@ -54,7 +54,7 @@ export const Gradients: React.FC = () => {
   const section = useMemo(() => {
     return gradientKeys.map(key => {
       return (
-        <Item key={`colors-${key}`}>
+        <Item key={`gradients-${key}`}>
           <GradientCard gradient={key} />
         </Item>
       );

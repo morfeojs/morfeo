@@ -38,7 +38,7 @@ const ItemCard: React.FC<ItemProps> = ({ property, value }) => {
           Aa
         </h1>
       </Card>
-      <h4 className="morfeo-typography-h4">{value}</h4>
+      <h2 className="morfeo-typography-h2">{value}</h2>
     </div>
   );
 };

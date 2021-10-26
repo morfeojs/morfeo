@@ -5,6 +5,7 @@ import { Gradients, Detail as GradientDetail } from './Gradients';
 import { Components, Detail as ComponentDetail } from './Components';
 import { BordersSlice, Detail as BorderDetail } from './Borders';
 import { GeneralFontsSlice, Detail as FontDetail } from './Fonts';
+import { SizesSlice, Detail as SizeDetail } from './Sizes';
 
 export type SliceConfig = {
   render: React.FC;
@@ -29,8 +30,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'radii',
   },
   [SliceName.SIZES]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <SizesSlice />,
+    renderDetail: () => <SizeDetail />,
     displayName: 'sizes',
   },
   [SliceName.FONTS]: {
