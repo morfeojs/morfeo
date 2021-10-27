@@ -7,6 +7,8 @@ import { BordersSlice, Detail as BorderDetail } from './Borders';
 import { GeneralFontsSlice, Detail as FontDetail } from './Fonts';
 import { SizesSlice, Detail as SizeDetail } from './Sizes';
 import { SpacingsSlice, Detail as SpacingDetail } from './Spacings';
+import { ShadowsSlice, Detail as ShadowDetail } from './Shadows';
+import { OpacitiesSlice, Detail as OpacityDetail } from './Opacities';
 
 export type SliceConfig = {
   render: React.FC;
@@ -41,8 +43,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'fonts',
   },
   [SliceName.SHADOWS]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <ShadowsSlice />,
+    renderDetail: () => <ShadowDetail />,
     displayName: 'shadows',
   },
   [SliceName.BORDERS]: {
@@ -71,8 +73,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'gradients',
   },
   [SliceName.OPACITIES]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <OpacitiesSlice />,
+    renderDetail: () => <OpacityDetail />,
     displayName: 'opacities',
   },
   [SliceName.FONT_WEIGHTS]: {

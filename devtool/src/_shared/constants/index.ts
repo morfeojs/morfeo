@@ -35,9 +35,7 @@ export const THEME_KEYS: ThemeKey[] = [
 ];
 
 export const COMING_SOON_SLICES: ThemeKey[] = [
-  'shadows',
   'zIndices',
-  'opacities',
   'transitions',
   'breakpoints',
   'borderWidths',
