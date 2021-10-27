@@ -61,8 +61,8 @@ module.exports = {
               to: '/docs/Introduction/getting-started',
             },
             {
-              label: 'Dev Tool',
-              to: '/docs/Features/dev-tool',
+              label: 'Web Extension',
+              to: '/docs/Features/web-extension',
             },
             {
               label: 'Theme specification',

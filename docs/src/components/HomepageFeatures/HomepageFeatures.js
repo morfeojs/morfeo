@@ -30,8 +30,10 @@ export function HomepageFeatures() {
             helps you to <i>follow a design language</i> and write consistent
             UIs, whatever it is the framework of your choice. It's easy to use
             and, with the
-            <strong> browser extension</strong>, your theme and your components
-            are automatically documented.
+            <a href="/docs/Features/web-extension">
+              <strong> browser extension</strong>
+            </a>
+            , your theme and your components are automatically documented.
           </p>
           <div className={styles.preview}>
             <div className={styles.codeContainer}>

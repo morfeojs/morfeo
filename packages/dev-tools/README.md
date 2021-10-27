@@ -10,14 +10,14 @@
 
 ---
 
-One of the most important feature of morfeo is the [dev-tool](https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl),
-with the dev tool yuo'always be able to see your theme and play with it.
+One of the most important feature of morfeo is the [web extension](https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl),
+with the web extension you will always be able to see your theme and play with it.
 
 ![dev tool](https://morfeo.dev/img/devtool/hero.jpeg)
 
 ## Installation
 
-You can install the dev tool by going to chrome webstore and add it to your plugins:
+You can install it by going to chrome webstore and add it to your plugins:
 [Install morfeo dev tool](https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl)
 
 ## Usage
@@ -48,10 +48,10 @@ import { morfeo } from './myTheme';
 
 enableMorfeoDevTool();
 
-morfeo.setTheme("default", myTheme);
+morfeo.setTheme('default', myTheme);
 ```
 
->In a future release the dev tool will probably be always enabled by default
+> In a future release the dev tool will probably be always enabled by default
 
 ## Contribute
 

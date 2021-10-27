@@ -1,0 +1,68 @@
+---
+sidebar_position: 4
+id: web-extension
+title: Web Extension
+description: Features > Web Extension
+---
+
+import Link from '@docusaurus/Link';
+
+One of the most important feature of morfeo is the [Web Extension](https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl).
+
+![Morfeo Web Extension](../../static/img/devtool/hero.jpeg)
+
+With the extension you'll always be able to see your theme and play with it.
+
+## Installation
+
+You can install it by going to chrome web store and add it to your plugins:
+
+<Link
+  to="https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl"
+  className="button button--secondary button--lg"
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    width: 'fit-content',
+  }}
+>
+  <img src="/img/chromeLogo.svg" style={{ marginRight: '10px' }} />
+  <span>Add Morfeo to Chrome</span>
+</Link>
+
+## Usage
+
+Once you have done the installation, open the chrome devtool by inspecting the page or simply typing:
+`alt + cmd + j`, you'll see a new tab called `Ⓜ️ Morfeo`:
+
+![dev tool](../../static/img/devtool/tabs.png)
+
+Try it right now in this website to see a sample theme provided by us!
+
+## Use it in your application
+
+Enable dev tool in your application it's pretty easy, just install `@morfeo/dev-tools`:
+
+```bash
+# npm
+npm i @morfeo/dev-tools
+# yarn
+yarn add @morfeo/dev-tools
+```
+
+then in your app, just call the function `enableMorfeoDevTool`:
+
+```typescript
+import { enableMorfeoDevTool } from '@morfeo/dev-tools';
+import { myTheme } from './myTheme';
+
+enableMorfeoDevTool();
+
+morfeo.setTheme('light', myTheme);
+```
+
+## Contribute
+
+We want to improve the web extension as much as possible and add functionalities, If you want to help us, check our [GitHub](https://github.com/VLK-STUDIO/morfeo)!
+
+If you want a particular functionality or you found a bug, please, open an issue [here](https://github.com/VLK-STUDIO/morfeo/issues)
