@@ -88,6 +88,18 @@ export const Typography: ComponentConfig = {
         },
       },
     },
+    cta: {
+      tag: 'span',
+      style: {
+        '&::after': {
+          componentName: 'Typography',
+          variant: 'h3',
+          content: "'→'",
+          width: 's',
+          ml: 'xxs',
+        },
+      },
+    },
     caption: {
       style: {
         fontSize: 'xxs',

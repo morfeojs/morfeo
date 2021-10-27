@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { useCallback, useMemo } from 'react';
-import browser from 'webextension-polyfill';
 import { Author } from '../../../_shared/types';
+import { redirect } from '../../../_shared/utils';
 import styles from './style.module.css';
 
 type Props = {
@@ -19,10 +19,7 @@ export const PersonCard: React.FC<Props> = ({ person }) => {
   const { name, image, url } = person;
 
   const onClick = useCallback(() => {
-    browser.tabs
-      .create({ url })
-      .then(() => undefined)
-      .catch(() => undefined);
+    redirect(url);
   }, [url]);
 
   const cover = useMemo(() => {

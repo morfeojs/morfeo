@@ -183,6 +183,18 @@
 [data-morfeo-theme="dark"] .morfeo-typography-link:hover {
   color: var(--colors-primary-lightest);
 }
+[data-morfeo-theme="dark"] .morfeo-typography-cta {
+  font-family: var(--fonts-regular);
+}
+[data-morfeo-theme="dark"] .morfeo-typography-cta::after {
+  width: var(--sizes-s);
+  content: '→';
+  font-size: var(--font-sizes-s);
+  font-family: var(--fonts-regular);
+  font-weight: var(--font-weights-bold);
+  line-height: var(--line-heights-heading);
+  margin-left: var(--spacings-xxs);
+}
 [data-morfeo-theme="dark"] .morfeo-typography-caption {
   font-size: var(--font-sizes-xxs);
   font-style: italic;
