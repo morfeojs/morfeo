@@ -39,7 +39,6 @@ const MAX_LENGTH = 20;
 
 export const Detail: React.FC<Props> = ({ main = 'fonts' }) => {
   const { route } = useRouter();
-  const filteredFontSlices = fontSlices.filter(slice => slice !== main);
   const [text, setText] = useState('Lorem ipsum');
   const [filtersState, setFiltersState] = useState<Record<FontSlice, string>>(
     {} as FiltersState,
@@ -47,6 +46,10 @@ export const Detail: React.FC<Props> = ({ main = 'fonts' }) => {
   const { state = {} as RouteState } = route;
   const { detailKey } = state;
 
+  const filteredFontSlices = useMemo(
+    () => fontSlices.filter(slice => slice !== main),
+    [main],
+  );
   const style = {
     [propertiesMap[main]]: detailKey,
     ...filteredFontSlices.reduce((acc, curr) => {

@@ -41,7 +41,7 @@ export const BorderCard: React.FC<Props> = ({
     if (!borderColor || borderColor === 'none') {
       return 2;
     }
-    return getContrast(borderColor || ('#000000' as string), '#ffffff');
+    return getContrast(borderColor, '#ffffff');
   }, [borderColor]);
 
   const innerCardStyle = useMemo(() => {
