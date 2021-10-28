@@ -1,7 +1,7 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Morfeo',
-  tagline: 'Framework Agnostic theming system',
+  tagline: 'The theming system\nyou were missing',
   url: 'https://morfeo.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',

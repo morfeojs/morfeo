@@ -16,7 +16,7 @@ function getInitials(name: string) {
 }
 
 export const PersonCard: React.FC<Props> = ({ person }) => {
-  const { name, image, url } = person;
+  const { name, image, url, contributions = [] } = person;
 
   const onClick = useCallback(() => {
     redirect(url);
@@ -38,6 +38,11 @@ export const PersonCard: React.FC<Props> = ({ person }) => {
     <div className={styles.cardContainer} onClick={onClick}>
       {cover}
       <h3 className={clsx('morfeo-typography-h3', styles.name)}>{name}</h3>
+      <div className={styles.contributionsContainer}>
+        {contributions.map(contribution => (
+          <span>{contribution}</span>
+        ))}
+      </div>
     </div>
   );
 };

@@ -32,3 +32,11 @@
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
+
+.contributionsContainer {
+  display: flex;
+}
+
+.contributionsContainer span:not(:last-child) {
+  margin-right: var(--spacings-xxs);
+}

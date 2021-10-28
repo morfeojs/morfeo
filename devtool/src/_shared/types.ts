@@ -28,4 +28,5 @@ export type Author = {
   name: string;
   url: string;
   image?: string;
+  contributions?: string[];
 };

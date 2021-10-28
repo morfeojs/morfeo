@@ -15,9 +15,12 @@ function HomepageHeader() {
         <div className={styles.logoContainer}>
           <Logo />
         </div>
-        <p className={clsx('hero__subtitle', styles.subtitle)}>
-          {siteConfig.tagline}
-        </p>
+        <div className={clsx('hero__subtitle', styles.subtitle)}>
+          {siteConfig.tagline.split('\n').map(part => (
+            <p>{part}</p>
+          ))}
+        </div>
+
         <div className={styles.buttons}>
           <Link
             className="button button--primary button--lg"
