@@ -36,7 +36,7 @@ function getSortedSlices(theme: Theme) {
     return first.name.localeCompare(second.name);
   });
 
-  return sortedSlices || [];
+  return sortedSlices;
 }
 
 export function useSlicesWithStatus() {

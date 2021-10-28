@@ -9,4 +9,5 @@ export * from './Slices';
 export * from './DropDown';
 export * from './Accordion';
 export * from './CopyButton';
+export * from './DetailLabel';
 export * from './CodeSnippets';

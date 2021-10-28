@@ -1,12 +1,10 @@
 import React from 'react';
-import {
-  Radius,
-  useThemeValue,
-} from '@morfeo/react';
+import { Radius, useThemeValue } from '@morfeo/react';
 import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
-import styles from './style.module.css';
 import { RouteState } from '../../../../contexts';
+import { DetailLabel } from '../../../DetailLabel';
+import styles from './style.module.css';
 
 export const Detail: React.FC = () => {
   const { route } = useRouter();
@@ -18,17 +16,23 @@ export const Detail: React.FC = () => {
     <div className={styles.container}>
       <Card
         className="morfeo-card-primary"
-        style={{ corner: detailKey as Radius, bg: 'var(--colors-primary)', size: '200px' } as any}
+        style={
+          {
+            corner: detailKey as Radius,
+            bg: 'var(--colors-primary)',
+          } as any
+        }
       >
         <h2
           className="morfeo-typography-h2"
           style={{
-            color: 'var(--colors-inverted-text-color)'
+            color: 'var(--colors-inverted-text-color)',
           }}
         >
           {cornerValue}
         </h2>
       </Card>
+      <DetailLabel label="border-radius" value={cornerValue as string} />
     </div>
   );
 };

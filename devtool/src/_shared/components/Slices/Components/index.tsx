@@ -10,7 +10,7 @@ export const Components: React.FC = () => {
 
   const sliceKeys = useMemo(
     () =>
-      (Object.keys(slice) || []).sort((first, second) =>
+      Object.keys(slice).sort((first, second) =>
         first.localeCompare(second),
       ) as Color[],
     [slice],

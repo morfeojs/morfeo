@@ -46,7 +46,7 @@ const ItemCard: React.FC<Props> = ({ shadow }) => {
 
 export const ShadowsSlice: React.FC = () => {
   const shadows = useThemeSlice('shadows');
-  const keys = Object.keys(shadows) as Shadow[];
+  const keys = useMemo(() => Object.keys(shadows) as Shadow[], [shadows]);
 
   const section = useMemo(() => {
     return keys.map(key => {

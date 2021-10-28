@@ -2,8 +2,9 @@ import React from 'react';
 import { Size, useThemeValue } from '@morfeo/react';
 import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
-import styles from './style.module.css';
 import { RouteState } from '../../../../contexts';
+import { DetailLabel } from '../../../DetailLabel';
+import styles from './style.module.css';
 
 export const Detail: React.FC = () => {
   const { route } = useRouter();
@@ -23,7 +24,7 @@ export const Detail: React.FC = () => {
           } as any
         }
       />
-      <h2 className="morfeo-typography-h2">{value}</h2>
+      <DetailLabel label="height" value={value} />
     </div>
   );
 };

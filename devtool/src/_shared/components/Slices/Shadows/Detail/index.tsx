@@ -4,6 +4,7 @@ import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
 import { RouteState } from '../../../../contexts';
 import styles from './style.module.css';
+import { DetailLabel } from '../../../DetailLabel';
 
 export const Detail: React.FC = () => {
   const { route } = useRouter();
@@ -26,7 +27,7 @@ export const Detail: React.FC = () => {
           }
         />
       </Card>
-      <h2 className="morfeo-typography-h2">box-shadow: {boxShadow}</h2>
+      <DetailLabel label="box-shadow" value={boxShadow as string} />
     </div>
   );
 };

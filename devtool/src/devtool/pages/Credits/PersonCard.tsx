@@ -40,7 +40,7 @@ export const PersonCard: React.FC<Props> = ({ person }) => {
       <h3 className={clsx('morfeo-typography-h3', styles.name)}>{name}</h3>
       <div className={styles.contributionsContainer}>
         {contributions.map(contribution => (
-          <span>{contribution}</span>
+          <span key={contribution}>{contribution}</span>
         ))}
       </div>
     </div>

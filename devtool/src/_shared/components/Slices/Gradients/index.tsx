@@ -45,7 +45,7 @@ export const Gradients: React.FC = () => {
 
   const gradientKeys = useMemo(
     () =>
-      (Object.keys(gradients) || []).sort((first, second) =>
+      Object.keys(gradients).sort((first, second) =>
         first.localeCompare(second),
       ) as Gradient[],
     [gradients],

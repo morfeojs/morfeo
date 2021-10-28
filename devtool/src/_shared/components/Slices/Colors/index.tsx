@@ -17,7 +17,7 @@ export const Colors: React.FC = () => {
 
   const sliceKeys = useMemo(
     () =>
-      (Object.keys(slice) || []).sort((first, second) =>
+      Object.keys(slice).sort((first, second) =>
         first.localeCompare(second),
       ) as Color[],
     [slice],
@@ -28,7 +28,7 @@ export const Colors: React.FC = () => {
       const contrastRatio = getContrast(slice[key], '#fff');
 
       return (
-        <Item key={`colors-${key}`} >
+        <Item key={`colors-${key}`}>
           <div
             key={`colors-${key}`}
             className={styles.colorContainer}

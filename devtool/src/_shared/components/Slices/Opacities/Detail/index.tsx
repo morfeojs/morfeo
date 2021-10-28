@@ -4,6 +4,7 @@ import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
 import { RouteState } from '../../../../contexts';
 import { OpacityCard } from '../OpacityCard';
+import { DetailLabel } from '../../../DetailLabel';
 import styles from './style.module.css';
 
 export const Detail: React.FC = () => {
@@ -17,7 +18,7 @@ export const Detail: React.FC = () => {
       <Card className="morfeo-card-primary">
         <OpacityCard opacity={detailKey as Opacity} />
       </Card>
-      <h2 className="morfeo-typography-h2">opacity: {opacity}</h2>
+      <DetailLabel label="opacity" value={opacity as string} />
     </div>
   );
 };

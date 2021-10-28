@@ -1,5 +1,5 @@
 import { enableMorfeoDevTool } from '../src';
-import { morfeo, theme, ThemeName } from '@morfeo/web';
+import { morfeo, ThemeName } from '@morfeo/web';
 
 describe('enableMorfeoDevTool', () => {
   beforeAll(() => {

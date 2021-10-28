@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
-import { Spacing, useThemeValue } from '@morfeo/react';
+import { Spacing, useThemeValue, useStyle } from '@morfeo/react';
 import clsx from 'clsx';
 import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
 import { RouteState } from '../../../../contexts';
+import { DetailLabel } from '../../../DetailLabel';
 import styles from './style.module.css';
 
 type Props = {
@@ -16,13 +17,14 @@ function getValueInPixel(value: string | number): number {
     return value;
   }
 
-  if (Number.isNaN(value.replace(/\D/g, ''))) {
+  const parsedValue = value.replace(/\D/g, '');
+  const number = Number(parsedValue);
+
+  if (Number.isNaN(number)) {
     return 0;
   }
 
-  const parsedValue = value.replace(/\D/g, '');
-
-  return Number(parsedValue);
+  return number;
 }
 
 export const CardInner: React.FC<Props> = ({ spacing, max }) => {
@@ -62,12 +64,14 @@ export const Detail: React.FC = () => {
   const { route } = useRouter();
   const { state = {} as RouteState } = route;
   const { detailKey } = state;
+  const { padding } = useStyle({ p: detailKey as Spacing });
 
   return (
     <div className={styles.container}>
       <Card className="morfeo-card-primary">
         <CardInner spacing={detailKey as Spacing} />
       </Card>
+      <DetailLabel label="padding" value={padding as string} />
     </div>
   );
 };

@@ -9,6 +9,7 @@ import styles from './style.module.css';
 import { Input } from '../../../Input';
 import { DropDown } from '../../../DropDown';
 import { t } from '../../../../utils';
+import { DetailLabel } from '../../../DetailLabel';
 
 const fontSlices = [
   'fonts',
@@ -117,10 +118,10 @@ export const Detail: React.FC<Props> = ({ main = 'fonts' }) => {
           {text}
         </p>
       </Card>
-      <h2 className="morfeo-typography-h2 my-xs">
-        {paramCase(propertiesMap[main])}:{' '}
-        {(fontStyle as any)[propertiesMap[main]]}
-      </h2>
+      <DetailLabel
+        label={paramCase(propertiesMap[main])}
+        value={(fontStyle as any)[propertiesMap[main]]}
+      />
     </div>
   );
 };

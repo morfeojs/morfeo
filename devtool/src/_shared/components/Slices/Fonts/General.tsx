@@ -47,7 +47,7 @@ export const GeneralFontsSlice: React.FC<Props> = ({ property }) => {
   const { route } = useRouter();
   const slice = route.state?.slice as ThemeKey;
   const sliceValue = useThemeSlice(slice);
-  const keys = Object.keys(sliceValue) as Font[];
+  const keys = useMemo(() => Object.keys(sliceValue) as Font[], [sliceValue]);
 
   const section = useMemo(() => {
     return keys.map(key => {

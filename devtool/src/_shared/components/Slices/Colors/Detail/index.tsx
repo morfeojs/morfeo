@@ -3,6 +3,7 @@ import { Color, useStyle } from '@morfeo/react';
 import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
 import styles from './style.module.css';
+import { DetailLabel } from '../../../DetailLabel';
 
 function hex2rgba(code: string) {
   let hex = code.replace(/[^0-9a-fA-F]/g, '');
@@ -51,12 +52,14 @@ export const Detail: React.FC = () => {
         style={{ bg: state?.detailKey as Color }}
       />
       <div className={styles.colorsCodesContainer}>
-        <h2 className="morfeo-typography-h2">
-          RGBA: {bgColor.includes('#') ? hex2rgba(bgColor) : bgColor}
-        </h2>
-        <h2 className="morfeo-typography-h2">
-          HEX: {bgColor.includes('#') ? bgColor : rgba2hex(bgColor)}
-        </h2>
+        <DetailLabel
+          label="RGBA"
+          value={bgColor.includes('#') ? hex2rgba(bgColor) : bgColor}
+        />
+        <DetailLabel
+          label="HEX"
+          value={bgColor.includes('#') ? bgColor : rgba2hex(bgColor)}
+        />
       </div>
     </div>
   );
