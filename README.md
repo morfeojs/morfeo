@@ -27,12 +27,12 @@ It's easy to use and, with the [**browser extension**](https://chrome.google.com
 ## Features
 
 - [Framework Agnostic](https://morfeo.dev/docs/Features/framework-agnostic)
-- [Single source of truth](https://morfeo.dev/docs/single-source-of-truth.mdx)
+- [Single source of truth](https://morfeo.dev/docs/Features/single-source-of-truth)
 - [Multi theming](https://morfeo.dev/docs/Features/multi-theming)
-- [Dev Tool](https://morfeo.dev/docs/Features/dev-tool.mdx)
-- [CLI](https://morfeo.dev/docs/Features/morfeo-cli.mdx)
-- [Extendible](https://morfeo.dev/docs/Features/extendible.mdx)
-- [Easy to test](https://morfeo.dev/docs/Features/easy-to-test.mdx)
+- [Web Extension](https://morfeo.dev/docs/Features/web-extension)
+- [CLI](https://morfeo.dev/docs/Features/morfeo-cli-introduction)
+- [Extendible](https://morfeo.dev/docs/Features/extendible)
+- [Easy to test](https://morfeo.dev/docs/Features/easy-to-test)
 
 ## How it works
 
