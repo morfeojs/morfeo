@@ -43,7 +43,7 @@ export const Detail: React.FC = () => {
   const { state } = route;
 
   const cardStyle = useStyle({ bg: state?.detailKey as Color });
-  const bgColor = cardStyle['background']?.toString() || '#fff';
+  const bgColor = cardStyle['backgroundColor']?.toString() || '#fff';
 
   return (
     <div className={styles.container}>

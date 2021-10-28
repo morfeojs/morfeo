@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
   "name": "__MSG_name__",
-  "version": "1.0.0",
+  "version": "0.3.0",
   "description": "__MSG_description__",
   "author": "Mauro Erta",
   "devtools_page": "devtool.html",
   "options_page": "options.html",
-  "homepage_url": "https://github.com/VLK-STUDIO/morfeo",
+  "homepage_url": "https://morfeo.dev",
   "default_locale": "en",
   "icons": {
     "16": "img/icon-16.png",
@@ -25,7 +25,7 @@
   "externally_connectable": {
     "ids": ["*"]
   },
-  "permissions": ["storage", "activeTab", "clipboardWrite", "clipboardRead"],
+  "permissions": ["activeTab", "clipboardWrite"],
   "background": {
     "service_worker": "background.bundle.js"
   },

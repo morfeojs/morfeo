@@ -1,9 +1,11 @@
 {
-  "name": "morfeo",
-  "version": "1.0.0",
-  "description": "Morfeo web extension",
+  "name": "__MSG_name__",
+  "version": "0.3.0",
+  "description": "__MSG_description__",
   "short_name": "morfeo",
   "author": "Mauro Erta",
+  "homepage_url": "https://morfeo.dev",
+  "default_locale": "en",
   "manifest_version": 2,
   "icons": {
     "16": "img/icon-16.png",
@@ -36,5 +38,5 @@
       "all_frames": false
     }
   ],
-  "permissions": ["storage", "tabs", "<all_urls>"]
+  "permissions": ["clipboardWrite", "tabs", "<all_urls>"]
 }
