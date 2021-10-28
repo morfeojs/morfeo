@@ -65,15 +65,14 @@ function getFontCss(font: MountFontParams) {
  * ```
  */
 export function mountFont(font: MountFontParams) {
-  const css = getFontCss(font);
-
-  const newFontStyle = `
-    <style class="morfeo-font" id="font-${font.name}">
-      ${css}
-    </style>
-  `;
-
   if (globalThis && globalThis.document) {
+    const css = getFontCss(font);
+
+    const newFontStyle = `
+      <style class="morfeo-font" id="font-${font.name}">
+        ${css}
+      </style>
+    `;
     unmountFont(font.name);
     document.head.innerHTML += newFontStyle;
   }
