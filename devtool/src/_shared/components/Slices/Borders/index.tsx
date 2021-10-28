@@ -2,42 +2,47 @@ import React, { useMemo, useCallback } from 'react';
 import { Border, Borders, useThemeSlice } from '@morfeo/react';
 import clsx from 'clsx';
 import { getValueAndUnit } from 'polished';
-import { Card } from '../../Card';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Grid, Item } from '../../Grid';
 import styles from './style.module.css';
+import { BorderCard } from './BorderCard/BorderCard';
+import { getSortedSliceValues } from '../../../utils/getSortedSliceValues';
 export { Detail } from './Detail';
 
+export const borderSlices = [
+  'borders',
+  'borderWidths',
+  'borderStyles',
+] as const;
+
+export type BorderSlice = typeof borderSlices[number];
+
 type Props = {
-  border: Border;
+  value: Border;
 };
 
-const BorderCard: React.FC<Props> = ({ border }) => {
-  const { navigate } = useRouter();
+const BorderListItem: React.FC<Props> = ({ value }) => {
+  const { navigate, route } = useRouter();
+  const { state } = route;
 
   const onClick = useCallback(() => {
     navigate(RouteName.SLICE, {
-      slice: SliceName.BORDERS,
-      detailKey: border,
+      slice: state?.slice as SliceName,
+      detailKey: value,
     });
-  }, [border, navigate]);
+  }, [navigate, state?.slice, value]);
 
   return (
     <div className={styles.container} onClick={onClick}>
-      <Card copyText={border} className="morfeo-card-primary-clickable">
-        <Card
-          style={
-            {
-              border,
-              size: 'var(--sizes-xxl)',
-            } as any
-          }
-        />
-      </Card>
-      <h3 className={clsx('morfeo-typography-h2', styles.name)} title={border}>
-        {border}
+      <BorderCard
+        mainSlice={state?.slice as BorderSlice}
+        detailKey={value}
+        clickable
+      />
+      <h3 className={clsx('morfeo-typography-h2', styles.name)} title={value}>
+        {value}
       </h3>
     </div>
   );
@@ -65,16 +70,25 @@ function getSortedBorders(borders: Borders) {
   });
 }
 
-export const BordersSlice: React.FC = () => {
-  const borders = useThemeSlice('borders');
+type BorderSliceProps = {
+  mainSlice: BorderSlice;
+};
 
-  const keys = useMemo(() => getSortedBorders(borders || {}), [borders]);
+export const BordersSlice: React.FC<BorderSliceProps> = ({ mainSlice }) => {
+  const slice = useThemeSlice(mainSlice);
+
+  const keys = useMemo(() => {
+    if (mainSlice === 'borders') {
+      return getSortedBorders((slice as Borders) || {});
+    }
+    return getSortedSliceValues(slice);
+  }, [mainSlice, slice]);
 
   const section = useMemo(() => {
     return keys.map(key => {
       return (
         <Item key={`borders-${key}`}>
-          <BorderCard border={key} />
+          <BorderListItem value={key} />
         </Item>
       );
     });

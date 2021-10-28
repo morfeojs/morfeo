@@ -38,6 +38,4 @@ export const COMING_SOON_SLICES: ThemeKey[] = [
   'zIndices',
   'transitions',
   'breakpoints',
-  'borderWidths',
-  'borderStyles',
 ];

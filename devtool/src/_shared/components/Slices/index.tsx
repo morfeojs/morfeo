@@ -48,8 +48,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'shadows',
   },
   [SliceName.BORDERS]: {
-    render: () => <BordersSlice />,
-    renderDetail: () => <BorderDetail />,
+    render: () => <BordersSlice mainSlice="borders" />,
+    renderDetail: () => <BorderDetail mainSlice="borders" />,
     displayName: 'borders',
   },
   [SliceName.SPACINGS]: {
@@ -98,8 +98,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'transitions',
   },
   [SliceName.BORDER_WIDTHS]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <BordersSlice mainSlice="borderWidths" />,
+    renderDetail: () => <BorderDetail mainSlice="borderWidths" />,
     displayName: 'borderWidths',
   },
   [SliceName.MEDIA_QUERIES]: {
@@ -108,8 +108,8 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'mediaQueries',
   },
   [SliceName.BORDER_STYLES]: {
-    render: () => <></>,
-    renderDetail: () => <></>,
+    render: () => <BordersSlice mainSlice="borderStyles" />,
+    renderDetail: () => <BorderDetail mainSlice="borderStyles" />,
     displayName: 'borderStyles',
   },
   [SliceName.LETTER_SPACINGS]: {

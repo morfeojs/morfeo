@@ -1,30 +1,80 @@
-import React from 'react';
-import { Border, morfeo } from '@morfeo/react';
-import { Card } from '../../../Card';
+import React, { useMemo, useState, useCallback } from 'react';
 import { useRouter } from '../../../../hooks';
 import { RouteState } from '../../../../contexts';
+import { BorderCard } from '../BorderCard/BorderCard';
 import styles from './style.module.css';
+import { BorderSlice } from '../index';
+import { capitalCase, noCase } from 'change-case';
+import { morfeo } from '@morfeo/react';
+import { DropDown } from '../../../DropDown';
+import { Grid, Item } from '../../../Grid';
 
-export const Detail: React.FC = () => {
+export type Props = {
+  mainSlice: BorderSlice;
+};
+
+const dropDownsMap = {
+  borders: [],
+  borderStyles: ['borderWidths', 'colors'] as const,
+  borderWidths: ['borderStyles', 'colors'] as const,
+};
+
+export const Detail: React.FC<Props> = ({ mainSlice }) => {
+  const [filters, setFilters] = useState({
+    borderStyles: '',
+    borderWidths: '',
+    colors: '',
+  });
+
   const { route } = useRouter();
   const { state = {} as RouteState } = route;
   const { detailKey } = state;
-  const value = morfeo.resolve({ border: detailKey as Border })['border'];
+
+  const onChangeFilter = useCallback(
+    (slice: BorderSlice | 'colors', value: string) => {
+      setFilters(state => ({
+        ...state,
+        [slice]: value,
+      }));
+    },
+    [],
+  );
+
+  const dropdowns = useMemo(() => {
+    return dropDownsMap[mainSlice].map(slice => {
+      const title = capitalCase(noCase(slice));
+      const values = morfeo.getTheme()[slice];
+      const options = Object.keys(values || {}).map(option => ({
+        label: capitalCase(noCase(option)),
+        value: option,
+      }));
+
+      return (
+        <Item key={slice}>
+          <DropDown
+            value={filters[slice]}
+            title={title}
+            options={options}
+            onChange={value => onChangeFilter(slice, value)}
+            inverted
+            placeholder={slice}
+          />
+        </Item>
+      );
+    });
+  }, [filters, mainSlice, onChangeFilter]);
 
   return (
-    <div className={styles.container}>
-      <Card
-        className="morfeo-card-primary"
-        copyText={detailKey}
-        style={
-          {
-            border: detailKey as Border,
-            size: '200px',
-          } as any
-        }
-      >
-        <h2 className="morfeo-typography-h2">{value}</h2>
-      </Card>
-    </div>
+    <>
+      <Grid>{dropdowns}</Grid>
+      <div className={styles.container}>
+        <BorderCard
+          filters={filters}
+          mainSlice={mainSlice}
+          detailKey={detailKey as string}
+          showValues
+        />
+      </div>
+    </>
   );
 };

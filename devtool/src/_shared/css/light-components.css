@@ -151,6 +151,12 @@
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
+[data-morfeo-theme="light"] .morfeo-typography-h5 {
+  font-size: var(--font-sizes-l);
+  font-family: var(--fonts-regular);
+  font-weight: var(--font-weights-regular);
+  line-height: var(--line-heights-heading);
+}
 [data-morfeo-theme="light"] .morfeo-typography-p1 {
   font-size: var(--font-sizes-m);
   font-family: var(--fonts-regular);

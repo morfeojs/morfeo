@@ -46,6 +46,14 @@ export const Typography: ComponentConfig = {
         fontWeight: 'bold',
       },
     },
+    h5: {
+      tag: 'h4',
+      style: {
+        fontSize: 'l',
+        lineHeight: 'heading',
+        fontWeight: 'regular',
+      },
+    },
     p1: {
       tag: 'p',
       style: {
