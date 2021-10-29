@@ -99,3 +99,11 @@ And even more are coming soon:
 
 - _@morfeo/angular_ **coming soon**
 - _@morfeo/styled-components-native_ **coming soon**
+
+## Contributors
+
+<a href="https://github.com/VLK-STUDIO/morfeo/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=VLK-STUDIO/morfeo" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks)
