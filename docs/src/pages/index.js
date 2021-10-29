@@ -5,19 +5,27 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { HomepageFeatures } from '../components';
 import styles from './index.module.css';
-import logo from '../../static/img/morfeo.png';
+import Logo from './Logo';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
-        <img src={logo} />
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <div className={styles.logoContainer}>
+          <Logo />
+        </div>
+        <div className={clsx('hero__subtitle', styles.subtitle)}>
+          {siteConfig.tagline.split('\n').map(part => (
+            <p>{part}</p>
+          ))}
+        </div>
+
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
+            className="button button--primary button--lg"
             to="/docs/Introduction/getting-started"
+            style={{ color: 'white' }}
           >
             Get started
           </Link>

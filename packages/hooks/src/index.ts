@@ -1,4 +1,5 @@
 export * from './useTheme';
 export * from './useProps';
 export * from './useStyles';
-export * from './useSubscribe';
+export * from './MorfeoContext';
+export * from './MorfeoProvider';

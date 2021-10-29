@@ -1,0 +1,18 @@
+
+.colorContainer {
+  width: 100%;
+}
+
+.colorName {
+  max-width: 10rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.colorSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  box-sizing: border-box;
+}

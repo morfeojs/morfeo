@@ -5,7 +5,7 @@ type ThemeListener = (theme: Theme) => void;
 
 export function createTheme() {
   let context: Theme = {} as any;
-  let listeners: [ThemeListener, string][] = [];
+  let listeners: Record<string | number, ThemeListener> = {};
 
   function get() {
     return context;
@@ -49,7 +49,7 @@ export function createTheme() {
   }
 
   function callListeners() {
-    listeners.map(([listener]) => listener(context));
+    Object.values(listeners).map(listener => listener(get()));
   }
 
   function set(theme: {
@@ -77,12 +77,9 @@ export function createTheme() {
   }
 
   function getSafeUid(uid?: string, suffix: number = 0): string {
-    const listenersCount = listeners.length;
-    const safeUid = uid || listenersCount.toString();
+    const safeUid = uid || Object.values(listeners).length.toString();
 
-    const alreadyExists = listeners.find(
-      ([_, listenerUid]) => listenerUid === safeUid,
-    );
+    const alreadyExists = !!listeners[safeUid];
     if (alreadyExists) {
       return getSafeUid(`${safeUid}-${suffix}`, suffix + 1);
     }
@@ -92,16 +89,16 @@ export function createTheme() {
 
   function subscribe(callback: ThemeListener, uid?: string) {
     const safeUid = getSafeUid(uid);
-    listeners.push([callback, safeUid]);
+    listeners[safeUid] = callback;
     return safeUid;
   }
 
   function cleanUp(uid?: string) {
     if (uid) {
-      listeners = listeners.filter(([_, listenerUid]) => uid !== listenerUid);
+      delete listeners[uid];
       return;
     }
-    listeners = [];
+    listeners = {};
   }
 
   const theme = {

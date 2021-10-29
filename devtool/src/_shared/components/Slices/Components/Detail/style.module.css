@@ -1,0 +1,14 @@
+.container {
+  padding-left: var(--spacings-xs);
+  padding-right: var(--spacings-xs);
+}
+
+.previewContainer {
+  width: 100%;
+  padding-top: var(--spacings-xxl);
+  padding-bottom: var(--spacings-xxl);
+  margin-bottom: var(--spacings-l);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

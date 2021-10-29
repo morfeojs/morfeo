@@ -1,0 +1,12 @@
+.container {
+  padding-left: var(--spacings-xs);
+  padding-right: var(--spacings-xs);
+}
+
+.colorsCodesContainer {
+  display: flex;
+  align-items: center;
+  margin-top: var(--spacings-xs);
+  margin-bottom: var(--spacings-xs);
+  justify-content: space-between;
+}

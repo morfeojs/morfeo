@@ -2,6 +2,8 @@ export const sizesMap = [
   'size',
   'width',
   'height',
+  'minSize',
+  'maxSize',
   'minWidth',
   'maxWidth',
   'minHeight',

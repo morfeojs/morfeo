@@ -1,0 +1,69 @@
+{
+  "name": {
+    "message": "Morfeo",
+    "description": "The name of the web extension"
+  },
+  "shortName": {
+    "message": "Morfeo",
+    "description": "The short name of the web extension"
+  },
+  "description": {
+    "message": "Visualizza il tuo design system creato con Morfeo",
+    "description": "The description of the web extension"
+  },
+  "bigDescription": {
+    "message": "Morfeo è un tool per costruire design systems basati su un tema. Ti aiuta a seguire un design language e scrivere UI consistenti, qualunque sia il framework che utilizzi. È semplice da usare e, con l'estensione per browser, il tuo tema ed  i tuoi componenti sono automagimente documentati!"
+  },
+  "morfeoNotUsed": {
+    "message": "Questo sito non sembra utillizzare morfeo",
+    "description": "Used when morfeo is not used inside the current website"
+  },
+  "copyAlias": {
+    "message": "Copia alias"
+  },
+  "aliasCopied": {
+    "message": "Copiato!"
+  },
+  "copyCode": {
+    "message": "Copia codice"
+  },
+  "codeCopied": {
+    "message": "Copiato!"
+  },
+  "menu_slices": {
+    "message": "Slices"
+  },
+  "menu_components": {
+    "message": "Componenti"
+  },
+  "sliceCardValues": {
+    "message": "valori"
+  },
+  "headerMyThemesTitle": {
+    "message": "I miei temi"
+  },
+  "headerMyThemesPlaceholder": {
+    "message": "Seleziona..."
+  },
+  "sliceCodeTitle": {
+    "message": "Snippet di codice"
+  },
+  "sidebarDocs": {
+    "message": "Docs"
+  },
+  "sidebarCredits": {
+    "message": "Credits"
+  },
+  "sidebarGithub": {
+    "message": "Github"
+  },
+  "creditsTitle": {
+    "message": "Credits"
+  },
+  "creditsAuthors": {
+    "message": "Autori"
+  },
+  "fontsDetailInputLabel": {
+    "message": "Testo di prova"
+  }
+}

@@ -1,0 +1,40 @@
+.main {
+  position: relative;
+  color: var(--colors-text-color);
+  height: 100vh;
+  overflow: scroll;
+  background-color: var(--colors-background);
+}
+
+.loadingContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  width: 85%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.overlay {
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: calc(var(--z-indices-medium) - 1);
+  position: fixed;
+  opacity: var(--opacities-medium);
+  background-color: var(--colors-gray-dark);
+  transition: var(--transitions-slow);
+}
+
+.overlay.open {
+  display: block;
+}
+
+.main.open {
+  overflow: hidden;
+}

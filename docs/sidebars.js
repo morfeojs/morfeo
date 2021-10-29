@@ -24,7 +24,7 @@ module.exports = {
         'Features/framework-agnostic',
         'Features/single-source-of-truth',
         'Features/multi-theming',
-        'Features/dev-tool',
+        'Features/web-extension',
         {
           type: 'category',
           label: 'CLI',

@@ -1,7 +1,11 @@
 import { morfeo } from '@morfeo/core';
-import '../src';
+import { initPreset } from '../src';
 
 describe('preset-default', () => {
+  beforeAll(() => {
+    initPreset();
+  });
+
   it('should set the current theme equals to light', () => {
     expect(morfeo.getCurrent()).toEqual('light');
   });

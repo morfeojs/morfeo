@@ -1,0 +1,69 @@
+{
+  "name": {
+    "message": "Morfeo",
+    "description": "The name of the web extension"
+  },
+  "shortName": {
+    "message": "Morfeo",
+    "description": "The short name of the web extension"
+  },
+  "description": {
+    "message": "Visualize your design system built with Morfeo",
+    "description": "The description of the web extension"
+  },
+  "morfeoNotUsed": {
+    "message": "Morfeo seems to not be used inside this website",
+    "description": "Used when morfeo is not used inside the current website"
+  },
+  "copyAlias": {
+    "message": "Copy alias"
+  },
+  "aliasCopied": {
+    "message": "Copied!"
+  },
+  "copyCode": {
+    "message": "Copy code"
+  },
+  "codeCopied": {
+    "message": "Copied!"
+  },
+  "menu_slices": {
+    "message": "Slices"
+  },
+  "menu_components": {
+    "message": "Components"
+  },
+  "sliceCardValues": {
+    "message": "values"
+  },
+  "headerMyThemesTitle": {
+    "message": "My themes"
+  },
+  "headerMyThemesPlaceholder": {
+    "message": "Select..."
+  },
+  "sliceCodeTitle": {
+    "message": "Code snippet"
+  },
+  "sidebarDocs": {
+    "message": "Docs"
+  },
+  "sidebarCredits": {
+    "message": "Credits"
+  },
+  "sidebarGithub": {
+    "message": "Github"
+  },
+  "creditsTitle": {
+    "message": "Credits"
+  },
+  "creditsAuthors": {
+    "message": "Authors"
+  },
+  "fontsDetailInputLabel": {
+    "message": "Test text"
+  },
+  "bigDescription": {
+    "message": "Morfeo it's a tool to build design systems based on a theme. It helps you to follow a design language and write consistent UIs, whatever it is the framework of your choice. It's easy to use and, with the browser extension, your theme and your components are automatically documented."
+  }
+}

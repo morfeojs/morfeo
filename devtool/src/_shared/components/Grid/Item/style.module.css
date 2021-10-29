@@ -1,0 +1,34 @@
+.item {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: var(--spacings-xs);
+  min-width: 25%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+@media screen and (min-width: 375px) {
+  .item {
+    min-width: 50%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .item {
+    min-width: 33.3%;
+  }
+}
+
+
+@media screen and (min-width: 1366px) {
+  .item {
+    min-width: 25%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .item {
+    min-width: 20%;
+  }
+}

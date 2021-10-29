@@ -1,0 +1,39 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-indices-strong);
+  height: 5rem;
+  width: 100%;
+  background-color: var(--colors-primary);
+  color: var(--colors-inverted-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftSide, .rightSide {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-left: var(--spacings-m);
+}
+
+.rightSide {
+  padding-right: var(--spacings-m);
+}
+
+
+.backButton {
+  cursor: pointer;
+  margin-right: var(--spacings-xs);
+}
+
+.themeSelect {
+  border-radius: var(--radii-xs);
+  background-color: var(--colors-background);
+  padding-left: var(--spacings-m);
+  padding-right: var(--spacings-m);
+  padding-top: var(--spacings-xxs);
+  padding-bottom: var(--spacings-xxs);
+}

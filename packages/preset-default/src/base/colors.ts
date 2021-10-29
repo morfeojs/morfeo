@@ -28,7 +28,7 @@ export const baseColors = {
   'secondary.darkest': '#1f0515',
   error: '#d10343',
   success: '#01ce80',
-  warning: '#ff8c00',
+  warning: '#fac656',
   accent: '#23cedf',
   disabled: '#bcbcbc',
   white: '#ffffff',

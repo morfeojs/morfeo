@@ -1,0 +1,6 @@
+@import url(../_shared/css/index.css);
+
+html, body {
+  color: var(--colors-text-color);
+  background-color: var(--colors-background);
+}

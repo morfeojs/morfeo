@@ -1,0 +1,9 @@
+.variantsContainer {
+  padding: var(--spacings-xs);
+  margin-left: calc(var(--spacings-xs) * -1);
+  margin-right: calc(var(--spacings-xs) * -1);
+}
+
+.variantsTitle {
+  margin-left: var(--spacings-xs);
+}

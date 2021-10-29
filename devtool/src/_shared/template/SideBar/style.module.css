@@ -1,0 +1,100 @@
+.container {
+  top: 0;
+  width: fit-content;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: var(--z-indices-medium);
+  transform: translateX(-100%);
+  transition: var(--transitions-fast);
+  background-color: var(--colors-primary);
+  padding-left: var(--spacings-l);
+  padding-right: var(--spacings-l);
+}
+
+.menuItem {
+  display: flex;
+  transition: var(--transitions-fast);
+  align-items: center;
+}
+
+.menuItem:not(.inactiveItem):hover {
+  transform: translateX(10px);
+}
+
+.sidebar {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  overflow-y: scroll;
+  color: var(--colors-inverted-text-color);
+  z-index: var(--z-indices-strong);
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: calc(2 * var(--sizes-xxl));
+}
+
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.linksContainer {
+  height: 'fit-content';
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: var(--spacings-l);
+  padding-right: var(--spacings-l);
+}
+
+.open.container {
+  transform: translateX(0%);
+}
+
+.toggle {
+  position: absolute;
+  width: var(--sizes-xl);
+  height: var(--sizes-xl);
+  line-height: var(--sizes-l);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--colors-primary) !important;
+  top: 50%;
+  right: calc(var(--spacings-xl) * -1);
+  transform: translateY(-50%);
+  transition: var(--transitions-fast);
+}
+
+.open .toggle {
+  transform: translateY(-50%) translateX(50%) rotate(180deg);
+  border-top-right-radius: var(--radii-none) !important;
+  border-bottom-right-radius: var(--radii-none) !important;
+  border-top-left-radius: var(--radii-round) !important;
+  border-bottom-left-radius: var(--radii-round) !important;
+  right: 0;
+}
+
+.sidebarFooter {
+  border-top: var(--border-widths-s) solid var(--colors-inverted-text-color);
+  padding-top: var(--spacings-m);
+  padding-bottom: var(--spacings-s);
+}
+
+.footerItem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: var(--spacings-xxs);
+}
+
+.footerItem a {
+  color: var(--colors-inverted-text-color) !important;
+}

@@ -28,13 +28,31 @@ yarn add @morfeo/preset-default
 ## Usage
 
 ```typescript
-import '@morfeo/preset-default';
+import { initPreset } from '@morfeo/preset-default';
+
+initPreset();
 ```
 
-By importing the preset, 2 themes will be automatically added: `light` and `dark`:
+Or alternatively
 
 ```typescript
-morfeo.useTheme('light');
+import { lightTheme, darkTheme } from '@morfeo/preset-default';
+
+morfeo.setTheme('light', { ...lightTheme, ...yourOverrides });
+```
+
+The preset expose 2 themes, one `light` and one `dark`:
+
+```typescript
+import { lightTheme, darkTheme } from '@morfeo/preset-default';
+```
+
+If you like our themes, you can easily use them in your app with the `initPreset` function:
+
+```typescript
+import { initPreset } from '@morfeo/preset-default';
+
+morfeo.useTheme('light'); // Used by default
 // OR
 morfeo.useTheme('dark');
 ```
