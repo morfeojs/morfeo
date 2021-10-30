@@ -14,7 +14,7 @@
     "init:docs": "ts-node scripts/bootstrap-app.ts docs",
     "init:devtool": "ts-node scripts/bootstrap-app.ts devtool",
     "init:web-sandbox": "ts-node scripts/bootstrap-app.ts apps/web-sandbox",
-    "init:svelte-sandbox": "ts-node scripts/bootstrap-ts.ts apps/svelte-sandbox",
+    "init:svelte-sandbox": "ts-node scripts/bootstrap-app.ts apps/svelte-sandbox",
     "init:native-sandbox": "ts-node scripts/bootstrap-app.ts apps/native-sandbox",
     "init:benchmarks": "ts-node scripts/bootstrap-app.ts apps/benchmarks",
     "start:docs": "npm start --prefix docs",
