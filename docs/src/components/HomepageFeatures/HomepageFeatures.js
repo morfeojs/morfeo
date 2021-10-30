@@ -6,7 +6,7 @@ import styles from './HomepageFeatures.module.css';
 const exampleStyle = {
   bg: 'secondary',
   color: 'primary',
-  borderRadius: 's',
+  corner: 's',
 };
 
 export function HomepageFeatures() {
@@ -40,21 +40,25 @@ export function HomepageFeatures() {
               <CodeBlock className={styles.code}>
                 {JSON.stringify(exampleTheme, undefined, 2)}
               </CodeBlock>
-              <span>a theme: your design language</span>
+              <span className={styles.codeLabel}>
+                a theme: your design language
+              </span>
             </div>
 
             <div className={styles.codeContainer}>
               <CodeBlock className={styles.code}>
                 {JSON.stringify(exampleStyle, undefined, 2)}
               </CodeBlock>
-              <span>a style based on the theme</span>
+              <span className={styles.codeLabel}>
+                a style based on the theme
+              </span>
             </div>
 
             <div className={styles.codeContainer}>
               <CodeBlock className={styles.code}>
                 {JSON.stringify(resultStyle, undefined, 2)}
               </CodeBlock>
-              <span>a valid CSS-in-JS</span>
+              <span className={styles.codeLabel}>a valid CSS-in-JS</span>
             </div>
           </div>
         </div>

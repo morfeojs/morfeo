@@ -18,12 +18,18 @@
   flex: 1;
   position: relative;
   border-radius: var(--radius-m);
-  border: 2px solid aliceblue;
+  border: 2px solid var(--ifm-color-primary-lightest);
   overflow: hidden;
   padding: 0;
   margin: 0 var(--space-xxs);
   height: 15rem;
   background-color: rgb(41, 45, 62);
+  text-align: left;
+}
+
+.codeLabel {
+  margin-top: var(--space-xxs);
+  margin-left: var(--space-xxs);
 }
 
 .description {
@@ -39,17 +45,19 @@
   .row {
     flex-direction: column;
   }
+
+  .preview {
+    justify-content: space-between;
+  }
 }
 
 @media (max-width: 966px) {
   .preview {
     flex-direction: column;
   }
-  .codeContainer span {
-    text-align: center;
-  }
 
   .codeContainer {
+    width: 100%;
     margin-top: var(--space-xs);
   }
 }
