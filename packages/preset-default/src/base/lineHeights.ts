@@ -1,6 +1,6 @@
 import { LineHeights } from '@morfeo/spec';
 
 export const lineHeights: LineHeights = {
-  body: '1em',
-  heading: '2em',
+  body: '1.3em',
+  heading: '1.6em',
 };

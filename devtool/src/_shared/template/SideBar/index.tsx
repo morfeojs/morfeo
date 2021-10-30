@@ -28,13 +28,13 @@ export const ExternalLink: React.FC<ExternalLinkProps> = ({ to, children }) => {
   }, [to]);
 
   return (
-    <h2
+    <h3
       onClick={onClick}
-      className="morfeo-typography-h2  ml-xxs"
+      className="morfeo-typography-h3  ml-xxs"
       style={{ cursor: 'pointer', color: 'var(--colors-inverted-text-color)' }}
     >
       {children}
-    </h2>
+    </h3>
   );
 };
 
@@ -82,15 +82,15 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
       </div>
       <div className={styles.sidebarFooter}>
         <div className={styles.footerItem}>
-          <Icon name="docs" size="m" color={'invertedTextColor' as Color} />
+          <Icon name="docs" size="s" color={'invertedTextColor' as Color} />
           <ExternalLink to="https://morfeo.dev/">
             {t('sidebarDocs')}
           </ExternalLink>
         </div>
         <div className={styles.footerItem}>
-          <Icon name="credits" size="m" color={'invertedTextColor' as Color} />
+          <Icon name="credits" size="s" color={'invertedTextColor' as Color} />
           <Link
-            className="morfeo-typography-h2 ml-xxs"
+            className="morfeo-typography-h3 ml-xxs"
             style={{
               cursor: 'pointer',
               color: 'var(--colors-inverted-text-color)',
@@ -102,7 +102,7 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
           </Link>
         </div>
         <div className={styles.footerItem}>
-          <Icon name="github" size="m" color={'invertedTextColor' as Color} />
+          <Icon name="github" size="s" color={'invertedTextColor' as Color} />
           <ExternalLink to="https://github.com/VLK-STUDIO/morfeo">
             {t('sidebarGithub')}
           </ExternalLink>

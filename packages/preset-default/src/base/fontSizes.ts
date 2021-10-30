@@ -1,12 +1,12 @@
 import { FontSizes } from '@morfeo/spec';
 
 export const fontSizes: FontSizes = {
-  xxs: '4px',
-  xs: '8px',
-  s: '12px',
-  m: '16px',
-  l: '20px',
-  xl: '24px',
-  xxl: '28px',
+  xxs: '11px',
+  xs: '14px',
+  s: '16px',
+  m: '18px',
+  l: '26px',
+  xl: '36px',
+  xxl: '44px',
   none: '0px',
 };

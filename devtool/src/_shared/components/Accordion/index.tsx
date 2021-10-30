@@ -37,12 +37,12 @@ export const Accordion: React.FC<Props> = ({
               className={styles.icon}
             />
           )}
-          <h4
-            className="morfeo-typography-h1"
+          <h2
+            className="morfeo-typography-h2"
             style={{ color: 'var(--color-inverted-text-color)' }}
           >
             {label}
-          </h4>
+          </h2>
         </div>
       </div>
       <div className={styles.content}>{children}</div>

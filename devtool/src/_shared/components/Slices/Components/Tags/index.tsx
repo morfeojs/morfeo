@@ -14,7 +14,7 @@ export const Tags: React.FC<Props> = ({ name, variant }) => {
 
   return (
     <div className={styles.infoTags}>
-      <p className={clsx('morfeo-typography-p1', styles.tag)}>
+      <p className={clsx('morfeo-typography-p2', styles.tag)}>
         {tags.length > 0 ? `#${tags.join(' #')}` : ''}
       </p>
     </div>

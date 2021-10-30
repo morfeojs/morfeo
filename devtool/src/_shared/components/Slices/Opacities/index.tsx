@@ -1,14 +1,12 @@
 import React, { useMemo, useCallback } from 'react';
 import { Opacity, useThemeSlice } from '@morfeo/react';
-import clsx from 'clsx';
-import { Card } from '../../Card';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Grid, Item } from '../../Grid';
 import { getSortedSliceValues } from '../../../utils';
-import styles from './style.module.css';
 import { OpacityCard } from './OpacityCard';
+import { ListItemCard } from '../_shared/ListItemCard';
 
 export { Detail } from './Detail';
 
@@ -27,14 +25,14 @@ const ItemCard: React.FC<Props> = ({ opacity }) => {
   }, [opacity, navigate]);
 
   return (
-    <div className={styles.container} onClick={onClick}>
-      <Card copyText={opacity} className="morfeo-card-primary-clickable">
-        <OpacityCard opacity={opacity} />
-      </Card>
-      <h2 className={clsx('morfeo-typography-h2', styles.name)} title={opacity}>
-        {opacity}
-      </h2>
-    </div>
+    <ListItemCard
+      title={opacity}
+      onClick={onClick}
+      copyText={opacity}
+      clickable
+    >
+      <OpacityCard opacity={opacity} />
+    </ListItemCard>
   );
 };
 

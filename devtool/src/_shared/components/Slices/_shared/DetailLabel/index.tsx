@@ -7,7 +7,7 @@ type Props = {
 
 export const DetailLabel: React.FC<Props> = ({ label = 'Value', value }) => {
   return (
-    <h5 className="morfeo-typography-h5">
+    <h5 className="morfeo-typography-h5 mt-xs">
       <span className="font-weight-bold">{label}: </span>
       {value}
     </h5>

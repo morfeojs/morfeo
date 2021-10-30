@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { capitalCase, noCase } from 'change-case';
-import { Card, Icon } from '../../../_shared/components';
+import { Icon } from '../../../_shared/components';
 import { RouteName } from '../../../_shared/contexts';
 import { useRouter } from '../../../_shared/hooks';
 import { SliceName } from '../../../_shared/contexts/Routing/types';
@@ -9,6 +9,7 @@ import clsx from 'clsx';
 import { t } from '../../../_shared/utils';
 import { SliceStatus, SliceWithStatus } from '../../../_shared/types';
 import styles from './style.module.css';
+import { ListItemCard } from '../../../_shared/components/Slices/_shared/ListItemCard';
 
 type Props = SliceWithStatus;
 
@@ -66,15 +67,13 @@ export const SliceCard: React.FC<Props> = ({ name, values, status }) => {
   }, [isEmpty, labelText]);
 
   return (
-    <div className={clsx(styles.sliceContainer, isEmpty && styles.empty)}>
-      <Card
-        className={clsx(
-          'morfeo-card-primary',
-          !isEmpty && 'morfeo-card-primary-clickable',
-          styles.sliceCard,
-        )}
-        onClick={onClick}
-      >
+    <ListItemCard
+      mode="light"
+      title={capitalCase(noCase(name))}
+      clickable={!isEmpty}
+      onClick={onClick}
+    >
+      <div className={(isEmpty && styles.empty) || ''}>
         <div
           className={clsx(
             styles.valuesContainer,
@@ -86,10 +85,8 @@ export const SliceCard: React.FC<Props> = ({ name, values, status }) => {
           {label}
         </div>
         <Icon name={`slice.${name}` as IconName} />
-      </Card>
-      <h2 className={clsx('morfeo-typography-h2 mt-xxs', styles.sliceName)}>
-        {capitalCase(noCase(name))}
-      </h2>
-    </div>
+      </div>
+      
+    </ListItemCard>
   );
 };

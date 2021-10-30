@@ -8,11 +8,11 @@ export const borders: Borders = {
   primary: {
     width: 'm',
     style: 'solid',
-    color: 'invertedBackground',
+    color: 'textColor',
   },
   secondary: {
     width: 's',
     style: 'solid',
-    color: 'invertedBackground',
+    color: 'textColor',
   },
 };

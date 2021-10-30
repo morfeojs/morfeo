@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { morfeo, useStyle } from '@morfeo/react';
+import { morfeo, useStyle, useThemeSlice, Font } from '@morfeo/react';
 import { capitalCase, noCase, paramCase } from 'change-case';
 import clsx from 'clsx';
 import { Card } from '../../../Card';
@@ -9,7 +9,7 @@ import styles from './style.module.css';
 import { Input } from '../../../Input';
 import { DropDown } from '../../../DropDown';
 import { t } from '../../../../utils';
-import { DetailLabel } from '../../../DetailLabel';
+import { DetailLabel } from '../../_shared/DetailLabel';
 
 const fontSlices = [
   'fonts',
@@ -19,7 +19,7 @@ const fontSlices = [
   'lineHeights',
 ] as const;
 
-const propertiesMap = {
+export const propertiesMap = {
   fonts: 'fontFamily',
   fontSizes: 'fontSize',
   fontWeights: 'fontWeight',
@@ -45,6 +45,12 @@ export const Detail: React.FC<Props> = ({ main = 'fonts' }) => {
   );
   const { state = {} as RouteState } = route;
   const { detailKey } = state;
+  const themeFonts = useThemeSlice('fonts')
+
+  const firstFont = useMemo(() => {
+    const fontArray = Object.keys(themeFonts)
+    return fontArray[0] as Font
+  }, [themeFonts])
 
   const filteredFontSlices = useMemo(
     () => fontSlices.filter(slice => slice !== main),
@@ -54,11 +60,15 @@ export const Detail: React.FC<Props> = ({ main = 'fonts' }) => {
     [propertiesMap[main]]: detailKey,
     ...filteredFontSlices.reduce((acc, curr) => {
       if (filtersState[curr]) {
-        return { ...acc, [propertiesMap[curr]]: filtersState[curr] };
+        return { 
+          ...acc, 
+          [propertiesMap[curr]]: filtersState[curr],
+        };
       }
 
       return acc;
     }, {}),
+    ...firstFont && main !== 'fonts' && { fontFamily: firstFont as Font }
   };
   const fontStyle = useStyle(style);
 

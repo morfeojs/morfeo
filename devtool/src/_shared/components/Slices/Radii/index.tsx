@@ -1,13 +1,12 @@
 import React, { useMemo, useCallback } from 'react';
 import { Radius, useThemeSlice } from '@morfeo/react';
-import clsx from 'clsx';
 import { Card } from '../../Card';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Grid, Item } from '../../Grid';
-import styles from './style.module.css';
 import { getSortedSliceValues } from '../../../utils';
+import { ListItemCard } from '../_shared/ListItemCard/index';
 export { Detail } from './Detail';
 
 type Props = {
@@ -26,29 +25,24 @@ const RadiusCard: React.FC<Props> = ({ corner, value }) => {
   }, [corner, navigate]);
 
   return (
-    <div className={styles.container} onClick={onClick}>
-      <Card copyText={corner} className="morfeo-card-primary-clickable">
-        <Card
-          style={
-            {
-              corner,
-              size: 'var(--sizes-xxl)',
-              bg: 'var(--colors-primary)',
-            } as any
-          }
+    <ListItemCard copyText={corner} clickable title={corner} onClick={onClick}>
+      <Card
+        style={
+          {
+            corner,
+            size: 'var(--sizes-xxl)',
+            bg: 'var(--colors-primary)',
+          } as any
+        }
+      >
+        <h4
+          className="morfeo-typography-h4"
+          style={{ color: 'var(--colors-inverted-text-color)' }}
         >
-          <h4
-            className="morfeo-typography-h4"
-            style={{ color: 'var(--colors-inverted-text-color)' }}
-          >
-            {value}
-          </h4>
-        </Card>
+          {value}
+        </h4>
       </Card>
-      <h2 className={clsx('morfeo-typography-h2', styles.name)} title={corner}>
-        {corner}
-      </h2>
-    </div>
+    </ListItemCard>
   );
 };
 

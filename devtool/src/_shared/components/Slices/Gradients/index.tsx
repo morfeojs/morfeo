@@ -1,12 +1,10 @@
 import React, { useMemo, useCallback } from 'react';
 import { Gradient, useThemeSlice } from '@morfeo/react';
-import clsx from 'clsx';
-import { Card } from '../../Card';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Grid, Item } from '../../Grid';
-import styles from './style.module.css';
+import { ListItemCard } from '../_shared/ListItemCard';
 export { Detail } from './Detail';
 
 type Props = {
@@ -24,19 +22,12 @@ const GradientCard: React.FC<Props> = ({ gradient }) => {
   }, [gradient, navigate]);
 
   return (
-    <div className={styles.gradientContainer} onClick={onClick}>
-      <Card
-        copyText={gradient}
-        className="morfeo-card-primary-clickable"
-        style={{ gradient }}
-      />
-      <h3
-        className={clsx('morfeo-typography-h2', styles.gradientName)}
-        title={gradient}
-      >
-        {gradient}
-      </h3>
-    </div>
+    <ListItemCard
+      onClick={onClick}
+      copyText={gradient}
+      style={{ gradient }}
+      title={gradient}
+    />
   );
 };
 

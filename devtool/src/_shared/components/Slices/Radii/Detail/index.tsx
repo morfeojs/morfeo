@@ -3,7 +3,7 @@ import { Radius, useThemeValue } from '@morfeo/react';
 import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
 import { RouteState } from '../../../../contexts';
-import { DetailLabel } from '../../../DetailLabel';
+import { DetailLabel } from '../../_shared/DetailLabel';
 import styles from './style.module.css';
 
 export const Detail: React.FC = () => {
@@ -22,16 +22,7 @@ export const Detail: React.FC = () => {
             bg: 'var(--colors-primary)',
           } as any
         }
-      >
-        <h2
-          className="morfeo-typography-h2"
-          style={{
-            color: 'var(--colors-inverted-text-color)',
-          }}
-        >
-          {cornerValue}
-        </h2>
-      </Card>
+      />
       <DetailLabel label="border-radius" value={cornerValue as string} />
     </div>
   );

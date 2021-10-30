@@ -25,6 +25,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--colors-background) !important;
+  font-size: var(--font-sizes-s) !important;
 }
 
 .inverted .button {

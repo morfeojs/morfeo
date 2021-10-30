@@ -22,14 +22,14 @@ const Info: React.FC<Props> = ({ name, variant }) => {
   return (
     <div className={styles.infoContainer}>
       <div className={styles.infoHeader}>
-        <h2
-          className={clsx('morfeo-typography-h2', styles.componentName)}
+        <h3
+          className={clsx('morfeo-typography-h3', styles.componentName)}
           title={variant || name}
         >
           {variant || name}
-        </h2>
+        </h3>
         {numberOfVariants > 0 && !variant && (
-          <p className={clsx('morfeo-typography-p1', styles.componentName)}>
+          <p className={clsx('morfeo-typography-p2', styles.componentName)}>
             {numberOfVariants} variants
           </p>
         )}

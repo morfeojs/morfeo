@@ -4,7 +4,7 @@ import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
 import { RouteState } from '../../../../contexts';
 import { OpacityCard } from '../OpacityCard';
-import { DetailLabel } from '../../../DetailLabel';
+import { DetailLabel } from '../../_shared/DetailLabel';
 import styles from './style.module.css';
 
 export const Detail: React.FC = () => {
