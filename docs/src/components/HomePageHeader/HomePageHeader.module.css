@@ -1,0 +1,33 @@
+.heroBanner {
+  padding: var(--space-m) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoContainer {
+  margin: var(--space-xs) auto;
+}
+
+.subtitle {
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle  p {
+  margin: 0;
+}
+
+@media screen and (max-width: 966px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}

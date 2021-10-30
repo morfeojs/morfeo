@@ -6,44 +6,12 @@ import CookieConsent from 'react-cookie-consent';
 
 import lightTheme from '../styles/lightTheme';
 import darkTheme from '../styles/darkTheme';
+import { fonts } from '../styles/fonts';
 
 morfeo.setTheme('light', lightTheme);
 morfeo.setTheme('dark', darkTheme);
 
 const buttonStyle = morfeo.resolve({ corner: 'm' });
-
-const fonts = [
-  {
-    urls: [
-      {
-        url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap',
-      },
-    ],
-    importFontFace: true,
-    name: 'regular',
-    family: 'Montserrat',
-  },
-  {
-    urls: [
-      {
-        url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap',
-      },
-    ],
-    importFontFace: true,
-    name: 'medium',
-    family: 'Montserrat',
-  },
-  {
-    urls: [
-      {
-        url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap',
-      },
-    ],
-    importFontFace: true,
-    name: 'bold',
-    family: 'Montserrat',
-  },
-];
 
 fonts.forEach(font => loadFont(font));
 

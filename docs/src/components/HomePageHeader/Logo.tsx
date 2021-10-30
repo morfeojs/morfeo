@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Icon() {
+function Logo() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,9 @@ function Icon() {
       strokeLinejoin="round"
       strokeMiterlimit="2"
       clipRule="evenodd"
-      viewBox="0 0 257 256"
+      viewBox="0 0 256 256"
+      height="150"
+      width="150"
     >
       <path fill="none" d="M0.796 0H256.796V256H0.796z"></path>
       <clipPath id="_clip1">
@@ -21,4 +23,4 @@ function Icon() {
   );
 }
 
-export default Icon;
+export default Logo;

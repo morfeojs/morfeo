@@ -1,0 +1,10 @@
+.link {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: var(--ifm-paragraph-margin-bottom);
+}
+
+.image {
+  margin-right: var(--space-xxs);
+}

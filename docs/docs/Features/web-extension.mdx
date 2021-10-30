@@ -5,11 +5,11 @@ title: Web Extension
 description: Features > Web Extension
 ---
 
-import Link from '@docusaurus/Link';
+import { AddToChrome } from '../../src/components';
 
 One of the most important feature of morfeo is the [Web Extension](https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl).
 
-![Morfeo Web Extension](../../static/img/devtool/hero.jpeg)
+![Morfeo Web Extension](../../static/img/devtool/hero.png)
 
 With the extension you'll always be able to see your theme and play with it.
 
@@ -17,18 +17,11 @@ With the extension you'll always be able to see your theme and play with it.
 
 You can install it by going to chrome web store and add it to your plugins:
 
-<Link
-  to="https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl"
-  className="button button--secondary button--lg"
-  style={{
-    display: 'flex',
-    alignItems: 'center',
-    width: 'fit-content',
-  }}
->
-  <img src="/img/chromeLogo.svg" style={{ marginRight: '10px' }} />
-  <span>Add Morfeo to Chrome</span>
-</Link>
+<AddToChrome />
+
+:::note Browser compatibility
+It is also compatible with **Edge** and **Brave**, **Firefox** and **Safari** will soon be available
+:::
 
 ## Usage
 
