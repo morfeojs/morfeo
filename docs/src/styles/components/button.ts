@@ -15,8 +15,8 @@ export const Button: ComponentConfig = {
     fontWeight: 'regular',
     boxSizing: 'border-box',
     '&:hover': {
-      opacity: 'medium'
-    }
+      opacity: 'medium',
+    },
   },
   variants: {
     round: {
