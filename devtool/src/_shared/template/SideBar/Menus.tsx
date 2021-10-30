@@ -58,7 +58,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
         state={{ slice: route, detailKey: detail }}
         onNavigate={onNavigate}
         disabled={isNotActive}
-        className="morfeo-typography-h2"
+        className="morfeo-typography-h3"
         style={{
           ...opacityStyle,
           color: 'var(--color-inverted-text-color)',

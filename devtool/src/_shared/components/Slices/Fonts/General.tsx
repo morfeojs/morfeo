@@ -1,11 +1,11 @@
 import React, { useMemo, useCallback } from 'react';
-import { Font, useStyle, ThemeKey, useThemeSlice } from '@morfeo/react';
-import { Card } from '../../Card';
+import { Font, useStyle, ThemeKey, useThemeSlice, Fonts, useTheme } from '@morfeo/react';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Grid, Item } from '../../Grid';
 import styles from './style.module.css';
+import { ListItemCard } from '../_shared/ListItemCard';
 
 export { Detail } from './Detail';
 
@@ -20,8 +20,16 @@ type Props = {
 
 const ItemCard: React.FC<ItemProps> = ({ property, value }) => {
   const { navigate, route } = useRouter();
+  const themeFonts = useTheme().fonts;
+
+  const firstFont = useMemo(() => {
+    const fontArray = Object.keys(themeFonts)
+    return fontArray[0] as keyof Fonts
+  }, [themeFonts])
+
   const fontStyle = useStyle({
     [property]: value,
+    ...firstFont && property !== 'fontFamily' && { fontFamily: firstFont }
   });
 
   const onClick = useCallback(() => {
@@ -32,14 +40,11 @@ const ItemCard: React.FC<ItemProps> = ({ property, value }) => {
   }, [navigate, route.state?.slice, value]);
 
   return (
-    <div className={styles.container} onClick={onClick}>
-      <Card copyText={value} className="morfeo-card-primary-clickable">
-        <h1 className={styles.name} title={value} style={fontStyle as any}>
+    <ListItemCard title={value} onClick={onClick} mode='light' clickable>
+      <h1 className={styles.name} title={value} style={fontStyle as any}>
           Aa
-        </h1>
-      </Card>
-      <h2 className="morfeo-typography-h2">{value}</h2>
-    </div>
+      </h1>
+    </ListItemCard>
   );
 };
 

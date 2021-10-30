@@ -1,6 +1,5 @@
 import React, { useMemo, useCallback } from 'react';
 import { Border, Borders, useThemeSlice } from '@morfeo/react';
-import clsx from 'clsx';
 import { getValueAndUnit } from 'polished';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
@@ -37,13 +36,11 @@ const BorderListItem: React.FC<Props> = ({ value }) => {
   return (
     <div className={styles.container} onClick={onClick}>
       <BorderCard
+        showTitle
         mainSlice={state?.slice as BorderSlice}
         detailKey={value}
         clickable
       />
-      <h3 className={clsx('morfeo-typography-h2', styles.name)} title={value}>
-        {value}
-      </h3>
     </div>
   );
 };

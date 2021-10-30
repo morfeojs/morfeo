@@ -4,7 +4,7 @@ import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
 import { RouteState } from '../../../../contexts';
 import styles from './style.module.css';
-import { DetailLabel } from '../../../DetailLabel';
+import { DetailLabel } from '../../_shared/DetailLabel';
 
 export const Detail: React.FC = () => {
   const { route } = useRouter();

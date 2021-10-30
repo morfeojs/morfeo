@@ -4,3 +4,12 @@ html, body {
   color: var(--colors-text-color);
   background-color: var(--colors-background);
 }
+
+*::-webkit-scrollbar { 
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

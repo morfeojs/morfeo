@@ -65,7 +65,7 @@ export const DropDown: React.FC<Props> = ({
       )}
     >
       {title && (
-        <h3 className={clsx('morfeo-typography-h3', styles.title)}>{title}</h3>
+        <h4 className={clsx('morfeo-typography-h4', styles.title)}>{title}</h4>
       )}
       <div className={styles.buttonContainer}>
         <button

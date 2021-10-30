@@ -4,15 +4,19 @@ export const Button: ComponentConfig = {
   tag: 'button',
   style: {
     py: 'xxs',
-    px: 'xs',
+    px: 'm',
     bg: 'primary',
-    color: 'invertedTextColor',
+    color: 'white',
     cursor: 'pointer',
     corner: 'xs',
     border: 'none',
     outline: 'none',
     fontSize: 'm',
-    fontWeight: 'bold',
+    fontWeight: 'regular',
+    boxSizing: 'border-box',
+    '&:hover': {
+      opacity: 'medium'
+    }
   },
   variants: {
     round: {
@@ -21,16 +25,6 @@ export const Button: ComponentConfig = {
         px: 'none',
         py: 'none',
         size: 'xxl',
-      },
-    },
-    side: {
-      style: {
-        borderTopRightRadius: 'round',
-        borderBottomRightRadius: 'round',
-        borderTopLeftRadius: 'none',
-        borderBottomLeftRadius: 'none',
-        px: 'none',
-        py: 'none',
       },
     },
     error: {

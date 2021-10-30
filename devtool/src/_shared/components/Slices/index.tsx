@@ -38,7 +38,7 @@ export const slices: Record<SliceName, SliceConfig> = {
     displayName: 'sizes',
   },
   [SliceName.FONTS]: {
-    render: () => <GeneralFontsSlice property="font" />,
+    render: () => <GeneralFontsSlice property="fontFamily" />,
     renderDetail: () => <FontDetail main="fonts" />,
     displayName: 'fonts',
   },

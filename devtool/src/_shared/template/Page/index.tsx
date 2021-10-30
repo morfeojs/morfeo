@@ -17,9 +17,9 @@ export const Page: React.FC<Props> = ({ children, title, breadcrumb }) => {
       {title && breadcrumb && (
         <div className={styles.header}>
           <h1 className="morfeo-typography-h1">{capitalize(title)}</h1>
-          <h2 className={clsx('morfeo-typography-h2', styles.breadcrumb)}>
+          <h3 className={clsx('morfeo-typography-h3', styles.breadcrumb)}>
             {breadcrumb.map(capitalize).join(' > ')}
-          </h2>
+          </h3>
         </div>
       )}
       {children}

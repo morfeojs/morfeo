@@ -1,13 +1,12 @@
 import React, { useMemo, useCallback } from 'react';
 import { Size, useThemeSlice } from '@morfeo/react';
-import clsx from 'clsx';
 import { Card } from '../../Card';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Grid, Item } from '../../Grid';
-import styles from './style.module.css';
 import { getSortedSliceValues } from '../../../utils';
+import { ListItemCard } from '../_shared/ListItemCard';
 export { Detail } from './Detail';
 
 type Props = {
@@ -26,23 +25,18 @@ const ItemCard: React.FC<Props> = ({ size, value }) => {
   }, [size, navigate]);
 
   return (
-    <div className={styles.container} onClick={onClick}>
-      <Card copyText={size} className="morfeo-card-primary-clickable">
-        <Card
-          style={
-            {
-              size,
-              corner: 'var(--radii-none)',
-              bg: 'var(--colors-primary)',
-            } as any
-          }
-        />
-        <h4 className="morfeo-typography-h4">{value}</h4>
-      </Card>
-      <h2 className={clsx('morfeo-typography-h2', styles.name)} title={size}>
-        {size}
-      </h2>
-    </div>
+    <ListItemCard title={size} copyText={size} clickable onClick={onClick}>
+      <Card
+        style={
+          {
+            size,
+            corner: 'var(--radii-none)',
+            bg: 'var(--colors-primary)',
+          } as any
+        }
+      />
+      <h4 className="morfeo-typography-h4">{value}</h4>
+    </ListItemCard>
   );
 };
 

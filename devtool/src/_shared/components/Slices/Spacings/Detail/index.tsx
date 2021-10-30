@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
 import { RouteState } from '../../../../contexts';
-import { DetailLabel } from '../../../DetailLabel';
+import { DetailLabel } from '../../_shared/DetailLabel';
 import styles from './style.module.css';
 
 type Props = {

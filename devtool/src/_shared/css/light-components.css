@@ -31,7 +31,7 @@
   box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lighter);
 }
 [data-morfeo-theme="light"] .morfeo-input {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-inverted-background);
+  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
   height: var(--sizes-m);
   border-color: var(--colors-gray-lightest);
   padding-left: var(--spacings-xs);
@@ -40,7 +40,7 @@
   background-color: var(--colors-white);
 }
 [data-morfeo-theme="light"] .morfeo-input:focus {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-inverted-background);
+  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
   border-color: var(--colors-gray-lighter);
 }
 [data-morfeo-theme="light"] .morfeo-button {
@@ -134,13 +134,13 @@
   letter-spacing: var(--letter-spacings-heading);
 }
 [data-morfeo-theme="light"] .morfeo-typography-h2 {
-  font-size: var(--font-sizes-m);
+  font-size: var(--font-sizes-l);
   font-family: var(--fonts-regular);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
 [data-morfeo-theme="light"] .morfeo-typography-h3 {
-  font-size: var(--font-sizes-s);
+  font-size: var(--font-sizes-m);
   font-family: var(--fonts-regular);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
@@ -152,7 +152,7 @@
   line-height: var(--line-heights-heading);
 }
 [data-morfeo-theme="light"] .morfeo-typography-h5 {
-  font-size: var(--font-sizes-l);
+  font-size: var(--font-sizes-m);
   font-family: var(--fonts-regular);
   font-weight: var(--font-weights-regular);
   line-height: var(--line-heights-heading);
@@ -195,7 +195,7 @@
 [data-morfeo-theme="light"] .morfeo-typography-cta::after {
   width: var(--sizes-s);
   content: '→';
-  font-size: var(--font-sizes-s);
+  font-size: var(--font-sizes-m);
   font-family: var(--fonts-regular);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);

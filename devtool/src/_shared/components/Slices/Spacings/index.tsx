@@ -1,14 +1,12 @@
 import React, { useMemo, useCallback } from 'react';
 import { Spacing, useThemeSlice } from '@morfeo/react';
-import clsx from 'clsx';
-import { Card } from '../../Card';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Grid, Item } from '../../Grid';
-import styles from './style.module.css';
 import { getSortedSliceValues } from '../../../utils';
 import { CardInner } from './Detail';
+import { ListItemCard } from '../_shared/ListItemCard/index';
 
 export { Detail } from './Detail';
 
@@ -28,14 +26,14 @@ const ItemCard: React.FC<Props> = ({ spacing, value }) => {
   }, [spacing, navigate]);
 
   return (
-    <div className={styles.container} onClick={onClick}>
-      <Card copyText={spacing} className="morfeo-card-primary-clickable">
-        <CardInner spacing={spacing} max={60} />
-      </Card>
-      <h2 className={clsx('morfeo-typography-h2', styles.name)} title={spacing}>
-        {spacing}
-      </h2>
-    </div>
+    <ListItemCard
+      title={spacing}
+      copyText={spacing}
+      clickable
+      onClick={onClick}
+    >
+      <CardInner spacing={spacing} max={60} />
+    </ListItemCard>
   );
 };
 

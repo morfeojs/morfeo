@@ -1,13 +1,11 @@
 import React, { useMemo } from 'react';
 import { Color, useTheme } from '@morfeo/react';
-import clsx from 'clsx';
 import { getContrast } from 'polished';
-import { Card } from '../../Card';
-import styles from './style.module.css';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
 import { Grid, Item } from '../../Grid';
+import { ListItemCard } from '../_shared/ListItemCard';
 export { Detail } from './Detail';
 
 export const Colors: React.FC = () => {
@@ -29,42 +27,32 @@ export const Colors: React.FC = () => {
 
       return (
         <Item key={`colors-${key}`}>
-          <div
-            key={`colors-${key}`}
-            className={styles.colorContainer}
+          <ListItemCard
             onClick={() =>
               navigate(RouteName.SLICE, {
                 slice: SliceName.COLORS,
                 detailKey: key,
               })
             }
+            title={key}
+            clickable
+            style={{
+              bg: key as Color
+            }}
+            copyText={key}
           >
-            <Card
-              copyText={key}
-              className="morfeo-card-primary-clickable"
+            <h3
+              className="morfeo-typography-h3"
               style={{
-                bg: key,
+                color:
+                  contrastRatio < 1.95
+                    ? 'var(--colors-gray-darkest)'
+                    : 'var(--colors-gray-lightest)',
               }}
             >
-              <h2
-                className="morfeo-typography-h2"
-                style={{
-                  color:
-                    contrastRatio < 1.95
-                      ? 'var(--colors-gray-darkest)'
-                      : 'var(--colors-gray-lightest)',
-                }}
-              >
-                {slice[key]}
-              </h2>
-            </Card>
-            <h3
-              className={clsx('morfeo-typography-h2', styles.colorName)}
-              title={key}
-            >
-              {key}
+              {slice[key]}
             </h3>
-          </div>
+          </ListItemCard>
         </Item>
       );
     });

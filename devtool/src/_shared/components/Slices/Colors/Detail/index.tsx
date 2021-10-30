@@ -3,7 +3,7 @@ import { Color, useStyle } from '@morfeo/react';
 import { Card } from '../../../Card';
 import { useRouter } from '../../../../hooks';
 import styles from './style.module.css';
-import { DetailLabel } from '../../../DetailLabel';
+import { DetailLabel } from '../../_shared/DetailLabel';
 
 function hex2rgba(code: string) {
   let hex = code.replace(/[^0-9a-fA-F]/g, '');

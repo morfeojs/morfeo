@@ -25,7 +25,7 @@ export const Typography: ComponentConfig = {
     h2: {
       tag: 'h2',
       style: {
-        fontSize: 'm',
+        fontSize: 'l',
         lineHeight: 'heading',
         fontWeight: 'bold',
       },
@@ -33,7 +33,7 @@ export const Typography: ComponentConfig = {
     h3: {
       tag: 'h3',
       style: {
-        fontSize: 's',
+        fontSize: 'm',
         lineHeight: 'heading',
         fontWeight: 'bold',
       },
@@ -47,9 +47,9 @@ export const Typography: ComponentConfig = {
       },
     },
     h5: {
-      tag: 'h4',
+      tag: 'h5',
       style: {
-        fontSize: 'l',
+        fontSize: 'm',
         lineHeight: 'heading',
         fontWeight: 'regular',
       },

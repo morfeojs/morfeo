@@ -4,7 +4,8 @@ import { getContrast } from 'polished';
 import { Card } from '../../../Card';
 import { Props as DetailProps } from '../Detail';
 import { BorderSlice } from '../index';
-import { DetailLabel } from '../../../DetailLabel';
+import { DetailLabel } from '../../_shared/DetailLabel';
+import { ListItemCard } from '../../_shared/ListItemCard';
 
 export type Props = {
   clickable?: boolean;
@@ -12,6 +13,7 @@ export type Props = {
   showValues?: boolean;
   mainSlice: DetailProps['mainSlice'];
   filters?: Record<'borderWidths' | 'borderStyles' | 'colors', string>;
+  showTitle?: boolean;
 };
 
 const propertiesMap: Record<BorderSlice, keyof React.CSSProperties> = {
@@ -26,6 +28,7 @@ export const BorderCard: React.FC<Props> = ({
   showValues,
   mainSlice,
   filters,
+  showTitle,
 }) => {
   const isBorders = mainSlice === 'borders';
   const themeValue = useThemeValue(mainSlice, detailKey as any);
@@ -76,20 +79,21 @@ export const BorderCard: React.FC<Props> = ({
 
   return (
     <>
-      <Card
-        className={`${
-          clickable ? 'morfeo-card-primary-clickable' : 'morfeo-card-primary'
-        } ${contrastRatio < 1.95 ? 'bg-black' : 'bg-white'}`}
+      <ListItemCard
+        title={showTitle ? detailKey : ''}
+        clickable={clickable}
+        mode={contrastRatio < 1.95 ? 'dark' : 'light'}
+        copyText={detailKey}
       >
         <Card
           style={
             {
               ...innerCardStyle,
-              size: '100%',
+              size: '100px',
             } as any
           }
         />
-      </Card>
+      </ListItemCard>
       {showValues && (
         <DetailLabel value={(style as any)[propertiesMap[mainSlice]]} />
       )}
