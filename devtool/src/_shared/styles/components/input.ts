@@ -3,6 +3,7 @@ import { ComponentConfig } from '@morfeo/react';
 export const Input: ComponentConfig = {
   tag: 'input',
   style: {
+    display: 'block',
     px: 'xs',
     bg: 'white',
     height: 'm',

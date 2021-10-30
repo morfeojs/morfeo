@@ -72,6 +72,7 @@ export const SliceCard: React.FC<Props> = ({ name, values, status }) => {
       title={capitalCase(noCase(name))}
       clickable={!isEmpty}
       onClick={onClick}
+      className={styles.sliceContainer}
     >
       <div className={(isEmpty && styles.empty) || ''}>
         <div
@@ -86,7 +87,6 @@ export const SliceCard: React.FC<Props> = ({ name, values, status }) => {
         </div>
         <Icon name={`slice.${name}` as IconName} />
       </div>
-      
     </ListItemCard>
   );
 };

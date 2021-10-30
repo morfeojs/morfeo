@@ -19,6 +19,7 @@ export const Detail: React.FC = () => {
         style={
           {
             corner: detailKey as Radius,
+            size: '200px',
             bg: 'var(--colors-primary)',
           } as any
         }

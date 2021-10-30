@@ -18,6 +18,15 @@
     "message": "Questo sito non sembra utillizzare morfeo",
     "description": "Used when morfeo is not used inside the current website"
   },
+  "popup_morfeoUsed": {
+    "message": "✅ Questo sito utilizza Morfeo!"
+  },
+  "popup_morfeoNotUsed": {
+    "message": "😢 Questo sito non sembra utilizzare Morfeo."
+  },
+  "popup_CTA": {
+    "message": "Impara Morfeo"
+  },
   "copyAlias": {
     "message": "Copia alias"
   },

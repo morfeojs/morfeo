@@ -11,9 +11,21 @@
     "message": "Visualize your design system built with Morfeo",
     "description": "The description of the web extension"
   },
+  "bigDescription": {
+    "message": "Morfeo it's a tool to build design systems based on a theme. It helps you to follow a design language and write consistent UIs, whatever it is the framework of your choice. It's easy to use and, with the browser extension, your theme and your components are automatically documented."
+  },
   "morfeoNotUsed": {
     "message": "Morfeo seems to not be used inside this website",
     "description": "Used when morfeo is not used inside the current website"
+  },
+  "popup_morfeoUsed": {
+    "message": "✅ This page is using morfeo."
+  },
+  "popup_morfeoNotUsed": {
+    "message": "😢 This page doesn't appear to use morfeo."
+  },
+  "popup_CTA": {
+    "message": "Learn Morfeo"
   },
   "copyAlias": {
     "message": "Copy alias"
@@ -59,8 +71,5 @@
   },
   "fontsDetailInputLabel": {
     "message": "Test text"
-  },
-  "bigDescription": {
-    "message": "Morfeo it's a tool to build design systems based on a theme. It helps you to follow a design language and write consistent UIs, whatever it is the framework of your choice. It's easy to use and, with the browser extension, your theme and your components are automatically documented."
   }
 }
