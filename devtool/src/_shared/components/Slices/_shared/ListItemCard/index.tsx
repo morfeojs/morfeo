@@ -11,6 +11,7 @@ type Props = {
 export const ListItemCard: React.FC<Props> = ({
   onClick,
   title,
+  className,
   children,
   clickable = true,
   mode,
@@ -20,6 +21,7 @@ export const ListItemCard: React.FC<Props> = ({
     <div className={styles.container} onClick={onClick}>
       <Card
         className={clsx(
+          className,
           clickable ? 'morfeo-card-primary-clickable' : 'morfeo-card-primary',
           mode === 'dark' && 'bg-black',
           mode === 'light' && 'bg-white',

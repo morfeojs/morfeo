@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+.codeSnippet {
+  flex: 1;
+  margin-top: var(--spacings-s);
+  margin-bottom: var(--spacings-s);
+  margin-left: var(--spacings-xs);
+  margin-right: var(--spacings-xs);
+}
+
+@media screen and (min-width: 1920px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .codeSnippet {
+    margin-top: var(--spacings-none);
+    margin-bottom: var(--spacings-none);
+  }
+}

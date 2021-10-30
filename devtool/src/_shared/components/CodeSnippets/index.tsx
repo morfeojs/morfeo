@@ -29,10 +29,14 @@ export const CodeSnippets: React.FC<Props> = ({
         key={label}
         className={clsx(styles.tab, selected === label && styles.selected)}
         onClick={getOnSelectTab(label)}
+        style={{ maxWidth: `${100 / tabs.length}%` }}
       >
-        <h3 className={clsx('morfeo-typography-h4', styles.tabLabel)}>
+        <p
+          className={clsx('morfeo-typography-p1', styles.tabLabel)}
+          title={label}
+        >
           {label}
-        </h3>
+        </p>
       </div>
     ));
   }, [getOnSelectTab, selected, tabs]);

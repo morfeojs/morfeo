@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
 import { useIsUsingMorfeo } from '../_shared/hooks';
+import { t } from '../_shared/utils';
 import './Popup.css';
 
-const IS_MORFEO_MESSAGE = '✅ This page is using morfeo.';
-const IS_NOT_MORFEO_MESSAGE = "😢 This page doesn't appear to use morfeo.";
+const IS_MORFEO_MESSAGE = t('popup_morfeoUsed');
+const IS_NOT_MORFEO_MESSAGE = t('popup_morfeoNotUsed');
 
 function Popup() {
   const isUsingMorfeo = useIsUsingMorfeo();
@@ -22,7 +23,7 @@ function Popup() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn Morfeo
+          {t('popup_CTA')}
         </a>
       </header>
     </div>

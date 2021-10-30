@@ -33,6 +33,7 @@
 [data-morfeo-theme="light"] .morfeo-input {
   border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
   height: var(--sizes-m);
+  display: block;
   border-color: var(--colors-gray-lightest);
   padding-left: var(--spacings-xs);
   border-radius: var(--radii-xxs);

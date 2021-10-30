@@ -3,6 +3,7 @@ import { Page } from '../../../_shared/template/Page';
 import { useRouter } from '../../../_shared/hooks/useRouter';
 import { CodeSnippets, slices, SliceConfig } from '../../../_shared/components';
 import { SliceName } from '../../../_shared/contexts/Routing/types';
+import styles from './style.module.css';
 
 export const Slice: React.FC = () => {
   const { route } = useRouter();
@@ -50,16 +51,20 @@ export const Slice: React.FC = () => {
 
   return (
     <Page breadcrumb={['slices', ...breadCrumb]} title={title}>
-      <Content />
-      {state && state.detailKey && (
-        <div className="my-s mx-xs">
-          <CodeSnippets
-            slice={state.slice}
-            value={state.detailKey}
-            componentVariant={state.componentVariant}
-          />
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <Content />
         </div>
-      )}
+        {state && state.detailKey && (
+          <div className={styles.codeSnippet}>
+            <CodeSnippets
+              slice={state.slice}
+              value={state.detailKey}
+              componentVariant={state.componentVariant}
+            />
+          </div>
+        )}
+      </div>
     </Page>
   );
 };
