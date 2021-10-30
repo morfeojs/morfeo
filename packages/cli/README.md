@@ -20,7 +20,7 @@ $ npm install -g @morfeo/cli
 $ morfeo COMMAND
 running command...
 $ morfeo (-v|--version|version)
-@morfeo/cli/0.2.0 darwin-x64 node-v14.16.0
+@morfeo/cli/0.3.0 darwin-x64 node-v14.16.0
 $ morfeo --help [COMMAND]
 USAGE
   $ morfeo COMMAND
@@ -35,11 +35,11 @@ USAGE
 * [`morfeo compose`](#morfeo-compose)
 * [`morfeo help [COMMAND]`](#morfeo-help-command)
 
-### `morfeo build`
+## `morfeo build`
 
 build css styles based on your themes
 
-```bash
+```
 USAGE
   $ morfeo build
 
@@ -55,11 +55,11 @@ EXAMPLES
   $ morfeo build path/to/theme.ts --name="light"
 ```
 
-### `morfeo compose`
+## `morfeo compose`
 
 compose morfeo style files into themes
 
-```bash
+```
 USAGE
   $ morfeo compose
 
@@ -73,11 +73,11 @@ EXAMPLES
   $ morfeo compose --watch
 ```
 
-### `morfeo help [COMMAND]`
+## `morfeo help [COMMAND]`
 
 display help for morfeo
 
-```bash
+```
 USAGE
   $ morfeo help [COMMAND]
 
