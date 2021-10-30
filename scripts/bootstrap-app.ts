@@ -1,32 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import { spawnSync } from 'child_process';
+import { filterInternalDependencies } from './utils';
 
 const args = process.argv.slice(2);
 const [APP_NAME] = args;
 
-function getAllInternalPackages() {
-  return fs
-    .readdirSync('packages', { withFileTypes: true })
-    .filter(directory => directory.isDirectory())
-    .map(directory => `@morfeo/${directory.name}`);
-}
-
-function filterInternalDependencies(dependencies = {}) {
-  const keys = Object.keys(dependencies);
-  const packages = getAllInternalPackages();
-  const filteredKeys = keys.filter(key => !packages.includes(key));
-  return filteredKeys.reduce(
-    (prev, key) => ({
-      ...prev,
-      [key]: dependencies[key],
-    }),
-    {},
-  );
-}
-
-function getPackageJsonWithoutInternalDependencies(appName) {
-  const packageJsonFile = fs.readFileSync(path.join(appName, 'package.json'));
+function getPackageJsonWithoutInternalDependencies(appName: string) {
+  const packageJsonFile = fs.readFileSync(path.join(appName, 'package.json'), {
+    encoding: 'utf-8',
+  });
   const packageJson = JSON.parse(packageJsonFile);
 
   const { dependencies, peerDependencies, devDependencies } = packageJson;
@@ -42,9 +25,11 @@ function getPackageJsonWithoutInternalDependencies(appName) {
   };
 }
 
-function removeInternalPackagesFromPackageJson(appName) {
+function removeInternalPackagesFromPackageJson(appName: string) {
   const packageJsonPath = path.join(appName, 'package.json');
-  const packageJsonFile = fs.readFileSync(packageJsonPath);
+  const packageJsonFile = fs.readFileSync(packageJsonPath, {
+    encoding: 'utf-8',
+  });
   const tempPackageJsonPath = path.join(appName, 'package.tmp.json');
   const newPackageJson = getPackageJsonWithoutInternalDependencies(appName);
   fs.writeFileSync(tempPackageJsonPath, packageJsonFile);
@@ -54,15 +39,17 @@ function removeInternalPackagesFromPackageJson(appName) {
   );
 }
 
-function restorePackageJson(appName) {
+function restorePackageJson(appName: string) {
   const packageJsonPath = path.join(appName, 'package.json');
   const tempPackageJsonPath = path.join(appName, 'package.tmp.json');
-  const packageJsonFile = fs.readFileSync(tempPackageJsonPath);
+  const packageJsonFile = fs.readFileSync(tempPackageJsonPath, {
+    encoding: 'utf-8',
+  });
   fs.writeFileSync(packageJsonPath, packageJsonFile);
   fs.unlinkSync(tempPackageJsonPath);
 }
 
-function shellCommand(command, params = [], options = {}) {
+function shellCommand(command: string, params: string[] = [], options = {}) {
   spawnSync(command, params, {
     shell: true,
     stdio: 'inherit',
@@ -70,11 +57,11 @@ function shellCommand(command, params = [], options = {}) {
   });
 }
 
-function runBootstrap(appName) {
+function runBootstrap(appName: string) {
   removeInternalPackagesFromPackageJson(appName);
   shellCommand(`npm`, ['install'], { cwd: `./${appName}` });
   restorePackageJson(appName);
-  shellCommand(`node`, ['./scripts/symlink-packages.mjs', appName]);
+  shellCommand(`ts-node`, ['./scripts/symlink-packages.ts', appName]);
 }
 
 runBootstrap(APP_NAME);

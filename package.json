@@ -11,12 +11,12 @@
     "build:commonjs": "lerna run build:commonjs",
     "watch": "lerna run watch",
     "reset": "npm run clean && npm i && lerna bootstrap && npm run build",
-    "init:docs": "node scripts/bootstrap-app.mjs docs",
-    "init:devtool": "node scripts/bootstrap-app.mjs devtool",
-    "init:web-sandbox": "node scripts/bootstrap-app.mjs apps/web-sandbox",
-    "init:svelte-sandbox": "node scripts/bootstrap-app.mjs apps/svelte-sandbox",
-    "init:native-sandbox": "node scripts/bootstrap-app.mjs apps/native-sandbox",
-    "init:benchmarks": "node scripts/bootstrap-app.mjs apps/benchmarks",
+    "init:docs": "ts-node scripts/bootstrap-app.ts docs",
+    "init:devtool": "ts-node scripts/bootstrap-app.ts devtool",
+    "init:web-sandbox": "ts-node scripts/bootstrap-app.ts apps/web-sandbox",
+    "init:svelte-sandbox": "ts-node scripts/bootstrap-app.ts apps/svelte-sandbox",
+    "init:native-sandbox": "ts-node scripts/bootstrap-app.ts apps/native-sandbox",
+    "init:benchmarks": "ts-node scripts/bootstrap-app.ts apps/benchmarks",
     "start:docs": "npm start --prefix docs",
     "start:web-sandbox": "npm start --prefix apps/web-sandbox",
     "start:svelte-sandbox": "npm run dev --prefix apps/svelte-sandbox",
@@ -30,7 +30,8 @@
     "test:coverage": "jest --verbose --coverage --updateSnapshot",
     "publish": "npm run reset && npx lerna publish from-package --yes",
     "version": "npx lerna version patch --no-push --no-git-tag-version --conventional-commits",
-    "version:minor": "npx lerna version minor --no-push --no-git-tag-version --conventional-commits"
+    "version:minor": "npx lerna version minor --no-push --no-git-tag-version --conventional-commits",
+    "postversion": "ts-node scripts/version.ts"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -62,6 +63,7 @@
     "react-test-renderer": "^17.0.2",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.5.4",
+    "ts-node": "^10.4.0",
     "tslib": "^2.2.0",
     "typescript": "^4.2.4"
   },
