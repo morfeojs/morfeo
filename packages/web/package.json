@@ -39,7 +39,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/web"
+    "url": "https://github.com/VLK-STUDIO/morfeo",
+    "directory": "packages/web"
   },
   "homepage": "https://morfeo.dev",
   "bugs": {

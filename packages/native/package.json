@@ -40,7 +40,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/native"
+    "url": "https://github.com/VLK-STUDIO/morfeo",
+    "directory": "packages/native"
   },
   "homepage": "https://morfeo.dev",
   "bugs": {

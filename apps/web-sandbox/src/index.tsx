@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider } from '@morfeo/styled-components-web';
 import { lightTheme, darkTheme } from '@morfeo/preset-default';
 import { morfeo, resetCss, loadFont } from '@morfeo/react';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
@@ -28,7 +29,9 @@ loadFont({
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
