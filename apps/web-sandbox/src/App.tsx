@@ -1,4 +1,3 @@
-import { ThemeProvider } from '@morfeo/styled-components-web';
 import { theme, Component, Variant, useStyles } from '@morfeo/react';
 import { Box, Button, Typography, ThemeToggle } from './components';
 
@@ -48,28 +47,26 @@ function App() {
   });
 
   return (
-    <ThemeProvider>
-      <Box style={containerStyle}>
-        <Box style={blockStyle}>
-          <ThemeToggle />
-          <Typography variant="code" style={codeStyle}>
-            {getStyle('Button')}
-          </Typography>
-        </Box>
-        <Box style={blockStyle}>
-          <Button variant="primary">Primary variant</Button>
-          <Typography variant="code" style={codeStyle}>
-            {getStyle('Button', 'primary')}
-          </Typography>
-        </Box>
-        <Box style={blockStyle}>
-          <Button variant="round">Round variant</Button>
-          <Typography variant="code" style={codeStyle}>
-            {getStyle('Button', 'round')}
-          </Typography>
-        </Box>
+    <Box style={containerStyle}>
+      <Box style={blockStyle}>
+        <ThemeToggle />
+        <Typography variant="code" style={codeStyle}>
+          {getStyle('Button')}
+        </Typography>
       </Box>
-    </ThemeProvider>
+      <Box style={blockStyle}>
+        <Button variant="primary">Primary variant</Button>
+        <Typography variant="code" style={codeStyle}>
+          {getStyle('Button', 'primary')}
+        </Typography>
+      </Box>
+      <Box style={blockStyle}>
+        <Button variant="round">Round variant</Button>
+        <Typography variant="code" style={codeStyle}>
+          {getStyle('Button', 'round')}
+        </Typography>
+      </Box>
+    </Box>
   );
 }
 

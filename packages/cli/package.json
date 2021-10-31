@@ -19,7 +19,8 @@
     "change-case": "^4.1.2",
     "chokidar": "^3.5.2",
     "glob": "^7.1.7",
-    "tslib": "^1.14.1"
+    "tslib": "^1.14.1",
+    "cli-ux": "^6.0.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
@@ -76,7 +77,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/VLK-STUDIO/morfeo/tree/main/packages/cli"
+    "url": "https://github.com/VLK-STUDIO/morfeo",
+    "directory": "packages/cli"
   },
   "homepage": "https://morfeo.dev",
   "bugs": {
