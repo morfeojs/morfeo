@@ -1,12 +1,14 @@
 const Benchmark = require('benchmark');
 const { parsers } = require('@morfeo/core');
-const defaultTheme = require('./theme');
+const defaultTheme = require('../theme');
 const {
   onCycle,
   onStart,
   onComplete,
   getMdPath,
+  writeMdMeta,
   writeMdTitle,
+  appendMdFooter,
 } = require('../utils');
 const {
   compose,
@@ -41,7 +43,7 @@ const allProps = compose(
 
 const suite = new Benchmark.Suite();
 
-const mdPath = getMdPath('morfeo-vs-styled-system');
+const mdPath = getMdPath('Morfeo Versus/styled-system');
 
 const style = {
   p: 'm',
@@ -50,10 +52,11 @@ const style = {
   color: 'primary',
 };
 
+writeMdMeta(mdPath, { id: 'morfeo-vs-styled-system', title: 'Styled System' });
 writeMdTitle(mdPath, `# @morfeo/core vs styled-system`);
 
 suite
-  .add('morfeo', () => {
+  .add('Morfeo', () => {
     parsers.resolve(style);
   })
   .add('styled system', () => {
@@ -61,6 +64,9 @@ suite
   })
   .on('start', () => onStart(mdPath, 'resolving a style', style))
   .on('cycle', event => onCycle(mdPath, event))
-  .on('complete', () => onComplete(mdPath, suite));
+  .on('complete', () => {
+    onComplete(mdPath, suite);
+    appendMdFooter(mdPath);
+  });
 
 module.exports = suite;
