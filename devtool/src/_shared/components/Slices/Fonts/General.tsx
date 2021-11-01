@@ -23,7 +23,7 @@ const ItemCard: React.FC<ItemProps> = ({ property, value }) => {
   const themeFonts = useTheme().fonts;
 
   const firstFont = useMemo(() => {
-    const fontArray = Object.keys(themeFonts)
+    const fontArray = Object.keys(themeFonts || {})
     return fontArray[0] as keyof Fonts
   }, [themeFonts])
 
