@@ -8,7 +8,7 @@ const suite = new Benchmark.Suite();
 const styles = { button: { color: 'primary' } };
 
 suite
-  .add('regular parsing', () => {
+  .add('@morfeo/core', () => {
     Object.keys(styles).reduce((acc, key) => {
       const style = styles[key];
       return {
@@ -17,7 +17,7 @@ suite
       };
     }, {});
   })
-  .add('jss', () => {
+  .add('@morfeo/jss', () => {
     getStyles(styles);
   })
   .on('start', () =>

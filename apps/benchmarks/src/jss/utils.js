@@ -5,7 +5,9 @@ const {
   writeInMd: _writeInMd,
   appendInMd: _appendInMd,
   onComplete: _onComplete,
+  writeMdMeta: _writeMdMeta,
   writeMdTitle: _writeMdTitle,
+  appendMdFooter: _appendMdFooter,
 } = require('../utils');
 
 const mdPath = getMdPath('jss');
@@ -16,6 +18,10 @@ function writeInMd(text) {
 
 function appendInMd(text) {
   _appendInMd(mdPath, `\n\n${text}`);
+}
+
+function writeMdMeta(params) {
+  _writeMdMeta(mdPath, params);
 }
 
 function writeMdTitle(title) {
@@ -34,6 +40,10 @@ function onComplete(suite) {
   _onComplete(mdPath, suite);
 }
 
+function appendMdFooter() {
+  _appendMdFooter(mdPath);
+}
+
 module.exports = {
   onCycle,
   onStart,
@@ -41,5 +51,7 @@ module.exports = {
   writeInMd,
   appendInMd,
   onComplete,
+  writeMdMeta,
   writeMdTitle,
+  appendMdFooter,
 };
