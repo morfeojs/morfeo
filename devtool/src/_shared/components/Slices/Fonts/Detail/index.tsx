@@ -48,7 +48,7 @@ export const Detail: React.FC<Props> = ({ main = 'fonts' }) => {
   const themeFonts = useThemeSlice('fonts')
 
   const firstFont = useMemo(() => {
-    const fontArray = Object.keys(themeFonts)
+    const fontArray = Object.keys(themeFonts || {})
     return fontArray[0] as Font
   }, [themeFonts])
 
