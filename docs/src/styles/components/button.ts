@@ -34,8 +34,8 @@ export const Button: ComponentConfig = {
         pointerEvent: 'none',
         cursor: 'default',
         '&:hover': {
-          opacity: 1
-        }
+          opacity: 1,
+        },
       },
     },
     error: {

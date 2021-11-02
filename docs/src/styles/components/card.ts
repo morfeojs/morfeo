@@ -41,7 +41,7 @@ export const Card: ComponentConfig = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-      }
-    }
+      },
+    },
   },
 } as ComponentConfig;

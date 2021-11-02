@@ -3,20 +3,20 @@ import { ComponentConfig } from '@morfeo/react';
 export const Box: ComponentConfig = {
   tag: 'div',
   style: {
-    fontFamily: 'regular'
+    fontFamily: 'regular',
   },
   variants: {
     flexRow: {
       style: {
         display: 'flex',
-        flexDirection: 'row'
-      }
+        flexDirection: 'row',
+      },
     },
     flexColumn: {
       style: {
-        flexDirection: 'column'
-      }
-    }
+        flexDirection: 'column',
+      },
+    },
   },
   meta: {
     description: 'a simple div',
@@ -29,7 +29,7 @@ export const Box: ComponentConfig = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-      }
-    }
-  }
+      },
+    },
+  },
 } as ComponentConfig;

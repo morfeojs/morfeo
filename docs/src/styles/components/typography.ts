@@ -101,7 +101,7 @@ export const Typography: ComponentConfig = {
     description: 'Typography component used to render text',
     tags: ['typography', 'fonts'],
     devtoolConfig: {
-      background: 'background'
-    }
+      background: 'background',
+    },
   },
 } as ComponentConfig;

@@ -9,7 +9,7 @@ export interface ComponentMeta {
     background?: Color | Record<string, Color>;
     label?: string;
     hide?: boolean;
-  }
+  };
 }
 
 type ComponentStyle<Props extends Style = Style> = {
