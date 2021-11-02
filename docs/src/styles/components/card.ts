@@ -9,6 +9,9 @@ export const Card: ComponentConfig = {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
+    fontFamily: 'regular',
+    bg: 'background',
+    shadow: 'light',
   },
   variants: {
     primary: {
@@ -30,5 +33,15 @@ export const Card: ComponentConfig = {
   meta: {
     tags: ['container', 'ui'],
     description: 'Card component',
+    devtoolConfig: {
+      background: 'background',
+      style: {
+        width: '80px',
+        height: '80px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+    },
   },
 } as ComponentConfig;

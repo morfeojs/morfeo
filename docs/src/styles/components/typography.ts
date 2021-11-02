@@ -100,5 +100,8 @@ export const Typography: ComponentConfig = {
   meta: {
     description: 'Typography component used to render text',
     tags: ['typography', 'fonts'],
+    devtoolConfig: {
+      background: 'background',
+    },
   },
 } as ComponentConfig;

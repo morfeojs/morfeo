@@ -5,6 +5,7 @@ import clsx from 'clsx';
 type Props = {
   name: Component;
   variant?: string;
+  applyDefaultStyle?: boolean;
 };
 
 type TagName = keyof HTMLElementTagNameMap;
@@ -13,12 +14,18 @@ export const MorfeoComponent: React.FC<Props> = ({
   name,
   variant,
   children,
+  applyDefaultStyle,
   ...props
 }) => {
-  const { tag = 'div', props: componentProps = {} } =
-    component(name, variant).get() || {};
+  const {
+    tag = 'div',
+    props: componentProps = {},
+    meta,
+  } = component(name, variant).get() || {};
+  const { devtoolConfig } = meta || {};
   const { classes } = getStyles({
     [name]: {
+      ...(applyDefaultStyle && devtoolConfig?.style),
       componentName: name as Component,
       variant,
     },
@@ -37,6 +44,6 @@ export const MorfeoComponent: React.FC<Props> = ({
       ...(props as any).style,
       ...(componentProps as any).style,
     },
-    children,
+    children: devtoolConfig?.label || children,
   });
 };

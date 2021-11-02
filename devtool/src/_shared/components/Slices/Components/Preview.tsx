@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { Component, component } from '@morfeo/react';
+import React, { useCallback, useMemo} from 'react';
+import { Color, Component, component, morfeo } from '@morfeo/react';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
@@ -41,7 +41,10 @@ const Info: React.FC<Props> = ({ name, variant }) => {
 
 export const Preview: React.FC<Props> = ({ name, variant }) => {
   const { navigate } = useRouter();
-
+  const { meta } =
+  component(name, variant).get() || {};
+  const currentThemeName = morfeo.getCurrent();
+  const { devtoolConfig } = meta || {};
   const onClick = useCallback(() => {
     navigate(RouteName.COMPONENT, {
       slice: SliceName.COMPONENTS,
@@ -49,6 +52,13 @@ export const Preview: React.FC<Props> = ({ name, variant }) => {
       componentVariant: variant,
     });
   }, [name, variant, navigate]);
+
+  const computedBackground = useMemo(() => {
+    if (typeof devtoolConfig?.background === 'object') {
+      return devtoolConfig?.background[currentThemeName]
+    }
+    return (devtoolConfig?.background as Color) || '#fff' as Color
+  }, [currentThemeName, devtoolConfig?.background])
 
   return (
     <Card
@@ -62,8 +72,11 @@ export const Preview: React.FC<Props> = ({ name, variant }) => {
         kind="squared"
         className={styles.previewContainer}
         copyText={variant || name}
+        style={{
+          bg: computedBackground,
+        }}
       >
-        <MorfeoComponent name={name} variant={variant}>
+        <MorfeoComponent applyDefaultStyle name={name} variant={variant}>
           {name}
         </MorfeoComponent>
       </Card>

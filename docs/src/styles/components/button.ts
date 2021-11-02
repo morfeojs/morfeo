@@ -19,18 +19,35 @@ export const Button: ComponentConfig = {
     },
   },
   variants: {
-    round: {
+    inverted: {
       style: {
-        corner: 'round',
-        px: 'none',
-        py: 'none',
-        size: 'xxl',
+        bg: 'transparent',
+        border: 'primary',
+        borderColor: 'primary',
+        color: 'textColor',
+      },
+    },
+    disabled: {
+      style: {
+        bg: 'grey.light',
+        color: 'light',
+        pointerEvent: 'none',
+        cursor: 'default',
+        '&:hover': {
+          opacity: 1,
+        },
       },
     },
     error: {
       style: {
-        bg: 'gray.lightest',
-        color: 'error',
+        bg: 'error',
+        color: 'white',
+      },
+    },
+    warning: {
+      style: {
+        bg: 'warning',
+        color: 'white',
       },
     },
     success: {
@@ -38,9 +55,42 @@ export const Button: ComponentConfig = {
         bg: 'success',
       },
     },
+    round: {
+      style: {
+        corner: 'round',
+        px: 'none',
+        py: 'none',
+        size: 'xxl',
+      },
+      meta: {
+        devtoolConfig: {
+          label: 'B',
+        },
+      },
+    },
+    'round.inverted': {
+      style: {
+        bg: 'transparent',
+        border: 'primary',
+        borderColor: 'primary',
+        color: 'textColor',
+        corner: 'round',
+        px: 'none',
+        py: 'none',
+        size: 'xxl',
+      },
+      meta: {
+        devtoolConfig: {
+          label: 'B',
+        },
+      },
+    },
   },
   meta: {
     tags: ['ui', 'form'],
     description: 'Button component',
+    devtoolConfig: {
+      background: 'background',
+    },
   },
 } as ComponentConfig;

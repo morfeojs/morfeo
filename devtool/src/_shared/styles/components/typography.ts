@@ -57,7 +57,7 @@ export const Typography: ComponentConfig = {
     p1: {
       tag: 'p',
       style: {
-        fontSize: 'm',
+        fontSize: 's',
         letterSpacing: 'body',
         lineHeight: 'body',
       },
@@ -65,19 +65,12 @@ export const Typography: ComponentConfig = {
     p2: {
       tag: 'p',
       style: {
-        fontSize: 's',
+        fontSize: 'xs',
         letterSpacing: 'body',
         lineHeight: 'body',
       },
     },
     p3: {
-      tag: 'p',
-      style: {
-        fontSize: 'xs',
-        lineHeight: 'body',
-      },
-    },
-    p4: {
       tag: 'p',
       style: {
         fontSize: 'xxs',
