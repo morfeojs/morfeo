@@ -56,15 +56,17 @@
   position: absolute;
   margin-left: var(--spacings-xxs);
   margin-right: var(--spacings-xxs);
-  transition: var(--transitions-medium);
+  transition: var(--transitions-none);
 }
 
 .valuesContainer:hover, .valuesContainer.comingSoon {
   width: fit-content;
+  transition: var(--transitions-medium);
 }
 
 .sliceContainer:hover .valueLabel, .valuesContainer.comingSoon .valueLabel {
   max-width: 10rem;
   opacity: 1;
   position: relative;
+  transition: var(--transitions-medium);
 }

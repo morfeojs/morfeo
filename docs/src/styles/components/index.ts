@@ -1,9 +1,10 @@
 import { Button } from './button';
 import { Typography } from './typography';
 import { Card } from './card';
+import { Box } from './box';
 
 export const components = {
-  Box: { style: {}, variants: {} },
+  Box,
   Card,
   Button,
   Typography,

@@ -37,7 +37,7 @@ export const SliceCard: React.FC<Props> = ({ name, values, status }) => {
       return undefined;
     }
     return (
-      <p className={clsx('morfeo-typography-p1', styles.value)}>{values}</p>
+      <p className={clsx('morfeo-typography-p2', styles.value)}>{values}</p>
     );
   }, [isComingSoon, values]);
 
@@ -56,12 +56,12 @@ export const SliceCard: React.FC<Props> = ({ name, values, status }) => {
     return (
       <p
         className={clsx(
-          'morfeo-typography-p1',
+          'morfeo-typography-p2',
           styles.value,
           styles.valueLabel,
         )}
       >
-        {labelText}
+        {labelText.toUpperCase()}
       </p>
     );
   }, [isEmpty, labelText]);

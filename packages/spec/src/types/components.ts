@@ -1,8 +1,15 @@
 import { Style } from './style';
+import { Color } from './colors';
 
 export interface ComponentMeta {
   description?: string;
   tags?: string[];
+  devtoolConfig?: {
+    style?: Style;
+    background?: Color | Record<string, Color>;
+    label?: string;
+    hide?: boolean;
+  }
 }
 
 type ComponentStyle<Props extends Style = Style> = {
