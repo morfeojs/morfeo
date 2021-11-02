@@ -1,8 +1,13 @@
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 
 function getMdPath(fileName) {
-  return path.resolve(__dirname, `../results`, `${fileName}.md`);
+  return path.resolve(
+    __dirname,
+    `../../../docs/docs/Benchmarks`,
+    `${fileName}.md`,
+  );
 }
 
 function writeInMd(mdPath, text) {
@@ -13,8 +18,19 @@ function appendInMd(mdPath, text) {
   fs.appendFileSync(mdPath, `\n\n${text}`);
 }
 
+function writeMdMeta(mdPath, { id, title }) {
+  writeInMd(
+    mdPath,
+    `---
+id: benchmarks-${id}
+title: ${title}
+description: Benchmarks > ${title}
+---`,
+  );
+}
+
 function writeMdTitle(mdPath, title) {
-  writeInMd(mdPath, `${title}`);
+  appendInMd(mdPath, `${title}`);
 }
 
 function onStart(mdPath, title, style) {
@@ -42,6 +58,25 @@ function onComplete(mdPath, suite) {
   console.log(result);
 }
 
+function appendMdFooter(mdPath) {
+  function printCpuCores() {
+    const cpus = os.cpus();
+
+    return `${cpus.length} cores, ${cpus[0].model}`;
+  }
+
+  appendInMd(
+    mdPath,
+    `:::info Notice
+Tests are made using [benchmarkjs](https://benchmarkjs.com/) running on:
+
+| OS     | VERSION  | CPU |
+| :----- | :-------- | :------- |
+| ${os.platform()} | ${os.version()} | ${printCpuCores()} |
+:::`,
+  );
+}
+
 module.exports = {
   onCycle,
   onStart,
@@ -49,5 +84,7 @@ module.exports = {
   writeInMd,
   appendInMd,
   onComplete,
+  writeMdMeta,
   writeMdTitle,
+  appendMdFooter,
 };

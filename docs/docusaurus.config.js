@@ -41,6 +41,12 @@ module.exports = {
           position: 'right',
           activeBaseRegex: `/packages/`,
         },
+        {
+          type: 'doc',
+          docId: 'Benchmarks/benchmarks-core',
+          position: 'right',
+          label: 'Benchmarks',
+        },
         { to: '/blog', label: 'Blog', position: 'right' },
         {
           href: 'https://github.com/VLK-STUDIO/morfeo',
