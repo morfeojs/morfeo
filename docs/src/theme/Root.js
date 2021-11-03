@@ -22,8 +22,10 @@ function Root({ children }) {
     <>
       {children}
       <CookieConsent
+        cookieName="MorfeoPrivacyCookie"
         buttonClasses="button button--secondary button--lg"
         buttonStyle={buttonStyle}
+        hideOnAccept
       >
         We use cookies to improve your experience on our site. To find out more,
         read our <Link to="/privacy">privacy policy</Link>.

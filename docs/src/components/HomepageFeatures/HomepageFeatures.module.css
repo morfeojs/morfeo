@@ -1,37 +1,10 @@
-/* stylelint-disable docusaurus/copyright-header */
-
 .preview {
   display: flex;
-  padding: var(--space-s);
+  padding-top: var(--space-s);
+  padding-bottom: var(--space-s);
   align-items: center;
   justify-content: center;
 }
-
-.codeContainer {
-  height: 20rem;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
-
-.code {
-  flex: 1;
-  position: relative;
-  border-radius: var(--radius-m);
-  border: 2px solid var(--ifm-color-primary-lightest);
-  overflow: hidden;
-  padding: 0;
-  margin: 0 var(--space-xxs);
-  height: 15rem;
-  background-color: rgb(41, 45, 62);
-  text-align: left;
-}
-
-.codeLabel {
-  margin-top: var(--space-xxs);
-  margin-left: var(--space-xxs);
-}
-
 .description {
   padding-top: var(--space-s);
 }
@@ -54,10 +27,5 @@
 @media (max-width: 966px) {
   .preview {
     flex-direction: column;
-  }
-
-  .codeContainer {
-    width: 100%;
-    margin-top: var(--space-xs);
   }
 }

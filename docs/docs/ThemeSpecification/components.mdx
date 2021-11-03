@@ -39,7 +39,7 @@ type Component = keyof Components;
 - `meta` additional information about the component, like a description.
 
 :::note
-It's important to know that the style generated for each component or variant will **always** be consistent with what is inside the attribute `style` of the configuration. `tag` and `props` attributes instead are information that you can specify or not to properly render the component. Libraries like **@morfeo/styled-components-web** uses this information to render the right tag an pass it the base properties automatically.
+It's important to know that the style generated for each component or variant will **always** be consistent with what is inside the attribute `style` of the configuration. `tag` and `props` attributes, instead, are information that you can specify or not to properly render the component. Libraries like **@morfeo/styled-components-web** uses this information to render the right tag and pass it the base properties automatically.
 :::
 
 ### Usage
@@ -117,7 +117,7 @@ morfeo.setTheme('My Theme Name', myTheme);
 ## Properties
 
 In this table is shown the property you pass to `morfeo.resolve`, the actual CSS property or properties that will be generated,
-an example of usage, and an the correspondent output:
+an example of usage, and the correspondent output:
 
 | name                   | css property                            | example                                           | output                                  |
 | :--------------------- | :-------------------------------------- | :------------------------------------------------ | :-------------------------------------- |

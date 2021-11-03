@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  min-width: 20rem;
+  height: 20rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.code {
+  flex: 1;
+  border: 2px solid var(--ifm-color-primary-lightest);
+  margin: 0 var(--space-xxs);
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  border-radius: var(--radius-m);
+  background-color: rgb(41, 45, 62);
+}
+
+.label {
+  margin-top: var(--space-xxs);
+  margin-left: var(--space-xxs);
+}
+
+@media (max-width: 966px) {
+  .container {
+    width: 100%;
+    margin-top: var(--space-xs);
+    font-size: 0.99em;
+  }
+}
