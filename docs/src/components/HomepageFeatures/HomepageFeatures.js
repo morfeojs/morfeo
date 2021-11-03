@@ -1,7 +1,7 @@
 import React from 'react';
-import CodeBlock from '@theme/CodeBlock';
 import { morfeo } from '@morfeo/react';
 import styles from './HomepageFeatures.module.css';
+import { CodeSnippet } from '../CodeSnippet';
 
 const exampleStyle = {
   bg: 'secondary',
@@ -36,30 +36,15 @@ export function HomepageFeatures() {
             , your theme and your components are automatically documented.
           </p>
           <div className={styles.preview}>
-            <div className={styles.codeContainer}>
-              <CodeBlock className={styles.code}>
-                {JSON.stringify(exampleTheme, undefined, 2)}
-              </CodeBlock>
-              <span className={styles.codeLabel}>
-                a theme: your design language
-              </span>
-            </div>
-
-            <div className={styles.codeContainer}>
-              <CodeBlock className={styles.code}>
-                {JSON.stringify(exampleStyle, undefined, 2)}
-              </CodeBlock>
-              <span className={styles.codeLabel}>
-                a style based on the theme
-              </span>
-            </div>
-
-            <div className={styles.codeContainer}>
-              <CodeBlock className={styles.code}>
-                {JSON.stringify(resultStyle, undefined, 2)}
-              </CodeBlock>
-              <span className={styles.codeLabel}>a valid CSS-in-JS</span>
-            </div>
+            <CodeSnippet
+              style={exampleTheme}
+              label="a theme: your design language"
+            />
+            <CodeSnippet
+              style={exampleStyle}
+              label="a style based on the theme"
+            />
+            <CodeSnippet style={resultStyle} label="a valid CSS-in-JS" />
           </div>
         </div>
       </div>
