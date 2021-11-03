@@ -497,100 +497,100 @@
   border: var(--border-widths-none) var(--border-styles-none);
 }
 .border-top-none {
-  border: var(--border-widths-none) var(--border-styles-none);
+  border-top: var(--border-widths-none) var(--border-styles-none);
 }
 .border-left-none {
-  border: var(--border-widths-none) var(--border-styles-none);
+  border-left: var(--border-widths-none) var(--border-styles-none);
 }
 .border-right-none {
-  border: var(--border-widths-none) var(--border-styles-none);
+  border-right: var(--border-widths-none) var(--border-styles-none);
 }
 .border-block-none {
-  border: var(--border-widths-none) var(--border-styles-none);
+  border-block: var(--border-widths-none) var(--border-styles-none);
 }
 .border-bottom-none {
-  border: var(--border-widths-none) var(--border-styles-none);
+  border-bottom: var(--border-widths-none) var(--border-styles-none);
 }
 .border-inline-none {
-  border: var(--border-widths-none) var(--border-styles-none);
+  border-inline: var(--border-widths-none) var(--border-styles-none);
 }
 .border-block-end-none {
-  border: var(--border-widths-none) var(--border-styles-none);
+  border-block-end: var(--border-widths-none) var(--border-styles-none);
 }
 .border-inline-end-none {
-  border: var(--border-widths-none) var(--border-styles-none);
+  border-inline-end: var(--border-widths-none) var(--border-styles-none);
 }
 .border-block-start-none {
-  border: var(--border-widths-none) var(--border-styles-none);
+  border-block-start: var(--border-widths-none) var(--border-styles-none);
 }
 .border-inline-start-none {
-  border: var(--border-widths-none) var(--border-styles-none);
+  border-inline-start: var(--border-widths-none) var(--border-styles-none);
 }
 .border-primary {
   border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-top-primary {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  border-top: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-left-primary {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  border-left: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-right-primary {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  border-right: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-block-primary {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  border-block: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-bottom-primary {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  border-bottom: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-inline-primary {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  border-inline: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-block-end-primary {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  border-block-end: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-inline-end-primary {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  border-inline-end: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-block-start-primary {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  border-block-start: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-inline-start-primary {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  border-inline-start: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-secondary {
   border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-top-secondary {
-  border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
+  border-top: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-left-secondary {
-  border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
+  border-left: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-right-secondary {
-  border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
+  border-right: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-block-secondary {
-  border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
+  border-block: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-bottom-secondary {
-  border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
+  border-bottom: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-inline-secondary {
-  border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
+  border-inline: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-block-end-secondary {
-  border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
+  border-block-end: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-inline-end-secondary {
-  border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
+  border-inline-end: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-block-start-secondary {
-  border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
+  border-block-start: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
 }
 .border-inline-start-secondary {
-  border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
+  border-inline-start: var(--border-widths-s) var(--border-styles-solid) var(--colors-text-color);
 }
 .font-size-xxs {
   font-size: var(--font-sizes-xxs);

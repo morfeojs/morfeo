@@ -1,0 +1,111 @@
+---
+sidebar_position: 10
+id: gradients
+title: Gradients
+description: Gradients theme slice
+---
+
+## Interface
+
+### Structure
+
+```typescript
+type GradientKind = 'linear' | 'radial';
+
+interface GradientConfig {
+  end?: number; // default 100
+  kind?: GradientKind; // linear
+  start?: number; // default 0
+  angle?: number; // default 0 (vertical)
+  colors: Color[];
+}
+
+interface Gradients {
+  [key: string]: GradientConfig;
+}
+
+type Gradient = keyof Gradients;
+```
+
+### Usage
+
+```typescript
+// Types are re-exported for ease of use by other packages
+// like @morfeo/core, @morfeo/web or @morfeo/react
+import { Gradient, Gradients } from '@morfeo/spec';
+```
+
+## Examples
+
+Using the [CLI compose command](../Features/CLI/compose.mdx):
+
+```typescript title="gradients.morfeo.ts"
+// Remove this line to add the slice to all of your themes
+export const themeName = 'My Theme Name';
+// Optional if you name the file gradients.morfeo.ts
+export const sliceName = 'gradients';
+
+export default {
+  primary: {
+    colors: ['primary', 'secondary'],
+  },
+  secondary: {
+    colors: ['light', 'white'],
+  },
+};
+```
+
+Or manually:
+
+```typescript title="gradients.ts"
+import { Gradients } from '@morfeo/spec';
+
+const gradients: Gradients = {
+  primary: {
+    colors: ['primary', 'secondary'],
+  },
+  secondary: {
+    colors: ['light', 'white'],
+  },
+};
+```
+
+```typescript title="theme.ts"
+import { gradients } from './gradients';
+
+const myTheme = {
+  gradients,
+  ...restOfTheTheme,
+};
+
+morfeo.setTheme('My Theme Name', myTheme);
+```
+
+## Properties
+
+In this table is shown the property you pass to `morfeo.resolve`, the actual CSS property or properties that will be generated,
+an example of usage, and an the correspondent output:
+
+| name         | css property                                                                                | example                         | output                                                                                                                                                                                              |
+| :----------- | :------------------------------------------------------------------------------------------ | :------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| gradient     | background                                                                                  | `{ gradient: "secondary"} `     | `{"background":"linear-gradient(180deg, #A3A3A3 0%, #ffffff 100%)"}`                                                                                                                                |
+| bgGradient   | background                                                                                  | `{ bgGradient: "secondary"} `   | `{"background":"linear-gradient(180deg, #A3A3A3 0%, #ffffff 100%)"}`                                                                                                                                |
+| textGradient | background, backgroundClip, textFillColor, -webkit-background-clip, -webkit-text-fill-color | `{ textGradient: "secondary"} ` | `{"background":"linear-gradient(180deg, #A3A3A3 0%, #ffffff 100%)","backgroundClip":"text","textFillColor":"transparent","-webkit-background-clip":"text","-webkit-text-fill-color":"transparent"}` |
+
+## Extend Slice with custom properties
+
+If you're using typescript and you add custom colors to your theme configuration, you'll need to merge
+the default `Gradients` interface with your custom one.
+We suggest creating a declaration file (for example: `morfeo.d.ts` or `types.d.ts`) like the following one:
+
+```typescript
+import { gradients } from './path/to/your/custom/gradients';
+
+type MyGradients = typeof gradients;
+
+declare module '@morfeo/spec' {
+  export interface Gradients extends MyGradients {}
+}
+```
+
+Read more about how to extend the default Morfeo Theme [here](../Features/extendible.mdx).

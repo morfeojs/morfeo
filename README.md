@@ -64,7 +64,7 @@ You can start using morfeo in 30 seconds:
   import '@morfeo/preset-default';
   ```
 
-- Use it everywhere to resolve a [morfeo style object](https://morfeo.dev/docs/theme-specification#morfeo-style-object) into a valid `css-in-js` object:
+- Use it everywhere to resolve a [morfeo style object](https://morfeo.dev/docs/ThemeSpecification/overview#morfeo-style-object) into a valid `css-in-js` object:
 
   ```tsx
   import { morfeo } from '@morfeo/core';

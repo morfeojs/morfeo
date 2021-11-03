@@ -1,0 +1,95 @@
+---
+sidebar_position: 19
+id: transitions
+title: Transitions
+description: Transitions theme slice
+---
+
+## Interface
+
+### Structure
+
+```typescript
+interface Transitions {
+  [key: string]: string;
+}
+
+type Transition = keyof Transitions;
+```
+
+### Usage
+
+```typescript
+// Types are re-exported for ease of use by other packages
+// like @morfeo/core, @morfeo/web or @morfeo/react
+import { Transition, Transitions } from '@morfeo/spec';
+```
+
+## Examples
+
+Using the [CLI compose command](../Features/CLI/compose.mdx):
+
+```typescript title="transitions.morfeo.ts"
+// Remove this line to add the slice to all of your themes
+export const themeName = 'My Theme Name';
+// Optional if you name the file transitions.morfeo.ts
+export const sliceName = 'transitions';
+
+export default {
+  slow: '1s ease',
+  medium: '.6s ease',
+  fast: '.3s ease',
+  none: '0s',
+};
+```
+
+Or manually:
+
+```typescript title="transitions.ts"
+import { Transitions } from '@morfeo/spec';
+
+const transitions: Transitions = {
+  slow: '1s ease',
+  medium: '.6s ease',
+  fast: '.3s ease',
+  none: '0s',
+};
+```
+
+```typescript title="theme.ts"
+import { transitions } from './transitions';
+
+const myTheme = {
+  transitions,
+  ...restOfTheTheme,
+};
+
+morfeo.setTheme('My Theme Name', myTheme);
+```
+
+## Properties
+
+In this table is shown the property you pass to `morfeo.resolve`, the actual CSS property or properties that will be generated,
+an example of usage, and an the correspondent output:
+
+| name       | css property | example                  | output                      |
+| :--------- | :----------- | :----------------------- | :-------------------------- |
+| transition | transition   | `{ transition: "fast"} ` | `{"transition":".3s ease"}` |
+
+## Extend Slice with custom properties
+
+If you're using typescript and you add custom colors to your theme configuration, you'll need to merge
+the default `Transitions` interface with your custom one.
+We suggest creating a declaration file (for example: `morfeo.d.ts` or `types.d.ts`) like the following one:
+
+```typescript
+import { transitions } from './path/to/your/custom/transitions';
+
+type MyTransitions = typeof transitions;
+
+declare module '@morfeo/spec' {
+  export interface Transitions extends MyTransitions {}
+}
+```
+
+Read more about how to extend the default Morfeo Theme [here](../Features/extendible.mdx).
