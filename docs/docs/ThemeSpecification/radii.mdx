@@ -1,0 +1,122 @@
+---
+sidebar_position: 15
+id: radii
+title: Radii
+description: Radii theme slice
+---
+
+## Interface
+
+### Structure
+
+```typescript
+interface Radii {
+  [key: string]: string;
+}
+
+type Radius = keyof Radii;
+```
+
+### Usage
+
+```typescript
+// Types are re-exported for ease of use by other packages
+// like @morfeo/core, @morfeo/web or @morfeo/react
+import { Radius, Radii } from '@morfeo/spec';
+```
+
+## Examples
+
+Using the [CLI compose command](../Features/CLI/compose.mdx):
+
+```typescript title="radii.morfeo.ts"
+// Remove this line to add the slice to all of your themes
+export const themeName = 'My Theme Name';
+// Optional if you name the file radii.morfeo.ts
+export const sliceName = 'radii';
+
+export default {
+  xxs: '4px',
+  xs: '8px',
+  s: '12px',
+  m: '16px',
+  l: '20px',
+  xl: '24px',
+  xxl: '28px',
+  none: '0px',
+  round: '50%',
+};
+```
+
+Or manually:
+
+```typescript title="radii.ts"
+import { Radii } from '@morfeo/spec';
+
+const radii: Radii = {
+  xxs: '4px',
+  xs: '8px',
+  s: '12px',
+  m: '16px',
+  l: '20px',
+  xl: '24px',
+  xxl: '28px',
+  none: '0px',
+  round: '50%',
+};
+```
+
+```typescript title="theme.ts"
+import { radii } from './radii';
+
+const myTheme = {
+  radii,
+  ...restOfTheTheme,
+};
+
+morfeo.setTheme('My Theme Name', myTheme);
+```
+
+## Properties
+
+In this table is shown the property you pass to `morfeo.resolve`, the actual CSS property or properties that will be generated,
+an example of usage, and an the correspondent output:
+
+| name                    | css property            | example                            | output                               |
+| :---------------------- | :---------------------- | :--------------------------------- | :----------------------------------- |
+| borderRadius            | borderRadius            | `{ borderRadius: "l"} `            | `{"borderRadius":"20px"}`            |
+| borderEndEndRadius      | borderEndEndRadius      | `{ borderEndEndRadius: "l"} `      | `{"borderEndEndRadius":"20px"}`      |
+| borderTopLeftRadius     | borderTopLeftRadius     | `{ borderTopLeftRadius: "l"} `     | `{"borderTopLeftRadius":"20px"}`     |
+| borderEndStartRadius    | borderEndStartRadius    | `{ borderEndStartRadius: "l"} `    | `{"borderEndStartRadius":"20px"}`    |
+| borderTopRightRadius    | borderTopRightRadius    | `{ borderTopRightRadius: "l"} `    | `{"borderTopRightRadius":"20px"}`    |
+| borderStartEndRadius    | borderStartEndRadius    | `{ borderStartEndRadius: "l"} `    | `{"borderStartEndRadius":"20px"}`    |
+| borderStartStartRadius  | borderStartStartRadius  | `{ borderStartStartRadius: "l"} `  | `{"borderStartStartRadius":"20px"}`  |
+| borderBottomLeftRadius  | borderBottomLeftRadius  | `{ borderBottomLeftRadius: "l"} `  | `{"borderBottomLeftRadius":"20px"}`  |
+| borderBottomRightRadius | borderBottomRightRadius | `{ borderBottomRightRadius: "l"} ` | `{"borderBottomRightRadius":"20px"}` |
+| corner                  | borderRadius            | `{ corner: "l"} `                  | `{"borderRadius":"20px"}`            |
+| cornerEndEnd            | borderEndEndRadius      | `{ cornerEndEnd: "l"} `            | `{"borderEndEndRadius":"20px"}`      |
+| cornerTopLeft           | borderTopLeftRadius     | `{ cornerTopLeft: "l"} `           | `{"borderTopLeftRadius":"20px"}`     |
+| cornerEndStart          | borderEndStartRadius    | `{ cornerEndStart: "l"} `          | `{"borderEndStartRadius":"20px"}`    |
+| cornerTopRight          | borderTopRightRadius    | `{ cornerTopRight: "l"} `          | `{"borderTopRightRadius":"20px"}`    |
+| cornerStartEnd          | borderStartEndRadius    | `{ cornerStartEnd: "l"} `          | `{"borderStartEndRadius":"20px"}`    |
+| cornerStartStart        | borderStartStartRadius  | `{ cornerStartStart: "l"} `        | `{"borderStartStartRadius":"20px"}`  |
+| cornerBottomLeft        | borderBottomLeftRadius  | `{ cornerBottomLeft: "l"} `        | `{"borderBottomLeftRadius":"20px"}`  |
+| cornerBottomRight       | borderBottomRightRadius | `{ cornerBottomRight: "l"} `       | `{"borderBottomRightRadius":"20px"}` |
+
+## Extend Slice with custom properties
+
+If you're using typescript and you add custom colors to your theme configuration, you'll need to merge
+the default `Radii` interface with your custom one.
+We suggest creating a declaration file (for example: `morfeo.d.ts` or `types.d.ts`) like the following one:
+
+```typescript
+import { radii } from './path/to/your/custom/radii';
+
+type MyRadii = typeof radii;
+
+declare module '@morfeo/spec' {
+  export interface Radii extends MyRadii {}
+}
+```
+
+Read more about how to extend the default Morfeo Theme [here](../Features/extendible.mdx).

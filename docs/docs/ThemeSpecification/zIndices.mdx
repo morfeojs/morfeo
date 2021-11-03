@@ -1,0 +1,95 @@
+---
+sidebar_position: 20
+id: z-indices
+title: ZIndices
+description: ZIndices theme slice
+---
+
+## Interface
+
+### Structure
+
+```typescript
+interface ZIndices {
+  [key: string]: number;
+}
+
+type ZIndex = keyof ZIndices;
+```
+
+### Usage
+
+```typescript
+// Types are re-exported for ease of use by other packages
+// like @morfeo/core, @morfeo/web or @morfeo/react
+import { ZIndex, ZIndices } from '@morfeo/spec';
+```
+
+## Examples
+
+Using the [CLI compose command](../Features/CLI/compose.mdx):
+
+```typescript title="zIndices.morfeo.ts"
+// Remove this line to add the slice to all of your themes
+export const themeName = 'My Theme Name';
+// Optional if you name the file zIndices.morfeo.ts
+export const sliceName = 'zIndices';
+
+export default {
+  none: 0,
+  light: 10,
+  medium: 50,
+  strong: 90,
+};
+```
+
+Or manually:
+
+```typescript title="zIndices.ts"
+import { ZIndices } from '@morfeo/spec';
+
+const zIndices: ZIndices = {
+  none: 0,
+  light: 10,
+  medium: 50,
+  strong: 90,
+};
+```
+
+```typescript title="theme.ts"
+import { zIndices } from './zIndices';
+
+const myTheme = {
+  zIndices,
+  ...restOfTheTheme,
+};
+
+morfeo.setTheme('My Theme Name', myTheme);
+```
+
+## Properties
+
+In this table is shown the property you pass to `morfeo.resolve`, the actual CSS property or properties that will be generated,
+an example of usage, and an the correspondent output:
+
+| name   | css property | example                | output          |
+| :----- | :----------- | :--------------------- | :-------------- |
+| zIndex | zIndex       | `{ zIndex: "medium"} ` | `{"zIndex":50}` |
+
+## Extend Slice with custom properties
+
+If you're using typescript and you add custom colors to your theme configuration, you'll need to merge
+the default `ZIndices` interface with your custom one.
+We suggest creating a declaration file (for example: `morfeo.d.ts` or `types.d.ts`) like the following one:
+
+```typescript
+import { zIndices } from './path/to/your/custom/zIndices';
+
+type MyZIndices = typeof zIndices;
+
+declare module '@morfeo/spec' {
+  export interface ZIndices extends MyZIndices {}
+}
+```
+
+Read more about how to extend the default Morfeo Theme [here](../Features/extendible.mdx).

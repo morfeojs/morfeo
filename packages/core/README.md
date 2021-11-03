@@ -42,7 +42,7 @@ yarn add @morfeo/core
 
 **@morfeo/core** has 2 main entities that encapsulate all the logic of morfeo which are the **theme** handler and the **parsers** handler, these 2 entities are exposed by a single, simple and easy to use interface called **morfeo**.
 
-With the function **morfeo** you can handle the theme object and resolve a [morfeo style object](https://morfeo.dev/docs/theme-specification#morfeo-style-object) info a valid css-in-js object.
+With the function **morfeo** you can handle the theme object and resolve a [morfeo style object](https://morfeo.dev/docs/ThemeSpecification/overview#morfeo-style-object) info a valid css-in-js object.
 
 > [Here](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec) you can find an explanation of the morfeo's theme specification; check it out to understand in deep all the properties your theme should have.
 
@@ -159,7 +159,7 @@ the style will be equals to:
 }
 ```
 
-> In this example we are using the property "px" that it's an alias for paddingLeft and paddingRight, check all the aliases [here](https://morfeo.dev/docs/theme-specification#properties)
+> In this example we are using the property "px" that it's an alias for paddingLeft and paddingRight, check all the aliases [here](https://morfeo.dev/docs/ThemeSpecification/overview#properties)
 
 You can even retrieve the style of a component by using the properties `componentName` and `variant`:
 

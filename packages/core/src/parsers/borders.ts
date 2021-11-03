@@ -30,11 +30,11 @@ function makeBorder({ color, style, width }: BorderConfig) {
   return [borderWidth, borderStyle, borderColor].filter(Boolean).join(' ');
 }
 
-function borderParser({ value }: ParserParams<'border'>) {
+function borderParser({ value, property }: ParserParams<'border'>) {
   const config = theme.getValue('borders', value as Border);
 
   return {
-    border: !config ? value : makeBorder(config),
+    [property]: !config ? value : makeBorder(config),
   };
 }
 

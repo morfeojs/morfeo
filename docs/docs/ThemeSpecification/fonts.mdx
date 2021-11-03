@@ -1,0 +1,91 @@
+---
+sidebar_position: 7
+id: fonts
+title: Fonts
+description: Fonts theme slice
+---
+
+## Interface
+
+### Structure
+
+```typescript
+interface Fonts {
+  [key: string]: string;
+}
+
+type Font = keyof Fonts;
+```
+
+### Usage
+
+```typescript
+// Types are re-exported for ease of use by other packages
+// like @morfeo/core, @morfeo/web or @morfeo/react
+import { Font, Fonts } from '@morfeo/spec';
+```
+
+## Examples
+
+Using the [CLI compose command](../Features/CLI/compose.mdx):
+
+```typescript title="fonts.morfeo.ts"
+// Remove this line to add the slice to all of your themes
+export const themeName = 'My Theme Name';
+// Optional if you name the file fonts.morfeo.ts
+export const sliceName = 'fonts';
+
+export default {
+  body: 'Montserrat',
+  heading: 'Montserrat',
+};
+```
+
+Or manually:
+
+```typescript title="fonts.ts"
+import { Fonts } from '@morfeo/spec';
+
+const fonts: Fonts = {
+  body: 'Montserrat',
+  heading: 'Montserrat',
+};
+```
+
+```typescript title="theme.ts"
+import { fonts } from './fonts';
+
+const myTheme = {
+  fonts,
+  ...restOfTheTheme,
+};
+
+morfeo.setTheme('My Theme Name', myTheme);
+```
+
+## Properties
+
+In this table is shown the property you pass to `morfeo.resolve`, the actual CSS property or properties that will be generated,
+an example of usage, and an the correspondent output:
+
+| name       | css property | example                     | output                        |
+| :--------- | :----------- | :-------------------------- | :---------------------------- |
+| fontFamily | fontFamily   | `{ fontFamily: "heading"} ` | `{"fontFamily":"Montserrat"}` |
+
+## Extend Slice with custom properties
+
+If you're using typescript and you add custom colors to your theme configuration, you'll need to merge
+the default `Fonts` interface with your custom one.
+We suggest creating a declaration file (for example: `morfeo.d.ts` or `types.d.ts`) like the following one:
+
+```typescript
+import { fonts } from './path/to/your/custom/fonts';
+
+type MyFonts = typeof fonts;
+
+declare module '@morfeo/spec' {
+  export interface Fonts extends MyFonts {}
+}
+```
+
+Read more about how to extend the default Morfeo Theme [here](../Features/extendible.mdx).

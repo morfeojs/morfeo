@@ -36,6 +36,12 @@ module.exports = {
           label: 'Docs',
         },
         {
+          type: 'doc',
+          docId: 'ThemeSpecification/overview',
+          position: 'right',
+          label: 'Theme Specification',
+        },
+        {
           to: 'docs/Packages/core',
           label: 'Packages',
           position: 'right',
@@ -72,7 +78,7 @@ module.exports = {
             },
             {
               label: 'Theme specification',
-              to: '/docs/theme-specification',
+              to: '/docs/ThemeSpecification/overview',
             },
             {
               label: 'Packages',

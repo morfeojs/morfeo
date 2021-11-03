@@ -1,0 +1,91 @@
+---
+sidebar_position: 11
+id: letter-spacings
+title: LetterSpacings
+description: LetterSpacings theme slice
+---
+
+## Interface
+
+### Structure
+
+```typescript
+interface LetterSpacings {
+  [key: string]: string;
+}
+
+type LetterSpacing = keyof LetterSpacings;
+```
+
+### Usage
+
+```typescript
+// Types are re-exported for ease of use by other packages
+// like @morfeo/core, @morfeo/web or @morfeo/react
+import { LetterSpacing, LetterSpacings } from '@morfeo/spec';
+```
+
+## Examples
+
+Using the [CLI compose command](../Features/CLI/compose.mdx):
+
+```typescript title="letterSpacings.morfeo.ts"
+// Remove this line to add the slice to all of your themes
+export const themeName = 'My Theme Name';
+// Optional if you name the file letterSpacings.morfeo.ts
+export const sliceName = 'letterSpacings';
+
+export default {
+  body: '0.01em',
+  heading: '0.02em',
+};
+```
+
+Or manually:
+
+```typescript title="letterSpacings.ts"
+import { LetterSpacings } from '@morfeo/spec';
+
+const letterSpacings: LetterSpacings = {
+  body: '0.01em',
+  heading: '0.02em',
+};
+```
+
+```typescript title="theme.ts"
+import { letterSpacings } from './letterSpacings';
+
+const myTheme = {
+  letterSpacings,
+  ...restOfTheTheme,
+};
+
+morfeo.setTheme('My Theme Name', myTheme);
+```
+
+## Properties
+
+In this table is shown the property you pass to `morfeo.resolve`, the actual CSS property or properties that will be generated,
+an example of usage, and an the correspondent output:
+
+| name          | css property  | example                        | output                       |
+| :------------ | :------------ | :----------------------------- | :--------------------------- |
+| letterSpacing | letterSpacing | `{ letterSpacing: "heading"} ` | `{"letterSpacing":"0.02em"}` |
+
+## Extend Slice with custom properties
+
+If you're using typescript and you add custom colors to your theme configuration, you'll need to merge
+the default `LetterSpacings` interface with your custom one.
+We suggest creating a declaration file (for example: `morfeo.d.ts` or `types.d.ts`) like the following one:
+
+```typescript
+import { letterSpacings } from './path/to/your/custom/letterSpacings';
+
+type MyLetterSpacings = typeof letterSpacings;
+
+declare module '@morfeo/spec' {
+  export interface LetterSpacings extends MyLetterSpacings {}
+}
+```
+
+Read more about how to extend the default Morfeo Theme [here](../Features/extendible.mdx).

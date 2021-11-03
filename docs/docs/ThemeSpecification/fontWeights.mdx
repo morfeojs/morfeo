@@ -1,0 +1,93 @@
+---
+sidebar_position: 9
+id: font-weights
+title: FontWeights
+description: FontWeights theme slice
+---
+
+## Interface
+
+### Structure
+
+```typescript
+interface FontWeights {
+  [key: string]: string;
+}
+
+type FontWeight = keyof FontWeights;
+```
+
+### Usage
+
+```typescript
+// Types are re-exported for ease of use by other packages
+// like @morfeo/core, @morfeo/web or @morfeo/react
+import { FontWeight, FontWeights } from '@morfeo/spec';
+```
+
+## Examples
+
+Using the [CLI compose command](../Features/CLI/compose.mdx):
+
+```typescript title="fontWeights.morfeo.ts"
+// Remove this line to add the slice to all of your themes
+export const themeName = 'My Theme Name';
+// Optional if you name the file fontWeights.morfeo.ts
+export const sliceName = 'fontWeights';
+
+export default {
+  regular: '300',
+  medium: '500',
+  bold: '700',
+};
+```
+
+Or manually:
+
+```typescript title="fontWeights.ts"
+import { FontWeights } from '@morfeo/spec';
+
+const fontWeights: FontWeights = {
+  regular: '300',
+  medium: '500',
+  bold: '700',
+};
+```
+
+```typescript title="theme.ts"
+import { fontWeights } from './fontWeights';
+
+const myTheme = {
+  fontWeights,
+  ...restOfTheTheme,
+};
+
+morfeo.setTheme('My Theme Name', myTheme);
+```
+
+## Properties
+
+In this table is shown the property you pass to `morfeo.resolve`, the actual CSS property or properties that will be generated,
+an example of usage, and an the correspondent output:
+
+| name       | css property | example                    | output                 |
+| :--------- | :----------- | :------------------------- | :--------------------- |
+| fontWeight | fontWeight   | `{ fontWeight: "medium"} ` | `{"fontWeight":"500"}` |
+
+## Extend Slice with custom properties
+
+If you're using typescript and you add custom colors to your theme configuration, you'll need to merge
+the default `FontWeights` interface with your custom one.
+We suggest creating a declaration file (for example: `morfeo.d.ts` or `types.d.ts`) like the following one:
+
+```typescript
+import { fontWeights } from './path/to/your/custom/fontWeights';
+
+type MyFontWeights = typeof fontWeights;
+
+declare module '@morfeo/spec' {
+  export interface FontWeights extends MyFontWeights {}
+}
+```
+
+Read more about how to extend the default Morfeo Theme [here](../Features/extendible.mdx).

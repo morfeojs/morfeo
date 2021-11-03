@@ -1,0 +1,255 @@
+---
+sidebar_position: 6
+id: components
+title: Components
+description: Components theme slice
+---
+
+## Interface
+
+### Structure
+
+```typescript
+type ComponentConfig = ComponentStyle<Props> & {
+  tag?: string;
+  style: Style;
+  props?: Props;
+  meta?: ComponentMeta;
+  variants: {
+    [key: string]: {
+      tag?: string;
+      style: Style;
+      props?: Props;
+      meta?: ComponentMeta;
+    };
+  };
+};
+
+interface Components {
+  [key: string]: ComponentConfig;
+}
+
+type Component = keyof Components;
+```
+
+- `tag` indicates the HTML tag to use to render the component
+- `style` is the style of the component
+- `props` indicates a set of attributes to be passed to the component
+- `variants` is an object where the key is the name of the variant and the value is the configuration for that variant.
+- `meta` additional information about the component, like a description.
+
+:::note
+It's important to know that the style generated for each component or variant will **always** be consistent with what is inside the attribute `style` of the configuration. `tag` and `props` attributes instead are information that you can specify or not to properly render the component. Libraries like **@morfeo/styled-components-web** uses this information to render the right tag an pass it the base properties automatically.
+:::
+
+### Usage
+
+```typescript
+// Types are re-exported for ease of use by other packages
+// like @morfeo/core, @morfeo/web or @morfeo/react
+import { Component, Components, ComponentConfig } from '@morfeo/spec';
+```
+
+## Examples
+
+Using the [CLI compose command](../Features/CLI/compose.mdx):
+
+```typescript title="Button.morfeo.ts"
+// Remove this line to add the slice to all of your themes
+export const themeName = 'My Theme Name';
+// Optional if you name the file Button.morfeo.ts
+export const componentName = 'Button';
+
+export default {
+  Button: {
+    tag: 'button',
+    style: {
+      bg: 'background',
+      corner: 'm',
+    },
+    variants: {
+      primary: {
+        style: {
+          bg: 'primary',
+          color: 'invertedTextColor',
+        },
+      },
+    },
+  },
+};
+```
+
+Or manually:
+
+```typescript title="components.ts"
+import { Components } from '@morfeo/spec';
+
+const components: Components = {
+  Button: {
+    tag: 'button',
+    style: {
+      bg: 'background',
+      corner: 'm',
+    },
+    variants: {
+      primary: {
+        style: {
+          bg: 'primary',
+          color: 'invertedTextColor',
+        },
+      },
+    },
+  },
+};
+```
+
+```typescript title="theme.ts"
+import { components } from './components';
+
+const myTheme = {
+  components,
+  ...restOfTheTheme,
+};
+
+morfeo.setTheme('My Theme Name', myTheme);
+```
+
+## Properties
+
+In this table is shown the property you pass to `morfeo.resolve`, the actual CSS property or properties that will be generated,
+an example of usage, and an the correspondent output:
+
+| name                   | css property                            | example                                           | output                                  |
+| :--------------------- | :-------------------------------------- | :------------------------------------------------ | :-------------------------------------- |
+| componentName          | `It depends on the theme configuration` | `{ componentName: 'Button' }`                     | `It depends on the theme configuration` |
+| componentName, variant | `It depends on the theme configuration` | `{ componentName: 'Button', variant: 'primary' }` | `It depends on the theme configuration` |
+
+The previous example will generate the style:
+
+```typescript
+const style = morfeo.resolve({ componentName: 'Button', variant: 'primary' });
+/*
+ {
+    borderRadius: '16px',
+    backgroundColor: '#06f',
+    color: '#ffffff',
+ }
+*/
+```
+
+## Understanding variants
+
+A variant of a component it's a variation of the component base style, in the previous example, in fact, the variant `primary` of the
+component `Button` defines additional style to the base style, this additional style will be added to the base one.
+
+In case the variant re-declared some of the properties of the parent, those properties will override the parent one (variants wins).
+
+For example:
+
+```json
+{
+  "Button": {
+    "tag": "button",
+    "style": {
+      "bg": "background",
+      "corner": "m"
+    },
+    "variants": {
+      "primary": {
+        "style": {
+          "bg": "primary",
+          "color": "invertedTextColor"
+        }
+      }
+    }
+  }
+}
+```
+
+The complete style of the variant `primary` is:
+
+```json
+{
+  "corner": "m",
+  "bg": "primary",
+  "color": "invertedTextColor"
+}
+```
+
+Where:
+
+- `corner` comes from the parent
+- `bg` overrides the parent (was 'background' not is 'primary')
+- `color` is added by the variant
+
+Common use cases for variations of a component could be:
+
+- Variations of Buttons, for example `success`, `danger`, `cancel`, `submit` and so on...
+- Typographies for example a variant for `titles`, `paragraphs`, `captions` or `links`
+- Different flex direction for a container like `row` and `column`
+- Variations of Inputs to stylize them in case of `errors`, `loading`, or `missing values`.
+
+:::info Notice
+Notice that a variant can re-define or add any configuration that can be define in the parent one, like `tag`,
+`props`, `style` and `meta` but NOT `variants`! In fact, a variant **cannot have other variants itself**!
+:::
+
+## The Meta attribute
+
+As you could notice, in the interface `ComponentConfig` there is an **optional** field called `meta`, this field is used to give additional information about the component, for example a description or tags that can be used to categorize the component, you can use this information
+in your documentation, Morfeo uses them inside the [Web Extension](../Features/web-extension.mdx) to properly document and show your components:
+
+```typescript title="theme.ts"
+{
+  components: {
+    Input: {
+      style: { ... },
+      variants: { ... },
+      meta: {
+        description: "Input component, should used inside forms. Use the variant `error` in case of invalid values.",
+        tags: ['form', 'input'],
+        devtoolConfig: {
+          // Inside the web extension the card the contains this component
+          // will have a `gray.dark` background color
+          // highlight-start
+          background: 'gray.dark'
+          // highlight-end
+        }
+      }
+    },
+  }
+}
+```
+
+The `meta` attribute is described by the following interface:
+
+```typescript
+interface ComponentMeta {
+  description?: string;
+  tags?: string[];
+  devtoolConfig?: {
+    style?: Style;
+    background?: Color | Record<string, Color>;
+    label?: string;
+    hide?: boolean;
+  };
+}
+```
+
+## Extend Slice with custom properties
+
+If you're using typescript and you add custom colors to your theme configuration, you'll need to merge
+the default `Components` interface with your custom one.
+We suggest creating a declaration file (for example: `morfeo.d.ts` or `types.d.ts`) like the following one:
+
+```typescript
+import { components } from './path/to/your/custom/components';
+
+type MyComponents = typeof components;
+
+declare module '@morfeo/spec' {
+  export interface Components extends MyComponents {}
+}
+```
+
+Read more about how to extend the default Morfeo Theme [here](../Features/extendible.mdx).
