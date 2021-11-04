@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
-    "@morfeo/preset-default": "^0.3.1",
-    "@morfeo/react": "^0.3.1",
+    "@morfeo/preset-default": "^0.3.2",
+    "@morfeo/react": "^0.3.2",
     "@svgr/webpack": "5.5.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -166,7 +166,7 @@
     ]
   },
   "devDependencies": {
-    "@morfeo/cli": "^0.3.1",
+    "@morfeo/cli": "^0.3.2",
     "@types/prismjs": "^1.16.6",
     "@types/react-transition-group": "^4.4.3",
     "@types/webextension-polyfill": "^0.8.0"

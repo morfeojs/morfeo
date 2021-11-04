@@ -1,7 +1,7 @@
 {
   "name": "@morfeo/cli",
   "description": "a command line interface to use morfeo",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": {
     "name": "Mauro Erta",
     "email": "mauro@vlkstudio.com"
@@ -11,7 +11,7 @@
     "morfeo": "./bin/run"
   },
   "dependencies": {
-    "@morfeo/web": "^0.3.1",
+    "@morfeo/web": "^0.3.2",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",
