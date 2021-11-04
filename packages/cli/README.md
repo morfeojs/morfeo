@@ -20,7 +20,7 @@ $ npm install -g @morfeo/cli
 $ morfeo COMMAND
 running command...
 $ morfeo (-v|--version|version)
-@morfeo/cli/0.3.0 darwin-x64 node-v14.16.0
+@morfeo/cli/0.3.2 darwin-x64 node-v14.16.0
 $ morfeo --help [COMMAND]
 USAGE
   $ morfeo COMMAND
@@ -55,6 +55,8 @@ EXAMPLES
   $ morfeo build path/to/theme.ts --name="light"
 ```
 
+_See code: [lib/commands/build.js](https://github.com/VLK-STUDIO/morfeo/blob/v0.3.2/lib/commands/build.js)_
+
 ## `morfeo compose`
 
 compose morfeo style files into themes
@@ -72,6 +74,8 @@ EXAMPLES
   $ morfeo compose
   $ morfeo compose --watch
 ```
+
+_See code: [lib/commands/compose.js](https://github.com/VLK-STUDIO/morfeo/blob/v0.3.2/lib/commands/compose.js)_
 
 ## `morfeo help [COMMAND]`
 
@@ -151,5 +155,5 @@ module.exports = {
 };
 ```
 
-> with the flag -c or ---config you can specify a different path for the configuration, for example:
+> with the flag -c or --config you can specify a different path for the configuration, for example:
 > `morfeo build --config=src/configs/morfeo.config.ts`

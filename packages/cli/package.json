@@ -1,7 +1,7 @@
 {
   "name": "@morfeo/cli",
   "description": "a command line interface to use morfeo",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "author": {
     "name": "Mauro Erta",
     "email": "mauro@vlkstudio.com"
@@ -11,16 +11,16 @@
     "morfeo": "./bin/run"
   },
   "dependencies": {
-    "@morfeo/web": "^0.3.0",
+    "@morfeo/web": "^0.3.2",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",
     "chalk": "^4.1.2",
     "change-case": "^4.1.2",
     "chokidar": "^3.5.2",
+    "cli-ux": "^6.0.0",
     "glob": "^7.1.7",
-    "tslib": "^1.14.1",
-    "cli-ux": "^6.0.0"
+    "tslib": "^1.14.1"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
@@ -61,7 +61,7 @@
   },
   "scripts": {
     "build": "rm -rf lib && tsc -b",
-    "prepack": "npm run build && oclif-dev manifest && oclif-dev readme",
+    "prepack": "npm run build && oclif-dev manifest",
     "version": "oclif-dev readme"
   },
   "types": "lib/index.d.ts",

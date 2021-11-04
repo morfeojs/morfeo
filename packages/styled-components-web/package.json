@@ -5,7 +5,7 @@
     "email": "mauro@vlkstudio.com"
   },
   "private": false,
-  "version": "0.3.0",
+  "version": "0.3.2",
   "license": "MIT",
   "main": "build/index.js",
   "module": "build/index.js",
@@ -24,7 +24,7 @@
     "watch": "tsc -w"
   },
   "peerDependencies": {
-    "@morfeo/react": "^0.3.0",
+    "@morfeo/react": "^0.3.2",
     "csstype": "^3.0.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -49,6 +49,6 @@
     "url": "https://github.com/VLK-STUDIO/morfeo/issues"
   },
   "dependencies": {
-    "@morfeo/react": "^0.3.0"
+    "@morfeo/react": "^0.3.2"
   }
 }
