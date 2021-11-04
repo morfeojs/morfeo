@@ -20,7 +20,7 @@ $ npm install -g @morfeo/cli
 $ morfeo COMMAND
 running command...
 $ morfeo (-v|--version|version)
-@morfeo/cli/0.3.0 darwin-x64 node-v14.16.0
+@morfeo/cli/0.3.1 darwin-x64 node-v14.16.0
 $ morfeo --help [COMMAND]
 USAGE
   $ morfeo COMMAND
@@ -151,5 +151,5 @@ module.exports = {
 };
 ```
 
-> with the flag -c or ---config you can specify a different path for the configuration, for example:
+> with the flag -c or --config you can specify a different path for the configuration, for example:
 > `morfeo build --config=src/configs/morfeo.config.ts`
