@@ -20,8 +20,16 @@ jobs:
            git update-index --assume-unchanged $i
          done
          git update-index --assume-unchanged lerna.json
-      - run: npm run reset
       # Publish to npm
-      - run: npx lerna publish from-package --yes --no-verify-access
+      - run: npm run publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v2
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@morfeo'
+      # Publish to GitHub Packages
+      - run: npm run publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -47,7 +47,6 @@
     "morfeo",
     "design",
     "system",
-    "morfeo",
     "builder",
     "morfeo-js"
   ],
@@ -61,9 +60,9 @@
     ]
   },
   "scripts": {
-    "postpack": "rm -f oclif.manifest.json",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-    "version": "oclif-dev readme && git add README.md"
+    "build": "rm -rf lib && tsc -b",
+    "prepack": "npm run build && oclif-dev manifest && oclif-dev readme",
+    "version": "oclif-dev readme"
   },
   "types": "lib/index.d.ts",
   "publishConfig": {
