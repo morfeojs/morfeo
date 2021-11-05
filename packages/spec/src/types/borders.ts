@@ -2,13 +2,13 @@ import { bordersMap, borderStylesMap, borderWidthsMap } from '../properties';
 import { Color } from './colors';
 
 export interface BorderWidths {
-  xxs: string;
+  '2xs': string;
   xs: string;
   s: string;
   m: string;
   l: string;
   xl: string;
-  xxl: string;
+  '2xl': string;
   none: string;
 }
 
@@ -50,8 +50,9 @@ export type BorderConfig = {
 
 export interface Borders {
   none: BorderConfig;
-  primary: BorderConfig;
-  secondary: BorderConfig;
+  thin: BorderConfig;
+  medium: BorderConfig;
+  strong: BorderConfig;
 }
 
 export type Border = keyof Borders;

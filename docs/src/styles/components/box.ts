@@ -3,7 +3,7 @@ import { ComponentConfig } from '@morfeo/react';
 export const Box: ComponentConfig = {
   tag: 'div',
   style: {
-    fontFamily: 'regular',
+    fontFamily: 'default',
   },
   variants: {
     flexRow: {

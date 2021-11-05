@@ -2,8 +2,8 @@ import { ComponentConfig } from '@morfeo/react';
 
 export const Typography: ComponentConfig = {
   style: {
-    fontFamily: 'regular',
-    color: 'textColor',
+    fontFamily: 'default',
+    color: 'text',
   },
   variants: {
     hero: {
@@ -73,7 +73,7 @@ export const Typography: ComponentConfig = {
     p4: {
       tag: 'p',
       style: {
-        fontSize: 'xxs',
+        fontSize: '2xs',
         lineHeight: 'body',
       },
     },
@@ -91,7 +91,7 @@ export const Typography: ComponentConfig = {
     },
     caption: {
       style: {
-        fontSize: 'xxs',
+        fontSize: '2xs',
         lineHeight: 'body',
         fontStyle: 'italic',
       },

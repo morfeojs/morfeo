@@ -2,31 +2,11 @@ export const loadFontsParams = [
   {
     urls: [
       {
-        url: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&display=swap',
+        url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Open+Sans:wght@300;600&display=swap',
       },
     ],
     importFontFace: true,
-    family: 'IBM Plex Sans',
-    name: 'regular',
-  },
-  {
-    urls: [
-      {
-        url: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap',
-      },
-    ],
-    importFontFace: true,
-    family: 'IBM Plex Sans',
-    name: 'medium',
-  },
-  {
-    urls: [
-      {
-        url: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap',
-      },
-    ],
-    importFontFace: true,
-    family: 'IBM Plex Sans',
-    name: 'bold',
+    name: 'default',
+    family: 'Montserrat',
   },
 ];

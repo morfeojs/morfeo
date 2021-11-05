@@ -1,12 +1,18 @@
-import { FontSizes } from '@morfeo/spec';
-
-export const fontSizes: FontSizes = {
-  xxs: '11px',
-  xs: '14px',
-  s: '16px',
-  m: '18px',
-  l: '26px',
-  xl: '36px',
-  xxl: '44px',
-  none: '0px',
+export const fontSizes = {
+  '2xs': '.5rem',
+  xs: '.75rem',
+  s: '.875rem',
+  m: '1rem',
+  l: '1.125rem',
+  xl: '1.5rem',
+  '2xl': '2rem',
+  '3xl': '5rem',
+  '4xl': '7rem',
+  none: '0',
 };
+
+type LocalFontSizes = typeof fontSizes;
+
+declare module '@morfeo/spec' {
+  export interface FontSizes extends LocalFontSizes {}
+}

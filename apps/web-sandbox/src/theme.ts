@@ -7,8 +7,8 @@ export const components = {
     tag: 'button',
     style: {
       transition: 'slow',
-      height: 'xxl',
-      width: 'xxl',
+      height: '2xl',
+      width: '2xl',
       bg: 'primary',
       color: 'white',
       borderRadius: 'm',

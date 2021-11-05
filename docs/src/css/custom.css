@@ -22,22 +22,22 @@
   --ifm-hero-text-color: #2f2f2f;
 
   /* Radii */
-  --radius-xxs: 0.2rem;
+  --radius-2xs: 0.2rem;
   --radius-xs: 0.5rem;
   --radius-s: 0.7rem;
   --radius-m: 1rem;
   --radius-l: 1.3rem;
   --radius-xl: 1.6rem;
-  --radius-xxl: 1.8rem;
+  --radius-2xl: 1.8rem;
 
   /* Spacings */
-  --space-xxs: 0.8rem;
+  --space-2xs: 0.8rem;
   --space-xs: 1.6rem;
   --space-s: 2.4rem;
   --space-m: 3.2rem;
   --space-l: 4rem;
   --space-xl: 4.8rem;
-  --space-xxl: 5.6rem;
+  --space-2xl: 5.6rem;
 }
 
 .docusaurus-highlight-code-line {

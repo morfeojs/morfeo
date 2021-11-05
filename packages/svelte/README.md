@@ -61,7 +61,7 @@ const myTheme = {
         bg: 'dark',
         borderRadius: 'm',
         px: 'xs',
-        py: 'xxs',
+        py: '2xs',
       },
       props: {
         type: 'submit',

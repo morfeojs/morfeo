@@ -5,14 +5,19 @@ export const borders: Borders = {
     width: 'none',
     style: 'none',
   },
-  primary: {
+  strong: {
     width: 'm',
     style: 'solid',
-    color: 'textColor',
+    color: 'text',
   },
-  secondary: {
+  medium: {
     width: 's',
     style: 'solid',
-    color: 'textColor',
+    color: 'text',
+  },
+  thin: {
+    width: 'xs',
+    style: 'solid',
+    color: 'text',
   },
 };

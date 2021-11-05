@@ -7,9 +7,7 @@ import {
 } from '../properties';
 
 export interface Fonts {
-  bold: string;
-  medium: string;
-  regular: string;
+  default: string;
 }
 
 export type Font = keyof Fonts;
@@ -39,13 +37,13 @@ export interface FontWeightProps extends BaseFontWeightProps {}
 export type FontWeightProperty = keyof FontWeightProps;
 
 export interface FontSizes {
-  xxs: string;
+  '2xs': string;
   xs: string;
   s: string;
   m: string;
   l: string;
   xl: string;
-  xxl: string;
+  '2xl': string;
   none: string;
 }
 
