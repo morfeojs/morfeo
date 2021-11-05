@@ -30,7 +30,7 @@ afterAll(() => {
 describe('fonts', () => {
   test('should generate a style with fontFamily property', () => {
     const result = parsers.resolve({
-      fontFamily: 'regular',
+      fontFamily: 'regular' as any,
     });
     expect(result).toEqual({
       fontFamily: 'Any font',

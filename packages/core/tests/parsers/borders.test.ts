@@ -35,7 +35,7 @@ afterAll(() => {
 
 describe('borders', () => {
   test('should generate a style with border property', () => {
-    const result = parsers.resolve({ border: 'primary' });
+    const result = parsers.resolve({ border: 'primary' as any });
     expect(result).toEqual({
       border: '3px solid red',
     });
