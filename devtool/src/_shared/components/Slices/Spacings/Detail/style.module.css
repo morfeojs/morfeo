@@ -8,20 +8,20 @@
 }
 .value::after, .value::before {
   width: var(--sizes-s);
-  color: var(--colors-text-color);
+  color: var(--colors-text);
   transition: var(--transitions-fast);
   font-size: var(--font-sizes-m);
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
 
 .value::after {
   content: '→';
-  margin-left: calc(var(--spacings-xxs) / 2);
+  margin-left: calc(var(--spacings-2xs) / 2);
 }
 
 .value::before {
   content: '←';
-  margin-right: calc(var(--spacings-xxs) / 2);
+  margin-right: calc(var(--spacings-2xs) / 2);
 }

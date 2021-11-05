@@ -30,14 +30,14 @@ const RadiusCard: React.FC<Props> = ({ corner, value }) => {
         style={
           {
             corner,
-            size: 'var(--sizes-xxl)',
+            size: 'var(--sizes-2xl)',
             bg: 'var(--colors-primary)',
           } as any
         }
       >
         <h4
           className="morfeo-typography-h4"
-          style={{ color: 'var(--colors-inverted-text-color)' }}
+          style={{ color: 'var(--colors-inverted-text)' }}
         >
           {value}
         </h4>

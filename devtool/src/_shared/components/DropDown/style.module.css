@@ -11,11 +11,11 @@
 }
 
 .title {
-  color: var(--colors-inverted-text-color) !important;
+  color: var(--colors-inverted-text) !important;
 }
 
 .inverted .title {
-  color: var(--colors-text-color) !important;
+  color: var(--colors-text) !important;
 }
 
 .button {
@@ -29,12 +29,12 @@
 }
 
 .inverted .button {
-  color: var(--colors-inverted-text-color) !important;
+  color: var(--colors-inverted-text) !important;
   background-color: var(--colors-primary) !important;
 }
 
 .toggle {
-  margin-left: var(--spacings-xxs);
+  margin-left: var(--spacings-2xs);
   transition: var(--transitions-fast);
   transform: rotate(90deg);
 }
@@ -52,9 +52,9 @@
   display: flex;
   overflow: scroll;
   flex-direction: column;
-  bottom: calc(var(--spacings-xxs) * -1);
+  bottom: calc(var(--spacings-2xs) * -1);
   position: absolute;
-  z-index: var(--z-indices-medium);
+  z-index: var(--z-indices-low);
   justify-content: flex-start;
   align-items: flex-start;
   transform: translateY(100%);
@@ -72,15 +72,15 @@
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  padding-top: var(--spacings-xxs);
-  padding-bottom: var(--spacings-xxs);
+  padding-top: var(--spacings-2xs);
+  padding-bottom: var(--spacings-2xs);
 }
 
 .option::after {
   content: "";
   position: absolute;
   width: 60%;
-  height: var(--border-widths-xxs);
+  height: var(--border-widths-2xs);
   background-color: var(--colors-gray-lighter);
   bottom: 0;
   left: 50%;

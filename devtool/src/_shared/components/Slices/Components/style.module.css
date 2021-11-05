@@ -35,7 +35,7 @@
 }
 
 .componentName {
-  color: var(--colors-inverted-text-color) !important;
+  color: var(--colors-inverted-text) !important;
   max-width: 10rem;
   overflow: hidden;
   white-space: nowrap;
@@ -43,6 +43,6 @@
 }
 
 .tag {
-  color: var(--colors-inverted-text-color) !important;
+  color: var(--colors-inverted-text) !important;
   font-weight: bold;
 }

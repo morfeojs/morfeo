@@ -20,8 +20,8 @@ export const Detail: React.FC = () => {
           style={
             {
               shadow: detailKey as Shadow,
-              size: 'var(--sizes-xxl)',
-              corner: 'var(--radii-xxs)',
+              size: 'var(--sizes-2xl)',
+              corner: 'var(--radii-2xs)',
               bg: 'var(--colors-primary)',
             } as any
           }

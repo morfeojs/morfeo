@@ -2,11 +2,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: var(--z-indices-strong);
+  z-index: var(--z-indices-high);
   height: 5rem;
   width: 100%;
   background-color: var(--colors-primary);
-  color: var(--colors-inverted-text-color);
+  color: var(--colors-inverted-text);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,6 +34,6 @@
   background-color: var(--colors-background);
   padding-left: var(--spacings-m);
   padding-right: var(--spacings-m);
-  padding-top: var(--spacings-xxs);
-  padding-bottom: var(--spacings-xxs);
+  padding-top: var(--spacings-2xs);
+  padding-bottom: var(--spacings-2xs);
 }

@@ -6,7 +6,7 @@
   position: fixed;
   flex-direction: column;
   justify-content: space-between;
-  z-index: var(--z-indices-medium);
+  z-index: var(--z-indices-low);
   transform: translateX(-100%);
   transition: var(--transitions-fast);
   background-color: var(--colors-primary);
@@ -29,12 +29,12 @@
   width: 100%;
   height: fit-content;
   overflow-y: scroll;
-  color: var(--colors-inverted-text-color);
-  z-index: var(--z-indices-strong);
+  color: var(--colors-inverted-text);
+  z-index: var(--z-indices-high);
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: calc(2 * var(--sizes-xxl));
+  padding-top: calc(2 * var(--sizes-2xl));
 }
 
 .menuContainer {
@@ -83,7 +83,7 @@
 }
 
 .sidebarFooter {
-  border-top: var(--border-widths-s) solid var(--colors-inverted-text-color);
+  border-top: var(--border-widths-s) solid var(--colors-inverted-text);
   padding-top: var(--spacings-m);
   padding-bottom: var(--spacings-s);
 }
@@ -92,9 +92,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: var(--spacings-xxs);
+  margin-bottom: var(--spacings-2xs);
 }
 
 .footerItem a {
-  color: var(--colors-inverted-text-color) !important;
+  color: var(--colors-inverted-text) !important;
 }

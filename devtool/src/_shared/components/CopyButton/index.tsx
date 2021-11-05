@@ -63,7 +63,7 @@ export const CopyButton: React.FC<Props> = ({
         <Icon
           name={isCopied ? 'check' : 'copy'}
           size="xs"
-          color={'invertedTextColor' as Color}
+          color={'invertedText' as Color}
           className={styles.icon}
         />
       </div>

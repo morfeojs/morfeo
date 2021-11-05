@@ -2,7 +2,7 @@ import { ComponentConfig } from '@morfeo/react';
 
 export const Typography: ComponentConfig = {
   style: {
-    fontFamily: 'regular',
+    fontFamily: 'default',
   },
   variants: {
     hero: {
@@ -73,7 +73,7 @@ export const Typography: ComponentConfig = {
     p3: {
       tag: 'p',
       style: {
-        fontSize: 'xxs',
+        fontSize: '2xs',
         lineHeight: 'body',
       },
     },
@@ -97,13 +97,13 @@ export const Typography: ComponentConfig = {
           variant: 'h3',
           content: "'→'",
           width: 's',
-          ml: 'xxs',
+          ml: '2xs',
         },
       },
     },
     caption: {
       style: {
-        fontSize: 'xxs',
+        fontSize: '2xs',
         lineHeight: 'body',
         fontStyle: 'italic',
       },

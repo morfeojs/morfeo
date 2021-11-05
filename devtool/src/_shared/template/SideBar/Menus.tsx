@@ -49,7 +49,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
     <div className={clsx(styles.menuItem, isNotActive && styles.inactiveItem)}>
       <Icon
         name={icon}
-        color={(isNotActive ? 'gray.lighter' : 'invertedTextColor') as Color}
+        color={(isNotActive ? 'gray.lighter' : 'invertedText') as Color}
         size="xs"
         style={opacityStyle}
       />
@@ -61,9 +61,9 @@ const MenuItem: React.FC<MenuItemProps> = ({
         className="morfeo-typography-h3"
         style={{
           ...opacityStyle,
-          color: 'var(--color-inverted-text-color)',
+          color: 'var(--colors-inverted-text)',
           marginBottom: 'var(--spacings-none)',
-          marginLeft: 'var(--spacings-xxs)',
+          marginLeft: 'var(--spacings-2xs)',
           cursor: 'pointer',
         }}
       >

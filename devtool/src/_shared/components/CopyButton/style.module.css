@@ -2,8 +2,8 @@
   display: flex;
   width: var(--spacings-s);
   height: var(--spacings-s);
-  padding-left: calc(var(--spacings-xxs) / 2);
-  padding-right: calc(var(--spacings-xxs) / 2);
+  padding-left: calc(var(--spacings-2xs) / 2);
+  padding-right: calc(var(--spacings-2xs) / 2);
   overflow: hidden;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@
 }
 
 .copyButton p {
-  color: var(--colors-inverted-text-color) !important;
+  color: var(--colors-inverted-text) !important;
   max-width: 0;
   position: absolute;
   opacity: 0;
@@ -37,7 +37,7 @@
 .copyButton:hover p, .copyButton.copied p {
   opacity: 1;
   position: relative;
-  margin-right: var(--spacings-xxs);
+  margin-right: var(--spacings-2xs);
   max-width: 10rem;
 }
 

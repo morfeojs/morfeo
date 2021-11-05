@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  padding: var(--spacings-xxl);
+  padding: var(--spacings-2xl);
   align-items: center;
   flex-direction: column;
   justify-content: center;

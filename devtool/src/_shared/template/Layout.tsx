@@ -17,7 +17,7 @@ export const Layout: React.FC = ({ children }) => {
     if (shouldRender === false) {
       return (
         <div className={styles.loadingContainer}>
-          <Icon name="loading" size="xxl" />
+          <Icon name="loading" size="2xl" />
         </div>
       );
     }

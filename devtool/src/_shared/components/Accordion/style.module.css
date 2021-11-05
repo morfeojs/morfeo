@@ -7,7 +7,8 @@
 .toggle {
   transform: rotate(0deg);
   transition: var(--transitions-fast);
-  margin-right: var(--spacings-xxs);
+  margin-right: var(--spacings-2xs);
+  transform-origin: center center;
 }
 
 .open .toggle {
@@ -15,7 +16,7 @@
 }
 
 .icon {
-  margin-right: var(--spacings-xxs);
+  margin-right: var(--spacings-2xs);
 }
 
 .titleContainer {
