@@ -20,10 +20,6 @@
   background-color: var(--colors-primary-dark) !important;
 }
 
-.description {
-  line-height: var(--line-heights-heading) !important;
-}
-
 @media screen and (min-width: 375px) {
   .description {
     max-width: 100%;
