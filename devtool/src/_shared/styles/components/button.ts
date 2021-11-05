@@ -3,10 +3,10 @@ import { ComponentConfig } from '@morfeo/react';
 export const Button: ComponentConfig = {
   tag: 'button',
   style: {
-    py: 'xxs',
+    py: '2xs',
     px: 'xs',
     bg: 'primary',
-    color: 'invertedTextColor',
+    color: 'invertedText',
     cursor: 'pointer',
     corner: 'xs',
     border: 'none',

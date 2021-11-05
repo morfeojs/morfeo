@@ -8,7 +8,7 @@ const newImportedFontFace: LoadFontParams = {
       url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap',
     },
   ],
-  name: 'regular',
+  name: 'regular' as any,
   family: 'Roboto',
 };
 
@@ -18,7 +18,7 @@ const newFontFace: LoadFontParams = {
       url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap',
     },
   ],
-  name: 'bold',
+  name: 'bold' as any,
   family: 'Roboto',
 };
 

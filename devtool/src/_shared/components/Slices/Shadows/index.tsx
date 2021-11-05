@@ -29,7 +29,7 @@ const ItemCard: React.FC<Props> = ({ shadow }) => {
           {
             shadow,
             size: 'var(--sizes-xl)',
-            corner: 'var(--radii-xxs)',
+            corner: 'var(--radii-2xs)',
             bg: 'var(--colors-primary)',
           } as any
         }

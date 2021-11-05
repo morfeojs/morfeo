@@ -3,7 +3,7 @@ import { ComponentConfig } from '@morfeo/react';
 export const Button: ComponentConfig = {
   tag: 'button',
   style: {
-    py: 'xxs',
+    py: '2xs',
     px: 'm',
     bg: 'primary',
     color: 'white',
@@ -60,7 +60,7 @@ export const Button: ComponentConfig = {
         corner: 'round',
         px: 'none',
         py: 'none',
-        size: 'xxl',
+        size: '2xl',
       },
       meta: {
         devtoolConfig: {
@@ -77,7 +77,7 @@ export const Button: ComponentConfig = {
         corner: 'round',
         px: 'none',
         py: 'none',
-        size: 'xxl',
+        size: '2xl',
       },
       meta: {
         devtoolConfig: {

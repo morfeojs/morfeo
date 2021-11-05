@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
       return (
         <Icon
           name="chevron.left"
-          color={'invertedTextColor' as Color}
+          color={'invertedText' as Color}
           className={styles.backButton}
           onClick={navigateBack}
         />
@@ -53,8 +53,8 @@ export const Header: React.FC = () => {
         {backButton}
         <Icon
           name="logo"
-          color={'invertedTextColor' as Color}
-          size="xxl"
+          color={'invertedText' as Color}
+          size="2xl"
           onClick={() => navigate(RouteName.HOME)}
         />
       </div>

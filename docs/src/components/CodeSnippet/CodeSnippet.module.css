@@ -9,7 +9,7 @@
 .code {
   flex: 1;
   border: 2px solid var(--ifm-color-primary-lightest);
-  margin: 0 var(--space-xxs);
+  margin: 0 var(--space-2xs);
   padding: 0;
   overflow: hidden;
   position: relative;
@@ -19,8 +19,8 @@
 }
 
 .label {
-  margin-top: var(--space-xxs);
-  margin-left: var(--space-xxs);
+  margin-top: var(--space-2xs);
+  margin-left: var(--space-2xs);
 }
 
 @media (max-width: 966px) {

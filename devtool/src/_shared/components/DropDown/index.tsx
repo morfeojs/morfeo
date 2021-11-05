@@ -49,7 +49,7 @@ export const DropDown: React.FC<Props> = ({
         className={styles.option}
         onClick={getOnClick(optionValue)}
       >
-        <h4 className="morfeo-typography-h4 color-text-color ml-xs">
+        <h4 className="morfeo-typography-h4 color-text ml-xs">
           {optionLabel}
         </h4>
       </div>
@@ -75,7 +75,7 @@ export const DropDown: React.FC<Props> = ({
           {value || placeholder}
           <Icon
             name="chevron.right"
-            color={(inverted ? 'invertedTextColor' : 'textColor') as Color}
+            color={(inverted ? 'invertedText' : 'text') as Color}
             size="xs"
             className={styles.toggle}
           />

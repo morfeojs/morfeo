@@ -25,7 +25,7 @@ export const Accordion: React.FC<Props> = ({
         <Icon
           name="chevron.right"
           size="s"
-          color={'invertedTextColor' as Color}
+          color={'invertedText' as Color}
           className={styles.toggle}
         />
         <div className={styles.titleContainer}>
@@ -33,13 +33,13 @@ export const Accordion: React.FC<Props> = ({
             <Icon
               name={icon}
               size="s"
-              color={'invertedTextColor' as Color}
+              color={'invertedText' as Color}
               className={styles.icon}
             />
           )}
           <h2
             className="morfeo-typography-h2"
-            style={{ color: 'var(--color-inverted-text-color)' }}
+            style={{ color: 'var(--color-inverted-text)' }}
           >
             {label}
           </h2>

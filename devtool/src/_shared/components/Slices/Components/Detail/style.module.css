@@ -6,17 +6,17 @@
 .defaultStyleAlertContainer {
   display: flex;
   align-items: center;
-  margin-bottom: var(--spacings-xxs);
+  margin-bottom: var(--spacings-2xs);
 }
 
 .icon {
-  margin-right: var(--spacings-xxs);
+  margin-right: var(--spacings-2xs);
 }
 
 .previewContainer {
   width: 100%;
-  padding-top: var(--spacings-xxl);
-  padding-bottom: var(--spacings-xxl);
+  padding-top: var(--spacings-2xl);
+  padding-bottom: var(--spacings-2xl);
   margin-bottom: var(--spacings-l);
   display: flex;
   align-items: center;

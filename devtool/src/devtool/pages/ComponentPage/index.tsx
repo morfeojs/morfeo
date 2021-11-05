@@ -37,7 +37,7 @@ export const ComponentPage: React.FC = () => {
     <Page breadcrumb={['components', ...breadCrumb]} title={title}>
       <Detail />
       {state && state.detailKey && (
-        <div className="my-xxs mx-xs">
+        <div className="my-2xs mx-xs">
           <CodeSnippets
             slice={slice as SliceName}
             value={detailKey as string}

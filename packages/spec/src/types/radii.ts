@@ -1,13 +1,13 @@
 import { radiiMap } from '../properties';
 
 export interface Radii {
-  xxs: string;
+  '2xs': string;
   xs: string;
   s: string;
   m: string;
   l: string;
   xl: string;
-  xxl: string;
+  '2xl': string;
   none: string;
   round: string;
 }

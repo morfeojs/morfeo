@@ -1,14 +1,18 @@
 import { colorsMap } from '../properties';
 
 export interface Colors {
+  text: string;
   dark: string;
   light: string;
   error: string;
+  accent: string;
   success: string;
   warning: string;
   primary: string;
   secondary: string;
   background: string;
+  invertedText: string;
+  invertedBackground: string;
 }
 
 export type Color = keyof Colors;

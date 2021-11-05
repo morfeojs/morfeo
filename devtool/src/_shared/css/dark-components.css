@@ -1,6 +1,6 @@
 [data-morfeo-theme="dark"] .morfeo-box {}
 [data-morfeo-theme="dark"] .morfeo-card {
-  color: var(--colors-text-color);
+  color: var(--colors-text);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 [data-morfeo-theme="dark"] .morfeo-card-primary {
-  color: var(--colors-text-color);
+  color: var(--colors-text);
   cursor: pointer;
   display: flex;
   box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lightest);
@@ -17,7 +17,7 @@
   flex-direction: column;
 }
 [data-morfeo-theme="dark"] .morfeo-card-primary-clickable {
-  color: var(--colors-text-color);
+  color: var(--colors-text);
   cursor: pointer;
   display: flex;
   box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lightest);
@@ -31,35 +31,35 @@
   box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lighter);
 }
 [data-morfeo-theme="dark"] .morfeo-input {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  border: var(--border-widths-s) var(--border-styles-solid) var(--colors-text);
   height: var(--sizes-m);
   display: block;
   border-color: var(--colors-gray-lightest);
   padding-left: var(--spacings-xs);
-  border-radius: var(--radii-xxs);
+  border-radius: var(--radii-2xs);
   padding-right: var(--spacings-xs);
   background-color: var(--colors-white);
 }
 [data-morfeo-theme="dark"] .morfeo-input:focus {
-  border: var(--border-widths-m) var(--border-styles-solid) var(--colors-text-color);
+  outline: strong;
   border-color: var(--colors-gray-lighter);
 }
 [data-morfeo-theme="dark"] .morfeo-button {
-  color: var(--colors-inverted-text-color);
+  color: var(--colors-inverted-text);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
   outline: none;
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
-  padding-top: var(--spacings-xxs);
+  padding-top: var(--spacings-2xs);
   padding-left: var(--spacings-xs);
   border-radius: var(--radii-xs);
   padding-right: var(--spacings-xs);
-  padding-bottom: var(--spacings-xxs);
+  padding-bottom: var(--spacings-2xs);
   background-color: var(--colors-primary);
 }
 [data-morfeo-theme="dark"] .morfeo-button-round {
-  color: var(--colors-inverted-text-color);
+  color: var(--colors-inverted-text);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
   outline: none;
@@ -73,7 +73,7 @@
   background-color: var(--colors-primary);
 }
 [data-morfeo-theme="dark"] .morfeo-button-side {
-  color: var(--colors-inverted-text-color);
+  color: var(--colors-inverted-text);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
   outline: none;
@@ -97,109 +97,109 @@
   outline: none;
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
-  padding-top: var(--spacings-xxs);
+  padding-top: var(--spacings-2xs);
   padding-left: var(--spacings-xs);
   border-radius: var(--radii-xs);
   padding-right: var(--spacings-xs);
-  padding-bottom: var(--spacings-xxs);
+  padding-bottom: var(--spacings-2xs);
   background-color: var(--colors-light);
 }
 [data-morfeo-theme="dark"] .morfeo-button-success {
-  color: var(--colors-inverted-text-color);
+  color: var(--colors-inverted-text);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
   outline: none;
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
-  padding-top: var(--spacings-xxs);
+  padding-top: var(--spacings-2xs);
   padding-left: var(--spacings-xs);
   border-radius: var(--radii-xs);
   padding-right: var(--spacings-xs);
-  padding-bottom: var(--spacings-xxs);
+  padding-bottom: var(--spacings-2xs);
   background-color: var(--colors-success);
 }
 [data-morfeo-theme="dark"] .morfeo-typography {
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-hero {
   font-size: var(--font-sizes-l);
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-h1 {
   font-size: var(--font-sizes-xl);
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
   letter-spacing: var(--letter-spacings-heading);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-h2 {
   font-size: var(--font-sizes-l);
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-h3 {
   font-size: var(--font-sizes-m);
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-h4 {
   font-size: var(--font-sizes-s);
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-h5 {
   font-size: var(--font-sizes-m);
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   font-weight: var(--font-weights-regular);
   line-height: var(--line-heights-heading);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-p1 {
   font-size: var(--font-sizes-s);
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   line-height: var(--line-heights-body);
   letter-spacing: var(--letter-spacings-body);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-p2 {
   font-size: var(--font-sizes-xs);
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   line-height: var(--line-heights-body);
   letter-spacing: var(--letter-spacings-body);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-p3 {
-  font-size: var(--font-sizes-xxs);
-  font-family: var(--fonts-regular);
+  font-size: var(--font-sizes-2xs);
+  font-family: var(--fonts-default);
   line-height: var(--line-heights-body);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-link {
   color: var(--colors-primary);
   cursor: pointer;
   font-size: var(--font-sizes-m);
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   line-height: var(--line-heights-body);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-link:hover {
   color: var(--colors-primary-lightest);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-cta {
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-cta::after {
   width: var(--sizes-s);
   content: '→';
   font-size: var(--font-sizes-m);
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   font-weight: var(--font-weights-bold);
   line-height: var(--line-heights-heading);
-  margin-left: var(--spacings-xxs);
+  margin-left: var(--spacings-2xs);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-caption {
-  font-size: var(--font-sizes-xxs);
+  font-size: var(--font-sizes-2xs);
   font-style: italic;
-  font-family: var(--fonts-regular);
+  font-family: var(--fonts-default);
   line-height: var(--line-heights-body);
 }

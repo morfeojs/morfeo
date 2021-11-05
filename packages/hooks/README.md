@@ -109,7 +109,7 @@ const MyComponent: React.FC = () => {
   const { agreeStyle, disagreeStyle, textStyle } = useStyles({
     agreeStyle: { componentName: 'Button', variant: 'success' },
     disagreeStyle: { componentName: 'Button' },
-    textStyle: { fontSize: 'xxl', color: 'white' },
+    textStyle: { fontSize: '2xl', color: 'white' },
   });
 
   return (

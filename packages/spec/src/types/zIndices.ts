@@ -2,9 +2,12 @@ import { zIndicesMap } from '../properties';
 
 export interface ZIndices {
   none: string | number;
-  light: string | number;
-  strong: string | number;
-  medium: string | number;
+  lowest: string | number;
+  lower: string | number;
+  low: string | number;
+  high: string | number;
+  higher: string | number;
+  highest: string | number;
 }
 
 export type ZIndex = keyof ZIndices;

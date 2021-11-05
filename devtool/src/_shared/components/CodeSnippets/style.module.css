@@ -14,9 +14,9 @@
   cursor: pointer;
   height: var(--sizes-m);
   transition: var(--transitions-fast);
-  padding-top: var(--spacings-xxs);
+  padding-top: var(--spacings-2xs);
   padding-left: var(--spacings-xs);
-  margin-right: calc(var(--spacings-xxs) / 2);
+  margin-right: calc(var(--spacings-2xs) / 2);
   padding-right: var(--spacings-xs);
   background-color: var(--colors-gray-dark);
   border-top-left-radius: var(--radii-m);
@@ -28,7 +28,7 @@
 }
 
 .tabLabel {
-  color: var(--colors-inverted-text-color) !important;
+  color: var(--colors-inverted-text) !important;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

@@ -30,8 +30,8 @@ export const ExternalLink: React.FC<ExternalLinkProps> = ({ to, children }) => {
   return (
     <h3
       onClick={onClick}
-      className="morfeo-typography-h3  ml-xxs"
-      style={{ cursor: 'pointer', color: 'var(--colors-inverted-text-color)' }}
+      className="morfeo-typography-h3  ml-2xs"
+      style={{ cursor: 'pointer', color: 'var(--colors-inverted-text)' }}
     >
       {children}
     </h3>
@@ -76,24 +76,24 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
         >
           <Icon
             name="doubleChevron.right"
-            color={'invertedTextColor' as Color}
+            color={'invertedText' as Color}
           />
         </button>
       </div>
       <div className={styles.sidebarFooter}>
         <div className={styles.footerItem}>
-          <Icon name="docs" size="s" color={'invertedTextColor' as Color} />
+          <Icon name="docs" size="s" color={'invertedText' as Color} />
           <ExternalLink to="https://morfeo.dev/">
             {t('sidebarDocs')}
           </ExternalLink>
         </div>
         <div className={styles.footerItem}>
-          <Icon name="credits" size="s" color={'invertedTextColor' as Color} />
+          <Icon name="credits" size="s" color={'invertedText' as Color} />
           <Link
-            className="morfeo-typography-h3 ml-xxs"
+            className="morfeo-typography-h3 ml-2xs"
             style={{
               cursor: 'pointer',
-              color: 'var(--colors-inverted-text-color)',
+              color: 'var(--colors-inverted-text)',
             }}
             to={RouteName.CREDITS}
             onNavigate={toggle}
@@ -102,7 +102,7 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
           </Link>
         </div>
         <div className={styles.footerItem}>
-          <Icon name="github" size="s" color={'invertedTextColor' as Color} />
+          <Icon name="github" size="s" color={'invertedText' as Color} />
           <ExternalLink to="https://github.com/VLK-STUDIO/morfeo">
             {t('sidebarGithub')}
           </ExternalLink>

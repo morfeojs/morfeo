@@ -39,20 +39,20 @@ export const darkColors = {
   ...baseColors,
   background: '#000000',
   invertedBackground: '#ffffff',
-  textColor: '#ececec',
-  invertedTextColor: '#2f2f2f',
-  headTextColor: '#ffffff',
-  invertedHeadTextColor: '#000000',
+  text: '#ececec',
+  invertedText: '#2f2f2f',
+  headText: '#ffffff',
+  invertedHeadText: '#000000',
 };
 
 export const lightColors = {
   ...baseColors,
   background: '#ffffff',
   invertedBackground: '#000000',
-  textColor: '#2f2f2f',
-  invertedTextColor: '#ececec',
-  headTextColor: '#000000',
-  invertedHeadTextColor: '#ffffff',
+  text: '#2f2f2f',
+  invertedText: '#ececec',
+  headText: '#000000',
+  invertedHeadText: '#ffffff',
 };
 
 type LocalColors = typeof lightColors & typeof darkColors;

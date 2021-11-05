@@ -34,7 +34,7 @@ export const Detail = () => {
       {devtoolConfig?.style && (
         <div className={styles.defaultStyleAlertContainer}>
           <input type="checkbox" checked={defaultStyleActive} onChange={onDefaultStyleCheckboxChange} />
-          <div className="ml-xxs">
+          <div className="ml-2xs">
             <Icon name="warning" />
           </div>
           <h4 className="morfeo-typography-h4">

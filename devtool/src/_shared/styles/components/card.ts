@@ -4,7 +4,7 @@ export const Card: ComponentConfig = {
   tag: 'div',
   style: {
     cursor: 'pointer',
-    color: 'textColor',
+    color: 'text',
     corner: 's',
     display: 'flex',
     alignItems: 'center',
