@@ -7,7 +7,7 @@ function Options() {
   return (
     <div className={styles.container} data-morfeo-theme="light">
       <img src={logoVertical} alt="logo" className={styles.image} />
-      <p className={clsx(styles.description, 'morfeo-typography-p1', 'my-xl')}>
+      <p className={clsx('morfeo-typography-p1', 'my-xl')}>
         {t('bigDescription')}
       </p>
       <button

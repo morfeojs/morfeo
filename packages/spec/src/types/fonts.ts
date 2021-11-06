@@ -60,6 +60,7 @@ export type FontSizeProperty = keyof FontSizeProps;
 export interface LineHeights {
   body: string;
   heading: string;
+  none: string;
 }
 
 export type LineHeight = keyof LineHeights;
@@ -75,6 +76,7 @@ export type LineHeightProperty = keyof LineHeightProps;
 export interface LetterSpacings {
   body: string;
   heading: string;
+  none: string;
 }
 
 export type LetterSpacing = keyof LetterSpacings;

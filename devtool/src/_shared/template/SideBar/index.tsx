@@ -61,6 +61,7 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
           >
             <Slices onNavigate={toggle} />
           </Accordion>
+          <div className="mb-3xs" />
           <Accordion
             open={openMenu === 'components'}
             setOpen={getAccordionHandler('components')}

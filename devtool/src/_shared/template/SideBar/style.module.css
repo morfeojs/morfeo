@@ -52,6 +52,8 @@
   align-items: flex-start;
   padding-left: var(--spacings-l);
   padding-right: var(--spacings-l);
+  padding-top: var(--spacings-3xs);
+  padding-bottom: var(--spacings-3xs);
 }
 
 .open.container {
