@@ -1,4 +1,11 @@
-import { parsers, component, Theme, Style, Component } from '@morfeo/react';
+import {
+  parsers,
+  component,
+  Theme,
+  Style,
+  Component,
+  theme,
+} from '@morfeo/react';
 import styled, { ThemedStyledFunction } from 'styled-components';
 import { MorfeoStyled, ComponentTag } from './types';
 
@@ -77,6 +84,9 @@ const morfeoStyledHandler: MorfeoStyled = ((tag: ComponentTag) => {
 
 export const morfeoStyled = new Proxy(morfeoStyledHandler, {
   get(target, prop, receiver) {
+    if (theme.get() === undefined) {
+      theme.set({});
+    }
     const result = target(prop as any);
     if (result) {
       return result;

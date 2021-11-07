@@ -78,7 +78,7 @@ function createMorfeo() {
     newTheme: Parameters<typeof theme.set>[0],
   ) {
     themes[themeName] = deepMerge(themes[themeName] || {}, newTheme) as Theme;
-    if (!current) {
+    if (!current || current === themeName) {
       useTheme(themeName);
     }
   }

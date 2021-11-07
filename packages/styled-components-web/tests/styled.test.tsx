@@ -1,49 +1,59 @@
 import React from 'react';
-import { theme } from '@morfeo/react';
+import { morfeo } from '@morfeo/react';
 import morfeoStyled from '../src';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 
-beforeAll(() => {
-  theme.set({
-    colors: {
-      primary: 'black',
-      secondary: 'white',
-    },
-    components: {
-      Box: {
-        tag: 'div',
-        style: { color: 'primary' },
-        props: { 'aria-label': 'default box' },
-        variants: {
-          primary: {
-            tag: 'button',
-            style: { color: 'secondary' },
-            props: { 'aria-label': 'primary button', type: 'submit' },
-          },
-          secondary: {
-            style: { bg: 'secondary' },
-            props: { 'aria-label': 'secondary button', type: 'submit' },
-          },
+const theme = {
+  colors: {
+    primary: 'black',
+    secondary: 'white',
+  },
+  components: {
+    Box: {
+      tag: 'div',
+      style: { color: 'primary' },
+      props: { 'aria-label': 'default box' },
+      variants: {
+        primary: {
+          tag: 'button',
+          style: { color: 'secondary' },
+          props: { 'aria-label': 'primary button', type: 'submit' },
+        },
+        secondary: {
+          style: { bg: 'secondary' },
+          props: { 'aria-label': 'secondary button', type: 'submit' },
         },
       },
-      Text: {
-        tag: 'p',
-        style: {},
-        props: { variant: 'h1' },
-        variants: {
-          h1: {
-            tag: 'h1',
-            style: { fontWeight: 'bold' },
-          },
+    },
+    Text: {
+      tag: 'p',
+      style: {},
+      props: { variant: 'h1' },
+      variants: {
+        h1: {
+          tag: 'h1',
+          style: { fontWeight: 'bold' },
         },
       },
-      Incomplete: {},
     },
-  } as any);
+    Incomplete: {},
+  },
+} as any;
+
+describe('morfeoStyled - when morfeo was not set', () => {
+  test('should render the component', () => {
+    const Component = morfeoStyled.div({});
+    const tree = renderer.create(<Component>Test</Component>).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('morfeoStyled', () => {
+  beforeAll(() => {
+    morfeo.setTheme('default', theme);
+  });
+
   test('should work as the default styled interface', () => {
     const Button = morfeoStyled.button`
       color: red;

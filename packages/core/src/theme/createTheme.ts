@@ -4,7 +4,7 @@ import { deepMerge } from '../utils';
 type ThemeListener = (theme: Theme) => void;
 
 export function createTheme() {
-  let context: Theme = {} as any;
+  let context: Theme = undefined as any;
   let listeners: Record<string | number, ThemeListener> = {};
 
   function get() {
@@ -55,7 +55,7 @@ export function createTheme() {
   function set(theme: {
     [TK in ThemeKey]?: Partial<Theme[TK]>;
   }) {
-    context = deepMerge(context, theme) as Theme;
+    context = deepMerge(context || {}, theme) as Theme;
     callListeners();
   }
 
