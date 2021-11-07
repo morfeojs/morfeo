@@ -39,6 +39,6 @@ export function logFooter(watching?: boolean) {
   );
   cli.url(
     'morfeo.dev',
-    italic.gray('https://morfeo.dev/docs/Features/morfeo-cli'),
+    italic.gray('https://morfeo.dev/docs/Features/CLI/morfeo-cli-introduction'),
   );
 }
