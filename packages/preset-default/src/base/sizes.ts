@@ -20,10 +20,3 @@ export const sizes = {
   '100vw': '100vw',
   none: '0px',
 };
-
-type LocalSizes = typeof sizes;
-
-declare module '@morfeo/spec' {
-  export interface Sizes extends LocalSizes {}
-}
-

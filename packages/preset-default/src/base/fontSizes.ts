@@ -10,9 +10,3 @@ export const fontSizes = {
   '4xl': '7rem',
   none: '0',
 };
-
-type LocalFontSizes = typeof fontSizes;
-
-declare module '@morfeo/spec' {
-  export interface FontSizes extends LocalFontSizes {}
-}

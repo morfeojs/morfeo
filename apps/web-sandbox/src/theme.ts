@@ -6,13 +6,12 @@ export const components = {
   Button: {
     tag: 'button',
     style: {
-      transition: 'slow',
-      height: '2xl',
-      width: '2xl',
+      transition: 'fast',
+      size: '2xl',
       bg: 'primary',
       color: 'white',
       borderRadius: 'm',
-      border: 'primary',
+      border: 'strong',
       '&:hover': {
         bg: 'transparent',
         color: 'primary',
@@ -34,6 +33,7 @@ export const components = {
           '&:hover': {
             bg: 'transparent',
             color: 'primary',
+            borderColor: 'primary',
           },
         },
       },
@@ -64,19 +64,19 @@ export const components = {
     variants: {
       h1: {
         tag: 'h1',
-        style: { color: 'headTextColor' },
+        style: { color: 'headText' },
       },
       h2: {
         tag: 'h1',
-        style: { color: 'headTextColor' },
+        style: { color: 'headText' },
       },
       h3: {
         tag: 'h3',
-        style: { color: 'headTextColor' },
+        style: { color: 'headText' },
       },
       code: {
         tag: 'pre',
-        style: { color: 'textColor' },
+        style: { color: 'text' },
       },
     },
   },

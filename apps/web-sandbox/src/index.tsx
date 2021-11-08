@@ -23,7 +23,7 @@ loadFont({
       url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap',
     },
   ],
-  name: 'regular',
+  name: 'default',
   family: 'Roboto',
 });
 
