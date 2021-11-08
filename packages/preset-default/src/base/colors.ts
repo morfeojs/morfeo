@@ -54,9 +54,3 @@ export const lightColors = {
   headText: '#000000',
   invertedHeadText: '#ffffff',
 };
-
-type LocalColors = typeof lightColors & typeof darkColors;
-
-declare module '@morfeo/spec' {
-  export interface Colors extends LocalColors {}
-}

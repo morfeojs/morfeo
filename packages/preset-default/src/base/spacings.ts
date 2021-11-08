@@ -12,9 +12,3 @@ export const spacings = {
   '4xl': '5rem',
   '5xl': '6rem',
 };
-
-type LocalSpacings = typeof spacings;
-
-declare module '@morfeo/spec' {
-  export interface Spacings extends LocalSpacings {}
-}
