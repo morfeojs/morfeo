@@ -43,7 +43,6 @@ function App() {
     codeStyle: {
       display: 'block',
       py: 's',
-      color: 'primary.dark',
     },
   });
 

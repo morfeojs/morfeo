@@ -55,7 +55,7 @@ export const components = {
   Typography: {
     tag: 'p',
     style: {
-      fontFamily: 'regular',
+      fontFamily: 'default',
       fontSize: 'm',
       lineHeight: 'm',
       letterSpacing: 'm',
