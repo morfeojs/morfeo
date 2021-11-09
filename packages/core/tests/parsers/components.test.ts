@@ -95,4 +95,39 @@ describe('components', () => {
     const result = parsers.resolve({ componentName: 'Typography' as any });
     expect(result).toEqual({ color: '#000', backgroundColor: '#e3e3e3' });
   });
+
+  test('should extends the style of another component variant', () => {
+    theme.reset();
+    theme.set({
+      ...THEME,
+      components: {
+        ...THEME.components,
+        Typography: {
+          style: {
+            color: 'secondary',
+          },
+          variants: {
+            h1: {
+              style: {
+                color: 'primary',
+              },
+            },
+            h2: {
+              style: {
+                componentName: 'Typography',
+                variant: 'h1',
+              },
+            },
+          },
+        },
+      } as any,
+    });
+
+    const result = parsers.resolve({
+      componentName: 'Typography' as any,
+      variant: 'h2',
+    });
+
+    expect(result).toEqual({ color: THEME.colors.primary });
+  });
 });
