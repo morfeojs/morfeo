@@ -31,6 +31,32 @@ const defaultTheme = {
         },
       },
     },
+    VariantCycle: {
+      style: {
+        color: 'secondary',
+        bg: 'primary',
+      },
+      variants: {
+        one: {
+          style: {
+            color: 'primary',
+          },
+        },
+        two: {
+          style: {
+            componentName: 'VariantCycle',
+            variant: 'one',
+            bg: 'secondary',
+          },
+        },
+        three: {
+          style: {
+            componentName: 'VariantCycle',
+            variant: 'two',
+          },
+        },
+      },
+    },
   },
 } as const;
 
@@ -84,5 +110,13 @@ describe('component', () => {
     expect(props).toEqual(mergedConfig.props);
     expect(style).toEqual(mergedConfig.style);
     expect(variants).toEqual(mergedVariants);
+  });
+
+  test('should be possible to use componentName and variant as component style', () => {
+    const twoStyle = component('VariantCycle' as any, 'three').getStyle();
+    expect(twoStyle).toEqual({
+      color: 'primary',
+      bg: 'secondary',
+    });
   });
 });

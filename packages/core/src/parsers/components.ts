@@ -7,7 +7,7 @@ export function components({ value, style }: ParserParams<'componentName'>) {
     return {};
   }
   const componentStyle = component(value, variant).getStyle();
-  return globalThis.__MORFEO_PARSERS.resolve(componentStyle || {});
+  return globalThis.__MORFEO_PARSERS.resolve(componentStyle);
 }
 
 export const componentsParses = {

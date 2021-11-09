@@ -6,33 +6,72 @@ type ComponentStyle = Omit<ComponentConfig, 'variants'>;
 
 type GetConfigProperty<C extends Component> = {
   name: C;
+  merge?: boolean;
   variant?: Variant<C>;
   property: keyof ComponentConfig;
 };
 
-function components() {
-  function get<C extends Component>(name: C, variant?: Variant<C>) {
-    const config = theme.getValue('components', name);
-    if (!variant || !config) {
-      return config;
-    }
-    const { variants, ...rest } = config;
+function get<C extends Component>(
+  name: C,
+  variant?: Variant<C>,
+  merge?: boolean,
+) {
+  const config = theme.getValue('components', name);
 
-    return variants ? deepMerge(rest, variants[variant as any]) : config;
+  if (!variant || !config) {
+    return config;
   }
 
-  function getConfig<C extends Component>({
-    name,
-    variant,
-    property,
-  }: GetConfigProperty<C>) {
-    const config = get(name, variant);
-    return config ? config[property] : undefined;
+  const { variants, ...rest } = config;
+
+  if (variants) {
+    return merge
+      ? deepMerge(rest, variants[variant as any])
+      : variants[variant as any];
   }
+
+  return config;
+}
+
+function getConfig<C extends Component>({
+  name,
+  merge = true,
+  variant,
+  property,
+}: GetConfigProperty<C>) {
+  const config = get(name, variant, merge);
+  return config ? config[property] : undefined;
+}
+
+function getComponentStyle<C extends Component>(name: C, variant?: Variant<C>) {
+  const baseStyle = getConfig({ name, property: 'style' }) || {};
+  const variantStyle =
+    getConfig({ name, variant, property: 'style', merge: false }) || {};
+
+  const {
+    componentName: baseComponentName,
+    variant: baseVariant,
+    ...restBaseStyle
+  } = baseStyle;
+
+  const {
+    componentName: variantComponentName,
+    variant: variantVariant,
+    ...restVariantStyle
+  } = variantStyle;
+
+  const baseComponentStyle = baseComponentName
+    ? getComponentStyle(baseComponentName, baseVariant)
+    : {};
+  const variantComponentStyle = variantComponentName
+    ? getComponentStyle(variantComponentName, variantVariant)
+    : {};
 
   return {
-    get,
-    getConfig,
+    ...baseComponentStyle,
+    ...restBaseStyle,
+    ...variantComponentStyle,
+    ...restVariantStyle,
   };
 }
 
@@ -51,14 +90,12 @@ function components() {
  * const typographyTag = component('Typography').getTag();
  */
 export function component<C extends Component>(name: C, variant?: Variant<C>) {
-  const { get, getConfig } = components();
-
   function getTag() {
     return getConfig({ name, variant, property: 'tag' });
   }
 
   function getStyle(): Style {
-    return getConfig({ name, variant, property: 'style' });
+    return getComponentStyle(name, variant);
   }
 
   function getProps() {
@@ -70,7 +107,7 @@ export function component<C extends Component>(name: C, variant?: Variant<C>) {
   }
 
   return {
-    get: () => get(name, variant),
+    get: () => get(name, variant, true),
     getTag,
     getStyle,
     getProps,
