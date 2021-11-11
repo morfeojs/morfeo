@@ -12,11 +12,11 @@ export const loadFontsParams = [
   {
     urls: [
       {
-        url: 'https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300&display=swap'
-      }
+        url: 'https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300&display=swap',
+      },
     ],
     importFontFace: true,
     family: "'Red Hat Mono', monospace",
     name: 'mono',
-  }
+  },
 ];

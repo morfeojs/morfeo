@@ -10,5 +10,5 @@ export const fontWeights: FontWeights = {
   bold: '700',
   extraBold: '800',
   black: '900',
-  extraBlack: '950'
+  extraBlack: '950',
 };
