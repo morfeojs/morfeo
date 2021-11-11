@@ -18,7 +18,7 @@ export const Icon: React.FC<Props> = ({
   ...props
 }) => {
   const strokeColor = `var(--colors-${paramCase(color)})`;
-  const size = `var(--spacings-${paramCase(sizeProp)})`;
+  const size = `var(--spacings-${paramCase(sizeProp.toString())})`;
 
   if (!icons[name]) {
     return null;

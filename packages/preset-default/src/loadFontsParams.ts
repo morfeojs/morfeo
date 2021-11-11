@@ -9,4 +9,14 @@ export const loadFontsParams = [
     name: 'default',
     family: 'Montserrat',
   },
+  {
+    urls: [
+      {
+        url: 'https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300&display=swap'
+      }
+    ],
+    importFontFace: true,
+    family: "'Red Hat Mono', monospace",
+    name: 'mono',
+  }
 ];

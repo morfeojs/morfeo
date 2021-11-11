@@ -10,6 +10,7 @@ export const bordersMap = [
   'borderInlineEnd',
   'borderBlockStart',
   'borderInlineStart',
+  'outline'
 ] as const;
 
 export const borderWidthsMap = [
@@ -24,6 +25,7 @@ export const borderWidthsMap = [
   'borderInlineEndWidth',
   'borderBlockStartWidth',
   'borderInlineStartWidth',
+  'outlineWidth'
 ] as const;
 
 export const borderStylesMap = [
@@ -38,4 +40,5 @@ export const borderStylesMap = [
   'borderInlineEndStyle',
   'borderBlockStartStyle',
   'borderInlineStartStyle',
+  'outlineStyle'
 ] as const;

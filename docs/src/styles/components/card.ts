@@ -14,12 +14,7 @@ export const Card: ComponentConfig = {
     shadow: 'light',
   },
   variants: {
-    primary: {
-      style: {
-        shadow: 'light',
-      },
-    },
-    'primary.clickable': {
+    'clickable': {
       style: {
         shadow: 'light',
         transition: 'fast',

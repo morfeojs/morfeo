@@ -655,14 +655,35 @@
 .font-size-none {
   font-size: var(--font-sizes-none);
 }
+.font-weight-thin {
+  font-weight: var(--font-weights-thin);
+}
+.font-weight-extra-light {
+  font-weight: var(--font-weights-extra-light);
+}
+.font-weight-light {
+  font-weight: var(--font-weights-light);
+}
 .font-weight-regular {
   font-weight: var(--font-weights-regular);
 }
 .font-weight-medium {
   font-weight: var(--font-weights-medium);
 }
+.font-weight-semi-bold {
+  font-weight: var(--font-weights-semi-bold);
+}
 .font-weight-bold {
   font-weight: var(--font-weights-bold);
+}
+.font-weight-extra-bold {
+  font-weight: var(--font-weights-extra-bold);
+}
+.font-weight-black {
+  font-weight: var(--font-weights-black);
+}
+.font-weight-extra-black {
+  font-weight: var(--font-weights-extra-black);
 }
 .gradient-primary {
   background: linear-gradient(180deg, var(--colors-primary) 0%, var(--colors-secondary) 100%);

@@ -44,6 +44,6 @@ export const MorfeoComponent: React.FC<Props> = ({
       ...(props as any).style,
       ...(componentProps as any).style,
     },
-    children: devtoolConfig?.label || children,
+    children: tag !== 'hr' ? devtoolConfig?.label || children : undefined,
   });
 };

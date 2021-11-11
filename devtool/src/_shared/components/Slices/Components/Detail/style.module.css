@@ -15,10 +15,13 @@
 
 .previewContainer {
   width: 100%;
-  padding-top: var(--spacings-2xl);
-  padding-bottom: var(--spacings-2xl);
+  padding-top: var(--spacings-xs);
+  padding-bottom: var(--spacings-xs);
   margin-bottom: var(--spacings-l);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  padding-left: var(--spacings-xs);
+  padding-right: var(--spacings-xs);
 }

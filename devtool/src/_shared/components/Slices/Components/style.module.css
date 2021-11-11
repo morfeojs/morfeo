@@ -12,7 +12,10 @@
   height: 125px;
   box-shadow: none;
   max-width: 100%;
-  overflow: hidden;  
+  overflow: hidden;
+  padding-left: var(--spacings-xs);
+  padding-right: var(--spacings-xs);
+  box-sizing: border-box;
 }
 
 .infoContainer {
