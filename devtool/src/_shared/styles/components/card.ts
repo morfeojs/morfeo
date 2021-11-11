@@ -9,6 +9,7 @@ export const Card: ComponentConfig = {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
+    boxSizing: 'border-box',
   },
   variants: {
     primary: {

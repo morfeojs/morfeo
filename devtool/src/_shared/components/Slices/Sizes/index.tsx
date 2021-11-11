@@ -20,7 +20,7 @@ const ItemCard: React.FC<Props> = ({ size, value }) => {
   const onClick = useCallback(() => {
     navigate(RouteName.SLICE, {
       slice: SliceName.SIZES,
-      detailKey: size,
+      detailKey: size.toString(),
     });
   }, [size, navigate]);
 

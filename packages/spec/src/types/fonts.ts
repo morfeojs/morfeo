@@ -21,9 +21,16 @@ export interface FontProps extends BaseFontProps {}
 export type FontProperty = keyof FontProps;
 
 export interface FontWeights {
-  bold: string;
-  medium: string;
+  thin: string;
+  extraLight: string;
+  light: string;
   regular: string;
+  medium: string;
+  semiBold: string;
+  bold: string;
+  extraBold: string;
+  black: string;
+  extraBlack: string;
 }
 
 export type FontWeight = keyof FontWeights;

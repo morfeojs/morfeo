@@ -3,6 +3,7 @@
   color: var(--colors-text);
   cursor: pointer;
   display: flex;
+  box-sizing: border-box;
   align-items: center;
   border-radius: var(--radii-s);
   flex-direction: column;
@@ -12,6 +13,7 @@
   cursor: pointer;
   display: flex;
   box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lightest);
+  box-sizing: border-box;
   align-items: center;
   border-radius: var(--radii-s);
   flex-direction: column;
@@ -21,6 +23,7 @@
   cursor: pointer;
   display: flex;
   box-shadow: var(--border-widths-none) var(--border-widths-xl) var(--radii-l) var(--colors-gray-lightest);
+  box-sizing: border-box;
   transition: var(--transitions-fast);
   align-items: center;
   border-radius: var(--radii-s);

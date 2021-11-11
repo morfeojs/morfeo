@@ -1,5 +1,5 @@
 const grayScale = {
-  'gray.darkest': '#414141',
+  'gray.darkest': '#2f2f2f',
   'gray.darker': '#575757',
   'gray.dark': '#6C6C6C',
   gray: '#828282',
