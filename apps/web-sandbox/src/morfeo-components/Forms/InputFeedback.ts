@@ -1,4 +1,4 @@
-import { ComponentConfig } from "@morfeo/react";
+import { ComponentConfig } from '@morfeo/react';
 
 export const InputFeedback: ComponentConfig = {
   tag: 'p',
@@ -8,23 +8,23 @@ export const InputFeedback: ComponentConfig = {
     fontWeight: 'bold',
     lineHeight: 'none',
     letterSpacing: 'body',
-    mt: '2xs'
+    mt: '2xs',
   },
   variants: {
     error: {
       style: {
         color: 'error',
-      }
+      },
     },
     warning: {
       style: {
         color: 'warning',
-      }
+      },
     },
     success: {
       style: {
         color: 'success',
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};

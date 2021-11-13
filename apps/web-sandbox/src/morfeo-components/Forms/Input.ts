@@ -29,27 +29,27 @@ export const Input: ComponentConfig = {
       style: {
         outlineColor: 'error',
         outline: 'strong',
-      }
+      },
     },
     success: {
       style: {
         outlineColor: 'success',
         outline: 'strong',
-      }
+      },
     },
     warning: {
       style: {
         outlineColor: 'warning',
         outline: 'strong',
-      }
+      },
     },
     small: {
       style: {
         fontSize: 's',
         py: '2xs',
         px: '2xs',
-        lineHeight: 'none'
-      }
+        lineHeight: 'none',
+      },
     },
     'small.error': {
       style: {
@@ -57,7 +57,7 @@ export const Input: ComponentConfig = {
         variant: 'Small',
         outlineColor: 'error',
         outline: 'strong',
-      }
+      },
     },
     'small.warning': {
       style: {
@@ -65,7 +65,7 @@ export const Input: ComponentConfig = {
         variant: 'Small',
         outlineColor: 'warning',
         outline: 'strong',
-      }
+      },
     },
     'small.success': {
       style: {
@@ -73,7 +73,7 @@ export const Input: ComponentConfig = {
         variant: 'Small',
         outlineColor: 'success',
         outline: 'strong',
-      }
-    }
+      },
+    },
   },
 };

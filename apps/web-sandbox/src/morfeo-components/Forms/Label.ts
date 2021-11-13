@@ -14,7 +14,7 @@ export const Label: ComponentConfig = {
     small: {
       style: {
         fontSize: 'xs',
-      }
-    }
+      },
+    },
   },
-}
+};
