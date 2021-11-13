@@ -1,0 +1,121 @@
+import { ComponentConfig, Size } from '@morfeo/react';
+
+export const Grid: ComponentConfig = {
+  tag: 'div',
+  style: {
+    componentName: 'Box',
+    variant: 'row',
+  },
+  variants: {
+    item: {
+      style: {
+        p: 'xs',
+        width: {
+          xs: '100',
+          sm: '50',
+          md: '25',
+          lg: '25',
+        },
+      },
+    },
+    'item.1': {
+      style: {
+        p: {
+          xs: 'xs',
+          sm: 'xs',
+          md: 'xs',
+          lg: 'xs',
+        },
+        width: '8.3%' as Size,
+      },
+    },
+    'item.2': {
+      style: {
+        componentName: 'Grid',
+        variant: 'item.1',
+        width: '16.6%' as Size,
+      },
+    },
+    'item.3': {
+      style: {
+        componentName: 'Grid',
+        variant: 'item.1',
+        width: '25%' as Size,
+      },
+    },
+    'item.4': {
+      style: {
+        componentName: 'Grid',
+        variant: 'item.1',
+        width: '33.3%' as Size,
+      },
+    },
+    'item.5': {
+      style: {
+        componentName: 'Grid',
+        variant: 'item.1',
+        width: '41.6%' as Size,
+      },
+    },
+    'item.6': {
+      style: {
+        componentName: 'Grid',
+        variant: 'item.1',
+        width: '50%' as Size,
+      },
+    },
+    'item.7': {
+      style: {
+        componentName: 'Grid',
+        variant: 'item.1',
+        p: '2xs',
+        minWidth: '58.3%' as Size,
+      },
+    },
+    'item.8': {
+      style: {
+        componentName: 'Grid',
+        variant: 'item.1',
+        minWidth: '66.6%' as Size,
+      },
+    },
+    'item.9': {
+      style: {
+        componentName: 'Grid',
+        variant: 'item.1',
+        minWidth: '75',
+      },
+    },
+    'item.10': {
+      style: {
+        componentName: 'Grid',
+        variant: 'item.1',
+        minWidth: '83.3%' as Size,
+      },
+    },
+    'item.11': {
+      style: {
+        componentName: 'Grid',
+        variant: 'item.1',
+        minWidth: '91.6%' as Size,
+      },
+    },
+    'item.12': {
+      style: {
+        componentName: 'Grid',
+        variant: 'item.1',
+        minWidth: '100%' as Size,
+      },
+    },
+  },
+  meta: {
+    devtoolConfig: {
+      style: {
+        bg: 'gray.lighter',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+    },
+  },
+};

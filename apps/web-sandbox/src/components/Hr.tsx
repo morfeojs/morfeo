@@ -3,9 +3,9 @@ import { ComponentProps } from "react"
 import { MorfeoComponent } from "./MorfeoComponent"
 
 type Props = {
-  variant?: Variant<'Box'>;
+  variant?: Variant<'Hr'>;
 } & Omit<ComponentProps<typeof MorfeoComponent>, 'componentName'>
 
-export const Box: React.FC<Props> = ({ variant, children, ...props }) => {
-  return <MorfeoComponent componentName="Box" variant={variant} {...props}>{children}</MorfeoComponent>
+export const Hr: React.FC<Props> = ({ variant, children, ...props }) => {
+  return <MorfeoComponent componentName="Hr" variant={variant} {...props}>{children}</MorfeoComponent>
 }
