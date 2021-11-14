@@ -1,6 +1,8 @@
 import { ComponentConfig, Size } from '@morfeo/react';
 
-export const Box: ComponentConfig = {
+type BoxVariant = 'block' | 'column' | 'row';
+
+export const Box: ComponentConfig<BoxVariant> = {
   tag: 'div',
   style: {
     position: 'relative',

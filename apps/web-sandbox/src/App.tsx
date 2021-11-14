@@ -409,17 +409,17 @@ const Comps = () => {
                 </Box>
               </Grid>
               <Grid variant="item">
-                  <Label>Email</Label>
-                  <Input
-                    style={{ width: '100' }}
-                    autoComplete="false"
-                    placeholder="john@mail.com"
-                    type="email"
-                    variant="error"
-                  />
-                  <InputFeedback variant="error">
-                    The email is not valid!
-                  </InputFeedback>
+                <Label>Email</Label>
+                <Input
+                  style={{ width: '100' }}
+                  autoComplete="false"
+                  placeholder="john@mail.com"
+                  type="email"
+                  variant="error"
+                />
+                <InputFeedback variant="error">
+                  The email is not valid!
+                </InputFeedback>
               </Grid>
               <Grid variant="item">
                 <Box style={{ width: '100' }} variant="column">

@@ -112,11 +112,23 @@ describe('component', () => {
     expect(variants).toEqual(mergedVariants);
   });
 
-  test('should be possible to use componentName and variant as component style', () => {
-    const twoStyle = component('VariantCycle' as any, 'three').getStyle();
-    expect(twoStyle).toEqual({
+  test('should be possible to use componentName and variant inside the style of another component', () => {
+    const style = component('VariantCycle' as any, 'three').getStyle();
+
+    expect(style).toEqual({
       color: 'primary',
       bg: 'secondary',
     });
+  });
+
+  test('getStyle and get().style should return the same values', () => {
+    const styleFromGetStyle = component(
+      'VariantCycle' as any,
+      'three',
+    ).getStyle();
+
+    const { style } = component('VariantCycle' as any, 'three').get();
+
+    expect(styleFromGetStyle).toEqual(style);
   });
 });

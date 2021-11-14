@@ -1,8 +1,7 @@
-import { ComponentProps } from "react"
-import { MorfeoComponent } from "../MorfeoComponent"
+import { MorfeoComponent, MorfeoComponentProps } from '../MorfeoComponent';
 
-type Props = Omit<ComponentProps<typeof MorfeoComponent>, 'componentName'>
+type Props = Omit<MorfeoComponentProps<'Button'>, 'componentName'>;
 
-export const Button: React.FC<Props> = ({ variant, children, ...props }) => {
-  return <MorfeoComponent componentName="Button" variant={variant} {...props}>{children}</MorfeoComponent>
-}
+export const Button: React.FC<Props> = props => (
+  <MorfeoComponent componentName="Button" {...props} />
+);

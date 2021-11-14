@@ -1,6 +1,8 @@
 import { ComponentConfig } from '@morfeo/react';
 
-export const InputFeedback: ComponentConfig = {
+type InputFeedbackVariant = 'error' | 'warning' | 'success';
+
+export const InputFeedback: ComponentConfig<InputFeedbackVariant> = {
   tag: 'p',
   style: {
     fontSize: 'xs',

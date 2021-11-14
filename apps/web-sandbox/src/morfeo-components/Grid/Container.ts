@@ -1,6 +1,8 @@
 import { ComponentConfig, Size } from '@morfeo/react';
 
-export const Container: ComponentConfig = {
+type ContainerVariant = 'fluid' | 'noGutter' | 'gridGutter';
+
+export const Container: ComponentConfig<ContainerVariant> = {
   tag: 'div',
   style: {
     componentName: 'Box',

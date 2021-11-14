@@ -1,34 +1,54 @@
-import { Variant, useClassName, Component, component, useTheme, Style } from '@morfeo/react';
+import {
+  Style,
+  Variant,
+  useTheme,
+  Component,
+  component,
+  useClassName,
+} from '@morfeo/react';
 import React, { ReactNode, HTMLProps, useMemo } from 'react';
 
-
-type Props<T extends Component> = {
-  variant?: Variant<T>;
-  componentName: T;
-  children?: ReactNode;
+export type MorfeoComponentProps<T extends Component> = {
   style?: Style;
-} & Omit<HTMLProps<HTMLElement>, 'style'>
+  variant?: Variant<T>;
+  children?: ReactNode;
+  componentName: T;
+} & Omit<HTMLProps<HTMLElement>, 'style'>;
 
-export function MorfeoComponent<T extends Component>({ componentName , variant, children, style, ...props }: Props<T>) {
-  const componentObj = component(componentName, variant).get();
-  const componentStyle = component(componentName, variant).getStyle();
+export function MorfeoComponent<T extends Component>({
+  style,
+  variant,
+  children,
+  componentName,
+  ...props
+}: MorfeoComponentProps<T>) {
+  const {
+    tag = 'div',
+    props: componentProps,
+    style: componentStyle,
+  } = component(componentName, variant).get();
+
   const theme = useTheme();
-  
-  const className = useClassName({ ...componentStyle, ...style });
-  
-  const render = useMemo(() => {
-    if (componentObj.tag && theme) {
-      return React.createElement(componentObj.tag, {
-        ...componentObj.props,
-        className,
-        children,
-        ...props
-      })
-    }
-    
-    return <></> 
-    
-  }, [children, className, componentObj.props, componentObj.tag, props, theme])
 
-  return render
+  const className = useClassName({ ...componentStyle, ...style });
+
+  const render = useMemo(() => {
+    if (tag && theme) {
+      return React.createElement(
+        tag,
+        {
+          ...componentProps,
+          ...props,
+          className: props.className
+            ? [className, props.className].join(' ')
+            : className,
+        },
+        children,
+      );
+    }
+
+    return <></>;
+  }, [children, className, componentProps, props, tag, theme]);
+
+  return render;
 }

@@ -106,8 +106,15 @@ export function component<C extends Component>(name: C, variant?: Variant<C>) {
     return getConfig({ name, property: 'variants' });
   }
 
+  function _get() {
+    return {
+      ...get(name, variant, true),
+      style: getStyle(),
+    };
+  }
+
   return {
-    get: () => get(name, variant, true),
+    get: _get,
     getTag,
     getStyle,
     getProps,

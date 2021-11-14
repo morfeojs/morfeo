@@ -1,6 +1,19 @@
 import { ComponentConfig, Size } from '@morfeo/react';
 
-export const Card: ComponentConfig = {
+type CardVariant =
+  | 'hoverable'
+  | 'primary'
+  | 'warning'
+  | 'error'
+  | 'success'
+  | 'basic'
+  | 'outlined'
+  | 'outlined.primary'
+  | 'outlined.warning'
+  | 'outlined.error'
+  | 'outlined.success';
+
+export const Card: ComponentConfig<CardVariant> = {
   tag: 'div',
   style: {
     componentName: 'Box',
@@ -116,7 +129,9 @@ export const Card: ComponentConfig = {
   },
 };
 
-export const CardDark: ComponentConfig = {
+const variantKeys = Object.keys(Card.variants) as CardVariant[];
+
+export const CardDark: ComponentConfig<CardVariant> = {
   ...Card,
   style: {
     ...Card.style,
@@ -125,19 +140,19 @@ export const CardDark: ComponentConfig = {
     borderColor: 'text',
   },
   variants: {
-    ...Object.keys(Card.variants).reduce(
+    ...(variantKeys.reduce(
       (acc, key) => ({
         ...acc,
-        [key as any]: {
-          ...Card.variants[key as any],
+        [key]: {
+          ...Card.variants[key],
           style: {
-            ...Card.variants[key as any].style,
+            ...Card.variants[key].style,
             ...(key.indexOf('outlined') === -1 && { border: 'none' }),
           },
         },
       }),
       {},
-    ),
+    ) as any),
     hoverable: {
       ...Card.variants.hoverable,
       style: {

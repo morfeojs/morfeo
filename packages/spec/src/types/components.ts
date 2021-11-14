@@ -31,7 +31,12 @@ export interface Components {
 
 export type Component = keyof Components;
 
-export type Variant<C extends Component> = keyof Components[C]['variants'];
+type VariantMap = {
+  [K in Component]: keyof Components[K]['variants'];
+};
+
+export type Variant<C extends Component = Component> =
+  VariantMap[C] extends string ? VariantMap[C] : string;
 
 export type ComponentProps<C extends Component = Component> = {
   componentName?: C;

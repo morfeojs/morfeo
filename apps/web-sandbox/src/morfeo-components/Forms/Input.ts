@@ -1,6 +1,15 @@
 import { ComponentConfig } from '@morfeo/react';
 
-export const Input: ComponentConfig = {
+type InputVariant =
+  | 'error'
+  | 'success'
+  | 'warning'
+  | 'small'
+  | 'small.error'
+  | 'small.warning'
+  | 'small.success';
+
+export const Input: ComponentConfig<InputVariant> = {
   tag: 'input',
   style: {
     width: '100',
@@ -54,7 +63,7 @@ export const Input: ComponentConfig = {
     'small.error': {
       style: {
         componentName: 'Input',
-        variant: 'Small',
+        variant: 'small',
         outlineColor: 'error',
         outline: 'strong',
       },
@@ -62,7 +71,7 @@ export const Input: ComponentConfig = {
     'small.warning': {
       style: {
         componentName: 'Input',
-        variant: 'Small',
+        variant: 'small',
         outlineColor: 'warning',
         outline: 'strong',
       },
@@ -70,7 +79,7 @@ export const Input: ComponentConfig = {
     'small.success': {
       style: {
         componentName: 'Input',
-        variant: 'Small',
+        variant: 'small',
         outlineColor: 'success',
         outline: 'strong',
       },
