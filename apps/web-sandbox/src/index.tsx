@@ -1,37 +1,54 @@
 import React from 'react';
-import { ThemeProvider } from '@morfeo/styled-components-web';
 import { lightTheme, darkTheme } from '@morfeo/preset-default';
-import { morfeo, resetCss, loadFont } from '@morfeo/react';
+import { morfeo, resetCss, loadFont, MorfeoProvider } from '@morfeo/react';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { components } from './theme';
+import { components, componentsDark } from './morfeo-components';
 
-enableMorfeoDevTool();
 resetCss();
 
 morfeo.setTheme('light', { ...lightTheme, components } as any);
-morfeo.setTheme('dark', { ...darkTheme, components } as any);
+morfeo.setTheme('dark', { ...darkTheme, components: componentsDark } as any);
 
 morfeo.useTheme('light');
 
-loadFont({
-  importFontFace: true,
-  urls: [
-    {
-      url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap',
-    },
-  ],
-  name: 'default',
-  family: 'Roboto',
-});
+loadFont(
+  {
+    importFontFace: true,
+    urls: [
+      {
+        url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Open+Sans:wght@300;600&display=swap',
+      },
+    ],
+    name: 'default',
+    family: 'Montserrat',
+  },
+  ['light', 'dark'],
+);
+
+loadFont(
+  {
+    urls: [
+      {
+        url: 'https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300&display=swap'
+      }
+    ],
+    importFontFace: true,
+    family: "'Red Hat Mono', monospace",
+    name: 'mono',
+  },
+  ['light', 'dark'],
+);
+
+enableMorfeoDevTool();
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
+    <MorfeoProvider>
       <App />
-    </ThemeProvider>
+    </MorfeoProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
