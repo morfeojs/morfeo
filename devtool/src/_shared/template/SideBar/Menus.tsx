@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Color, useThemeSlice } from '@morfeo/react';
+import { Color, useThemeSlice, Component } from '@morfeo/react';
 import { Icon, Link } from '../../components';
 import { RouteName } from '../../contexts';
 import { SliceName } from '../../contexts/Routing/types';
@@ -106,13 +106,30 @@ export const Components: React.FC<Props> = ({ onNavigate }) => {
 
   const items: MenuItemType[] = useMemo(
     () =>
-      Object.keys(components || {}).map(component => ({
-        to: RouteName.COMPONENT,
-        text: component,
-        route: SliceName.COMPONENTS,
-        detail: component,
-        icon: 'component',
-      })),
+      (Object.keys(components || {}) as Component[])
+        .map(
+          component =>
+            ({
+              to: RouteName.COMPONENT,
+              text: component,
+              route: SliceName.COMPONENTS,
+              detail: component,
+              icon: 'component',
+              status: components[component].meta?.devtoolConfig?.hide
+                ? SliceStatus.INACTIVE
+                : SliceStatus.ACTIVE,
+            } as MenuItemType),
+        )
+        .sort((first, second) => {
+          if (first.status === SliceStatus.INACTIVE) {
+            return Infinity;
+          }
+          if (second.status === SliceStatus.INACTIVE) {
+            return -Infinity;
+          }
+
+          return first.text.localeCompare(second.text);
+        }),
     [components],
   );
 

@@ -2,6 +2,23 @@ import React from 'react';
 import { component, Component, getStyles } from '@morfeo/react';
 import clsx from 'clsx';
 
+const SELF_CLOSING_TAGS = [
+  'area',
+  'base',
+  'br',
+  'col',
+  'embed',
+  'hr',
+  'img',
+  'input',
+  'link',
+  'meta',
+  'param',
+  'source',
+  'track',
+  'wbr',
+];
+
 type Props = {
   name: Component;
   variant?: string;
@@ -44,6 +61,5 @@ export const MorfeoComponent: React.FC<Props> = ({
       ...(props as any).style,
       ...(componentProps as any).style,
     },
-    children: tag !== 'hr' ? devtoolConfig?.label || children : undefined,
-  });
+  }, SELF_CLOSING_TAGS.includes(tag) ? undefined : devtoolConfig?.label || children);
 };

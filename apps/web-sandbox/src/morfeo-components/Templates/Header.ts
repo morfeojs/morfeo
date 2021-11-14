@@ -46,7 +46,7 @@ export const Header: ComponentConfig<HeaderVariant> = {
   },
   meta: {
     devtoolConfig: {
-      background: 'gray.lightest',
+      hide: true,
     },
   },
 };

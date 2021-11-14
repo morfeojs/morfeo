@@ -27,13 +27,7 @@ export const Footer: ComponentConfig<FooterVariant> = {
   },
   meta: {
     devtoolConfig: {
-      style: {
-        size: '100',
-        bg: 'gray.lighter',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
+      hide: true,
     },
   },
 };

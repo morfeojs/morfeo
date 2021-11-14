@@ -1,4 +1,4 @@
-[data-morfeo-theme="dark"] .morfeo-box {}
+
 [data-morfeo-theme="dark"] .morfeo-card {
   color: var(--colors-text);
   cursor: pointer;
@@ -44,14 +44,14 @@
   background-color: var(--colors-white);
 }
 [data-morfeo-theme="dark"] .morfeo-input:focus {
-  outline: strong;
+  outline: var(--border-widths-m) var(--border-styles-solid) var(--colors-text);
   border-color: var(--colors-gray-lighter);
 }
 [data-morfeo-theme="dark"] .morfeo-button {
   color: var(--colors-inverted-text);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
-  outline: none;
+  outline: var(--border-widths-none) var(--border-styles-none);
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
   padding-top: var(--spacings-2xs);
@@ -65,7 +65,7 @@
   color: var(--colors-inverted-text);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
-  outline: none;
+  outline: var(--border-widths-none) var(--border-styles-none);
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
   padding-top: var(--spacings-none);
@@ -79,7 +79,7 @@
   color: var(--colors-inverted-text);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
-  outline: none;
+  outline: var(--border-widths-none) var(--border-styles-none);
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
   padding-top: var(--spacings-none);
@@ -97,7 +97,7 @@
   color: var(--colors-error);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
-  outline: none;
+  outline: var(--border-widths-none) var(--border-styles-none);
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
   padding-top: var(--spacings-2xs);
@@ -111,7 +111,7 @@
   color: var(--colors-inverted-text);
   border: var(--border-widths-none) var(--border-styles-none);
   cursor: pointer;
-  outline: none;
+  outline: var(--border-widths-none) var(--border-styles-none);
   font-size: var(--font-sizes-m);
   font-weight: var(--font-weights-bold);
   padding-top: var(--spacings-2xs);
@@ -190,15 +190,6 @@
 }
 [data-morfeo-theme="dark"] .morfeo-typography-cta {
   font-family: var(--fonts-default);
-}
-[data-morfeo-theme="dark"] .morfeo-typography-cta::after {
-  width: var(--sizes-s);
-  content: '→';
-  font-size: var(--font-sizes-m);
-  font-family: var(--fonts-default);
-  font-weight: var(--font-weights-bold);
-  line-height: var(--line-heights-heading);
-  margin-left: var(--spacings-2xs);
 }
 [data-morfeo-theme="dark"] .morfeo-typography-caption {
   font-size: var(--font-sizes-2xs);

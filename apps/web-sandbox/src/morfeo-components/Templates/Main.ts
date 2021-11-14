@@ -10,13 +10,7 @@ export const Main: ComponentConfig = {
   variants: {},
   meta: {
     devtoolConfig: {
-      style: {
-        size: '100',
-        bg: 'gray.lighter',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
+      hide: true,
     },
   },
 };
