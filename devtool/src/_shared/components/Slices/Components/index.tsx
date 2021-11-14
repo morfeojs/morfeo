@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Color, Component, useThemeSlice } from '@morfeo/react';
+import { Component, useThemeSlice } from '@morfeo/react';
 import { Grid, Item } from '../../Grid';
 import { Preview } from './Preview';
 
@@ -10,9 +10,9 @@ export const Components: React.FC = () => {
 
   const sliceKeys = useMemo(
     () =>
-      Object.keys(slice).sort((first, second) =>
-        first.localeCompare(second),
-      ) as Color[],
+      (Object.keys(slice) as Component[])
+        .filter(comp => !slice[comp].meta?.devtoolConfig?.hide)
+        .sort((first, second) => first.localeCompare(second)),
     [slice],
   );
 

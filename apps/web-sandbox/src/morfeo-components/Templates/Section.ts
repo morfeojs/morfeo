@@ -55,7 +55,7 @@ export const Section: ComponentConfig<SectionVariant> = {
   },
   meta: {
     devtoolConfig: {
-      background: 'gray.lightest',
+      hide: true,
     },
   },
 };

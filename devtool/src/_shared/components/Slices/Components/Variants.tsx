@@ -10,9 +10,13 @@ export const Variants: React.FC<Props> = ({ componentName }) => {
   const variants = component(componentName).getVariants();
   const variantKeys = Object.keys(variants || {});
 
+  const filtered = variantKeys.filter(
+    variant => !variants[variant].meta?.devtoolConfig?.hide,
+  );
+
   return (
     <Grid>
-      {variantKeys.map(name => (
+      {filtered.map(name => (
         <Item key={name}>
           <Preview name={componentName} variant={name} />
         </Item>
