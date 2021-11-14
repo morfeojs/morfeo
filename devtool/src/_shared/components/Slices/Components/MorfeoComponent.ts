@@ -49,17 +49,23 @@ export const MorfeoComponent: React.FC<Props> = ({
   });
   const className = classes[name];
 
-  return React.createElement(tag as TagName, {
-    ...componentProps,
-    ...props,
-    className: clsx(
-      className,
-      (props as any).className,
-      (componentProps as any).className,
-    ),
-    style: {
-      ...(props as any).style,
-      ...(componentProps as any).style,
+  return React.createElement(
+    tag as TagName,
+    {
+      ...componentProps,
+      ...props,
+      className: clsx(
+        className,
+        (props as any).className,
+        (componentProps as any).className,
+      ),
+      style: {
+        ...(props as any).style,
+        ...(componentProps as any).style,
+      },
     },
-  }, SELF_CLOSING_TAGS.includes(tag) ? undefined : devtoolConfig?.label || children);
+    SELF_CLOSING_TAGS.includes(tag)
+      ? undefined
+      : devtoolConfig?.label || children,
+  );
 };
