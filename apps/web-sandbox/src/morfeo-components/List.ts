@@ -1,6 +1,8 @@
 import { ComponentConfig } from '@morfeo/react';
 
-export const List: ComponentConfig = {
+type ListVariant = 'item' | 'item.arrow' | 'item.outlinedBullet';
+
+export const List: ComponentConfig<ListVariant> = {
   tag: 'ul',
   style: {
     my: 'l',

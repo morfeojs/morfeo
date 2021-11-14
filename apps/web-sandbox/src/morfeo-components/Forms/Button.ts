@@ -1,6 +1,42 @@
 import { ComponentConfig } from '@morfeo/react';
 
-export const Button: ComponentConfig = {
+type ButtonVariant =
+  | 'inverted'
+  | 'small'
+  | 'small.inverted'
+  | 'small.primary'
+  | 'small.secondary'
+  | 'small.warning'
+  | 'small.error'
+  | 'small.success'
+  | 'primary'
+  | 'secondary'
+  | 'warning'
+  | 'error'
+  | 'success'
+  | 'round'
+  | 'round.inverted'
+  | 'round.primary'
+  | 'round.secondary'
+  | 'round.success'
+  | 'round.warning'
+  | 'round.error'
+  | 'round.small'
+  | 'round.small.inverted'
+  | 'round.small.primary'
+  | 'round.small.secondary'
+  | 'round.small.success'
+  | 'round.small.warning'
+  | 'round.small.error'
+  | 'round.large'
+  | 'round.large.inverted'
+  | 'round.large.primary'
+  | 'round.large.secondary'
+  | 'round.large.success'
+  | 'round.large.warning'
+  | 'round.large.error';
+
+export const Button: ComponentConfig<ButtonVariant> = {
   tag: 'button',
   style: {
     px: 's',

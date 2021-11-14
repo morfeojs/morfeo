@@ -1,6 +1,8 @@
 import { ComponentConfig } from '@morfeo/react';
 
-export const Hr: ComponentConfig = {
+type HrVariant = 'primary' | 'reduced' | 'reduced.primary';
+
+export const Hr: ComponentConfig<HrVariant> = {
   tag: 'hr',
   style: {
     width: '100',

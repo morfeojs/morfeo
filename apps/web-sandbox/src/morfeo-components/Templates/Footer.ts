@@ -1,6 +1,8 @@
 import { ComponentConfig, Size } from '@morfeo/react';
 
-export const Footer: ComponentConfig = {
+type FooterVariant = 'primary';
+
+export const Footer: ComponentConfig<FooterVariant> = {
   tag: 'footer',
   style: {
     componentName: 'Box',

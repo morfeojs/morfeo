@@ -26,7 +26,7 @@ export function attributesParser<P extends Style>(
   componentName: Component,
 ) {
   const { tag: componentTag, props: componentProps = {} } =
-    component(componentName).get() || {};
+    component(componentName).get();
   const variants = component(componentName).getVariants();
   const variant = props.variant || componentProps.variant;
   if (!variant || !variants || !variants[variant]) {
@@ -55,7 +55,7 @@ function getDisplayName(componentName: string, variant?: string) {
 }
 
 const morfeoStyledHandler: MorfeoStyled = ((tag: ComponentTag) => {
-  const { tag: themeTag } = component(tag as any).get() || {};
+  const { tag: themeTag } = component(tag as any).get();
   const componentTag = themeTag || tag;
   const styledFunction =
     (styled[componentTag] as ThemedStyledFunction<

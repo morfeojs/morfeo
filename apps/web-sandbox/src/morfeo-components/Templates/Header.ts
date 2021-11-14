@@ -1,6 +1,8 @@
 import { ComponentConfig, Size } from '@morfeo/react';
 
-export const Header: ComponentConfig = {
+type HeaderVariant = 'primary' | 'primary.fixed' | 'fixed';
+
+export const Header: ComponentConfig<HeaderVariant> = {
   tag: 'header',
   style: {
     componentName: 'Box',
