@@ -31,8 +31,9 @@
     "publish": "npm run reset && npx lerna publish from-package --yes --no-verify-access",
     "version": "npx lerna version patch --no-push --no-git-tag-version --conventional-commits",
     "version:minor": "npx lerna version minor --no-push --no-git-tag-version --conventional-commits",
-    "postversion": "ts-node scripts/version.ts",
-    "postversion:minor": "npm run postversion"
+    "version:devtool": "ts-node scripts/version-devtool.ts",
+    "postversion": "ts-node scripts/version.ts && npm run version:devtool",
+    "postversion:minor": "npm run postversion -- minor"
   },
   "dependencies": {
     "react": "^17.0.2",
