@@ -1,6 +1,6 @@
 {
   "name": "__MSG_name__",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "__MSG_description__",
   "short_name": "morfeo",
   "author": "Mauro Erta",
@@ -13,7 +13,9 @@
     "128": "img/icon-128.png"
   },
   "background": {
-    "scripts": ["background.bundle.js"]
+    "scripts": [
+      "background.bundle.js"
+    ]
   },
   "browser_action": {
     "default_icon": {
@@ -32,11 +34,20 @@
   "devtools_page": "devtool.html",
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["contentScript.bundle.js"],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "contentScript.bundle.js"
+      ],
       "run_at": "document_start",
       "all_frames": false
     }
   ],
-  "permissions": ["clipboardWrite", "tabs", "<all_urls>"]
+  "permissions": [
+    "clipboardWrite",
+    "tabs",
+    "<all_urls>"
+  ]
 }
