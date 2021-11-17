@@ -8,17 +8,17 @@ import * as forms from './Forms';
 import * as list from './List';
 
 export const components = {
-  Typography,
-  Box,
-  Card,
-  Hr,
   ...list,
   ...grid,
-  ...templates,
   ...forms,
+  ...templates,
+  Hr,
+  Box,
+  Card,
+  Typography,
 };
 
-export const componentsDark = {
+export const darkComponents = {
   ...components,
   Card: CardDark,
 };

@@ -26,10 +26,10 @@
     "@morfeo/spec": "^0.3.2"
   },
   "peerDependencies": {
-    "@morfeo/core": "^0.3.2"
+    "@morfeo/web": "^0.3.2"
   },
   "devDependencies": {
-    "@morfeo/core": "^0.3.2"
+    "@morfeo/web": "^0.3.2"
   },
   "publishConfig": {
     "access": "public"

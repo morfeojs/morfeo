@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/core';
+import { morfeo } from '@morfeo/web';
 import { Theme } from '@morfeo/spec';
 import { loadFontsParams } from './loadFontsParams';
 import { darkTheme, lightTheme } from './base';
@@ -8,7 +8,7 @@ export function initPreset() {
   morfeo.setTheme('dark', darkTheme);
 }
 
-declare module '@morfeo/core' {
+declare module '@morfeo/web' {
   export interface Themes {
     light: Theme;
     dark: Theme;

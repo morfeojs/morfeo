@@ -1,4 +1,4 @@
-import { Borders } from '@morfeo/core';
+import { Borders } from '@morfeo/spec';
 
 export const borders: Borders = {
   none: {

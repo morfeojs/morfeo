@@ -1,16 +1,14 @@
 import React from 'react';
-import { lightTheme, darkTheme } from '@morfeo/preset-default';
+import { initPreset } from '@morfeo/preset-default';
 import { morfeo, resetCss, loadFont, MorfeoProvider } from '@morfeo/react';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { components, componentsDark } from './morfeo-components';
 
 resetCss();
 
-morfeo.setTheme('light', { ...lightTheme, components } as any);
-morfeo.setTheme('dark', { ...darkTheme, components: componentsDark } as any);
+initPreset();
 
 morfeo.useTheme('light');
 
@@ -32,8 +30,8 @@ loadFont(
   {
     urls: [
       {
-        url: 'https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300&display=swap'
-      }
+        url: 'https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300&display=swap',
+      },
     ],
     importFontFace: true,
     family: "'Red Hat Mono', monospace",
