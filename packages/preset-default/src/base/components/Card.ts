@@ -1,4 +1,4 @@
-import { ComponentConfig, Size } from '@morfeo/react';
+import { ComponentConfig, Size } from '@morfeo/spec';
 
 type CardVariant =
   | 'hoverable'

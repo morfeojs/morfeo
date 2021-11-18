@@ -1,4 +1,4 @@
-import { ComponentConfig } from '@morfeo/react';
+import { ComponentConfig } from '@morfeo/spec';
 
 export const Page: ComponentConfig = {
   tag: 'div',

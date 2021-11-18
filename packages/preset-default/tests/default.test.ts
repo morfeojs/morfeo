@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/core';
+import { morfeo } from '@morfeo/web';
 import { initPreset } from '../src';
 
 describe('preset-default', () => {

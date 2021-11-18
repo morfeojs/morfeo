@@ -16,29 +16,38 @@ import { spacings } from './spacings';
 import { transitions } from './transitions';
 import { zIndices } from './zIndices';
 import { darkColors, lightColors } from './colors';
+import { components, darkComponents } from './components';
 
-export const baseTheme: Omit<Theme, 'components' | 'fonts' | 'colors'> = {
-  borderStyles,
-  borderWidths,
-  borders,
-  breakpoints,
-  fontSizes,
-  fontWeights,
-  gradients,
-  letterSpacings,
-  lineHeights,
-  opacities,
+const fonts = {
+  mono: "'Red Hat Mono', monospace",
+  default: 'Montserrat',
+};
+
+export const baseTheme: Omit<Theme, 'colors'> = {
   radii,
-  shadows,
   sizes,
+  fonts,
+  shadows,
+  borders,
   spacings,
-  transitions,
   zIndices,
+  opacities,
+  fontSizes,
+  gradients,
+  components,
+  breakpoints,
+  lineHeights,
+  transitions,
+  fontWeights,
+  borderWidths,
+  borderStyles,
   mediaQueries: {},
+  letterSpacings,
 };
 
 export const darkTheme = {
   ...baseTheme,
+  components: darkComponents,
   colors: darkColors,
 };
 
@@ -47,14 +56,18 @@ export const lightTheme = {
   colors: lightColors,
 };
 
-type LocalColors = typeof lightColors & typeof darkColors;
+type LocalFonts = typeof fonts;
 type LocalSizes = typeof sizes;
-type LocalFontSizes = typeof fontSizes;
+type LocalColors = typeof lightColors & typeof darkColors;
 type LocalSpacings = typeof spacings;
+type LocalFontSizes = typeof fontSizes;
+type LocalComponents = typeof components;
 
 declare module '@morfeo/spec' {
   export interface Sizes extends LocalSizes {}
+  export interface Fonts extends LocalFonts {}
   export interface Colors extends LocalColors {}
   export interface Spacings extends LocalSpacings {}
   export interface FontSizes extends LocalFontSizes {}
+  export interface Components extends LocalComponents {}
 }

@@ -1,15 +1,15 @@
 import { Style, theme, deepMerge } from '@morfeo/core';
 import { StyleSheetFactoryOptions } from 'jss';
 import jss from './initJSS';
+import { MorfeoSheetsRegistry } from './registry';
 
 export function getStyleSheet<K extends string>(
   styles: Record<K, Style>,
   options?: StyleSheetFactoryOptions,
 ) {
-  const sheet = jss.createStyleSheet<K>(styles as any, {
-    ...options,
-    link: true,
-  });
+  const sheet = jss.createStyleSheet<K>(styles as any, options);
+
+  MorfeoSheetsRegistry.add(sheet);
 
   return sheet;
 }
@@ -26,6 +26,7 @@ export function getStyles<K extends string>(
 
   function onThemeChange() {
     sheet.detach();
+
     sheet = getStyleSheet(currentStyles, {
       ...options,
       generateId: ({ key }) => classes[key],

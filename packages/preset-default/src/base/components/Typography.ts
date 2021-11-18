@@ -1,4 +1,4 @@
-import { ComponentConfig } from '@morfeo/react';
+import { ComponentConfig } from '@morfeo/web';
 
 type TypographyVariant =
   | 'p'
