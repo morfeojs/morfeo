@@ -20,7 +20,7 @@ $ npm install -g @morfeo/cli
 $ morfeo COMMAND
 running command...
 $ morfeo (-v|--version|version)
-@morfeo/cli/0.4.1 darwin-x64 node-v14.16.0
+@morfeo/cli/0.4.2 darwin-x64 node-v14.16.0
 $ morfeo --help [COMMAND]
 USAGE
   $ morfeo COMMAND
@@ -55,7 +55,7 @@ EXAMPLES
   $ morfeo build path/to/theme.ts --name="light"
 ```
 
-_See code: [lib/commands/build.js](https://github.com/VLK-STUDIO/morfeo/blob/v0.4.1/lib/commands/build.js)_
+_See code: [lib/commands/build.js](https://github.com/VLK-STUDIO/morfeo/blob/v0.4.2/lib/commands/build.js)_
 
 ## `morfeo compose`
 
@@ -75,7 +75,7 @@ EXAMPLES
   $ morfeo compose --watch
 ```
 
-_See code: [lib/commands/compose.js](https://github.com/VLK-STUDIO/morfeo/blob/v0.4.1/lib/commands/compose.js)_
+_See code: [lib/commands/compose.js](https://github.com/VLK-STUDIO/morfeo/blob/v0.4.2/lib/commands/compose.js)_
 
 ## `morfeo help [COMMAND]`
 

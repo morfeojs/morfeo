@@ -5,7 +5,7 @@
     "email": "mauro@vlkstudio.com"
   },
   "private": false,
-  "version": "0.4.1",
+  "version": "0.4.2",
   "license": "MIT",
   "main": "commonjs/index.js",
   "module": "build/index.js",
@@ -23,9 +23,9 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/core": "^0.4.1",
-    "@morfeo/fonts": "^0.4.1",
-    "@morfeo/jss": "^0.4.1"
+    "@morfeo/core": "^0.4.2",
+    "@morfeo/fonts": "^0.4.2",
+    "@morfeo/jss": "^0.4.2"
   },
   "peerDependencies": {
     "csstype": "^3.0.8"
