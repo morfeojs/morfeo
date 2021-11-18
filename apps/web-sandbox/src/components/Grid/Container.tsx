@@ -1,4 +1,4 @@
-import { MorfeoComponent, MorfeoComponentProps } from '../MorfeoComponent';
+import { MorfeoComponent, MorfeoComponentProps } from '@morfeo/react';
 
 type Props = Omit<MorfeoComponentProps<'Container'>, 'componentName'>;
 
