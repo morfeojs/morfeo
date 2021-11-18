@@ -5,9 +5,9 @@
     "email": "mauro@vlkstudio.com"
   },
   "private": false,
-  "version": "0.4.0",
+  "version": "0.4.2",
   "license": "MIT",
-  "main": "build/index.js",
+  "main": "commonjs/index.js",
   "module": "build/index.js",
   "types": "build/index",
   "typings": "build/index",
@@ -19,21 +19,23 @@
   ],
   "scripts": {
     "build": "rimraf build && tsc",
+    "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
     "watch": "tsc -w"
   },
   "peerDependencies": {
-    "@morfeo/core": "^0.4.0",
+    "@morfeo/core": "^0.4.2",
     "react": "17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@morfeo/core": "^0.4.0"
+    "@morfeo/core": "^0.4.2"
   },
   "publishConfig": {
     "access": "public"
   },
   "files": [
-    "build"
+    "build",
+    "commonjs"
   ],
   "repository": {
     "type": "git",
