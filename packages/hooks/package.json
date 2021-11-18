@@ -19,6 +19,7 @@
   ],
   "scripts": {
     "build": "rimraf build && tsc",
+    "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
     "watch": "tsc -w"
   },
   "peerDependencies": {
