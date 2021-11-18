@@ -17,6 +17,13 @@ export function components(value: string, params?: any): CodeTab[] {
       language: 'javascript',
     },
     {
+      code: `<MorfeoComponent componentName="${value}" ${
+        variant ? `variant="${variant}" ` : ''
+      }/>`,
+      label: 'React',
+      language: 'javascript',
+    },
+    {
       code: `const style = useStyle({
   componentName: "${value}"${variantStyle}
 });`,

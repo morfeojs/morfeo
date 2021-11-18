@@ -1,15 +1,13 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import { morfeo, loadFont } from '@morfeo/react';
+import { initPreset } from '@morfeo/preset-default';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
 import CookieConsent from 'react-cookie-consent';
 
-import lightTheme from '../styles/lightTheme';
-import darkTheme from '../styles/darkTheme';
 import { fonts } from '../styles/fonts';
 
-morfeo.setTheme('light', lightTheme);
-morfeo.setTheme('dark', darkTheme);
+initPreset();
 
 const buttonStyle = morfeo.resolve({ corner: 'm' });
 

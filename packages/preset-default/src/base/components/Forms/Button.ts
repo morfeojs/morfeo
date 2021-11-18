@@ -338,9 +338,4 @@ export const Button: ComponentConfig<ButtonVariant> = {
       },
     },
   },
-  meta: {
-    devtoolConfig: {
-      style: {},
-    },
-  },
 };
