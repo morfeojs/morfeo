@@ -1,13 +1,11 @@
-import { ComponentConfig } from "@morfeo/spec";
+import { ComponentConfig } from '@morfeo/spec';
 
 export const Table: ComponentConfig = {
   tag: 'table',
   style: {
-    minWidth: "100",
+    minWidth: '100',
     fontFamily: 'default',
-    fontSize: 'm'
+    fontSize: 'm',
   },
-  variants: {
-
-  }
-}
+  variants: {},
+};

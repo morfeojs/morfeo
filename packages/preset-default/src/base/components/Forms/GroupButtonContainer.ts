@@ -1,4 +1,4 @@
-import { ComponentConfig } from "@morfeo/spec";
+import { ComponentConfig } from '@morfeo/spec';
 
 export const GroupButtonContainer: ComponentConfig = {
   style: {
@@ -6,4 +6,4 @@ export const GroupButtonContainer: ComponentConfig = {
     variant: 'row',
   },
   variants: {},
-}
+};

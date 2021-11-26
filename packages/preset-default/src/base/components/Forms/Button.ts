@@ -339,7 +339,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         bg: 'error',
       },
     },
-    'group': {
+    group: {
       style: {
         corner: 'none',
         borderRight: 'medium',
@@ -355,6 +355,6 @@ export const Button: ComponentConfig<ButtonVariant> = {
           cornerTopRight: 'xs',
         },
       },
-    }
+    },
   },
 };

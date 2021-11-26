@@ -27,5 +27,5 @@ export const pseudosProperties = [
   '&:after',
   '&:before',
   '&:nth-child(odd)',
-  '&:nth-child(even)'
+  '&:nth-child(even)',
 ] as const;

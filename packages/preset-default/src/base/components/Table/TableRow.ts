@@ -1,4 +1,4 @@
-import { Color, ComponentConfig } from "@morfeo/spec";
+import { Color, ComponentConfig } from '@morfeo/spec';
 
 export const TableRow: ComponentConfig = {
   tag: 'tr',
@@ -7,13 +7,11 @@ export const TableRow: ComponentConfig = {
       bg: 'rgba(100,100,100,0.1)' as Color,
     },
     '&:last-child': {
-      borderBottom: 'strong'
-    }
+      borderBottom: 'strong',
+    },
   },
-  variants: {
-    
-  }
-}
+  variants: {},
+};
 
 export const TableRowDark: ComponentConfig = {
   tag: 'tr',
@@ -22,10 +20,8 @@ export const TableRowDark: ComponentConfig = {
       bg: 'rgba(255,255,255,0.1)' as Color,
     },
     '&:last-child': {
-      borderBottom: 'strong'
-    }
+      borderBottom: 'strong',
+    },
   },
-  variants: {
-    
-  }
-}
+  variants: {},
+};

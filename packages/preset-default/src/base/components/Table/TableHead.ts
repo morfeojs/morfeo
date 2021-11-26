@@ -1,4 +1,4 @@
-import { ComponentConfig } from "@morfeo/spec";
+import { ComponentConfig } from '@morfeo/spec';
 
 export const TableHead: ComponentConfig = {
   tag: 'thead',
@@ -7,7 +7,5 @@ export const TableHead: ComponentConfig = {
     fontFamily: 'default',
     fontWeight: 'bold',
   },
-  variants: {
-    
-  }
-}
+  variants: {},
+};
