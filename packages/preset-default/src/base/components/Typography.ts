@@ -1,4 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
+import { ComponentConfig } from '@morfeo/spec';
 
 type TypographyVariant =
   | 'p'
@@ -234,7 +234,9 @@ export const Typography: ComponentConfig<TypographyVariant> = {
       },
     },
     code: {
+      tag: 'code',
       style: {
+        display: 'block',
         fontFamily: 'mono',
         lineHeight: 'body',
         p: 'xs',

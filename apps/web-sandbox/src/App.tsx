@@ -17,7 +17,26 @@ import {
   Input,
   Label,
   InputFeedback,
+  Checkbox,
+  CheckboxLabel,
+  CheckboxContainer,
+  InputContainer,
 } from './components';
+import { GroupButtonContainer } from './components/Forms/GroupButtonContainer';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeadCell,
+  TableRow,
+} from './components/Table';
+
+import hljs from 'highlight.js/lib/core';
+import typescript from 'highlight.js/lib/languages/typescript';
+
+hljs.registerLanguage('typescript', typescript);
+hljs.highlightAll();
 
 const Comps = () => {
   const [themeSymbol, setThemeSymbol] = useState('☽');
@@ -96,9 +115,11 @@ const Comps = () => {
                 exercitationem ullam corporis suscipit laboriosam, nisi ut
                 aliquid ex ea commodi consequatur?
               </Typography>
-              <Typography variant="code">
-                import morfeo from '@morfeo/core';
-              </Typography>
+              <pre>
+                <Typography className="language-typescript" variant="code">
+                  import morfeo from '@morfeo/core';
+                </Typography>
+              </pre>
               <Typography variant="p3">
                 *Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                 accusantium doloremque laudantium
@@ -120,9 +141,9 @@ const Comps = () => {
                 <Card style={{ width: '100', p: 'xs' }}>
                   <Typography variant="h3">Wow</Typography>
                   <Hr variant="reduced.primary" />
-                  <Typography variant="p3">
+                  <Typography variant="p">
                     Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium
+                    voluptatem accusantium doloremque.
                   </Typography>
                   <Box style={{ mr: 'xs' }}>
                     <Button onClick={toggleTheme}>Toggle Theme</Button>
@@ -133,9 +154,9 @@ const Comps = () => {
                 <Card style={{ width: '100', p: 'xs' }}>
                   <Typography variant="h3">Wow</Typography>
                   <Hr variant="reduced.primary" />
-                  <Typography variant="p3">
+                  <Typography variant="p">
                     Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium
+                    voluptatem accusantium doloremque.
                   </Typography>
                   <Box style={{ mr: 'xs' }}>
                     <Button variant="primary" onClick={toggleTheme}>
@@ -145,70 +166,12 @@ const Comps = () => {
                 </Card>
               </Grid>
               <Grid variant="item">
-                <Card style={{ width: '100', p: 'xs' }}>
-                  <Typography variant="h3">Wow</Typography>
-                  <Hr variant="reduced.primary" />
-                  <Typography variant="p3">
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium
-                  </Typography>
-                  <Box style={{ mr: 'xs' }}>
-                    <Button variant="secondary" onClick={toggleTheme}>
-                      Toggle Theme
-                    </Button>
-                  </Box>
-                </Card>
-              </Grid>
-              <Grid variant="item">
-                <Card style={{ width: '100', p: 'xs' }}>
-                  <Typography variant="h3">Wow</Typography>
-                  <Hr variant="reduced.primary" />
-                  <Typography variant="p3">
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium
-                  </Typography>
-                  <Box style={{ mr: 'xs' }}>
-                    <Button variant="warning" onClick={toggleTheme}>
-                      Toggle Theme
-                    </Button>
-                  </Box>
-                </Card>
-              </Grid>
-              <Grid variant="item">
                 <Card variant="hoverable" style={{ width: '100', p: 'xs' }}>
                   <Typography variant="h3">Hover me</Typography>
                   <Hr variant="reduced.primary" />
                   <Typography variant="p3">
                     Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium
-                  </Typography>
-                  <Box style={{ mr: 'xs' }}>
-                    <Button variant="error" onClick={toggleTheme}>
-                      Toggle Theme
-                    </Button>
-                  </Box>
-                </Card>
-              </Grid>
-              <Grid variant="item">
-                <Card variant="hoverable" style={{ width: '100', p: 'xs' }}>
-                  <Typography variant="h3">Hover me</Typography>
-                  <Hr variant="reduced.primary" />
-                  <Typography variant="p3">
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium
-                  </Typography>
-                  <Button variant="success" onClick={toggleTheme}>
-                    Toggle Theme
-                  </Button>
-                </Card>
-              </Grid>
-              <Grid variant="item">
-                <Card variant="hoverable" style={{ width: '100', p: 'xs' }}>
-                  <Typography variant="h3">Hover me</Typography>
-                  <Hr variant="reduced.primary" />
-                  <Typography variant="p3">
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium
+                    voluptatem accusantium doloremque laudantium.
                   </Typography>
                   <Button variant="small.primary" onClick={toggleTheme}>
                     Toggle Theme
@@ -221,7 +184,7 @@ const Comps = () => {
                   <Hr variant="reduced.primary" />
                   <Typography variant="p3">
                     Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium
+                    voluptatem accusantium doloremque laudantium.
                   </Typography>
                   <Button variant="small.secondary" onClick={toggleTheme}>
                     Toggle Theme
@@ -234,7 +197,7 @@ const Comps = () => {
                   <Hr variant="reduced.primary" />
                   <Typography variant="p3">
                     Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium
+                    voluptatem accusantium doloremque laudantium.
                   </Typography>
                   <Button variant="small.warning" onClick={toggleTheme}>
                     Toggle Theme
@@ -247,7 +210,7 @@ const Comps = () => {
                   <Hr variant="reduced.primary" />
                   <Typography variant="p3">
                     Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium
+                    voluptatem accusantium doloremque laudantium.
                   </Typography>
                   <Button variant="small.error" onClick={toggleTheme}>
                     Toggle Theme
@@ -260,7 +223,7 @@ const Comps = () => {
                   <Hr variant="reduced" />
                   <Typography variant="p3">
                     Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium
+                    voluptatem accusantium doloremque laudantium.
                   </Typography>
                   <Box
                     variant="row"
@@ -391,43 +354,109 @@ const Comps = () => {
             </Typography>
             <Box style={{ height: 'l' }} />
           </Container>
-          <Container variant="gridGutter">
-            <Grid>
-              <Grid variant="item">
-                <Box style={{ width: '100' }} variant="column">
-                  <Label>Full Name</Label>
-                  <Input placeholder="John Doe" />
-                </Box>
-              </Grid>
-              <Grid variant="item">
-                <Box style={{ width: '100' }} variant="column">
-                  <Label>Birth Date</Label>
-                  <Input variant="warning" type="date" />
-                  <InputFeedback variant="warning">
-                    The date couldn't be today
-                  </InputFeedback>
-                </Box>
-              </Grid>
-              <Grid variant="item">
-                <Label>Email</Label>
-                <Input
-                  style={{ width: '100' }}
-                  autoComplete="false"
-                  placeholder="john@mail.com"
-                  type="email"
-                  variant="error"
-                />
-                <InputFeedback variant="error">
-                  The email is not valid!
-                </InputFeedback>
-              </Grid>
-              <Grid variant="item">
-                <Box style={{ width: '100' }} variant="column">
-                  <Label>Password</Label>
-                  <Input type="password" />
-                </Box>
-              </Grid>
-            </Grid>
+          <Container>
+            <InputContainer style={{ width: '25' }} variant="column">
+              <Label>Full Name</Label>
+              <Input placeholder="John Doe" />
+            </InputContainer>
+            <InputContainer style={{ width: '25' }} variant="column">
+              <Label>Birth Date</Label>
+              <Input variant="warning" type="date" />
+              <InputFeedback variant="warning">
+                The date couldn't be today
+              </InputFeedback>
+            </InputContainer>
+            <InputContainer style={{ width: '25' }} variant="column">
+              <Label>Email</Label>
+              <Input
+                style={{ width: '100' }}
+                autoComplete="false"
+                placeholder="john@mail.com"
+                type="email"
+                variant="error"
+              />
+              <InputFeedback variant="error">
+                The email is not valid!
+              </InputFeedback>
+            </InputContainer>
+            <InputContainer style={{ width: '25' }} variant="column">
+              <Label>Password</Label>
+              <Input type="password" />
+            </InputContainer>
+            <CheckboxContainer style={{ width: '25' }} variant="row">
+              <Checkbox />
+              <CheckboxLabel>Are you sure?</CheckboxLabel>
+            </CheckboxContainer>
+            <Button variant="primary">Subscribe now!</Button>
+            <Box style={{ height: 'xs' }} />
+            <GroupButtonContainer>
+              <Button style={{ bg: 'primary' }} variant={'group' as any}>
+                Group
+              </Button>
+              <Button variant={'group' as any}>Some</Button>
+              <Button style={{ bg: 'success' }} variant={'group' as any}>
+                Buttons
+              </Button>
+            </GroupButtonContainer>
+          </Container>
+        </Section>
+        <Section>
+          <Container>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableHeadCell>Feature</TableHeadCell>
+                  <TableHeadCell style={{ textAlign: 'center' }}>
+                    Morfeo
+                  </TableHeadCell>
+                  <TableHeadCell style={{ textAlign: 'center' }}>
+                    Styled System
+                  </TableHeadCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Create a Theme</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>✅</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>✅</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Create a desing language</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>✅</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>✅</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Multi-theming by default</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>✅</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>❌</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Multi-platform</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>✅</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>✅</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Works without js</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>✅</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>❌</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Web Extension</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>✅</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>❌</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>CLI</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>✅</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>❌</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Components in the theme</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>✅</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>❌</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </Container>
         </Section>
       </Main>

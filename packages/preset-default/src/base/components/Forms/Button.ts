@@ -34,7 +34,8 @@ type ButtonVariant =
   | 'round.large.secondary'
   | 'round.large.success'
   | 'round.large.warning'
-  | 'round.large.error';
+  | 'round.large.error'
+  | 'group';
 
 export const Button: ComponentConfig<ButtonVariant> = {
   tag: 'button',
@@ -47,8 +48,9 @@ export const Button: ComponentConfig<ButtonVariant> = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: 's',
+    fontSize: 'm',
     fontFamily: 'default',
+    fontWeight: 'light',
     border: 'none',
     overflow: 'hidden',
     position: 'relative',
@@ -86,7 +88,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
     },
     small: {
       style: {
-        fontSize: 'xs',
+        fontSize: 's',
         px: 'xs',
       },
     },
@@ -337,5 +339,22 @@ export const Button: ComponentConfig<ButtonVariant> = {
         bg: 'error',
       },
     },
+    'group': {
+      style: {
+        corner: 'none',
+        borderRight: 'medium',
+        borderRightColor: 'white',
+        '&:first-child': {
+          cornerBottomLeft: 'xs',
+          cornerTopLeft: 'xs',
+          borderRight: 'medium',
+          borderRightColor: 'white',
+        },
+        '&:last-child': {
+          cornerBottomRight: 'xs',
+          cornerTopRight: 'xs',
+        },
+      },
+    }
   },
 };
