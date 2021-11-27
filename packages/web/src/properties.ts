@@ -26,4 +26,6 @@ export const pseudosProperties = [
   '&:visited',
   '&:after',
   '&:before',
+  '&:nth-child(odd)',
+  '&:nth-child(even)',
 ] as const;
