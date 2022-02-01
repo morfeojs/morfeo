@@ -14,14 +14,6 @@ module.exports = {
   organizationName: 'VLK-STUDIO',
   projectName: 'morfeo',
   themeConfig: {
-    gtag: {
-      trackingID: 'G-Y3GE1C055X',
-      anonymizeIP: true,
-    },
-    googleAnalytics: {
-      trackingID: 'UA-200678898-1',
-      anonymizeIP: true,
-    },
     navbar: {
       title: '',
       logo: {
@@ -140,6 +132,14 @@ module.exports = {
     [
       '@docusaurus/preset-classic',
       {
+        gtag: {
+          trackingID: 'G-Y3GE1C055X',
+          anonymizeIP: true,
+        },
+        googleAnalytics: {
+          trackingID: 'UA-200678898-1',
+          anonymizeIP: true,
+        },
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/VLK-STUDIO/morfeo/edit/main/docs/',

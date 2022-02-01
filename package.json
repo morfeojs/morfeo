@@ -10,7 +10,7 @@
     "build": "lerna run build && npm run build:commonjs",
     "build:commonjs": "lerna run build:commonjs",
     "watch": "lerna run watch",
-    "reset": "npm run clean && npm i && lerna bootstrap && npm run build",
+    "reset": "npm run clean && npm i && lerna bootstrap --hoist && npm run build",
     "init:docs": "ts-node scripts/bootstrap-app.ts docs",
     "init:devtool": "ts-node scripts/bootstrap-app.ts devtool",
     "init:web-sandbox": "ts-node scripts/bootstrap-app.ts examples/web-sandbox",
@@ -36,9 +36,10 @@
     "postversion:minor": "npm run postversion -- minor"
   },
   "dependencies": {
+    "csstype": "^3.0.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-native": "^0.64.1",
+    "react-native": "^0.67.2",
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
@@ -48,6 +49,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/react-hooks": "^5.1.1",
     "@types/jest": "^26.0.21",
+    "@types/node": "^17.0.14",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
     "@types/react-test-renderer": "^17.0.1",

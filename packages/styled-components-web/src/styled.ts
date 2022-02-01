@@ -65,6 +65,7 @@ const morfeoStyledHandler: MorfeoStyled = ((tag: ComponentTag) => {
     >) || styled.div;
 
   if (typeof styledFunction === 'function') {
+    // @ts-ignore
     return (componentProps: Style | TemplateStringsArray = {}) => {
       if (!isStyleProps(componentProps)) {
         return styledFunction(componentProps);
