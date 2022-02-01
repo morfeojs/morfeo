@@ -25,12 +25,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Fixes the version of npm
-      - name: 'change npm version'
-        uses: reedyuk/npm-version@1.1.1
-        with:
-          version: '6.4.11'
-
       # Runs a single command using the runners shell
       - name: Bootstrap packages
         run: npm run reset
