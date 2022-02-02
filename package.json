@@ -7,11 +7,11 @@
   },
   "scripts": {
     "clean": "lerna clean --yes",
-    "build": "lerna run build && npm run build:commonjs",
+    "build": "lerna run build --ignore=@morfeo/docs && npm run build:commonjs",
     "build:commonjs": "lerna run build:commonjs",
+    "build:docs": "lerna run build --scope=@morfeo/docs",
     "watch": "lerna run watch",
     "reset": "npm run clean && npm i && lerna bootstrap --hoist && npm run build",
-    "init:docs": "ts-node scripts/bootstrap-app.ts docs",
     "init:devtool": "ts-node scripts/bootstrap-app.ts devtool",
     "init:web-sandbox": "ts-node scripts/bootstrap-app.ts examples/web-sandbox",
     "init:svelte-sandbox": "ts-node scripts/bootstrap-app.ts examples/svelte-sandbox",
