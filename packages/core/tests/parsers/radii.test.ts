@@ -12,32 +12,27 @@ describe('radii', () => {
   beforeAll(() => {
     theme.set(THEME);
   });
-  afterAll(() => {
-    theme.reset();
-  });
 
-  test('should resolve the value of the property `corner` from the radii slice', () => {
-    const result = parsers.resolve({
-      corner: 'm',
-      cornerEndEnd: 'm',
-      cornerTopLeft: 'm',
-      cornerEndStart: 'm',
-      cornerTopRight: 'm',
-      cornerStartEnd: 'm',
-      cornerStartStart: 'm',
-      cornerBottomLeft: 'm',
-      cornerBottomRight: 'm',
-    });
-    expect(result).toEqual({
-      borderRadius: '4px',
-      borderEndEndRadius: '4px',
-      borderTopLeftRadius: '4px',
-      borderEndStartRadius: '4px',
-      borderTopRightRadius: '4px',
-      borderStartEndRadius: '4px',
-      borderStartStartRadius: '4px',
-      borderBottomLeftRadius: '4px',
-      borderBottomRightRadius: '4px',
+  const borderProperties = {
+    corner: 'borderRadius',
+    cornerEndEnd: 'borderEndEndRadius',
+    cornerTopLeft: 'borderTopLeftRadius',
+    cornerEndStart: 'borderEndStartRadius',
+    cornerTopRight: 'borderTopRightRadius',
+    cornerStartEnd: 'borderStartEndRadius',
+    cornerStartStart: 'borderStartStartRadius',
+    cornerBottomLeft: 'borderBottomLeftRadius',
+    cornerBottomRight: 'borderBottomRightRadius',
+  };
+
+  Object.keys(borderProperties).forEach(property => {
+    test(`should resolve the value of the property ${property} from the radii slice`, () => {
+      const result = parsers.resolve({
+        [property]: 'm',
+      });
+      expect(result).toEqual({
+        [borderProperties[property]]: '4px',
+      });
     });
   });
 });

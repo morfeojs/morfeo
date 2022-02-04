@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`morfeoStyled - when morfeo was not set should render the component 1`] = `
+<div
+  className="div-jDhEeQ"
+>
+  Test
+</div>
+`;
+
+exports[`morfeoStyled should change component tag if described inside variant 1`] = `
+.c0 {
+  color: white;
+}
+
+<button
+  aria-label="primary button"
+  className="c0"
+  type="submit"
+>
+  Test
+</button>
+`;
+
+exports[`morfeoStyled should have the component tag of the parent component 1`] = `
+.c0 {
+  color: black;
+  background-color: white;
+}
+
+<div
+  aria-label="secondary button"
+  className="c0"
+  type="submit"
+>
+  Test
+</div>
+`;
+
+exports[`morfeoStyled should resolve values from the theme if CSSObject is passed 1`] = `
+.c0 {
+  color: black;
+}
+
+<div
+  aria-label="default box"
+  className="c0"
+>
+  Test
+</div>
+`;
+
+exports[`morfeoStyled should return a component even if default style is not passed 1`] = `
+.c0 {
+  color: black;
+}
+
+<div
+  aria-label="default box"
+  className="c0"
+>
+  Test
+</div>
+`;
+
+exports[`morfeoStyled should set the default variant and tag based on theme props 1`] = `
+.c0 {
+  font-weight: bold;
+}
+
+<h1
+  className="c0"
+>
+  Test
+</h1>
+`;
+
+exports[`morfeoStyled should work as the default styled interface 1`] = `
+.c0 {
+  color: red;
+}
+
+<button
+  className="c0"
+/>
+`;

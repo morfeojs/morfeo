@@ -46,7 +46,7 @@ People _love_ thorough bug reports. I'm not even kidding.
 
 ## Use a Consistent Coding Style
 
-- You can try running `npm run lint` for style unification
+- You can try running `yarn prettify` for style unification
 
 ## License
 
