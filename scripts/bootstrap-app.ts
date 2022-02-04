@@ -58,9 +58,9 @@ function shellCommand(command: string, params: string[] = [], options = {}) {
 }
 
 function runBootstrap(appName: string) {
-  removeInternalPackagesFromPackageJson(appName);
-  shellCommand(`npm`, ['install'], { cwd: `./${appName}` });
-  restorePackageJson(appName);
+  // removeInternalPackagesFromPackageJson(appName);
+  shellCommand(`yarn`, [''], { cwd: `./${appName}` });
+  // restorePackageJson(appName);
   shellCommand(`ts-node`, ['./scripts/symlink-packages.ts', appName]);
 }
 

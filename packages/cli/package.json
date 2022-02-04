@@ -61,7 +61,7 @@
   },
   "scripts": {
     "build": "rm -rf lib && tsc -b",
-    "prepack": "npm run build && oclif-dev manifest",
+    "prepack": "yarn build && oclif-dev manifest",
     "version": "oclif-dev readme"
   },
   "types": "lib/index.d.ts",
