@@ -27,6 +27,7 @@ const projects = packages.map(package => {
   };
 });
 
+/** @type {import('@jest/types').Config.InitialOptions} */
 module.exports = {
   projects,
   coverageDirectory: './coverage',
@@ -42,9 +43,9 @@ module.exports = {
   },
   coverageThreshold: {
     global: {
+      lines: 90,
       branches: 90,
       functions: 90,
-      lines: 90,
       statements: 90,
     },
   },

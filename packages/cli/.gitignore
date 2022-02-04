@@ -6,5 +6,4 @@ oclif.manifest.json
 /lib
 /test/builds
 /tmp
-/yarn.lock
 node_modules

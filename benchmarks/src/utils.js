@@ -5,7 +5,7 @@ const path = require('path');
 function getMdPath(fileName) {
   return path.resolve(
     __dirname,
-    `../../../docs/docs/Benchmarks`,
+    `../../docs/docs/Benchmarks`,
     `${fileName}.md`,
   );
 }
