@@ -2,11 +2,11 @@
 .container {
   z-index: 1;
   position: relative;
-  padding: var(--space-s) var(--space-2xs);
-  border-radius: var(--radius-m);
-  box-shadow: 0px 10px 20px #E6E6E6;
-  transition: 0.3s ease;
-  background-color: white;
+  padding: var(--spacings-m);
+  border-radius: var(--radii-m);
+  box-shadow: var(--shadows-light);
+  transition: var(--transitions-fast);
+  background-color: var(--colors-background);
 }
 
 .buttons {
@@ -16,34 +16,36 @@
 }
 
 .text {
-  font-weight: 700;
-  font-size: 1.5rem;
+  font-weight: var(--font-weights-bold);
+  font-size: var(--font-sizes-xl);
 }
 
 .text i {
-  color: white;
-  background-color: var(--ifm-color-primary);
-  padding-left: var(--space-3xs);
-  padding-right: var(--space-3xs);
+  color: var(--colors-inverted-text);
+  background-color: var(--colors-primary);
+  padding-left: var(--spacings-3xs);
+  padding-right: var(--spacings-3xs);
 }
 
 .cta {
-  transition: 0.3s ease;
+  transition: var(--transitions-fast);
 }
 
 .icon {
   position: absolute;
-  left: var(--space-2xs);
-  top: var(--space-2xs);
+  left: var(--spacings-2xs);
+  top: var(--spacings-2xs);
+}
+
+@media (max-width: 966px) {
+  .text {
+    font-size: var(--font-sizes-l);
+  }
 }
 
 @media screen and (max-width: 576px) {
   .container {
     margin-top: 0;
-  }
-
-  .text {
-    font-size: 1.2rem;
   }
 
   .text i {

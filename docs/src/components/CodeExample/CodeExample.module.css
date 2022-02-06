@@ -1,17 +1,17 @@
 .container {
-  margin: var(--space-l) 0;
+  margin: var(--spacings-l) 0;
 }
 
 .title {
   text-align: center;
-  font-weight: 700;
-  font-size: 2rem;
+  font-weight: var(--font-weights-bold);
+  font-size: var(--font-sizes-2xl);
 }
 
 .preview {
   display: flex;
-  padding-top: var(--space-s);
-  padding-bottom: var(--space-s);
+  padding-top: var(--spacings-s);
+  padding-bottom: var(--spacings-s);
   align-items: center;
   justify-content: center;
 }
