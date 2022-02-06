@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { HeroCard } from '../HeroCard';
 import styles from './HomePageHeader.module.css';
 import Logo from './Logo';
 
@@ -18,15 +18,24 @@ export function HomepageHeader() {
             <p key={index}>{part}</p>
           ))}
         </div>
-
-        <div className={styles.buttons}>
-          <Link
-            className="button button--primary button--lg"
-            to="/docs/Introduction/getting-started"
-            style={{ color: 'white' }}
+        <div className={styles.cardContainer}>
+          <HeroCard
+            ctas={[
+              {
+                label: 'Get started',
+                link: '/docs/Introduction/getting-started',
+              },
+            ]}
           >
-            Get started
-          </Link>
+            Morfeo it's a tool to build design systems based on a theme. It
+            helps you to <i>follow a design language</i> and write{' '}
+            <i>consistent UIs</i>, whatever it is the framework of your choice.
+            It's easy to use and, with the
+            <a href="/docs/Features/web-extension">
+              <strong> browser extension</strong>
+            </a>
+            , your theme and your components are automatically documented.
+          </HeroCard>
         </div>
       </div>
     </header>

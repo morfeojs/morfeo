@@ -45,6 +45,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
     bg: 'invertedBackground',
     corner: 'xs',
     color: 'invertedText',
+    cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -82,7 +83,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
   variants: {
     inverted: {
       style: {
-        background: 'background',
+        bg: 'background',
         color: 'text',
       },
     },
@@ -96,7 +97,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
       style: {
         componentName: 'Button',
         variant: 'small',
-        background: 'background',
+        bg: 'background',
         color: 'text',
       },
     },

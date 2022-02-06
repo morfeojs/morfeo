@@ -22,7 +22,7 @@ module.exports = {
         'Features/web-extension',
         {
           type: 'category',
-          label: 'CLI',
+          label: '🔨 CLI (Beta)',
           collapsed: false,
           items: [
             'Features/CLI/morfeo-cli-introduction',

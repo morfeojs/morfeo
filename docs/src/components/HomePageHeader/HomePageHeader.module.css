@@ -1,14 +1,10 @@
 .heroBanner {
-  padding: var(--space-m) 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 100vh;
+  perspective: 800px;
+  perspective-origin: top right;
 }
 
 .logoContainer {
@@ -16,8 +12,9 @@
 }
 
 .subtitle {
+  font-size: 4rem;
   font-weight: bold;
-  letter-spacing: 0.15rem;
+  line-height: 4rem;
   margin-top: var(--space-xs);
   margin-bottom: var(--space-xs);
 }
@@ -26,8 +23,22 @@
   margin: 0;
 }
 
+.cardContainer {
+  margin: var(--space-xl) 0;
+}
+
 @media screen and (max-width: 966px) {
   .heroBanner {
     padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .heroBanner {
+    padding: 0;
+  }
+
+  .subtitle {
+    display: none;
   }
 }

@@ -55,7 +55,6 @@ module.exports = {
       ],
     },
     footer: {
-      style: 'dark',
       links: [
         {
           title: 'Docs',
@@ -86,8 +85,8 @@ module.exports = {
               href: 'https://stackoverflow.com/questions/tagged/morfeo',
             },
             {
-              label: 'Slack',
-              href: 'https://app.slack.com/client/T0233Q163MF/C022XARRCA0',
+              label: 'Discord',
+              href: 'https://discord.com/channels/939456827152805919/939456827152805922',
             },
           ],
         },
@@ -119,11 +118,11 @@ module.exports = {
       playgroundPosition: 'bottom',
     },
     colorMode: {
-      defaultMode: 'dark',
+      defaultMode: 'light',
       disableSwitch: true,
     },
     algolia: {
-      apiKey: '14e45cdc062f0973cf61ba439346525f',
+      apiKey: '4caa155f2dbdf468ad11b7fe1ff297a2',
       indexName: 'morfeo',
       algoliaOptions: {},
     },
