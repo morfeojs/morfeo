@@ -1,53 +1,59 @@
-import React from 'react';
-import { morfeo } from '@morfeo/react';
+import React, { useCallback } from 'react';
+import clsx from 'clsx';
+import { useHistory } from '@docusaurus/router';
+import { ClickableCard } from '../ClickableCard';
+import CLI from './CLI';
+import JSIcon from './JSIcon';
+import WebExtension from './WebExtension';
 import styles from './HomepageFeatures.module.css';
-import { CodeSnippet } from '../CodeSnippet';
 
-const exampleStyle = {
-  bg: 'secondary',
-  color: 'primary',
-  corner: 's',
-};
+const features = [
+  {
+    text: 'Web extension',
+    link: '/docs/Features/web-extension',
+    icon: <WebExtension />,
+  },
+  {
+    text: 'Multi theming',
+    link: '/docs/Features/multi-theming',
+    icon: '🌞 🌑',
+  },
+  {
+    text: 'Framework agnostic',
+    link: '/docs/Features/framework-agnostic',
+    icon: '🕍 ⛪ 🕋',
+  },
+  {
+    text: 'Single source of truth',
+    link: '/docs/Features/single-source-of-truth',
+    icon: <JSIcon />,
+  },
+  { text: 'Extendible', link: '/docs/Features/extendible', icon: '🧩' },
+  { text: 'CLI', link: '/docs/Features/CLI/', icon: <CLI />, badge: 'beta' },
+];
 
 export function HomepageFeatures() {
-  const exampleTheme = {
-    colors: {
-      primary: morfeo.getTheme().colors.primary,
-      secondary: morfeo.getTheme().colors.secondary,
-    },
-    radii: {
-      s: morfeo.getTheme().radii.s,
-    },
-  };
+  const history = useHistory();
 
-  const resultStyle = morfeo.resolve(exampleStyle);
+  const getOnClick = useCallback(
+    feature => {
+      return () => history.push(feature.link);
+    },
+    [history.push],
+  );
+
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className={styles.row}>
-          <p className={styles.description}>
-            Morfeo it's a tool to build design systems based on a theme. It
-            helps you to <i>follow a design language</i> and write consistent
-            UIs, whatever it is the framework of your choice. It's easy to use
-            and, with the
-            <a href="/docs/Features/web-extension">
-              <strong> browser extension</strong>
-            </a>
-            , your theme and your components are automatically documented.
-          </p>
-          <div className={styles.preview}>
-            <CodeSnippet
-              style={exampleTheme}
-              label="a theme: your design language"
-            />
-            <CodeSnippet
-              style={exampleStyle}
-              label="a style based on the theme"
-            />
-            <CodeSnippet style={resultStyle} label="a valid CSS-in-JS" />
-          </div>
-        </div>
-      </div>
+    <section className={clsx('container', styles.features)}>
+      {features.map((feature, index) => (
+        <ClickableCard
+          key={index}
+          icon={feature.icon}
+          onClick={getOnClick(feature)}
+          badge={feature.badge}
+        >
+          {feature.text}
+        </ClickableCard>
+      ))}
     </section>
   );
 }

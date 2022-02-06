@@ -4,6 +4,11 @@
   height: 20rem;
   flex-direction: column;
   justify-content: space-between;
+  transition: 0.3s ease;
+}
+
+.container:hover {
+  transform: scale(1.1);
 }
 
 .code {
@@ -18,9 +23,16 @@
   background-color: rgb(41, 45, 62);
 }
 
+.container:hover .code {
+  border: 4px solid var(--ifm-color-secondary);
+}
+
 .label {
   margin-top: var(--space-2xs);
   margin-left: var(--space-2xs);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
 }
 
 @media (max-width: 966px) {

@@ -7,7 +7,7 @@ export function AddToChrome() {
   return (
     <Link
       to="https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl"
-      className={clsx('button button--secondary button--lg', styles.link)}
+      className={clsx('button button--lg', styles.link)}
     >
       <img src="/img/chromeLogo.svg" className={styles.image} />
       <span>Add Morfeo to Chrome</span>

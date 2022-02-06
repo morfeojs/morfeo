@@ -16,6 +16,14 @@
   --ifm-color-primary-lighter: #92bdff;
   --ifm-color-primary-lightest: #dbe9ff;
 
+  --ifm-color-secondary-lightest: #fae0f0;
+  --ifm-color-secondary-lighter: #f0a1d1;
+  --ifm-color-secondary-light: #e563b3;
+  --ifm-color-secondary: #db2494;
+  --ifm-color-secondary-dark: #9c1a6a;
+  --ifm-color-secondary-darker: #5e0f3f;
+  --ifm-color-secondary-darkest: #1f0515;
+
   --ifm-code-font-size: 95%;
   --ifm-hero-background-color: #fff;
   --ifm-navbar-background-color: var(--ifm-color-primary-darkest);
@@ -31,6 +39,7 @@
   --radius-2xl: 1.8rem;
 
   /* Spacings */
+  --space-3xs: 0.4rem;
   --space-2xs: 0.8rem;
   --space-xs: 1.6rem;
   --space-s: 2.4rem;
@@ -45,4 +54,17 @@
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+.navbar {
+  padding-left: var(--space-m);
+  padding-right: var(--space-m);
+  backdrop-filter: blur(3.5px);
+  background-color: transparent;
+}
+
+@media screen and (max-width: 576px) {
+  .navbar {
+    padding-left: var(--space-2xs);
+  }
 }
