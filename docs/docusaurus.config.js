@@ -85,8 +85,8 @@ module.exports = {
               href: 'https://stackoverflow.com/questions/tagged/morfeo',
             },
             {
-              label: 'Slack',
-              href: 'https://app.slack.com/client/T0233Q163MF/C022XARRCA0',
+              label: 'Discord',
+              href: 'https://discord.com/channels/939456827152805919/939456827152805922',
             },
           ],
         },
