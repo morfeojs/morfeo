@@ -2,10 +2,12 @@
   display: flex;
   align-items: center;
   width: fit-content;
-  margin-bottom: var(--ifm-paragraph-margin-bottom);
-  background-color: #A3A3A3;
+  margin-bottom: var(--spacings-s);
+  border: var(--borders-medium);
+  border-color: var(--colors-primary);
+  font-weight: var(--font-weights-bold);
 }
 
 .image {
-  margin-right: var(--space-2xs);
+  margin-right: var(--spacings-2xs);
 }

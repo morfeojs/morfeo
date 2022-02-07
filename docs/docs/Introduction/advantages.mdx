@@ -17,15 +17,19 @@ To understand the second goal, let me show you an example:
 ```typescript
 const successButtonStyle = morfeo.resolve({
   bg: 'success',
-  corner: 'm', // <----
-  borderWidth: 'xs', // <----
+  // highlight-start
+  corner: 'm',
+  borderWidth: 'xs',
+  // highlight-end
   borderColor: 'success.darkest',
 });
 
 const dangerButtonStyle = morfeo.resolve({
   bg: 'error',
-  corner: 'l', // <----
-  borderWidth: '2xs', // <----
+  // highlight-start
+  corner: 'l',
+  borderWidth: '2xs',
+  // highlight-end
   borderColor: 'errror.darkest',
 });
 ```
@@ -67,13 +71,17 @@ const theme = {
 };
 
 const successButtonStyle = morfeo.resolve({
+  // highlight-start
   componentName: 'Button',
   variant: 'success',
+  // highlight-end
 });
 
 const dangerButtonStyle = morfeo.resolve({
+  // highlight-start
   componentName: 'Button',
   variant: 'error',
+  // highlight-end
 });
 ```
 

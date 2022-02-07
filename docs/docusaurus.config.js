@@ -8,7 +8,7 @@ module.exports = {
   onBrokenMarkdownLinks: 'warn',
   customFields: {
     description:
-      'Morfeo is a tool to build design systems based on a single source of truth.',
+      'Morfeo or MorfeoJS, is a tool to build design systems based on a single source of truth.',
   },
   favicon: 'img/favicon.ico',
   organizationName: 'VLK-STUDIO',

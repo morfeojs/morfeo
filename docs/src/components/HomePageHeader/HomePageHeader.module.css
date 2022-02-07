@@ -2,21 +2,19 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
-  perspective: 800px;
-  perspective-origin: top right;
+  min-height: var(--sizes-100vh);
 }
 
 .logoContainer {
-  margin: var(--space-xs) auto;
+  margin: var(--spacings-xs) auto;
 }
 
 .subtitle {
-  font-size: 4rem;
-  font-weight: bold;
+  font-size: var(--font-sizes-3xl);
+  font-weight: var(--font-weights-bold);
   line-height: 4rem;
-  margin-top: var(--space-xs);
-  margin-bottom: var(--space-xs);
+  margin-top: var(--spacings-xs);
+  margin-bottom: var(--spacings-xs);
 }
 
 .subtitle  p {
@@ -24,21 +22,22 @@
 }
 
 .cardContainer {
-  margin: var(--space-xl) 0;
+  margin: var(--spacings-xl) 0;
 }
 
 @media screen and (max-width: 966px) {
   .heroBanner {
-    padding: 2rem;
+    padding: var(--spacings-m);
+  }
+
+  .subtitle {
+    font-size: var(--font-sizes-2xl);
+    line-height: 2rem;
   }
 }
 
 @media screen and (max-width: 576px) {
   .heroBanner {
     padding: 0;
-  }
-
-  .subtitle {
-    display: none;
   }
 }

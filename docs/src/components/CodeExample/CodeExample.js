@@ -25,7 +25,7 @@ export function CodeExample() {
   return (
     <section className={styles.container}>
       <div className="container">
-        <h2 className={styles.title}>How it works!</h2>
+        <h2 className={styles.title}>How it works?</h2>
         <div className={styles.row}>
           <div className={styles.preview}>
             <CodeSnippet style={exampleTheme} label="set your theme" />
