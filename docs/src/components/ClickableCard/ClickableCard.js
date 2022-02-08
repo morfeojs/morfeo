@@ -3,14 +3,7 @@ import styles from './ClickableCard.module.css';
 import ArrowRight from './ArrowRight';
 import clsx from 'clsx';
 
-export function ClickableCard({
-  children,
-  badge,
-  icon,
-  onClick,
-  className,
-  textClassName,
-}) {
+export function ClickableCard({ children, badge, icon, onClick, className }) {
   return (
     <div
       className={clsx('morfeo-card-outlined', styles.container, className)}

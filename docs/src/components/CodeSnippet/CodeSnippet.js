@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
 
 import styles from './CodeSnippet.module.css';
