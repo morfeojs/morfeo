@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import clsx from 'clsx';
+import { Section } from '../Section';
 import { useHistory } from '@docusaurus/router';
 import { ClickableCard } from '../ClickableCard';
 import CLI from './CLI';
@@ -43,17 +43,20 @@ export function HomepageFeatures() {
   );
 
   return (
-    <section className={clsx('container', styles.features)}>
-      {features.map((feature, index) => (
-        <ClickableCard
-          key={index}
-          icon={feature.icon}
-          onClick={getOnClick(feature)}
-          badge={feature.badge}
-        >
-          {feature.text}
-        </ClickableCard>
-      ))}
-    </section>
+    <Section title="Features">
+      <div className={styles.features}>
+        {features.map((feature, index) => (
+          <ClickableCard
+            key={index}
+            icon={feature.icon}
+            onClick={getOnClick(feature)}
+            badge={feature.badge}
+            className={styles.feature}
+          >
+            <p className={styles.featureText}>{feature.text}</p>
+          </ClickableCard>
+        ))}
+      </div>
+    </Section>
   );
 }

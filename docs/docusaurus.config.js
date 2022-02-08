@@ -52,6 +52,12 @@ module.exports = {
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
         },
+        {
+          href: 'https://discord.gg/5hbsKMBRBh',
+          position: 'right',
+          className: 'header-discord-link',
+          'aria-label': 'Discord server',
+        },
       ],
     },
     footer: {
@@ -122,6 +128,7 @@ module.exports = {
       disableSwitch: true,
     },
     algolia: {
+      appId: 'EWTNDDHKD0',
       apiKey: '4caa155f2dbdf468ad11b7fe1ff297a2',
       indexName: 'morfeo',
       algoliaOptions: {},

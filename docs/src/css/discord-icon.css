@@ -1,0 +1,13 @@
+.header-discord-link:hover {
+  opacity: 0.6;
+}
+
+.header-discord-link:before {
+  content: '';
+  width: 31px;
+  height: 24px;
+  display: flex;
+  background: url("/static/img/discord-logo.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
