@@ -1,0 +1,6 @@
+.button {
+  color: var(--colors-inverted-text);
+  font-weight: var(--font-weights-bold);
+  display: flex;
+  align-items: center;
+}

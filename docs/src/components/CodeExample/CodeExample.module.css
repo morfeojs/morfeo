@@ -2,12 +2,6 @@
   margin: var(--spacings-l) 0;
 }
 
-.title {
-  text-align: center;
-  font-weight: var(--font-weights-bold);
-  font-size: var(--font-sizes-2xl);
-}
-
 .preview {
   display: flex;
   padding-top: var(--spacings-s);

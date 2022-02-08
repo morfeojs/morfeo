@@ -3,6 +3,7 @@ import { morfeo } from '@morfeo/react';
 import styles from './CodeExample.module.css';
 import { CodeSnippet } from '../CodeSnippet';
 import CodeBlock from '@theme/CodeBlock';
+import { Section } from '../Section';
 
 const exampleStyle = {
   bg: 'secondary',
@@ -23,9 +24,8 @@ export function CodeExample() {
 
   const resultStyle = morfeo.resolve(exampleStyle);
   return (
-    <section className={styles.container}>
-      <div className="container">
-        <h2 className={styles.title}>How it works?</h2>
+    <div>
+      <Section title="How it works?">
         <div className={styles.row}>
           <div className={styles.preview}>
             <CodeSnippet style={exampleTheme} label="set your theme" />
@@ -39,13 +39,11 @@ export function CodeExample() {
             />
           </div>
         </div>
-      </div>
-      <div className="container">
-        <h2 className={styles.title}>Try it now!</h2>
+      </Section>
+      <Section title="Try it now!">
         <blockquote>
           This is a React example but Morfeo ban be used everywhere
         </blockquote>
-
         <CodeBlock language="jsx" live title="/src/ShowTheme.js">
           {`function Button() {
   const { cardClass, buttonClass } = useClassNames({
@@ -75,7 +73,7 @@ export function CodeExample() {
   )
 }`}
         </CodeBlock>
-      </div>
-    </section>
+      </Section>
+    </div>
   );
 }

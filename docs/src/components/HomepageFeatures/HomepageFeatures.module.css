@@ -4,6 +4,14 @@
   grid-gap: var(--spacings-2xs);
 }
 
+.feature {
+  height: var(--sizes-3xl);
+}
+
+.featureText {
+  font-weight: var(--font-weights-bold);
+  font-size: var(--font-sizes-xl);
+}
 
 @media screen and (max-width: 966px) {
   .features {

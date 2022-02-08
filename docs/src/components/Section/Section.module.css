@@ -1,0 +1,6 @@
+.title {
+  text-align: center;
+  font-weight: var(--font-weights-bold);
+  font-size: var(--font-sizes-2xl);
+  margin-bottom: var(--spacings-m);
+}

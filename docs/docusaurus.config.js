@@ -122,6 +122,7 @@ module.exports = {
       disableSwitch: true,
     },
     algolia: {
+      appId: 'EWTNDDHKD0',
       apiKey: '4caa155f2dbdf468ad11b7fe1ff297a2',
       indexName: 'morfeo',
       algoliaOptions: {},
