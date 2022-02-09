@@ -48,12 +48,21 @@ module.exports = {
         { to: '/blog', label: 'Blog', position: 'right' },
         {
           href: 'https://github.com/VLK-STUDIO/morfeo',
+          title: 'GitHub repository',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
         },
         {
+          href: 'https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl',
+          position: 'right',
+          title: 'Web Extension',
+          className: 'web-extension-link',
+          'aria-label': 'Web Extension',
+        },
+        {
           href: 'https://discord.gg/5hbsKMBRBh',
+          title: 'Discord server',
           position: 'right',
           className: 'header-discord-link',
           'aria-label': 'Discord server',

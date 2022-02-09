@@ -1,5 +1,6 @@
 @import './github-icon.css';
 @import './discord-icon.css';
+@import './web-extension-icon.css';
 @import './morfeo/index.css';
 
 /**
@@ -41,12 +42,28 @@
 .navbar {
   padding-left: var(--spacings-m);
   padding-right: var(--spacings-m);
-  backdrop-filter: blur(3.5px);
   background-color: transparent;
+  backdrop-filter: blur(3.5px);
+}
+
+#__docusaurus > nav > div.navbar__inner > div.navbar__items.navbar__items--right > a {
+  color: var(--colors-text);
+  font-weight: var(--font-weights-bold);
 }
 
 @media screen and (max-width: 576px) {
   .navbar {
     padding-left: var(--spacings-2xs);
+  }
+  
+  .navbar-sidebar, .navbar-sidebar__items {
+    backdrop-filter: blur(3.5px);
+    background: rgba(255, 255, 255, 0.7);
+    background: linear-gradient(180deg, rgba(255,255,255, 1) 0%, rgba(255,255,255, 0.8) 35%, rgba(255,255,255, 0.5) 100%);
+  }
+
+  #__docusaurus > nav > div.navbar-sidebar > div.navbar-sidebar__items > div > ul > li > a {
+    color: var(--colors-text);
+    font-weight: var(--font-weights-bold);
   }
 }

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './CookieBanner.module.css';
 import { ClickableCard } from '../ClickableCard/ClickableCard';
-import CloseIcon from './CloseIcon';
+import { Icon } from '../Icon';
 import { useCookies } from './CookieProvider';
 import { useHistory } from '@docusaurus/router';
 import { useCallback } from 'react';
@@ -49,7 +49,7 @@ function CookieBanner() {
         We use cookies to improve your experience on our site. To find out more,
         read our privacy policy.
       </p>
-      <CloseIcon className={styles.closeIcon} onClick={onClickClose} />
+      <Icon name="close" className={styles.closeIcon} onClick={onClickClose} />
     </ClickableCard>
   );
 }

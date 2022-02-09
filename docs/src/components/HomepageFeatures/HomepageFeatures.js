@@ -2,16 +2,14 @@ import React, { useCallback } from 'react';
 import { Section } from '../Section';
 import { useHistory } from '@docusaurus/router';
 import { ClickableCard } from '../ClickableCard';
-import CLI from './CLI';
-import JSIcon from './JSIcon';
-import WebExtension from './WebExtension';
+import { Icon } from '../Icon';
 import styles from './HomepageFeatures.module.css';
 
 const features = [
   {
     text: 'Web extension',
     link: '/docs/Features/web-extension',
-    icon: <WebExtension />,
+    icon: <Icon name="webExtension" />,
   },
   {
     text: 'Multi theming',
@@ -26,10 +24,15 @@ const features = [
   {
     text: 'Single source of truth',
     link: '/docs/Features/single-source-of-truth',
-    icon: <JSIcon />,
+    icon: '🧘',
   },
   { text: 'Extendible', link: '/docs/Features/extendible', icon: '🧩' },
-  { text: 'CLI', link: '/docs/Features/CLI/', icon: <CLI />, badge: 'beta' },
+  {
+    text: 'CLI',
+    link: '/docs/Features/CLI/',
+    icon: <Icon name="cli" />,
+    badge: 'beta',
+  },
 ];
 
 export function HomepageFeatures() {

@@ -1,0 +1,13 @@
+.web-extension-link:hover {
+  opacity: 0.6;
+}
+
+.web-extension-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("/static/img/web-store.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}

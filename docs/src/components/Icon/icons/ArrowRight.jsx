@@ -1,4 +1,5 @@
 import React from 'react';
+
 const ArrowRight = ({ size = 24, className, onClick }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
