@@ -22,13 +22,26 @@
 
 .text i {
   color: var(--colors-inverted-text);
+  padding: 0 var(--spacings-2xs);
   background-color: var(--colors-primary);
-  padding-left: var(--spacings-3xs);
-  padding-right: var(--spacings-3xs);
 }
 
 .cta {
+  color: var(--colors-inverted-text) !important;
+  border: var(--borders-strong);
   transition: var(--transitions-fast);
+  border-color: transparent;
+  border-color: var(--colors-primary);
+  background-color: var(--colors-primary);
+}
+
+.cta:hover {
+  animation: shake 1.2s cubic-bezier(.36,.07,.19,.97) both infinite alternate;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  box-shadow: var(--shadows-medium);
+  opacity: 0.9;
 }
 
 .icon {
@@ -50,5 +63,23 @@
 
   .text i {
     display: inline-block;
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: scale(1.1) rotate3d(-20, 10, -10, 10deg);
+  }
+  
+  20%, 80% {
+    transform: scale(1.1) rotate3d(40, 10, -10, 10deg);
+  }
+
+  30%, 50%, 70% {
+    transform: scale(1.1) rotate3d(-80, 10, -10, 10deg);
+  }
+
+  40%, 60% {
+    transform: scale(1.1) rotate3d(80, 10, -10, 10deg);
   }
 }

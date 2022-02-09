@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { HeroCard } from '../HeroCard';
 import styles from './HomePageHeader.module.css';
-import Logo from './Logo';
+import { Icon } from '../Icon';
 
 export function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -11,7 +11,7 @@ export function HomepageHeader() {
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
         <div className={styles.logoContainer}>
-          <Logo />
+          <Icon name="logo" />
         </div>
         <div className={clsx('hero__subtitle', styles.subtitle)}>
           {siteConfig.tagline.split('\n').map((part, index) => (

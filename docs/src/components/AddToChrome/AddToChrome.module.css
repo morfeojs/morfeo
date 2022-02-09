@@ -3,9 +3,6 @@
   align-items: center;
   width: fit-content;
   margin-bottom: var(--spacings-s);
-  border: var(--borders-medium);
-  border-color: var(--colors-primary);
-  font-weight: var(--font-weights-bold);
 }
 
 .image {
