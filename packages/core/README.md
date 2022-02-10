@@ -118,7 +118,7 @@ morfeo.setTheme('default', defaultTheme);
 /**
  * from now on your design language will be available across all your application
  */
-morfeo.useTheme('default');
+morfeo.setCurrentTheme('default');
 ```
 
 To use the theme in your application just use the `getTheme` method of the morfeo singleton:

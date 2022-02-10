@@ -12,7 +12,7 @@ const theme = {
 morfeo.setTheme('default', theme);
 
 beforeEach(() => {
-  morfeo.useTheme('default');
+  morfeo.setCurrentTheme('default');
 });
 
 test('should generate the correct style with the override of `useStyle`', async () => {

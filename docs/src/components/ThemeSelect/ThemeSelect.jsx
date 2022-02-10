@@ -48,7 +48,7 @@ export function ThemeSelect({ style: baseStyle }) {
   });
   const applyTheme = name => {
     return () => {
-      morfeo.useTheme(name);
+      morfeo.setCurrentTheme(name);
       setSelected(name);
     };
   };

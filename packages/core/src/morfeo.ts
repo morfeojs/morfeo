@@ -12,9 +12,9 @@ function createMorfeo() {
    * Get the current theme name
    * @example
    *
-   * const current = morfeo.getCurrent(); // "light"
+   * const current = morfeo.getCurrentTheme(); // "light"
    */
-  function getCurrent(): ThemeName {
+  function getCurrentTheme(): ThemeName {
     return current;
   }
 
@@ -41,9 +41,9 @@ function createMorfeo() {
    *
    * const button = document.querySelector("#theme-dark-switcher");
    *
-   * button.addEventListener("click", () => morfeo.useTheme("dark"));
+   * button.addEventListener("click", () => morfeo.setCurrentTheme("dark"));
    */
-  function useTheme(themeName: ThemeName) {
+  function setCurrentTheme(themeName: ThemeName) {
     const themeToBeUsed = themes[themeName];
     if (!themeToBeUsed) {
       return false;
@@ -65,13 +65,13 @@ function createMorfeo() {
    * morfeo.setTheme("light", { colors: { primary: "#DDFCAD" }, ...rest});
    * morfeo.setTheme("dark", { colors: { primary: "#304F03" }, ...rest});
    *
-   * morfeo.useTheme("light");
+   * morfeo.setCurrentTheme("light");
    *
    * console.log(morfeo.getTheme().colors.primary); // #DDFCAD
    *
-   * morfeo.useTheme("dark");
+   * morfeo.setCurrentTheme("dark");
    *
-   * console.log(morfeo.get().colors.primary); // #304F03
+   * console.log(morfeo.getTheme().colors.primary); // #304F03
    */
   function setTheme(
     themeName: ThemeName,
@@ -79,7 +79,7 @@ function createMorfeo() {
   ) {
     themes[themeName] = deepMerge(themes[themeName] || {}, newTheme) as Theme;
     if (!current || current === themeName) {
-      useTheme(themeName);
+      setCurrentTheme(themeName);
     }
   }
 
@@ -128,11 +128,11 @@ function createMorfeo() {
 
   const instance = Object.freeze({
     resolve,
-    useTheme,
     setTheme,
     getTheme,
     getThemes,
-    getCurrent,
+    getCurrentTheme,
+    setCurrentTheme,
     __dangerousReset,
   });
 
@@ -153,7 +153,7 @@ export type Morfeo = ReturnType<typeof createMorfeo>;
  *
  * morfeo.setTheme("light", lightTheme);
  *
- * morfeo.useTheme("light")
+ * morfeo.setCurrentTheme("light")
  *
  * const style = morfeo.resolve({
  *   py: "m",

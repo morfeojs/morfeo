@@ -29,7 +29,7 @@ describe('morfeo', () => {
 
   it('should return the current theme if no arguments are passed to `getTheme` method', () => {
     morfeo.setTheme('light' as ThemeName, LIGHT_THEME as any);
-    morfeo.useTheme('light' as ThemeName);
+    morfeo.setCurrentTheme('light' as ThemeName);
 
     expect(morfeo.getTheme().colors.primary).toBe(LIGHT_THEME.colors.primary);
   });
@@ -38,30 +38,30 @@ describe('morfeo', () => {
     morfeo.setTheme('light' as ThemeName, LIGHT_THEME as any);
     morfeo.setTheme('dark' as ThemeName, DARK_THEME as any);
 
-    morfeo.useTheme('light' as ThemeName);
+    morfeo.setCurrentTheme('light' as ThemeName);
 
     expect(morfeo.getTheme().colors.primary).toBe(LIGHT_THEME.colors.primary);
 
-    morfeo.useTheme('dark' as ThemeName);
+    morfeo.setCurrentTheme('dark' as ThemeName);
 
     expect(morfeo.getTheme().colors.primary).toBe(DARK_THEME.colors.primary);
   });
 
   it("should return false if the theme name passed to `useTheme` it's not a valid theme name", () => {
-    expect(morfeo.useTheme('not a valid theme nme' as ThemeName)).toBe(false);
+    expect(morfeo.setCurrentTheme('not a valid theme nme' as ThemeName)).toBe(false);
   });
 
   it('should parse the style object based on the current theme', () => {
     morfeo.setTheme('light' as ThemeName, LIGHT_THEME as any);
     morfeo.setTheme('dark' as ThemeName, DARK_THEME as any);
 
-    morfeo.useTheme('light' as ThemeName);
+    morfeo.setCurrentTheme('light' as ThemeName);
 
     expect(morfeo.resolve({ bg: 'primary' })).toEqual({
       backgroundColor: LIGHT_THEME.colors.primary,
     });
 
-    morfeo.useTheme('dark' as ThemeName);
+    morfeo.setCurrentTheme('dark' as ThemeName);
 
     expect(morfeo.resolve({ bg: 'primary' })).toEqual({
       backgroundColor: DARK_THEME.colors.primary,
@@ -70,9 +70,9 @@ describe('morfeo', () => {
 
   it('should get the current theme name', () => {
     morfeo.setTheme('light' as ThemeName, LIGHT_THEME as any);
-    morfeo.useTheme('light' as ThemeName);
+    morfeo.setCurrentTheme('light' as ThemeName);
 
-    expect(morfeo.getCurrent()).toBe('light');
+    expect(morfeo.getCurrentTheme()).toBe('light');
   });
 
   it('should get all the added themes', () => {

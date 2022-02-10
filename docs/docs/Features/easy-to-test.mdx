@@ -52,7 +52,7 @@ test('should have the style defined inside the theme', () => {
 });
 ```
 
-## Example 2
+## Example #2
 
 The following component is used to switch the theme from light to dark and vice-versa:
 
@@ -62,10 +62,10 @@ import { Theme, morfeo } from '@morfeo/react';
 import { Button } from './Button';
 
 export const ThemeToggle: React.FC = () => {
-  const [isLight, setIsLight] = useState(morfeo.getCurrent() === 'light');
+  const [isLight, setIsLight] = useState(morfeo.getCurrentTheme() === 'light');
 
   const onClick = useCallback(() => {
-    morfeo.useTheme(isLight ? 'dark' : 'light');
+    morfeo.setCurrentTheme(isLight ? 'dark' : 'light');
     setIsLight(!isLight);
   }, [isLight, light, dark]);
 
@@ -98,7 +98,7 @@ beforeAll(() => {
 });
 
 beforeEach(() => {
-  morfeo.useTheme('light', dark);
+  morfeo.setCurrentTheme('light', dark);
 });
 
 test('should be light by default', () => {

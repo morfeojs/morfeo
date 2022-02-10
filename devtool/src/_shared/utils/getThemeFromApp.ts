@@ -25,7 +25,7 @@ function onMessageReceived(message: MorfeoDevToolAction) {
     themeNames.forEach(themeName => {
       morfeo.setTheme(themeName, themes[themeName] || {});
     });
-    morfeo.useTheme(current);
+    morfeo.setCurrentTheme(current);
 
     appendFonts(message);
   }

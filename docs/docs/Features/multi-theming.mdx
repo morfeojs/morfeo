@@ -24,17 +24,17 @@ After the themes are added, you can easily change the current theme by calling t
 ```typescript
 import { morfeo } from '@morfeo/core';
 
-morfeo.useTheme('light');
+morfeo.setCurrentTheme('light');
 
-console.log(morfeo.getCurrent()); // light;
+console.log(morfeo.getCurrentTheme()); // light;
 
-const style = morfeo.resove({ color: 'background' }); // {color: "#ffffff"};
+const style = morfeo.resolve({ color: 'background' }); // {color: "#ffffff"};
 
-morfeo.useTheme('dark');
+morfeo.setCurrentTheme('dark');
 
-console.log(morfeo.getCurrent()); // dark;
+console.log(morfeo.getCurrentTheme()); // dark;
 
-const style = morfeo.resove({ color: 'background' }); // {color: "#000000"};
+const style = morfeo.resolve({ color: 'background' }); // {color: "#000000"};
 ```
 
 ## Typescript

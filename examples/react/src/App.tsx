@@ -42,9 +42,9 @@ const Comps = () => {
   const [themeSymbol, setThemeSymbol] = useState('☽');
 
   const toggleTheme = () => {
-    const current: any = morfeo.getCurrent();
+    const current: any = morfeo.getCurrentTheme();
     setThemeSymbol(current === 'light' ? '☼' : '☽');
-    morfeo.useTheme(current === 'light' ? 'dark' : 'light');
+    morfeo.setCurrentTheme(current === 'light' ? 'dark' : 'light');
   };
 
   return (

@@ -21,7 +21,7 @@ morfeo.setTheme('dark', darkTheme);
 /**
  * Set the theme to use (default is the first added)
  */
-morfeo.useTheme('dark');
+morfeo.setCurrentTheme('dark');
 
 /**
  * Get the theme current theme
@@ -35,7 +35,7 @@ morfeo.getTheme('light');
 /**
  * Get the current theme name
  */
-const currentThemeName = morfeo.getCurrent(); // dark
+const currentThemeName = morfeo.getCurrentTheme(); // dark
 
 /**
  * Get all the added themes

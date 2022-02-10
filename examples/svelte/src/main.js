@@ -21,7 +21,7 @@ loadFont({
 morfeo.setTheme('light', { ...lightTheme, components });
 morfeo.setTheme('dark', { ...darkTheme, components });
 
-morfeo.useTheme('light');
+morfeo.setCurrentTheme('light');
 
 const app = new App({
   target: document.body,

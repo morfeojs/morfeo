@@ -34,7 +34,7 @@ morfeo.setTheme('default', theme);
 
 describe('MorfeoComponent', () => {
   beforeAll(() => {
-    morfeo.useTheme('default');
+    morfeo.setCurrentTheme('default');
   });
 
   test('should create a button with initial style and props based on the theme', async () => {
