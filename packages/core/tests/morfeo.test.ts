@@ -48,7 +48,9 @@ describe('morfeo', () => {
   });
 
   it("should return false if the theme name passed to `useTheme` it's not a valid theme name", () => {
-    expect(morfeo.setCurrentTheme('not a valid theme nme' as ThemeName)).toBe(false);
+    expect(morfeo.setCurrentTheme('not a valid theme nme' as ThemeName)).toBe(
+      false,
+    );
   });
 
   it('should parse the style object based on the current theme', () => {
