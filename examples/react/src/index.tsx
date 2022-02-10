@@ -10,7 +10,7 @@ resetCss();
 
 initPreset();
 
-morfeo.useTheme('light');
+morfeo.setCurrentTheme('light');
 
 loadFont(
   {

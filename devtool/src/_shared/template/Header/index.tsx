@@ -9,7 +9,7 @@ import { RouteName } from '../../contexts';
 export const Header: React.FC = () => {
   const { history, navigate, navigateBack } = useRouter();
   const theme = useTheme();
-  const [currentTheme, setCurrentTheme] = useState(morfeo.getCurrent());
+  const [currentTheme, setCurrentTheme] = useState(morfeo.getCurrentTheme());
   const canGoBack = history.length > 0;
   const themes = useMemo(() => (theme ? morfeo.getThemes() : {}), [theme]);
   const backButton = useMemo(() => {
@@ -34,7 +34,7 @@ export const Header: React.FC = () => {
           value={currentTheme}
           placeholder={t('headerMyThemesPlaceholder')}
           onChange={value => {
-            morfeo.useTheme(value as ThemeName);
+            morfeo.setCurrentTheme(value as ThemeName);
             setCurrentTheme(value as ThemeName);
           }}
           options={Object.keys(themes).map(themeName => ({

@@ -23,8 +23,8 @@ export function CodeExample() {
   });
 
   const onClick = () => {
-    const current = morfeo.getCurrent();
-    morfeo.useTheme(current === 'light' ? 'dark' : 'light')
+    const current = morfeo.getCurrentTheme();
+    morfeo.setCurrentTheme(current === 'light' ? 'dark' : 'light')
   }
 
   return (

@@ -16,7 +16,7 @@ export const Detail = () => {
   const { devtoolConfig } = meta || {};
   const [defaultStyleActive, setDefaultStyleActive] = useState(true);
 
-  const currentThemeName = morfeo.getCurrent();
+  const currentThemeName = morfeo.getCurrentTheme();
 
   const computedBackground = useMemo(() => {
     if (typeof devtoolConfig?.background === 'object') {

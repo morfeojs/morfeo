@@ -5,7 +5,7 @@
   let darkMode = false;
 
   function handleClick() {
-    morfeo.useTheme(darkMode ? 'light' : 'dark');
+    morfeo.setCurrentTheme(darkMode ? 'light' : 'dark');
     darkMode = !darkMode;
   }
 </script>

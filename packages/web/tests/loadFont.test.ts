@@ -26,7 +26,7 @@ beforeEach(() => {
   morfeo.__dangerousReset();
   morfeo.setTheme('light' as ThemeName, { fonts: {} });
   morfeo.setTheme('dark' as ThemeName, { fonts: {} });
-  morfeo.useTheme('light' as ThemeName);
+  morfeo.setCurrentTheme('light' as ThemeName);
 });
 
 describe('loadFont', () => {

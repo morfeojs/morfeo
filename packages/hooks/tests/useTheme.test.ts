@@ -15,7 +15,7 @@ const THEME = {
 
 beforeAll(() => {
   morfeo.setTheme('default', THEME);
-  morfeo.useTheme('default');
+  morfeo.setCurrentTheme('default');
 });
 
 describe('useTheme', () => {

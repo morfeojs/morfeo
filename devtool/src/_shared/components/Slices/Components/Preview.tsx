@@ -43,7 +43,7 @@ export const Preview: React.FC<Props> = ({ name, variant }) => {
   const { navigate } = useRouter();
   const { meta } =
   component(name, variant).get() || {};
-  const currentThemeName = morfeo.getCurrent();
+  const currentThemeName = morfeo.getCurrentTheme();
   const { devtoolConfig } = meta || {};
   const onClick = useCallback(() => {
     navigate(RouteName.COMPONENT, {

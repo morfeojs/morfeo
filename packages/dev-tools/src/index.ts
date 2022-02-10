@@ -8,7 +8,7 @@ function onChange(newTheme: Theme) {
         type: MORFEO_DEVTOOLS,
         theme: newTheme,
         themes: morfeo.getThemes(),
-        current: morfeo.getCurrent(),
+        current: morfeo.getCurrentTheme(),
       },
       '*',
     );
