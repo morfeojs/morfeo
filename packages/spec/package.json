@@ -18,7 +18,8 @@
     "morfeo-js"
   ],
   "scripts": {
-    "build": "rimraf build && tsc",
+    "build": "yarn build:esm && yarn build:commonjs",
+    "build:esm": "rimraf build && tsc",
     "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
     "watch": "tsc -w"
   },

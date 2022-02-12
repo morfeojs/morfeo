@@ -6,17 +6,17 @@ export const borders: Borders = {
     style: 'none',
   },
   strong: {
-    width: 'm',
+    width: 'l',
     style: 'solid',
     color: 'text',
   },
   medium: {
-    width: 's',
+    width: 'm',
     style: 'solid',
     color: 'text',
   },
   thin: {
-    width: 'xs',
+    width: 's',
     style: 'solid',
     color: 'text',
   },
