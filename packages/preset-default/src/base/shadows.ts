@@ -11,15 +11,6 @@ export const shadows: Shadows = {
     radius: 'none',
   },
   light: {
-    color: 'gray.lightest',
-    opacity: 'light',
-    offset: {
-      height: 'xl',
-      width: 'none',
-    },
-    radius: 'l',
-  },
-  medium: {
     color: 'gray.lighter',
     opacity: 'light',
     offset: {
@@ -28,8 +19,17 @@ export const shadows: Shadows = {
     },
     radius: 'l',
   },
-  strong: {
+  medium: {
     color: 'gray.light',
+    opacity: 'light',
+    offset: {
+      height: 'xl',
+      width: 'none',
+    },
+    radius: 'l',
+  },
+  strong: {
+    color: 'gray',
     opacity: 'light',
     offset: {
       height: 'xl',

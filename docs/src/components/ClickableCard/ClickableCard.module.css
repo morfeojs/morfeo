@@ -6,7 +6,8 @@
   position: relative;
   justify-content: center;
   padding: var(--spacings-m);
-  border: 4px solid var(--colors-gray-lightest);
+  border: var(--borders-strong);
+  border-color: var(--colors-gray-lightest);
   transition: var(--transitions-fast);
 }
 

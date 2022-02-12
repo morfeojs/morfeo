@@ -1,7 +1,7 @@
 .container {
   display: flex;
-  min-width: 20rem;
   height: 20rem;
+  min-width: 20rem;
   flex-direction: column;
   justify-content: space-between;
   transition: var(--transitions-fast);
@@ -13,7 +13,8 @@
 
 .code {
   flex: 1;
-  border: 2px solid var(--colors-primary-lightest);
+  border: var(--borders-strong);
+  border-color: var(--colors-gray-lightest);
   margin: 0 var(--spacings-2xs);
   padding: 0;
   overflow: hidden;
@@ -24,7 +25,7 @@
 }
 
 .container:hover .code {
-  border: 4px solid var(--colors-secondary);
+  border-color: var(--colors-secondary);
 }
 
 .label {
