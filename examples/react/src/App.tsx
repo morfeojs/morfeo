@@ -1,5 +1,4 @@
-import { morfeo } from '@morfeo/react';
-import { useState } from 'react';
+import { useCurrentTheme } from '@morfeo/react';
 import {
   Box,
   Main,
@@ -39,12 +38,11 @@ hljs.registerLanguage('typescript', typescript);
 hljs.highlightAll();
 
 const Comps = () => {
-  const [themeSymbol, setThemeSymbol] = useState('☽');
+  const [currentTheme, setCurrentTheme] = useCurrentTheme();
+  const themeSymbol = currentTheme === 'light' ? '☼' : '☽';
 
   const toggleTheme = () => {
-    const current: any = morfeo.getCurrentTheme();
-    setThemeSymbol(current === 'light' ? '☼' : '☽');
-    morfeo.setCurrentTheme(current === 'light' ? 'dark' : 'light');
+    setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
   };
 
   return (

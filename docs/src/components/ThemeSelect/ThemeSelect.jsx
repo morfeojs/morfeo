@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import { morfeo, deepMerge } from '@morfeo/react';
+import React, { useEffect } from 'react';
+import { morfeo, deepMerge, useCurrentTheme } from '@morfeo/react';
 import { lightTheme } from '@morfeo/preset-default';
 
 const themes = {
-  theme1: deepMerge(lightTheme, {
+  'Theme #1': deepMerge(lightTheme, {
     colors: {
       primary: '#16a085',
+      background: '#16a085',
+      text: '#ffffff',
     },
     radii: {
       m: '30px',
@@ -14,9 +16,11 @@ const themes = {
       s: '30px',
     },
   }),
-  theme2: deepMerge(lightTheme, {
+  'Theme #2': deepMerge(lightTheme, {
     colors: {
       primary: '#e67e22',
+      background: '#e67e22',
+      text: '#ffffff',
     },
     radii: {
       m: '30px',
@@ -25,9 +29,11 @@ const themes = {
       s: '20px',
     },
   }),
-  theme3: deepMerge(lightTheme, {
+  'Theme #3': deepMerge(lightTheme, {
     colors: {
       primary: '#8e44ad',
+      background: '#8e44ad',
+      text: '#ffffff',
     },
     radii: {
       m: '30px',
@@ -41,50 +47,43 @@ const themes = {
 Object.keys(themes).forEach(name => morfeo.setTheme(name, themes[name]));
 
 export function ThemeSelect({ style: baseStyle }) {
-  const [selected, setSelected] = useState();
+  const [currentTheme, setCurrentTheme] = useCurrentTheme();
   const style = morfeo.resolve({
     ...baseStyle,
     transition: 'all 0.5s',
+    fontSize: 'xl',
+    fontWeight: 'bold',
+    shadow: 'medium',
   });
+
   const applyTheme = name => {
     return () => {
-      morfeo.setCurrentTheme(name);
-      setSelected(name);
+      setCurrentTheme(name);
     };
   };
+
+  useEffect(() => {
+    return () => {
+      setCurrentTheme('light');
+    };
+  }, []);
+
   return (
     <>
-      <button
-        className="button button--primary button--lg margin--sm"
-        onClick={applyTheme('theme1')}
-        style={{
-          backgroundColor: themes['theme1'].colors['primary'],
-          borderColor: themes['theme1'].colors['primary'],
-        }}
-      >
-        Apply theme #1
-      </button>
-      <button
-        className="button button--primary button--lg margin--sm"
-        onClick={applyTheme('theme2')}
-        style={{
-          backgroundColor: themes['theme2'].colors['primary'],
-          borderColor: themes['theme2'].colors['primary'],
-        }}
-      >
-        Apply theme #2
-      </button>
-      <button
-        className="button button--primary button--lg margin--sm"
-        onClick={applyTheme('theme3')}
-        style={{
-          backgroundColor: themes['theme3'].colors['primary'],
-          borderColor: themes['theme3'].colors['primary'],
-        }}
-      >
-        Apply theme #3
-      </button>
-      {selected && <div style={morfeo.resolve(style)}></div>}
+      {Object.keys(themes).map(themeName => (
+        <button
+          key={themeName}
+          className="button button--primary button--lg margin--sm"
+          onClick={applyTheme(themeName)}
+          style={{
+            backgroundColor: themes[themeName].colors['primary'],
+            borderColor: themes[themeName].colors['primary'],
+          }}
+        >
+          Apply {themeName}
+        </button>
+      ))}
+      <div style={morfeo.resolve(style)}>Current theme: {currentTheme}</div>
     </>
   );
 }
