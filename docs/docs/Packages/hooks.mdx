@@ -21,6 +21,7 @@ yarn add @morfeo/hooks
 - [useTheme](#usetheme)
   - [useThemeSlice](#usethemeslice)
   - [useThemeValue](#usethemevalue)
+- [useCurrentTheme](#usecurrenttheme)
 - [useStyles](#usestyles)
   - [useStyle](#usestyle)
 
@@ -48,17 +49,24 @@ function App() {
 
 Use this hook to get the current theme and use it inside a components:
 
-```jsx
-const MyComponent: React.FC = () => {
+```jsx live
+function MyComponent() {
   const theme = useTheme();
 
   return (
-    <div>
-      <p>My primary color is: {theme.colors.primary}</p>
-      <p>My xxl space is: {theme.spaces.xxl}</p>
-    </div>
+    <>
+      <p>
+        My primary color is:{' '}
+        <code style={{ color: theme.colors.primary }}>
+          {theme.colors.primary}
+        </code>
+      </p>
+      <p>
+        My xl space is: <code>{theme.spacings.xl}</code>
+      </p>
+    </>
   );
-};
+}
 ```
 
 :::note
@@ -69,43 +77,81 @@ Most of the time you don't need the whole theme, but just a slice or single valu
 
 ### useThemeSlice
 
-```jsx
-const MyComponent: React.FC = () => {
+```jsx live
+function MyComponent() {
   const colors = useThemeSlice('colors');
 
   return (
-    <div>
-      <p>My primary color is: {colors.primary}</p>
-      <p>My secondary color is: {colors.secondary}</p>
-    </div>
+    <>
+      <p>
+        My primary color is:{' '}
+        <code style={{ color: colors.primary }}>{colors.primary}</code>
+      </p>
+      <p>
+        My secondary color is:{' '}
+        <code style={{ color: colors.secondary }}>{colors.secondary}</code>
+      </p>
+    </>
   );
-};
+}
 ```
 
 ### useThemeValue
 
-```jsx
-const MyComponent: React.FC = () => {
+```jsx live
+function MyComponent() {
   const primaryColor = useThemeValue('colors', 'primary');
 
   return (
-    <div>
-      <p>My primary color is: {primaryColor}</p>
-    </div>
+    <p>
+      My primary color is:{' '}
+      <code style={{ color: primaryColor }}>{primaryColor}</code>
+    </p>
   );
-};
+}
+```
+
+## useCurrentTheme
+
+A hook to retrieve the current theme name and a callback to change it,
+they correspond to `morfeo.getCurrentTheme` and `morfeo.setCurrentTheme` of the core-api.
+
+```jsx live
+function Button() {
+  // highlight-start
+  const [currentTheme, setCurrentTheme] = useCurrentTheme();
+  // highlight-end
+
+  const style = useStyle({
+    componentName: 'Button',
+    color: 'text',
+    bg: 'background',
+  });
+
+  const onClick = () => {
+    // highlight-start
+    setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
+    // highlight-end
+  };
+
+  return (
+    <button onClick={onClick} style={style}>
+      Toggle theme
+    </button>
+  );
+}
 ```
 
 ## useStyles
 
 If you don't need the theme, but to generate a style based on the theme; The hooks `useStyles` and `useStyle` are made for this reason:
 
-```jsx
-const MyComponent: React.FC = () => {
+```jsx live
+function MyComponent() {
   const { agreeStyle, disagreeStyle, textStyle } = useStyles({
-    agreeStyle: { componentName: 'Button', variant: 'success' },
+    agreeStyle: { componentName: 'Button', variant: 'success', mb: 'm' },
     disagreeStyle: { componentName: 'Button' },
-    textStyle: { fontSize: '2xl', color: 'white' },
+    textStyle: { fontSize: 'xl', color: 'text' },
   });
 
   return (
@@ -115,22 +161,22 @@ const MyComponent: React.FC = () => {
       <button style={disagreeStyle}>What about a Coke? 🥤</button>
     </div>
   );
-};
+}
 ```
 
 ## useStyle
 
 Use it if you need to generate just one style:
 
-```jsx
-const AgreeButton: React.FC = ({ children }) => {
-  const buttonStyle = useStyles({
+```jsx live
+function AgreeButton() {
+  const buttonStyle = useStyle({
     componentName: 'Button',
     variant: 'success',
   });
 
-  return <button style={buttonStyle}>{children}</button>;
-};
+  return <button style={buttonStyle}>Agree</button>;
+}
 ```
 
 :::note

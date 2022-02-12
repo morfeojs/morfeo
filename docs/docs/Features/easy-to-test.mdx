@@ -58,16 +58,16 @@ The following component is used to switch the theme from light to dark and vice-
 
 ```tsx title="ThemeToggle.tsx"
 import { useState, useCallback } from 'react';
-import { Theme, morfeo } from '@morfeo/react';
+import { Theme, morfeo, useCurrentTheme } from '@morfeo/react';
 import { Button } from './Button';
 
 export const ThemeToggle: React.FC = () => {
-  const [isLight, setIsLight] = useState(morfeo.getCurrentTheme() === 'light');
+  const [currentTheme, setCurrentTheme] = useCurrentTheme();
+  const isLight = currentTheme === 'light';
 
-  const onClick = useCallback(() => {
-    morfeo.setCurrentTheme(isLight ? 'dark' : 'light');
-    setIsLight(!isLight);
-  }, [isLight, light, dark]);
+  const onClick = () => {
+    setCurrentTheme(isLight ? 'dark' : 'light');
+  };
 
   return <Button onClick={onClick}>{isLight ? `🌙` : `☀️`}</Button>;
 };

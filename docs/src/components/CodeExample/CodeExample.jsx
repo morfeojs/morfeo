@@ -21,10 +21,10 @@ export function CodeExample() {
       variant: 'primary',
     }
   });
+  const [currentTheme, setCurrentTheme] = useCurrentTheme();
 
   const onClick = () => {
-    const current = morfeo.getCurrentTheme();
-    morfeo.setCurrentTheme(current === 'light' ? 'dark' : 'light')
+    setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light')
   }
 
   return (
