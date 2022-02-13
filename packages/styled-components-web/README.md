@@ -8,7 +8,7 @@
 
 ---
 
-[Documentation](https://morfeo.dev) | [API](https://github.com/VLK-STUDIO/morfeo) | [Contributing](https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
+[Documentation](https://morfeo.dev) | [API](https://github.com/morfeojs/morfeo) | [Contributing](https://github.com/morfeojs/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
 
 ---
 
@@ -26,7 +26,7 @@ Remember that **@morfeo/styled-components-web** has **styled-components** as _pe
 
 Starting from your configured theme, imagine to have defined a `Button` component.
 
-:warning: :warning: If you need to know more about **@morfeo** theme definition and initialization, reading [@morfeo/spec](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec) docs is highly recommended.:warning: :warning:
+:warning: :warning: If you need to know more about **@morfeo** theme definition and initialization, reading [@morfeo/spec](https://github.com/morfeojs/morfeo/tree/main/packages/spec) docs is highly recommended.:warning: :warning:
 
 ```ts
 // Sample myTheme.ts

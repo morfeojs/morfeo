@@ -11,7 +11,7 @@ module.exports = {
       'Morfeo or MorfeoJS, is a tool to build design systems based on a single source of truth.',
   },
   favicon: 'img/favicon.ico',
-  organizationName: 'VLK-STUDIO',
+  organizationName: 'morfeojs',
   projectName: 'morfeo',
   themeConfig: {
     navbar: {
@@ -47,7 +47,7 @@ module.exports = {
         },
         { to: '/blog', label: 'Blog', position: 'right' },
         {
-          href: 'https://github.com/VLK-STUDIO/morfeo',
+          href: 'https://github.com/morfeojs/morfeo',
           title: 'GitHub repository',
           position: 'right',
           className: 'scale-on-hover header-github-link',
@@ -121,7 +121,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/VLK-STUDIO/morfeo',
+              href: 'https://github.com/morfeojs/morfeo',
             },
             {
               label: 'Privacy Policy',
@@ -164,11 +164,11 @@ module.exports = {
         },
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/VLK-STUDIO/morfeo/edit/main/docs/',
+          editUrl: 'https://github.com/morfeojs/morfeo/edit/main/docs/',
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/VLK-STUDIO/morfeo/edit/main/docs/',
+          editUrl: 'https://github.com/morfeojs/morfeo/edit/main/docs/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

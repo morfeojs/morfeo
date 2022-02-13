@@ -41,12 +41,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/VLK-STUDIO/morfeo",
+    "url": "https://github.com/morfeojs/morfeo",
     "directory": "packages/styled-components-web"
   },
   "homepage": "https://morfeo.dev",
   "bugs": {
-    "url": "https://github.com/VLK-STUDIO/morfeo/issues"
+    "url": "https://github.com/morfeojs/morfeo/issues"
   },
   "dependencies": {
     "@morfeo/react": "^0.4.2"

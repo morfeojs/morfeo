@@ -4,7 +4,7 @@
 
 ---
 
-[Documentation](https://morfeo.dev) | [API](https://github.com/VLK-STUDIO/morfeo) | [Contributing](https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
+[Documentation](https://morfeo.dev) | [API](https://github.com/morfeojs/morfeo) | [Contributing](https://github.com/morfeojs/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
 
 ---
 
@@ -44,16 +44,16 @@ yarn add @morfeo/core
 
 With the function **morfeo** you can handle the theme object and resolve a [morfeo style object](https://morfeo.dev/docs/ThemeSpecification/overview#morfeo-style-object) info a valid css-in-js object.
 
-> [Here](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec) you can find an explanation of the morfeo's theme specification; check it out to understand in deep all the properties your theme should have.
+> [Here](https://github.com/morfeojs/morfeo/tree/main/packages/spec) you can find an explanation of the morfeo's theme specification; check it out to understand in deep all the properties your theme should have.
 
 :warning: Warning
 
-> You'll probably never use _directly_ `@morfeo/core`, instead, you'll more likely to use [@morfeo/react](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/react), [@morfeo/svelte](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/svelte), [@morfeo/jss](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/jss), or other packages that offer better integration of the morfeo eco-system in your framework of choice.
+> You'll probably never use _directly_ `@morfeo/core`, instead, you'll more likely to use [@morfeo/react](https://github.com/morfeojs/morfeo/tree/main/packages/react), [@morfeo/svelte](https://github.com/morfeojs/morfeo/tree/main/packages/svelte), [@morfeo/jss](https://github.com/morfeojs/morfeo/tree/main/packages/jss), or other packages that offer better integration of the morfeo eco-system in your framework of choice.
 > In this particular case, it's important to know that you cannot define media queries as inline-style, that's why you need some other tool like JSS or Styled Components to handle this behavior. Likely, we already thought about it, so feel free to check out our packages.
 
 ### handling the theme: set, use and get.
 
-The `theme` handler is a singleton that will share across all your application/website the theme, so you can use it to refer colors, spacing, shadow (and [more..](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec)), and most importantly the styles of your **components**.
+The `theme` handler is a singleton that will share across all your application/website the theme, so you can use it to refer colors, spacing, shadow (and [more..](https://github.com/morfeojs/morfeo/tree/main/packages/spec)), and most importantly the styles of your **components**.
 
 This singleton is exported by `@morfeo` but, 99% of the time, you don't need to use it directly, `morfeo` exposes a set of methods that cover most
 of the common scenarios like `setting` one or more themes, `getting` the current theme, `using` a theme instead of another one.

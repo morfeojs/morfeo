@@ -104,7 +104,7 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
         </div>
         <div className={styles.footerItem}>
           <Icon name="github" size="s" color={'invertedText' as Color} />
-          <ExternalLink to="https://github.com/VLK-STUDIO/morfeo">
+          <ExternalLink to="https://github.com/morfeojs/morfeo">
             {t('sidebarGithub')}
           </ExternalLink>
         </div>
