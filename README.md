@@ -1,6 +1,6 @@
 ![Morfeo logo](https://morfeo.dev/img/morfeo.png)
 
-[morfeo](https://morfeo.dev) is a framework-agnostic set of tools that will help you to build your next <strong>design system</strong> based on a single source of truth: the **theme**.
+[morfeo](https://morfeo.dev) is a framework-agnostic set of tools that will help you to build your next **design system** based on a single source of truth: the **theme**.
 
 ---
 
@@ -118,19 +118,22 @@ In case you used Morfeo in your project and you want to show it to the world, pl
 [![Made with Morfeo](https://img.shields.io/badge/made%20with-%20morfeo-0066ff?logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCA1MSA1MCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxuczpzZXJpZj0iaHR0cDovL3d3dy5zZXJpZi5jb20vIiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjI7Ij48cmVjdCBpZD0iXzUwLWZ1bGwiIHNlcmlmOmlkPSI1MC1mdWxsIiB4PSIwLjUyNyIgeT0iMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBzdHlsZT0iZmlsbDpub25lOyIvPjxjbGlwUGF0aCBpZD0iX2NsaXAxIj48cmVjdCB4PSIwLjUyNyIgeT0iMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjX2NsaXAxKSI+PGc+PHBhdGggZD0iTTI3LjU3Miw0Ny45MjFsMCwwbDE4LjQ1LC0xOC40MTFjMC4wNDcsLTAuMDUxIDAuMDk3LC0wLjEwMSAwLjE0OCwtMC4xNDhsMCwwbDAsMGMwLjQ2MywtMC40MjYgMS4wODEsLTAuNjg3IDEuNzU5LC0wLjY4N2MxLjQzNCwwIDIuNTk4LDEuMTY1IDIuNTk4LDIuNTk4bDAsMTYuMTMxYzAsMS40MzQgLTEuMTY0LDIuNTk4IC0yLjU5OCwyLjU5OGwtNDQuODA0LDBjLTEuNDM0LDAgLTIuNTk4LC0xLjE2NCAtMi41OTgsLTIuNTk4bDAsMGMwLDAgMCwtMTYuMTMxIDAsLTE2LjEzMWMwLC0xLjQzMyAxLjE2NCwtMi41OTggMi41OTgsLTIuNTk4YzAuNzUxLDAgMS40MjksMC4zMiAxLjkwMywwLjgzbDAsMGwxOC40NTEsMTguNDE2YzAuMzQxLDAuMzU2IDEuMjE2LDAuOTk3IDIuMDQ3LDAuOTk3YzAuODMsMCAxLjUyMywtMC40OSAyLjA0NiwtMC45OTdaIiBzdHlsZT0iZmlsbDojMDZmOyIvPjxwYXRoIGQ9Ik00Ny4yNDQsMC4wMDJjMC4wNTQsLTAuMDAyIDAuMTA4LC0wLjAwNCAwLjE2MiwtMC4wMDRjMC4wNTQsMCAwLjEwOCwwLjAwMiAwLjE2MSwwLjAwNGwwLjAwMSwwYzEuNTk5LDAuMDg1IDIuODcxLDEuNDEgMi44NzEsMy4wMjljMCwwLjkxNyAtMC40MDgsMS43MzkgLTEuMDUxLDIuMjk1bDAsMGwtMjEuNzksMjEuNzljLTAuNTQyLDAuNTA2IC0xLjI3NiwwLjgxNSAtMi4wNzQsMC44MTVjLTAuOTA3LDAgLTEuNzMxLC0wLjQgLTIuMjg3LC0xLjAzMWwtMjEuNjU5LC0yMS42NzFsMCwwYy0wLjU4MSwtMC41NTIgLTAuOTQ0LC0xLjMzMyAtMC45NDQsLTIuMTk4YzAsLTEuNjc0IDEuMzU5LC0zLjAzMyAzLjAzMywtMy4wMzNjMC4wNTUsMCAwLjEwOSwwLjAwMiAwLjE2MiwwLjAwNGwwLDBsNDMuNDE1LDBaIiBzdHlsZT0iZmlsbDojMDZmOyIvPjwvZz48L2c+PC9zdmc+)](https://morfeo.dev)
 
 > To see the markdown code just check the raw version of this README [here](https://raw.githubusercontent.com/morfeojs/morfeo/main/README.md).
+
 ## Sponsors
 
 ### 🥇 Gold Sponsors
 
 <div style="display: flex; flex-wrap: wrap;">
   <div style="display: flex; flex-direction: column; align-items: center; margin: 0 20px">
-    <img src="https://vlkstudio.com/assets/logo.svg" height="128px" width="128px" />
-    <a href="https://vlkstudio.com" title="vlkstudio">VLK Studio</a>
+    <a href="https://vlkstudio.com" title="vlkstudio">
+      <img src="https://vlkstudio.com/assets/logo.svg" height="128px" width="128px" title="VLK Studio" />
+    </a>
   </div>
   <!-- Add more Gold sponsors here by using this template -->
   <!-- <div style="display: flex; flex-direction: column; align-items: center; margin: 0 20px">
-    <img src="{{URL TO THE LOGO}}" height="128px" width="128px" />
-    <a href="{{URL TO THE WEBSITE}}" title="{{NAME}}">{{NAME}}</a>
+    <a href="{WEBSITE_URL}" title="{NAME}">
+      <img src="{LOGO_URL}" height="128px" width="128px" title="{NAME}" />
+    </a>
   </div> -->
 </div>
 
@@ -139,8 +142,9 @@ In case you used Morfeo in your project and you want to show it to the world, pl
 <div style="display: flex; flex-wrap: wrap">
   <!-- Add more Silver sponsors here by using this template -->
   <!-- <div style="display: flex; flex-direction: column; align-items: center; margin: 0 20px">
-    <img src="{{URL TO THE LOGO}}" height="64px" width="64px" />
-    <a href="{{URL TO THE WEBSITE}}" title="{{NAME}}">{{NAME}}</a>
+    <a href="{WEBSITE_URL}" title="{NAME}">
+      <img src="{LOGO_URL}" height="64px" width="64px" title="{NAME}" />
+    </a>
   </div> -->
 </div>
 
@@ -149,8 +153,9 @@ In case you used Morfeo in your project and you want to show it to the world, pl
 <div style="display: flex; flex-wrap: wrap">
   <!-- Add more Bronze sponsors here by using this template -->
   <!-- <div style="display: flex; flex-direction: column; align-items: center; margin: 0 20px">
-    <img src="{{URL TO THE LOGO}}" height="48px" width="48px" />
-    <a href="{{URL TO THE WEBSITE}}" title="{{NAME}}">{{NAME}}</a>
+    <a href="{WEBSITE_URL}" title="{NAME}">
+      <img src="{LOGO_URL}" height="48px" width="48px" title="{NAME}" />
+    </a>
   </div> -->
 </div>
 
