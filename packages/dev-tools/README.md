@@ -6,7 +6,7 @@
 
 ---
 
-[Documentation](https://morfeo.dev) | [API](https://github.com/VLK-STUDIO/morfeo) | [Contributing](https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
+[Documentation](https://morfeo.dev) | [API](https://github.com/morfeojs/morfeo) | [Contributing](https://github.com/morfeojs/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
 
 ---
 
@@ -62,6 +62,6 @@ We want to improve the dev tool as much as possible and add functionalities like
 - a UI to easily generate the style based on the theme
 - theme storage to apply theme presets to your application
 
-If you want to help us, check our [GitHub](https://github.com/VLK-STUDIO/morfeo)!
+If you want to help us, check our [GitHub](https://github.com/morfeojs/morfeo)!
 
-If you want a particular funcionality or you found a bug, open an issue [here](https://github.com/VLK-STUDIO/morfeo/issues)
+If you want a particular funcionality or you found a bug, open an issue [here](https://github.com/morfeojs/morfeo/issues)

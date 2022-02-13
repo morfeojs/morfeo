@@ -40,11 +40,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/VLK-STUDIO/morfeo",
+    "url": "https://github.com/morfeojs/morfeo",
     "directory": "packages/hooks"
   },
   "homepage": "https://morfeo.dev",
   "bugs": {
-    "url": "https://github.com/VLK-STUDIO/morfeo/issues"
+    "url": "https://github.com/morfeojs/morfeo/issues"
   }
 }

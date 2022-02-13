@@ -45,5 +45,14 @@
       "json",
       "node"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morfeojs/morfeo",
+    "directory": "examples/react-native"
+  },
+  "homepage": "https://morfeo.dev",
+  "bugs": {
+    "url": "https://github.com/morfeojs/morfeo/issues"
   }
 }

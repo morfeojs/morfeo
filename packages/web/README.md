@@ -2,13 +2,13 @@
 
 ![Morfeo logo](https://morfeo.dev/img/morfeo.png)
 
-**@morfeo/web** adds to [@morfeo/core](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/core) additional parsers and typings to make it perfect for a web environment.
+**@morfeo/web** adds to [@morfeo/core](https://github.com/morfeojs/morfeo/tree/main/packages/core) additional parsers and typings to make it perfect for a web environment.
 
 **@morfeo/web** is part of the [@morfeo](https://morfeo.dev) eco-system, a set of **framework-agnostic** tools that help you to create beautiful design systems for your web and mobile apps.
 
 ---
 
-[Documentation](https://morfeo.dev) | [API](https://github.com/VLK-STUDIO/morfeo) | [Contributing](https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
+[Documentation](https://morfeo.dev) | [API](https://github.com/morfeojs/morfeo) | [Contributing](https://github.com/morfeojs/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
 
 ---
 
@@ -124,7 +124,7 @@ For now morfeo support this pseudos:
 &::before
 ```
 
-as specified [here](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/core#add-a-custom-parser) yuo can always add more parser to extends morfeo, or simply add more pseudos in this list by editing this [file](https://github.com/VLK-STUDIO/morfeo/blob/main/packages/web/src/properties.ts) and open a pull request.
+as specified [here](https://github.com/morfeojs/morfeo/tree/main/packages/core#add-a-custom-parser) yuo can always add more parser to extends morfeo, or simply add more pseudos in this list by editing this [file](https://github.com/morfeojs/morfeo/blob/main/packages/web/src/properties.ts) and open a pull request.
 
 ### gradients
 
@@ -159,4 +159,4 @@ with the results:
 
 [![gradient-Text.png](https://i.postimg.cc/5NDMVbH5/gradient-Text.png)](https://postimg.cc/SJLPL0fj)
 
-check out [@morfeo/spec](https://github.com/VLK-STUDIO/morfeo/tree/main/packages/spec) for the complete specification of the type `GradientConfig` used inside the `gradients` theme slice.
+check out [@morfeo/spec](https://github.com/morfeojs/morfeo/tree/main/packages/spec) for the complete specification of the type `GradientConfig` used inside the `gradients` theme slice.

@@ -6,7 +6,7 @@ a command line interface to use morfeo, more details can be found [here](https:/
 
 ---
 
-[Documentation](https://morfeo.dev) | [API](https://github.com/VLK-STUDIO/morfeo) | [Contributing](https://github.com/VLK-STUDIO/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
+[Documentation](https://morfeo.dev) | [API](https://github.com/morfeojs/morfeo) | [Contributing](https://github.com/morfeojs/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
 
 <!-- toc -->
 * [@morfeo/cli](#morfeocli)
@@ -55,7 +55,7 @@ EXAMPLES
   $ morfeo build path/to/theme.ts --name="light"
 ```
 
-_See code: [lib/commands/build.js](https://github.com/VLK-STUDIO/morfeo/blob/v0.4.2/lib/commands/build.js)_
+_See code: [lib/commands/build.js](https://github.com/morfeojs/morfeo/blob/v0.4.2/lib/commands/build.js)_
 
 ## `morfeo compose`
 
@@ -75,7 +75,7 @@ EXAMPLES
   $ morfeo compose --watch
 ```
 
-_See code: [lib/commands/compose.js](https://github.com/VLK-STUDIO/morfeo/blob/v0.4.2/lib/commands/compose.js)_
+_See code: [lib/commands/compose.js](https://github.com/morfeojs/morfeo/blob/v0.4.2/lib/commands/compose.js)_
 
 ## `morfeo help [COMMAND]`
 
