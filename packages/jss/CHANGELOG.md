@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2022-02-13)
+
+
+### Bug Fixes
+
+* [#136](https://github.com/morfeojs/morfeo/issues/136) ([50ca5e4](https://github.com/morfeojs/morfeo/commit/50ca5e4803ba5335245995e31d09c9273a4a2f16))
+* adaptation for last npm version ([95b88bc](https://github.com/morfeojs/morfeo/commit/95b88bcd50d7ed7371ca33e30a93d0f9c59f53f0))
+* benchmarks fixed ([fc59036](https://github.com/morfeojs/morfeo/commit/fc59036327137cae1b3886c3b6e0a5ca239e5d9f))
+* package-lock re-introduced ([658b335](https://github.com/morfeojs/morfeo/commit/658b33533b316b51b55799be916830df7daaa5a9))
+* readme files fix and licenses added ([c71286a](https://github.com/morfeojs/morfeo/commit/c71286acf948e65eacb5e0ac808cc9425d576351))
+* used yarn instead of npm ([6d0b777](https://github.com/morfeojs/morfeo/commit/6d0b77715332ab0e3c985538ef5ccb8a90a023f3))
+
+
+### Features
+
+* [#144](https://github.com/morfeojs/morfeo/issues/144) ([16b382a](https://github.com/morfeojs/morfeo/commit/16b382a9bd9eb8bc434569f6f8cb8dd8374833da))
+* [#150](https://github.com/morfeojs/morfeo/issues/150) ([33be120](https://github.com/morfeojs/morfeo/commit/33be120e0718ec408ffcc18d20a52240180992db))
+* added pwa plugin to documentation website ([1808781](https://github.com/morfeojs/morfeo/commit/1808781f20f0c41f6d4a965eb5bad522caf9e56a))
+* commonjs build included ([1b3baa5](https://github.com/morfeojs/morfeo/commit/1b3baa5da980b65035a67db28e11cb2aa9d3333c))
+* docs improvements ([c25202e](https://github.com/morfeojs/morfeo/commit/c25202ee79424cfb020606f7509755168186308e))
+* documentation improvements ([4ad3b5d](https://github.com/morfeojs/morfeo/commit/4ad3b5d7f35cd9c1ad1532e5367dec21594d8ff4))
+* flatted parser.resolve method ([5ce2c10](https://github.com/morfeojs/morfeo/commit/5ce2c101097b7ab28d985b108ee079e07f8bacce))
+* introucing svelte package and sandbox ([0e8e9e2](https://github.com/morfeojs/morfeo/commit/0e8e9e22f38576730c73442714c1a611847d9bc7))
+* jss package and fix to native test ([30b6c4a](https://github.com/morfeojs/morfeo/commit/30b6c4a1551ee7feb66a31c48f38e1841a6ebdb2))
+* licenses updated ([45b042a](https://github.com/morfeojs/morfeo/commit/45b042aec49d17e7a261330b713cc05f6b4355b2))
+* **preset-default:** added components to preset default ([3d924c5](https://github.com/morfeojs/morfeo/commit/3d924c50b83a1925531e090c7f1542006d55f7c0))
+* readme files added to all the packages ([819e60b](https://github.com/morfeojs/morfeo/commit/819e60bb536be471f373c8d3f7cbd5b331c1434c))
+* READMEs updated ([5637cfc](https://github.com/morfeojs/morfeo/commit/5637cfc58bb94ec1d88e4eb28d84e27f17b085df))
+* update callback to jss function ([6218907](https://github.com/morfeojs/morfeo/commit/62189076da38078df33796fb16576b13ecdeeb85))
+* used yarn instead of npm ([217c88f](https://github.com/morfeojs/morfeo/commit/217c88f1392b4e0caa12203f7a0166d4080010e5))
+* website link replaced inside readme files ([1e55a6d](https://github.com/morfeojs/morfeo/commit/1e55a6d458d2873d09efd5fad5100cbbae382057))
+* wip of morfeo cli ([476d48d](https://github.com/morfeojs/morfeo/commit/476d48d1404e0fbbe209f353efcc2e96d9d9a38e))
+
+
+
+
+
 ## 0.4.2 (2021-11-18)
 
 
