@@ -1,6 +1,6 @@
 {
   "name": "devtool",
-  "version": "0.1.0",
+  "version": "0.4.2",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
