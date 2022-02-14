@@ -1,6 +1,5 @@
 
 .container {
-  z-index: var(--z-indices-low);
   display: flex;
   align-items: center;
   position: relative;
