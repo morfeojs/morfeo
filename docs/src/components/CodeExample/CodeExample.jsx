@@ -6,7 +6,7 @@ export function CodeExample() {
   return (
     <Section title="Try it now!">
       <blockquote>
-        This is a React example but Morfeo ban be used everywhere
+        This is a React example but Morfeo can be used everywhere
       </blockquote>
       <CodeBlock language="jsx" live title="/src/ShowTheme.js">
         {`function Button() {
