@@ -35,6 +35,7 @@ It's easy to use and, with the [**browser extension**](https://chrome.google.com
 - [Extendible](https://morfeo.dev/docs/Features/extendible)
 - [Easy to test](https://morfeo.dev/docs/Features/easy-to-test)
 
+
 ## How it works
 
 You can start using morfeo in 30 seconds:
@@ -100,6 +101,14 @@ And even more are coming soon:
 
 - _@morfeo/angular_ **coming soon**
 - _@morfeo/styled-components-native_ **coming soon**
+
+---
+
+## Web Extension
+
+> Click the image to watch the video on youtube!
+
+[![Morfeo Web Extension](https://img.youtube.com/vi/UNWGBnmoE9c/maxresdefault.jpg)](https://www.youtube.com/watch?v=UNWGBnmoE9c)
 
 ---
 
