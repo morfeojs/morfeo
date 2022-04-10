@@ -52,7 +52,38 @@ People _love_ thorough bug reports. I'm not even kidding.
 
 By contributing, you agree that your contributions will be licensed under its MIT License.
 
+## Getting started with the project
+
+The following instructions will help you bootstrap the project and start to contribute to Morfeo, thank you for your help!
+If there are any problems, feel free to contact the maintainers.
+
+If you're looking to contribute to the Morfeo libraries, you're in the right place, if instead, you're looking to contribute to the documentation website or the browser extension, you'll find more specific GUIDELINES inside the folders [docs](./docs/README.md) and [devtool](./docs/README.md).
+
+Other then unit/integration tests, you can use the projects under the folder `examples` to test your changes.
+Feel free to update them or use them as a **sandbox**, but remember to build the packages if yuo want to see the changes you've made!
+
+### Install the dependencies
+
+By running the script `yarn reset` all the dependencies will be installed, packages dependencies included, the script will also trigger the builds of the packages.
+
+### Build the packages
+
+```bash
+yarn build
+```
+
+### Run the tests
+
+To run the tests run the script `yarn test`.
+If you also want to generate the coverage, you can run `yarn run test:coverage`.
+In case you're working on something and you'd like to watch for file changes, `yarn test:watch` is available.
+To test a specific package you can pass to any of the previous scripts the path of the package, for example:
+
+```bash
+yarn test:watch packages/core
+```
+
 ## References
 
 This document was adapted from [this gist](https://gist.github.com/briandk/3d2e8b3ec8daf5a27a62).
-Special thanks to [briandk](https://gist.github.com/briandk).
+Special thanks to [briandk](https://github.com/briandk).
