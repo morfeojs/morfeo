@@ -27,8 +27,8 @@ export function HomepageHeader() {
               },
             ]}
           >
-            Morfeo is a tool to build design systems based on a theme. It
-            helps you to <i>follow a design language</i> and write{' '}
+            Morfeo is a tool to build design systems based on a theme. It helps
+            you to <i>follow a design language</i> and write{' '}
             <i>consistent UIs</i>, whatever it is the framework of your choice.
             It's easy to use and, with the
             <a href="/docs/Features/web-extension">

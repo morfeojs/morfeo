@@ -18,7 +18,7 @@ module.exports = {
       title: '',
       logo: {
         alt: 'Morfeo Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo-beta.svg',
       },
       items: [
         {
