@@ -30,9 +30,9 @@
     "fast-safe-stringify": "^2.0.8"
   },
   "peerDependencies": {
-    "csstype": "^3.0.8",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "csstype": "^3.0.11",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "publishConfig": {
     "access": "public"

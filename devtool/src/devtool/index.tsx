@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import browser from 'webextension-polyfill';
 import { resetCss, MorfeoProvider } from '@morfeo/react';
 import { getThemeFromAppAndInitMorfeo } from '../_shared/utils';
@@ -15,9 +15,13 @@ browser.devtools.panels.create(
   ASSETS_PATHS.devtool.view,
 );
 
-ReactDOM.render(
-  <MorfeoProvider>
-    <Devtool />
-  </MorfeoProvider>,
-  document.getElementById('devtool'),
-);
+const container = document.getElementById('devtool');
+
+if (container) {
+  const root = createRoot(container);
+  root.render(
+    <MorfeoProvider>
+      <Devtool />
+    </MorfeoProvider>,
+  );
+}

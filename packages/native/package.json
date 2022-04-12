@@ -29,7 +29,7 @@
     "@types/react-native": "^0.64.4"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
+    "react": "*",
     "react-native": "^0.67.2"
   },
   "publishConfig": {

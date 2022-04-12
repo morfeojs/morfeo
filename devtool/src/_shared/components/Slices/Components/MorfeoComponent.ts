@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { component, Component, getStyles } from '@morfeo/react';
 import clsx from 'clsx';
 
@@ -19,11 +19,11 @@ const SELF_CLOSING_TAGS = [
   'wbr',
 ];
 
-type Props = {
+type Props = PropsWithChildren<{
   name: Component;
   variant?: string;
   applyDefaultStyle?: boolean;
-};
+}>;
 
 type TagName = keyof HTMLElementTagNameMap;
 

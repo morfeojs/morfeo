@@ -1,4 +1,9 @@
-import React, { createContext, useState, useMemo } from 'react';
+import React, {
+  useMemo,
+  useState,
+  createContext,
+  PropsWithChildren,
+} from 'react';
 import { RouteName, RoutingContextType, RouteType } from './types';
 import { routes } from './routes';
 
@@ -9,7 +14,9 @@ export const routingContext = createContext<RoutingContextType>({
 
 const { Provider } = routingContext;
 
-export const RoutingProvider: React.FC = ({ children }) => {
+type Props = PropsWithChildren<{}>;
+
+export const RoutingProvider: React.FC<Props> = ({ children }) => {
   const [current, setCurrent] = useState<RouteType>(routes.index);
   const [history, setHistory] = useState<RouteType[]>([]);
 

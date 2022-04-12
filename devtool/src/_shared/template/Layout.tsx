@@ -1,15 +1,16 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import { RoutingProvider } from '../contexts';
-import { SideBar } from './SideBar';
-import { Header } from './Header';
-
-import styles from './style.module.css';
+import { t } from '../utils';
 import { Icon } from '../components';
 import { useIsUsingMorfeo } from '../hooks';
-import { t } from '../utils';
+import { Header } from './Header';
+import { SideBar } from './SideBar';
+import styles from './style.module.css';
 
-export const Layout: React.FC = ({ children }) => {
+type Props = PropsWithChildren<{}>;
+
+export const Layout: React.FC<Props> = ({ children }) => {
   const [open, setOpen] = useState(false);
   const shouldRender = useIsUsingMorfeo();
 
