@@ -81,6 +81,5 @@
   "homepage": "https://morfeo.dev",
   "bugs": {
     "url": "https://github.com/morfeojs/morfeo/issues"
-  },
-  "version": "0.0.0"
+  }
 }
