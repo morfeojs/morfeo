@@ -3,8 +3,8 @@ import { morfeoStyle } from '../src';
 
 const THEME: Theme = {
   colors: {
-    primary: '#e3e3e3',
-    secondary: '#000',
+    primary: 'rgb(227, 227, 227)',
+    secondary: 'rgb(0, 0, 0)',
   },
   components: {
     Box: {
@@ -28,32 +28,18 @@ describe('morfeo', () => {
     morfeo.setTheme('default', THEME);
   });
 
-  test('should add default className to the element', () => {
+  test('should generate the style for the element', () => {
     const element = document.createElement('div');
     morfeoStyle(element, { bg: 'primary' });
-
-    expect(element.className).toContain('morfeo-element');
-  });
-
-  test('should add custom className if componentName is specified', () => {
-    const element = document.createElement('div');
-    morfeoStyle(element, { componentName: 'Box' });
-
-    expect(element.className).toContain('Box');
-  });
-
-  test('should add custom className if componentName and variant is specified', () => {
-    const element = document.createElement('div');
-    morfeoStyle(element, { componentName: 'Box', variant: 'primary' });
-
-    expect(element.className).toContain('Box-primary');
+    const style = getComputedStyle(element);
+    expect(style.backgroundColor).toBe(THEME.colors.primary);
   });
 
   test('should not crash if style is not specified', () => {
     const element = document.createElement('div');
     morfeoStyle(element);
 
-    expect(element.className).toContain('morfeo-element');
+    expect(element).toBeDefined();
   });
 
   test('should return a function that will remove the listener from the theme', () => {
@@ -63,11 +49,22 @@ describe('morfeo', () => {
     expect(typeof destroy).toBe('function');
   });
 
-  test('should return a function that will update the style on changes', () => {
+  test('should return a function that will update the style', () => {
     const element = document.createElement('div');
     const { update } = morfeoStyle(element);
-    update({} as any);
+
     expect(typeof update).toBe('function');
+  });
+
+  test('should update the style by using the update function', () => {
+    const element = document.createElement('div');
+    const { update } = morfeoStyle(element, { bg: 'secondary' });
+
+    update({ bg: 'primary' });
+
+    const style = getComputedStyle(element);
+
+    expect(style.backgroundColor).toBe(THEME.colors.primary);
   });
 
   test('should set the default properties to the element', () => {
