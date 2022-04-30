@@ -6,6 +6,12 @@ const THEME: Theme = {
     primary: '#e3e3e3',
     secondary: '#000',
   },
+  breakpoints: {
+    lg: '1920px',
+    md: '1366px',
+    sm: '768px',
+    xs: '375px',
+  },
 } as any;
 
 describe('jss', () => {
@@ -26,6 +32,19 @@ describe('jss', () => {
     expect(sheet.getRule('button').toString()).toContain(
       'background-color: #e3e3e3;',
     );
+  });
+
+  test('should generate the css also for responsive values', () => {
+    const sheet = getStyleSheet({
+      button: {
+        color: 'secondary',
+        bg: {
+          sm: 'primary',
+        },
+      },
+    });
+
+    expect(sheet.toString()).toContain('background-color: #e3e3e3;');
   });
 
   test('should generate the classnames', () => {
