@@ -1,11 +1,11 @@
 {
   "name": "devtool",
-  "version": "0.4.2",
+  "version": "0.5.1",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
-    "@morfeo/preset-default": "^0.4.2",
-    "@morfeo/react": "^0.4.2",
+    "@morfeo/preset-default": "^0.5.1",
+    "@morfeo/react": "^0.5.1",
     "@svgr/webpack": "5.5.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",

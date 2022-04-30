@@ -1,6 +1,6 @@
 {
   "name": "@morfeo/benchmarks",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "author": {
     "name": "Mauro Erta",
@@ -20,9 +20,9 @@
     "benchmark": "^2.1.4"
   },
   "dependencies": {
-    "@morfeo/core": "^0.5.0",
-    "@morfeo/jss": "^0.5.0",
-    "@morfeo/preset-default": "^0.5.0",
+    "@morfeo/core": "^0.5.1",
+    "@morfeo/jss": "^0.5.1",
+    "@morfeo/preset-default": "^0.5.1",
     "styled-system": "5.1.5"
   }
 }
