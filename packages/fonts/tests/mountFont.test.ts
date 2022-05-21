@@ -63,13 +63,4 @@ describe('mountFont', () => {
       expect(boldStyle?.textContent).toContain('@import');
     });
   });
-
-  describe('when document is not defined', () => {
-    test('should not fail', () => {
-      Object.defineProperty(global, 'globalThis', { get: () => {} });
-      mountFont({ name: 'should-not-be-added' } as any);
-      const element = document.getElementById('font-should-not-be-added');
-      expect(element).toBeNull();
-    });
-  });
 });

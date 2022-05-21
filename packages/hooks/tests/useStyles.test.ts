@@ -1,7 +1,6 @@
 import { theme } from '@morfeo/core';
-import { act } from 'react-test-renderer';
 import { useStyles, useStyle } from '../src';
-import { renderHook } from './customRenderer';
+import { renderHook, act } from './customRenderer';
 
 const THEME = {
   colors: {
@@ -40,16 +39,18 @@ describe('useStyle', () => {
 
   test('should change the result after theme update', async () => {
     const { result } = renderHook(() => useStyle({ color: 'primary' }));
+
     expect(result.current).toEqual({ color: 'black' });
 
-    act(() =>
+    act(() => {
       theme.set({
         colors: {
           primary: 'white',
           secondary: 'black',
         },
-      }),
-    );
+      });
+    });
+
     expect(result.current).toEqual({ color: 'white' });
   });
 });
