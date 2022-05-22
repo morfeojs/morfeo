@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
-    "@oclif/test": "^1.2.8",
+    "@oclif/test": "^2.1.0",
     "@types/chai": "^4.2.21",
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.17.60",
@@ -34,8 +34,7 @@
     "eslint-config-prettier": "^8.3.0",
     "globby": "^10.0.2",
     "mocha": "^5.2.0",
-    "nyc": "^14.1.1",
-    "ts-node": "^8.10.2"
+    "nyc": "^14.1.1"
   },
   "engines": {
     "node": ">=8.0.0"
