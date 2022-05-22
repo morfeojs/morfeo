@@ -1395,15 +1395,27 @@
   dependencies:
     "@morfeo/spec" "^0.4.2"
 
+"@morfeo/core@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@morfeo/core/-/core-0.5.1.tgz#8c5e93c678b0a1ae2488de2940def0924554d9d7"
+  integrity sha512-rDzRkio2BeuiYMWZm6cb5yhwEt3mozuZzosbhM1NZRPR8j4hD8S0wNnM02ttNbxUw+hzjeSwXez+r/5V6Gbxmg==
+  dependencies:
+    "@morfeo/spec" "^0.5.1"
+
 "@morfeo/fonts@^0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@morfeo/fonts/-/fonts-0.4.2.tgz#3ca51db5beddc2e58467ebdcfbcf9d877471ef12"
   integrity sha512-L2jvlBhITI/P2vtJk7ij7l1uH/drWjzDND35uCHw9EC4qul8me74yLaDAQuhY4tnBOhQG6wtqyMvnA3Lb6ptAA==
 
-"@morfeo/hooks@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@morfeo/hooks/-/hooks-0.4.2.tgz#44e30c4056ed6442b3a7bf9aea274894cb147fb4"
-  integrity sha512-iKJq8qTmjXddt00z8O5CgIAF+V0/LzshcnwnX8WpHrKxaA/edjcbYcw/8n8gkdKCd9m/EkzJmU5pePn3CLgbdw==
+"@morfeo/fonts@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@morfeo/fonts/-/fonts-0.5.1.tgz#4ce7c652c4dfc668af1c8b28b23d2645e56fbf30"
+  integrity sha512-RDeb8X83HjlTUi92xbM4zPDypWAseYZU5nuuyE+6arFGkqnCHEXnKLAslEdqw9bLK2/RMnAbypqp6JB68qmTmw==
+
+"@morfeo/hooks@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@morfeo/hooks/-/hooks-0.5.1.tgz#fd5adb42f5eca7541d066e0f878b78636948d3db"
+  integrity sha512-KpybRD9eJ3AWbwo6RxAUpML5bnXhvLtzw5LMIIflaie2FdCFm+7+xbBayPF2cdlXnv1olZZi6PAFIRo24jsDWg==
 
 "@morfeo/jss@^0.4.2":
   version "0.4.2"
@@ -1413,26 +1425,39 @@
     jss "^10.6.0"
     jss-preset-default "^10.6.0"
 
-"@morfeo/preset-default@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@morfeo/preset-default/-/preset-default-0.4.2.tgz#fdef2add7201ffe57d7db1dc5eb9e8d97885d2d2"
-  integrity sha512-iCqLSOIjYeLhEqoJ8qDuwTHx+StQ+TmjrIGk6wQDfOzQvwzsGeiaUwQJSOj39BO6edJOhC1QyYCWvgcHw4KZHA==
+"@morfeo/jss@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@morfeo/jss/-/jss-0.5.1.tgz#bd46bb18ab588bf434a0d6dc86159c14dc47c41f"
+  integrity sha512-R2pP+F/COyUj7hh6LELVPWIRc80gFD4KNb9bsiVXXYhLsw1i4Uc0iXDwBON1yHJXO8F80ZQTw86K75nBt+6ZWQ==
   dependencies:
-    "@morfeo/spec" "^0.4.2"
+    jss "^10.6.0"
+    jss-preset-default "^10.6.0"
 
-"@morfeo/react@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@morfeo/react/-/react-0.4.2.tgz#a63b3be063fc4ecf77d08efe59bdc6aa39772693"
-  integrity sha512-SLrOWw+9l9iWGk3L0dKhTf0IfcJSPsKyBr3l1waTv6jPrjld/RKFfGk8MU5bsiF7w9dNkkFGT+x8lEfzSggAQA==
+"@morfeo/preset-default@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@morfeo/preset-default/-/preset-default-0.5.1.tgz#a6ce494ba4f9984580b2ec8f5d258a6db2f828b5"
+  integrity sha512-FbNmKNvSXowjgy6Pby4z9R1UfMFHpvGlDcUdGRtHC+ysEfF/caJ+oB1+LtgwWI5z8lc2nDp3rKORflV2y0UXpw==
   dependencies:
-    "@morfeo/hooks" "^0.4.2"
-    "@morfeo/web" "^0.4.2"
+    "@morfeo/spec" "^0.5.1"
+
+"@morfeo/react@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@morfeo/react/-/react-0.5.1.tgz#c884dd25440da17d00900e293a32870fc361e1be"
+  integrity sha512-pJf2eWYTP5eBKR2tzkMa4noILLgJO9gcAhhBr13IflmYw5+df+syHpUP/hde1AlCuZlH6S2lROlSUVputH7DXw==
+  dependencies:
+    "@morfeo/hooks" "^0.5.1"
+    "@morfeo/web" "^0.5.1"
     fast-safe-stringify "^2.0.8"
 
 "@morfeo/spec@^0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@morfeo/spec/-/spec-0.4.2.tgz#13c5e428d3db78242622a0bc721d74789939a5c2"
   integrity sha512-L3GET/LcEJ4OjUYs8uKHoETJuUQzVPZDbepmtk8JJpRUZC/FXheXfgqFkD+rOVFCfVbckeEPd09J0Z84ZVSJ3g==
+
+"@morfeo/spec@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@morfeo/spec/-/spec-0.5.1.tgz#421863caf752e1db95126a90169235df0d40c4b7"
+  integrity sha512-cV8c6ayb/GURyvntESl8RrNUxP2gyuWoovYKSjhxCbb4mp4LWXf9Y/HotsNNnpIo/DAnZmoaMQBt1KI+Dev1uw==
 
 "@morfeo/web@^0.4.2":
   version "0.4.2"
@@ -1442,6 +1467,15 @@
     "@morfeo/core" "^0.4.2"
     "@morfeo/fonts" "^0.4.2"
     "@morfeo/jss" "^0.4.2"
+
+"@morfeo/web@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@morfeo/web/-/web-0.5.1.tgz#d0b38eb2b1668eb10e69e493022bcecf838d78f5"
+  integrity sha512-MWclFMBZDF2JnRLOviWpqlM6mz7WQplbgjY1ZNkCNyZ7hv7bhIu1cCZ0HpZ7NXQVgKchI3JenkNE1IXJgbXp7A==
+  dependencies:
+    "@morfeo/core" "^0.5.1"
+    "@morfeo/fonts" "^0.5.1"
+    "@morfeo/jss" "^0.5.1"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
