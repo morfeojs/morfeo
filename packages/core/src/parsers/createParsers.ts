@@ -12,6 +12,8 @@ import {
   ResolvedStyle,
   ParsersContext,
 } from '../types';
+import { theme } from '../theme';
+import { deepMerge } from '../utils';
 import { baseParser } from './baseParser';
 import { sizeParsers } from './sizes';
 import { radiiParsers } from './radii';
@@ -20,9 +22,6 @@ import { shadowsParsers } from './shadows';
 import { bordersParsers } from './borders';
 import { spacingsParsers } from './spacings';
 import { componentsParses } from './components';
-import { deepMerge } from '../utils';
-import { FALLBACK_PARSERS } from '../constants';
-import { theme } from '../theme';
 
 const allPropertiesKeys = Object.keys(allProperties) as (keyof AllProperties)[];
 
@@ -50,7 +49,6 @@ const ADDITIONAL_PARSERS = {
 };
 
 const INITIAL_PARSERS = {
-  ...FALLBACK_PARSERS,
   ...DEFAULT_PARSERS,
   ...ADDITIONAL_PARSERS,
 };
@@ -58,7 +56,6 @@ const INITIAL_PARSERS = {
 export function createParsers() {
   let context = { ...INITIAL_PARSERS } as any as ParsersContext;
   let cache: any = {};
-  let cacheEnabled = true;
 
   function get() {
     return context;
@@ -66,18 +63,6 @@ export function createParsers() {
 
   function add<P extends Property>(property: P, parser: Parser<P>) {
     context[property as any] = parser;
-  }
-
-  function enableCache() {
-    cacheEnabled = true;
-  }
-
-  function disableCache() {
-    cacheEnabled = false;
-  }
-
-  function getCache() {
-    return cache;
   }
 
   function resetCache() {
@@ -138,7 +123,7 @@ export function createParsers() {
       });
     }
 
-    return {};
+    return { [property]: value };
   }
 
   function resolve(style: Style): ResolvedStyle {
@@ -160,10 +145,7 @@ export function createParsers() {
         value,
         style,
       };
-      if (
-        cacheEnabled &&
-        (typeof value === 'string' || typeof value === 'number')
-      ) {
+      if (typeof value === 'string' || typeof value === 'number') {
         if (cache[property] === undefined) {
           cache[property] = {};
         }
@@ -193,10 +175,6 @@ export function createParsers() {
     add,
     reset,
     resolve,
-    getCache,
-    resetCache,
-    enableCache,
-    disableCache,
     resolveProperty,
   };
 

@@ -8,7 +8,7 @@ description: Features > Easy to test
 Testing components made with morfeo it's pretty easy, let's give some examples in different frameworks to make it clear:
 
 :::info
-The following examples are made using `jest` and `@testing-library/react` and the components are made in `React` and `styled-components` but you can apply the same rules and principles to other frameworks too.
+The following examples are made using `jest` and `@testing-library/react` and the components are made in `React` but you can apply the same rules and principles to other frameworks too.
 :::
 
 ## Example #1
@@ -16,11 +16,13 @@ The following examples are made using `jest` and `@testing-library/react` and th
 Given the following component:
 
 ```tsx title="Button.tsx"
-import styled from '@morfeo/styled-components-web';
+import { useClassName } from '@morfeo/react';
 
-export const Button = styled.button({
-  componentName: 'Button',
-});
+export const Button = ({ children }) => {
+  const className = useClassName({ componentName: 'Button' });
+
+  return <button className={className}>{children}</button>;
+};
 ```
 
 We can write a simple test to ensure that the style of our button is the same as the one defined inside the theme
