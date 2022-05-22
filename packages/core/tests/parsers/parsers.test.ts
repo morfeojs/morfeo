@@ -50,13 +50,8 @@ describe('parsers', () => {
     expect(allParsersAfterReset['custom']).not.toBeDefined();
   });
 
-  test('should return the passed value for not regular css properties', () => {
-    const result = parsers.resolve({ flexDirection: 'column' } as any);
-    expect(result).toEqual({ flexDirection: 'column' });
-  });
-
-  test('should return an empty object if there is no parser for that property', () => {
+  test('should return an the passed object if there is no parser for that property', () => {
     const result = parsers.resolve({ custom: 'not found' } as any);
-    expect(result).toEqual({});
+    expect(result).toEqual({ custom: 'not found' });
   });
 });

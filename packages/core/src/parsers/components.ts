@@ -12,4 +12,5 @@ export function components({ value, style }: ParserParams<'componentName'>) {
 
 export const componentsParses = {
   componentName: components,
+  variant: () => {},
 };

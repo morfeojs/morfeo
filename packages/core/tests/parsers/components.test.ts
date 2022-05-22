@@ -12,9 +12,9 @@ const THEME: Theme = {
   },
   components: {
     Box: {
+      tag: 'button',
       style: {
         bg: 'primary',
-        componentTag: 'button',
       },
       variants: {
         primary: {

@@ -95,8 +95,6 @@ morfeo.setTheme("default", {
 });
 // @morfeo/core | @morfeo/web
 const style = morfeo.resolve({ bg: 'primary', px: 'xs' });
-// @morfeo/styled-components-web
-const Button = styled.button({ bg: 'primary', px: 'xs' });
 // @morfeo/react
 const style = useStyle({ bg: 'primary', px: 'xs' });
 // @morfeo/svelte
@@ -156,27 +154,29 @@ since @morfeo/spec is re-exported by the other morfeo packages, you don't need t
 All the other slices are meant to make it easier to follow a `design language` by using `aliases` instead of `values`, so you'd rather use `color: danger` instead of `color: #e74c3c`, or `padding: s` instead of `padding: 24px`; But this is not enough to ensure that the UI will be consistent. For example:
 
 ```tsx
-const Button = styled.button({});
+import { MorfeoComponent, useClassName } from '@morfeo/react';
+
+const Button = props => <MorfeoComponent componentName="Button" {...props} />;
 
 function ConfirmButton({ children }) {
-  return (
-    <Button px="s" bg="success">
-      {children}
-    </Button>
-  );
+  const className = useClassName({ px: 's', bg: 'successs' });
+  return <Button className={className}>{children}</Button>;
 }
 
 function CancelButton({ children }) {
-  return (
-    <Button px="m" py="xs" bg="danger" color="primary">
-      {children}
-    </Button>
-  );
+  const className = useClassName({
+    px: 'm',
+    py: 'xs',
+    bg: 'danger',
+    color: 'primary',
+  });
+
+  return <Button className={className}>{children}</Button>;
 }
 ```
 
 :::note
-we are using @morfeo/styled-components-web and react in this example but you can apply the same problem in each language / framework
+we are using @morfeo/react in this example but you can apply the same problem in each language / framework
 :::
 
 In this case, every property is following the `design language`, but the buttons will look completely different, and they'll break the consistency of your app, which is the reason you're using @morfeo (or any other system) in the first place.
@@ -220,8 +220,6 @@ const myTheme = {
 Let's repeat the previous example to see the advantages of having components inside the theme object:
 
 ```tsx
-const Button = styled.button({ componentName: 'Button' });
-
 function ConfirmButton({ children }) {
   return <Button variant="success">{children}</Button>;
 }

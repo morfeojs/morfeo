@@ -16,7 +16,6 @@ independent from any library or framework. To provide the best developer experie
   values={[
     { label: 'React', value: 'react' },
     { label: 'React Native', value: 'react-native' },
-    { label: 'Styled Components', value: 'styled-components' },
     { label: 'Svelte', value: 'svelte' },
     { label: 'Vanilla', value: 'vanilla' },
   ]}
@@ -36,16 +35,6 @@ independent from any library or framework. To provide the best developer experie
     <pre>yarn add @morfeo/native</pre>
     You can find more info about <code>@morfeo/native</code>{' '}
     <a href="../Packages/native">here in the docs</a>
-  </TabItem>
-  <TabItem value="styled-components">
-    With npm
-    <pre>npm i styled-components @morfeo/web @morfeo/styled-components-web</pre>
-    With yarn
-    <pre>
-      yarn add styled-components @morfeo/web @morfeo/styled-components-web
-    </pre>
-    You can find more info about <code>@morfeo/styled-components</code>{' '}
-    <a href="../Packages/styled-components">here in the docs</a>
   </TabItem>
   <TabItem value="svelte">
     With npm
@@ -91,18 +80,6 @@ function Button({ children }) {
   const style = useStyle({ componentName: 'Button' });
   return <Pressable style={style}>{children}</Pressable>;
 }
-```
-
-## Example in Styled Components
-
-```tsx
-import styled from '@morfeo/styled-components-web';
-
-const Button = styled.Button({});
-// Or
-const Button = styled.button({
-  componentName: 'Button',
-});
 ```
 
 ## Example in Svelte
