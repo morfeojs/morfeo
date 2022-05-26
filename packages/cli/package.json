@@ -1,7 +1,7 @@
 {
   "name": "@morfeo/cli",
   "description": "a command line interface to use morfeo",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "author": {
     "name": "Mauro Erta",
     "email": "mauro@vlkstudio.com"
@@ -11,7 +11,7 @@
     "morfeo": "./bin/run"
   },
   "dependencies": {
-    "@morfeo/web": "^0.5.1",
+    "@morfeo/web": "^0.6.0",
     "chalk": "^4.1.2",
     "change-case": "^4.1.2",
     "chokidar": "^3.5.3",

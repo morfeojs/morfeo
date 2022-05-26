@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/morfeojs/morfeo/compare/v0.0.0...v0.6.0) (2022-05-26)
+
+
+### Bug Fixes
+
+* pipeline ([1894ec4](https://github.com/morfeojs/morfeo/commit/1894ec477b0186cad324d40824145ca6c5c07bc0))
+
+
+
+
+
 ## 0.5.1 (2022-04-30)
 
 

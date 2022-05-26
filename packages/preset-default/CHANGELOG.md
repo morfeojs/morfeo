@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/morfeojs/morfeo/compare/v0.0.0...v0.6.0) (2022-05-26)
+
+
+### Bug Fixes
+
+* preset-default and react example ([5a1f28c](https://github.com/morfeojs/morfeo/commit/5a1f28c7a6a7792b4f43131fd04037e9e10a9d5f))
+
+
+
+
+
 ## 0.5.1 (2022-04-30)
 
 

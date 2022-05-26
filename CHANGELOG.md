@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/morfeojs/morfeo/compare/v0.0.0...v0.6.0) (2022-05-26)
+
+
+### Bug Fixes
+
+* added ci script inside package.json ([1f435cc](https://github.com/morfeojs/morfeo/commit/1f435cc44052b894bf3f9c04ed06a2374f1fb688))
+* cli examples and usage ([7f08db4](https://github.com/morfeojs/morfeo/commit/7f08db47d675485c409df6160cabd346e2b44a99))
+* docs ([15fbfc3](https://github.com/morfeojs/morfeo/commit/15fbfc365e22e335d6da0b8f4bf1147e9a34b42b))
+* morfeo packages version inside docs ([0a46661](https://github.com/morfeojs/morfeo/commit/0a4666154573807e5183248bdd83ff6f51caaa45))
+* pipeline ([5fd8b3b](https://github.com/morfeojs/morfeo/commit/5fd8b3b66feb6b7d70f2793f29781813333e6662))
+* pipeline ([ec17f22](https://github.com/morfeojs/morfeo/commit/ec17f22f65c3308830589106a88fbf09c4d77a93))
+* pipeline ([1894ec4](https://github.com/morfeojs/morfeo/commit/1894ec477b0186cad324d40824145ca6c5c07bc0))
+* pipelines ([75ec47c](https://github.com/morfeojs/morfeo/commit/75ec47cef5d733737e92ba062ce2c2b7d6b484ae))
+* preset-default and react example ([5a1f28c](https://github.com/morfeojs/morfeo/commit/5a1f28c7a6a7792b4f43131fd04037e9e10a9d5f))
+* removed styled-component-web package and fixed tets ([7bccfc0](https://github.com/morfeojs/morfeo/commit/7bccfc066b44cb3184bb0c2851fe502d389406b7))
+
+
+### Features
+
+* [#158](https://github.com/morfeojs/morfeo/issues/158) upgrade to React 18 ([d02d2a6](https://github.com/morfeojs/morfeo/commit/d02d2a6dd5a8028b9d046fd04fe3e323eba2ae19))
+* package `@morfeo/styled-components-web` removed ([ff6fd3c](https://github.com/morfeojs/morfeo/commit/ff6fd3c2913e0fd37bcc6a0a05cdb889560086d5))
+
+
+
+
+
 ## 0.5.1 (2022-04-30)
 
 
