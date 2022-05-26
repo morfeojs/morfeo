@@ -14,15 +14,15 @@
     "all": "npm run build && npm run core && npm run jss && npm run morfeo-vs"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.3",
-    "@babel/core": "^7.14.3",
-    "@babel/preset-env": "^7.14.2",
-    "benchmark": "^2.1.4"
+    "@babel/cli": "7.17.0",
+    "@babel/core": "7.17.2",
+    "@babel/preset-env": "7.16.11",
+    "benchmark": "2.1.4"
   },
   "dependencies": {
-    "@morfeo/core": "^0.5.1",
-    "@morfeo/jss": "^0.5.1",
-    "@morfeo/preset-default": "^0.5.1",
+    "@morfeo/core": "0.5.1",
+    "@morfeo/jss": "0.5.1",
+    "@morfeo/preset-default": "0.5.1",
     "styled-system": "5.1.5"
   }
 }
