@@ -8,14 +8,9 @@ a command line interface to use morfeo, more details can be found [here](https:/
 
 [Documentation](https://morfeo.dev) | [API](https://github.com/morfeojs/morfeo) | [Contributing](https://github.com/morfeojs/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
 
-<!-- toc -->
-* [@morfeo/cli](#morfeocli)
-<!-- tocstop -->
-
 ## Usage
 
-<!-- usage -->
-```sh-session
+```console
 $ npm install -g @morfeo/cli
 $ morfeo COMMAND
 running command...
@@ -26,11 +21,8 @@ USAGE
   $ morfeo COMMAND
 ...
 ```
-<!-- usagestop -->
-
 ## Commands
 
-<!-- commands -->
 * [`morfeo build`](#morfeo-build)
 * [`morfeo compose`](#morfeo-compose)
 * [`morfeo help [COMMAND]`](#morfeo-help-command)
@@ -39,7 +31,7 @@ USAGE
 
 build css styles based on your themes
 
-```
+```console
 USAGE
   $ morfeo build
 
@@ -55,13 +47,13 @@ EXAMPLES
   $ morfeo build path/to/theme.ts --name="light"
 ```
 
-_See code: [lib/commands/build.js](https://github.com/morfeojs/morfeo/blob/v0.5.1/lib/commands/build.js)_
+_See docs: [morfeo build](https://morfeo.dev/docs/Features/CLI/morfeo-cli-build)_
 
 ## `morfeo compose`
 
 compose morfeo style files into themes
 
-```
+```console
 USAGE
   $ morfeo compose
 
@@ -75,13 +67,13 @@ EXAMPLES
   $ morfeo compose --watch
 ```
 
-_See code: [lib/commands/compose.js](https://github.com/morfeojs/morfeo/blob/v0.5.1/lib/commands/compose.js)_
+_See docs: [morfeo compose](https://morfeo.dev/docs/Features/CLI/morfeo-cli-compose)_
 
 ## `morfeo help [COMMAND]`
 
 display help for morfeo
 
-```
+```console
 USAGE
   $ morfeo help [COMMAND]
 
@@ -91,9 +83,6 @@ ARGUMENTS
 OPTIONS
   --all  see all commands in CLI
 ```
-
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.3.1/src/commands/help.ts)_
-<!-- commandsstop -->
 
 ## Configuration
 
