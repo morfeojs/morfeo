@@ -3,7 +3,7 @@
   "version": "0.6.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.12.3",
+    "@babel/core": "7.18.2",
     "@morfeo/preset-default": "0.5.1",
     "@morfeo/react": "0.5.1",
     "@svgr/webpack": "5.5.0",
@@ -18,7 +18,7 @@
     "@typescript-eslint/parser": "4.33.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "26.6.3",
-    "babel-loader": "8.1.0",
+    "babel-loader": "8.2.5",
     "babel-plugin-named-asset-import": "0.3.8",
     "babel-preset-react-app": "10.0.1",
     "bfj": "7.0.2",
