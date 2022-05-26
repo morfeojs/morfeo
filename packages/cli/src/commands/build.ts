@@ -116,5 +116,8 @@ export function builder(instance: Argv) {
       'with custom config',
       'morfeo build --config="configurations/.morfeorc"',
     )
-    .example('custom options', 'morfeo build path/to/theme.ts --name="light"');
+    .example(
+      'custom options',
+      'morfeo build --theme="path/to/theme.ts" --name="light"',
+    );
 }

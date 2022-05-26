@@ -52,7 +52,7 @@ Options:
 Examples:
   simple              morfeo build
   with custom config  morfeo build --config="configurations/.morfeorc"
-  custom options      morfeo build path/to/theme.ts --name="light"
+  custom options      morfeo build --theme="path/to/theme.ts" --name="light"
 ```
 
 _See docs: [morfeo build](https://morfeo.dev/docs/Features/CLI/morfeo-cli-build)_
