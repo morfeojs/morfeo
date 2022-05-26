@@ -191,6 +191,15 @@
 [data-morfeo-theme="light"] .morfeo-typography-cta {
   font-family: var(--fonts-default);
 }
+[data-morfeo-theme="light"] .morfeo-typography-cta::after {
+  width: var(--sizes-s);
+  content: '→';
+  font-size: var(--font-sizes-m);
+  font-family: var(--fonts-default);
+  font-weight: var(--font-weights-bold);
+  line-height: var(--line-heights-heading);
+  margin-left: var(--spacings-2xs);
+}
 [data-morfeo-theme="light"] .morfeo-typography-caption {
   font-size: var(--font-sizes-2xs);
   font-style: italic;

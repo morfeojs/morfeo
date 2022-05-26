@@ -1,11 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Options from './Options';
 import '../_shared/css/index.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Options />
-  </React.StrictMode>,
-  document.getElementById('options'),
-);
+const container = document.getElementById('options');
+
+if (container) {
+  const root = createRoot(container);
+  root.render(
+    <React.StrictMode>
+      <Options />
+    </React.StrictMode>,
+  );
+}

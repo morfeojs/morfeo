@@ -28,6 +28,7 @@ export const List: ComponentConfig<ListVariant> = {
       },
     },
     'item.arrow': {
+      tag: 'li',
       style: {
         componentName: 'List',
         variant: 'item',
@@ -41,6 +42,7 @@ export const List: ComponentConfig<ListVariant> = {
       },
     },
     'item.outlinedBullet': {
+      tag: 'li',
       style: {
         componentName: 'List',
         variant: 'item',

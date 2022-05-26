@@ -1,34 +1,34 @@
 import { useCurrentTheme } from '@morfeo/react';
 import {
+  Hr,
   Box,
   Main,
-  Footer,
-  Header,
-  Page,
-  Section,
-  Container,
-  Typography,
-  Hr,
   Grid,
   Card,
-  Button,
   List,
+  Page,
   Input,
   Label,
-  InputFeedback,
+  Button,
+  Footer,
+  Header,
+  Section,
   Checkbox,
+  Container,
+  Typography,
+  InputFeedback,
   CheckboxLabel,
-  CheckboxContainer,
   InputContainer,
+  CheckboxContainer,
 } from './components';
-import { GroupButtonContainer } from './components/Forms/GroupButtonContainer';
+import { GroupButtonContainer } from './components/Forms';
 import {
   Table,
+  TableRow,
   TableBody,
   TableCell,
   TableHead,
   TableHeadCell,
-  TableRow,
 } from './components/Table';
 
 import hljs from 'highlight.js/lib/core';
@@ -77,11 +77,13 @@ const Comps = () => {
                 voluptas sit aspernatur aut odit aut fugit, sed quia
                 consequuntur magni dolores eos qui ratione voluptatem sequi
                 nesciunt. Neque porro quisquam est:
-                <List>
-                  <List variant="item.outlinedBullet">Neque porro</List>
-                  <List variant="item.outlinedBullet">qui dolorem</List>
-                  <List variant="item.outlinedBullet">quia dolor</List>
-                </List>
+              </Typography>
+              <List>
+                <List variant="item.outlinedBullet">Neque porro</List>
+                <List variant="item.outlinedBullet">qui dolorem</List>
+                <List variant="item.outlinedBullet">quia dolor</List>
+              </List>
+              <Typography variant="p">
                 sit amet, consectetur, adipisci velit, sed quia non numquam eius
                 modi tempora incidunt ut labore et dolore magnam aliquam quaerat
                 voluptatem. Ut enim ad minima veniam, quis nostrum

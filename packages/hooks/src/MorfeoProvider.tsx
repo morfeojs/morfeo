@@ -1,8 +1,8 @@
 import { theme } from '@morfeo/core';
-import React, { useEffect, useState } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { MorfeoContext } from './MorfeoContext';
 
-export const MorfeoProvider: React.FC = ({ children }) => {
+export function MorfeoProvider({ children }: PropsWithChildren<{}>) {
   const [currentTheme, setTheme] = useState(theme.get());
 
   useEffect(() => {
@@ -17,4 +17,4 @@ export const MorfeoProvider: React.FC = ({ children }) => {
       {children}
     </MorfeoContext.Provider>
   );
-};
+}

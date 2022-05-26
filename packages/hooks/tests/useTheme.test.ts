@@ -1,4 +1,4 @@
-import { renderHook as baseRenderHook } from '@testing-library/react-hooks';
+import { renderHook as baseRenderHook } from '@testing-library/react';
 import { morfeo } from '@morfeo/core';
 import { useTheme, useThemeSlice, useThemeValue } from '../src';
 import { renderHook } from './customRenderer';

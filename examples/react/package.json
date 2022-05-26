@@ -6,19 +6,15 @@
     "@morfeo/react": "^0.5.1",
     "@morfeo/dev-tools": "^0.5.1",
     "@morfeo/preset-default": "^0.5.1",
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.22",
-    "@types/node": "^12.20.10",
+    "@types/node": "^16.11.36",
     "highlight.js": "11.3.1",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.2.4",
-    "web-vitals": "^1.1.1"
+    "react-scripts": "5.0.1",
+    "typescript": "^4.6.4",
+    "web-vitals": "^2.1.4"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.1.0",
+    "react-dom": "^18.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

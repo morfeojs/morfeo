@@ -1,6 +1,6 @@
 import { morfeo } from '@morfeo/web';
 import { MorfeoProvider } from '@morfeo/hooks';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import { useStyle } from '../src';
 
 const theme = {

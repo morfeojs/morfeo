@@ -1,14 +1,15 @@
-import styles from './page.module.css';
 import clsx from 'clsx';
-import { noCase, capitalCase } from 'change-case'
+import { noCase, capitalCase } from 'change-case';
+import { PropsWithChildren } from 'react';
+import styles from './page.module.css';
 
-type Props = {
+type Props = PropsWithChildren<{
   breadcrumb?: string[];
   title?: string;
-};
+}>;
 
 function capitalize(string: string) {
-  return capitalCase(noCase(string))
+  return capitalCase(noCase(string));
 }
 
 export const Page: React.FC<Props> = ({ children, title, breadcrumb }) => {

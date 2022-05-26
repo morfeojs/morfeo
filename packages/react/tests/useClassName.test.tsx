@@ -1,7 +1,7 @@
 import React from 'react';
 import { morfeo } from '@morfeo/web';
 import { render } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import { useClassName } from '../src';
 
 const theme = {

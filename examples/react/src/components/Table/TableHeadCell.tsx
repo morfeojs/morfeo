@@ -1,7 +1,7 @@
 import { MorfeoComponent, MorfeoComponentProps } from '@morfeo/react';
 
-type Props = Omit<MorfeoComponentProps<'Box'>, 'componentName'>;
+type Props = Omit<MorfeoComponentProps<'TableHeadCell'>, 'componentName'>;
 
 export const TableHeadCell: React.FC<Props> = props => (
-  <MorfeoComponent componentName={"TableHeadCell" as any} {...props} />
+  <MorfeoComponent componentName="TableHeadCell" {...props} />
 );

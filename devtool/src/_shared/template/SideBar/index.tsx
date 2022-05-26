@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, PropsWithChildren } from 'react';
 import { Color } from '@morfeo/react';
 import clsx from 'clsx';
 import browser from 'webextension-polyfill';
@@ -13,9 +13,9 @@ type Props = {
   setOpen: (open: boolean) => void;
 };
 
-type ExternalLinkProps = {
+type ExternalLinkProps = PropsWithChildren<{
   to: string;
-};
+}>;
 
 export const ExternalLink: React.FC<ExternalLinkProps> = ({ to, children }) => {
   const onClick = useCallback(() => {
@@ -75,10 +75,7 @@ export const SideBar: React.FC<Props> = ({ open, setOpen }) => {
           className={clsx('morfeo-button-side', styles.toggle)}
           onClick={toggle}
         >
-          <Icon
-            name="doubleChevron.right"
-            color={'invertedText' as Color}
-          />
+          <Icon name="doubleChevron.right" color={'invertedText' as Color} />
         </button>
       </div>
       <div className={styles.sidebarFooter}>
