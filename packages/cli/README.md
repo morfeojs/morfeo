@@ -2,25 +2,28 @@
 
 ![Morfeo logo](https://morfeo.dev/img/morfeo.png)
 
-a command line interface to use morfeo, more details can be found [here](https://morfeo.dev/docs/Features/morfeo-cli)
+A **C**ommand **L**ine **I**nterface to use morfeo, more details can be found [here](https://morfeo.dev/docs/Features/morfeo-cli)
 
 ---
 
 [Documentation](https://morfeo.dev) | [API](https://github.com/morfeojs/morfeo) | [Contributing](https://github.com/morfeojs/morfeo/blob/main/CONTRIBUTING.md) | [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/5hbsKMBRBh)
 
+---
+
 ## Usage
 
 ```console
-$ npm install -g @morfeo/cli
-$ morfeo COMMAND
-running command...
-$ morfeo (-v|--version|version)
-@morfeo/cli/0.5.1 darwin-x64 node-v16.14.0
-$ morfeo --help [COMMAND]
-USAGE
-  $ morfeo COMMAND
-...
+morfeo <command>
+
+Commands:
+  morfeo build [name] [options]    build css styles based on your themes
+  morfeo compose [name] [options]  compose morfeo style files into themes
+
+Options:
+  --version  Show version number                                       [boolean]
+  --help     Show help                                                 [boolean]
 ```
+
 ## Commands
 
 * [`morfeo build`](#morfeo-build)
@@ -32,19 +35,24 @@ USAGE
 build css styles based on your themes
 
 ```console
-USAGE
-  $ morfeo build
+morfeo build [options]
 
-OPTIONS
-  -b, --build=build    the path where the generated css files will be placed
-  -c, --config=config  [default: .morfeorc] the path to the configuration file
-  -h, --help           build css styles based on your themes
-  -n, --name=name      [default: default] an identifier for the passed theme, for example "light", "dark"
+build css styles based on your themes
 
-EXAMPLES
-  $ morfeo build
-  $ morfeo build --config="configurations/.morfeorc"
-  $ morfeo build path/to/theme.ts --name="light"
+Options:
+      --version  Show version number                                   [boolean]
+      --help     Show help                                             [boolean]
+  -t, --theme                                                           [string]
+  -n, --name     an identifier for the passed theme, for example "light", "dark"
+                                                   [string] [default: "default"]
+  -b, --build    the path where the generated css files will be placed  [string]
+  -c, --config   the path to the configuration file
+                                                 [string] [default: ".morfeorc"]
+
+Examples:
+  simple              morfeo build
+  with custom config  morfeo build --config="configurations/.morfeorc"
+  custom options      morfeo build path/to/theme.ts --name="light"
 ```
 
 _See docs: [morfeo build](https://morfeo.dev/docs/Features/CLI/morfeo-cli-build)_
@@ -54,35 +62,23 @@ _See docs: [morfeo build](https://morfeo.dev/docs/Features/CLI/morfeo-cli-build)
 compose morfeo style files into themes
 
 ```console
-USAGE
-  $ morfeo compose
+morfeo compose [options]
 
-OPTIONS
-  -c, --config=config  [default: .morfeorc] the path to the configuration file
-  -h, --help           compose morfeo style files into themes
-  -w, --watch          watch file changes
+compose morfeo style files into themes
 
-EXAMPLES
-  $ morfeo compose
-  $ morfeo compose --watch
+Options:
+      --version  Show version number                                   [boolean]
+      --help     Show help                                             [boolean]
+  -w, --watch    watch file changes                   [boolean] [default: false]
+  -c, --config   the path to the configuration file
+                                                 [string] [default: ".morfeorc"]
+
+Examples:
+  simple  morfeo compose
+  watch   morfeo compose --watch
 ```
 
 _See docs: [morfeo compose](https://morfeo.dev/docs/Features/CLI/morfeo-cli-compose)_
-
-## `morfeo help [COMMAND]`
-
-display help for morfeo
-
-```console
-USAGE
-  $ morfeo help [COMMAND]
-
-ARGUMENTS
-  COMMAND  command to show help for
-
-OPTIONS
-  --all  see all commands in CLI
-```
 
 ## Configuration
 

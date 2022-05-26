@@ -42,6 +42,7 @@
   },
   "files": [
     "/bin",
+    "/src",
     "/build"
   ],
   "repository": {

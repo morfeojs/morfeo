@@ -1,5 +1,5 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node
 
-const morfeoCLI = require('../build/commands').cli;
+const morfeoCLI = require('../src/commands').morfeoCLI;
 
 morfeoCLI(process.argv.slice(2));

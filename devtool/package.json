@@ -85,8 +85,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "build:theme": "node_modules/@morfeo/cli/bin/run build --config=./.morfeorc.ts",
-    "build:help": "node_modules/@morfeo/cli/bin/run build --help",
+    "build:theme": "morfeo build --config=./.morfeorc.ts",
     "start:firefox": "node scripts/start.js firefox",
     "build:firefox": "node scripts/build.js firefox",
     "test": "node scripts/test.js"
