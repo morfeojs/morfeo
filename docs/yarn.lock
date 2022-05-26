@@ -2328,7 +2328,7 @@
     unist-builder "2.0.3"
     unist-util-visit "2.0.3"
 
-"@mdx-js/react@^1.6.21", "@mdx-js/react@^1.6.22":
+"@mdx-js/react@1.6.22", "@mdx-js/react@^1.6.22":
   version "1.6.22"
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.22.tgz#ae09b4744fddc74714ee9f9d6f17a66e77c43573"
   integrity sha512-TDoPum4SHdfPiGSAaRBw7ECyI8VaHpK8GJugbJIJuqyh6kzw9ZLJZW3HGL3NNrJGxcAixUvqROm+YuQOo5eXtg==
@@ -2345,7 +2345,7 @@
   dependencies:
     "@morfeo/spec" "^0.5.1"
 
-"@morfeo/dev-tools@^0.5.1":
+"@morfeo/dev-tools@0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@morfeo/dev-tools/-/dev-tools-0.5.1.tgz#f64351dfe5e12dcb6182a7ba7a4eda1ec3f5ea1d"
   integrity sha512-ByNNaAV/DV1R2lWHB0qV7bt3mEV2iIsfW8h5sl1ZzQnHCeCUg6Mm5wdsUNITq0ojwMNQz31R5VvSzyJHuQ6/Sg==
@@ -2370,14 +2370,14 @@
     jss "^10.6.0"
     jss-preset-default "^10.6.0"
 
-"@morfeo/preset-default@^0.5.1":
+"@morfeo/preset-default@0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@morfeo/preset-default/-/preset-default-0.5.1.tgz#a6ce494ba4f9984580b2ec8f5d258a6db2f828b5"
   integrity sha512-FbNmKNvSXowjgy6Pby4z9R1UfMFHpvGlDcUdGRtHC+ysEfF/caJ+oB1+LtgwWI5z8lc2nDp3rKORflV2y0UXpw==
   dependencies:
     "@morfeo/spec" "^0.5.1"
 
-"@morfeo/react@^0.5.1":
+"@morfeo/react@0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@morfeo/react/-/react-0.5.1.tgz#c884dd25440da17d00900e293a32870fc361e1be"
   integrity sha512-pJf2eWYTP5eBKR2tzkMa4noILLgJO9gcAhhBr13IflmYw5+df+syHpUP/hde1AlCuZlH6S2lROlSUVputH7DXw==
@@ -2652,7 +2652,7 @@
     deepmerge "^4.2.2"
     svgo "^2.5.0"
 
-"@svgr/webpack@^5.5.0":
+"@svgr/webpack@5.5.0":
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/@svgr/webpack/-/webpack-5.5.0.tgz#aae858ee579f5fa8ce6c3166ef56c6a1b381b640"
   integrity sha512-DOBOK255wfQxguUta2INKkzPj6AIS6iafZYiYmHn6W3pHlycSRRlvWKCfLDG10fXfLWqE3DJHgRUOyJYmARa7g==
@@ -3794,7 +3794,7 @@ clone-response@^1.0.2:
   dependencies:
     mimic-response "^1.0.0"
 
-clsx@^1.1.1:
+clsx@1.1.1, clsx@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
   integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
@@ -4912,7 +4912,7 @@ feed@^4.2.2:
   dependencies:
     xml-js "^1.6.11"
 
-file-loader@^6.2.0:
+file-loader@6.2.0, file-loader@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-6.2.0.tgz#baef7cf8e1840df325e4390b4484879480eebe4d"
   integrity sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw==
@@ -5957,7 +5957,7 @@ joi@^17.6.0:
     "@sideway/formula" "^3.0.0"
     "@sideway/pinpoint" "^2.0.0"
 
-js-cookie@^3.0.1:
+js-cookie@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.1.tgz#9e39b4c6c2f56563708d7d31f6f5f21873a92414"
   integrity sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==
@@ -9080,7 +9080,7 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-url-loader@^4.1.1:
+url-loader@4.1.1, url-loader@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/url-loader/-/url-loader-4.1.1.tgz#28505e905cae158cf07c92ca622d7f237e70a4e2"
   integrity sha512-3BTV812+AVHHOJQO8O5MkWgZ5aosP7GnROJwvzLS9hWDj00lZ6Z0wNak423Lp9PBZN05N+Jk/N5Si8jRAlGyWA==
