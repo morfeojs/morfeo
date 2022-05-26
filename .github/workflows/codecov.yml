@@ -25,7 +25,7 @@ jobs:
         run: yarn reset
       
       - name: Run tests
-        run: NODE_OPTIONS="--max-old-space-size=8192" yarn test:coverage
+        run: yarn test:ci
 
       - name: Codecov
         uses: codecov/codecov-action@v1.5.0

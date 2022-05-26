@@ -26,6 +26,7 @@
     "prettify:js": "prettier --write \"**/*.js\"",
     "prettify:ts": "prettier --write \"**/*.ts\"",
     "test": "jest --detectOpenHandles",
+    "test:ci": "NODE_OPTIONS=--max-old-space-size=8192 yarn test --coverage",
     "test:watch": "yarn test --watch",
     "test:coverage": "yarn test --coverage",
     "publish": "yarn reset && lerna publish from-package --yes --no-verify-access",
