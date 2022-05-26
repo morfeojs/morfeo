@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/morfeojs/morfeo/compare/v0.0.0...v0.6.0) (2022-05-26)
+
+
+### Bug Fixes
+
+* removed styled-component-web package and fixed tets ([7bccfc0](https://github.com/morfeojs/morfeo/commit/7bccfc066b44cb3184bb0c2851fe502d389406b7))
+
+
+### Features
+
+* [#158](https://github.com/morfeojs/morfeo/issues/158) upgrade to React 18 ([d02d2a6](https://github.com/morfeojs/morfeo/commit/d02d2a6dd5a8028b9d046fd04fe3e323eba2ae19))
+
+
+
+
+
 ## 0.5.1 (2022-04-30)
 
 
