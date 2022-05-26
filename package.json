@@ -25,7 +25,7 @@
     "prettify": "yarn prettify:js && yarn prettify:ts",
     "prettify:js": "prettier --write \"**/*.js\"",
     "prettify:ts": "prettier --write \"**/*.ts\"",
-    "test": "jest --runInBand --detectOpenHandles",
+    "test": "jest --detectOpenHandles",
     "test:watch": "yarn test --watch",
     "test:coverage": "yarn test --coverage",
     "publish": "yarn reset && lerna publish from-package --yes --no-verify-access",

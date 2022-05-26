@@ -29,7 +29,6 @@ export function logThemesBuilded() {
 
 export function logFooter(watching?: boolean) {
   if (watching) {
-    console.log({ watching });
     cli.info(cyan(`^ + C to exit`));
   }
 

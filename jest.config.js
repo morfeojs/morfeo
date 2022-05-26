@@ -41,6 +41,7 @@ module.exports = {
   moduleNameMapper: {
     '@morfeo/(.*)': '<rootDir>/packages/$1/src',
   },
+  maxWorkers: 1,
   coverageThreshold: {
     global: {
       lines: 90,
