@@ -14,12 +14,16 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: |
+
+      # TODO: Verify if this step is still needed
+      - name: Assume unchanged for changed files
+        run: s|
          for i in $(find -name package.json); do
            git update-index --assume-unchanged $i
          done
          git update-index --assume-unchanged lerna.json
-      # Publish to npm
-      - run: npm run publish
+
+      - name: Publish packages
+        run: npm run publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

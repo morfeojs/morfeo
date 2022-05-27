@@ -88,7 +88,9 @@
     "build:theme": "morfeo build --config=./.morfeorc.ts",
     "start:firefox": "node scripts/start.js firefox",
     "build:firefox": "node scripts/build.js firefox",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "zip": "yarn build && node scripts/zip.js",
+    "deploy": "yarn zip && node scripts/deploy.js"
   },
   "eslintConfig": {
     "extends": [
@@ -169,7 +171,9 @@
     "@morfeo/cli": "0.6.0",
     "@types/prismjs": "1.26.0",
     "@types/react-transition-group": "4.4.4",
-    "@types/webextension-polyfill": "0.8.3"
+    "@types/webextension-polyfill": "0.8.3",
+    "chrome-webstore-upload": "1.0.0",
+    "zip-folder": "1.0.0"
   },
   "keywords": [
     "design",
