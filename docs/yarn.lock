@@ -2390,12 +2390,12 @@
     jss "^10.6.0"
     jss-preset-default "^10.6.0"
 
-"@morfeo/preset-default@0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/preset-default/-/preset-default-0.5.1.tgz#a6ce494ba4f9984580b2ec8f5d258a6db2f828b5"
-  integrity sha512-FbNmKNvSXowjgy6Pby4z9R1UfMFHpvGlDcUdGRtHC+ysEfF/caJ+oB1+LtgwWI5z8lc2nDp3rKORflV2y0UXpw==
+"@morfeo/preset-default@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@morfeo/preset-default/-/preset-default-0.6.0.tgz#20fed6dd8c67cd0fb008f21e269863a194596b92"
+  integrity sha512-vJyFJN4iuzgASPcWwaZEfZYR19BE7pPs49p9mTt81kFc+w7+UMCgGTcIPkuP45HRHlxRMcp4LyYRxrd2BRfueQ==
   dependencies:
-    "@morfeo/spec" "^0.5.1"
+    "@morfeo/spec" "^0.6.0"
 
 "@morfeo/react@0.5.1":
   version "0.5.1"
