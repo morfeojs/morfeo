@@ -100,7 +100,6 @@ Checkout all our packages and choose the one that fits better your needs:
 And even more are coming soon:
 
 - _@morfeo/angular_ **coming soon**
-- _@morfeo/styled-components-native_ **coming soon**
 
 ---
 
