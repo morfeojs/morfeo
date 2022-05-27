@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@morfeo/core": "0.6.0",
-    "@morfeo/jss": "0.5.1",
+    "@morfeo/jss": "0.6.0",
     "@morfeo/preset-default": "0.5.1",
     "styled-system": "5.1.5"
   }
