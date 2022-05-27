@@ -1,0 +1,32 @@
+name: Build Web Extension
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Bootstrap packages
+        run: yarn reset
+      
+      - name: Install Web Extension dependencies
+        run: yarn init:devtool
+
+      - name: Build Web Extension
+        uses: yarn build:devtool
+
