@@ -1056,12 +1056,12 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@morfeo/core@0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/core/-/core-0.5.1.tgz#8c5e93c678b0a1ae2488de2940def0924554d9d7"
-  integrity sha512-rDzRkio2BeuiYMWZm6cb5yhwEt3mozuZzosbhM1NZRPR8j4hD8S0wNnM02ttNbxUw+hzjeSwXez+r/5V6Gbxmg==
+"@morfeo/core@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@morfeo/core/-/core-0.6.0.tgz#2586e1b24a0b701c6c711eeb34d9e6c8712fc0d0"
+  integrity sha512-lj+gQWXnJ9U+QxSzZ535guy5Ge3jU+bDpH93DZTM823C6zlAh9RRjxoFoqnoNKRVMskMB8++qnO029hW0zetZQ==
   dependencies:
-    "@morfeo/spec" "^0.5.1"
+    "@morfeo/spec" "^0.6.0"
 
 "@morfeo/jss@0.5.1":
   version "0.5.1"
@@ -1082,6 +1082,11 @@
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@morfeo/spec/-/spec-0.5.1.tgz#421863caf752e1db95126a90169235df0d40c4b7"
   integrity sha512-cV8c6ayb/GURyvntESl8RrNUxP2gyuWoovYKSjhxCbb4mp4LWXf9Y/HotsNNnpIo/DAnZmoaMQBt1KI+Dev1uw==
+
+"@morfeo/spec@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@morfeo/spec/-/spec-0.6.0.tgz#d5fe02f0f56b465c03bc94ef921e12cd0e667767"
+  integrity sha512-3jkqnUTFNtAP/bDLhzvm5QkRVRpfHbaXSRQ5c1PYZGbSs7arHV/Jy5I1fiQVqId+SFsf+/ZA/3e02PakoiJ/Pw==
 
 "@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.3":
   version "2.1.8-no-fsevents.3"
