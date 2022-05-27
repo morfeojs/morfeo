@@ -28,5 +28,5 @@ jobs:
         run: yarn init:devtool
 
       - name: Build Web Extension
-        uses: yarn build:devtool
+        run: yarn build:devtool
 
