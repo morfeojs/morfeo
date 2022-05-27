@@ -1543,28 +1543,18 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@morfeo/cli@0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@morfeo/cli/-/cli-0.4.2.tgz#384bcfd1faad08db2d79be26ada4219d47d12326"
-  integrity sha512-6D+WP5fd13Z33ZJr1em/dGU+tbFW/9629BUyF1cd2zIfXyLSXriYZyDZkEJ4+p05Kt97Cv+3bRFdWtMlfGQYmQ==
+"@morfeo/cli@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@morfeo/cli/-/cli-0.6.0.tgz#320ba8bc5b67b05bf82c806b4f5b354ad8dcbd91"
+  integrity sha512-sJnjH9X0CScxnZDj1dyBo3Z60yMmiKlUNIhvKGFQxLD+m6Aq5CTJEvco8Bg6g7JgYUjuNT0ZoIgWiW9dpD64IA==
   dependencies:
-    "@morfeo/web" "^0.4.2"
-    "@oclif/command" "^1.8.0"
-    "@oclif/config" "^1.17.0"
-    "@oclif/plugin-help" "^3.2.2"
+    "@morfeo/web" "^0.6.0"
     chalk "^4.1.2"
     change-case "^4.1.2"
-    chokidar "^3.5.2"
-    cli-ux "^6.0.0"
-    glob "^7.1.7"
-    tslib "^1.14.1"
-
-"@morfeo/core@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@morfeo/core/-/core-0.4.2.tgz#c6d9bbc1e65b06c824914fc8642a2d51daf45ba2"
-  integrity sha512-JllWhLZ3pEFZFbGpBg8BPKEdpQMmAaHMWTqCcquIp8v5sDndVqLbfUTjijsnhORh3PKSkDuH8FzoFYMcjfeCig==
-  dependencies:
-    "@morfeo/spec" "^0.4.2"
+    chokidar "^3.5.3"
+    cli-ux "^6.0.9"
+    glob "^8.0.3"
+    yargs "^17.5.1"
 
 "@morfeo/core@^0.5.1":
   version "0.5.1"
@@ -1573,33 +1563,40 @@
   dependencies:
     "@morfeo/spec" "^0.5.1"
 
-"@morfeo/fonts@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@morfeo/fonts/-/fonts-0.4.2.tgz#3ca51db5beddc2e58467ebdcfbcf9d877471ef12"
-  integrity sha512-L2jvlBhITI/P2vtJk7ij7l1uH/drWjzDND35uCHw9EC4qul8me74yLaDAQuhY4tnBOhQG6wtqyMvnA3Lb6ptAA==
+"@morfeo/core@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@morfeo/core/-/core-0.6.0.tgz#2586e1b24a0b701c6c711eeb34d9e6c8712fc0d0"
+  integrity sha512-lj+gQWXnJ9U+QxSzZ535guy5Ge3jU+bDpH93DZTM823C6zlAh9RRjxoFoqnoNKRVMskMB8++qnO029hW0zetZQ==
+  dependencies:
+    "@morfeo/spec" "^0.6.0"
 
 "@morfeo/fonts@^0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@morfeo/fonts/-/fonts-0.5.1.tgz#4ce7c652c4dfc668af1c8b28b23d2645e56fbf30"
   integrity sha512-RDeb8X83HjlTUi92xbM4zPDypWAseYZU5nuuyE+6arFGkqnCHEXnKLAslEdqw9bLK2/RMnAbypqp6JB68qmTmw==
 
+"@morfeo/fonts@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@morfeo/fonts/-/fonts-0.6.0.tgz#67edd751364efcb0ddf5dda13462ca5e3d626abe"
+  integrity sha512-oRA+NspOumNceN+JmfHejEa01WfZ8+uquz6L7qmdN9yxMkEJyIasv/51IzfPeCgFdqpOQVmJAvGdlMiaTWhzNw==
+
 "@morfeo/hooks@^0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@morfeo/hooks/-/hooks-0.5.1.tgz#fd5adb42f5eca7541d066e0f878b78636948d3db"
   integrity sha512-KpybRD9eJ3AWbwo6RxAUpML5bnXhvLtzw5LMIIflaie2FdCFm+7+xbBayPF2cdlXnv1olZZi6PAFIRo24jsDWg==
 
-"@morfeo/jss@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@morfeo/jss/-/jss-0.4.2.tgz#40240897dfafe5f90a0e45fbd5d429ac4954faad"
-  integrity sha512-pmYcecWwXfvPvtkpWi0N2pVmt8Dq00XrGucGXTPtxtOo7ZMMdvzKFLqgcb8YOq89oaawsPdlyyoluM5GX3SgHQ==
-  dependencies:
-    jss "^10.6.0"
-    jss-preset-default "^10.6.0"
-
 "@morfeo/jss@^0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@morfeo/jss/-/jss-0.5.1.tgz#bd46bb18ab588bf434a0d6dc86159c14dc47c41f"
   integrity sha512-R2pP+F/COyUj7hh6LELVPWIRc80gFD4KNb9bsiVXXYhLsw1i4Uc0iXDwBON1yHJXO8F80ZQTw86K75nBt+6ZWQ==
+  dependencies:
+    jss "^10.6.0"
+    jss-preset-default "^10.6.0"
+
+"@morfeo/jss@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@morfeo/jss/-/jss-0.6.0.tgz#09192eeef768969b1098e8521ae40dfc69615f48"
+  integrity sha512-y7qBAEDkquVqIY80OQxEswp6THihJ7Y0fz4Ye3OUEa1HM5So7HS+Ji4Ar+Wmdq6OlJex9n5FZm2sb5z4lW9rfA==
   dependencies:
     jss "^10.6.0"
     jss-preset-default "^10.6.0"
@@ -1620,24 +1617,15 @@
     "@morfeo/web" "^0.5.1"
     fast-safe-stringify "^2.0.8"
 
-"@morfeo/spec@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@morfeo/spec/-/spec-0.4.2.tgz#13c5e428d3db78242622a0bc721d74789939a5c2"
-  integrity sha512-L3GET/LcEJ4OjUYs8uKHoETJuUQzVPZDbepmtk8JJpRUZC/FXheXfgqFkD+rOVFCfVbckeEPd09J0Z84ZVSJ3g==
-
 "@morfeo/spec@^0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@morfeo/spec/-/spec-0.5.1.tgz#421863caf752e1db95126a90169235df0d40c4b7"
   integrity sha512-cV8c6ayb/GURyvntESl8RrNUxP2gyuWoovYKSjhxCbb4mp4LWXf9Y/HotsNNnpIo/DAnZmoaMQBt1KI+Dev1uw==
 
-"@morfeo/web@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@morfeo/web/-/web-0.4.2.tgz#3f5946aabc1a254668fd81a99f669be3f838ae2f"
-  integrity sha512-oRX/vMjiHYKxTKwSGxsTvVOi5NreZeOz016dXNjus3Zersg3d2exi5I/Orodrv79eNXbtL+SJ90xkSc/PuVs9A==
-  dependencies:
-    "@morfeo/core" "^0.4.2"
-    "@morfeo/fonts" "^0.4.2"
-    "@morfeo/jss" "^0.4.2"
+"@morfeo/spec@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@morfeo/spec/-/spec-0.6.0.tgz#d5fe02f0f56b465c03bc94ef921e12cd0e667767"
+  integrity sha512-3jkqnUTFNtAP/bDLhzvm5QkRVRpfHbaXSRQ5c1PYZGbSs7arHV/Jy5I1fiQVqId+SFsf+/ZA/3e02PakoiJ/Pw==
 
 "@morfeo/web@^0.5.1":
   version "0.5.1"
@@ -1647,6 +1635,15 @@
     "@morfeo/core" "^0.5.1"
     "@morfeo/fonts" "^0.5.1"
     "@morfeo/jss" "^0.5.1"
+
+"@morfeo/web@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@morfeo/web/-/web-0.6.0.tgz#e2353be303fe5cd06f9750ec2e5a70b5ae74ab58"
+  integrity sha512-C1LuSzA22teAPOxf2JwQZwyTWbGQKdUk5wYlVVzMfEUmXy/s3qRDtPZV9qNaoeGEwVK7RRZpAmlEtIxXunHyfQ==
+  dependencies:
+    "@morfeo/core" "^0.6.0"
+    "@morfeo/fonts" "^0.6.0"
+    "@morfeo/jss" "^0.6.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -1685,42 +1682,6 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@oclif/command@^1.8.0", "@oclif/command@^1.8.15":
-  version "1.8.16"
-  resolved "https://registry.yarnpkg.com/@oclif/command/-/command-1.8.16.tgz#bea46f81b2061b47e1cda318a0b923e62ca4cc0c"
-  integrity sha512-rmVKYEsKzurfRU0xJz+iHelbi1LGlihIWZ7Qvmb/CBz1EkhL7nOkW4SVXmG2dA5Ce0si2gr88i6q4eBOMRNJ1w==
-  dependencies:
-    "@oclif/config" "^1.18.2"
-    "@oclif/errors" "^1.3.5"
-    "@oclif/help" "^1.0.1"
-    "@oclif/parser" "^3.8.6"
-    debug "^4.1.1"
-    semver "^7.3.2"
-
-"@oclif/config@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.18.2.tgz#5bfe74a9ba6a8ca3dceb314a81bd9ce2e15ebbfe"
-  integrity sha512-cE3qfHWv8hGRCP31j7fIS7BfCflm/BNZ2HNqHexH+fDrdF2f1D5S8VmXWLC77ffv3oDvWyvE9AZeR0RfmHCCaA==
-  dependencies:
-    "@oclif/errors" "^1.3.3"
-    "@oclif/parser" "^3.8.0"
-    debug "^4.1.1"
-    globby "^11.0.1"
-    is-wsl "^2.1.1"
-    tslib "^2.0.0"
-
-"@oclif/config@^1.17.0", "@oclif/config@^1.18.2":
-  version "1.18.3"
-  resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.18.3.tgz#ddfc144fdab66b1658c2f1b3478fa7fbfd317e79"
-  integrity sha512-sBpko86IrTscc39EvHUhL+c++81BVTsIZ3ETu/vG+cCdi0N6vb2DoahR67A9FI2CGnxRRHjnTfa3m6LulwNATA==
-  dependencies:
-    "@oclif/errors" "^1.3.5"
-    "@oclif/parser" "^3.8.0"
-    debug "^4.1.1"
-    globby "^11.0.1"
-    is-wsl "^2.1.1"
-    tslib "^2.3.1"
-
 "@oclif/core@^1.1.1":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.3.0.tgz#f0547d2ca9b13c2a54f1c1d88e03a8c8ca7799bb"
@@ -1756,63 +1717,10 @@
     widest-line "^3.1.0"
     wrap-ansi "^7.0.0"
 
-"@oclif/errors@1.3.5", "@oclif/errors@^1.2.2", "@oclif/errors@^1.3.3", "@oclif/errors@^1.3.5":
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/@oclif/errors/-/errors-1.3.5.tgz#a1e9694dbeccab10fe2fe15acb7113991bed636c"
-  integrity sha512-OivucXPH/eLLlOT7FkCMoZXiaVYf8I/w1eTAM1+gKzfhALwWTusxEx7wBmW0uzvkSg/9ovWLycPaBgJbM3LOCQ==
-  dependencies:
-    clean-stack "^3.0.0"
-    fs-extra "^8.1"
-    indent-string "^4.0.0"
-    strip-ansi "^6.0.0"
-    wrap-ansi "^7.0.0"
-
-"@oclif/help@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@oclif/help/-/help-1.0.1.tgz#fd96a3dd9fb2314479e6c8584c91b63754a7dff5"
-  integrity sha512-8rsl4RHL5+vBUAKBL6PFI3mj58hjPCp2VYyXD4TAa7IMStikFfOH2gtWmqLzIlxAED2EpD0dfYwo9JJxYsH7Aw==
-  dependencies:
-    "@oclif/config" "1.18.2"
-    "@oclif/errors" "1.3.5"
-    chalk "^4.1.2"
-    indent-string "^4.0.0"
-    lodash "^4.17.21"
-    string-width "^4.2.0"
-    strip-ansi "^6.0.0"
-    widest-line "^3.1.0"
-    wrap-ansi "^6.2.0"
-
 "@oclif/linewrap@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@oclif/linewrap/-/linewrap-1.0.0.tgz#aedcb64b479d4db7be24196384897b5000901d91"
   integrity sha512-Ups2dShK52xXa8w6iBWLgcjPJWjais6KPJQq3gQ/88AY6BXoTX+MIGFPrWQO1KLMiQfoTpcLnUwloN4brrVUHw==
-
-"@oclif/parser@^3.8.0", "@oclif/parser@^3.8.6":
-  version "3.8.6"
-  resolved "https://registry.yarnpkg.com/@oclif/parser/-/parser-3.8.6.tgz#d5a108af9c708a051cc6b1d27d47359d75f41236"
-  integrity sha512-tXb0NKgSgNxmf6baN6naK+CCwOueaFk93FG9u202U7mTBHUKsioOUlw1SG/iPi9aJM3WE4pHLXmty59pci0OEw==
-  dependencies:
-    "@oclif/errors" "^1.2.2"
-    "@oclif/linewrap" "^1.0.0"
-    chalk "^4.1.0"
-    tslib "^2.0.0"
-
-"@oclif/plugin-help@^3.2.2":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-3.3.1.tgz#36adb4e0173f741df409bb4b69036d24a53bfb24"
-  integrity sha512-QuSiseNRJygaqAdABYFWn/H1CwIZCp9zp/PLid6yXvy6VcQV7OenEFF5XuYaCvSARe2Tg9r8Jqls5+fw1A9CbQ==
-  dependencies:
-    "@oclif/command" "^1.8.15"
-    "@oclif/config" "1.18.2"
-    "@oclif/errors" "1.3.5"
-    "@oclif/help" "^1.0.1"
-    chalk "^4.1.2"
-    indent-string "^4.0.0"
-    lodash "^4.17.21"
-    string-width "^4.2.0"
-    strip-ansi "^6.0.0"
-    widest-line "^3.1.0"
-    wrap-ansi "^6.2.0"
 
 "@oclif/screen@^1.0.4 ":
   version "1.0.4"
@@ -3282,6 +3190,13 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
+brace-expansion@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-2.0.1.tgz#1edc459e0f0c548486ecf9fc99f2221364b9a0ae"
+  integrity sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==
+  dependencies:
+    balanced-match "^1.0.0"
+
 braces@^2.3.1, braces@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/braces/-/braces-2.3.2.tgz#5979fd3f14cd531565e5fa2df1abfff1dfaee729"
@@ -3695,7 +3610,7 @@ chokidar@^2.1.8:
   optionalDependencies:
     fsevents "^1.2.7"
 
-chokidar@^3.4.1, chokidar@^3.5.2:
+chokidar@^3.4.1, chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -3784,7 +3699,7 @@ cli-progress@^3.10.0:
   dependencies:
     string-width "^4.2.0"
 
-cli-ux@^6.0.0:
+cli-ux@^6.0.9:
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-6.0.9.tgz#b5ab690314348b45b2c7458dad7621ae1be7c61d"
   integrity sha512-0Ku29QLf+P6SeBNWM7zyoJ49eKKOjxZBZ4OH2aFeRtC0sNXU3ftdJxQPKJ1SJ+axX34I1NsfTFahpXdnxklZgA==
@@ -3832,6 +3747,15 @@ cliui@^6.0.0:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
     wrap-ansi "^6.2.0"
+
+cliui@^7.0.2:
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/cliui/-/cliui-7.0.4.tgz#a0265ee655476fc807aea9df3df8df7783808b4f"
+  integrity sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==
+  dependencies:
+    string-width "^4.2.0"
+    strip-ansi "^6.0.0"
+    wrap-ansi "^7.0.0"
 
 clsx@1.1.1:
   version "1.1.1"
@@ -5774,7 +5698,7 @@ gensync@^1.0.0-beta.2:
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
   integrity sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==
 
-get-caller-file@^2.0.1:
+get-caller-file@^2.0.1, get-caller-file@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
@@ -5840,7 +5764,7 @@ glob-parent@^5.1.2, glob-parent@~5.1.2:
   dependencies:
     is-glob "^4.0.1"
 
-glob@^7.0.3, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7:
+glob@^7.0.3, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.0.tgz#d15535af7732e02e948f4c41628bd910293f6023"
   integrity sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==
@@ -5851,6 +5775,17 @@ glob@^7.0.3, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, gl
     minimatch "^3.0.4"
     once "^1.3.0"
     path-is-absolute "^1.0.0"
+
+glob@^8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-8.0.3.tgz#415c6eb2deed9e502c68fa44a272e6da6eeca42e"
+  integrity sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^5.0.1"
+    once "^1.3.0"
 
 global-modules@2.0.0:
   version "2.0.0"
@@ -5892,7 +5827,7 @@ globby@11.0.1:
     merge2 "^1.3.0"
     slash "^3.0.0"
 
-globby@^11.0.1, globby@^11.0.3, globby@^11.0.4:
+globby@^11.0.3, globby@^11.0.4:
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/globby/-/globby-11.1.0.tgz#bd4be98bb042f83d796f7e3811991fbe82a0d34b"
   integrity sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==
@@ -8032,6 +7967,13 @@ minimatch@3.0.4, minimatch@^3.0.4:
   integrity sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
   dependencies:
     brace-expansion "^1.1.7"
+
+minimatch@^5.0.1:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.0.tgz#1717b464f4971b144f6aabe8f2d0b8e4511e09c7"
+  integrity sha512-9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==
+  dependencies:
+    brace-expansion "^2.0.1"
 
 minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
@@ -11343,7 +11285,7 @@ tsconfig-paths@^3.12.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@^1.14.1, tslib@^1.8.1:
+tslib@^1.8.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
@@ -12225,6 +12167,11 @@ y18n@^4.0.0:
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.3.tgz#b5f259c82cd6e336921efd7bfd8bf560de9eeedf"
   integrity sha512-JKhqTOwSrqNA1NY5lSztJ1GrBiUodLMmIZuLiDaMRJ+itFd+ABVE8XBjOvIWL+rSqNDC74LCSFmlb/U4UZ4hJQ==
 
+y18n@^5.0.5:
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-5.0.8.tgz#7f4934d0f7ca8c56f95314939ddcd2dd91ce1d55"
+  integrity sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==
+
 yallist@^3.0.2:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.1.1.tgz#dbb7daf9bfd8bac9ab45ebf602b8cbad0d5d08fd"
@@ -12255,6 +12202,11 @@ yargs-parser@^18.1.2:
   dependencies:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
+
+yargs-parser@^21.0.0:
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.0.1.tgz#0267f286c877a4f0f728fceb6f8a3e4cb95c6e35"
+  integrity sha512-9BK1jFpLzJROCI5TzwZL/TU4gqjK5xiHV/RfWLOahrjAko/e4DJkRDZQXfvqAsiZzzYhgAzbgz6lg48jcm4GLg==
 
 yargs@^13.3.2:
   version "13.3.2"
@@ -12288,6 +12240,19 @@ yargs@^15.4.1:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
+
+yargs@^17.5.1:
+  version "17.5.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.5.1.tgz#e109900cab6fcb7fd44b1d8249166feb0b36e58e"
+  integrity sha512-t6YAJcxDkNX7NFYiVtKvWUz8l+PaKTLiL63mJYWR2GnHq2gjEWISzsLp9wg3aY36dY1j+gfIEL3pIF+XlJJfbA==
+  dependencies:
+    cliui "^7.0.2"
+    escalade "^3.1.1"
+    get-caller-file "^2.0.5"
+    require-directory "^2.1.1"
+    string-width "^4.2.3"
+    y18n "^5.0.5"
+    yargs-parser "^21.0.0"
 
 yocto-queue@^0.1.0:
   version "0.1.0"
