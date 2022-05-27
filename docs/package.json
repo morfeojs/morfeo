@@ -21,7 +21,7 @@
     "@mdx-js/react": "1.6.22",
     "@morfeo/dev-tools": "0.6.0",
     "@morfeo/preset-default": "0.6.0",
-    "@morfeo/react": "0.5.1",
+    "@morfeo/react": "0.6.0",
     "@svgr/webpack": "5.5.0",
     "clsx": "1.1.1",
     "file-loader": "6.2.0",
