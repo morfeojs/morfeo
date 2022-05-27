@@ -32,4 +32,4 @@
 
 ## Check if the branch is updated
 
-- [x] <!-- rebase-check -->If you want to rebase/retry this PR, click this checkbox.
+- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, click this checkbox.
