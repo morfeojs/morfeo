@@ -9,6 +9,7 @@
     "clean": "lerna clean --yes",
     "build": "lerna run build",
     "build:docs": "yarn --cwd=docs build",
+    "build:devtool": "yarn --cwd=devtool build",
     "watch": "lerna run watch",
     "reset": "yarn clean && yarn && lerna bootstrap && yarn build",
     "init:docs": "yarn --cwd=docs && ts-node scripts/bootstrap-app.ts docs",
