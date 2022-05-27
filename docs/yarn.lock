@@ -2338,13 +2338,6 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@morfeo/core@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/core/-/core-0.5.1.tgz#8c5e93c678b0a1ae2488de2940def0924554d9d7"
-  integrity sha512-rDzRkio2BeuiYMWZm6cb5yhwEt3mozuZzosbhM1NZRPR8j4hD8S0wNnM02ttNbxUw+hzjeSwXez+r/5V6Gbxmg==
-  dependencies:
-    "@morfeo/spec" "^0.5.1"
-
 "@morfeo/core@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@morfeo/core/-/core-0.6.0.tgz#2586e1b24a0b701c6c711eeb34d9e6c8712fc0d0"
@@ -2359,28 +2352,15 @@
   dependencies:
     "@morfeo/web" "^0.6.0"
 
-"@morfeo/fonts@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/fonts/-/fonts-0.5.1.tgz#4ce7c652c4dfc668af1c8b28b23d2645e56fbf30"
-  integrity sha512-RDeb8X83HjlTUi92xbM4zPDypWAseYZU5nuuyE+6arFGkqnCHEXnKLAslEdqw9bLK2/RMnAbypqp6JB68qmTmw==
-
 "@morfeo/fonts@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@morfeo/fonts/-/fonts-0.6.0.tgz#67edd751364efcb0ddf5dda13462ca5e3d626abe"
   integrity sha512-oRA+NspOumNceN+JmfHejEa01WfZ8+uquz6L7qmdN9yxMkEJyIasv/51IzfPeCgFdqpOQVmJAvGdlMiaTWhzNw==
 
-"@morfeo/hooks@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/hooks/-/hooks-0.5.1.tgz#fd5adb42f5eca7541d066e0f878b78636948d3db"
-  integrity sha512-KpybRD9eJ3AWbwo6RxAUpML5bnXhvLtzw5LMIIflaie2FdCFm+7+xbBayPF2cdlXnv1olZZi6PAFIRo24jsDWg==
-
-"@morfeo/jss@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/jss/-/jss-0.5.1.tgz#bd46bb18ab588bf434a0d6dc86159c14dc47c41f"
-  integrity sha512-R2pP+F/COyUj7hh6LELVPWIRc80gFD4KNb9bsiVXXYhLsw1i4Uc0iXDwBON1yHJXO8F80ZQTw86K75nBt+6ZWQ==
-  dependencies:
-    jss "^10.6.0"
-    jss-preset-default "^10.6.0"
+"@morfeo/hooks@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@morfeo/hooks/-/hooks-0.6.0.tgz#3c1529fc7660f96c6dfb4c85fab77381192136f5"
+  integrity sha512-FGV56jLC30f2vWbb5zF14aFhT2334q0APSy/XHidoR/FRLHcQns76jQvecfsyAYIJ36E5+Oofp6hzspWoWTYaQ==
 
 "@morfeo/jss@^0.6.0":
   version "0.6.0"
@@ -2397,33 +2377,19 @@
   dependencies:
     "@morfeo/spec" "^0.6.0"
 
-"@morfeo/react@0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/react/-/react-0.5.1.tgz#c884dd25440da17d00900e293a32870fc361e1be"
-  integrity sha512-pJf2eWYTP5eBKR2tzkMa4noILLgJO9gcAhhBr13IflmYw5+df+syHpUP/hde1AlCuZlH6S2lROlSUVputH7DXw==
+"@morfeo/react@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@morfeo/react/-/react-0.6.0.tgz#75e6e8297939eae147c22e4b7333f5ddeb515712"
+  integrity sha512-5g7LHpC0qPjGYjSXDy52g0pGYCxlzeHdQKOThxuLCLMBz4OnwmSq2/UfhO2ZMJwKYJED3bSqt+GSB8pQn5vgmg==
   dependencies:
-    "@morfeo/hooks" "^0.5.1"
-    "@morfeo/web" "^0.5.1"
-    fast-safe-stringify "^2.0.8"
-
-"@morfeo/spec@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/spec/-/spec-0.5.1.tgz#421863caf752e1db95126a90169235df0d40c4b7"
-  integrity sha512-cV8c6ayb/GURyvntESl8RrNUxP2gyuWoovYKSjhxCbb4mp4LWXf9Y/HotsNNnpIo/DAnZmoaMQBt1KI+Dev1uw==
+    "@morfeo/hooks" "^0.6.0"
+    "@morfeo/web" "^0.6.0"
+    fast-safe-stringify "^2.1.1"
 
 "@morfeo/spec@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@morfeo/spec/-/spec-0.6.0.tgz#d5fe02f0f56b465c03bc94ef921e12cd0e667767"
   integrity sha512-3jkqnUTFNtAP/bDLhzvm5QkRVRpfHbaXSRQ5c1PYZGbSs7arHV/Jy5I1fiQVqId+SFsf+/ZA/3e02PakoiJ/Pw==
-
-"@morfeo/web@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/web/-/web-0.5.1.tgz#d0b38eb2b1668eb10e69e493022bcecf838d78f5"
-  integrity sha512-MWclFMBZDF2JnRLOviWpqlM6mz7WQplbgjY1ZNkCNyZ7hv7bhIu1cCZ0HpZ7NXQVgKchI3JenkNE1IXJgbXp7A==
-  dependencies:
-    "@morfeo/core" "^0.5.1"
-    "@morfeo/fonts" "^0.5.1"
-    "@morfeo/jss" "^0.5.1"
 
 "@morfeo/web@^0.6.0":
   version "0.6.0"
@@ -4888,7 +4854,7 @@ fast-json-stable-stringify@^2.0.0:
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
 
-fast-safe-stringify@^2.0.8:
+fast-safe-stringify@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/fast-safe-stringify/-/fast-safe-stringify-2.1.1.tgz#c406a83b6e70d9e35ce3b30a81141df30aeba884"
   integrity sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==
