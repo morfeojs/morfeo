@@ -1,4 +1,4 @@
-name: Publish packages
+name: Deploy Web Extension
 on:
   release:
     types: [created]
