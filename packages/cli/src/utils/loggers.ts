@@ -1,14 +1,14 @@
-import { cyan, green, italic } from 'chalk';
+import chalk from 'chalk';
 import cli from 'cli-ux';
 
 export function logFileList(allFiles: string[], editedFiles?: string[]) {
   cli.annotation(
-    cyan(`found ${allFiles.length} morfeo style files`),
+    chalk.cyan(`found ${allFiles.length} morfeo style files`),
     allFiles.join('\n'),
   );
 
   if (editedFiles && editedFiles.length > 0) {
-    cli.info('\nLast composed:', green(`${editedFiles[0]}`));
+    cli.info('\nLast composed:', chalk.green(`${editedFiles[0]}`));
   }
 }
 
@@ -24,21 +24,23 @@ export function logUpdatedThemes(themes: Record<string, string>) {
 }
 
 export function logThemesBuilded() {
-  cli.info(cyan(`Themes builded successfully`));
+  cli.info(chalk.cyan(`Themes builded successfully`));
 }
 
 export function logFooter(watching?: boolean) {
   if (watching) {
-    cli.info(cyan(`^ + C to exit`));
+    cli.info(chalk.cyan(`^ + C to exit`));
   }
 
   cli.info(
-    italic.gray(
+    chalk.italic.gray(
       '\n\nFor more information about @morfeo/cli check the documentation by clicking here:',
     ),
   );
   cli.url(
     'morfeo.dev',
-    italic.gray('https://morfeo.dev/docs/Features/CLI/morfeo-cli-introduction'),
+    chalk.italic.gray(
+      'https://morfeo.dev/docs/Features/CLI/morfeo-cli-introduction',
+    ),
   );
 }
