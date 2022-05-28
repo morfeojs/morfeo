@@ -24,7 +24,7 @@ jobs:
       - name: Deploy devtool
         run: npm run deploy:devtool
         env:
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
-          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          CHROME_WEB_CLIENT_ID: ${{ secrets.CHROME_WEB_CLIENT_ID }}
+          WEB_EXTENSION_ID: ${{ secrets.WEB_EXTENSION_ID }}
+          CHROME_WEB_REFRESH_TOKEN: ${{ secrets.CHROME_WEB_REFRESH_TOKEN }}
+          CHROME_WEB_CLIENT_SECRET: ${{ secrets.CHROME_WEB_CLIENT_SECRET }}

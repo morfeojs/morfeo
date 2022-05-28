@@ -1,10 +1,10 @@
-const fs = require('fs');
-const createWebStore = require('chrome-webstore-upload');
+import createWebStore from 'chrome-webstore-upload';
+import * as fs from 'fs';
 
-const CLIENT_ID = process.env.CLIENT_ID;
-const EXTENSION_ID = process.env.EXTENSION_ID;
-const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const CLIENT_ID = process.env.CHROME_WEB_CLIENT_ID;
+const EXTENSION_ID = process.env.WEB_EXTENSION_ID;
+const REFRESH_TOKEN = process.env.CHROME_WEB_REFRESH_TOKEN;
+const CLIENT_SECRET = process.env.CHROME_WEB_CLIENT_SECRET;
 
 const zipName = './build.zip';
 const extensionSource = fs.createReadStream(zipName);
