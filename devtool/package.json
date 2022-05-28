@@ -47,7 +47,7 @@
     "jest-circus": "26.6.3",
     "jest-resolve": "26.6.2",
     "jest-watch-typeahead": "0.6.5",
-    "mini-css-extract-plugin": "0.12.0",
+    "mini-css-extract-plugin": "2.6.0",
     "optimize-css-assets-webpack-plugin": "5.0.8",
     "pnp-webpack-plugin": "1.7.0",
     "polished": "4.2.2",
