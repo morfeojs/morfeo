@@ -28,5 +28,5 @@ jobs:
         run: yarn test:ci
 
       - name: Codecov
-        uses: codecov/codecov-action@v1.5.2
+        uses: codecov/codecov-action@v3.1.0
 
