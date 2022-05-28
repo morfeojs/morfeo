@@ -18,7 +18,7 @@
     "@docusaurus/preset-classic": "2.0.0-beta.21",
     "@docusaurus/theme-live-codeblock": "2.0.0-beta.21",
     "@docusaurus/theme-search-algolia": "2.0.0-beta.21",
-    "@mdx-js/react": "1.6.22",
+    "@mdx-js/react": "2.1.1",
     "@morfeo/dev-tools": "0.6.0",
     "@morfeo/preset-default": "0.6.0",
     "@morfeo/react": "0.6.0",
