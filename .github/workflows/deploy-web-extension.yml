@@ -1,0 +1,30 @@
+name: Publish packages
+on:
+  release:
+    types: [created]
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    permissions: 
+      contents: read
+      packages: write 
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Init packages
+        run: npm run reset
+
+      - name: Init Devtool
+        run: npm run init:devtool
+      
+      - name: Deploy devtool
+        run: npm run deploy:devtool
+        env:
+          CHROME_WEB_CLIENT_ID: ${{ secrets.CHROME_WEB_CLIENT_ID }}
+          WEB_EXTENSION_ID: ${{ secrets.WEB_EXTENSION_ID }}
+          CHROME_WEB_REFRESH_TOKEN: ${{ secrets.CHROME_WEB_REFRESH_TOKEN }}
+          CHROME_WEB_CLIENT_SECRET: ${{ secrets.CHROME_WEB_CLIENT_SECRET }}
