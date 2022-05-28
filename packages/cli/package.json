@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@morfeo/web": "^0.6.0",
-    "chalk": "^4.1.2",
+    "chalk": "^5.0.0",
     "change-case": "^4.1.2",
     "chokidar": "^3.5.3",
     "cli-ux": "^6.0.9",
