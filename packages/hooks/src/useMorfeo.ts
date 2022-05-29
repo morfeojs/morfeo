@@ -7,8 +7,8 @@ function subscribe(...callback: Parameters<typeof themeHandler.subscribe>) {
 }
 
 /**
- * Get the `morfeo instance`
- * @returns
+ * It returns the `morfeo instance` and subscribes the component/hook
+ * where is used to theme changes
  */
 export function useMorfeo() {
   useSyncExternalStore(subscribe, morfeo.getTheme);
