@@ -1,4 +1,4 @@
-import { renderHook } from './customRenderer';
+import { renderHook } from '@testing-library/react';
 import { theme } from '@morfeo/core';
 import { useProps } from '../src';
 

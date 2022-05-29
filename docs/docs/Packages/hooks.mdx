@@ -7,6 +7,10 @@ description: morfeo's hooks package
 
 **@morfeo/hooks** expose a set of hooks to easily use morfeo inside a `react` context.
 
+:::info React v18
+To properly use Morfeo in a React environment, you need to have a version of `react >= 18`
+:::
+
 ## Installation
 
 ```bash
@@ -17,7 +21,6 @@ npm i @morfeo/hooks
 yarn add @morfeo/hooks
 ```
 
-- [MorfeoProvider](#morfeo-provider)
 - [useTheme](#usetheme)
   - [useThemeSlice](#usethemeslice)
   - [useThemeValue](#usethemevalue)
@@ -27,23 +30,8 @@ yarn add @morfeo/hooks
 
 Advanced
 
+- [useMorfeo](#useMorfeo)
 - [useProps](#useprops)
-
-## Morfeo Provider
-
-To sync morfeo with react you have to first of all wrap you app with the `MorfeoProvider`:
-
-```tsx
-import { MorfeoProvider } from '@morfeo/hooks';
-
-function App() {
-  return (
-    <MorfeoProvider>
-      <YourApp />
-    </MorfeoProvider>
-  );
-}
-```
 
 ## useTheme
 
@@ -118,9 +106,7 @@ they correspond to `morfeo.getCurrentTheme` and `morfeo.setCurrentTheme` of the 
 
 ```jsx live
 function Button() {
-  // highlight-start
   const [currentTheme, setCurrentTheme] = useCurrentTheme();
-  // highlight-end
 
   const style = useStyle({
     componentName: 'Button',
@@ -129,9 +115,7 @@ function Button() {
   });
 
   const onClick = () => {
-    // highlight-start
     setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
-    // highlight-end
   };
 
   return (
@@ -184,14 +168,73 @@ Just like useTheme, **useStyles** and **useStyle** are the equivalent of the [co
 but they force a re-render when the theme changes.
 :::
 
-## useProps
+## Advanced
+
+### useMorfeo
+
+This hook is used under the hood in all the others hooks, you'll probably never need to use it directly.
+It returns the same `morfeo instance` that you'll get from the core API, but it's reactive, to understand
+the difference just look at these 2 examples:
+
+By using `useMorfeo` the component is subscribed to theme changes, which means that if the theme changes the component
+will be re-rendered:
+
+```tsx live
+function App() {
+  const morfeo = useMorfeo();
+
+  const onClick = () => {
+    morfeo.setCurrentTheme(
+      morfeo.getCurrentTheme() === 'light' ? 'dark' : 'light',
+    );
+  };
+
+  return (
+    <p>
+      The current theme is: <code>{morfeo.getCurrentTheme()}</code>
+      <br />
+      <button onClick={onClick}>Toggle theme</button>
+    </p>
+  );
+}
+```
+
+If instead we use directly the `morfeo` instance from the core-api, the component will not re-render when the theme changes:
+
+```tsx live
+function App() {
+  const onClick = () => {
+    morfeo.setCurrentTheme(
+      morfeo.getCurrentTheme() === 'light' ? 'dark' : 'light',
+    );
+  };
+
+  return (
+    <p>
+      The current theme is: <code>{morfeo.getCurrentTheme()}</code>
+      <br />
+      <button onClick={onClick}>Toggle theme</button>
+    </p>
+  );
+}
+```
+
+### useProps
 
 Use it to get the default props of a components, a common use is to merge the defaut props with the current props:
 
-```jsx
+```jsx live
 function MyButton(props) {
   const defaultProps = useProps('Button', 'primary');
+  const className = useClassName({
+    componentName: 'Button',
+    variant: 'primary',
+  });
 
-  return <button {...defaultProps} {...props} />;
+  return (
+    <button {...defaultProps} {...props} className={className}>
+      Button with default props
+    </button>
+  );
 }
 ```

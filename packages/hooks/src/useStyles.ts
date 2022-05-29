@@ -1,12 +1,12 @@
-import { Style, ResolvedStyle, parsers } from '@morfeo/core';
-import { useTheme } from './useTheme';
+import { Style, ResolvedStyle, morfeo } from '@morfeo/core';
+import { useMorfeo } from './useMorfeo';
 
 function parseStyles<K extends string>(styles: Record<K, Style>) {
   const styleKeys = Object.keys(styles);
   return styleKeys.reduce(
     (acc, curr) => ({
       ...acc,
-      [curr]: parsers.resolve(styles[curr]),
+      [curr]: morfeo.resolve(styles[curr]),
     }),
     {},
   ) as Record<K, ResolvedStyle>;
@@ -17,7 +17,7 @@ function parseStyles<K extends string>(styles: Record<K, Style>) {
  * it returns the a record of styles that can be used as inline-style in your components.
  */
 export function useStyles<K extends string>(styles: Record<K, Style>) {
-  useTheme();
+  useMorfeo();
 
   return parseStyles(styles);
 }

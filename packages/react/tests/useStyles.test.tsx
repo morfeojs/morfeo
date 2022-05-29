@@ -1,5 +1,4 @@
 import { morfeo } from '@morfeo/web';
-import { MorfeoProvider } from '@morfeo/hooks';
 import { renderHook } from '@testing-library/react';
 import { useStyle } from '../src';
 
@@ -16,9 +15,7 @@ beforeEach(() => {
 });
 
 test('should generate the correct style with the override of `useStyle`', async () => {
-  const { result } = renderHook(() => useStyle({ bg: 'primary' }), {
-    wrapper: MorfeoProvider,
-  });
+  const { result } = renderHook(() => useStyle({ bg: 'primary' }));
 
   expect(result.current.backgroundColor).toBe(
     morfeo.getTheme()['colors']['primary'],
