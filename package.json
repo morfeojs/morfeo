@@ -9,7 +9,7 @@
     "bootstrap": "lerna bootstrap",
     "bootstrap:docs": "lerna bootstrap --scope=@morfeo/app-docs",
     "bootstrap:examples": "lerna bootstrap --scope=@morfeo/example-*",
-    "bootstrap:packages": "lerna bootstrap --scope=@morfeo/app-*,example-*",
+    "bootstrap:packages": "lerna bootstrap --ignore=@morfeo/{app-*,example-*}",
     "bootstrap:web-extension": "lerna bootstrap --scope=@morfeo/app-web-extension",
     "build": "lerna run build",
     "build:docs": "lerna run build --scope=@morfeo/app-docs",
