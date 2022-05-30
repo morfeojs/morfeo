@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
       - uses: ./.github/workflows/bootstrap-morfeo-action
 
       - name: Bootstrap Web Extension
