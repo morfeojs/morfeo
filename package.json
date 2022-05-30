@@ -31,11 +31,13 @@
     "test:watch": "yarn test --watch",
     "test:coverage": "yarn test --coverage",
     "publish": "yarn reset && lerna publish from-package --yes --no-verify-access",
-    "version": "lerna version patch --no-push --no-git-tag-version --conventional-commits",
+    "version:patch": "lerna version patch --no-push --no-git-tag-version --conventional-commits",
     "version:minor": "lerna version minor --no-push --no-git-tag-version --conventional-commits",
+    "version:major": "lerna version major --no-push --no-git-tag-version --conventional-commits",
     "version:devtool": "ts-node scripts/version-devtool.ts",
     "postversion": "ts-node scripts/version.ts && yarn version:devtool",
     "postversion:minor": "yarn postversion minor",
+    "postversion:major": "yarn postversion major",
     "deploy:devtool": "yarn --cwd=devtool deploy"
   },
   "dependencies": {
