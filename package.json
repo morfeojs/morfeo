@@ -25,7 +25,7 @@
     "prettify": "yarn prettify:js && yarn prettify:ts",
     "prettify:js": "prettier --write \"**/*.js\"",
     "prettify:ts": "prettier --write \"**/*.ts\"",
-    "publish": "lerna publish from-package --yes --no-verify-access",
+    "publish": "lerna publish from-package --no-verify-access --yes",
     "reset": "yarn clean && yarn bootstrap && yarn build",
     "reset:packages": "yarn clean:packages && yarn && yarn bootstrap:packages && yarn build:packages",
     "start:benchmarks": "lerna run all --scope=@morfeo/app-benchmarks",
