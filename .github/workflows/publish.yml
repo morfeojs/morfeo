@@ -10,7 +10,7 @@ jobs:
       packages: write 
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/workflows/bootstrap-morfeo-action.yml
+      - uses: ./.github/workflows/bootstrap-morfeo-action
 
       # TODO: Verify if this step is still needed
       - name: Assume unchanged for changed files
