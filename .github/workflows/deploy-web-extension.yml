@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/bootstrap-morfeo
+
+      - name: Build Web Extension
+        run: yarn build:web-extension
       
       - name: Deploy Web Extension
         run: yarn deploy:web-extension
