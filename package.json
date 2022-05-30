@@ -17,7 +17,7 @@
     "build:web-extension": "lerna run build --scope=@morfeo/app-web-extension",
     "clean": "lerna clean --yes",
     "clean:packages": "lerna clean --ignore=@morfeo/{app-*,example-*} --yes",
-    "deploy:web-extension": "lerna run deploy --scope=@morfeo/web-extension",
+    "deploy:web-extension": "lerna run deploy --scope=@morfeo/app-web-extension",
     "postversion": "ts-node scripts/version.ts && yarn version:devtool",
     "postversion:major": "yarn postversion major",
     "postversion:minor": "yarn postversion minor",
