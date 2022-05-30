@@ -3,26 +3,20 @@ on:
   release:
     types: [created]
 jobs:
-  build:
+  deploy-web-extension:
     runs-on: ubuntu-latest 
     permissions: 
       contents: read
       packages: write 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-          registry-url: 'https://registry.npmjs.org'
+      - uses: ./.github/workflows/bootstrap-morfeo-action.yml
 
-      - name: Init packages
-        run: npm run reset
-
-      - name: Init Devtool
-        run: npm run init:devtool
+      - name: Bootstrap Web Extension
+        run: yarn bootstrap:web-extension
       
-      - name: Deploy devtool
-        run: npm run deploy:devtool
+      - name: Deploy Web Extension
+        run: yarn deploy:web-extension
         env:
           CHROME_WEB_CLIENT_ID: ${{ secrets.CHROME_WEB_CLIENT_ID }}
           WEB_EXTENSION_ID: ${{ secrets.WEB_EXTENSION_ID }}

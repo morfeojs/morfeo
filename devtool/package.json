@@ -1,5 +1,5 @@
 {
-  "name": "devtool",
+  "name": "@morfeo/app-web-extension",
   "version": "0.6.0",
   "private": true,
   "dependencies": {

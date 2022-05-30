@@ -1,5 +1,5 @@
 {
-  "name": "NativeSandbox",
+  "name": "@morfeo/example-react-native",
   "version": "0.5.1",
   "private": true,
   "scripts": {

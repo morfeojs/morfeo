@@ -1,0 +1,19 @@
+name: Bootstrap Morfeo
+
+on:
+  workflow_call:
+
+jobs:
+  bootstrap-morfeo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Bootstrap
+        run: yarn reset:packages
