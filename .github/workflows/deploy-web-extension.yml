@@ -9,7 +9,7 @@ jobs:
       contents: read
       packages: write 
     steps:
-      - uses: ./.github/workflows/bootstrap-morfeo-action
+      - uses: ./.github/workflows/bootstrap-morfeo
 
       - name: Bootstrap Web Extension
         run: yarn bootstrap:web-extension

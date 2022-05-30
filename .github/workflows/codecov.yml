@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: ./.github/workflows/bootstrap-morfeo-action
+      - uses: ./.github/workflows/bootstrap-morfeo
       
       - name: Run tests
         run: yarn test:ci
