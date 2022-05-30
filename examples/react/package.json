@@ -1,11 +1,11 @@
 {
-  "name": "react-example",
-  "version": "0.5.1",
+  "name": "@morfeo/example-react",
+  "version": "0.6.0",
   "private": true,
   "dependencies": {
-    "@morfeo/react": "^0.5.1",
-    "@morfeo/dev-tools": "^0.5.1",
-    "@morfeo/preset-default": "^0.5.1",
+    "@morfeo/react": "^0.6.0",
+    "@morfeo/dev-tools": "^0.6.0",
+    "@morfeo/preset-default": "^0.6.0",
     "@types/node": "^16.11.36",
     "highlight.js": "11.3.1",
     "react-scripts": "5.0.1",

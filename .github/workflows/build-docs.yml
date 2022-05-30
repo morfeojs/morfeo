@@ -1,4 +1,4 @@
-name: Codecov
+name: Build Docs
 
 on:
   push:
@@ -9,16 +9,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  codecov:
+  build-docs:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/bootstrap-morfeo
-      
-      - name: Run tests
-        run: yarn test:ci
 
-      - name: Codecov
-        uses: codecov/codecov-action@v3.1.0
+      - name: Bootstrap Docs
+        run: yarn bootstrap:docs
+
+      - name: Build Docs
+        run: yarn build:docs
 

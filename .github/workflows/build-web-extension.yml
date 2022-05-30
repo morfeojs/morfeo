@@ -9,24 +9,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-web-extension:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
+      - uses: ./.github/workflows/bootstrap-morfeo
 
-      - name: Install yarn
-        run: npm install -g yarn
-
-      - name: Bootstrap packages
-        run: yarn reset
-      
-      - name: Install Web Extension dependencies
-        run: yarn init:devtool
+      - name: Bootstrap Web Extension
+        run: yarn bootstrap:web-extension
 
       - name: Build Web Extension
-        run: yarn build:devtool
+        run: yarn build:web-extension
 
