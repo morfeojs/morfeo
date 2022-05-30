@@ -5,6 +5,25 @@ title: Compose command
 description: Features > CLI > Compose
 ---
 
+## Installations
+
+To install the CLI you just have to add it to your `devDependencies`:
+
+```bash
+yarn add --dev @morfeo/cli
+# or npm add -D @morfeo/cli
+```
+
+Or using it directly with `npx`
+
+```bash
+npx @morfeo/cli compose --help
+```
+
+The details about all the flags and the configurations of @morfeo/cli can be found in the packages section, [here](../../Packages/cli.mdx#morfeo-compose).
+
+## Introduction
+
 The theme object can rapidly grow and became hard to review, it's always a good choice to split the theme in multiple files and then re-compose the original theme by importing this files, most of the theme object will look to something like this:
 
 ```typescript title=theme.ts
@@ -21,15 +40,15 @@ export const theme = {
   components: {
     Input: inputConfig,
     Button: buttonConfig,
-  }
+  },
 };
 ```
 
-Instead of doing it **manually**, the compose command it's a way to compose the theme completely **automatically**, you just have to write regular typescript files  (`morfeo style files`) wherever you want in your application. These files are easily recognizable by the custom extension: `{name}.morfeo.ts`
+Instead of doing it **manually**, the compose command it's a way to compose the theme completely **automatically**, you just have to write regular typescript files (`morfeo style files`) wherever you want in your application. These files are easily recognizable by the custom extension: `{name}.morfeo.ts`
 
 For example in the following structure we can recognize 3 morfeo style files:
 
-``` title="folder structure"
+```title="folder structure"
 src
 -- config
 // highlight-start
@@ -48,38 +67,37 @@ by running `morfeo compose` these files will be composed into a single theme obj
 
 ## Morfeo style file
 
-A *morfeo style file* it's a simple typescript file that contains a component configuration or a theme slice.
+A _morfeo style file_ it's a simple typescript file that contains a component configuration or a theme slice.
 The structure of this file is the following:
 
 ```typescript title="{fileName}.morfeo.ts"
-
 /**
  * Optional
  * Useful if the exported style should be applied only in one theme, for example a set of colors
  * to be used only in the dark theme.
  * If not specified the style will be applied to all the themes.
  */
-export const themeName = "themeName";
+export const themeName = 'themeName';
 
 /**
  * Optional
  * Default it's the name of the current file, for example:
  *  - `colors.morfeo.ts` --> sliceName = 'colors';
  */
-export const sliceName = "sliceName";
+export const sliceName = 'sliceName';
 
 /**
  * Optional
  * Default it's the name of the current file, for example:
  *  - `Button.morfeo.ts` --> componentName = 'Button';
  */
-export const componentName = "componentName";
+export const componentName = 'componentName';
 
 export default {
   // Can be a component config or a theme slice depending on:
   // - the name of the file (if its colors, gradients ... it's a slice, a component instead);
   // - the previous values (if sliceName is specified it's a slice, a component instead)
-}
+};
 ```
 
 :::info Naming convention
@@ -100,11 +118,12 @@ export default {
   themes: {
     light: `path/where/the theme will be placed`,
     // ...
-  }
-}
+  },
+};
 ```
 
 The most simple usage is just running the command:
+
 ```bash
 morfeo compose
 ```
@@ -133,12 +152,13 @@ export default {
   variants: {
     success: {
       style: {
-        bg: 'success'
+        bg: 'success',
       },
     },
   },
-}
+};
 ```
+
 This file specify the configuration of the Button component, after running the command we expect to find inside the theme the following configuration for the `Button` component:
 
 ```typescript
@@ -154,7 +174,7 @@ const theme = {
       variants: {
         success: {
           style: {
-            bg: 'success'
+            bg: 'success',
           },
         },
       },
@@ -197,7 +217,7 @@ export default {
   l: '40px',
   xl: '48px',
   xxl: '56px',
-}
+};
 ```
 
 ### Theme Slice with custom `sliceName`
@@ -215,7 +235,7 @@ export default {
   l: '40px',
   xl: '48px',
   xxl: '56px',
-}
+};
 ```
 
 ### Style applied to only one theme
@@ -230,9 +250,5 @@ export const sliceName = 'colors';
 export default {
   background: 'white',
   invertedBackground: 'black',
-}
+};
 ```
-
-## Specification
-
-The details about all the flags and the configurations of @morfeo/cli can be found in the packages section, [here](../../Packages/cli.mdx#morfeo-compose).

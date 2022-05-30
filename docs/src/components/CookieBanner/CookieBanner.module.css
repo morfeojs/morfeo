@@ -19,6 +19,7 @@
   border-color: var(--colors-secondary) !important;
 
   padding: var(--spacings-m);
+  pointer-events: all;
 
   display: flex;
   align-items: center;

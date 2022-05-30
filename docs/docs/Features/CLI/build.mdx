@@ -5,6 +5,23 @@ title: Build command
 description: Features > CLI > Build
 ---
 
+## Installation
+
+To install the CLI you just have to add it to your `devDependencies`:
+
+```bash
+yarn add --dev @morfeo/cli
+# or npm add -D @morfeo/cli
+```
+
+Or using it directly with `npx`
+
+```bash
+npx @morfeo/cli build --help
+```
+
+The details about all the flags and the configurations of `@morfeo/cli` can be found in the packages section, [here](../../Packages/cli.mdx#morfeo-build).
+
 ## Example
 
 Let's start by converting a simple theme to css files, for example:
@@ -212,7 +229,3 @@ function App({ children }) {
   );
 }
 ```
-
-## Specification
-
-The details about all the flags and the configurations of @morfeo/cli can be found in the packages section, [here](../../Packages/cli.mdx#morfeo-build).

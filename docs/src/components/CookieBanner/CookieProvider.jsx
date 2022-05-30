@@ -1,9 +1,13 @@
-import React, { useState, useContext, useMemo } from 'react';
+import React, {
+  useState,
+  useContext,
+  useMemo,
+  useLayoutEffect,
+  createContext,
+} from 'react';
 import Cookies from 'js-cookie';
-import { createContext } from 'react';
 import CookieBanner from './CookieBanner';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { useEffect } from 'react';
 
 const DEFAULT_STATE = {
   accepted: false,
@@ -29,12 +33,12 @@ export function CookieProvider({
     trackingID: siteConfig.presets[0][1].googleAnalytics.trackingID,
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setGoogleAnalytics(
       value.trackingID,
       Cookies.get(cookiePolicyKey) === 'true' ? 'enabled' : 'disabled',
     );
-  }, [value.trackingID]);
+  }, [cookiePolicyKey, value.trackingID]);
 
   const contextState = useMemo(() => [value, setValue], [value]);
 

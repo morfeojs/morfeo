@@ -27,22 +27,20 @@
 
 From the root of the project (one folder above this one), run:
 
-```console
-yarn init:devtool
+```bash
+yarn bootstrap:web-extension
 ```
 
 ### ⚠️ Warning
 
 If you run `yarn` directly in this folder you'll install the published version of the internal `@morfeo` packages,
 this means that you'll not be able to see your changes in case you made updates in one o more packages.
-By running `yarn init:devtool` instead, the internal `@morfeo` packages will be symlinked to reflect your changes.
+By running `yarn bootstrap:web-extension` instead, the internal `@morfeo` packages will be symlinked to reflect your changes.
 
 ## Local Development
 
-```console
+```bash
 yarn start
-# Or, from the root of this project (one folder above this one)
-yarn start:devtool
 ```
 
 This command starts a local development server, most changes are reflected live without having to restart the server.
@@ -66,12 +64,12 @@ This extension uses Morfeo in 2 different ways, at run-time to show the theme of
 created thuogh the CLI.
 If you update the theme (located at `src/_shared/styles`), be sure to also run:
 
-```console
+```bash
 yarn build:theme
 ```
 
 ## Build
 
-```console
+```bash
 yarn build
 ```
