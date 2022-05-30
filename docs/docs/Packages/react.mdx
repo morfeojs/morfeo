@@ -48,17 +48,18 @@ function useClassNames<Key extends string>(
 
 ### Example
 
-```tsx
+```tsx live
 function Button() {
   const classes = useClassNames({
     container: {
       px: 'm',
     },
     button: {
+      corner: 'm',
       p: { lg: 'm', sm: 's' },
       bg: 'primary',
       '&:hover': {
-        opacity: 'light',
+        bg: 'primary.lightest',
       },
     },
   });
@@ -79,13 +80,14 @@ function useClassName(style: Style): string;
 
 ### Example
 
-```tsx
+```tsx live
 function Button() {
   const className = useClassName({
+    corner: 'm',
     p: { lg: 'm', sm: 's' },
     bg: 'primary',
     '&:hover': {
-      opacity: 'light',
+      bg: 'primary.lightest',
     },
   });
 

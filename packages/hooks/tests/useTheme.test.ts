@@ -1,7 +1,6 @@
-import { renderHook as baseRenderHook } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 import { morfeo } from '@morfeo/core';
 import { useTheme, useThemeSlice, useThemeValue } from '../src';
-import { renderHook } from './customRenderer';
 
 const THEME = {
   colors: {
@@ -39,13 +38,5 @@ describe('useThemeValue', () => {
     const { result } = renderHook(() => useThemeValue('colors', 'primary'));
 
     expect(result.current).toEqual(THEME.colors.primary);
-  });
-});
-
-describe('useTheme without provider', () => {
-  test('should return the theme even if the app is not wrapped with `MorfeoProvider`', () => {
-    const { result } = baseRenderHook(() => useTheme());
-
-    expect(result.current).toEqual(THEME);
   });
 });

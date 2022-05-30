@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { initPreset } from '@morfeo/preset-default';
-import { morfeo, resetCss, loadFont, MorfeoProvider } from '@morfeo/react';
+import { morfeo, resetCss, loadFont } from '@morfeo/react';
 import { enableMorfeoDevTool } from '@morfeo/dev-tools';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -48,9 +48,7 @@ if (container) {
   const root = createRoot(container);
   root.render(
     <React.StrictMode>
-      <MorfeoProvider>
-        <App />
-      </MorfeoProvider>
+      <App />
     </React.StrictMode>,
   );
 }

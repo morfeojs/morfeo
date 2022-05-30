@@ -1,6 +1,5 @@
-import { ThemeKey, Theme, morfeo } from '@morfeo/core';
-import { useContext } from 'react';
-import { MorfeoContext } from './MorfeoContext';
+import { morfeo, ThemeKey, Theme } from '@morfeo/core';
+import { useSyncMorfeo } from './useSyncMorfeo';
 
 /**
  * Same as `morfeo.getTheme()` but it will cause a re-render
@@ -9,7 +8,8 @@ import { MorfeoContext } from './MorfeoContext';
  * @returns the theme object
  */
 export function useTheme() {
-  return useContext(MorfeoContext) || morfeo.getTheme();
+  useSyncMorfeo();
+  return morfeo.getTheme();
 }
 
 /**

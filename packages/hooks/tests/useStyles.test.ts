@@ -1,8 +1,8 @@
-import { theme } from '@morfeo/core';
+import { renderHook, act } from '@testing-library/react';
+import { Theme, morfeo, ThemeName } from '@morfeo/core';
 import { useStyles, useStyle } from '../src';
-import { renderHook, act } from './customRenderer';
 
-const THEME = {
+const LIGHT_THEME = {
   colors: {
     primary: 'black',
     secondary: 'white',
@@ -10,10 +10,22 @@ const THEME = {
   spacings: {
     s: '10px',
   },
-} as any;
+} as Theme;
 
-beforeAll(() => {
-  theme.set(THEME);
+const DARK_THEME = {
+  colors: {
+    primary: 'white',
+    secondary: 'black',
+  },
+} as Theme;
+
+const LIGHT_THEME_KEY = 'light' as ThemeName;
+const DARK_THEME_KEY = 'dark' as ThemeName;
+
+beforeEach(() => {
+  morfeo.setTheme(LIGHT_THEME_KEY, LIGHT_THEME);
+  morfeo.setTheme(DARK_THEME_KEY, DARK_THEME);
+  morfeo.setCurrentTheme(LIGHT_THEME_KEY);
 });
 
 describe('useStyles', () => {
@@ -43,12 +55,7 @@ describe('useStyle', () => {
     expect(result.current).toEqual({ color: 'black' });
 
     act(() => {
-      theme.set({
-        colors: {
-          primary: 'white',
-          secondary: 'black',
-        },
-      });
+      morfeo.setCurrentTheme(DARK_THEME_KEY);
     });
 
     expect(result.current).toEqual({ color: 'white' });
