@@ -1033,31 +1033,6 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@morfeo/core@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/core/-/core-0.5.1.tgz#8c5e93c678b0a1ae2488de2940def0924554d9d7"
-  integrity sha512-rDzRkio2BeuiYMWZm6cb5yhwEt3mozuZzosbhM1NZRPR8j4hD8S0wNnM02ttNbxUw+hzjeSwXez+r/5V6Gbxmg==
-  dependencies:
-    "@morfeo/spec" "^0.5.1"
-
-"@morfeo/hooks@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/hooks/-/hooks-0.5.1.tgz#fd5adb42f5eca7541d066e0f878b78636948d3db"
-  integrity sha512-KpybRD9eJ3AWbwo6RxAUpML5bnXhvLtzw5LMIIflaie2FdCFm+7+xbBayPF2cdlXnv1olZZi6PAFIRo24jsDWg==
-
-"@morfeo/native@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/native/-/native-0.5.1.tgz#5b6930e205dd950e0f29d20e12d0ee64a36c340a"
-  integrity sha512-JBx87K8D07PLZcGeeMikKFLhN3m0k66nW9ECdF9XM2kVMP3IJuKrMjszNiExxvlwxr7vW19zskmDdU6B5vNfGw==
-  dependencies:
-    "@morfeo/core" "^0.5.1"
-    "@types/react-native" "^0.64.4"
-
-"@morfeo/spec@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@morfeo/spec/-/spec-0.5.1.tgz#421863caf752e1db95126a90169235df0d40c4b7"
-  integrity sha512-cV8c6ayb/GURyvntESl8RrNUxP2gyuWoovYKSjhxCbb4mp4LWXf9Y/HotsNNnpIo/DAnZmoaMQBt1KI+Dev1uw==
-
 "@react-native-community/cli-debugger-ui@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-5.0.1.tgz#6b1f3367b8e5211e899983065ea2e72c1901d75f"
@@ -1362,7 +1337,7 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/react-native@^0.64.0", "@types/react-native@^0.64.4":
+"@types/react-native@^0.64.0":
   version "0.64.24"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.64.24.tgz#54d8aaadc12d429004b0a573dc3a65ad27430cc6"
   integrity sha512-qgqOJub7BYsAkcg3VSL3w63cgJdLoMmAX6TSTAPL53heCzUkIdtpWqjyNRH0n7jPjxPGG1Qmsv6GSUh7IfyqRg==

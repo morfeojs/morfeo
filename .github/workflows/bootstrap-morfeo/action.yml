@@ -15,5 +15,9 @@ runs:
       shell: bash
 
     - name: Bootstrap
-      run: yarn reset:packages
+      run: yarn bootstrap
+      shell: bash
+
+    - name: Build Packages
+      run: yarn build:packages
       shell: bash
