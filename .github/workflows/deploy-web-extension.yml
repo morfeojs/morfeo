@@ -22,7 +22,7 @@ jobs:
       - name: Deploy Web Extension
         run: yarn deploy:web-extension
         env:
-          CHROME_WEB_CLIENT_ID: ${{ secrets.CHROME_WEB_CLIENT_ID }}
           WEB_EXTENSION_ID: ${{ secrets.WEB_EXTENSION_ID }}
-          CHROME_WEB_REFRESH_TOKEN: ${{ secrets.CHROME_WEB_REFRESH_TOKEN }}
-          CHROME_WEB_CLIENT_SECRET: ${{ secrets.CHROME_WEB_CLIENT_SECRET }}
+          CHROME_WEB_CLIENT_ID: ${{ secrets.CHROME_WEB_STORE_CLIENT_ID }}
+          CHROME_WEB_REFRESH_TOKEN: ${{ secrets.CHROME_WEB_STORE_REFRESH_TOKEN }}
+          CHROME_WEB_CLIENT_SECRET: ${{ secrets.CHROME_WEB_STORE_CLIENT_SECRET }}
