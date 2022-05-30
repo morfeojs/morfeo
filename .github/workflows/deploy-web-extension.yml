@@ -2,6 +2,10 @@ name: Deploy Web Extension
 on:
   release:
     types: [created]
+
+  workflow_dispatch:
+
+ 
 jobs:
   deploy-web-extension:
     runs-on: ubuntu-latest 
