@@ -24,7 +24,7 @@ module.exports = {
         'Features/easy-to-test',
         {
           type: 'category',
-          label: '🔨 CLI (Alpha)',
+          label: 'CLI',
           collapsed: false,
           items: [
             'Features/CLI/morfeo-cli-introduction',

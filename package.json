@@ -18,7 +18,7 @@
     "clean": "lerna clean --yes",
     "clean:packages": "lerna clean --ignore=@morfeo/{app-*,example-*} --yes",
     "deploy:web-extension": "lerna run deploy --scope=@morfeo/app-web-extension",
-    "postversion": "ts-node scripts/version.ts && yarn version:devtool",
+    "postversion": "ts-node scripts/version.ts && yarn version:web-extension",
     "postversion:major": "yarn postversion major",
     "postversion:minor": "yarn postversion minor",
     "prepare": "husky install",
@@ -36,10 +36,10 @@
     "test:ci": "NODE_OPTIONS=--max-old-space-size=8192 yarn test --coverage",
     "test:coverage": "yarn test --coverage",
     "test:watch": "yarn test --watch",
-    "version:devtool": "ts-node scripts/version-devtool.ts",
     "version:major": "lerna version major --no-push --no-git-tag-version --conventional-commits",
     "version:minor": "lerna version minor --no-push --no-git-tag-version --conventional-commits",
-    "version:patch": "lerna version patch --no-push --no-git-tag-version --conventional-commits"
+    "version:patch": "lerna version patch --no-push --no-git-tag-version --conventional-commits",
+    "version:web-extension": "ts-node scripts/version-web-extension.ts"
   },
   "dependencies": {
     "csstype": "3.1.0",

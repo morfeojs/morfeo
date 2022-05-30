@@ -5,10 +5,6 @@ title: Introduction
 description: Features > CLI > Introduction
 ---
 
-:::warning
-**@morfeo/cli** it's still in development and will be ready as soon as possible.
-:::
-
 If you don't need to generate styles `run time` or you don't want to use `javascript` at all, but you still want to benefit the morfeo eco-system and a centralized theme,
 the `morfeo CLI` is what you need!
 
@@ -19,6 +15,17 @@ Morfeo CLI has 2 commands:
 
 You can find a detailed documentation [here for the `build command`](./build.mdx) and [here for the `compose command`](./compose.mdx).
 
-## Specification
+## Installation
 
-The details about all the flags and the configurations of @morfeo/cli can be found in the packages section, [here](../../Packages/cli.mdx).
+To install the CLI you just have to add it to your `devDependencies`:
+
+```bash
+yarn add --dev @morfeo/cli
+# or npm add -D @morfeo/cli
+```
+
+Or using it directly with `npx`
+
+```bash
+npx @morfeo/cli --help
+```

@@ -57,7 +57,7 @@ By contributing, you agree that your contributions will be licensed under its MI
 The following instructions will help you bootstrap the project and start to contribute to Morfeo, thank you for your help!
 If there are any problems, feel free to contact the maintainers.
 
-If you're looking to contribute to the Morfeo libraries, you're in the right place, if instead, you're looking to contribute to the documentation website or the browser extension, you'll find more specific GUIDELINES inside the folders [docs](./docs/README.md) and [devtool](./devtool/README.md).
+If you're looking to contribute to the Morfeo libraries, you're in the right place, if instead, you're looking to contribute to the documentation website or the browser extension, you'll find more specific GUIDELINES inside the folders [docs](./docs/README.md) and [web-extension](./web-extension/README.md).
 
 Other then unit/integration tests, you can use the projects under the folder `examples` to test your changes.
 Feel free to update them or use them as a **sandbox**, but remember to build the packages if yuo want to see the changes you've made!
@@ -69,7 +69,7 @@ By running the script `yarn reset` all the dependencies will be installed, packa
 ### Build the packages
 
 ```bash
-yarn build
+yarn build:packages
 ```
 
 ### Run the tests

@@ -84,7 +84,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "yarn build:theme && node scripts/build.js",
     "build:theme": "morfeo build --config=./.morfeorc.ts",
     "start:firefox": "node scripts/start.js firefox",
     "build:firefox": "node scripts/build.js firefox",
@@ -185,7 +185,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/morfeojs/morfeo",
-    "directory": "devtool"
+    "directory": "web-extension"
   },
   "homepage": "https://morfeo.dev",
   "bugs": {

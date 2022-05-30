@@ -23,19 +23,19 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 
 From the root of the project (one folder above this one), run:
 
-```console
-yarn init:docs
+```bash
+yarn bootstrap:docs
 ```
 
 ### ⚠️ Warning
 
 If you run `yarn` directly in this folder you'll install the published version of the internal `@morfeo` packages,
 this means that you'll not be able to see your changes in case you made updates in one o more packages.
-By running `yarn init:docs` instead, the internal `@morfeo` packages will be symlinked to reflect your changes.
+By running `yarn bootstrap:docs` instead, the internal `@morfeo` packages will be symlinked to reflect your changes.
 
 ## Local Development
 
-```console
+```bash
 yarn start
 # Or, from the root of this project (one folder above this one)
 yarn start:docs
@@ -45,6 +45,8 @@ This command starts a local development server and opens up a browser window. Mo
 
 ## Build
 
-```console
+```bash
 yarn build
+# Or, from the root of this project (one folder above this one)
+yarn build:docs
 ```

@@ -31,7 +31,6 @@ const features = [
     text: 'CLI',
     link: '/docs/Features/CLI/',
     icon: <Icon name="cli" />,
-    badge: 'alpha',
   },
 ];
 
