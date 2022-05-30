@@ -30,7 +30,7 @@ yarn add @morfeo/hooks
 
 Advanced
 
-- [useMorfeo](#useMorfeo)
+- [useSyncMorfeo](#usesyncmorfeo)
 - [useProps](#useprops)
 
 ## useTheme
@@ -170,18 +170,16 @@ but they force a re-render when the theme changes.
 
 ## Advanced
 
-### useMorfeo
+### useSyncMorfeo
 
-This hook is used under the hood in all the others hooks, you'll probably never need to use it directly.
-It returns the same `morfeo instance` that you'll get from the core API, but it's reactive, to understand
-the difference just look at these 2 examples:
+This hook is used under the hood in all of the others hooks, you'll probably never need to use it directly.
 
-By using `useMorfeo` the component is subscribed to theme changes, which means that if the theme changes the component
-will be re-rendered:
+By using `useSyncMorfeo` the component is subscribed to theme changes, which means that if the theme changes the component
+will re-render:
 
 ```tsx live
 function App() {
-  const morfeo = useMorfeo();
+  useSyncMorfeo();
 
   const onClick = () => {
     morfeo.setCurrentTheme(
@@ -194,15 +192,22 @@ function App() {
       The current theme is: <code>{morfeo.getCurrentTheme()}</code>
       <br />
       <button onClick={onClick}>Toggle theme</button>
+      <br />
+      <i>
+        Try to click on the "Toggle theme" button and see the current theme
+        changing
+      </i>
     </p>
   );
 }
 ```
 
-If instead we use directly the `morfeo` instance from the core-api, the component will not re-render when the theme changes:
+If instead we use directly the `morfeo` instance from the core-api without using `useSyncMorfeo`, the component will not re-render when the theme changes:
 
 ```tsx live
 function App() {
+  // useSyncMorfeo();
+
   const onClick = () => {
     morfeo.setCurrentTheme(
       morfeo.getCurrentTheme() === 'light' ? 'dark' : 'light',
@@ -214,6 +219,10 @@ function App() {
       The current theme is: <code>{morfeo.getCurrentTheme()}</code>
       <br />
       <button onClick={onClick}>Toggle theme</button>
+      <br />
+      <i>
+        Try to click on the "Toggle theme" button and see that nothing changes
+      </i>
     </p>
   );
 }

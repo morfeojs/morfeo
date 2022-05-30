@@ -1,5 +1,5 @@
 import { Component, Theme, theme, Variant } from '@morfeo/core';
-import { useMorfeo } from './useMorfeo';
+import { useSyncMorfeo } from './useSyncMorfeo';
 
 /**
  * useProps
@@ -12,7 +12,7 @@ export function useProps<C extends Component>(
   componentName: C,
   variant?: Variant<C>,
 ) {
-  useMorfeo();
+  useSyncMorfeo();
   const { props, variants = {} } =
     theme.getValue('components', componentName) || {};
   const { props: variantProps } = (variants as any)[variant] || {};

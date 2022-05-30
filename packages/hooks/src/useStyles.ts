@@ -1,5 +1,5 @@
 import { Style, ResolvedStyle, morfeo } from '@morfeo/core';
-import { useMorfeo } from './useMorfeo';
+import { useSyncMorfeo } from './useSyncMorfeo';
 
 function parseStyles<K extends string>(styles: Record<K, Style>) {
   const styleKeys = Object.keys(styles);
@@ -17,7 +17,7 @@ function parseStyles<K extends string>(styles: Record<K, Style>) {
  * it returns the a record of styles that can be used as inline-style in your components.
  */
 export function useStyles<K extends string>(styles: Record<K, Style>) {
-  useMorfeo();
+  useSyncMorfeo();
 
   return parseStyles(styles);
 }
