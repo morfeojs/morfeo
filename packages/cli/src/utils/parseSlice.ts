@@ -6,7 +6,7 @@ function getVariableName<Key extends ThemeKey>(
   sliceName: Key,
   value: keyof Theme[Key],
 ) {
-  return `--${paramCase(`${sliceName}-${value}`)}`;
+  return `--${paramCase(`${sliceName}-${String(value)}`)}`;
 }
 
 export function getCssValue<Key extends ThemeKey>(
