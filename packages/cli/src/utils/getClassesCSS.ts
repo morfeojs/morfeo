@@ -32,7 +32,7 @@ function getClasses<Key extends ThemeKey>(
   const properties = getPropertiesOfSlice(sliceName);
 
   const mapped = properties.map(property => {
-    const className = `${paramCase(`${property}-${value}`)}`;
+    const className = `${paramCase(`${property}-${String(value)}`)}`;
 
     const style = { [property]: value };
     return generateCss(className, style);
