@@ -48,8 +48,8 @@
     "react-native": "0.68.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.0.1",
-    "@commitlint/config-lerna-scopes": "17.0.0",
+    "@commitlint/cli": "17.0.2",
+    "@commitlint/config-lerna-scopes": "17.0.2",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.3.0",
     "@types/glob": "7.2.0",
