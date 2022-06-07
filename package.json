@@ -68,7 +68,7 @@
     "husky": "5.2.0",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
-    "lerna": "5.0.0",
+    "lerna": "5.1.0",
     "prettier": "2.6.2",
     "rimraf": "3.0.2",
     "ts-jest": "28.0.4",
