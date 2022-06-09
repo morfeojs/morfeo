@@ -3900,13 +3900,13 @@
   -webkit-text-fill-color: transparent;
 }
 .gradient-secondary {
-  background: linear-gradient(180deg, light 0%, var(--colors-white) 100%);
+  background: linear-gradient(180deg, var(--colors-gray-light) 0%, var(--colors-white) 100%);
 }
 .bg-gradient-secondary {
-  background: linear-gradient(180deg, light 0%, var(--colors-white) 100%);
+  background: linear-gradient(180deg, var(--colors-gray-light) 0%, var(--colors-white) 100%);
 }
 .text-gradient-secondary {
-  background: linear-gradient(180deg, light 0%, var(--colors-white) 100%);
+  background: linear-gradient(180deg, var(--colors-gray-light) 0%, var(--colors-white) 100%);
   background-clip: text;
   text-fill-color: transparent;
   -webkit-background-clip: text;

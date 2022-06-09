@@ -71,7 +71,9 @@
 	--font-sizes-4xl: 7rem;
 	--font-sizes-none: 0;
 	--gradients-primary: linear-gradient(180deg, #0066ff 0%, #db2494 100%);
-	--gradients-secondary: linear-gradient(180deg, light 0%, #ffffff 100%);
+	--gradients-secondary: linear-gradient(180deg, #d3d7db 0%, #ffffff 100%);
+	--animations-default: default;
+	--animations-loading: loading 3s ease infinite alternate;
 	--breakpoints-lg: 1920px;
 	--breakpoints-md: 1366px;
 	--breakpoints-sm: 768px;
@@ -169,4 +171,14 @@
 	--colors-inverted-text: #ececec;
 	--colors-head-text: #000000;
 	--colors-inverted-head-text: #ffffff;
+}
+
+@keyframes default {}
+@keyframes loading {
+  from {
+    background-color: var(--colors-gray);
+  }
+  to {
+    background-color: var(--colors-gray-light);
+  }
 }

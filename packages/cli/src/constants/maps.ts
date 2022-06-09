@@ -9,7 +9,11 @@ type SliceToBeParsed = {
 /**
  * The values of these slices can't be represented as css variables
  */
-export const SLICES_TO_BE_EXCLUDED: ThemeKey[] = ['components', 'mediaQueries'];
+export const SLICES_TO_BE_EXCLUDED: ThemeKey[] = [
+  'keyframes',
+  'components',
+  'mediaQueries',
+];
 
 /**
  * The value of those theme slices has to be parsed before to become css variables

@@ -1,6 +1,7 @@
 export default {
   colors: {
     primary: 'black',
+    secondary: 'white',
   },
   fonts: {
     regular: 'Roboto',
@@ -92,6 +93,16 @@ export default {
       opacity: 0.4,
       radius: 4,
       elevation: 4,
+    },
+  },
+  keyframes: {
+    default: {
+      from: {
+        bg: 'primary',
+      },
+      to: {
+        bg: 'secondary',
+      },
     },
   },
   breakpoints: {
