@@ -1,18 +1,12 @@
-import { Theme, theme, parsers, ThemeKey } from '@morfeo/web';
+import { theme, parsers, ThemeKey } from '@morfeo/web';
 import { paramCase } from 'change-case';
 import { SLICES_TO_BE_PARSED } from '../constants';
 
-function getVariableName<Key extends ThemeKey>(
-  sliceName: Key,
-  value: keyof Theme[Key],
-) {
-  return `--${paramCase(`${sliceName}-${String(value)}`)}`;
+function getVariableName(sliceName: string, value: string) {
+  return `--${paramCase(`${sliceName}-${value}`)}`;
 }
 
-export function getCssValue<Key extends ThemeKey>(
-  sliceName: Key,
-  attribute: keyof Theme[Key],
-) {
+export function getCssValue(sliceName: string, attribute: string) {
   const toBeParsed = SLICES_TO_BE_PARSED.find(
     config => config.name === sliceName,
   );
@@ -23,27 +17,25 @@ export function getCssValue<Key extends ThemeKey>(
 
     return style[toBeParsed.property];
   }
-
+  // @ts-expect-error
   return theme.getValue(sliceName, attribute);
 }
 
-function getValue<Key extends ThemeKey>(
-  sliceName: Key,
-  attribute: keyof Theme[Key],
-) {
+function getValue(sliceName: string, attribute: string) {
   const variableName = getVariableName(sliceName, attribute);
 
   const toBeParsed = SLICES_TO_BE_PARSED.find(
     config => config.name === sliceName,
   );
   return toBeParsed
-    ? theme.getValue(sliceName, attribute)
+    ? // @ts-expect-error
+      theme.getValue(sliceName, attribute)
     : `var(${variableName})`;
 }
 
 export function parseSlice<Key extends ThemeKey>(sliceName: Key) {
   const slice = theme.getSlice(sliceName);
-  const aliases = Object.keys(slice) as (keyof Theme[Key])[];
+  const aliases = Object.keys(slice);
   let css: string[] = [];
   let object = {};
 

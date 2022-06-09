@@ -9,7 +9,7 @@ import {
 } from '@morfeo/web';
 import { paramCase } from 'change-case';
 
-function getPropertiesOfSlice<Key extends ThemeKey>(sliceName: Key) {
+function getPropertiesOfSlice(sliceName: string) {
   const keys = Object.keys(allProperties) as Property[];
   return keys.filter(key => allProperties[key] === sliceName);
 }
@@ -25,10 +25,7 @@ function generateCss(className: string, style: Style) {
   return sheet.toString();
 }
 
-function getClasses<Key extends ThemeKey>(
-  sliceName: Key,
-  value: keyof Theme[Key],
-) {
+function getClasses(sliceName: string, value: string) {
   const properties = getPropertiesOfSlice(sliceName);
 
   const mapped = properties.map(property => {
@@ -43,7 +40,7 @@ function getClasses<Key extends ThemeKey>(
 
 export function getSliceClasses<Key extends ThemeKey>(sliceName: Key) {
   const slice = theme.getSlice(sliceName);
-  const aliases = Object.keys(slice) as (keyof Theme[Key])[];
+  const aliases = Object.keys(slice);
 
   const css = aliases.reduce((acc, curr) => {
     const classes = getClasses(sliceName, curr);

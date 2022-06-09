@@ -30,4 +30,9 @@ export const SLICES_TO_BE_PARSED: SliceToBeParsed[] = [
     styleProp: 'border',
     property: 'border',
   },
+  {
+    name: 'animations',
+    styleProp: 'animation',
+    property: 'animation',
+  },
 ];

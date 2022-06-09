@@ -7,7 +7,7 @@ const theme = {
   colors: {
     primary: 'black',
   },
-} as Theme;
+} as any;
 
 morfeo.setTheme('default', theme);
 
