@@ -1,5 +1,5 @@
 import React from 'react';
-import { morfeo, Theme } from '@morfeo/web';
+import { morfeo } from '@morfeo/web';
 import { render, renderHook } from '@testing-library/react';
 import { useClassName } from '../src';
 

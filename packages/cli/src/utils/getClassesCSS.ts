@@ -1,5 +1,4 @@
 import {
-  Theme,
   theme,
   Style,
   ThemeKey,
