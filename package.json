@@ -43,8 +43,8 @@
   },
   "dependencies": {
     "csstype": "3.1.0",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-native": "0.68.2"
   },
   "devDependencies": {
@@ -64,7 +64,7 @@
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-react": "7.30.0",
-    "eslint-plugin-react-hooks": "4.5.0",
+    "eslint-plugin-react-hooks": "4.6.0",
     "husky": "5.2.0",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
