@@ -8,6 +8,7 @@ import { safeWrite } from './safeWrite';
 import { parseSlice } from './parseSlice';
 import { BuildConfig } from '../types';
 import { getClassesCSS } from './getClassesCSS';
+import { getKeyFrames } from './getKeyFrames';
 
 function getStylePaths(buildPath: string, themeName: string) {
   const themeNameInParamCase = paramCase(themeName);
@@ -80,12 +81,15 @@ export function buildTheme({ name, buildPath }: BuildConfig) {
     name,
   );
 
-  safeWrite(variablesPath, wrapWithScope(name, cssText));
-
+  let variablesCss = wrapWithScope(name, cssText);
   /**
    * Setting the new theme where values of slices are css variables
    */
   theme.set(newTheme);
+
+  variablesCss += `\n${getKeyFrames()}\n`;
+
+  safeWrite(variablesPath, variablesCss);
 
   /**
    * getComponentsCSS will return a css class for each component and for each variant

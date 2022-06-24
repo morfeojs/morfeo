@@ -127,6 +127,7 @@ const Comps = () => {
             </Box>
           </Container>
         </Section>
+        <Box style={{ width: '100', height: 'm', animation: 'loading' }} />
         <Section>
           <Container>
             <Typography variant="h2">Grid...</Typography>

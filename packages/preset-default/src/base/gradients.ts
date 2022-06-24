@@ -5,6 +5,6 @@ export const gradients: Gradients = {
     colors: ['primary', 'secondary'],
   },
   secondary: {
-    colors: ['light', 'white'],
+    colors: ['gray.light', 'white'],
   },
 };

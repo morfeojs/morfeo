@@ -1,20 +1,22 @@
 import { Theme } from '@morfeo/spec';
+import { radii } from './radii';
+import { sizes } from './sizes';
+import { borders } from './borders';
+import { shadows } from './shadows';
+import { zIndices } from './zIndices';
+import { spacings } from './spacings';
+import { fontSizes } from './fontSizes';
+import { keyframes } from './keyframes';
+import { gradients } from './gradients';
+import { opacities } from './opacities';
+import { animations } from './animations';
+import { lineHeights } from './lineHeights';
+import { breakpoints } from './breakpoints';
+import { transitions } from './transitions';
+import { fontWeights } from './fontWeights';
 import { borderStyles } from './borderStyles';
 import { borderWidths } from './borderWidths';
-import { borders } from './borders';
-import { breakpoints } from './breakpoints';
-import { fontSizes } from './fontSizes';
-import { fontWeights } from './fontWeights';
-import { gradients } from './gradients';
 import { letterSpacings } from './letterSpacings';
-import { lineHeights } from './lineHeights';
-import { opacities } from './opacities';
-import { radii } from './radii';
-import { shadows } from './shadows';
-import { sizes } from './sizes';
-import { spacings } from './spacings';
-import { transitions } from './transitions';
-import { zIndices } from './zIndices';
 import { darkColors, lightColors } from './colors';
 import { components, darkComponents } from './components';
 
@@ -34,6 +36,8 @@ export const baseTheme: Omit<Theme, 'colors'> = {
   opacities,
   fontSizes,
   gradients,
+  keyframes,
+  animations,
   components,
   breakpoints,
   lineHeights,
@@ -60,8 +64,10 @@ type LocalFonts = typeof fonts;
 type LocalSizes = typeof sizes;
 type LocalColors = typeof lightColors & typeof darkColors;
 type LocalSpacings = typeof spacings;
+type LocalKeyFrames = typeof keyframes;
 type LocalFontSizes = typeof fontSizes;
 type LocalComponents = typeof components;
+type LocalAnimations = typeof animations;
 
 declare module '@morfeo/spec' {
   export interface Sizes extends LocalSizes {}
@@ -70,4 +76,9 @@ declare module '@morfeo/spec' {
   export interface Spacings extends LocalSpacings {}
   export interface FontSizes extends LocalFontSizes {}
   export interface Components extends LocalComponents {}
+}
+
+declare module '@morfeo/web' {
+  export interface KeyFrames extends LocalKeyFrames {}
+  export interface Animations extends LocalAnimations {}
 }
