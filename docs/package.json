@@ -22,7 +22,7 @@
     "@morfeo/dev-tools": "^0.7.0",
     "@morfeo/preset-default": "^0.7.0",
     "@morfeo/react": "^0.7.0",
-    "@svgr/webpack": "6.3.0",
+    "@svgr/webpack": "6.3.1",
     "clsx": "1.2.1",
     "file-loader": "6.2.0",
     "js-cookie": "3.0.1",
