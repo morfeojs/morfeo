@@ -27,7 +27,7 @@
     "change-case": "4.1.2",
     "clsx": "1.2.1",
     "css-loader": "4.3.0",
-    "dotenv": "16.0.1",
+    "dotenv": "16.0.2",
     "dotenv-expand": "8.0.3",
     "eslint": "8.23.0",
     "eslint-config-react-app": "7.0.1",
