@@ -3,7 +3,7 @@
   "version": "0.7.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.19.0",
+    "@babel/core": "7.19.1",
     "@morfeo/preset-default": "^0.7.0",
     "@morfeo/react": "^0.7.0",
     "@svgr/webpack": "6.3.1",
