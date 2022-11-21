@@ -31,7 +31,7 @@ import { ColorSchemas } from '@morfeo/spec';
 
 Using the [CLI compose command](../Features/CLI/compose.mdx):
 
-```typescript title="colors.morfeo.ts"
+```typescript title="colorSchemas.morfeo.ts"
 // Remove this line to add the slice to all of your themes
 export const themeName = 'My Theme Name';
 // Optional if you name the file colorSchemas.morfeo.ts
@@ -49,10 +49,10 @@ export default {
 
 Or manually:
 
-```typescript title="colors.ts"
-import { Colors } from '@morfeo/spec';
+```typescript title="colorSchemas.ts"
+import { ColorSchemas } from '@morfeo/spec';
 
-const colorSchemas: Colors = {
+const colorSchemas: ColorSchemas = {
   primary: {
     background: 'primary',
     foreground: 'white'
@@ -61,7 +61,7 @@ const colorSchemas: Colors = {
 ```
 
 ```typescript title="theme.ts"
-import { colors } from './colors';
+import { colorSchemas } from './colorSchemas';
 
 const myTheme = {
   colorSchemas,
@@ -116,8 +116,7 @@ const styleWithColorSchema = morfeo.resolve({
 
 ## Extend Slice with custom properties
 
-If you're using typescript and you add custom colors to your theme configuration, you'll need to merge
-the default `ColorSchemas` interface with your custom one.
+If you're using typescript and you add custom colorSchemas into your theme configuration, you'll need to merge the default `ColorSchemas` interface with your custom one.
 We suggest creating a declaration file (for example: `morfeo.d.ts` or `types.d.ts`) like the following one:
 
 ```typescript
