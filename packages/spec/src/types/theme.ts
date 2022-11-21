@@ -39,8 +39,8 @@ export type BaseTheme = {
   borderWidths: BorderWidths;
   mediaQueries: MediaQueries;
   borderStyles: BorderStyles;
-  letterSpacings: LetterSpacings;
   colorSchemas: ColorSchemas;
+  letterSpacings: LetterSpacings;
 };
 
 export interface Theme extends BaseTheme {

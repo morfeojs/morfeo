@@ -2,7 +2,7 @@ import { Color } from './colors';
 
 export interface ColorSchemas {
   default: {
-    [key in Color]: Color;
+    [key in Color]?: Color;
   };
 }
 
