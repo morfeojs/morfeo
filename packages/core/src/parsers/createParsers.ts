@@ -148,7 +148,7 @@ export function createParsers() {
         style,
       };
       const hasStyleUncachebleProps = !uncachebleProps.some(prop =>
-        Object.keys(style).some(styleProp => styleProp === prop),
+        Object.keys(style).includes(prop),
       );
       if (
         (typeof value === 'string' || typeof value === 'number') &&
