@@ -1,4 +1,9 @@
-import { colorProperties, ColorProperty } from '@morfeo/spec';
+import {
+  colorProperties,
+  colorSchemasProperties,
+  ColorProperty,
+  Style,
+} from '@morfeo/spec';
 import { ParserParams, SliceParsers } from '../../types';
 import { baseParser } from '../baseParser';
 import { theme } from '../../theme';
@@ -8,13 +13,22 @@ type ColorsParsers = SliceParsers<
   keyof typeof colorProperties
 >;
 
+function getColorSet(style: Style) {
+  const schemaProp = Object.keys(colorSchemasProperties).find(
+    prop => style[prop],
+  );
+  return schemaProp
+    ? theme.getValue('colorSchemas', style[schemaProp])
+    : undefined;
+}
+
 export function parseColor({
   value,
   property,
   style,
 }: ParserParams<ColorProperty>) {
-  if (typeof style === 'object' && typeof style.colorSchema === 'string') {
-    const colorSet = theme.getValue('colorSchemas', style.colorSchema);
+  if (typeof style === 'object') {
+    const colorSet = getColorSet(style);
     if (colorSet) {
       return baseParser({
         value: colorSet[value as string] || value,
