@@ -18,6 +18,7 @@ import { Gradients } from './gradients';
 import { Transitions } from './transitions';
 import { MediaQueries } from './mediaQueries';
 import { Components } from './components';
+import { ColorSchemas } from './colorSchemas';
 
 export type BaseTheme = {
   radii: Radii;
@@ -39,6 +40,7 @@ export type BaseTheme = {
   mediaQueries: MediaQueries;
   borderStyles: BorderStyles;
   letterSpacings: LetterSpacings;
+  colorSchemas: ColorSchemas;
 };
 
 export interface Theme extends BaseTheme {

@@ -43,6 +43,9 @@ export const baseTheme: Omit<Theme, 'colors'> = {
   borderStyles,
   mediaQueries: {},
   letterSpacings,
+  colorSchemas: {
+    default: {},
+  },
 };
 
 export const darkTheme = {
