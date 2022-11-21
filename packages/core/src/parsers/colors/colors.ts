@@ -37,7 +37,7 @@ export function parseColor({
   });
 }
 
-export const parsedColors = Object.keys(colorProperties).reduce(
+const baseColorsParsers = Object.keys(colorProperties).reduce(
   (acc, prop) => ({
     ...acc,
     [prop]: parseColor,
@@ -46,7 +46,7 @@ export const parsedColors = Object.keys(colorProperties).reduce(
 );
 
 export const colorsParsers = {
-  ...parsedColors,
+  ...baseColorsParsers,
   bg: props => parseColor({ ...props, property: 'backgroundColor' }),
   colorSchema: () => ({}),
 } as ColorsParsers;

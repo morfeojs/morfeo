@@ -31,7 +31,7 @@ describe('colors', () => {
   test('should resolve color based on colorSchema', () => {
     const result = parsers.resolve({
       bg: 'background',
-      color: 'foreground' as any,
+      color: 'foreground',
       colorSchema: 'dark',
     });
     expect(result).toEqual({ backgroundColor: '#000', color: '#e3e3e3' });
@@ -40,7 +40,6 @@ describe('colors', () => {
   test("should return the original value if colorSchema doesn't exist", () => {
     const result = parsers.resolve({
       bg: 'background',
-      // @ts-expect-error
       color: 'foreground',
       colorSchema: 'unexistingSchema',
     });
@@ -49,7 +48,6 @@ describe('colors', () => {
 
   test("should return the original value if the input value doesn't exist on color schema", () => {
     const result = parsers.resolve({
-      // @ts-expect-error
       bg: 'unexistingValue',
       colorSchema: 'dark',
     });
