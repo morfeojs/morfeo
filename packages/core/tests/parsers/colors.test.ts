@@ -1,4 +1,4 @@
-import { Theme } from "@morfeo/spec"
+import { Theme } from '@morfeo/spec';
 import { parsers, theme } from '../../src';
 
 const THEME = {

@@ -1,4 +1,1 @@
-export const colorSchemasMap = [
-  'schema',
-  'colorSchema',
-] as const;
+export const colorSchemasMap = ['colorSchema'] as const;
