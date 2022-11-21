@@ -16,9 +16,8 @@ export function parseColor({
   if (typeof style === 'object' && typeof style.colorSchema === 'string') {
     const colorSet = theme.getValue('colorSchemas', style.colorSchema);
     if (colorSet) {
-      const parsedValue = colorSet[value as string] || value;
       return baseParser({
-        value: parsedValue,
+        value: colorSet[value as string] || value,
         property,
         scale: 'colors',
       });
@@ -43,5 +42,4 @@ const baseColorsParsers = Object.keys(colorProperties).reduce(
 export const colorsParsers = {
   ...baseColorsParsers,
   bg: props => parseColor({ ...props, property: 'backgroundColor' }),
-  colorSchema: () => ({}),
 } as ColorsParsers;
