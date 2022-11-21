@@ -64,7 +64,10 @@ export const transitionsProperties = createPropertiesMap(
   transitionsMap,
   'transitions',
 );
-export const colorSchemasProperties = createPropertiesMap(colorSchemasMap, 'colorSchemas');
+export const colorSchemasProperties = createPropertiesMap(
+  colorSchemasMap,
+  'colorSchemas',
+);
 
 export const allProperties = {
   ...fontProperties,
