@@ -1,3 +1,4 @@
+import { Theme } from '@morfeo/spec';
 import { parsers, theme } from '../../src';
 
 const THEME = {
@@ -8,12 +9,12 @@ const THEME = {
     foreground: '#000',
   },
   colorSchemas: {
-    dark: {
+    default: {
       background: 'secondary',
       foreground: 'primary',
     },
   },
-} as const;
+} as any as Theme;
 
 describe('colors', () => {
   beforeAll(() => {
@@ -31,8 +32,9 @@ describe('colors', () => {
   test('should resolve color based on colorSchema', () => {
     const result = parsers.resolve({
       bg: 'background',
+      // @ts-expect-error
       color: 'foreground',
-      colorSchema: 'dark',
+      colorSchema: 'default',
     });
     expect(result).toEqual({ backgroundColor: '#000', color: '#e3e3e3' });
   });
@@ -40,7 +42,9 @@ describe('colors', () => {
   test("should return the original value if colorSchema doesn't exist", () => {
     const result = parsers.resolve({
       bg: 'background',
+      // @ts-expect-error
       color: 'foreground',
+      // @ts-expect-error
       colorSchema: 'unexistingSchema',
     });
     expect(result).toEqual({ backgroundColor: '#e3e3e3', color: '#000' });
@@ -48,8 +52,9 @@ describe('colors', () => {
 
   test("should return the original value if the input value doesn't exist on color schema", () => {
     const result = parsers.resolve({
+      // @ts-expect-error
       bg: 'unexistingValue',
-      colorSchema: 'dark',
+      colorSchema: 'default',
     });
     expect(result).toEqual({ backgroundColor: 'unexistingValue' });
   });

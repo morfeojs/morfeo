@@ -23,11 +23,6 @@ export function parseColor({
         scale: 'colors',
       });
     }
-    return baseParser({
-      value,
-      property,
-      scale: 'colors',
-    });
   }
 
   return baseParser({
