@@ -22,6 +22,7 @@ import { shadowsParsers } from './shadows';
 import { bordersParsers } from './borders';
 import { spacingsParsers } from './spacings';
 import { componentsParses } from './components';
+import { colorSchemasParsers } from './colorSchemasParsers';
 
 const allPropertiesKeys = Object.keys(allProperties) as (keyof AllProperties)[];
 
@@ -48,6 +49,7 @@ const ADDITIONAL_PARSERS = {
   ...bordersParsers,
   ...spacingsParsers,
   ...componentsParses,
+  ...colorSchemasParsers,
 };
 
 const INITIAL_PARSERS = {
