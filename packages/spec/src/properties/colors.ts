@@ -4,7 +4,6 @@ export const colorsMap = [
   'color',
   'stroke',
   'caretColor',
-  'colorSchema',
   'borderColor',
   'outlineColor',
   'borderTopColor',
