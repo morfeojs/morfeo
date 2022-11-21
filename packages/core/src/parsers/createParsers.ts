@@ -25,6 +25,8 @@ import { componentsParses } from './components';
 
 const allPropertiesKeys = Object.keys(allProperties) as (keyof AllProperties)[];
 
+const uncachebleProps = ['colorSchema'];
+
 const DEFAULT_PARSERS = allPropertiesKeys.reduce(
   (acc, key) => ({
     ...acc,
@@ -145,7 +147,13 @@ export function createParsers() {
         value,
         style,
       };
-      if (typeof value === 'string' || typeof value === 'number') {
+      const hasStyleUncachebleProps = !uncachebleProps.some(prop =>
+        Object.keys(style).some(styleProp => styleProp === prop),
+      );
+      if (
+        (typeof value === 'string' || typeof value === 'number') &&
+        hasStyleUncachebleProps
+      ) {
         if (cache[property] === undefined) {
           cache[property] = {};
         }

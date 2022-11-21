@@ -1,0 +1,132 @@
+---
+sidebar_position: 6
+id: colorSchemas
+title: ColorSchemas
+description: ColorSchemasSlice
+---
+
+## Interface
+
+### Structure
+
+```typescript
+interface ColorSchemas {
+  [key: string]: {
+    [key: Color]: Color
+  };
+}
+
+type ColorSchemas = keyof ColorSchemas;
+```
+
+### Usage
+
+```typescript
+// Types are re-exported for ease of use by other packages
+// like @morfeo/core, @morfeo/web or @morfeo/react
+import { ColorSchemas } from '@morfeo/spec';
+```
+
+## Examples
+
+Using the [CLI compose command](../Features/CLI/compose.mdx):
+
+```typescript title="colors.morfeo.ts"
+// Remove this line to add the slice to all of your themes
+export const themeName = 'My Theme Name';
+// Optional if you name the file colorSchemas.morfeo.ts
+export const sliceName = 'colors';
+
+export default {
+  colorSchemas: {
+    primary: {
+      background: 'primary',
+      foreground: 'white'
+    }
+  }
+};
+```
+
+Or manually:
+
+```typescript title="colors.ts"
+import { Colors } from '@morfeo/spec';
+
+const colorSchemas: Colors = {
+  primary: {
+    background: 'primary',
+    foreground: 'white'
+  }
+};
+```
+
+```typescript title="theme.ts"
+import { colors } from './colors';
+
+const myTheme = {
+  colorSchemas,
+  ...restOfTheTheme,
+};
+
+morfeo.setTheme('My Theme Name', myTheme);
+```
+
+## Properties
+
+This sample show what happen when you pass to `morfeo.resolve`, the `colorSchema` property.
+
+## Usage sample
+
+```typescript
+const theme = {
+  ...restOfTheme,
+  colors: {
+    primary: 'blue',
+    secondary: 'yellow',
+    dark: 'black',
+    light: 'white',
+    background: 'white',
+    foreground: 'black',
+    accent: 'blue',
+  },
+  colorSchemas: {
+    primary: {
+      background: 'primary',
+      foreground: 'light',
+      accent: 'yellow',
+    }
+  }
+}
+
+const style = morfeo.resolve({
+  bg: 'background',
+  color: 'foreground',
+  borderColor: 'accent',
+})
+// will resolve to { backgroundColor: 'white', color: 'black, boderColor: 'blue' }
+
+const styleWithColorSchema = morfeo.resolve({
+  bg: 'background',
+  color: 'foreground',
+  colorSchema: 'primary'
+})
+// will resolve to { backgroundColor: 'blue', color: 'white', borderColor: 'yellow' }
+```
+
+## Extend Slice with custom properties
+
+If you're using typescript and you add custom colors to your theme configuration, you'll need to merge
+the default `Colors` interface with your custom one.
+We suggest creating a declaration file (for example: `morfeo.d.ts` or `types.d.ts`) like the following one:
+
+```typescript
+import { colorSchemas } from './path/to/your/custom/colorSchemas';
+
+type MyColorSchemas = typeof colorSchemas;
+
+declare module '@morfeo/spec' {
+  export interface Colors extends MyColorSchemas {}
+}
+```
+
+Read more about how to extend the default Morfeo Theme [here](../Features/extendible.mdx).
