@@ -41,9 +41,9 @@ export default {
   colorSchemas: {
     primary: {
       background: 'primary',
-      foreground: 'white'
-    }
-  }
+      foreground: 'white',
+    },
+  },
 };
 ```
 
@@ -55,8 +55,8 @@ import { ColorSchemas } from '@morfeo/spec';
 const colorSchemas: ColorSchemas = {
   primary: {
     background: 'primary',
-    foreground: 'white'
-  }
+    foreground: 'white',
+  },
 };
 ```
 
@@ -94,23 +94,23 @@ const theme = {
       background: 'primary',
       foreground: 'light',
       accent: 'yellow',
-    }
-  }
-}
+    },
+  },
+};
 
 const style = morfeo.resolve({
   bg: 'background',
   color: 'foreground',
   borderColor: 'accent',
-})
-// will resolve to { backgroundColor: 'white', color: 'black, boderColor: 'blue' }
+});
+// will resolve to { backgroundColor: 'white', color: 'black, borderColor: 'blue' }
 
 const styleWithColorSchema = morfeo.resolve({
   bg: 'background',
   color: 'foreground',
   borderColor: 'accent',
-  colorSchema: 'primary'
-})
+  colorSchema: 'primary',
+});
 // will resolve to { backgroundColor: 'blue', color: 'white', borderColor: 'yellow' }
 ```
 
