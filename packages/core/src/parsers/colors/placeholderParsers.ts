@@ -22,7 +22,7 @@ export const placeholderParser = ({
 
   return baseParser({
     value: originalValue as Color,
-    property: property === 'bg' ? 'backgroundColor' : property,
+    property,
     scale: 'colors',
   });
 };
