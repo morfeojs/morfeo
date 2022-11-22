@@ -1,5 +1,4 @@
 import { colorsMap } from '../properties';
-
 export interface Colors {
   text: string;
   dark: string;

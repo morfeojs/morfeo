@@ -22,8 +22,11 @@ import { shadowsParsers } from './shadows';
 import { bordersParsers } from './borders';
 import { spacingsParsers } from './spacings';
 import { componentsParses } from './components';
+import { colorSchemasParsers } from './colorSchemasParsers';
 
 const allPropertiesKeys = Object.keys(allProperties) as (keyof AllProperties)[];
+
+const uncachebleProps = ['colorSchema'];
 
 const DEFAULT_PARSERS = allPropertiesKeys.reduce(
   (acc, key) => ({
@@ -46,6 +49,7 @@ const ADDITIONAL_PARSERS = {
   ...bordersParsers,
   ...spacingsParsers,
   ...componentsParses,
+  ...colorSchemasParsers,
 };
 
 const INITIAL_PARSERS = {
@@ -145,7 +149,13 @@ export function createParsers() {
         value,
         style,
       };
-      if (typeof value === 'string' || typeof value === 'number') {
+      const hasStyleUncachebleProps = !uncachebleProps.some(prop =>
+        Object.keys(style).includes(prop),
+      );
+      if (
+        (typeof value === 'string' || typeof value === 'number') &&
+        hasStyleUncachebleProps
+      ) {
         if (cache[property] === undefined) {
           cache[property] = {};
         }

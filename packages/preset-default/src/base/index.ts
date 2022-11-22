@@ -16,6 +16,7 @@ import { spacings } from './spacings';
 import { transitions } from './transitions';
 import { zIndices } from './zIndices';
 import { darkColors, lightColors } from './colors';
+import { colorSchemas } from './colorSchemas';
 import { components, darkComponents } from './components';
 
 const fonts = {
@@ -42,6 +43,7 @@ export const baseTheme: Omit<Theme, 'colors'> = {
   borderWidths,
   borderStyles,
   mediaQueries: {},
+  colorSchemas,
   letterSpacings,
 };
 

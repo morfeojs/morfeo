@@ -10,3 +10,4 @@ export * from './gradients';
 export * from './opacities';
 export * from './components';
 export * from './transitions';
+export * from './colorSchemas';
