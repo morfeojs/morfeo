@@ -5,8 +5,9 @@ const THEME = {
   colors: {
     primary: '#e3e3e3',
     secondary: '#000',
-    background: '#e3e3e3',
-    foreground: '#000',
+    accent: '$light',
+    background: '$primary',
+    foreground: '$secondary',
   },
   colorSchemas: {
     default: {
@@ -57,5 +58,16 @@ describe('colors', () => {
       colorSchema: 'default',
     });
     expect(result).toEqual({ backgroundColor: 'unexistingValue' });
+  });
+
+  test('should resolve color placeholders', () => {
+    // @ts-expect-error
+    const result = parsers.resolve({ bg: 'background', color: 'foreground' });
+    expect(result).toEqual({ backgroundColor: '#e3e3e3', color: '#000' });
+  });
+
+  test('should return input values if the placeholder is wrong', () => {
+    const result = parsers.resolve({ bg: 'accent' });
+    expect(result).toEqual({ backgroundColor: 'accent' });
   });
 });

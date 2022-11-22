@@ -152,6 +152,26 @@ an example of usage, and the correspondent output:
 | borderRightColor  | borderRightColor  | `{ borderRightColor: "secondary.light"} `  | `{"borderRightColor":"#e563b3"}`  |
 | borderBottomColor | borderBottomColor | `{ borderBottomColor: "secondary.light"} ` | `{"borderBottomColor":"#e563b3"}` |
 
+## Color Placeholders
+
+Color placeholders allow to share a color between multiple keys with no need to duplicate it.
+
+### Example 
+```typescript
+const colors: Colors = {
+  // main palette
+  dark: '#000000',
+  light: '#ffffff',
+  primary: '#06f',
+  secondary: '#db2494'
+  // functional palette
+  background: '$light', // it will be resolved as #ffffff
+  foreground: '$dark', // it will be resolved as #000000
+  borderColor: '$primary', // it will be resolved as #06f
+  ctaColor: '$secondary' // it will be resolved as #db2494
+}
+```
+
 ## Extend Slice with custom properties
 
 If you're using typescript and you add custom colors to your theme configuration, you'll need to merge
