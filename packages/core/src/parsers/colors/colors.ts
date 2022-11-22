@@ -40,7 +40,6 @@ export function parseColor({
     }
   }
 
-  console.log(value);
 
   const color = theme.getValue('colors', value as Color);
 
