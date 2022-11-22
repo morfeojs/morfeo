@@ -3,7 +3,7 @@ import {
   colorSchemasProperties,
   ColorProperty,
   Style,
-  Color
+  Color,
 } from '@morfeo/spec';
 import { ParserParams, SliceParsers } from '../../types';
 import { baseParser } from '../baseParser';
@@ -40,12 +40,12 @@ export function parseColor({
     }
   }
 
-  console.log(value)
+  console.log(value);
 
   const color = theme.getValue('colors', value as Color);
 
   if (color && color.indexOf('$') === 0) {
-    return placeholderParser({ value, property, color, });
+    return placeholderParser({ value, property, color });
   }
 
   return baseParser({

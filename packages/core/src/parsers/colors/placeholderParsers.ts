@@ -8,21 +8,21 @@ export const placeholderParser = ({
   property,
   color,
 }: ParserParams<ColorProperty> & { color: string }) => {
-    const originalValue = color.substring(1);
-    const originalAssignedStyle = theme.getValue(
-      'colors',
-      originalValue as Color,
-    );
+  const originalValue = color.substring(1);
+  const originalAssignedStyle = theme.getValue(
+    'colors',
+    originalValue as Color,
+  );
 
-    if (!originalAssignedStyle) {
-      return {
-        [property]: value,
-      };
-    }
+  if (!originalAssignedStyle) {
+    return {
+      [property]: value,
+    };
+  }
 
-    return baseParser({
-      value: originalValue as Color,
-      property: property === 'bg' ? 'backgroundColor' : property,
-      scale: 'colors',
-    });
+  return baseParser({
+    value: originalValue as Color,
+    property: property === 'bg' ? 'backgroundColor' : property,
+    scale: 'colors',
+  });
 };
