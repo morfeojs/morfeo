@@ -3,10 +3,12 @@ import {
   colorSchemasProperties,
   ColorProperty,
   Style,
+  Color,
 } from '@morfeo/spec';
 import { ParserParams, SliceParsers } from '../../types';
 import { baseParser } from '../baseParser';
 import { theme } from '../../theme';
+import { placeholderParser } from './placeholderParsers';
 
 type ColorsParsers = SliceParsers<
   typeof colorProperties,
@@ -36,6 +38,13 @@ export function parseColor({
         scale: 'colors',
       });
     }
+  }
+
+
+  const color = theme.getValue('colors', value as Color);
+
+  if (color && color.indexOf('$') === 0) {
+    return placeholderParser({ value, property, color });
   }
 
   return baseParser({
