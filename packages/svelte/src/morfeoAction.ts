@@ -1,22 +1,32 @@
 import { getStyles } from '@morfeo/jss';
 import { component, Style } from '@morfeo/web';
 
-function getElementName({ componentName, variant }: Style) {
-  if (componentName && variant) {
-    return `${componentName}-${variant}`;
+function getElementName({ componentName, variant, state }: Style) {
+  let elementName = '';
+
+  if (componentName) {
+    elementName = `${componentName}`;
   }
 
-  return componentName || 'morfeo-element';
+  if (variant) {
+    elementName = `${elementName}-${variant}`;
+  }
+
+  if (state) {
+    elementName = `${elementName}-${state}`;
+  }
+
+  return elementName
 }
 
 function setAdditionalProps(
   node: HTMLElement,
-  { componentName, variant }: Style,
+  { componentName, variant, state }: Style,
 ) {
   if (!componentName) {
     return {};
   }
-  const props = component(componentName, variant).getProps();
+  const props = component(componentName, variant, state).getProps();
 
   if (!props) {
     return;
