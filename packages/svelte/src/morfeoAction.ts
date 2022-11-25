@@ -16,7 +16,7 @@ function getElementName({ componentName, variant, state }: Style) {
     elementName = `${elementName}-${state}`;
   }
 
-  return elementName
+  return elementName;
 }
 
 function setAdditionalProps(

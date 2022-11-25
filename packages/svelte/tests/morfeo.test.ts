@@ -17,7 +17,7 @@ const THEME: Theme = {
           props: {
             'data-test': 'additional prop',
           },
-          states: {}
+          states: {},
         },
       },
     },
@@ -73,7 +73,7 @@ describe('morfeo', () => {
     morfeoStyle(element, {
       componentName: 'Box',
       variant: 'span',
-      state: 'danger'
+      state: 'danger',
     });
 
     expect(element.getAttribute('data-test')).toBe('additional prop');
