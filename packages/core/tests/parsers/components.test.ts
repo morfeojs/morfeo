@@ -22,8 +22,8 @@ const THEME: Theme = {
         danger: {
           bg: 'danger',
           borderColor: 'warning',
-          borderWidth: '1px'
-        }
+          borderWidth: '1px',
+        },
       },
       variants: {
         primary: {
@@ -32,7 +32,7 @@ const THEME: Theme = {
             danger: {
               bg: 'warning',
               borderColor: 'danger',
-            }
+            },
           },
         },
       },
@@ -151,7 +151,11 @@ describe('components', () => {
       componentName: 'Box',
       state: 'danger',
     });
-    expect(result).toEqual({ backgroundColor: 'red', borderColor: 'orange', borderWidth: '1px' });
+    expect(result).toEqual({
+      backgroundColor: 'red',
+      borderColor: 'orange',
+      borderWidth: '1px',
+    });
   });
 
   test('should return the variant state style if state is declared within the variant', () => {
@@ -160,7 +164,11 @@ describe('components', () => {
       variant: 'primary',
       state: 'danger',
     });
-    expect(result).toEqual({ backgroundColor: 'orange', borderColor: 'red', color: '#000' });
+    expect(result).toEqual({
+      backgroundColor: 'orange',
+      borderColor: 'red',
+      color: '#000',
+    });
   });
 
   test("should return the default style if the declared state doesn't exist", () => {
