@@ -1,4 +1,10 @@
-import { Component, ComponentConfig, Style, Variant } from '@morfeo/spec';
+import {
+  Component,
+  ComponentConfig,
+  State,
+  Style,
+  Variant,
+} from '@morfeo/spec';
 import { deepMerge } from '../utils';
 import theme from './theme';
 
@@ -9,25 +15,45 @@ type GetConfigProperty<C extends Component> = {
   merge?: boolean;
   variant?: Variant<C>;
   property: keyof ComponentConfig;
+  state?: State<C>;
 };
 
-function get<C extends Component>(
-  name: C,
-  variant?: Variant<C>,
-  merge?: boolean,
-) {
+function get<C extends Component>({
+  name,
+  variant,
+  merge,
+  state,
+}: {
+  name: C;
+  variant?: Variant<C>;
+  merge?: boolean;
+  state?: State<C>;
+}) {
   const config = theme.getValue('components', name);
 
   if (!variant || !config) {
+    if (state) {
+      return {
+        ...config,
+        style: { ...deepMerge(config.style, config.states[state]) },
+      };
+    }
     return config;
   }
 
   const { variants, ...rest } = config;
 
   if (variants) {
-    return merge
-      ? deepMerge(rest, variants[variant as any])
-      : variants[variant as any];
+    const currentStateStyle =
+      state && variants[variant].states && variants[variant].states[state];
+    if (currentStateStyle) {
+      const variantWithStateStyle = {
+        ...variants[variant],
+        style: deepMerge(variants[variant].style, currentStateStyle),
+      };
+      return variantWithStateStyle;
+    }
+    return merge ? deepMerge(rest, variants[variant]) : variants[variant];
   }
 
   return config;
@@ -38,16 +64,22 @@ function getConfig<C extends Component>({
   merge = true,
   variant,
   property,
+  state,
 }: GetConfigProperty<C>) {
-  const config = get(name, variant, merge);
+  const config = get({ name, variant, merge, state });
   return config ? config[property] : undefined;
 }
 
-function getComponentStyle<C extends Component>(name: C, variant?: Variant<C>) {
-  const baseStyle = getConfig({ name, property: 'style' }) || {};
+function getComponentStyle<C extends Component>(
+  name: C,
+  variant?: Variant<C>,
+  state?: State<C>,
+) {
+  const stateForBaseStyle = variant && state ? {} : state;
+  const baseStyle =
+    getConfig({ name, property: 'style', ...stateForBaseStyle }) || {};
   const variantStyle =
-    getConfig({ name, variant, property: 'style', merge: false }) || {};
-
+    getConfig({ name, variant, property: 'style', merge: false, state }) || {};
   const {
     componentName: baseComponentName,
     variant: baseVariant,
@@ -63,6 +95,7 @@ function getComponentStyle<C extends Component>(name: C, variant?: Variant<C>) {
   const baseComponentStyle = baseComponentName
     ? getComponentStyle(baseComponentName, baseVariant)
     : {};
+
   const variantComponentStyle = variantComponentName
     ? getComponentStyle(variantComponentName, variantVariant)
     : {};
@@ -89,13 +122,18 @@ function getComponentStyle<C extends Component>(name: C, variant?: Variant<C>) {
  *
  * const typographyTag = component('Typography').getTag();
  */
-export function component<C extends Component>(name: C, variant?: Variant<C>) {
+export function component<C extends Component>(
+  name: C,
+  variant?: Variant<C>,
+  state?: State<C>,
+) {
   function getTag() {
     return getConfig({ name, variant, property: 'tag' });
   }
 
   function getStyle(): Style {
-    return getComponentStyle(name, variant);
+    const style = getComponentStyle(name, variant, state);
+    return style;
   }
 
   function getProps() {
@@ -108,7 +146,7 @@ export function component<C extends Component>(name: C, variant?: Variant<C>) {
 
   function _get() {
     return {
-      ...get(name, variant, true),
+      ...get({ name, variant, merge: true, state }),
       style: getStyle(),
     };
   }

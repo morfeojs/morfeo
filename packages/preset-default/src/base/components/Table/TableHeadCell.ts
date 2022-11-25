@@ -7,5 +7,6 @@ export const TableHeadCell: ComponentConfig = {
     textAlign: 'left',
     textTransform: 'uppercase',
   },
+  states: {},
   variants: {},
 };

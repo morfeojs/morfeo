@@ -39,6 +39,7 @@ type ButtonVariant =
 
 export const Button: ComponentConfig<ButtonVariant> = {
   tag: 'button',
+  states: {},
   style: {
     px: 's',
     py: '2xs',
@@ -86,12 +87,14 @@ export const Button: ComponentConfig<ButtonVariant> = {
         bg: 'background',
         color: 'text',
       },
+      states: {},
     },
     small: {
       style: {
         fontSize: 's',
         px: 'xs',
       },
+      states: {},
     },
     'small.inverted': {
       style: {
@@ -100,6 +103,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         bg: 'background',
         color: 'text',
       },
+      states: {},
     },
     'small.primary': {
       style: {
@@ -108,6 +112,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'primary',
       },
+      states: {},
     },
     'small.secondary': {
       style: {
@@ -116,6 +121,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'secondary',
       },
+      states: {},
     },
     'small.warning': {
       style: {
@@ -124,6 +130,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'warning',
       },
+      states: {},
     },
     'small.error': {
       style: {
@@ -132,6 +139,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'error',
       },
+      states: {},
     },
     'small.success': {
       style: {
@@ -140,36 +148,42 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'success',
       },
+      states: {},
     },
     primary: {
       style: {
         color: 'white',
         bg: 'primary',
       },
+      states: {},
     },
     secondary: {
       style: {
         color: 'white',
         bg: 'secondary',
       },
+      states: {},
     },
     warning: {
       style: {
         color: 'white',
         bg: 'warning',
       },
+      states: {},
     },
     error: {
       style: {
         color: 'white',
         bg: 'error',
       },
+      states: {},
     },
     success: {
       style: {
         color: 'white',
         bg: 'success',
       },
+      states: {},
     },
     round: {
       style: {
@@ -180,6 +194,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         lineHeight: 'none',
         letterSpacing: 'none',
       },
+      states: {},
     },
     'round.inverted': {
       style: {
@@ -188,6 +203,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'text',
         bg: 'background',
       },
+      states: {},
     },
     'round.primary': {
       style: {
@@ -196,6 +212,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'primary',
       },
+      states: {},
     },
     'round.secondary': {
       style: {
@@ -204,6 +221,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'secondary',
       },
+      states: {},
     },
     'round.success': {
       style: {
@@ -212,6 +230,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'success',
       },
+      states: {},
     },
     'round.warning': {
       style: {
@@ -220,6 +239,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'warning',
       },
+      states: {},
     },
     'round.error': {
       style: {
@@ -228,6 +248,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'error',
       },
+      states: {},
     },
     'round.small': {
       style: {
@@ -236,6 +257,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         size: 's',
         fontSize: 'xs',
       },
+      states: {},
     },
     'round.small.inverted': {
       style: {
@@ -244,6 +266,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'text',
         bg: 'background',
       },
+      states: {},
     },
     'round.small.primary': {
       style: {
@@ -252,6 +275,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'primary',
       },
+      states: {},
     },
     'round.small.secondary': {
       style: {
@@ -260,6 +284,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'secondary',
       },
+      states: {},
     },
     'round.small.success': {
       style: {
@@ -268,6 +293,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'success',
       },
+      states: {},
     },
     'round.small.warning': {
       style: {
@@ -276,6 +302,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'warning',
       },
+      states: {},
     },
     'round.small.error': {
       style: {
@@ -284,6 +311,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'error',
       },
+      states: {},
     },
     'round.large': {
       style: {
@@ -291,6 +319,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         variant: 'round',
         size: 'xl',
       },
+      states: {},
     },
     'round.large.inverted': {
       style: {
@@ -299,6 +328,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'text',
         bg: 'background',
       },
+      states: {},
     },
     'round.large.primary': {
       style: {
@@ -307,6 +337,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'primary',
       },
+      states: {},
     },
     'round.large.secondary': {
       style: {
@@ -315,6 +346,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'secondary',
       },
+      states: {},
     },
     'round.large.success': {
       style: {
@@ -323,6 +355,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'success',
       },
+      states: {},
     },
     'round.large.warning': {
       style: {
@@ -331,6 +364,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'warning',
       },
+      states: {},
     },
     'round.large.error': {
       style: {
@@ -339,6 +373,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
         color: 'white',
         bg: 'error',
       },
+      states: {},
     },
     group: {
       style: {
@@ -356,6 +391,7 @@ export const Button: ComponentConfig<ButtonVariant> = {
           cornerTopRight: 'xs',
         },
       },
+      states: {},
     },
   },
 };

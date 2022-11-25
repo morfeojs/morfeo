@@ -36,6 +36,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
   },
+  states: {},
   variants: {
     p: {
       style: {
@@ -45,6 +46,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         lineHeight: 'body',
         mb: 's',
       },
+      states: {},
     },
     p2: {
       style: {
@@ -52,6 +54,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'p',
         fontSize: 's',
       },
+      states: {},
     },
     p3: {
       style: {
@@ -59,6 +62,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'p',
         fontSize: 'xs',
       },
+      states: {},
     },
     p4: {
       style: {
@@ -66,6 +70,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'p',
         fontSize: '2xs',
       },
+      states: {},
     },
     h1: {
       tag: 'h1',
@@ -77,6 +82,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         lineHeight: 'none',
         mb: 'xs',
       },
+      states: {},
     },
     h2: {
       tag: 'h2',
@@ -85,6 +91,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'h1',
         fontSize: 'xl',
       },
+      states: {},
     },
     h3: {
       tag: 'h3',
@@ -93,6 +100,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'h1',
         fontSize: 'l',
       },
+      states: {},
     },
     h4: {
       tag: 'h4',
@@ -101,6 +109,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'h1',
         fontSize: 'm',
       },
+      states: {},
     },
     h5: {
       tag: 'h2',
@@ -109,6 +118,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'h2',
         fontWeight: 'light',
       },
+      states: {},
     },
     h6: {
       tag: 'h3',
@@ -117,6 +127,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'h3',
         fontWeight: 'light',
       },
+      states: {},
     },
     'p.inverted': {
       style: {
@@ -126,6 +137,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         letterSpacing: 'body',
         lineHeight: 'body',
       },
+      states: {},
     },
     'p2.inverted': {
       style: {
@@ -133,6 +145,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'p',
         fontSize: 's',
       },
+      states: {},
     },
     'p3.inverted': {
       style: {
@@ -140,6 +153,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'p',
         fontSize: 'xs',
       },
+      states: {},
     },
     'p4.inverted': {
       style: {
@@ -147,6 +161,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'p',
         fontSize: '2xs',
       },
+      states: {},
     },
     'h1.inverted': {
       tag: 'h1',
@@ -157,6 +172,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         letterSpacing: 'heading',
         lineHeight: 'heading',
       },
+      states: {},
     },
     'h2.inverted': {
       tag: 'h2',
@@ -165,6 +181,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'h1',
         fontSize: 'xl',
       },
+      states: {},
     },
     'h3.inverted': {
       tag: 'h3',
@@ -173,6 +190,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'h1',
         fontSize: 'l',
       },
+      states: {},
     },
     'h4.inverted': {
       tag: 'h4',
@@ -181,6 +199,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'h1',
         fontSize: 'm',
       },
+      states: {},
     },
     'h5.inverted': {
       tag: 'h2',
@@ -189,6 +208,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'h2',
         fontWeight: 'light',
       },
+      states: {},
     },
     'h6.inverted': {
       tag: 'h3',
@@ -197,6 +217,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         variant: 'h3',
         fontWeight: 'light',
       },
+      states: {},
     },
     display: {
       tag: 'h1',
@@ -206,6 +227,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         fontSize: '3xl',
         lineHeight: 'none',
       },
+      states: {},
     },
     link: {
       tag: 'a',
@@ -217,6 +239,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
           color: 'primary.light',
         },
       },
+      states: {},
     },
     cta: {
       tag: 'a',
@@ -232,6 +255,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
           borderBottomColor: 'primary.light',
         },
       },
+      states: {},
     },
     code: {
       tag: 'code',
@@ -246,6 +270,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         boxSizing: 'border-box',
         my: 'l',
       },
+      states: {},
     },
     quote: {
       style: {
@@ -262,6 +287,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
           display: 'inline',
         },
       },
+      states: {},
     },
     blockQuote: {
       style: {
@@ -284,6 +310,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
           display: 'inline',
         },
       },
+      states: {},
     },
   },
 };

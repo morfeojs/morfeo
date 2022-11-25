@@ -7,5 +7,6 @@ export const TableHead: ComponentConfig = {
     fontFamily: 'default',
     fontWeight: 'bold',
   },
+  states: {},
   variants: {},
 };

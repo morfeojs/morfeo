@@ -2,6 +2,7 @@ import { ComponentConfig, Size } from '@morfeo/spec';
 
 export const Main: ComponentConfig = {
   tag: 'main',
+  states: {},
   style: {
     componentName: 'Box',
     width: '100',

@@ -4,6 +4,7 @@ type InputFeedbackVariant = 'error' | 'warning' | 'success';
 
 export const InputFeedback: ComponentConfig<InputFeedbackVariant> = {
   tag: 'p',
+  states: {},
   style: {
     fontSize: 'xs',
     fontFamily: 'default',
@@ -17,16 +18,19 @@ export const InputFeedback: ComponentConfig<InputFeedbackVariant> = {
       style: {
         color: 'error',
       },
+      states: {},
     },
     warning: {
       style: {
         color: 'warning',
       },
+      states: {},
     },
     success: {
       style: {
         color: 'success',
       },
+      states: {},
     },
   },
 };

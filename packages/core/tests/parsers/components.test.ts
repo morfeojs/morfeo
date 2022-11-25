@@ -6,6 +6,8 @@ const THEME: Theme = {
   colors: {
     primary: '#e3e3e3',
     secondary: '#000',
+    warning: 'orange',
+    danger: 'red',
   },
   spacings: {
     m: '10px',
@@ -16,9 +18,22 @@ const THEME: Theme = {
       style: {
         bg: 'primary',
       },
+      states: {
+        danger: {
+          bg: 'danger',
+          borderColor: 'warning',
+          borderWidth: '1px'
+        }
+      },
       variants: {
         primary: {
           style: { color: 'secondary' },
+          states: {
+            danger: {
+              bg: 'warning',
+              borderColor: 'danger',
+            }
+          },
         },
       },
     },
@@ -129,5 +144,39 @@ describe('components', () => {
     });
 
     expect(result).toEqual({ color: THEME.colors.primary });
+  });
+
+  test('should return the state style if state is declared', () => {
+    const result = parsers.resolve({
+      componentName: 'Box',
+      state: 'danger',
+    });
+    expect(result).toEqual({ backgroundColor: 'red', borderColor: 'orange', borderWidth: '1px' });
+  });
+
+  test('should return the variant state style if state is declared within the variant', () => {
+    const result = parsers.resolve({
+      componentName: 'Box',
+      variant: 'primary',
+      state: 'danger',
+    });
+    expect(result).toEqual({ backgroundColor: 'orange', borderColor: 'red', color: '#000' });
+  });
+
+  test("should return the default style if the declared state doesn't exist", () => {
+    const result = parsers.resolve({
+      componentName: 'Box',
+      state: 'warning',
+    });
+    expect(result).toEqual({ backgroundColor: '#e3e3e3' });
+  });
+
+  test("should return the default variant style if the declared state doesn't exist", () => {
+    const result = parsers.resolve({
+      componentName: 'Box',
+      variant: 'primary',
+      state: 'warning',
+    });
+    expect(result).toEqual({ backgroundColor: '#e3e3e3', color: '#000' });
   });
 });

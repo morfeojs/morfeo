@@ -4,6 +4,7 @@ type HeaderVariant = 'primary' | 'primary.fixed' | 'fixed';
 
 export const Header: ComponentConfig<HeaderVariant> = {
   tag: 'header',
+  states: {},
   style: {
     componentName: 'Box',
     display: 'flex',
@@ -24,6 +25,7 @@ export const Header: ComponentConfig<HeaderVariant> = {
         bg: 'primary',
         color: 'white',
       },
+      states: {},
     },
     'primary.fixed': {
       style: {
@@ -34,6 +36,7 @@ export const Header: ComponentConfig<HeaderVariant> = {
         color: 'white',
         zIndex: 'highest',
       },
+      states: {},
     },
     fixed: {
       style: {
@@ -42,6 +45,7 @@ export const Header: ComponentConfig<HeaderVariant> = {
         left: 'none',
         zIndex: 'highest',
       },
+      states: {},
     },
   },
   meta: {

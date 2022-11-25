@@ -9,11 +9,13 @@ export const Hr: ComponentConfig<HrVariant> = {
     border: 'thin',
     mb: 'l',
   },
+  states: {},
   variants: {
     primary: {
       style: {
         borderColor: 'primary',
       },
+      states: {},
     },
     reduced: {
       style: {
@@ -21,6 +23,7 @@ export const Hr: ComponentConfig<HrVariant> = {
         pt: 'none',
         mb: 'xs',
       },
+      states: {},
     },
     'reduced.primary': {
       style: {
@@ -29,6 +32,7 @@ export const Hr: ComponentConfig<HrVariant> = {
         pt: 'none',
         mb: 'xs',
       },
+      states: {},
     },
   },
 };

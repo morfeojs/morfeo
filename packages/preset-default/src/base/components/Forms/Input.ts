@@ -11,6 +11,7 @@ type InputVariant =
 
 export const Input: ComponentConfig<InputVariant> = {
   tag: 'input',
+  states: {},
   style: {
     width: '100',
     minWidth: '100',
@@ -39,18 +40,21 @@ export const Input: ComponentConfig<InputVariant> = {
         outlineColor: 'error',
         outline: 'strong',
       },
+      states: {},
     },
     success: {
       style: {
         outlineColor: 'success',
         outline: 'strong',
       },
+      states: {},
     },
     warning: {
       style: {
         outlineColor: 'warning',
         outline: 'strong',
       },
+      states: {},
     },
     small: {
       style: {
@@ -59,6 +63,7 @@ export const Input: ComponentConfig<InputVariant> = {
         px: '2xs',
         lineHeight: 'none',
       },
+      states: {},
     },
     'small.error': {
       style: {
@@ -67,6 +72,7 @@ export const Input: ComponentConfig<InputVariant> = {
         outlineColor: 'error',
         outline: 'strong',
       },
+      states: {},
     },
     'small.warning': {
       style: {
@@ -75,6 +81,7 @@ export const Input: ComponentConfig<InputVariant> = {
         outlineColor: 'warning',
         outline: 'strong',
       },
+      states: {},
     },
     'small.success': {
       style: {
@@ -83,6 +90,7 @@ export const Input: ComponentConfig<InputVariant> = {
         outlineColor: 'success',
         outline: 'strong',
       },
+      states: {},
     },
   },
 };

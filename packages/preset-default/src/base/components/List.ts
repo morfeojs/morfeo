@@ -10,6 +10,7 @@ export const List: ComponentConfig<ListVariant> = {
     ml: 'none',
     pl: 'none',
   },
+  states: {},
   variants: {
     item: {
       tag: 'li',
@@ -26,6 +27,7 @@ export const List: ComponentConfig<ListVariant> = {
           fontWeight: 'bold',
         },
       },
+      states: {},
     },
     'item.arrow': {
       tag: 'li',
@@ -40,6 +42,7 @@ export const List: ComponentConfig<ListVariant> = {
           fontSize: 'xs',
         },
       },
+      states: {},
     },
     'item.outlinedBullet': {
       tag: 'li',
@@ -53,6 +56,7 @@ export const List: ComponentConfig<ListVariant> = {
           content: '"○"',
         },
       },
+      states: {},
     },
   },
 };
