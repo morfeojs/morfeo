@@ -14,6 +14,7 @@ export const Button: ComponentConfig = {
     fontSize: 'm',
     fontWeight: 'bold',
   },
+  states: {},
   variants: {
     round: {
       style: {
@@ -21,6 +22,7 @@ export const Button: ComponentConfig = {
         px: 'none',
         py: 'none',
       },
+      states: {},
     },
     side: {
       style: {
@@ -31,17 +33,20 @@ export const Button: ComponentConfig = {
         px: 'none',
         py: 'none',
       },
+      states: {},
     },
     error: {
       style: {
         bg: 'light',
         color: 'error',
       },
+      states: {},
     },
     success: {
       style: {
         bg: 'success',
       },
+      states: {},
     },
   },
   meta: {

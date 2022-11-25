@@ -4,6 +4,7 @@ export const Typography: ComponentConfig = {
   style: {
     fontFamily: 'default',
   },
+  states: {},
   variants: {
     hero: {
       tag: 'h1',
@@ -12,6 +13,7 @@ export const Typography: ComponentConfig = {
         fontWeight: 'bold',
         lineHeight: 'heading',
       },
+      states: {},
     },
     h1: {
       tag: 'h1',
@@ -21,6 +23,7 @@ export const Typography: ComponentConfig = {
         lineHeight: 'heading',
         fontWeight: 'bold',
       },
+      states: {},
     },
     h2: {
       tag: 'h2',
@@ -29,6 +32,7 @@ export const Typography: ComponentConfig = {
         lineHeight: 'heading',
         fontWeight: 'bold',
       },
+      states: {},
     },
     h3: {
       tag: 'h3',
@@ -37,6 +41,7 @@ export const Typography: ComponentConfig = {
         lineHeight: 'heading',
         fontWeight: 'bold',
       },
+      states: {},
     },
     h4: {
       tag: 'h4',
@@ -45,6 +50,7 @@ export const Typography: ComponentConfig = {
         lineHeight: 'heading',
         fontWeight: 'bold',
       },
+      states: {},
     },
     h5: {
       tag: 'h5',
@@ -53,6 +59,7 @@ export const Typography: ComponentConfig = {
         lineHeight: 'heading',
         fontWeight: 'regular',
       },
+      states: {},
     },
     p1: {
       tag: 'p',
@@ -61,6 +68,7 @@ export const Typography: ComponentConfig = {
         letterSpacing: 'body',
         lineHeight: 'body',
       },
+      states: {},
     },
     p2: {
       tag: 'p',
@@ -69,6 +77,7 @@ export const Typography: ComponentConfig = {
         letterSpacing: 'body',
         lineHeight: 'body',
       },
+      states: {},
     },
     p3: {
       tag: 'p',
@@ -76,6 +85,7 @@ export const Typography: ComponentConfig = {
         fontSize: '2xs',
         lineHeight: 'body',
       },
+      states: {},
     },
     link: {
       tag: 'a',
@@ -88,6 +98,7 @@ export const Typography: ComponentConfig = {
           color: 'primary.lightest',
         },
       },
+      states: {},
     },
     cta: {
       tag: 'span',
@@ -100,6 +111,7 @@ export const Typography: ComponentConfig = {
           ml: '2xs',
         },
       },
+      states: {},
     },
     caption: {
       style: {
@@ -107,6 +119,7 @@ export const Typography: ComponentConfig = {
         lineHeight: 'body',
         fontStyle: 'italic',
       },
+      states: {},
     },
   },
   meta: {
