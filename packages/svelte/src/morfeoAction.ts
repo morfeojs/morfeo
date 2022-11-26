@@ -1,6 +1,8 @@
 import { getStyles } from '@morfeo/jss';
 import { component, Style } from '@morfeo/web';
 
+const DEFAULT_ELEMENT_NAME = 'morfeo-element'
+
 function getElementName({ componentName, variant, state }: Style) {
   let elementName = '';
 
@@ -16,7 +18,7 @@ function getElementName({ componentName, variant, state }: Style) {
     elementName = `${elementName}-${state}`;
   }
 
-  return elementName;
+  return elementName || DEFAULT_ELEMENT_NAME;
 }
 
 function setAdditionalProps(
