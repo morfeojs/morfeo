@@ -35,7 +35,7 @@ function get<C extends Component>({
     if (state) {
       return {
         ...config,
-        style: { ...deepMerge(config.style, config.states[state]) },
+        style: deepMerge(config.style, config.states[state]),
       };
     }
     return config;
