@@ -187,7 +187,7 @@ export default {
           },
         },
         filled: {
-          bg: 'primary',
+          style: { bg: 'primary' },
         },
       },
     },
