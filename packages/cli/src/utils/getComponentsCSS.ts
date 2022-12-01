@@ -1,19 +1,31 @@
 import { theme, getStyles, Component } from '@morfeo/web';
 import { paramCase } from 'param-case';
 
-function getComponentCSS(
-  themeName: string,
-  componentName: Component,
-  variant?: string,
-) {
+type GetComponentCssParams = {
+  themeName: string;
+  componentName: Component;
+  variant?: string;
+  state?: string;
+};
+
+function getComponentCSS({
+  themeName,
+  componentName,
+  variant,
+  state,
+}: GetComponentCssParams) {
   let componentId = `morfeo-${paramCase(componentName)}`;
 
   if (variant) {
     componentId += `-${paramCase(variant)}`;
   }
 
+  if (state) {
+    componentId += `-${paramCase(state)}`;
+  }
+
   const { sheet } = getStyles(
-    { [componentName]: { componentName, variant } },
+    { [componentName]: { componentName, variant, state } },
     {
       generateId: () => componentId,
     },
@@ -33,12 +45,23 @@ export function getComponentsCSS(themeName: string) {
   let css = '';
 
   componentNames.forEach(componentName => {
-    const { variants } = components[componentName];
+    const { variants, states } = components[componentName];
     const variantKeys = Object.keys(variants || {});
-    css += getComponentCSS(themeName, componentName);
+    const stateKeys = Object.keys(states || {});
+
+    css += getComponentCSS({ themeName, componentName });
+
+    stateKeys.forEach(state => {
+      css += getComponentCSS({ themeName, componentName, state });
+    });
 
     variantKeys.forEach(variant => {
-      css += getComponentCSS(themeName, componentName, variant);
+      css += getComponentCSS({ themeName, componentName, variant });
+      const { states: variantStates } = variants[variant];
+      const variantStateKeys = Object.keys(variantStates || {});
+      variantStateKeys.forEach(state => {
+        css += getComponentCSS({ themeName, componentName, variant, state });
+      });
     });
   });
 
