@@ -11,11 +11,13 @@ export const Card: ComponentConfig = {
     flexDirection: 'column',
     boxSizing: 'border-box',
   },
+  states: {},
   variants: {
     primary: {
       style: {
         shadow: 'light',
       },
+      states: {},
     },
     'primary.clickable': {
       style: {
@@ -26,6 +28,7 @@ export const Card: ComponentConfig = {
           transform: 'translateY(-5px)',
         },
       },
+      states: {},
     },
   },
   meta: {

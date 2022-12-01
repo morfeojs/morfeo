@@ -9,11 +9,13 @@ export const Box: ComponentConfig<BoxVariant> = {
     fontFamily: 'default',
     boxSizing: 'border-box',
   },
+  states: {},
   variants: {
     block: {
       style: {
         display: 'block',
       },
+      states: {},
     },
     column: {
       style: {
@@ -21,6 +23,7 @@ export const Box: ComponentConfig<BoxVariant> = {
         flexDirection: 'column',
         flexWrap: 'wrap',
       },
+      states: {},
     },
     row: {
       style: {
@@ -28,6 +31,7 @@ export const Box: ComponentConfig<BoxVariant> = {
         flexDirection: 'row',
         flexWrap: 'wrap',
       },
+      states: {},
     },
   },
   meta: {

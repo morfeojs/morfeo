@@ -4503,6 +4503,7 @@
 .outline-style-solid {
   outline-style: var(--border-styles-solid);
 }
+
 .letter-spacing-body {
   letter-spacing: var(--letter-spacings-body);
 }

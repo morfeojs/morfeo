@@ -10,17 +10,23 @@ description: Components theme slice
 ### Structure
 
 ```typescript
-type ComponentConfig = ComponentStyle<Props> & {
+type ComponentConfig = ComponentStyle<Props, State> & {
   tag?: string;
   style: Style;
   props?: Props;
   meta?: ComponentMeta;
+  states: {
+    [key in State]: Style
+  }
   variants: {
     [key: string]: {
       tag?: string;
       style: Style;
       props?: Props;
       meta?: ComponentMeta;
+      states: {
+         [key in State]: Style
+      }
     };
   };
 };
@@ -64,15 +70,28 @@ export default {
   Button: {
     tag: 'button',
     style: {
-      bg: 'background',
+      bg: 'primary',
       corner: 'm',
+      color: 'invertedTextColor'
     },
+    states: {
+      danger: {
+        bg: 'danger'
+      }
+    }
     variants: {
-      primary: {
+      outlined: {
         style: {
-          bg: 'primary',
-          color: 'invertedTextColor',
+          bg: 'none',
+          borderColor: 'primary',
+          borderWidth: '1px'
+          color: 'text',
         },
+        states: {
+          danger: {
+            borderColor: 'danger'
+          }
+        }
       },
     },
   },
@@ -88,15 +107,28 @@ const components: Components = {
   Button: {
     tag: 'button',
     style: {
-      bg: 'background',
+      bg: 'primary',
       corner: 'm',
+      color: 'invertedTextColor'
     },
+    states: {
+      danger: {
+        bg: 'danger'
+      }
+    }
     variants: {
-      primary: {
+      outlined: {
         style: {
-          bg: 'primary',
-          color: 'invertedTextColor',
+          bg: 'unset',
+          borderColor: 'primary',
+          borderWidth: '1px'
+          color: 'text',
         },
+        states: {
+          danger: {
+            borderColor: 'danger'
+          }
+        }
       },
     },
   },
@@ -122,12 +154,14 @@ an example of usage, and the correspondent output:
 | name                   | css property                            | example                                           | output                                  |
 | :--------------------- | :-------------------------------------- | :------------------------------------------------ | :-------------------------------------- |
 | componentName          | `It depends on the theme configuration` | `{ componentName: 'Button' }`                     | `It depends on the theme configuration` |
-| componentName, variant | `It depends on the theme configuration` | `{ componentName: 'Button', variant: 'primary' }` | `It depends on the theme configuration` |
+| componentName, variant | `It depends on the theme configuration` | `{ componentName: 'Button', variant: 'outlined' }` | `It depends on the theme configuration` |
+| componentName, state | `It depends on the theme configuration` | `{ componentName: 'Button', state: 'danger' }` | `It depends on the theme configuration` |
+| componentName, variant, state | `It depends on the theme configuration` | `{ componentName: 'Button', variant: 'outlined', state: 'danger' }` | `It depends on the theme configuration` |
 
-The previous example will generate the style:
+The previous example will generate the styles:
 
 ```typescript
-const style = morfeo.resolve({ componentName: 'Button', variant: 'primary' });
+const style = morfeo.resolve({ componentName: 'Button' });
 /*
  {
     borderRadius: '16px',
@@ -135,12 +169,44 @@ const style = morfeo.resolve({ componentName: 'Button', variant: 'primary' });
     color: '#ffffff',
  }
 */
+
+const styleWithVariant = morfeo.resolve({ componentName: 'Button', variant: 'outlined' });
+/*
+ {
+    borderRadius: '16px',
+    backgroundColor: 'unset',
+    color: '#ffffff',
+    borderColor: '#06f',
+    borderWidth: '1px'
+    color: '#000',
+ }
+*/
+
+const styleWithState = morfeo.resolve({ componentName: 'Button', state: 'danger' });
+/*
+ {
+    borderRadius: '16px',
+    backgroundColor: 'orange',
+    color: '#ffffff',
+ }
+*/
+
+const styleWithVariantAndState = morfeo.resolve({ componentName: 'Button', variant: 'outlined', state: 'danger' });
+/*
+  {
+      borderRadius: '16px',
+      backgroundColor: 'unset',
+      color: '#ffffff',
+      borderColor: 'orange',
+      borderWidth: '1px'
+      color: '#000',
+  }
+*/
 ```
 
 ## Understanding variants
 
-A variant of a component it's a variation of the component base style, in the previous example, in fact, the variant `primary` of the
-component `Button` defines additional style to the base style, this additional style will be added to the base one.
+A variant of a component it's a variation of the component base style, in the previous example, in fact, the variant `outlined` of the component `Button` defines additional style to the base style, this additional style will be added to the base one.
 
 In case the variant re-declared some of the properties of the parent, those properties will override the parent one (variants wins).
 
@@ -151,48 +217,137 @@ For example:
   "Button": {
     "tag": "button",
     "style": {
-      "bg": "background",
-      "corner": "m"
+      "bg": "primary",
+      "corner": "m",
+      "color": "invertedTextColor"
     },
     "variants": {
-      "primary": {
+      "outlined": {
         "style": {
-          "bg": "primary",
-          "color": "invertedTextColor"
-        }
-      }
-    }
-  }
+          "bg": "unset",
+          "borderColor": "primary",
+          "borderWidth": "1px",
+          "color": "text"
+        },
+      },
+    },
+  },
 }
 ```
 
-The complete style of the variant `primary` is:
+The complete style of the `outlined` variant is:
 
 ```json
 {
   "corner": "m",
-  "bg": "primary",
-  "color": "invertedTextColor"
+  "bg": "unset",
+  "color": "text",
+  "borderColor": "primary",
+  "borderWidth": "1px"
 }
 ```
 
 Where:
 
 - `corner` comes from the parent
-- `bg` overrides the parent (was 'background' not is 'primary')
-- `color` is added by the variant
+- `bg` overrides the parent (was 'primary', now is 'unset')
+- `color`,`borderColor` and `borderWidth` are added by the variant
 
 Common use cases for variations of a component could be:
 
-- Variations of Buttons, for example `success`, `danger`, `cancel`, `submit` and so on...
+- Variations of Buttons, for example `solid`, `outlined`, `round` and so on...
 - Typographies for example a variant for `titles`, `paragraphs`, `captions` or `links`
 - Different flex direction for a container like `row` and `column`
-- Variations of Inputs to stylize them in case of `errors`, `loading`, or `missing values`.
 
 :::info Notice
 Notice that a variant can re-define or add any configuration that can be define in the parent one, like `tag`,
 `props`, `style` and `meta` but NOT `variants`! In fact, a variant **cannot have other variants itself**!
 :::
+
+## Understanding states
+
+The state is useful when we need to define a variation of a base component style or of a variant style based on the specific state of the component. 
+
+Unlike the variant, the state works only on the level when it has been declared, so, if a variant re-declare a state that is already declared on the base component those 2 states will not affect each others:
+
+
+For example the given style:
+
+```json
+{
+  "Button": {
+    "tag": "button",
+    "style": {
+      "bg": "primary",
+      "corner": "m",
+      "color": "invertedTextColor"
+    },
+    "states": {
+      "danger": {
+        "bg": "danger"
+      }
+    },
+    "variants": {
+      "outlined": {
+        "style": {
+          "bg": "unset",
+          "borderColor": "primary",
+          "borderWidth": "1px",
+          "color": "text",
+        },
+        "states": {
+          "danger": {
+            "borderColor": "danger"
+          }
+        }
+      },
+    },
+  },
+};
+```
+
+for the given definition `{ component: 'Button', state: 'danger' }` will return this style:
+
+```json
+ {
+    "corner": "m",
+    "bg": "danger",
+    "color": "invertedteTextColor",
+ }
+```
+
+Where:
+
+- `corner` and `color` comes from the parent
+- `bg` comes from the state and override the default value (was 'primary', now is 'orange')
+
+
+for the given definition `{ component: 'Button', variant: 'outlined', state: 'danger' }` will return this style:
+
+```json
+ {
+    "corner": "m",
+    "bg": "unset",
+    "color": "text",
+    "borderWidth": "1px",
+    "borderColor": "danger",
+ }
+```
+
+Where:
+
+- `corner` comes from the base component style
+- `bg`, `color` and `borderWidth` comes from the variant style and override the default values
+- `borderColor` comes from the danger state, declared at the variant level
+
+As you can see, the `danger` style, declared at the component root level, is ignored when the `variant` is declared 
+
+
+Common use cases for the state of a component could be:
+
+States of Buttons or Inputs, for example, `success`, `danger`, `warning`, or `disabled`.
+- Typographies for example a state for `hilighted`, `cancelled` or `error`, 
+
 
 ## The Meta attribute
 
@@ -209,7 +364,7 @@ in your documentation, Morfeo uses them inside the [Web Extension](../Features/w
         description: "Input component, should used inside forms. Use the variant `error` in case of invalid values.",
         tags: ['form', 'input'],
         devtoolConfig: {
-          // Inside the web extension the card the contains this component
+          // Inside the web extension the card that contains this component
           // will have a `gray.dark` background color
           // highlight-start
           background: 'gray.dark'

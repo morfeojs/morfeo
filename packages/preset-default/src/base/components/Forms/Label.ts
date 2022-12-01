@@ -12,11 +12,13 @@ export const Label: ComponentConfig<LabelVariant> = {
     lineHeight: 'none',
     mb: '2xs',
   },
+  states: {},
   variants: {
     small: {
       style: {
         fontSize: 'xs',
       },
+      states: {},
     },
   },
 };

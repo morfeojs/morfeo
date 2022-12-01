@@ -21,6 +21,7 @@ export const Grid: ComponentConfig<GridVariant> = {
     componentName: 'Box',
     variant: 'row',
   },
+  states: {},
   variants: {
     item: {
       style: {
@@ -32,6 +33,7 @@ export const Grid: ComponentConfig<GridVariant> = {
           lg: '25',
         },
       },
+      states: {},
     },
     'item.1': {
       style: {
@@ -43,6 +45,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         },
         width: '8.3%' as Size,
       },
+      states: {},
     },
     'item.2': {
       style: {
@@ -50,6 +53,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         variant: 'item.1',
         width: '16.6%' as Size,
       },
+      states: {},
     },
     'item.3': {
       style: {
@@ -57,6 +61,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         variant: 'item.1',
         width: '25%' as Size,
       },
+      states: {},
     },
     'item.4': {
       style: {
@@ -64,6 +69,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         variant: 'item.1',
         width: '33.3%' as Size,
       },
+      states: {},
     },
     'item.5': {
       style: {
@@ -71,6 +77,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         variant: 'item.1',
         width: '41.6%' as Size,
       },
+      states: {},
     },
     'item.6': {
       style: {
@@ -78,6 +85,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         variant: 'item.1',
         width: '50%' as Size,
       },
+      states: {},
     },
     'item.7': {
       style: {
@@ -86,6 +94,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         p: '2xs',
         minWidth: '58.3%' as Size,
       },
+      states: {},
     },
     'item.8': {
       style: {
@@ -93,6 +102,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         variant: 'item.1',
         minWidth: '66.6%' as Size,
       },
+      states: {},
     },
     'item.9': {
       style: {
@@ -100,6 +110,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         variant: 'item.1',
         minWidth: '75',
       },
+      states: {},
     },
     'item.10': {
       style: {
@@ -107,6 +118,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         variant: 'item.1',
         minWidth: '83.3%' as Size,
       },
+      states: {},
     },
     'item.11': {
       style: {
@@ -114,6 +126,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         variant: 'item.1',
         minWidth: '91.6%' as Size,
       },
+      states: {},
     },
     'item.12': {
       style: {
@@ -121,6 +134,7 @@ export const Grid: ComponentConfig<GridVariant> = {
         variant: 'item.1',
         minWidth: '100%' as Size,
       },
+      states: {},
     },
   },
   meta: {

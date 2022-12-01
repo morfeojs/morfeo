@@ -162,6 +162,35 @@ export default {
         },
       },
     },
+    ComponentWithStates: {
+      style: {
+        color: 'text',
+      },
+      states: {
+        error: {
+          color: 'error',
+        },
+        success: {
+          color: 'success',
+        },
+      },
+      variants: {
+        outlined: {
+          style: { border: 'strong' },
+          states: {
+            error: {
+              borderColor: 'error',
+            },
+            success: {
+              borderColor: 'success',
+            },
+          },
+        },
+        filled: {
+          style: { bg: 'primary' },
+        },
+      },
+    },
     Custom: {
       style: {
         bg: 'primary',

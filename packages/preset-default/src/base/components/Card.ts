@@ -26,6 +26,7 @@ export const Card: ComponentConfig<CardVariant> = {
     border: 'none',
     position: 'relative',
   },
+  states: {},
   variants: {
     hoverable: {
       style: {
@@ -36,30 +37,35 @@ export const Card: ComponentConfig<CardVariant> = {
           shadow: 'strong',
         },
       },
+      states: {},
     },
     primary: {
       style: {
         bg: 'primary',
         color: 'white',
       },
+      states: {},
     },
     warning: {
       style: {
         bg: 'warning',
         color: 'white',
       },
+      states: {},
     },
     error: {
       style: {
         bg: 'error',
         color: 'white',
       },
+      states: {},
     },
     success: {
       style: {
         bg: 'success',
         color: 'white',
       },
+      states: {},
     },
     basic: {
       style: {
@@ -70,6 +76,7 @@ export const Card: ComponentConfig<CardVariant> = {
           background: 'gray.lightest',
         },
       },
+      states: {},
     },
     outlined: {
       style: {
@@ -78,6 +85,7 @@ export const Card: ComponentConfig<CardVariant> = {
         border: 'thin',
         shadow: 'none',
       },
+      states: {},
       meta: {
         devtoolConfig: {
           background: 'white',
@@ -91,6 +99,7 @@ export const Card: ComponentConfig<CardVariant> = {
         borderColor: 'primary',
         shadow: 'none',
       },
+      states: {},
     },
     'outlined.warning': {
       style: {
@@ -99,6 +108,7 @@ export const Card: ComponentConfig<CardVariant> = {
         borderColor: 'warning',
         shadow: 'none',
       },
+      states: {},
     },
     'outlined.error': {
       style: {
@@ -107,6 +117,7 @@ export const Card: ComponentConfig<CardVariant> = {
         borderColor: 'error',
         shadow: 'none',
       },
+      states: {},
     },
     'outlined.success': {
       style: {
@@ -115,6 +126,7 @@ export const Card: ComponentConfig<CardVariant> = {
         borderColor: 'success',
         shadow: 'none',
       },
+      states: {},
     },
   },
   meta: {

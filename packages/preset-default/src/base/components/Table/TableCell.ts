@@ -5,5 +5,6 @@ export const TableCell: ComponentConfig = {
   style: {
     p: 'xs',
   },
+  states: {},
   variants: {},
 };

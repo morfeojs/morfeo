@@ -4,6 +4,7 @@ type FooterVariant = 'primary';
 
 export const Footer: ComponentConfig<FooterVariant> = {
   tag: 'footer',
+  states: {},
   style: {
     componentName: 'Box',
     width: '100',
@@ -23,6 +24,7 @@ export const Footer: ComponentConfig<FooterVariant> = {
         bg: 'primary',
         color: 'white',
       },
+      states: {},
     },
   },
   meta: {

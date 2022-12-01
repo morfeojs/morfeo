@@ -4,6 +4,7 @@ type ContainerVariant = 'fluid' | 'noGutter' | 'gridGutter';
 
 export const Container: ComponentConfig<ContainerVariant> = {
   tag: 'div',
+  states: {},
   style: {
     componentName: 'Box',
     width: {
@@ -25,11 +26,13 @@ export const Container: ComponentConfig<ContainerVariant> = {
       style: {
         width: '100',
       },
+      states: {},
     },
     noGutter: {
       style: {
         px: 'none',
       },
+      states: {},
     },
     gridGutter: {
       style: {
@@ -40,6 +43,7 @@ export const Container: ComponentConfig<ContainerVariant> = {
           lg: 'none',
         },
       },
+      states: {},
     },
   },
   meta: {

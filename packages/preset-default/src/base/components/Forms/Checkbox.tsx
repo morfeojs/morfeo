@@ -6,6 +6,7 @@ export const Checkbox: ComponentConfig = {
   props: {
     type: 'checkbox',
   } as any,
+  states: {},
   style: {
     size: 'xs',
     mr: 'xs'

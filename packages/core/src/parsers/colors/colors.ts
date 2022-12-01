@@ -40,7 +40,6 @@ export function parseColor({
     }
   }
 
-
   const color = theme.getValue('colors', value as Color);
 
   if (color && color.indexOf('$') === 0) {

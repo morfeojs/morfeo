@@ -1,10 +1,11 @@
 import { ReactNode, HTMLProps, createElement } from 'react';
-import { Style, Variant, Component, component } from '@morfeo/web';
+import { Style, Variant, Component, component, State } from '@morfeo/web';
 import { useClassName } from './useClassName';
 
 export type MorfeoComponentProps<T extends Component> = {
   style?: Style;
   variant?: Variant<T>;
+  state?: State<T>;
   children?: ReactNode;
   componentName: T;
 } & Omit<HTMLProps<HTMLElement>, 'style'>;
@@ -14,13 +15,14 @@ export function MorfeoComponent<T extends Component>({
   variant,
   children,
   componentName,
+  state,
   ...props
 }: MorfeoComponentProps<T>) {
   const {
     tag = 'div',
     props: componentProps,
     style: componentStyle,
-  } = component(componentName, variant).get();
+  } = component(componentName, variant, state).get();
 
   const baseClassName = useClassName({ ...componentStyle, ...style });
   const className = props.className
