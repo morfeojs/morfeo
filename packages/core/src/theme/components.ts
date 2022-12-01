@@ -31,7 +31,11 @@ function get<C extends Component>({
 }) {
   const config = theme.getValue('components', name);
 
-  if (!variant || !config) {
+  if (!config) {
+    return config;
+  }
+
+  if (!variant) {
     if (state) {
       return {
         ...config,
