@@ -1,4 +1,4 @@
-import { Theme } from '@morfeo/spec';
+import { Style, Theme } from '@morfeo/spec';
 import { parsers } from './parsers';
 import { theme } from './theme';
 import { deepMerge } from './utils';
@@ -126,7 +126,16 @@ function createMorfeo() {
     theme.reset();
   }
 
+  function parse<Keys extends string>(
+    _: Record<Keys, Style>,
+  ): () => Record<Keys, string> {
+    throw new Error(
+      'Error: parse should never be executed runtime, please be sure to transpile your code with @morfeo/babel',
+    );
+  }
+
   const instance = Object.freeze({
+    parse,
     resolve,
     setTheme,
     getTheme,
