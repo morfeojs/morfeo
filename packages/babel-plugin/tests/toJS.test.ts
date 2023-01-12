@@ -1,5 +1,5 @@
 import { toJS } from '../src/toJS';
-import { Expression, isObjectMethod, ObjectExpression } from '@babel/types';
+import { Expression, ObjectExpression } from '@babel/types';
 
 describe('toJS', () => {
   it('should convert a simple object expression into a valid js object', () => {
