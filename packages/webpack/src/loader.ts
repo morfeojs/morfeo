@@ -13,7 +13,7 @@ export default function morfeoLoader(
 ) {
   const options = this.getOptions();
 
-  if (!input.includes('@morfeo/core') && !input.includes('morfeo.parse')) {
+  if (!input.includes('@morfeo/core') || !input.includes('morfeo.parse')) {
     return this.callback(null, input, inputSourceMap!);
   }
 
@@ -30,7 +30,7 @@ export default function morfeoLoader(
     });
 
     // @ts-ignore
-    const css = result?.metadata.morfeo;
+    const css = result!.metadata.morfeo;
     let importExtractedCss: string = '';
 
     if (css) {
@@ -41,8 +41,8 @@ export default function morfeoLoader(
 
     return this.callback(
       null,
-      result?.code! + importExtractedCss,
-      result?.map!,
+      result!.code! + importExtractedCss,
+      result!.map!,
     );
   } catch (e) {
     return this.callback(e as Error, input, inputSourceMap!);
