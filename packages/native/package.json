@@ -26,11 +26,11 @@
   },
   "dependencies": {
     "@morfeo/core": "^0.7.0",
-    "@types/react-native": "^0.70.0"
+    "@types/react-native": "^0.71.0"
   },
   "peerDependencies": {
     "react": "18.2.0",
-    "react-native": "^0.68.2 || ^0.69.0 || ^0.70.0"
+    "react-native": "^0.68.2 || ^0.69.0 || ^0.70.0 || ^0.71.0"
   },
   "publishConfig": {
     "access": "public"
