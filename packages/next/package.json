@@ -38,7 +38,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/morfeojs/morfeo",
-    "directory": "packages/babel"
+    "directory": "packages/next"
   },
   "homepage": "https://morfeo.dev",
   "bugs": {

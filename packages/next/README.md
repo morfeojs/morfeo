@@ -1,4 +1,4 @@
-# @morfeo/babel
+# @morfeo/next
 
 ![Morfeo logo](https://morfeo.dev/img/morfeo.png)
 

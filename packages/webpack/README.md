@@ -1,4 +1,4 @@
-# @morfeo/babel
+# @morfeo/webpack
 
 ![Morfeo logo](https://morfeo.dev/img/morfeo.png)
 
