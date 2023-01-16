@@ -14,7 +14,7 @@ export interface Sizes {
 export type Size = keyof Sizes;
 
 type BaseSizeProps = {
-  [K in typeof sizesMap[number]]: Size;
+  [K in (typeof sizesMap)[number]]: Size;
 };
 
 export interface SizeProps extends BaseSizeProps {}

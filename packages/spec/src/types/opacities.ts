@@ -10,7 +10,7 @@ export interface Opacities {
 export type Opacity = keyof Opacities;
 
 type BaseOpacityProps = {
-  [K in typeof opacitiesMap[number]]: Opacity;
+  [K in (typeof opacitiesMap)[number]]: Opacity;
 };
 
 export interface OpacityProps extends BaseOpacityProps {}

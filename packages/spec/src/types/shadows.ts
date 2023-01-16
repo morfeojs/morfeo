@@ -24,7 +24,7 @@ export interface Shadows {
 export type Shadow = keyof Shadows;
 
 type BaseShadowProps = {
-  [K in typeof shadowsMap[number]]: Shadow;
+  [K in (typeof shadowsMap)[number]]: Shadow;
 };
 
 export interface ShadowProps extends BaseShadowProps {}
