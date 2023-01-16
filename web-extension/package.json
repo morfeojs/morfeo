@@ -171,7 +171,7 @@
     "@morfeo/cli": "^0.7.0",
     "@types/prismjs": "1.26.0",
     "@types/react-transition-group": "4.4.5",
-    "@types/webextension-polyfill": "0.9.2",
+    "@types/webextension-polyfill": "0.10.0",
     "chrome-webstore-upload": "1.0.0",
     "zip-folder": "1.0.0"
   },
