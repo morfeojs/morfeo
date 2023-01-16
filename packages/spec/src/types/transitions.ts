@@ -10,7 +10,7 @@ export interface Transitions {
 export type Transition = keyof Transitions;
 
 type BaseTransitionProps = {
-  [K in typeof transitionsMap[number]]: Transition;
+  [K in (typeof transitionsMap)[number]]: Transition;
 };
 
 export interface TransitionProps extends BaseTransitionProps {}

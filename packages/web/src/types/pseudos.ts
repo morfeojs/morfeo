@@ -2,7 +2,7 @@ import { Style } from '@morfeo/core';
 import { pseudosProperties } from '../properties';
 
 type BasePseudoProperties = {
-  [K in typeof pseudosProperties[number]]: string;
+  [K in (typeof pseudosProperties)[number]]: string;
 };
 
 export interface PseudoProperties extends BasePseudoProperties {}

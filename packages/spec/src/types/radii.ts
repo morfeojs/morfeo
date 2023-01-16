@@ -15,7 +15,7 @@ export interface Radii {
 export type Radius = keyof Radii;
 
 type BaseRadiusProps = {
-  [K in typeof radiiMap[number]]: Radius;
+  [K in (typeof radiiMap)[number]]: Radius;
 };
 
 export interface RadiusProps extends BaseRadiusProps {}

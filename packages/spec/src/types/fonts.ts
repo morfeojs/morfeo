@@ -13,7 +13,7 @@ export interface Fonts {
 export type Font = keyof Fonts;
 
 type BaseFontProps = {
-  [K in typeof fontsMap[number]]: Font;
+  [K in (typeof fontsMap)[number]]: Font;
 };
 
 export interface FontProps extends BaseFontProps {}
@@ -36,7 +36,7 @@ export interface FontWeights {
 export type FontWeight = keyof FontWeights;
 
 type BaseFontWeightProps = {
-  [K in typeof fontWeightsMap[number]]: FontWeight;
+  [K in (typeof fontWeightsMap)[number]]: FontWeight;
 };
 
 export interface FontWeightProps extends BaseFontWeightProps {}
@@ -57,7 +57,7 @@ export interface FontSizes {
 export type FontSize = keyof FontSizes;
 
 type BaseFontSizeProps = {
-  [K in typeof fontSizesMap[number]]: FontSize;
+  [K in (typeof fontSizesMap)[number]]: FontSize;
 };
 
 export interface FontSizeProps extends BaseFontSizeProps {}
@@ -73,7 +73,7 @@ export interface LineHeights {
 export type LineHeight = keyof LineHeights;
 
 type BaseLineHeightProps = {
-  [K in typeof lineHeightsMap[number]]: LineHeight;
+  [K in (typeof lineHeightsMap)[number]]: LineHeight;
 };
 
 export interface LineHeightProps extends BaseLineHeightProps {}
@@ -89,7 +89,7 @@ export interface LetterSpacings {
 export type LetterSpacing = keyof LetterSpacings;
 
 type BaseLetterSpacingProps = {
-  [K in typeof letterSpacingsMap[number]]: LetterSpacing;
+  [K in (typeof letterSpacingsMap)[number]]: LetterSpacing;
 };
 
 export interface LetterSpacingProps extends BaseLetterSpacingProps {}

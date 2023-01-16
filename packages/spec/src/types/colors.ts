@@ -17,7 +17,7 @@ export interface Colors {
 export type Color = keyof Colors;
 
 type BaseColorProps = {
-  [K in typeof colorsMap[number]]: Color;
+  [K in (typeof colorsMap)[number]]: Color;
 };
 
 export interface ColorProps extends BaseColorProps {}

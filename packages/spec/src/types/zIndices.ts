@@ -13,7 +13,7 @@ export interface ZIndices {
 export type ZIndex = keyof ZIndices;
 
 type BaseZIndexProps = {
-  [K in typeof zIndicesMap[number]]: ZIndex;
+  [K in (typeof zIndicesMap)[number]]: ZIndex;
 };
 
 export interface ZIndexProps extends BaseZIndexProps {}

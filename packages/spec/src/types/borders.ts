@@ -15,7 +15,7 @@ export interface BorderWidths {
 export type BorderWidth = keyof BorderWidths;
 
 type BaseBorderWidthProps = {
-  [K in typeof borderWidthsMap[number]]: BorderWidth;
+  [K in (typeof borderWidthsMap)[number]]: BorderWidth;
 };
 
 export interface BorderWidthProps extends BaseBorderWidthProps {}
@@ -35,7 +35,7 @@ export interface BorderStyles {
 export type BorderStyle = keyof BorderStyles;
 
 type BaseBorderStyleProps = {
-  [K in typeof borderStylesMap[number]]: BorderWidth;
+  [K in (typeof borderStylesMap)[number]]: BorderWidth;
 };
 
 export interface BorderStyleProps extends BaseBorderStyleProps {}
@@ -58,7 +58,7 @@ export interface Borders {
 export type Border = keyof Borders;
 
 type BaseBorderProps = {
-  [K in typeof bordersMap[number]]: Border;
+  [K in (typeof bordersMap)[number]]: Border;
 };
 
 export interface BorderProps extends BaseBorderProps {}

@@ -14,7 +14,7 @@ export interface Spacings {
 export type Spacing = keyof Spacings;
 
 type BaseSpacingProps = {
-  [K in typeof spacingsMap[number]]: Spacing;
+  [K in (typeof spacingsMap)[number]]: Spacing;
 };
 
 export interface SpacingProps extends BaseSpacingProps {}

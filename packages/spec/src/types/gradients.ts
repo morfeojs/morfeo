@@ -34,7 +34,7 @@ export interface Gradients {
 export type Gradient = keyof Gradients;
 
 type BaseGradientProps = {
-  [K in typeof gradientsMap[number]]: Gradient;
+  [K in (typeof gradientsMap)[number]]: Gradient;
 };
 
 export interface GradientProps extends BaseGradientProps {}
