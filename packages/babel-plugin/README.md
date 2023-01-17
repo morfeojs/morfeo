@@ -28,3 +28,7 @@ Once the plugin is installed you can add it the plugins in your babel configurat
   "plugins": ["list", "of", "your", "other", "plugins", "@morfeo/babel-plugin"],
 }
 ```
+
+:warning: Warning
+
+> You'll probably never use _directly_ `@morfeo/babel-plugin`, instead, you'll more likely to use [@morfeo/webpack](https://github.com/morfeojs/morfeo/tree/main/packages/webpack), that  uses this package internally.
