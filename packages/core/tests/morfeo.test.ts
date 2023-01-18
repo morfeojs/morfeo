@@ -88,4 +88,10 @@ describe('morfeo', () => {
       dark: DARK_THEME,
     });
   });
+
+  describe('morfeo.parse', () => {
+    it('should throw an exception in case `morfeo.parse` is executed', () => {
+      expect(() => morfeo.parse({})).toThrow();
+    });
+  });
 });

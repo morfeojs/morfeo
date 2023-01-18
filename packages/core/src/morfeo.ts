@@ -1,4 +1,4 @@
-import { Theme } from '@morfeo/spec';
+import { Style, Theme } from '@morfeo/spec';
 import { parsers } from './parsers';
 import { theme } from './theme';
 import { deepMerge } from './utils';
@@ -113,6 +113,15 @@ function createMorfeo() {
     return parsers.resolve(...params);
   }
 
+  function parse<Keys extends string>(
+    _styles: Record<Keys, Style>,
+  ): () => Record<Keys, string> {
+    throw new Error(
+      // TODO: Add link to documentation whenever it will be created
+      'Error: parse should never be executed at runtime, please be sure to transpile your code',
+    );
+  }
+
   /**
    * **DANGER**
    * This method will reset the internal state, erase the added themes and clean the current theme.
@@ -127,6 +136,7 @@ function createMorfeo() {
   }
 
   const instance = Object.freeze({
+    parse,
     resolve,
     setTheme,
     getTheme,

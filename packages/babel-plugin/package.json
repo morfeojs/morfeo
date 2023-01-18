@@ -1,0 +1,51 @@
+{
+  "name": "@morfeo/babel-plugin",
+  "author": {
+    "name": "Mauro Erta",
+    "email": "mauro@vlkstudio.com"
+  },
+  "private": false,
+  "version": "0.7.0",
+  "license": "MIT",
+  "main": "commonjs/index.js",
+  "module": "build/index.js",
+  "types": "build/index",
+  "typings": "build/index",
+  "keywords": [
+    "morfeo",
+    "morfeo-js",
+    "babel",
+    "build-time",
+    "css-in-js"
+  ],
+  "scripts": {
+    "build": "yarn build:esm && yarn build:commonjs",
+    "build:esm": "rimraf build && tsc",
+    "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@morfeo/jss": "^0.7.0"
+  },
+  "peerDependencies": {
+    "@babel/core": "7.20.5",
+    "@babel/types": "7.20.5",
+    "@babel/traverse": "7.20.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "build",
+    "commonjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morfeojs/morfeo",
+    "directory": "packages/babel-plugin"
+  },
+  "homepage": "https://morfeo.dev",
+  "bugs": {
+    "url": "https://github.com/morfeojs/morfeo/issues"
+  }
+}
