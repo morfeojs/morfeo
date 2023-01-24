@@ -46,7 +46,7 @@
     "next": "13.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.71.0"
+    "react-native": "0.71.1"
   },
   "devDependencies": {
     "@babel/preset-env": "7.20.2",
