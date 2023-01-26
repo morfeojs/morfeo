@@ -1,10 +1,10 @@
 import * as path from 'node:path';
 import * as babel from '@babel/core';
 import type { TransformOptions } from '@babel/core';
+import morfeoBabelPlugin from '@morfeo/babel-plugin';
 import type { LoaderContext } from 'webpack';
 import type { MorfeoWebpackPluginOptions } from './types';
-import { getCssPath } from './utils';
-import virtualModules from './virtualModules';
+import { MORFEO_CSS_PATH, writer } from './utils';
 
 export default function morfeoLoader(
   this: LoaderContext<MorfeoWebpackPluginOptions>,
@@ -22,7 +22,7 @@ export default function morfeoLoader(
 
     const result = babel.transform(input, {
       ...options.babel,
-      plugins: [...(options.babel.plugins || []), ['@morfeo/babel-plugin', {}]],
+      plugins: [...(options.babel.plugins || []), [morfeoBabelPlugin, {}]],
       inputSourceMap,
       sourceFileName: this.resourcePath,
       filename: path.basename(this.resourcePath),
@@ -31,17 +31,14 @@ export default function morfeoLoader(
 
     // @ts-ignore
     const css = result!.metadata.morfeo;
-    let importExtractedCss: string = '';
 
     if (css) {
-      const virtualFilePath = getCssPath(this, css);
-      virtualModules.write(this._compiler!, virtualFilePath, css);
-      importExtractedCss = `\nimport '${virtualFilePath}';`;
+      writer.write(css);
     }
 
     return this.callback(
       null,
-      result!.code! + importExtractedCss,
+      result!.code! + `\nimport '${MORFEO_CSS_PATH}';`,
       result!.map!,
     );
   } catch (e) {

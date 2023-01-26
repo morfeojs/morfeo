@@ -1,6 +1,6 @@
-import { CleanPlugin, Compiler } from 'webpack';
-import virtualModules from './virtualModules';
-import { MorfeoWebpackPluginOptions } from './types';
+import { CleanPlugin } from 'webpack';
+import type { Compiler } from 'webpack';
+import type { MorfeoWebpackPluginOptions } from './types';
 
 export class MorfeoWebpackPlugin extends CleanPlugin {
   loaderOptions: MorfeoWebpackPluginOptions;
@@ -10,8 +10,7 @@ export class MorfeoWebpackPlugin extends CleanPlugin {
     this.loaderOptions = options;
   }
 
-  apply(compiler: Compiler): void {
-    compiler.options.plugins.push(virtualModules.instance);
+  applyMorfeoLoader(compiler: Compiler) {
     compiler.options.module.rules.push({
       test: /\.(tsx|ts|js|jsx)$/,
       exclude: /node_modules/,
@@ -24,5 +23,9 @@ export class MorfeoWebpackPlugin extends CleanPlugin {
         },
       ],
     });
+  }
+
+  apply(compiler: Compiler) {
+    this.applyMorfeoLoader(compiler);
   }
 }

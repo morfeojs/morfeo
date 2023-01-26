@@ -1,6 +1,8 @@
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import { LoaderContext } from 'webpack';
 import morfeoLoader from '../src/loader';
-import virtualModules from '../src/virtualModules';
+import { MORFEO_CSS_PATH, writer } from '../src/utils';
 import { MorfeoWebpackPluginOptions } from '../src/types';
 
 let context: LoaderContext<MorfeoWebpackPluginOptions>;
@@ -14,7 +16,12 @@ jest.mock('@babel/core', () => ({
   })),
 }));
 
-const virtualModulesSpy = jest.spyOn(virtualModules, 'write');
+jest.mock('node:fs', () => ({
+  ...jest.requireActual('node:fs'),
+  appendFileSync: jest.fn(),
+}));
+
+const writerSpy = jest.spyOn(writer, 'write');
 
 describe('morfeoLoader', () => {
   beforeEach(() => {
@@ -30,6 +37,11 @@ describe('morfeoLoader', () => {
         plugin: jest.fn(),
       },
     };
+
+    if (fs.existsSync(MORFEO_CSS_PATH)) {
+      fs.rmSync(MORFEO_CSS_PATH);
+      fs.rmdirSync(path.dirname(MORFEO_CSS_PATH));
+    }
   });
 
   describe('when the code is not using morfeo', () => {
@@ -62,7 +74,7 @@ describe('morfeoLoader', () => {
   });
 
   describe('when morfeo is imported and the build time parser is used', () => {
-    it('should write the virtual css module and include it', () => {
+    it('should write the css module and include it', () => {
       const testCode = `
         import { morfeo } from "@morfeo/core";
         const useStyles = morfeo.parse({
@@ -75,11 +87,7 @@ describe('morfeoLoader', () => {
 
       morfeoLoader.bind(context)(testCode, null);
 
-      expect(virtualModulesSpy).toHaveBeenCalledWith(
-        context._compiler,
-        expect.anything(),
-        'some css',
-      );
+      expect(writerSpy).toHaveBeenCalledWith('some css');
     });
   });
 
@@ -97,7 +105,7 @@ describe('morfeoLoader', () => {
 
       const mockError = new Error('some exception');
 
-      virtualModulesSpy.mockImplementation(() => {
+      writerSpy.mockImplementation(() => {
         throw mockError;
       });
 
