@@ -25,7 +25,7 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/jss": "^0.7.0"
+    "@morfeo/web": "^0.7.0"
   },
   "peerDependencies": {
     "@babel/core": "7.20.12",
