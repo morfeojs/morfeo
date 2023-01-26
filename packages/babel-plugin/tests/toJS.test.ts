@@ -1,4 +1,4 @@
-import { toJS } from '../src/toJS';
+import { toJS } from '../src/utils';
 import { Expression, ObjectExpression } from '@babel/types';
 
 describe('toJS', () => {

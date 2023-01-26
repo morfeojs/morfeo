@@ -1,7 +1,6 @@
 import type { NodePath, Visitor } from '@babel/traverse';
 import type { CallExpression } from '@babel/types';
-import { getStyles } from '@morfeo/jss';
-import { toJS } from './toJS';
+import { toJS, getClassesAndCSS } from './utils';
 
 function isMorfeoParse(path: NodePath<CallExpression>) {
   const { callee } = path.node;
@@ -62,7 +61,7 @@ export default function getVisitor(): Visitor {
 
             const classNames = Object.keys(classesStyleObject);
 
-            const { classes, sheet } = getStyles(classesStyleObject);
+            const { classes, css } = getClassesAndCSS(classesStyleObject);
 
             const classesObject = classNames.reduce(
               (acc, curr) => `${acc}\n${curr}: "${classes[curr]}",`,
@@ -76,7 +75,7 @@ export default function getVisitor(): Visitor {
             if (!state.file.metadata.morfeo) {
               state.file.metadata.morfeo = '';
             }
-            state.file.metadata.morfeo += sheet.toString();
+            state.file.metadata.morfeo += css;
 
             callExpressionPath.replaceWithSourceString(newCode);
           },
