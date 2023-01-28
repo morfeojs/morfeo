@@ -45,27 +45,27 @@ describe('morfeoLoader', () => {
   });
 
   describe('when the code is not using morfeo', () => {
-    it('should not do any changes in case @morfeo/core is not imported', () => {
+    it('should not do any changes in case @morfeo/css is not imported', () => {
       const testCode = `const someVar = 'some string'`;
       morfeoLoader.bind(context)(testCode, null);
 
       expect(context.callback).toHaveBeenCalledWith(null, testCode, null);
     });
 
-    it('should not do any changes in case morfeo.parse is not used', () => {
+    it('should not do any changes in case "createUseClasses" is not used', () => {
       const testCode = `
-        import something from "@morfeo/core";
-        const someVar = 'some string'
+        import something from "@morfeo/css";
+        export const someVar = 'some string'
       `;
       morfeoLoader.bind(context)(testCode, null);
 
       expect(context.callback).toHaveBeenCalledWith(null, testCode, null);
     });
 
-    it('should not do any changes in case morfeo.parse is used but not imported', () => {
+    it('should not do any changes in case "createUseClasses" is used but not imported', () => {
       const testCode = `
         import something from "somewhere";
-        const useStyles = morfeo.parse({});
+        const useStyles = createUseClasses({});
       `;
       morfeoLoader.bind(context)(testCode, null);
 
@@ -73,11 +73,11 @@ describe('morfeoLoader', () => {
     });
   });
 
-  describe('when morfeo is imported and the build time parser is used', () => {
+  describe('when the createUseClasses function is imported and the build time parser is used', () => {
     it('should write the css module and include it', () => {
       const testCode = `
-        import { morfeo } from "@morfeo/core";
-        const useStyles = morfeo.parse({
+        import { createUseClasses } from "@morfeo/css";
+        const useStyles = createUseClasses({
           button: {
             bg: 'primary'
           }
@@ -94,8 +94,8 @@ describe('morfeoLoader', () => {
   describe('when some of the used modules throws an error', () => {
     it('should not to any change', () => {
       const testCode = `
-        import { morfeo } from "@morfeo/core";
-        const useStyles = morfeo.parse({
+        import { createUseClasses } from "@morfeo/css";
+        const useStyles = createUseClasses({
           button: {
             bg: 'primary'
           }

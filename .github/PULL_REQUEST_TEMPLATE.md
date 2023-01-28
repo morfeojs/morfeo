@@ -21,7 +21,7 @@
 - [ ] 👀 I have read the [CONTRIBUTING](https://github.com/morfeojs/morfeo/blob/main/CONTRIBUTING.md) doc
 - [ ] ✅ Lint and unit tests pass locally with my changes
 - [ ] 🧪 I have added tests that prove my fix is effective or that my feature works
-- [ ] 📚 I have added necessary documentation (if appropriate)
+- [ ] 📚 I have added the necessary documentation (if appropriate)
 - [ ] 🔀 Any dependent changes have been merged and published in downstream modules
 
 ## Further comments

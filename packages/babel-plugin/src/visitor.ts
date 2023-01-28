@@ -2,54 +2,24 @@ import type { NodePath, Visitor } from '@babel/traverse';
 import type { CallExpression } from '@babel/types';
 import { toJS, getClassesAndCSS } from './utils';
 
-function isMorfeoParse(path: NodePath<CallExpression>) {
-  const { callee } = path.node;
-
-  return (
-    // @ts-expect-error
-    callee.object?.name === 'morfeo' &&
-    // @ts-expect-error
-    callee.property.name === 'parse'
-  );
+function isCreateUseClasses(path: NodePath<CallExpression>) {
+  return path.get('callee').isIdentifier({
+    name: 'createUseClasses',
+  });
 }
 
 export default function getVisitor(): Visitor {
   return {
     ImportDeclaration(path) {
-      const imported = path.get('specifiers');
-
-      if (imported.length !== 1 || !imported[0].isImportSpecifier()) {
-        return;
+      if (path.node.source.value !== '@morfeo/css') {
+        return path.skip();
       }
 
-      const binding = path.scope.getBinding('morfeo');
-
-      if (!binding) {
-        return;
-      }
-
-      const { references, referencePaths } = binding;
-
-      if (references !== 1) {
-        return;
-      }
-
-      referencePaths.forEach(reference => {
-        if (
-          reference.parentPath &&
-          reference.parentPath.isMemberExpression() &&
-          reference.parentPath.get('property').isIdentifier({
-            name: 'parse',
-          }) &&
-          reference.parentPath.get('object').isIdentifier({ name: 'morfeo' })
-        ) {
-          path.remove();
-        }
-      });
+      path.remove();
     },
     CallExpression: {
       enter(callExpressionPath, state: any) {
-        if (!isMorfeoParse(callExpressionPath)) {
+        if (!isCreateUseClasses(callExpressionPath)) {
           return;
         }
 

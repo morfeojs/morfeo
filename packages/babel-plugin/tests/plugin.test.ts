@@ -19,8 +19,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should inject the css into the metadata', () => {
-    const result = transform(`import { morfeo } from "@morfeo/core";
-      export const useStyles = morfeo.parse({
+    const result = transform(`import { createUseClasses } from "@morfeo/css";
+      export const useStyles = createUseClasses({
         button: {
           bg: 'primary',
         },
@@ -33,8 +33,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should not inject the css into the metadata if it was previously generated', () => {
-    const testCode = `import { morfeo } from "@morfeo/core";
-    export const useStyles = morfeo.parse({
+    const testCode = `import { createUseClasses } from "@morfeo/css";
+    export const useStyles = createUseClasses({
       button: {
         color: 'primary',
       },
