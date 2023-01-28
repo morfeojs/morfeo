@@ -52,7 +52,7 @@ describe('morfeoLoader', () => {
       expect(context.callback).toHaveBeenCalledWith(null, testCode, null);
     });
 
-    it('should not do any changes in case css is not used', () => {
+    it('should not do any changes in case "createUseClasses" is not used', () => {
       const testCode = `
         import something from "@morfeo/css";
         export const someVar = 'some string'
