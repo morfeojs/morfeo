@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.8.0) (2023-01-28)
+
+**Note:** Version bump only for package @morfeo/example-svelte
+
+
+
+
+
 # 0.7.0 (2022-05-30)
 
 

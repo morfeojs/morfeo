@@ -5,7 +5,7 @@
     "email": "mauro@vlkstudio.com"
   },
   "private": false,
-  "version": "0.7.0",
+  "version": "0.8.0",
   "license": "MIT",
   "main": "commonjs/index.js",
   "module": "build/index.js",
@@ -24,12 +24,12 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/babel-plugin": "^0.7.0",
+    "@morfeo/babel-plugin": "^0.8.0",
     "loader-utils": "3.2.1"
   },
   "devDependencies": {
-    "webpack": "5.75.0",
-    "@types/loader-utils": "2.0.3"
+    "@types/loader-utils": "2.0.3",
+    "webpack": "5.75.0"
   },
   "peerDependencies": {
     "@babel/core": "7.20.12"

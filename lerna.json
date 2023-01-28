@@ -6,6 +6,6 @@
     "benchmarks",
     "web-extension"
   ],
-  "version": "0.7.0",
+  "version": "0.8.0",
   "npmClient": "yarn"
 }

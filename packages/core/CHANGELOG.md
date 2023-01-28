@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.8.0) (2023-01-28)
+
+
+### Bug Fixes
+
+* applied review suggestion ([4743e74](https://github.com/morfeojs/morfeo/commit/4743e743fbd8005191bc3fc6ca5ae7618cd013d6))
+* colors schemas typing ([09679b5](https://github.com/morfeojs/morfeo/commit/09679b58b371129030735b98beef8a4475cbe58f))
+* colors schemas typing ([08142ba](https://github.com/morfeojs/morfeo/commit/08142baebf6ebca992c0efbc72fed527a8ec7a9a))
+* linter ([b8bce8c](https://github.com/morfeojs/morfeo/commit/b8bce8cb536962f56ea57395a0f0e986d6d891da))
+* removed useless spread og object ([02504ab](https://github.com/morfeojs/morfeo/commit/02504abaf95eafdbc0a8fc2883f8ae18a465a918))
+* resolve MR comments ([979bff1](https://github.com/morfeojs/morfeo/commit/979bff194ff54470b8ceecbde43d10830c4eec2d))
+
+
+### Features
+
+* build time ([f62c3a1](https://github.com/morfeojs/morfeo/commit/f62c3a1e5c00eb1c1994b0d2bac13934b1a0802c))
+* color placeholders ([aa4be76](https://github.com/morfeojs/morfeo/commit/aa4be765f6a74afa8c8f705f0d0ead85ec4dbe1f))
+* colorSchemas feature ([f5bdb7b](https://github.com/morfeojs/morfeo/commit/f5bdb7b9b23bb6f75eb79a830570caa0f89f73d1))
+* introduced @morfeo/css package ([31fabdc](https://github.com/morfeojs/morfeo/commit/31fabdcdc49364219c2bc9686824e9fefd2e0492))
+* linting ([4e191da](https://github.com/morfeojs/morfeo/commit/4e191da2917e6fadc5742f48ce9eb34d066b0f15))
+* states feature ([835510b](https://github.com/morfeojs/morfeo/commit/835510ba575c95571c419c12cf45c8e5dec1a6ef))
+
+
+
+
+
 # 0.7.0 (2022-05-30)
 
 

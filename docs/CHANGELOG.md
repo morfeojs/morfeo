@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.8.0) (2023-01-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @svgr/webpack to v6.3.0 ([4ed347a](https://github.com/morfeojs/morfeo/commit/4ed347a8818f4d59ec925c3a7ed230f099c32077))
+* **deps:** update dependency @svgr/webpack to v6.3.1 ([74bfb9c](https://github.com/morfeojs/morfeo/commit/74bfb9c59739c2f8c20a5fdcffab0cb339ba750b))
+* **deps:** update dependency @svgr/webpack to v6.4.0 ([07fa5ce](https://github.com/morfeojs/morfeo/commit/07fa5ce50a3424ac94f9083d31dbad9e319b1ac0))
+* **deps:** update dependency @svgr/webpack to v6.5.0 ([0c4fd93](https://github.com/morfeojs/morfeo/commit/0c4fd93ec72f224d8cccdfe7883a559452820ff4))
+* **deps:** update dependency @svgr/webpack to v6.5.1 ([3225c49](https://github.com/morfeojs/morfeo/commit/3225c49e90809ef174e1bdc0c77320707d849c93))
+* **deps:** update dependency clsx to v1.2.0 ([df5f107](https://github.com/morfeojs/morfeo/commit/df5f107113e6fc28297125ca6b8b17b3fa450b5a))
+* **deps:** update dependency clsx to v1.2.1 ([c030e49](https://github.com/morfeojs/morfeo/commit/c030e49fc90ea5d6396289c0a69f912ba998d85f))
+* **deps:** update docusaurus monorepo to v2.0.0-beta.22 ([8b4de10](https://github.com/morfeojs/morfeo/commit/8b4de1033f1ea6774f9b890a2600265ff3cb16d0))
+* **deps:** update docusaurus monorepo to v2.0.0-rc.1 ([b2f1384](https://github.com/morfeojs/morfeo/commit/b2f1384aeac9dd208d7bea72108b22bc504b33e5))
+* **deps:** update docusaurus monorepo to v2.0.1 ([771eab9](https://github.com/morfeojs/morfeo/commit/771eab95c3552c4df9b7e05619e5f0809b89185d))
+* **deps:** update docusaurus monorepo to v2.1.0 ([e4fcc5c](https://github.com/morfeojs/morfeo/commit/e4fcc5cba33cd42e978796b1225858575370fa31))
+* **deps:** update docusaurus monorepo to v2.2.0 ([273351b](https://github.com/morfeojs/morfeo/commit/273351be11b11d697b88f0f08c51b49f25a8109c))
+* **docs:** removed unused import ([1b60485](https://github.com/morfeojs/morfeo/commit/1b60485be7de300fa40b5168aa92ec35401830ba))
+* resolve MR comments ([979bff1](https://github.com/morfeojs/morfeo/commit/979bff194ff54470b8ceecbde43d10830c4eec2d))
+* typo in documentation ([25471b6](https://github.com/morfeojs/morfeo/commit/25471b6812cc4ad9acb5066b40c729142e33e428))
+* typo on docs ([8ecb642](https://github.com/morfeojs/morfeo/commit/8ecb642609d147e7c857b51864dbbdb9cb15d5a6))
+
+
+### Features
+
+* color placeholders ([aa4be76](https://github.com/morfeojs/morfeo/commit/aa4be765f6a74afa8c8f705f0d0ead85ec4dbe1f))
+* colorSchemas feature ([f5bdb7b](https://github.com/morfeojs/morfeo/commit/f5bdb7b9b23bb6f75eb79a830570caa0f89f73d1))
+* states feature ([835510b](https://github.com/morfeojs/morfeo/commit/835510ba575c95571c419c12cf45c8e5dec1a6ef))
+* update @morfeo/react and @morfeo/svelt to support states ([ac79561](https://github.com/morfeojs/morfeo/commit/ac795616c69e0ced1dd0169a6203925685305869))
+
+
+
+
+
 # 0.7.0 (2022-05-30)
 
 
