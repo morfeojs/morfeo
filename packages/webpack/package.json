@@ -17,6 +17,7 @@
     "webpack"
   ],
   "scripts": {
+    "prebuild": "rimraf __static",
     "build": "yarn build:esm && yarn build:commonjs",
     "build:esm": "rimraf build && tsc",
     "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",

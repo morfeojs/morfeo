@@ -17,7 +17,7 @@ function transform(code: string, tsx: boolean = false) {
 }
 
 describe('visitor', () => {
-  it('should not do anything in case "@morfeo/core" is not imported', () => {
+  it('should not do anything in case "@morfeo/css" is not imported', () => {
     const testCode = `import { something } from "somewhere";
       const testVar = something();
     `;
@@ -26,27 +26,27 @@ describe('visitor', () => {
     expect(result?.code).toContain('const testVar = something();');
   });
 
-  describe('when "@morfeo/core" is imported', () => {
-    it('should not to anything in case morfeo.parse is not used', () => {
-      const testCode = `import { morfeo } from "@morfeo/core";
+  describe('when "@morfeo/css" is imported', () => {
+    it('should not to anything in case "createUseClasses" is not used', () => {
+      const testCode = `import { createUseClasses } from "@morfeo/css";
         const useStyles = () => {};
       `;
       const result = transform(testCode);
       expect(result?.code).toContain('const useStyles = () => {};');
     });
 
-    it('should replace morfeo.parse', () => {
-      const testCode = `import { morfeo } from "@morfeo/core";
-        const useStyles = morfeo.parse({});
+    it('should replace the "createUseClasses" function', () => {
+      const testCode = `import { createUseClasses } from "@morfeo/css";
+        const useStyles = createUseClasses({});
       `;
       const result = transform(testCode);
-      expect(result?.code).not.toContain('morfeo.parse');
+      expect(result?.code).not.toContain('createUseClasses');
     });
 
-    it('should replace morfeo.parse in jsx files if morfeo from "@morfeo/core" is imported', () => {
+    it('should replace the "createUseClasses" function in tsx files if morfeo from "@morfeo/css" is imported', () => {
       const testCode = `
-        import { morfeo } from "@morfeo/core";
-        const useStyles: Record<string, string> = morfeo.parse({ button: {} });
+        import { createUseClasses } from "@morfeo/css";
+        const useStyles: Record<string, string> = createUseClasses({ button: {} });
         const Button = () => {
           const classes = useStyles();
           return <button className={classes.button} />
@@ -55,15 +55,15 @@ describe('visitor', () => {
 
       const result = transform(testCode, true);
 
-      expect(result?.code).not.toContain('morfeo.parse');
+      expect(result?.code).not.toContain('createUseClasses');
     });
 
     describe('cleanup of the import', () => {
-      it('should remove the import in case only morfeo.parse is used', () => {
+      it('should remove the import of @morfeo/css', () => {
         const testCode = `
-          import { morfeo } from "@morfeo/core";
+          import { createUseClasses } from "@morfeo/css";
   
-          const useStyles = morfeo.parse({ button: {} });
+          const useStyles = createUseClasses({ button: {} });
   
           const Button = () => {
             const classes = useStyles();
@@ -73,45 +73,7 @@ describe('visitor', () => {
 
         const result = transform(testCode, true);
 
-        expect(result?.code).not.toContain('@morfeo/core');
-      });
-
-      it('should not remove the import in case something else other then morfeo is imported', () => {
-        const testCode = `
-          import { morfeo, theme } from "@morfeo/core";
-  
-          const useStyles = morfeo.parse({ button: {} });
-
-          theme.useTheme('dark')
-  
-          const Button = () => {
-            const classes = useStyles();
-            return <button className={classes.button} />
-          };
-        `;
-
-        const result = transform(testCode, true);
-
-        expect(result?.code).toContain('@morfeo/core');
-      });
-
-      it('should not remove the import in case something other methods of morfeo are used', () => {
-        const testCode = `
-          import { morfeo } from "@morfeo/core";
-  
-          const example = morfeo.useTheme('light');
-          
-          const useStyles = morfeo.parse({ button: {} });
-  
-          const Button = () => {
-            const classes = useStyles();
-            return <button className={classes.button} />
-          };
-        `;
-
-        const result = transform(testCode, true);
-
-        expect(result?.code).toContain('@morfeo/core');
+        expect(result?.code).not.toContain('@morfeo/css');
       });
     });
   });

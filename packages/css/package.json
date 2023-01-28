@@ -1,5 +1,5 @@
 {
-  "name": "@morfeo/next",
+  "name": "@morfeo/css",
   "author": {
     "name": "Mauro Erta",
     "email": "mauro@vlkstudio.com"
@@ -14,7 +14,10 @@
   "keywords": [
     "morfeo",
     "morfeo-js",
-    "nextjs"
+    "css",
+    "css-in-js",
+    "build-time",
+    "zero-run-time"
   ],
   "scripts": {
     "build": "yarn build:esm && yarn build:commonjs",
@@ -23,10 +26,7 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/webpack": "^0.7.0"
-  },
-  "peerDependencies": {
-    "next": "13.1.6"
+    "@morfeo/web": "^0.7.0"
   },
   "publishConfig": {
     "access": "public"
@@ -38,7 +38,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/morfeojs/morfeo",
-    "directory": "packages/next"
+    "directory": "packages/css"
   },
   "homepage": "https://morfeo.dev",
   "bugs": {

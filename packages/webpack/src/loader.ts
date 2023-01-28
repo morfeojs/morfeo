@@ -13,7 +13,7 @@ export default function morfeoLoader(
 ) {
   const options = this.getOptions();
 
-  if (!input.includes('@morfeo/core') || !input.includes('morfeo.parse')) {
+  if (!input.includes('@morfeo/css') || !input.includes('createUseClasses')) {
     return this.callback(null, input, inputSourceMap!);
   }
 
