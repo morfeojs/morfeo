@@ -1,11 +1,11 @@
 {
   "name": "@morfeo/app-web-extension",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "dependencies": {
     "@babel/core": "7.20.12",
-    "@morfeo/preset-default": "^0.7.0",
-    "@morfeo/react": "^0.7.0",
+    "@morfeo/preset-default": "^0.8.0",
+    "@morfeo/react": "^0.8.0",
     "@svgr/webpack": "6.5.1",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
@@ -168,7 +168,7 @@
     ]
   },
   "devDependencies": {
-    "@morfeo/cli": "^0.7.0",
+    "@morfeo/cli": "^0.8.0",
     "@types/prismjs": "1.26.0",
     "@types/react-transition-group": "4.4.5",
     "@types/webextension-polyfill": "0.10.0",

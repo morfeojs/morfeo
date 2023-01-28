@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.8.0) (2023-01-28)
+
+
+### Bug Fixes
+
+* fixed test theme slice ([14e46fc](https://github.com/morfeojs/morfeo/commit/14e46fc1496a3e53855dbb05d7e2a2828c96073a))
+* value from theme casted to string ([5866700](https://github.com/morfeojs/morfeo/commit/5866700e9cba7a88e42a2a439bf462703c7521d6))
+
+
+### Features
+
+* added states support to the CLI ([0f2993b](https://github.com/morfeojs/morfeo/commit/0f2993b4b5bf23ff2c87cf33bff188c617732254))
+
+
+
+
+
 # 0.7.0 (2022-05-30)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@morfeo/app-docs",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -19,9 +19,9 @@
     "@docusaurus/theme-live-codeblock": "2.2.0",
     "@docusaurus/theme-search-algolia": "2.2.0",
     "@mdx-js/react": "1.6.22",
-    "@morfeo/dev-tools": "^0.7.0",
-    "@morfeo/preset-default": "^0.7.0",
-    "@morfeo/react": "^0.7.0",
+    "@morfeo/dev-tools": "^0.8.0",
+    "@morfeo/preset-default": "^0.8.0",
+    "@morfeo/react": "^0.8.0",
     "@svgr/webpack": "6.5.1",
     "clsx": "1.2.1",
     "file-loader": "6.2.0",

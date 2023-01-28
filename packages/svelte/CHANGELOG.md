@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.8.0) (2023-01-28)
+
+
+### Bug Fixes
+
+* linting ([da733f3](https://github.com/morfeojs/morfeo/commit/da733f3172d676972306e16283818c2e2f08bbdb))
+* linting ([30b00c5](https://github.com/morfeojs/morfeo/commit/30b00c5de2643e54ae83e12b5ee58b7a30ef65eb))
+* restore fallback on getElementName ([1f1ce8d](https://github.com/morfeojs/morfeo/commit/1f1ce8d74977b9851855465a5fe31c8230e3a333))
+
+
+### Features
+
+* update @morfeo/react and @morfeo/svelt to support states ([ac79561](https://github.com/morfeojs/morfeo/commit/ac795616c69e0ced1dd0169a6203925685305869))
+
+
+
+
+
 # 0.7.0 (2022-05-30)
 
 
