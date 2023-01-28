@@ -1,4 +1,4 @@
-import { Style, Theme } from '@morfeo/spec';
+import { Theme } from '@morfeo/spec';
 import { parsers } from './parsers';
 import { theme } from './theme';
 import { deepMerge } from './utils';
