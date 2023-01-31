@@ -50,8 +50,66 @@ describe('parsers', () => {
     expect(allParsersAfterReset['custom']).not.toBeDefined();
   });
 
-  test('should return an the passed object if there is no parser for that property', () => {
-    const result = parsers.resolve({ custom: 'not found' } as any);
-    expect(result).toEqual({ custom: 'not found' });
+  describe('when there is no parser for a specific key', () => {
+    describe('if the value is not an object', () => {
+      test('should return the passed object if there is no parser for that property', () => {
+        // @ts-expect-error testing a wrong key behavior intentionally
+        const result = parsers.resolve({ custom: 'not found' });
+        expect(result).toEqual({ custom: 'not found' });
+      });
+    });
+
+    describe('if the value is an object', () => {
+      test('should call resolve for the value', () => {
+        const result = parsers.resolve({
+          // @ts-expect-error testing a wrong key behavior intentionally
+          custom: {
+            bg: 'primary',
+          },
+        });
+        expect(result).toEqual({
+          custom: {
+            backgroundColor: THEME.colors.primary,
+          },
+        });
+      });
+
+      describe('if the value is also a responsive value', () => {
+        beforeEach(() => {
+          theme.set({
+            ...THEME,
+            breakpoints: {
+              lg: '1000px',
+              md: '800px',
+              sm: '600px',
+              xs: '400px',
+            },
+          });
+        });
+
+        test('should inject the media queries', () => {
+          const result = parsers.resolve({
+            // @ts-expect-error
+            custom: {
+              bg: {
+                lg: 'primary',
+                md: 'secondary',
+              },
+            },
+          });
+
+          expect(result).toEqual({
+            custom: {
+              '@media (min-width: 1000px)': {
+                backgroundColor: THEME.colors.primary,
+              },
+              '@media (min-width: 600px) and (max-width: 800px)': {
+                backgroundColor: THEME.colors.secondary,
+              },
+            },
+          });
+        });
+      });
+    });
   });
 });

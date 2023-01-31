@@ -14,4 +14,14 @@ describe('generateClassName', () => {
 
     expect(className).toBe('');
   });
+
+  it('should be possible to generate styles for nested styles', () => {
+    const className = generateClassName({
+      '& p': {
+        bg: 'primary',
+      },
+    });
+
+    expect(className).toBe('p-bg-primary');
+  });
 });

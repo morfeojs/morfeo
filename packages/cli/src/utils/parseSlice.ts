@@ -1,4 +1,4 @@
-import { Theme, theme, parsers, ThemeKey } from '@morfeo/web';
+import { Theme, theme, parsers, ThemeKey, Style } from '@morfeo/web';
 import { paramCase } from 'change-case';
 import { SLICES_TO_BE_PARSED } from '../constants';
 
@@ -17,6 +17,7 @@ export function getCssValue<Key extends ThemeKey>(
     config => config.name === sliceName,
   );
   if (toBeParsed) {
+    // @ts-ignore
     const style = parsers.resolve({
       [toBeParsed.styleProp]: attribute,
     });

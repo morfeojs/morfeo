@@ -1,16 +1,13 @@
 import { Style, ResponsiveValue } from '@morfeo/core';
 import { Properties } from 'csstype';
-import { PseudoProperty } from './pseudos';
 
 type CssTypeProperties = Properties<string | number>;
 
 type WebStyle = {
-  [K in PseudoProperty]?: Style;
-} & {
   [K in keyof CssTypeProperties]:
     | CssTypeProperties[K]
     | ResponsiveValue<CssTypeProperties[K]>;
-};
+} & Record<`&${string}`, Style>;
 
 declare module '@morfeo/core' {
   export interface CustomStyle extends WebStyle {}
