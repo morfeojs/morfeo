@@ -36,8 +36,9 @@ export const BorderCard: React.FC<Props> = ({
     'colors',
     (isBorders ? themeValue.color : filters?.colors || '') as Color,
   );
+
   const style = useStyle({
-    [propertiesMap[mainSlice]]: detailKey as Border,
+    [propertiesMap[mainSlice] as any]: detailKey as Border,
   });
 
   const contrastRatio = useMemo(() => {
