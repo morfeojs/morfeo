@@ -20,4 +20,5 @@ export const Input: ComponentConfig = {
     tags: ['ui', 'form', 'input'],
     description: 'Input component',
   },
+  states: {},
 } as ComponentConfig;
