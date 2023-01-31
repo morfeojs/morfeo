@@ -24,4 +24,14 @@ describe('generateClassName', () => {
 
     expect(className).toBe('p-bg-primary');
   });
+
+  it('should convert symbols into plain text', () => {
+    const className = generateClassName({
+      '& div > p': {
+        bg: 'primary',
+      },
+    });
+
+    expect(className).toBe('divgrtrp-bg-primary');
+  });
 });
