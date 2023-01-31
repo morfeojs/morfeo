@@ -1,11 +1,12 @@
 import { BreakPoint, Theme, ThemeKey } from '@morfeo/spec';
-import { deepMerge } from '../utils';
+import { deepMerge, parseNumber } from '../utils';
 
 type ThemeListener = (theme: Theme) => void;
 
 export function createTheme() {
   let context: Theme = undefined as any;
   let listeners: Record<string | number, ThemeListener> = {};
+  const mediaQueriesCache = new Map<BreakPoint, string>();
 
   function get() {
     return context;
@@ -32,20 +33,57 @@ export function createTheme() {
     return false;
   }
 
-  function resolveMediaQuery(breakpoint: BreakPoint) {
-    const breakPoints = getSlice('breakpoints');
-    const mediaQueries = getSlice('mediaQueries');
-    let mediaQuery = mediaQueries[breakpoint];
-    if (!mediaQuery) {
-      return `@media (min-width: ${breakPoints[breakpoint]})`;
+  function setMediaQuery(breakpoint: BreakPoint, mediaQuery: string) {
+    mediaQueriesCache.set(breakpoint, mediaQuery);
+    return mediaQuery;
+  }
+
+  function resolveMediaQuery(breakpoint: BreakPoint): string {
+    if (mediaQueriesCache.has(breakpoint)) {
+      return mediaQueriesCache.get(breakpoint) as string;
     }
 
-    const breakPointsKey = Object.keys(breakPoints);
-    breakPointsKey.forEach(bp => {
-      mediaQuery = (mediaQuery as string).replace(`{{${bp}}}`, breakPoints[bp]);
-    });
+    const breakPoints = getSlice('breakpoints');
+    const mediaQueries = getSlice('mediaQueries');
+    const hasCustomMediaQuery = !!mediaQueries[breakpoint];
 
-    return mediaQuery;
+    const breakPointsKeys = Object.keys(breakPoints).sort(
+      (first, second) =>
+        parseNumber(breakPoints[first]) - parseNumber(breakPoints[second]),
+    );
+
+    if (!hasCustomMediaQuery) {
+      const isMax = breakpoint === breakPointsKeys[breakPointsKeys.length - 1];
+      const isMin = breakpoint === breakPointsKeys[0];
+      const currentIndex = breakPointsKeys.findIndex(bp => bp === breakpoint);
+
+      if (isMax) {
+        return setMediaQuery(
+          breakpoint,
+          `@media (min-width: ${breakPoints[breakPointsKeys[currentIndex]]})`,
+        );
+      }
+
+      if (isMin) {
+        return setMediaQuery(
+          breakpoint,
+          `@media (max-width: ${breakPoints[breakPointsKeys[currentIndex]]})`,
+        );
+      }
+
+      return setMediaQuery(
+        breakpoint,
+        `@media (min-width: ${
+          breakPoints[breakPointsKeys[currentIndex - 1]]
+        }) and (max-width: ${breakPoints[breakPointsKeys[currentIndex]]})`,
+      );
+    }
+
+    const mediaQuery = breakPointsKeys.reduce((acc, bp) => {
+      return acc.replace(`{{${bp}}}`, breakPoints[bp]);
+    }, mediaQueries[breakpoint] as string);
+
+    return setMediaQuery(breakpoint, mediaQuery);
   }
 
   function callListeners() {
@@ -73,6 +111,7 @@ export function createTheme() {
 
   function reset() {
     context = {} as Theme;
+    mediaQueriesCache.clear();
     callListeners();
   }
 

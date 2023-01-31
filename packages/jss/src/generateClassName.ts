@@ -6,7 +6,7 @@ function getClassNameGenerator() {
       return cache.get(string);
     }
 
-    const escaped = string.replace(/[^\w\s]/gi, '');
+    const escaped = string.replace(/[^\w\s-]/gi, '').trim();
     cache.set(string, escaped);
 
     return escaped;

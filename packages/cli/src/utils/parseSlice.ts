@@ -17,6 +17,7 @@ export function getCssValue<Key extends ThemeKey>(
     config => config.name === sliceName,
   );
   if (toBeParsed) {
+    // @ts-ignore
     const style = parsers.resolve({
       [toBeParsed.styleProp]: attribute,
     });

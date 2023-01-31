@@ -28,6 +28,6 @@ export function splitStyles(object: Style): Style[] {
       return [...acc, ...splitStyles(componentStyle)];
     }
 
-    return [...acc, { [key]: value }];
+    return [...acc, { [key]: value }] as Style[];
   }, []);
 }

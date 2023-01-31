@@ -1,10 +1,5 @@
 import { parsers, Property } from '@morfeo/core';
-import { pseudosParses, gradientParsers } from './parsers';
-import { pseudosProperties } from './properties';
-
-pseudosProperties.forEach(property => {
-  parsers.add(property as Property, pseudosParses[property] as any);
-});
+import { gradientParsers } from './parsers';
 
 Object.keys(gradientParsers).forEach(property => {
   parsers.add(property as Property, gradientParsers[property] as any);

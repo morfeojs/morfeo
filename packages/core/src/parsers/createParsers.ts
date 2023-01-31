@@ -112,19 +112,25 @@ export function createParsers() {
     style,
   }: ParserParams<typeof property>) {
     const parser: Parser<typeof property> = context[property];
+
+    if (theme.isResponsive(value)) {
+      return resolveResponsiveProperty({
+        property,
+        value,
+        style,
+      });
+    }
+
     if (value && parser) {
-      if (theme.isResponsive(value)) {
-        return resolveResponsiveProperty({
-          property,
-          value,
-          style,
-        });
-      }
       return parser({
         property,
         value,
         style,
       });
+    }
+
+    if (typeof value === 'object') {
+      return { [property]: resolve(value) };
     }
 
     return { [property]: value };
@@ -149,9 +155,11 @@ export function createParsers() {
         value,
         style,
       };
+
       const hasStyleUncachebleProps = !uncachebleProps.some(prop =>
-        Object.keys(style).includes(prop),
+        properties.includes(prop),
       );
+
       if (
         (typeof value === 'string' || typeof value === 'number') &&
         hasStyleUncachebleProps
@@ -159,10 +167,13 @@ export function createParsers() {
         if (cache[property] === undefined) {
           cache[property] = {};
         }
+
         if (cache[property][value] !== undefined) {
           return cache[property][value];
         }
+
         cache[property][value] = resolveProperty(params);
+
         return cache[property][value];
       }
 

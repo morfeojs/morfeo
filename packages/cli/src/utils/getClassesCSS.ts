@@ -35,6 +35,7 @@ function getClasses<Key extends ThemeKey>(
     const className = `${paramCase(`${property}-${String(value)}`)}`;
 
     const style = { [property]: value };
+    // @ts-ignore
     return generateCss(className, style);
   });
 

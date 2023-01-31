@@ -9,26 +9,23 @@ const defaultTheme: Theme = {
     m: '10px',
   },
   breakpoints: {
-    sm: '400px',
-    md: '600px',
     lg: '900px',
-  },
-  mediaQueries: {
-    md: '@media screen and (min-width: {{md}}) and (max-width: {{lg}})',
-    lg: '@media screen (min-width: {{lg}})',
+    md: '600px',
+    sm: '400px',
+    xs: '200px',
   },
 } as any;
 
+beforeEach(() => {
+  theme.set(defaultTheme);
+  theme.cleanUp();
+});
+
+afterEach(() => {
+  theme.reset();
+});
+
 describe('theme', () => {
-  beforeEach(() => {
-    theme.set(defaultTheme);
-    theme.cleanUp();
-  });
-
-  afterEach(() => {
-    theme.reset();
-  });
-
   test('should have been an instance of theme', () => {
     const result = theme.get();
     expect(result).toEqual(defaultTheme);
@@ -91,7 +88,9 @@ describe('theme', () => {
 
     expect(listener).not.toHaveBeenCalled();
   });
+});
 
+describe('media queries', () => {
   test('should recognize a response value', () => {
     expect(theme.isResponsive({ lg: 'any value' })).toBeTruthy();
   });
@@ -105,12 +104,39 @@ describe('theme', () => {
   });
 
   test('should get the mediaquery based on the breakpoint', () => {
+    theme.set({
+      ...defaultTheme,
+      mediaQueries: {
+        md: '@media screen and (min-width: {{md}}) and (max-width: {{lg}})',
+      },
+    });
+
     expect(theme.resolveMediaQuery('md')).toBe(
-      '@media screen and (min-width: 600px) and (max-width: 900px)',
+      `@media screen and (min-width: ${defaultTheme.breakpoints.md}) and (max-width: ${defaultTheme.breakpoints.lg})`,
     );
   });
 
   test("should get the default mediaquery if it's not specified inside the theme", () => {
-    expect(theme.resolveMediaQuery('sm')).toBe('@media (min-width: 400px)');
+    expect(theme.resolveMediaQuery('xs')).toBe(
+      `@media (max-width: ${defaultTheme.breakpoints.xs})`,
+    );
+  });
+
+  test('should set the media query with only max-width for the smallest breakpoint', () => {
+    expect(theme.resolveMediaQuery('xs')).toBe(
+      `@media (max-width: ${defaultTheme.breakpoints.xs})`,
+    );
+  });
+
+  test('should set the media query with only min-width for the highest breakpoint', () => {
+    expect(theme.resolveMediaQuery('lg')).toBe(
+      `@media (min-width: ${defaultTheme.breakpoints.lg})`,
+    );
+  });
+
+  test('should set both min-width and max-width for breakpoints that are not the highest or the smallest', () => {
+    expect(theme.resolveMediaQuery('md')).toBe(
+      `@media (min-width: ${defaultTheme.breakpoints.sm}) and (max-width: ${defaultTheme.breakpoints.md})`,
+    );
   });
 });
