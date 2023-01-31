@@ -1,12 +1,35 @@
 function getClassNameGenerator() {
   const cache = new Map<string, string>();
 
+  const symbolsMap = {
+    '*': 'all',
+    '.': 'dot',
+    ',': 'comma',
+    '>': 'grtr',
+    '+': 'plus',
+    '~': 'tld',
+    '[': 'sqropn',
+    ']': 'sqrclsd',
+    '^': 'crt',
+    $: 'dlr',
+    '|': 'or',
+    '(': 'opn',
+    ')': 'clsd',
+    '=': 'eql',
+  };
+
   function escapeString(string: string) {
     if (cache.has(string)) {
       return cache.get(string);
     }
 
-    const escaped = string.replace(/[^\w\s-]/gi, '').trim();
+    const replaced = Object.keys(symbolsMap).reduce(
+      (acc, symbol) =>
+        acc.replace(new RegExp('\\' + symbol, 'gi'), symbolsMap[symbol]),
+      string,
+    );
+
+    const escaped = replaced.replace(/[^\w-]/gi, '');
     cache.set(string, escaped);
 
     return escaped;
