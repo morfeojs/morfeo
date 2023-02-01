@@ -11,7 +11,7 @@ function merge<T>(oldState: T, newState?: T): T {
     return newState as T;
   }
 
-  const keys = Object.keys(newState);
+  const keys = Object.keys(newState as object);
 
   return keys.reduce(
     (acc, curr) => ({
