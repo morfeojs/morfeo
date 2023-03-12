@@ -16,7 +16,7 @@
     "change-case": "^4.1.2",
     "chokidar": "^3.5.3",
     "cli-ux": "^6.0.9",
-    "glob": "^8.0.3",
+    "glob": "^9.0.0",
     "yargs": "^17.5.1"
   },
   "keywords": [
