@@ -5,7 +5,7 @@ import {
   Style,
   Variant,
 } from '@morfeo/spec';
-import { deepMerge } from '../utils';
+import { deepMerge } from '@morfeo/utils';
 import theme from './theme';
 
 type ComponentStyle = Omit<ComponentConfig, 'variants'>;

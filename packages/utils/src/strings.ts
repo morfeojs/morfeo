@@ -39,14 +39,18 @@ function createHandler() {
     return `${escapeString(property)}-${escapeString(value)}`;
   }
 
-  function generator(style: Record<string, any> = {}) {
+  function isObject(arg: unknown): arg is Record<string, unknown> {
+    return typeof arg === 'object';
+  }
+
+  function generator(style: Record<string, unknown> = {}) {
     const className = Object.keys(style).reduce((acc, curr) => {
       let value = style[curr];
-      if (typeof value !== 'string') {
+      if (isObject(value)) {
         value = generator(value);
       }
       const prefix = acc ? '_' : '';
-      const ruleName = makeRuleName(curr, value);
+      const ruleName = makeRuleName(curr, value as string);
       return `${acc}${prefix}${ruleName}`;
     }, '');
 

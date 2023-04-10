@@ -24,7 +24,8 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/spec": "^0.8.0"
+    "@morfeo/spec": "^0.8.0",
+    "@morfeo/utils": "^0.8.0"
   },
   "peerDependencies": {
     "tslib": "^2.2.0"

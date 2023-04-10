@@ -1,5 +1,5 @@
 import { BreakPoint, Theme, ThemeKey } from '@morfeo/spec';
-import { deepMerge, parseNumber } from '../utils';
+import { deepMerge, parseNumber } from '@morfeo/utils';
 
 type ThemeListener = (theme: Theme) => void;
 

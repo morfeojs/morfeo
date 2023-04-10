@@ -4,9 +4,10 @@ describe('generateClassName', () => {
   it('should generate the class from the style object', () => {
     const className = generateClassName({
       bg: 'primary',
+      color: 'text',
     });
 
-    expect(className).toBe('bg-primary');
+    expect(className).toBe('bg-primary_color-text');
   });
 
   it('should return an empty string in case the style object is not provided', () => {
