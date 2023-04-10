@@ -7,22 +7,49 @@ import * as t from '@babel/types';
 
 const primitiveTypes = ['BooleanLiteral', 'StringLiteral', 'NumericLiteral'];
 
-export function toJS(node: t.Expression): any {
+type ToJSOptions = {
+  prefix?: string;
+  resolveFunction?: (params: {
+    key: string;
+    path: string;
+    node: t.ArrowFunctionExpression | t.FunctionExpression;
+  }) => string;
+};
+
+export function toJS(node: t.Expression, options: ToJSOptions = {}): any {
   function computeProps(props: t.ObjectExpression['properties']) {
     return (props as any[]).reduce((acc, prop) => {
+      const key = prop.key.name || prop.key.value;
+      const path = options.prefix ? `${options.prefix}.${key}` : key;
+
+      if (
+        options.resolveFunction &&
+        (t.isFunctionExpression(prop.value) ||
+          t.isArrowFunctionExpression(prop.value))
+      ) {
+        return {
+          ...acc,
+          [key]: options.resolveFunction({
+            key,
+            path,
+            node: prop.value,
+          }),
+        };
+      }
+
       if (prop.type === 'SpreadElement') {
         return {
           ...acc,
-          ...toJS(prop.argument),
+          ...toJS(prop.argument, { ...options, prefix: path }),
         };
       }
 
       if (prop.type !== 'ObjectMethod') {
-        const val = toJS(prop.value);
+        const val = toJS(prop.value, { ...options, prefix: path });
         if (val !== undefined) {
           return {
             ...acc,
-            [prop.key.name || prop.key.value]: val,
+            [key]: val,
           };
         }
       }
@@ -58,8 +85,8 @@ export function toJS(node: t.Expression): any {
       return [
         ...acc,
         ...(element.type === 'SpreadElement'
-          ? toJS(element.argument)
-          : [toJS(element)]),
+          ? toJS(element.argument, options)
+          : [toJS(element, options)]),
       ];
     }, [] as t.ArrayExpression[]);
   }

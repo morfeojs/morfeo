@@ -1,5 +1,7 @@
 import getVisitor from '../src/visitor';
 import * as babel from '@babel/core';
+import { morfeo } from '@morfeo/web';
+import { theme } from './theme';
 
 function transform(code: string, tsx: boolean = false) {
   return babel.transform(code, {
@@ -17,6 +19,21 @@ function transform(code: string, tsx: boolean = false) {
 }
 
 describe('visitor', () => {
+  beforeEach(() => {
+    morfeo.setTheme('default', theme);
+  });
+
+  it.only('should ', () => {
+    const testCode = `import { createUseComponent } from "@morfeo/css";
+      const useComponent = createUseComponent({
+        color: 'primary',
+        bg: props => props.bg
+      });
+    `;
+    const result = transform(testCode);
+    console.log(result?.code);
+  });
+
   it('should not do anything in case "@morfeo/css" is not imported', () => {
     const testCode = `import { something } from "somewhere";
       const testVar = something();

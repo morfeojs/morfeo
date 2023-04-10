@@ -19,6 +19,7 @@ import {
   letterSpacingsMap,
 } from './properties';
 import { createPropertiesMap } from './createPropertiesMap';
+import { ThemeKey } from './types';
 
 export const radiiProperties = createPropertiesMap(radiiMap, 'radii');
 export const fontProperties = createPropertiesMap(fontsMap, 'fonts');
@@ -68,6 +69,28 @@ export const colorSchemasProperties = createPropertiesMap(
   colorSchemasMap,
   'colorSchemas',
 );
+
+export const allPropertiesBySlice = {
+  fonts: fontsMap,
+  radii: radiiMap,
+  colors: colorsMap,
+  sizes: sizesMap,
+  shadows: shadowsMap,
+  borders: bordersMap,
+  fontSizes: fontSizesMap,
+  spacings: spacingsMap,
+  zIndices: zIndicesMap,
+  gradients: gradientsMap,
+  opacities: opacitiesMap,
+  fontWeights: fontWeightsMap,
+  lineHeights: lineHeightsMap,
+  transitions: transitionsMap,
+  borderWidths: borderWidthsMap,
+  borderStyles: borderStylesMap,
+  colorSchemas: colorSchemasMap,
+  letterSpacings: letterSpacingsMap,
+  components: ['componentName', 'variant', 'state'],
+};
 
 export const allProperties = {
   ...fontProperties,

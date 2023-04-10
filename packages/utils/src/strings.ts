@@ -1,4 +1,4 @@
-function getClassNameGenerator() {
+function createHandler() {
   const cache = new Map<string, string>();
 
   const symbolsMap = {
@@ -20,7 +20,7 @@ function getClassNameGenerator() {
 
   function escapeString(string: string) {
     if (cache.has(string)) {
-      return cache.get(string);
+      return cache.get(string) as string;
     }
 
     const replaced = Object.keys(symbolsMap).reduce(
@@ -53,7 +53,11 @@ function getClassNameGenerator() {
     return className;
   }
 
-  return generator;
+  return { generator, escapeString };
 }
 
-export const generateClassName = getClassNameGenerator();
+const handler = createHandler();
+
+export const escapeString = handler.escapeString;
+
+export const generateClassName = handler.generator;

@@ -9,7 +9,7 @@ export function withMorfeo(
   return {
     ...nextConfig,
     webpack(config, options) {
-      config.plugins.push(
+      config.plugins.unshift(
         new MorfeoWebpackPlugin({
           ...pluginOptions,
           babel: {

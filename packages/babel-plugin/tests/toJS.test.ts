@@ -1,7 +1,33 @@
 import { toJS } from '../src/utils';
 import { Expression, ObjectExpression } from '@babel/types';
+import * as babel from '@babel/core';
 
 describe('toJS', () => {
+  it.only('should convert a function into a string', () => {
+    const ast = babel.parseSync(`
+      const useButton = createUseComponent({
+        p: 'm',
+        m: props => props.margin,
+        bg: {
+          xs: props => props.bg.xs
+        }
+      })
+    `);
+
+    babel.traverse(ast, {
+      ObjectExpression(path) {
+        path.stop();
+        console.log(
+          toJS(path.node, {
+            resolveFunction(key) {
+              return `var(--${key.replace(/\./g, '-')})`;
+            },
+          }),
+        );
+      },
+    });
+  });
+
   it('should convert a simple object expression into a valid js object', () => {
     const objectExpression: ObjectExpression = {
       type: 'ObjectExpression',

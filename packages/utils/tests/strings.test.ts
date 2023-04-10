@@ -1,4 +1,4 @@
-import { generateClassName } from '../src/generateClassName';
+import { generateClassName } from '../src';
 
 describe('generateClassName', () => {
   it('should generate the class from the style object', () => {
