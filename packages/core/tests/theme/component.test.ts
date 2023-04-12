@@ -1,4 +1,5 @@
-import { theme, component, deepMerge } from '../../src';
+import { deepMerge } from '@morfeo/utils';
+import { theme, component } from '../../src';
 
 const defaultTheme = {
   colors: {

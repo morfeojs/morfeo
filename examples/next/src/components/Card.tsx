@@ -9,7 +9,7 @@ type CardProps = DetailedHTMLProps<
   bg?: CSSProperties['color'];
 };
 
-const useCard = createUseComponent({
+const getCardProps = createUseComponent({
   componentName: 'Card',
   p: 'm',
   transition: 'fast',
@@ -27,9 +27,9 @@ const useCard = createUseComponent({
   },
 });
 
-export const Card: React.FC<CardProps> = ({ direction, ...props }) => {
-  const { className, style } = useCard();
+const { className, style } = getCardProps();
 
+export const Card: React.FC<CardProps> = ({ direction, ...props }) => {
   return (
     <div
       {...props}

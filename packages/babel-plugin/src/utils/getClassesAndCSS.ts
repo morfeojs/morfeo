@@ -1,4 +1,4 @@
-import { getStyles, Style } from '@morfeo/web';
+import { Style } from '@morfeo/web';
 import { css } from './css';
 import { splitStyles } from './splitStyles';
 
@@ -10,14 +10,12 @@ export function getClassesAndCSS<K extends string>(
   const classes = classNames.reduce<Record<K, string>>((acc, className) => {
     const splittedStyles = splitStyles(classesStyleObject[className]);
 
-    const currentClass = splittedStyles.reduce((acc, style) => {
-      const { classes, sheet } = getStyles({
-        [className]: style,
-      });
+    const currentClass = splittedStyles.reduce<string>((acc, style) => {
+      const cssClass = css.add(style);
 
-      css.add(classes[className], sheet.toString());
+      const classes = `${acc} ${cssClass}`.trim();
 
-      return `${acc} ${classes[className]}`.trim();
+      return classes;
     }, '');
 
     return { ...acc, [className]: currentClass };

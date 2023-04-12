@@ -1,19 +1,20 @@
 /**
- * This code has been taken from: https://github.com/hypervillain/ast-to-literal
- * and converted to TypeScript.
- * Thanks to the author [Hugo Villain](https://github.com/hypervillain)
+ * This code has been taken from: https://github.com/hypervillain/ast-to-literal, converted to TypeScript and adapted to our use-case.
+ * Many thanks to the original author [Hugo Villain](https://github.com/hypervillain)
  */
 import * as t from '@babel/types';
 
 const primitiveTypes = ['BooleanLiteral', 'StringLiteral', 'NumericLiteral'];
 
+type ToJSResolveFunctionParams = {
+  path: string;
+  node: t.ArrowFunctionExpression | t.FunctionExpression;
+  property: string;
+};
+
 type ToJSOptions = {
   prefix?: string;
-  resolveFunction?: (params: {
-    key: string;
-    path: string;
-    node: t.ArrowFunctionExpression | t.FunctionExpression;
-  }) => string;
+  resolveFunction?: (params: ToJSResolveFunctionParams) => string;
 };
 
 export function toJS(node: t.Expression, options: ToJSOptions = {}): any {
@@ -30,9 +31,9 @@ export function toJS(node: t.Expression, options: ToJSOptions = {}): any {
         return {
           ...acc,
           [key]: options.resolveFunction({
-            key,
             path,
             node: prop.value,
+            property: key,
           }),
         };
       }

@@ -1,37 +1,12 @@
 import type { NodePath } from '@babel/traverse';
-import type { CallExpression, ObjectExpression } from '@babel/types';
-import generator from '@babel/generator';
+import type { CallExpression } from '@babel/types';
 import { component } from '@morfeo/web';
-import { escapeString } from '@morfeo/utils';
-import { toJS, getClassesAndCSS } from '../utils';
+import { getClassesAndCSS, getStyleObject, dynamicClasses } from '../utils';
 
 export function isCreateUseComponent(path: NodePath<CallExpression>) {
   return path.get('callee').isIdentifier({
     name: 'createUseComponent',
   });
-}
-
-function getStyleObject(node: ObjectExpression) {
-  const styleFunctions: { key: string; code: string }[] = [];
-
-  const styleObject = toJS(node, {
-    resolveFunction({ path, node }) {
-      const variable = `--${escapeString(path)}`;
-
-      const { code } = generator(node, {
-        compact: true,
-      });
-
-      styleFunctions.push({
-        key: variable,
-        code,
-      });
-
-      return `var(${variable})`;
-    },
-  });
-
-  return { styleObject, styleFunctions };
 }
 
 export function createUseComponentVisitor(
@@ -42,13 +17,38 @@ export function createUseComponentVisitor(
     ObjectExpression(path) {
       path.stop();
 
-      const { styleObject, styleFunctions } = getStyleObject(path.node);
+      const { styleObject, styleFunctions, themeableStyleFunctions } =
+        getStyleObject(path.node);
 
       const { classes, css } = getClassesAndCSS({
         component: styleObject,
       });
 
-      const className = classes.component;
+      if (!state.file.metadata.morfeo) {
+        state.file.metadata.morfeo = '';
+      }
+      state.file.metadata.morfeo += css;
+
+      const staticClassNames = classes.component.split(' ').map(c => `"${c}"`);
+      const dynamicClassNames = themeableStyleFunctions.reduce<string[]>(
+        (acc, themeableStyleFunction) => {
+          const { classes, css } = dynamicClasses.create(
+            themeableStyleFunction.property,
+            themeableStyleFunction.path,
+            styleObject,
+          );
+
+          state.file.metadata.morfeo += css;
+
+          return [
+            ...acc,
+            `${JSON.stringify(classes)}[(${
+              themeableStyleFunction.code
+            })(props)]`,
+          ];
+        },
+        [],
+      );
 
       const componentOptions = component(
         styleObject.componentName,
@@ -56,18 +56,24 @@ export function createUseComponentVisitor(
         styleObject.state,
       );
 
-      const propsFromTheme = componentOptions.getProps();
+      const propsFromTheme = componentOptions.getProps() || {};
 
       const style = styleFunctions.reduce(
-        (acc, { key, code }) => `${acc}"${key}": (${code})(props),`,
+        (acc, { variable, code }) => `${acc}"${variable}": (${code})(props),`,
         '',
       );
 
       const template = `function (props = {}) {
-        const componentProps = ${
-          propsFromTheme ? JSON.stringify(propsFromTheme) : '{}'
-        };
-        const className = [componentProps.className, "${className}", props.className].filter(Boolean).join(' ');
+        const componentProps = ${JSON.stringify(propsFromTheme)};
+        const className = [
+          props.className,
+          ...[${dynamicClassNames}],
+          ...[${staticClassNames}],
+          componentProps.className,
+        ]
+        .filter(Boolean)
+        .filter((className, index, array) => array.indexOf(className) === index).join(' ');
+
         const style = {
           ...componentProps.style,
           ...{${style}},
@@ -80,11 +86,6 @@ export function createUseComponentVisitor(
           style,
         };
       }`;
-
-      if (!state.file.metadata.morfeo) {
-        state.file.metadata.morfeo = '';
-      }
-      state.file.metadata.morfeo += css;
 
       callExpressionPath.replaceWithSourceString(template);
     },
