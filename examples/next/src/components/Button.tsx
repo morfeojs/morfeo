@@ -1,7 +1,6 @@
 'use client';
 
 import { ButtonHTMLAttributes, DetailedHTMLProps, useState } from 'react';
-import { createUseComponent } from '@morfeo/css';
 import { Montserrat } from 'next/font/google';
 import { useButton } from './Button.morfeo';
 

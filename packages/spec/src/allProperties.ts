@@ -20,7 +20,6 @@ import {
   letterSpacingsMap,
 } from './properties';
 import { createPropertiesMap } from './createPropertiesMap';
-import { ThemeKey } from './types';
 
 export const radiiProperties = createPropertiesMap(radiiMap, 'radii');
 export const fontProperties = createPropertiesMap(fontsMap, 'fonts');

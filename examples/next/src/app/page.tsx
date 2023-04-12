@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import { Metadata } from 'next';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import styles from './page.module.css';
-import { lightTheme } from '@morfeo/preset-default';
 
 export const metadata: Metadata = {
   title: 'Morfeo | NextJS',
