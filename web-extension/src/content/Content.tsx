@@ -1,7 +1,6 @@
 import browser from 'webextension-polyfill';
 import { MORFEO_DEVTOOLS } from '../_shared/constants';
 import { ActionType, MorfeoDevToolAction } from '../_shared/types';
-import { useEffect } from 'react';
 
 function sendTheme({ current, themes, fonts }: MorfeoDevToolAction) {
   browser.runtime

@@ -4,7 +4,7 @@ import { resetCss } from '@morfeo/react';
 import { getThemeFromAppAndInitMorfeo } from '../_shared/utils';
 import { MORFEO_DEVTOOL_PANEL_NAME, ASSETS_PATHS } from '../_shared/constants';
 import Devtool from './Devtool';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 resetCss();
 
