@@ -6,7 +6,7 @@ const EXTENSION_ID = process.env.WEB_EXTENSION_ID;
 const REFRESH_TOKEN = process.env.CHROME_WEB_REFRESH_TOKEN;
 const CLIENT_SECRET = process.env.CHROME_WEB_CLIENT_SECRET;
 
-const zipName = './build.zip';
+const zipName = './dist.zip';
 const extensionSource = fs.createReadStream(zipName);
 
 const webStore = createWebStore({

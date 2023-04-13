@@ -4,7 +4,6 @@ import { RouteName } from '../_shared/contexts';
 import { Layout } from '../_shared/template';
 import { Home, Slice, Credits, ComponentPage } from './pages';
 
-import '../index.css';
 import './style.css';
 
 const Devtool: React.FC = () => {

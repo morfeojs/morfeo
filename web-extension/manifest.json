@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_name__",
+  "version": "0.8.0",
+  "description": "__MSG_description__",
+  "author": "Mauro Erta",
+  "default_locale": "en",
+  "homepage_url": "https://morfeo.dev",
+  "icons": {
+    "16": "public/images/icon-16.png",
+    "48": "public/images/icon-48.png",
+    "128": "public/images/icon-128.png"
+  },
+  "devtools_page": "src/devtool/index.html",
+  "options_page": "src/options/index.html",
+  "action": {
+    "default_title": "morfeo",
+    "default_popup": "src/popup/index.html",
+    "default_icon": {
+      "16": "public/images/icon-16.png",
+      "48": "public/images/icon-48.png",
+      "128": "public/images/icon-128.png"
+    }
+  },
+  "externally_connectable": {
+    "ids": ["*"]
+  },
+  "permissions": ["activeTab", "clipboardWrite", "storage"],
+  "background": {
+    "service_worker": "src/background.ts"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "exclude_globs": ["https://www.google*"],
+      "js": ["src/content/index.tsx"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}

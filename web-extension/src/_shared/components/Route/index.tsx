@@ -60,11 +60,6 @@ export const Route: React.FC<Props> = ({ name, children }) => {
   );
 
   return (
-    /**
-     * Exception needed because of a different version of @types/react inside react-transition-group package.
-     * It should be removed as soon as react-transition-group will be updated.
-     */
-    // @ts-expect-error
     <Transition
       appear
       unmountOnExit

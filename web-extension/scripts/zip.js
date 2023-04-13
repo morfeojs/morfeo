@@ -1,7 +1,7 @@
 const zipFolder = require('zip-folder');
 
-const folderName = './build';
-const zipName = './build.zip';
+const folderName = './dist';
+const zipName = './dist.zip';
 
 function zip(folderName, zipName) {
   return new Promise((resolve, reject) => {
