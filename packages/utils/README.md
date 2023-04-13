@@ -12,4 +12,4 @@
 
 ## Hey Dev
 
-This package is not meant to be used, it's just a set of utility functions used internally by `@morfeo/*` packages.
+It's just a set of utility functions used internally by `@morfeo/*` packages, is not meant for public consumptions.

@@ -1,4 +1,5 @@
 import { Style, getStyles } from '@morfeo/web';
+import { splitStyles } from './splitStyles';
 
 function createCSS() {
   const cache = new Map<string, string>();
@@ -13,13 +14,19 @@ function createCSS() {
   }
 
   function add(style: Style) {
-    const { classes, sheet } = getStyles({
-      style,
-    });
-    const css = sheet.toString();
-    const className = classes.style;
+    const splittedStyles = splitStyles(style);
 
-    updateCache(className, css);
+    const className = splittedStyles.reduce<string>((acc, splittedStyle) => {
+      const { classes, sheet } = getStyles({
+        style: splittedStyle,
+      });
+
+      const css = sheet.toString();
+
+      updateCache(classes.style, css);
+
+      return `${acc} ${classes.style}`.trim();
+    }, '');
 
     return className;
   }

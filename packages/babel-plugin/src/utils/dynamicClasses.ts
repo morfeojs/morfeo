@@ -7,7 +7,6 @@ import {
   component,
 } from '@morfeo/web';
 import { css } from './css';
-import { getClassesAndCSS } from './getClassesAndCSS';
 
 function createDynamicClasses() {
   const propertyToSliceCache = new Map<Property, ThemeKey>();
@@ -51,35 +50,29 @@ function createDynamicClasses() {
     completeStyle: Style,
   ) {
     const componentInfo = component(completeStyle.componentName!);
-    let componentCss = '';
+
     const variantsOrStates =
       componentInfo.get()[property === 'variant' ? 'variants' : 'states'];
 
     const classes = Object.keys(variantsOrStates).reduce(
       (acc, variantOrState) => {
         const style = createStyleFromPath(path, variantOrState);
-        const { classes, css } = getClassesAndCSS({
-          className: {
-            componentName: completeStyle.componentName,
-            ...(completeStyle.state ? { state: completeStyle.state } : {}),
-            ...(completeStyle.variant
-              ? { variant: completeStyle.variant }
-              : {}),
-            ...style,
-          },
+        const className = css.add({
+          componentName: completeStyle.componentName,
+          ...(completeStyle.state ? { state: completeStyle.state } : {}),
+          ...(completeStyle.variant ? { variant: completeStyle.variant } : {}),
+          ...style,
         });
-
-        componentCss += css;
 
         return {
           ...acc,
-          [variantOrState]: classes.className,
+          [variantOrState]: className,
         };
       },
       {},
     );
 
-    return { classes, css: componentCss };
+    return classes;
   }
 
   function create(property: string, path: string, completeStyle: Style) {
@@ -99,7 +92,7 @@ function createDynamicClasses() {
       };
     }, {});
 
-    return { classes, css: css.get() };
+    return classes;
   }
 
   return { create };

@@ -1,7 +1,7 @@
 import type { NodePath } from '@babel/traverse';
 import type { CallExpression } from '@babel/types';
 import { component } from '@morfeo/web';
-import { getClassesAndCSS, getStyleObject, dynamicClasses } from '../utils';
+import { getStyleObject, dynamicClasses, css } from '../utils';
 
 export function isCreateUseComponent(path: NodePath<CallExpression>) {
   return path.get('callee').isIdentifier({
@@ -20,25 +20,18 @@ export function createUseComponentVisitor(
       const { styleObject, styleFunctions, themeableStyleFunctions } =
         getStyleObject(path.node);
 
-      const { classes, css } = getClassesAndCSS({
-        component: styleObject,
-      });
+      const staticClassNames = css
+        .add(styleObject)
+        .split(' ')
+        .map(c => `"${c}"`);
 
-      if (!state.file.metadata.morfeo) {
-        state.file.metadata.morfeo = '';
-      }
-      state.file.metadata.morfeo += css;
-
-      const staticClassNames = classes.component.split(' ').map(c => `"${c}"`);
       const dynamicClassNames = themeableStyleFunctions.reduce<string[]>(
         (acc, themeableStyleFunction) => {
-          const { classes, css } = dynamicClasses.create(
+          const classes = dynamicClasses.create(
             themeableStyleFunction.property,
             themeableStyleFunction.path,
             styleObject,
           );
-
-          state.file.metadata.morfeo += css;
 
           return [
             ...acc,
@@ -62,6 +55,11 @@ export function createUseComponentVisitor(
         (acc, { variable, code }) => `${acc}"${variable}": (${code})(props),`,
         '',
       );
+
+      if (!state.file.metadata.morfeo) {
+        state.file.metadata.morfeo = '';
+      }
+      state.file.metadata.morfeo += css.get();
 
       const template = `function (props = {}) {
         const componentProps = ${JSON.stringify(propsFromTheme)};
