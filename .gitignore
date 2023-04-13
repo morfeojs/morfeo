@@ -23,5 +23,8 @@ lerna-debug.log
 # Webstorm
 .idea
 
+# VScode
+.vscode
+
 # Flow
 flow-typed/npm

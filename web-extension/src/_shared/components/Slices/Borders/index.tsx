@@ -76,7 +76,7 @@ export const BordersSlice: React.FC<BorderSliceProps> = ({ mainSlice }) => {
 
   const keys = useMemo(() => {
     if (mainSlice === 'borders') {
-      return getSortedBorders((slice as Borders) || {});
+      return getSortedBorders((slice as any) || {});
     }
     return getSortedSliceValues(slice);
   }, [mainSlice, slice]);
