@@ -84,10 +84,9 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "yarn build:theme && node scripts/build.js",
-    "build:theme": "morfeo build --config=./.morfeorc.ts",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider node scripts/build.js",
     "start:firefox": "node scripts/start.js firefox",
-    "build:firefox": "node scripts/build.js firefox",
+    "build:firefox": "NODE_OPTIONS=--openssl-legacy-provider node scripts/build.js firefox",
     "test": "node scripts/test.js",
     "zip": "yarn build && node scripts/zip.js",
     "deploy": "yarn zip && node scripts/deploy.mjs"
@@ -168,7 +167,6 @@
     ]
   },
   "devDependencies": {
-    "@morfeo/cli": "^0.8.0",
     "@types/prismjs": "1.26.0",
     "@types/react-transition-group": "4.4.5",
     "@types/webextension-polyfill": "0.10.0",
