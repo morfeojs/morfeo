@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { morfeo, deepMerge, useCurrentTheme } from '@morfeo/react';
+import { deepMerge } from '@morfeo/utils';
+import { morfeo, useCurrentTheme } from '@morfeo/react';
 import { lightTheme } from '@morfeo/preset-default';
 
 const themes = {
