@@ -33,26 +33,26 @@ describe('visitor', () => {
   });
 
   describe('when "@morfeo/css" is imported', () => {
-    it('should not to anything in case "createUseComponent" is not used', () => {
-      const testCode = `import { createUseComponent } from "@morfeo/css";
+    it('should not to anything in case "createUseStyle" is not used', () => {
+      const testCode = `import { createUseStyle } from "@morfeo/css";
         const useStyles = () => {};
       `;
       const result = transform(testCode);
       expect(result?.code).toContain('const useStyles = () => {};');
     });
 
-    it('should replace the "createUseComponent" function', () => {
-      const testCode = `import { createUseComponent } from "@morfeo/css";
-        const useStyles = createUseComponent({});
+    it('should replace the "createUseStyle" function', () => {
+      const testCode = `import { createUseStyle } from "@morfeo/css";
+        const useStyles = createUseStyle({});
       `;
       const result = transform(testCode);
-      expect(result?.code).not.toContain('createUseComponent');
+      expect(result?.code).not.toContain('createUseStyle');
     });
 
-    it('should replace the "createUseComponent" function in tsx files if morfeo from "@morfeo/css" is imported', () => {
+    it('should replace the "createUseStyle" function in tsx files if morfeo from "@morfeo/css" is imported', () => {
       const testCode = `
-        import { createUseComponent } from "@morfeo/css";
-        const useStyles: () => Record<string, string> = createUseComponent({});
+        import { createUseStyle } from "@morfeo/css";
+        const useStyles: () => Record<string, string> = createUseStyle({});
         const Button = () => {
           const classes = useStyles();
           return <button className={classes.button} />
@@ -61,15 +61,15 @@ describe('visitor', () => {
 
       const result = transform(testCode, true);
 
-      expect(result?.code).not.toContain('createUseComponent');
+      expect(result?.code).not.toContain('createUseStyle');
     });
 
     describe('cleanup of the import', () => {
       it('should remove the import of @morfeo/css', () => {
         const testCode = `
-          import { createUseComponent } from "@morfeo/css";
+          import { createUseStyle } from "@morfeo/css";
   
-          const useStyles = createUseComponent({});
+          const useStyles = createUseStyle({});
   
           const Button = () => {
             const classes = useStyles();

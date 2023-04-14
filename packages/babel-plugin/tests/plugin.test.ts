@@ -21,8 +21,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should inject the css into the metadata', () => {
-    const result = transform(`import { createUseComponent } from "@morfeo/css";
-      const useStyle = createUseComponent({
+    const result = transform(`import { createUseStyle } from "@morfeo/css";
+      const useStyle = createUseStyle({
         bg: 'primary',
       })
     `);
@@ -33,8 +33,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should not inject the css into the metadata if it was previously generated', () => {
-    const testCode = `import { createUseComponent } from "@morfeo/css";
-    const useStyle = createUseComponent({
+    const testCode = `import { createUseStyle } from "@morfeo/css";
+    const useStyle = createUseStyle({
       color: 'primary',
     })
   `;
@@ -51,8 +51,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should use css variable to resolve functions of non-themeable properties', () => {
-    const result = transform(`import { createUseComponent } from "@morfeo/css";
-      const useStyle = createUseComponent({
+    const result = transform(`import { createUseStyle } from "@morfeo/css";
+      const useStyle = createUseStyle({
         display: props => props.display
       })
     `);
@@ -61,8 +61,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it("should use create all the possible slice's classes to resolve functions of themeable properties", () => {
-    const result = transform(`import { createUseComponent } from "@morfeo/css";
-      const useStyle = createUseComponent({
+    const result = transform(`import { createUseStyle } from "@morfeo/css";
+      const useStyle = createUseStyle({
         bg: props => props.bg
       })
     `);
@@ -72,8 +72,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should be able to resolve responsive values that comes from the theme', () => {
-    const result = transform(`import { createUseComponent } from "@morfeo/css";
-      const useStyle = createUseComponent({
+    const result = transform(`import { createUseStyle } from "@morfeo/css";
+      const useStyle = createUseStyle({
         bg: {
           xs: props => props.bg
         }
@@ -84,8 +84,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should handle functions used for component variants', () => {
-    const result = transform(`import { createUseComponent } from "@morfeo/css";
-      const useStyle = createUseComponent({
+    const result = transform(`import { createUseStyle } from "@morfeo/css";
+      const useStyle = createUseStyle({
         componentName: "Box",
         variant: props => props.variant,
       })
@@ -97,8 +97,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should handle functions used for component states', () => {
-    const result = transform(`import { createUseComponent } from "@morfeo/css";
-      const useStyle = createUseComponent({
+    const result = transform(`import { createUseStyle } from "@morfeo/css";
+      const useStyle = createUseStyle({
         componentName: "Box",
         state: props => props.state,
       })
@@ -109,14 +109,14 @@ describe('morfeoBabelPlugin', () => {
     });
   });
 
-  it('should be able to resolve values that comes from multiple calls of createUseComponent', () => {
-    const result = transform(`import { createUseComponent } from "@morfeo/css";
-      const useStyle1 = createUseComponent({
+  it('should be able to resolve values that comes from multiple calls of createUseStyle', () => {
+    const result = transform(`import { createUseStyle } from "@morfeo/css";
+      const useStyle1 = createUseStyle({
         bg: props => props.bg,
         m: "s"
       })
 
-      const useStyle2 = createUseComponent({
+      const useStyle2 = createUseStyle({
         bg: props.bg,
         color: "primary"
       })

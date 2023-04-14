@@ -52,10 +52,10 @@ describe('morfeoLoader', () => {
       expect(context.callback).toHaveBeenCalledWith(null, testCode, null);
     });
 
-    it('should not do any changes in case "createUseComponent" is used but not imported', () => {
+    it('should not do any changes in case "createUseStyle" is used but not imported', () => {
       const testCode = `
         import something from "somewhere";
-        const useStyles = createUseComponent({});
+        const useStyles = createUseStyle({});
       `;
       morfeoLoader.bind(context)(testCode, null);
 
@@ -63,11 +63,11 @@ describe('morfeoLoader', () => {
     });
   });
 
-  describe('when the createUseComponent function is imported and the build time parser is used', () => {
+  describe('when the createUseStyle function is imported and the build time parser is used', () => {
     it('should write the css module and include it', () => {
       const testCode = `
-        import { createUseComponent } from "@morfeo/css";
-        const useStyles = createUseComponent({
+        import { createUseStyle } from "@morfeo/css";
+        const useStyles = createUseStyle({
           bg: 'primary'
         });
         export { useStyles };
@@ -82,8 +82,8 @@ describe('morfeoLoader', () => {
   describe('when some of the used modules throws an error', () => {
     it('should not to any change', () => {
       const testCode = `
-        import { createUseComponent } from "@morfeo/css";
-        const useStyles = createUseComponent({
+        import { createUseStyle } from "@morfeo/css";
+        const useStyles = createUseStyle({
           bg: 'primary'
         });
         export { useStyles };

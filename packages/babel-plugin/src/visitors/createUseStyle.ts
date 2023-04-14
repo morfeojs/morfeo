@@ -3,13 +3,13 @@ import type { CallExpression } from '@babel/types';
 import { component } from '@morfeo/web';
 import { getStyleObject, dynamicClasses, css } from '../utils';
 
-export function isCreateUseComponent(path: NodePath<CallExpression>) {
+export function isCreateUseStyle(path: NodePath<CallExpression>) {
   return path.get('callee').isIdentifier({
-    name: 'createUseComponent',
+    name: 'createUseStyle',
   });
 }
 
-export function createUseComponentVisitor(
+export function createUseStyleVisitor(
   callExpressionPath: NodePath<CallExpression>,
   state: any,
 ) {

@@ -1,4 +1,4 @@
-import { createUseComponent } from '@morfeo/css';
+import { createUseStyle } from '@morfeo/css';
 import { CSSProperties, DetailedHTMLProps, HTMLAttributes } from 'react';
 
 type CardProps = DetailedHTMLProps<
@@ -9,7 +9,7 @@ type CardProps = DetailedHTMLProps<
   bg?: CSSProperties['color'];
 };
 
-const getCardProps = createUseComponent({
+const getCardProps = createUseStyle({
   componentName: 'Card',
   p: 'm',
   transition: 'fast',

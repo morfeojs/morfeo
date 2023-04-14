@@ -21,25 +21,30 @@ type CreateUseComponentParams<C extends Component, P extends any> = {
 
 /**
  *
- * **IMPORTANT**
+ * > **IMPORTANT**
+ * >
+ * > This function is meant to be replaced at build-time, be sure the `@morfeo/webpack` plugin is used.
  *
- * This function is meant to be replaced at build-time, be sure the `@morfeo/webpack` plugin is used.
+ *
+ * It creates a function from a morfeo style object, this function returns the computed style at build time.
+ *
+ * @example
  *
  * ```tsx
- * import { createUseComponent } from '@morfeo/css';
+ * import { createUseStyle } from '@morfeo/css';
  *
- * const useButton = createUseComponent({
- *  variant: 'primary',
- *  componentName: 'Button',
+ * const useStyle = createUseStyle({
+ *    variant: props => props.variant,
+ *    componentName: 'Button',
  * });
  *
- * export function Button(props) {
- *  const buttonProps = useButton(props);
- *  return <button {...buttonProps} />;
+ * export function Button({ variant }) {
+ *    const { className, style } = useStyle({ variant });
+ *    return <button className={className} style={style} />;
  * }
  * ```
  */
-export function createUseComponent<C extends Component, P extends any>(
+export function createUseStyle<C extends Component, P extends any>(
   _style: CreateUseComponentParams<C, P>,
 ): (props?: P & { className?: string; style?: any }) => {
   tag?: string;
@@ -48,6 +53,6 @@ export function createUseComponent<C extends Component, P extends any>(
 } {
   throw new Error(
     // TODO: Add link to documentation whenever it will be created
-    'Error: parse should never be executed at run-time, please be sure to transpile your code',
+    "Error: parse should never be executed at run-time, please be sure you're using morfeo's transpiler",
   );
 }

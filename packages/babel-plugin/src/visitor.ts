@@ -1,8 +1,8 @@
 import type { Visitor } from '@babel/traverse';
 import {
-  createUseComponentVisitor,
-  isCreateUseComponent,
-} from './visitors/createUseComponent';
+  isCreateUseStyle,
+  createUseStyleVisitor,
+} from './visitors/createUseStyle';
 
 export default function getVisitor(): Visitor {
   return {
@@ -15,8 +15,8 @@ export default function getVisitor(): Visitor {
     },
     CallExpression: {
       enter(callExpressionPath, state: any) {
-        if (isCreateUseComponent(callExpressionPath)) {
-          createUseComponentVisitor(callExpressionPath, state);
+        if (isCreateUseStyle(callExpressionPath)) {
+          createUseStyleVisitor(callExpressionPath, state);
         }
       },
     },

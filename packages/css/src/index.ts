@@ -1,1 +1,1 @@
-export * from './createUseComponent';
+export * from './createUseStyle';
