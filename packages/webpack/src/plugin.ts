@@ -11,15 +11,13 @@ export class MorfeoWebpackPlugin extends CleanPlugin {
   }
 
   applyMorfeoLoader(compiler: Compiler) {
-    compiler.options.module.rules.push({
+    compiler.options.module.rules.unshift({
       test: /\.(tsx|ts|js|jsx)$/,
       exclude: /node_modules/,
       use: [
         {
           loader: require.resolve('./loader'),
-          options: {
-            babel: this.loaderOptions.babel,
-          },
+          options: this.loaderOptions,
         },
       ],
     });

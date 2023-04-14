@@ -10,6 +10,7 @@ import {
   fontSizesMap,
   opacitiesMap,
   gradientsMap,
+  componentsMap,
   fontWeightsMap,
   lineHeightsMap,
   transitionsMap,
@@ -69,6 +70,33 @@ export const colorSchemasProperties = createPropertiesMap(
   'colorSchemas',
 );
 
+export const componentsProperties = createPropertiesMap(
+  componentsMap,
+  'components',
+);
+
+export const allPropertiesBySlice = {
+  fonts: fontsMap,
+  radii: radiiMap,
+  colors: colorsMap,
+  sizes: sizesMap,
+  shadows: shadowsMap,
+  borders: bordersMap,
+  spacings: spacingsMap,
+  zIndices: zIndicesMap,
+  fontSizes: fontSizesMap,
+  gradients: gradientsMap,
+  opacities: opacitiesMap,
+  components: [...componentsMap, 'variant', 'state'],
+  fontWeights: fontWeightsMap,
+  lineHeights: lineHeightsMap,
+  transitions: transitionsMap,
+  borderWidths: borderWidthsMap,
+  borderStyles: borderStylesMap,
+  colorSchemas: colorSchemasMap,
+  letterSpacings: letterSpacingsMap,
+};
+
 export const allProperties = {
   ...fontProperties,
   ...radiiProperties,
@@ -81,6 +109,7 @@ export const allProperties = {
   ...zIndicesProperties,
   ...gradientProperties,
   ...opacitiesProperties,
+  ...componentsProperties,
   ...fontWeightProperties,
   ...lineHeightProperties,
   ...transitionsProperties,

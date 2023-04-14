@@ -5,6 +5,7 @@ import {
   AllProperties,
   allProperties,
 } from '@morfeo/spec';
+import { deepMerge } from '@morfeo/utils';
 import {
   Parser,
   AllParsers,
@@ -13,7 +14,6 @@ import {
   ParsersContext,
 } from '../types';
 import { theme } from '../theme';
-import { deepMerge } from '../utils';
 import { baseParser } from './baseParser';
 import { sizeParsers } from './sizes';
 import { radiiParsers } from './radii';

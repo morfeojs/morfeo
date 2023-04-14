@@ -1,4 +1,4 @@
-import { parseNumber } from '../../src/utils';
+import { parseNumber } from '../src';
 
 describe('parseNumber', () => {
   it('should return the same number in case a number is passed', () => {

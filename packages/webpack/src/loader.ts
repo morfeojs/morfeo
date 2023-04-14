@@ -13,7 +13,7 @@ export default function morfeoLoader(
 ) {
   const options = this.getOptions();
 
-  if (!input.includes('@morfeo/css') || !input.includes('createUseClasses')) {
+  if (!input.includes('@morfeo/css')) {
     return this.callback(null, input, inputSourceMap!);
   }
 
@@ -27,6 +27,23 @@ export default function morfeoLoader(
       sourceFileName: this.resourcePath,
       filename: path.basename(this.resourcePath),
       sourceMaps: true,
+      code: true,
+      ast: false,
+      parserOpts: {
+        sourceType: 'unambiguous',
+      },
+      /**
+       * `caller` is set to supports everything in order to be sure
+       * that the generated code is not "touched" by this transformation
+       * bot only the target functions are replaced.
+       */
+      caller: {
+        name: 'morfeo-caller',
+        supportsStaticESM: true,
+        supportsDynamicImport: true,
+        supportsTopLevelAwait: true,
+        supportsExportNamespaceFrom: true,
+      },
     });
 
     // @ts-ignore

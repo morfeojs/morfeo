@@ -1,7 +1,7 @@
 import { Theme } from '@morfeo/spec';
+import { deepMerge } from '@morfeo/utils';
 import { parsers } from './parsers';
 import { theme } from './theme';
-import { deepMerge } from './utils';
 import { ThemeName, Themes } from './types';
 
 function createMorfeo() {

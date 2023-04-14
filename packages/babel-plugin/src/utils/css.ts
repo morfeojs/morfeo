@@ -1,13 +1,34 @@
+import { Style, getStyles } from '@morfeo/web';
+import { splitStyles } from './splitStyles';
+
 function createCSS() {
   const cache = new Map<string, string>();
   const alreadyInjectedClasses = new Set();
 
-  function add(className: string, css: string) {
+  function updateCache(className: string, css: string) {
     if (cache.has(className)) {
       return;
     }
 
     cache.set(className, css);
+  }
+
+  function add(style: Style) {
+    const splittedStyles = splitStyles(style);
+
+    const className = splittedStyles.reduce<string>((acc, splittedStyle) => {
+      const { classes, sheet } = getStyles({
+        style: splittedStyle,
+      });
+
+      const css = sheet.toString();
+
+      updateCache(classes.style, css);
+
+      return `${acc} ${classes.style}`.trim();
+    }, '');
+
+    return className;
   }
 
   function get() {
@@ -22,7 +43,12 @@ function createCSS() {
     }, '');
   }
 
-  return { add, get };
+  function reset() {
+    cache.clear();
+    alreadyInjectedClasses.clear();
+  }
+
+  return { add, get, reset };
 }
 
 export const css = createCSS();

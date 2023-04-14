@@ -1,6 +1,12 @@
 export const theme = {
   colors: {
     primary: 'blue',
+    secondary: 'pink',
+  },
+  spacings: {
+    s: '4px',
+    m: '8px',
+    l: '16px',
   },
   borders: {
     strong: {
@@ -28,7 +34,11 @@ export const theme = {
           states: {},
         },
       },
-      states: {},
+      states: {
+        active: {
+          bg: 'secondary',
+        },
+      },
     },
   },
 } as const;

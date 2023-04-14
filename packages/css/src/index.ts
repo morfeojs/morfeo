@@ -1,1 +1,1 @@
-export * from './createUseClasses';
+export * from './createUseStyle';

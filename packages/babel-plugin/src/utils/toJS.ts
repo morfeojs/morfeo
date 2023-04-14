@@ -1,28 +1,56 @@
 /**
- * This code has been taken from: https://github.com/hypervillain/ast-to-literal
- * and converted to TypeScript.
- * Thanks to the author [Hugo Villain](https://github.com/hypervillain)
+ * This code has been taken from: https://github.com/hypervillain/ast-to-literal, converted to TypeScript and adapted to our use-case.
+ * Many thanks to the original author [Hugo Villain](https://github.com/hypervillain)
  */
 import * as t from '@babel/types';
 
 const primitiveTypes = ['BooleanLiteral', 'StringLiteral', 'NumericLiteral'];
 
-export function toJS(node: t.Expression): any {
+type ToJSResolveFunctionParams = {
+  path: string;
+  node: t.ArrowFunctionExpression | t.FunctionExpression;
+  property: string;
+};
+
+type ToJSOptions = {
+  prefix?: string;
+  resolveFunction?: (params: ToJSResolveFunctionParams) => string;
+};
+
+export function toJS(node: t.Expression, options: ToJSOptions = {}): any {
   function computeProps(props: t.ObjectExpression['properties']) {
     return (props as any[]).reduce((acc, prop) => {
+      const key = prop.key.name || prop.key.value;
+      const path = options.prefix ? `${options.prefix}.${key}` : key;
+
+      if (
+        options.resolveFunction &&
+        (t.isFunctionExpression(prop.value) ||
+          t.isArrowFunctionExpression(prop.value))
+      ) {
+        return {
+          ...acc,
+          [key]: options.resolveFunction({
+            path,
+            node: prop.value,
+            property: key,
+          }),
+        };
+      }
+
       if (prop.type === 'SpreadElement') {
         return {
           ...acc,
-          ...toJS(prop.argument),
+          ...toJS(prop.argument, { ...options, prefix: path }),
         };
       }
 
       if (prop.type !== 'ObjectMethod') {
-        const val = toJS(prop.value);
+        const val = toJS(prop.value, { ...options, prefix: path });
         if (val !== undefined) {
           return {
             ...acc,
-            [prop.key.name || prop.key.value]: val,
+            [key]: val,
           };
         }
       }
@@ -58,8 +86,8 @@ export function toJS(node: t.Expression): any {
       return [
         ...acc,
         ...(element.type === 'SpreadElement'
-          ? toJS(element.argument)
-          : [toJS(element)]),
+          ? toJS(element.argument, options)
+          : [toJS(element, options)]),
       ];
     }, [] as t.ArrayExpression[]);
   }

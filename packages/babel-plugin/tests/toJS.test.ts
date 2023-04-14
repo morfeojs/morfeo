@@ -34,6 +34,9 @@ describe('toJS', () => {
       properties: [
         {
           type: 'SpreadElement',
+          key: {
+            name: 'whatever',
+          },
           // @ts-ignore
           argument: {
             type: 'ArrayExpression',
@@ -176,6 +179,9 @@ describe('toJS', () => {
       properties: [
         {
           type: 'SpreadElement',
+          key: {
+            name: 'whatever',
+          },
           // @ts-ignore
           argument: {
             type: 'ObjectExpression',

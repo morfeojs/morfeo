@@ -1,4 +1,6 @@
 export * from './css';
 export * from './toJS';
 export * from './splitStyles';
-export * from './getClassesAndCSS';
+export * from './dynamicClasses';
+export * from './getStyleObject';
+export * from './isThemeableProperty';

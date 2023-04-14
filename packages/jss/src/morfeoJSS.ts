@@ -1,7 +1,7 @@
 import { parsers, Style } from '@morfeo/core';
 import preset from 'jss-preset-default';
 import { JssOptions, Plugin, Rule } from 'jss';
-import { generateClassName } from './generateClassName';
+import { generateClassName } from '@morfeo/utils';
 
 const defaultPreset = preset();
 

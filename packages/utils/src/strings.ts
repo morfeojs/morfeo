@@ -1,4 +1,4 @@
-function getClassNameGenerator() {
+function createHandler() {
   const cache = new Map<string, string>();
 
   const symbolsMap = {
@@ -20,7 +20,7 @@ function getClassNameGenerator() {
 
   function escapeString(string: string) {
     if (cache.has(string)) {
-      return cache.get(string);
+      return cache.get(string) as string;
     }
 
     const replaced = Object.keys(symbolsMap).reduce(
@@ -39,21 +39,29 @@ function getClassNameGenerator() {
     return `${escapeString(property)}-${escapeString(value)}`;
   }
 
-  function generator(style: Record<string, any> = {}) {
+  function isObject(arg: unknown): arg is Record<string, unknown> {
+    return typeof arg === 'object';
+  }
+
+  function generator(style: Record<string, unknown> = {}) {
     const className = Object.keys(style).reduce((acc, curr) => {
       let value = style[curr];
-      if (typeof value !== 'string') {
+      if (isObject(value)) {
         value = generator(value);
       }
       const prefix = acc ? '_' : '';
-      const ruleName = makeRuleName(curr, value);
+      const ruleName = makeRuleName(curr, value as string);
       return `${acc}${prefix}${ruleName}`;
     }, '');
 
     return className;
   }
 
-  return generator;
+  return { generator, escapeString };
 }
 
-export const generateClassName = getClassNameGenerator();
+const handler = createHandler();
+
+export const escapeString = handler.escapeString;
+
+export const generateClassName = handler.generator;

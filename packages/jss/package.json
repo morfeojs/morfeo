@@ -27,7 +27,8 @@
   },
   "dependencies": {
     "jss": "^10.6.0",
-    "jss-preset-default": "^10.6.0"
+    "jss-preset-default": "^10.6.0",
+    "@morfeo/utils": "^0.8.0"
   },
   "peerDependencies": {
     "@morfeo/core": "^0.8.0"

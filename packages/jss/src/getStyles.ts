@@ -1,4 +1,5 @@
-import { Style, theme, deepMerge } from '@morfeo/core';
+import { Style, theme } from '@morfeo/core';
+import { deepMerge } from '@morfeo/utils';
 import { StyleSheetFactoryOptions } from 'jss';
 import jss from './initJSS';
 import { MorfeoSheetsRegistry } from './registry';

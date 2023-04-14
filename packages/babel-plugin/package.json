@@ -25,12 +25,15 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/web": "^0.8.0"
+    "@morfeo/web": "^0.8.0",
+    "@morfeo/utils": "^0.8.0"
   },
   "peerDependencies": {
-    "@babel/core": "7.21.0",
-    "@babel/traverse": "7.21.2",
-    "@babel/types": "7.21.2"
+    "@babel/core": "7.21.3",
+    "@babel/generator": "7.21.3",
+    "@babel/plugin-transform-typescript": "7.21.3",
+    "@babel/traverse": "7.21.3",
+    "@babel/types": "7.21.3"
   },
   "publishConfig": {
     "access": "public"

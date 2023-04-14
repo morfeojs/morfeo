@@ -52,20 +52,10 @@ describe('morfeoLoader', () => {
       expect(context.callback).toHaveBeenCalledWith(null, testCode, null);
     });
 
-    it('should not do any changes in case "createUseClasses" is not used', () => {
-      const testCode = `
-        import something from "@morfeo/css";
-        export const someVar = 'some string'
-      `;
-      morfeoLoader.bind(context)(testCode, null);
-
-      expect(context.callback).toHaveBeenCalledWith(null, testCode, null);
-    });
-
-    it('should not do any changes in case "createUseClasses" is used but not imported', () => {
+    it('should not do any changes in case "createUseStyle" is used but not imported', () => {
       const testCode = `
         import something from "somewhere";
-        const useStyles = createUseClasses({});
+        const useStyles = createUseStyle({});
       `;
       morfeoLoader.bind(context)(testCode, null);
 
@@ -73,14 +63,12 @@ describe('morfeoLoader', () => {
     });
   });
 
-  describe('when the createUseClasses function is imported and the build time parser is used', () => {
+  describe('when the createUseStyle function is imported and the build time parser is used', () => {
     it('should write the css module and include it', () => {
       const testCode = `
-        import { createUseClasses } from "@morfeo/css";
-        const useStyles = createUseClasses({
-          button: {
-            bg: 'primary'
-          }
+        import { createUseStyle } from "@morfeo/css";
+        const useStyles = createUseStyle({
+          bg: 'primary'
         });
         export { useStyles };
       `;
@@ -94,11 +82,9 @@ describe('morfeoLoader', () => {
   describe('when some of the used modules throws an error', () => {
     it('should not to any change', () => {
       const testCode = `
-        import { createUseClasses } from "@morfeo/css";
-        const useStyles = createUseClasses({
-          button: {
-            bg: 'primary'
-          }
+        import { createUseStyle } from "@morfeo/css";
+        const useStyles = createUseStyle({
+          bg: 'primary'
         });
         export { useStyles };
       `;
