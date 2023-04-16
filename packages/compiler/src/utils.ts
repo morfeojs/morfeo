@@ -8,15 +8,16 @@ export const MORFEO_CSS_PATH = path.join(
   'morfeo.css',
 );
 
+if (!fs.existsSync(path.dirname(MORFEO_CSS_PATH))) {
+  fs.mkdirSync(path.dirname(MORFEO_CSS_PATH));
+}
+
+fs.writeFileSync(MORFEO_CSS_PATH, ``);
+
 export const MORFEO_VIRTUAL_MODULE_PREFIX = 'virtual:morfeo';
 
 function createCssWriter() {
   let css = '';
-  if (!fs.existsSync(path.dirname(MORFEO_CSS_PATH))) {
-    fs.mkdirSync(path.dirname(MORFEO_CSS_PATH));
-  }
-
-  fs.writeFileSync(MORFEO_CSS_PATH, ``);
 
   function collect(content: string) {
     css += content;
