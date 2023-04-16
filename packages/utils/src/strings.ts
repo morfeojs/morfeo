@@ -1,6 +1,11 @@
-function createHandler() {
-  const cache = new Map<string, string>();
+type Options = {
+  minify?: boolean;
+};
 
+function createHandler() {
+  const valuesCache = new Map<string, string>();
+  const propertiesCache = new Map<string, string>();
+  const chars = 'abcdefghijklmnopqrstuvwxyz';
   const symbolsMap = {
     '*': 'all',
     '.': 'dot',
@@ -18,9 +23,45 @@ function createHandler() {
     '=': 'eql',
   };
 
+  function getCombinations(length: number) {
+    const combinations: string[] = [];
+
+    function backtrack(combination: string, start: number) {
+      if (combination.length === length) {
+        combinations.push(combination);
+        return;
+      }
+
+      for (let i = start; i < chars.length; i++) {
+        backtrack(combination + chars[i], i);
+      }
+    }
+
+    backtrack('', 0);
+
+    return combinations;
+  }
+
+  function generateId(string: string, length: number = 1) {
+    if (propertiesCache.has(string)) {
+      return propertiesCache.get(string) as string;
+    }
+    const usedIds = Array.from(propertiesCache.values());
+    const combinations = getCombinations(length);
+
+    for (const combination of combinations) {
+      if (!usedIds.includes(combination)) {
+        propertiesCache.set(string, combination);
+        return combination;
+      }
+    }
+
+    return generateId(string, length + 1);
+  }
+
   function escapeString(string: string) {
-    if (cache.has(string)) {
-      return cache.get(string) as string;
+    if (valuesCache.has(string)) {
+      return valuesCache.get(string) as string;
     }
 
     const replaced = Object.keys(symbolsMap).reduce(
@@ -30,38 +71,50 @@ function createHandler() {
     );
 
     const escaped = replaced.replace(/[^\w-]/gi, '');
-    cache.set(string, escaped);
+    valuesCache.set(string, escaped);
 
     return escaped;
   }
 
-  function makeRuleName(property: string, value: string) {
-    return `${escapeString(property)}-${escapeString(value)}`;
+  function makeRuleName(property: string, value: string, { minify }: Options) {
+    const ruleName = `${escapeString(property)}-${escapeString(value)}`;
+    if (minify) {
+      return generateId(ruleName);
+    }
+    return ruleName;
   }
 
   function isObject(arg: unknown): arg is Record<string, unknown> {
     return typeof arg === 'object';
   }
 
-  function generator(style: Record<string, unknown> = {}) {
+  function generator(
+    style: Record<string, unknown> = {},
+    { minify }: Options = {},
+  ) {
     const className = Object.keys(style).reduce((acc, curr) => {
       let value = style[curr];
       if (isObject(value)) {
-        value = generator(value);
+        value = generator(value, { minify });
       }
       const prefix = acc ? '_' : '';
-      const ruleName = makeRuleName(curr, value as string);
+      const ruleName = makeRuleName(curr, value as string, { minify });
       return `${acc}${prefix}${ruleName}`;
     }, '');
 
     return className;
   }
 
-  return { generator, escapeString };
+  function reset() {
+    valuesCache.clear();
+    propertiesCache.clear();
+  }
+
+  return { generator, escapeString, reset };
 }
 
-const handler = createHandler();
+export const stringsHandler = createHandler();
 
-export const escapeString = handler.escapeString;
+export const escapeString = stringsHandler.escapeString;
 
-export const generateClassName = handler.generator;
+export const generateClassName = stringsHandler.generator;

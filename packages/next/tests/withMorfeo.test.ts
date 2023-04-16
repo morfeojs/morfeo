@@ -1,18 +1,26 @@
-import { MorfeoWebpackPlugin } from '@morfeo/webpack';
+import * as MorfeoCompiler from '@morfeo/compiler';
 import { withMorfeo } from '../src';
+
+const MorfeoWebpackPluginSpy = jest.spyOn(
+  MorfeoCompiler,
+  'MorfeoWebpackPlugin',
+);
 
 describe('withMorfeo', () => {
   it('should inject the morfeo webpack plugin to the passed configuration', () => {
-    const webpack = jest.fn();
+    const webpack = {
+      plugins: [],
+    };
 
+    // @ts-expect-error
     const config = withMorfeo({ webpack });
     const webpackConfig = { plugins: [] };
 
     // @ts-ignore
     config.webpack(webpackConfig, {});
 
-    expect(webpackConfig.plugins[0]).toEqual(
-      new MorfeoWebpackPlugin({
+    expect(MorfeoWebpackPluginSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
         babel: {
           presets: ['next/babel'],
         },
@@ -21,9 +29,12 @@ describe('withMorfeo', () => {
   });
 
   it('should inject the additional babel configuration if passed', () => {
-    const webpack = jest.fn();
+    const webpack = {
+      plugins: [],
+    };
 
     const config = withMorfeo(
+      // @ts-expect-error
       { webpack },
       {
         babel: {
@@ -36,12 +47,26 @@ describe('withMorfeo', () => {
     // @ts-ignore
     config.webpack(webpackConfig, {});
 
-    expect(webpackConfig.plugins[0]).toEqual(
-      new MorfeoWebpackPlugin({
+    expect(MorfeoWebpackPluginSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
         babel: {
           presets: ['fake/preset', 'next/babel'],
         },
       }),
     );
+  });
+
+  it('should handle a function as webpack configuration', () => {
+    const webpack = () => ({
+      plugins: [],
+    });
+
+    const config = withMorfeo({ webpack });
+    const webpackConfig = { plugins: [] };
+
+    // @ts-ignore
+    config.webpack(webpackConfig, {});
+
+    expect(MorfeoWebpackPluginSpy).toHaveBeenCalled();
   });
 });

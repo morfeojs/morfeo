@@ -2,11 +2,12 @@ import { Component, State, Style, Variant } from '@morfeo/web';
 
 type ReducedStyle = Omit<Style, 'componentName' | 'variant' | 'state'>;
 
-type ValueOrFunction<T, P> = T extends Record<string, unknown>
-  ? {
+type ValueOrFunction<T, P> =
+  | T
+  | ((props: P) => T)
+  | {
       [K in keyof T]: ValueOrFunction<T[K], P>;
-    }
-  : T | ((props: P) => T);
+    };
 
 type CreateUseComponentParams<C extends Component, P extends any> = {
   [K in keyof ReducedStyle]: ValueOrFunction<ReducedStyle[K], P>;
