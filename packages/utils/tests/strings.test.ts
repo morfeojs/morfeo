@@ -1,6 +1,10 @@
-import { generateClassName } from '../src';
+import { generateClassName, stringsHandler } from '../src';
 
 describe('generateClassName', () => {
+  beforeEach(() => {
+    stringsHandler.reset();
+  });
+
   it('should generate the class from the style object', () => {
     const className = generateClassName({
       bg: 'primary',
@@ -34,5 +38,47 @@ describe('generateClassName', () => {
     });
 
     expect(className).toBe('divgrtrp-bg-primary');
+  });
+
+  describe('when the minify option is true', () => {
+    it('should minify strings', () => {
+      const className = generateClassName(
+        {
+          bg: 'primary',
+        },
+        { minify: true },
+      );
+
+      expect(className).toBe('a');
+    });
+
+    it('should return the same minified class for the same style', () => {
+      const commonStyle = {
+        bg: 'primary',
+      };
+      const differentStyle = {
+        bg: 'secondary',
+      };
+      const firstClassName = generateClassName(commonStyle, { minify: true });
+      const secondClassName = generateClassName(commonStyle, { minify: true });
+      const thirdClassName = generateClassName(differentStyle, {
+        minify: true,
+      });
+
+      expect(firstClassName).toBe('a');
+      expect(firstClassName).toBe(secondClassName);
+      expect(thirdClassName).not.toBe(secondClassName);
+    });
+
+    it('should return a 2 chars length string in case all the combinations with 1 char are already used', () => {
+      const chars = 'abcdefghijklmnopqrstuvwxyz'.split('');
+      const fakeStyles = chars.map(char => ({ [char]: char }));
+
+      fakeStyles.map(style => generateClassName(style, { minify: true }));
+
+      const className = generateClassName({ bg: 'primary' }, { minify: true });
+
+      expect(className).toHaveLength(2);
+    });
   });
 });
