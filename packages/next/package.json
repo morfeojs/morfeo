@@ -23,7 +23,7 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/webpack": "^0.8.0"
+    "@morfeo/compiler": "^0.8.0"
   },
   "peerDependencies": {
     "next": "13.2.4"

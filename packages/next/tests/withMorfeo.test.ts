@@ -1,4 +1,4 @@
-import { MorfeoWebpackPlugin } from '@morfeo/webpack';
+import { MorfeoWebpackPlugin } from '@morfeo/compiler';
 import { withMorfeo } from '../src';
 
 describe('withMorfeo', () => {
@@ -12,7 +12,7 @@ describe('withMorfeo', () => {
     config.webpack(webpackConfig, {});
 
     expect(webpackConfig.plugins[0]).toEqual(
-      new MorfeoWebpackPlugin({
+      MorfeoWebpackPlugin({
         babel: {
           presets: ['next/babel'],
         },
@@ -37,7 +37,7 @@ describe('withMorfeo', () => {
     config.webpack(webpackConfig, {});
 
     expect(webpackConfig.plugins[0]).toEqual(
-      new MorfeoWebpackPlugin({
+      MorfeoWebpackPlugin({
         babel: {
           presets: ['fake/preset', 'next/babel'],
         },

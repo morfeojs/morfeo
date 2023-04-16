@@ -1,16 +1,16 @@
-import { MorfeoWebpackPlugin } from '@morfeo/webpack';
-import type { MorfeoWebpackPluginOptions } from '@morfeo/webpack';
+import { MorfeoWebpackPlugin } from '@morfeo/compiler';
+import type { MorfeoPluginOptions } from '@morfeo/compiler';
 import { NextConfig } from 'next';
 
 export function withMorfeo(
   nextConfig: NextConfig,
-  pluginOptions?: MorfeoWebpackPluginOptions,
+  pluginOptions?: MorfeoPluginOptions,
 ): NextConfig {
   return {
     ...nextConfig,
     webpack(config, options) {
       config.plugins.unshift(
-        new MorfeoWebpackPlugin({
+        MorfeoWebpackPlugin({
           ...pluginOptions,
           babel: {
             ...pluginOptions?.babel,

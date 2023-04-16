@@ -44,8 +44,9 @@ type StateMap = {
   [K in Component]: keyof Components[K]['states'];
 };
 
-export type Variant<C extends Component = Component> =
-  VariantMap[C] extends string ? VariantMap[C] : string;
+export type Variant<C extends Component> = VariantMap[C] extends string
+  ? VariantMap[C]
+  : string;
 
 export type State<C extends Component = Component> = StateMap[C] extends string
   ? StateMap[C]
