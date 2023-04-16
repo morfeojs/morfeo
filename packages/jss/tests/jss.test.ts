@@ -1,23 +1,12 @@
-import { Theme, theme } from '@morfeo/core';
+import { theme } from '@morfeo/core';
 import { getStyles, getStyleSheet } from '../src';
-
-const THEME: Theme = {
-  colors: {
-    primary: '#e3e3e3',
-    secondary: '#000',
-  },
-  breakpoints: {
-    lg: '1920px',
-    md: '1366px',
-    sm: '768px',
-    xs: '375px',
-  },
-} as any;
+import { THEME } from './theme';
 
 describe('jss', () => {
   beforeAll(() => {
     theme.set(THEME);
   });
+
   afterAll(() => {
     theme.reset();
   });
