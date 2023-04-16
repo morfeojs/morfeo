@@ -1,4 +1,4 @@
-const zipFolder = require('zip-folder');
+import zipFolder from 'zip-folder';
 
 const folderName = './dist';
 const zipName = './dist.zip';

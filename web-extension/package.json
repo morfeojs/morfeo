@@ -11,7 +11,7 @@
     "build": "vite build",
     "dev": "vite",
     "preview": "vite preview",
-    "zip": "yarn build && node scripts/zip.js",
+    "zip": "yarn build && node scripts/zip.mjs",
     "deploy": "yarn zip && node scripts/deploy.mjs"
   },
   "dependencies": {
