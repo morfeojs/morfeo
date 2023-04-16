@@ -9,6 +9,10 @@ export function withMorfeo(
   return {
     ...nextConfig,
     webpack(config, options) {
+      if (typeof nextConfig.webpack === 'function') {
+        config = nextConfig.webpack(config, options);
+      }
+
       config.plugins.unshift(
         MorfeoWebpackPlugin({
           ...pluginOptions,
@@ -18,10 +22,6 @@ export function withMorfeo(
           },
         }),
       );
-
-      if (typeof nextConfig.webpack === 'function') {
-        config = nextConfig.webpack(config, options);
-      }
 
       return config;
     },
