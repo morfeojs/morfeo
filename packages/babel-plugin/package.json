@@ -29,11 +29,11 @@
     "@morfeo/utils": "^0.8.0"
   },
   "peerDependencies": {
-    "@babel/core": "7.21.3",
-    "@babel/generator": "7.21.3",
+    "@babel/core": "7.21.4",
+    "@babel/generator": "7.21.4",
     "@babel/plugin-transform-typescript": "7.21.3",
-    "@babel/traverse": "7.21.3",
-    "@babel/types": "7.21.3"
+    "@babel/traverse": "7.21.4",
+    "@babel/types": "7.21.4"
   },
   "publishConfig": {
     "access": "public"
