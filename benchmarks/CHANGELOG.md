@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.9.0) (2023-04-16)
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo ([e131832](https://github.com/morfeojs/morfeo/commit/e1318322cfed2eb2b1453148756402fb439c7a26))
+* **deps:** update babel monorepo to v7.19.0 ([ae4029f](https://github.com/morfeojs/morfeo/commit/ae4029f40267b68662f9a1a7b54a84584d018ffc))
+* **deps:** update babel monorepo to v7.19.1 ([971ba74](https://github.com/morfeojs/morfeo/commit/971ba74f41bb187893753b077bc2319162d53afb))
+* **deps:** update dependency @babel/core to v7.18.13 ([418b75b](https://github.com/morfeojs/morfeo/commit/418b75b4bb49723cfe5386449f233d43346ad538))
+* **deps:** update dependency @babel/core to v7.18.5 ([7088ab6](https://github.com/morfeojs/morfeo/commit/7088ab6c1f98f3c6de6f6ad07dddd3435dcfa9fd))
+* **deps:** update dependency @babel/core to v7.19.6 ([931d7d2](https://github.com/morfeojs/morfeo/commit/931d7d2189e0a2b8aeed672b44d999052c6fe131))
+* **deps:** update dependency @babel/core to v7.20.12 ([a572cc2](https://github.com/morfeojs/morfeo/commit/a572cc2b735df1f69800b78d4cad67d2a3e59207))
+* **deps:** update dependency @babel/core to v7.20.5 ([da8d92b](https://github.com/morfeojs/morfeo/commit/da8d92bcd5781d180d882302d7c42a3ab1f40bba))
+
+
+### Features
+
+* version v0.8.0 ([fd2fcb2](https://github.com/morfeojs/morfeo/commit/fd2fcb2778aa1f37ade15570926441a706cb945f))
+
+
+
+
+
 # [0.8.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.8.0) (2023-01-28)
 
 

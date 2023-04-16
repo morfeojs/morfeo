@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.9.0) (2023-04-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/react-native to ^0.68.0 ([d36ace7](https://github.com/morfeojs/morfeo/commit/d36ace7947de6914add772953255ea5b4dc46d1c))
+* **deps:** update dependency @types/react-native to ^0.69.0 ([b5a26ff](https://github.com/morfeojs/morfeo/commit/b5a26ff8bae71e62d8fe55ef7f5e443cc42594a3))
+* **deps:** update dependency @types/react-native to ^0.70.0 ([5f0351d](https://github.com/morfeojs/morfeo/commit/5f0351d6008bc65fa85f4e61ed5fa87fdcc6aecd))
+* **deps:** update react monorepo ([1a46688](https://github.com/morfeojs/morfeo/commit/1a466880eca87952b9567ae22795422b433c1a11))
+
+
+### Features
+
+* version v0.8.0 ([fd2fcb2](https://github.com/morfeojs/morfeo/commit/fd2fcb2778aa1f37ade15570926441a706cb945f))
+
+
+
+
+
 # [0.8.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.8.0) (2023-01-28)
 
 
