@@ -1,6 +1,7 @@
 import * as MorfeoPlugins from '../src';
 import { getMorfeoUnpluginOptions } from '../src/plugin';
 import { MORFEO_VIRTUAL_MODULE_PREFIX, writer } from '../src/utils';
+import { pluginContext } from './mocks';
 
 const writerSpy = jest
   .spyOn(writer, 'get')
@@ -57,7 +58,7 @@ describe('MorfeoPlugins', () => {
     const pluginOptions = getMorfeoUnpluginOptions({}, { meta: 'vite' });
     const moduleId = `${MORFEO_VIRTUAL_MODULE_PREFIX}/somethingelse.css`;
 
-    const result = pluginOptions.load(moduleId);
+    const result = pluginOptions.load.bind(pluginContext)(moduleId);
 
     expect(writerSpy).toHaveBeenCalled();
     expect(result).toBe('some css');
@@ -67,7 +68,7 @@ describe('MorfeoPlugins', () => {
     const pluginOptions = getMorfeoUnpluginOptions({}, { meta: 'vite' });
     const moduleId = `a different module`;
 
-    const result = pluginOptions.load(moduleId);
+    const result = pluginOptions.load.bind(pluginContext)(moduleId);
 
     expect(writerSpy).not.toHaveBeenCalled();
     expect(result).toBe(null);

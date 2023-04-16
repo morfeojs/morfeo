@@ -1,7 +1,7 @@
 import { transformer } from './transformer';
 import { MorfeoPluginOptions } from './types';
 import { MORFEO_VIRTUAL_MODULE_PREFIX, writer } from './utils';
-import { UnpluginContextMeta } from 'unplugin';
+import { UnpluginBuildContext, UnpluginContextMeta } from 'unplugin';
 
 const SUPPORTED_EXTENSIONS = ['ts', 'js', 'tsx', 'jsx'];
 
@@ -23,8 +23,13 @@ export function getMorfeoUnpluginOptions(
     transform(code: string, fileName: string) {
       return transformer({ input: code, fileName, options, meta });
     },
-    load(id: string) {
+    load(this: UnpluginBuildContext, id: string) {
       if (id.startsWith(MORFEO_VIRTUAL_MODULE_PREFIX)) {
+        const watchedFiles = this.getWatchFiles();
+        if (!watchedFiles.includes(id)) {
+          this.addWatchFile(id);
+        }
+
         return writer.get();
       }
 

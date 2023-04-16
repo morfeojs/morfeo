@@ -1,12 +1,13 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { UnpluginContextMeta } from 'unplugin';
+import { UnpluginBuildContext, UnpluginContextMeta } from 'unplugin';
 import { getMorfeoUnpluginOptions } from '../src/plugin';
 import {
   MORFEO_CSS_PATH,
   MORFEO_VIRTUAL_MODULE_PREFIX,
   writer,
 } from '../src/utils';
+import { pluginContext } from './mocks';
 
 const DEFAULT_META: UnpluginContextMeta = {
   framework: 'webpack',
@@ -146,9 +147,11 @@ describe('morfeo unplugin config', () => {
 
         expect(result?.code).toContain(MORFEO_VIRTUAL_MODULE_PREFIX);
         expect(fsAppendMock).not.toHaveBeenCalled();
-        expect(customPluginOptions.load(MORFEO_VIRTUAL_MODULE_PREFIX)).toBe(
-          'some css',
-        );
+        expect(
+          customPluginOptions.load.bind(pluginContext)(
+            MORFEO_VIRTUAL_MODULE_PREFIX,
+          ),
+        ).toBe('some css');
       },
     );
   });
