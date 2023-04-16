@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { UnpluginBuildContext, UnpluginContextMeta } from 'unplugin';
+import { UnpluginContextMeta } from 'unplugin';
 import { getMorfeoUnpluginOptions } from '../src/plugin';
 import {
   MORFEO_CSS_PATH,
