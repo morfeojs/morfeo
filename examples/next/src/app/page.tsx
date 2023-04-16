@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
-import styles from './page.module.css';
+import { Main } from '@/components/Main';
+import { Link } from '@/components/Link';
 
 export const metadata: Metadata = {
   title: 'Morfeo | NextJS',
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <Main>
       <Card direction="left">
         <Card direction="right">
           <Card direction="left">
@@ -27,6 +28,7 @@ export default function Home() {
           </Card>
         </Card>
       </Card>
-    </main>
+      <Link href="/another-page">Go to another page</Link>
+    </Main>
   );
 }
