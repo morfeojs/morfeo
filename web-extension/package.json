@@ -1,6 +1,6 @@
 {
   "name": "@morfeo/app-web-extension",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "private": true,
   "type": "module",
   "author": {
@@ -15,14 +15,14 @@
     "deploy": "yarn zip && node scripts/deploy.mjs"
   },
   "dependencies": {
-    "@morfeo/preset-default": "^0.8.0",
-    "@morfeo/react": "^0.8.0",
+    "@morfeo/preset-default": "^0.9.0",
+    "@morfeo/react": "^0.9.0",
     "change-case": "4.1.2",
     "clsx": "1.2.1",
     "polished": "4.2.2",
+    "prismjs": "1.29.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "prismjs": "1.29.0",
     "react-transition-group": "4.4.5",
     "webextension-polyfill": "0.10.0"
   },

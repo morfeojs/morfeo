@@ -5,19 +5,14 @@ const args = process.argv.slice(2);
 const [VERSION_TYPE] = args;
 
 const WEB_EXTENSION_PATH = path.join(__dirname, '../web-extension');
-const WEB_EXTENSION_PUBLIC_PATH = path.join(WEB_EXTENSION_PATH, 'public');
 
 const WEB_EXTENSION_PACKAGE_JSON_PATH = path.join(
   WEB_EXTENSION_PATH,
   'package.json',
 );
 const WEB_EXTENSION_MANIFEST_PATH = path.join(
-  WEB_EXTENSION_PUBLIC_PATH,
+  WEB_EXTENSION_PATH,
   'manifest.json',
-);
-const MOZILLA_WEB_EXTENSION_MANIFEST_PATH = path.join(
-  WEB_EXTENSION_PUBLIC_PATH,
-  'manifest.firefox.json',
 );
 
 const webExtensionPackageJson = JSON.parse(
@@ -26,10 +21,6 @@ const webExtensionPackageJson = JSON.parse(
 
 const webExtensionManifest = JSON.parse(
   fs.readFileSync(WEB_EXTENSION_MANIFEST_PATH, { encoding: 'utf8' }),
-);
-
-const mozillaWebExtensionManifest = JSON.parse(
-  fs.readFileSync(MOZILLA_WEB_EXTENSION_MANIFEST_PATH, { encoding: 'utf8' }),
 );
 
 const currentVersion = webExtensionManifest.version as string;
@@ -56,7 +47,6 @@ const newVersion = [major, minor, patch].join('.');
 
 webExtensionPackageJson.version = newVersion;
 webExtensionManifest.version = newVersion;
-mozillaWebExtensionManifest.version = newVersion;
 
 fs.writeFileSync(
   WEB_EXTENSION_PACKAGE_JSON_PATH,
@@ -66,9 +56,4 @@ fs.writeFileSync(
 fs.writeFileSync(
   WEB_EXTENSION_MANIFEST_PATH,
   JSON.stringify(webExtensionManifest, undefined, 2) + '\n',
-);
-
-fs.writeFileSync(
-  MOZILLA_WEB_EXTENSION_MANIFEST_PATH,
-  JSON.stringify(mozillaWebExtensionManifest, undefined, 2) + '\n',
 );

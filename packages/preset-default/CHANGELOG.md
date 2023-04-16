@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.9.0) (2023-04-16)
+
+
+### Bug Fixes
+
+* colors schemas typing ([08142ba](https://github.com/morfeojs/morfeo/commit/08142baebf6ebca992c0efbc72fed527a8ec7a9a))
+
+
+### Features
+
+* colorSchemas feature ([f5bdb7b](https://github.com/morfeojs/morfeo/commit/f5bdb7b9b23bb6f75eb79a830570caa0f89f73d1))
+* states feature ([835510b](https://github.com/morfeojs/morfeo/commit/835510ba575c95571c419c12cf45c8e5dec1a6ef))
+* version v0.8.0 ([fd2fcb2](https://github.com/morfeojs/morfeo/commit/fd2fcb2778aa1f37ade15570926441a706cb945f))
+
+
+
+
+
 # [0.8.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.8.0) (2023-01-28)
 
 

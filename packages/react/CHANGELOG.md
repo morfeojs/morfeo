@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.9.0) (2023-04-16)
+
+
+### Features
+
+* update @morfeo/react and @morfeo/svelt to support states ([ac79561](https://github.com/morfeojs/morfeo/commit/ac795616c69e0ced1dd0169a6203925685305869))
+* version v0.8.0 ([fd2fcb2](https://github.com/morfeojs/morfeo/commit/fd2fcb2778aa1f37ade15570926441a706cb945f))
+
+
+
+
+
 # [0.8.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.8.0) (2023-01-28)
 
 

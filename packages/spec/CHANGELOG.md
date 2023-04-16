@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.9.0) (2023-04-16)
+
+
+### Bug Fixes
+
+* colors schemas typing ([09679b5](https://github.com/morfeojs/morfeo/commit/09679b58b371129030735b98beef8a4475cbe58f))
+* colors schemas typing ([08142ba](https://github.com/morfeojs/morfeo/commit/08142baebf6ebca992c0efbc72fed527a8ec7a9a))
+
+
+### Features
+
+* [#648](https://github.com/morfeojs/morfeo/issues/648) - added support for symbols ([#652](https://github.com/morfeojs/morfeo/issues/652)) ([6bb4925](https://github.com/morfeojs/morfeo/commit/6bb49259f0939bd054d1636db07244a872d4bb77))
+* **build-time:** [#647](https://github.com/morfeojs/morfeo/issues/647) createUseStyle ([#692](https://github.com/morfeojs/morfeo/issues/692)) ([afd2f17](https://github.com/morfeojs/morfeo/commit/afd2f17813a489789a601be0ab58e78c9e13ceb6))
+* **build-time:** [#694](https://github.com/morfeojs/morfeo/issues/694) added support for the most common bundlers ([#700](https://github.com/morfeojs/morfeo/issues/700)) ([028623d](https://github.com/morfeojs/morfeo/commit/028623d203c1fec9c4c943f261d199e67017c16f))
+* colorSchemas feature ([f5bdb7b](https://github.com/morfeojs/morfeo/commit/f5bdb7b9b23bb6f75eb79a830570caa0f89f73d1))
+* linting ([4e191da](https://github.com/morfeojs/morfeo/commit/4e191da2917e6fadc5742f48ce9eb34d066b0f15))
+* states feature ([835510b](https://github.com/morfeojs/morfeo/commit/835510ba575c95571c419c12cf45c8e5dec1a6ef))
+* version v0.8.0 ([fd2fcb2](https://github.com/morfeojs/morfeo/commit/fd2fcb2778aa1f37ade15570926441a706cb945f))
+
+
+
+
+
 # [0.8.0](https://github.com/morfeojs/morfeo/compare/v0.7.0...v0.8.0) (2023-01-28)
 
 

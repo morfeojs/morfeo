@@ -1,6 +1,6 @@
 {
   "name": "@morfeo/example-next",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@morfeo/next": "^0.8.0",
-    "@morfeo/css": "^0.8.0",
-    "@morfeo/preset-default": "^0.8.0",
+    "@morfeo/css": "^0.9.0",
+    "@morfeo/next": "^0.9.0",
+    "@morfeo/preset-default": "^0.9.0",
     "@types/node": "18.15.3",
     "next": "13.2.4"
   },
