@@ -9,15 +9,26 @@ type ValueOrFunction<T, P> =
       [K in keyof T]: ValueOrFunction<T[K], P>;
     };
 
-type CreateUseComponentParams<C extends Component, P extends any> = {
+type CreateUseComponentParams<C extends Component, P> = {
   [K in keyof ReducedStyle]: ValueOrFunction<ReducedStyle[K], P>;
 } & {
   // componentName cannot be a function
+  componentName?: C;
   state?: ValueOrFunction<State<C>, P>;
   variant?: ValueOrFunction<Variant<C>, P>;
-  componentName?: C;
   style?: any;
   className?: string;
+};
+
+type UseStyle<P> = (
+  props?: P & {
+    className?: string;
+    style?: any;
+  },
+) => {
+  tag?: string;
+  style: any;
+  className: string;
 };
 
 /**
@@ -45,13 +56,10 @@ type CreateUseComponentParams<C extends Component, P extends any> = {
  * }
  * ```
  */
-export function createUseStyle<C extends Component, P extends any>(
-  _style: CreateUseComponentParams<C, P>,
-): (props?: P & { className?: string; style?: any }) => {
-  tag?: string;
-  style: any;
-  className: string;
-} {
+export function createUseStyle<
+  C extends Component,
+  P extends Record<string, unknown>,
+>(_style: CreateUseComponentParams<C, P>): UseStyle<P> {
   throw new Error(
     // TODO: Add link to documentation whenever it will be created
     "Error: parse should never be executed at run-time, please be sure you're using morfeo's transpiler",
