@@ -7,7 +7,9 @@ export type ResponsiveValue<V extends any> = {
   [K in BreakPoint]?: V;
 };
 
-export type PropertyValue<P extends Property> = keyof Theme[AllProperties[P]];
+export type PropertyValue<P extends Property> =
+  | keyof Theme[AllProperties[P]]
+  | `raw:${string}`;
 
 export interface CustomStyle {}
 
