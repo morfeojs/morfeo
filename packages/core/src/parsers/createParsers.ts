@@ -121,11 +121,7 @@ export function createParsers() {
       });
     }
 
-    if (typeof value === 'object') {
-      return { [property]: resolve(value) };
-    }
-
-    if (value.toString().includes('raw:')) {
+    if (typeof value === 'string' && value.includes('raw:')) {
       return resolveProperty({
         property,
         value: value.replace('raw:', '').trim(),
@@ -139,6 +135,10 @@ export function createParsers() {
         value,
         style,
       });
+    }
+
+    if (typeof value === 'object') {
+      return { [property]: resolve(value) };
     }
 
     return { [property]: value };
