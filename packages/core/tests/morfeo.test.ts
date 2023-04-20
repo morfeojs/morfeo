@@ -70,6 +70,14 @@ describe('morfeo', () => {
     });
   });
 
+  it('should resolve raw values', () => {
+    const result = morfeo.resolve({ bg: 'raw:#0066ff' });
+
+    expect(result).toEqual({
+      backgroundColor: '#0066ff',
+    });
+  });
+
   it('should get the current theme name', () => {
     morfeo.setTheme('light' as ThemeName, LIGHT_THEME as any);
     morfeo.setCurrentTheme('light' as ThemeName);

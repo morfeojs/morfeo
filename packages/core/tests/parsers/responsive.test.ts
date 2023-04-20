@@ -45,6 +45,20 @@ describe('pseudos', () => {
     });
   });
 
+  it('should generate media queries from raw values', () => {
+    const result = parsers.resolve({
+      color: {
+        lg: 'raw:#0066ff',
+      },
+    });
+
+    expect(result).toEqual({
+      [`@media (min-width: 600px)`]: {
+        color: '#0066ff',
+      },
+    });
+  });
+
   test('should merge multiple media queries', () => {
     const result = parsers.resolve({
       color: {

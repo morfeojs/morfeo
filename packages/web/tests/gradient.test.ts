@@ -1,4 +1,4 @@
-import { parsers, theme } from '../src';
+import { Gradient, parsers, theme } from '../src';
 
 const THEME = {
   colors: {
@@ -27,6 +27,9 @@ const THEME = {
     },
     notThemeColors: {
       colors: ['grey', 'black'],
+    },
+    justOneColor: {
+      colors: ['grey'],
     },
   },
 };
@@ -64,13 +67,6 @@ describe('gradient', () => {
     });
   });
 
-  test('should not generate any linear (or radial) gradient if the gradient does not exists', () => {
-    const style = parsers.resolve({ bgGradient: 'invalid' as any });
-    expect(style).toEqual({
-      background: undefined,
-    });
-  });
-
   test('should generate gradient for colors not provided by the theme', () => {
     const style = parsers.resolve({ bgGradient: 'notThemeColors' as any });
     expect(style).toEqual({
@@ -78,16 +74,42 @@ describe('gradient', () => {
     });
   });
 
-  test('should not generate any linear (or radial) gradient if any gradients inside the theme does exists', () => {
-    theme.reset();
-    const style = parsers.resolve({ bgGradient: 'invalid' as any });
+  test('should generate text gradient if the prop `textGradient` is passed', () => {
+    const style = parsers.resolve({ textGradient: 'primary' as any });
     expect(style).toEqual({
-      background: undefined,
+      background: 'linear-gradient(0deg, red 0%, blue 100%)',
+      backgroundClip: 'text',
+      textFillColor: 'transparent',
+      '-webkit-background-clip': 'text',
+      '-webkit-text-fill-color': 'transparent',
     });
   });
 
-  test('should generate text gradient if the prop `textGradient` is passed', () => {
-    const style = parsers.resolve({ textGradient: 'primary' as any });
+  test('should generate the gradient from raw values', () => {
+    const style = parsers.resolve({
+      gradient: 'raw:linear-gradient(0deg, red 0%, blue 100%)',
+    });
+
+    expect(style).toEqual({
+      background: 'linear-gradient(0deg, red 0%, blue 100%)',
+    });
+  });
+
+  test('should generate the gradient from only 1 color', () => {
+    const style = parsers.resolve({
+      gradient: 'justOneColor' as Gradient,
+    });
+
+    expect(style).toEqual({
+      background: 'linear-gradient(180deg, grey 0%)',
+    });
+  });
+
+  test('should generate the text-gradient from raw values', () => {
+    const style = parsers.resolve({
+      textGradient: 'raw:linear-gradient(0deg, red 0%, blue 100%)',
+    });
+
     expect(style).toEqual({
       background: 'linear-gradient(0deg, red 0%, blue 100%)',
       backgroundClip: 'text',

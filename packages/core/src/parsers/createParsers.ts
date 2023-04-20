@@ -121,16 +121,24 @@ export function createParsers() {
       });
     }
 
+    if (typeof value === 'object') {
+      return { [property]: resolve(value) };
+    }
+
+    if (value.toString().includes('raw:')) {
+      return resolveProperty({
+        property,
+        value: value.replace('raw:', '').trim(),
+        style,
+      });
+    }
+
     if (value && parser) {
       return parser({
         property,
         value,
         style,
       });
-    }
-
-    if (typeof value === 'object') {
-      return { [property]: resolve(value) };
     }
 
     return { [property]: value };
@@ -156,13 +164,13 @@ export function createParsers() {
         style,
       };
 
-      const hasStyleUncachebleProps = !uncachebleProps.some(prop =>
+      const hasStyleUncachebleProps = uncachebleProps.some(prop =>
         properties.includes(prop),
       );
 
       if (
         (typeof value === 'string' || typeof value === 'number') &&
-        hasStyleUncachebleProps
+        !hasStyleUncachebleProps
       ) {
         if (cache[property] === undefined) {
           cache[property] = {};

@@ -5,12 +5,13 @@ import {
   GradientConfig,
   ParsersContext,
   GradientProperty,
+  Parser,
 } from '@morfeo/core';
 
 function getGradientPercentages({
   start = 0,
   end = 100,
-  colors = [],
+  colors,
 }: GradientConfig) {
   const { length } = colors;
   const diff = end - start;
@@ -34,28 +35,35 @@ function getGradientProperty({ kind }: GradientConfig) {
 }
 
 function getGradientBackground(value: Gradient) {
-  const config = theme.getValue('gradients', value) || {};
+  const config = theme.getValue('gradients', value);
   const { angle = 180, kind } = config;
   const property = getGradientProperty(config);
   const percentages = getGradientPercentages(config);
   const gradientAngle = kind === 'radial' ? 'circle' : `${angle}deg`;
 
-  if (!percentages) {
-    return undefined;
-  }
-
   return `${property}(${gradientAngle}, ${percentages})`;
 }
 
+function guard(callback: Parser<GradientProperty>) {
+  return function (params: ParserParams<GradientProperty>) {
+    const config = theme.getValue('gradients', params.value as Gradient);
+    if (!config) {
+      return { background: params.value };
+    }
+
+    return callback(params);
+  };
+}
+
 function gradient({ value }: ParserParams<GradientProperty>) {
-  const bg = getGradientBackground(value as any);
+  const bg = getGradientBackground(value as Gradient);
   return {
     background: bg,
   };
 }
 
-function textGradient({ value }: ParserParams<GradientProperty>) {
-  const baseStyle = gradient({ value } as any);
+function textGradient(params: ParserParams<GradientProperty>) {
+  const baseStyle = guard(gradient)(params);
   return {
     ...baseStyle,
     backgroundClip: 'text',
@@ -66,7 +74,7 @@ function textGradient({ value }: ParserParams<GradientProperty>) {
 }
 
 export const gradientParsers: Partial<ParsersContext> = {
-  gradient: gradient,
-  bgGradient: gradient,
+  gradient: guard(gradient),
+  bgGradient: guard(gradient),
   textGradient: textGradient,
 };
