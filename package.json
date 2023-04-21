@@ -23,9 +23,9 @@
     "start:react-example": "turbo run start --filter=@morfeo/example-react",
     "start:svelte-example": "turbo run dev --filter=@morfeo/example-svelte",
     "test": "jest --detectOpenHandles",
-    "test:ci": "NODE_OPTIONS=--max-old-space-size=8192 pnpm run test --coverage",
-    "test:coverage": "pnpm run test --coverage",
-    "test:watch": "pnpm run test --watch",
+    "test:ci": "NODE_OPTIONS=--max-old-space-size=8192 pnpm run test -- --coverage",
+    "test:coverage": "pnpm run test -- --coverage",
+    "test:watch": "pnpm run test -- --watch",
     "version:web-extension": "ts-node scripts/version-web-extension.ts"
   },
   "dependencies": {
