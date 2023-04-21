@@ -1,7 +1,7 @@
 import { createUseStyle } from '@morfeo/css';
 
 type StyleProps = {
-  variant: any;
+  variant: 'primary' | 'secondary';
 };
 
 export const useButton = createUseStyle({

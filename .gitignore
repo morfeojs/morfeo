@@ -17,9 +17,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# lerna
-lerna-debug.log
-
 # Webstorm
 .idea
 
@@ -28,3 +25,6 @@ lerna-debug.log
 
 # Flow
 flow-typed/npm
+
+# Turbo
+.turbo

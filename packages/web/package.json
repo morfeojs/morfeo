@@ -18,15 +18,15 @@
     "morfeo-js"
   ],
   "scripts": {
-    "build": "yarn build:esm && yarn build:commonjs",
+    "build": "pnpm build:esm && pnpm build:commonjs",
     "build:esm": "rimraf build && tsc",
     "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/core": "^0.9.0",
-    "@morfeo/fonts": "^0.9.0",
-    "@morfeo/jss": "^0.9.0"
+    "@morfeo/core": "workspace:*",
+    "@morfeo/fonts": "workspace:*",
+    "@morfeo/jss": "workspace:*"
   },
   "peerDependencies": {
     "csstype": "^3.0.8"

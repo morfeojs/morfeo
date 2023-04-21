@@ -6,7 +6,7 @@ import { UnpluginContextMeta } from 'unplugin';
 export function getMorfeoUnpluginOptions(
   options: MorfeoPluginOptions | undefined = undefined,
   meta: UnpluginContextMeta,
-) {
+): any {
   return {
     name: MORFEO_UNPLUGIN_ID,
     transformInclude(id: string) {

@@ -13,10 +13,10 @@
     "react-dom": "18.2.0"
   },
   "dependencies": {
-    "@morfeo/compiler": "^0.9.0",
-    "@morfeo/css": "^0.9.0",
-    "@morfeo/preset-default": "^0.9.0",
-    "@morfeo/spec": "^0.9.0"
+    "@morfeo/compiler": "workspace:*",
+    "@morfeo/css": "workspace:*",
+    "@morfeo/preset-default": "workspace:*",
+    "@morfeo/spec": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
