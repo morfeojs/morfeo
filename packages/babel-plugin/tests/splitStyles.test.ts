@@ -1,6 +1,4 @@
-import { morfeo } from '@morfeo/web';
 import { splitStyles } from '../src/utils';
-import { theme } from './theme';
 
 describe('splitStyles', () => {
   it('should split a style into multiple mono-property styles', () => {
