@@ -2,9 +2,9 @@ name: Codecov
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
 
@@ -13,12 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/bootstrap-morfeo
-      
+      - uses: actions/setup-environment
+
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Run tests
-        run: yarn test:ci
+        run: pnpm test:ci
 
       - name: Codecov
         uses: codecov/codecov-action@v3.1.2
-

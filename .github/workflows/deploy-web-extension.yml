@@ -1,26 +1,28 @@
 name: Deploy Web Extension
+
 on:
   release:
     types: [created]
 
   workflow_dispatch:
 
- 
 jobs:
   deploy-web-extension:
-    runs-on: ubuntu-latest 
-    permissions: 
+    runs-on: ubuntu-latest
+    permissions:
       contents: read
-      packages: write 
+      packages: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/bootstrap-morfeo
+      - uses: actions/setup-environment
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Build Web Extension
-        run: yarn build:web-extension
-      
+        run: pnpm build:web-extension
+
       - name: Deploy Web Extension
-        run: yarn deploy:web-extension
+        run: pnpm deploy:web-extension
         env:
           WEB_EXTENSION_ID: ${{ secrets.WEB_EXTENSION_ID }}
           CHROME_WEB_CLIENT_ID: ${{ secrets.CHROME_WEB_STORE_CLIENT_ID }}
