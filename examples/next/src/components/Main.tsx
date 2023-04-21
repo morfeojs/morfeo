@@ -1,4 +1,4 @@
-import { createUseStyle } from '@morfeo/css';
+import { css } from '@morfeo/css';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 type CardProps = DetailedHTMLProps<
@@ -6,15 +6,16 @@ type CardProps = DetailedHTMLProps<
   HTMLDivElement
 >;
 
-const useMain = createUseStyle({
-  display: 'flex',
-  minHeight: '100vh',
-  alignItems: 'center',
-  flexDirection: 'column',
-  justifyContent: 'center',
+const classes = css({
+  container: {
+    display: 'flex',
+    minHeight: '100vh',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
 });
 
 export const Main: React.FC<CardProps> = props => {
-  const { className, style } = useMain();
-  return <div {...props} className={className} style={style} />;
+  return <div {...props} className={classes.container} />;
 };

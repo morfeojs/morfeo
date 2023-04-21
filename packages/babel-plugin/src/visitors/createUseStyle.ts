@@ -20,11 +20,6 @@ export function createUseStyleVisitor(
       const { styleObject, styleFunctions, themeableStyleFunctions } =
         getStyleObject(path.node);
 
-      const staticClassNames = css
-        .add(styleObject)
-        .split(' ')
-        .map(c => `"${c}"`);
-
       const dynamicClassNames = themeableStyleFunctions.reduce<string[]>(
         (acc, themeableStyleFunction) => {
           const classes = dynamicClasses.create(
@@ -56,9 +51,11 @@ export function createUseStyleVisitor(
         '',
       );
 
-      if (!state.file.metadata.morfeo) {
-        state.file.metadata.morfeo = '';
-      }
+      const staticClassNames = css
+        .add(styleObject)
+        .split(' ')
+        .map(c => `"${c}"`);
+
       state.file.metadata.morfeo += css.get();
 
       const template = `function (props = {}) {

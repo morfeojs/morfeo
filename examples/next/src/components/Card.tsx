@@ -1,4 +1,4 @@
-import { createUseStyle } from '@morfeo/css';
+import { css } from '@morfeo/css';
 import { CSSProperties, DetailedHTMLProps, HTMLAttributes } from 'react';
 
 type CardProps = DetailedHTMLProps<
@@ -9,33 +9,28 @@ type CardProps = DetailedHTMLProps<
   bg?: CSSProperties['color'];
 };
 
-const getCardProps = createUseStyle({
-  componentName: 'Card',
-  p: 'm',
-  transition: 'fast',
-  shadow: 'none',
-  '&:hover': {
-    p: 'xl',
-    corner: '2xl',
-    shadow: 'light',
-  },
-  '&[data-direction="right"]:hover': {
-    transform: 'rotate(-3deg)',
-  },
-  '&[data-direction="left"]:hover': {
-    transform: 'rotate(3deg)',
+const classes = css({
+  container: {
+    componentName: 'Card',
+    p: 'm',
+    transition: 'fast',
+    shadow: 'none',
+    '&:hover': {
+      p: 'xl',
+      corner: '2xl',
+      shadow: 'light',
+    },
+    '&[data-direction="right"]:hover': {
+      transform: 'rotate(-3deg)',
+    },
+    '&[data-direction="left"]:hover': {
+      transform: 'rotate(3deg)',
+    },
   },
 });
 
-const { className, style } = getCardProps();
-
 export const Card: React.FC<CardProps> = ({ direction, ...props }) => {
   return (
-    <div
-      {...props}
-      data-direction={direction}
-      className={className}
-      style={style}
-    />
+    <div {...props} data-direction={direction} className={classes.container} />
   );
 };

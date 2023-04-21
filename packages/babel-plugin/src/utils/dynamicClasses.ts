@@ -7,10 +7,10 @@ import {
   component,
 } from '@morfeo/web';
 import { css } from './css';
+import { getStyleFromPath } from './getStyleFromPath';
 
 function createDynamicClasses() {
   const propertyToSliceCache = new Map<Property, ThemeKey>();
-  const pathToStyleCache = new Map<string, Style>();
 
   function getThemeSliceByProperty(property: Property) {
     if (propertyToSliceCache.has(property)) {
@@ -26,24 +26,6 @@ function createDynamicClasses() {
     return sliceName;
   }
 
-  function createStyleFromPath(path: string, value: any): Style {
-    const cacheKey = `${path}-${value}`;
-    if (pathToStyleCache.has(cacheKey)) {
-      return pathToStyleCache.get(cacheKey) as Style;
-    }
-
-    const [first, ...rest] = path.split('.');
-
-    const style = {
-      [first]:
-        rest.length > 0 ? createStyleFromPath(rest.join('.'), value) : value,
-    };
-
-    pathToStyleCache.set(cacheKey, style);
-
-    return style;
-  }
-
   function createComponentClasses(
     property: 'variant' | 'state',
     path: string,
@@ -56,7 +38,7 @@ function createDynamicClasses() {
 
     const classes = Object.keys(variantsOrStates).reduce(
       (acc, variantOrState) => {
-        const style = createStyleFromPath(path, variantOrState);
+        const style = getStyleFromPath(path, variantOrState);
         const className = css.add({
           componentName: completeStyle.componentName,
           ...(completeStyle.state ? { state: completeStyle.state } : {}),
@@ -84,7 +66,7 @@ function createDynamicClasses() {
     const slice = theme.getSlice(sliceName);
     const sliceKeys = Object.keys(slice);
     const classes = sliceKeys.reduce((acc, sliceKey) => {
-      const style = createStyleFromPath(path, sliceKey);
+      const style = getStyleFromPath(path, sliceKey);
 
       return {
         ...acc,

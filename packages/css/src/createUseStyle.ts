@@ -1,6 +1,5 @@
-import { Component, State, Style, Variant } from '@morfeo/web';
-
-type ReducedStyle = Omit<Style, 'componentName' | 'variant' | 'state'>;
+import { Component, State, Variant } from '@morfeo/web';
+import { ReducedStyle } from './types';
 
 type ValueOrFunction<T, P> =
   | T
@@ -35,7 +34,7 @@ type UseStyle<P> = (
  *
  * > **IMPORTANT**
  * >
- * > This function is meant to be replaced at build-time, be sure the `@morfeo/webpack` plugin is used.
+ * > This function is meant to be replaced at build-time, be sure the `@morfeo/compiler` plugin is used.
  *
  *
  * It creates a function from a morfeo style object, this function returns the computed style at build time.

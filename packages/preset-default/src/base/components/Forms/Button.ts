@@ -52,34 +52,11 @@ export const Button: ComponentConfig<ButtonVariant> = {
     justifyContent: 'center',
     fontSize: 'm',
     fontFamily: 'default',
-    fontWeight: 'light',
+    fontWeight: 'medium',
     border: 'none',
     overflow: 'hidden',
     position: 'relative',
     transition: 'medium',
-    '&:after': {
-      content: '""',
-      color: 'error',
-      position: 'absolute',
-      top: 'none',
-      left: 'none',
-      size: '100',
-      bg: 'white',
-      opacity: 'light',
-      clipPath: 'circle(0%)',
-      transition: 'medium',
-    },
-    '&:hover': {
-      '&:after': {
-        clipPath: 'circle(80%)',
-      },
-    },
-    '&:active': {
-      bg: 'primary.light',
-      '&:after': {
-        clipPath: 'circle(20%)',
-      },
-    },
   },
   variants: {
     inverted: {

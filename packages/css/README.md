@@ -32,51 +32,37 @@ npm install @morfeo/next
 yarn add @morfeo/next
 ```
 
-### React (🔜 Coming soon)
+### Others
 
 ```bash
 # With npm
-npm install @morfeo/craco
+npm install @morfeo/compiler
 
 # With yarn
-yarn add @morfeo/craco
-```
-
-### Webpack
-
-```bash
-# With npm
-npm install @morfeo/webpack
-
-# With yarn
-yarn add @morfeo/webpack
+yarn add @morfeo/compiler
 ```
 
 ## Usage
 
 ### Example in React
 
-```tsx
-import { createUseClasses } from "@morfeo/css"
+#### createUseStyle
 
-const useClasses = createUseClasses({
-  container: {
-    p: 'm',
-    bg: 'background',
-    corner: 's',
-  },
-  title: {
-    fontSize: 'l',
-    mb: 'm'
-  },
+```tsx
+import { createUseStyle } from "@morfeo/css"
+
+const useStyle = createUseStyle({
+  p: 'm',
+  bg: 'background',
+  corner: 's',
 });
 
 
 function MyComponent() {
-  const classes = useClasses();
+  const { className } = useStyle();
   return (
-    <div className={classes.container}>
-      <h1 className={classes.title}>Hello world!</h1>
+    <div className={className}>
+      <h1>Hello world!</h1>
     </div>
   )
 }
@@ -85,19 +71,19 @@ function MyComponent() {
 This will be replaced at **build-time** into something like:
 
 ```tsx
-import { createUseClasses } from "@morfeo/css"
+import { createUseStyle } from "@morfeo/css"
 
-const useClasses = () => ({
-  container: 'p-m bg-background corner-s',
-  title: 'fontSize-l mb-m',
+const useStyle = () => ({
+  className: 'p-m bg-background corner-s',
+  style: {},
 });
 
 
 function MyComponent() {
-  const classes = useClasses();
+  const className = useStyle();
   return (
-    <div className={classes.container}>
-      <h1 className={classes.title}>Hello world!</h1>
+    <div className={className}>
+      <h1>Hello world!</h1>
     </div>
   )
 }
@@ -114,11 +100,5 @@ And also the related `css` will be generated:
 }
 .corner-s {
   border-radius: 12px;
-}
-.fontSize-l {
-  font-size: 1.125rem;
-}
-.mb-m {
-  margin: 1rem;
 }
 ```

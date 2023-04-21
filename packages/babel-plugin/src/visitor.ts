@@ -3,6 +3,7 @@ import {
   isCreateUseStyle,
   createUseStyleVisitor,
 } from './visitors/createUseStyle';
+import { createCssVisitor, isCSSFunction } from './visitors/css';
 
 export default function getVisitor(): Visitor {
   return {
@@ -15,8 +16,16 @@ export default function getVisitor(): Visitor {
     },
     CallExpression: {
       enter(callExpressionPath, state: any) {
+        if (!state.file.metadata.morfeo) {
+          state.file.metadata.morfeo = '';
+        }
+
         if (isCreateUseStyle(callExpressionPath)) {
           createUseStyleVisitor(callExpressionPath, state);
+        }
+
+        if (isCSSFunction(callExpressionPath)) {
+          createCssVisitor(callExpressionPath, state);
         }
       },
     },

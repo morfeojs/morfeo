@@ -1,4 +1,4 @@
-import { Style, getStyles } from '@morfeo/web';
+import { Style, component, getStyles } from '@morfeo/web';
 import { splitStyles } from './splitStyles';
 
 function createCSS() {
@@ -13,8 +13,14 @@ function createCSS() {
     cache.set(className, css);
   }
 
-  function add(style: Style) {
-    const splittedStyles = splitStyles(style);
+  function add({ componentName, variant, state, ...style }: Style) {
+    const componentStyle = componentName
+      ? component(componentName, variant, state).getStyle()
+      : {};
+    const splittedStyles = splitStyles({
+      ...componentStyle,
+      ...style,
+    });
 
     const className = splittedStyles.reduce<string>((acc, splittedStyle) => {
       const { classes, sheet } = getStyles({

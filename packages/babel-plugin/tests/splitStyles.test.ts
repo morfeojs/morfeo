@@ -40,28 +40,4 @@ describe('splitStyles', () => {
       ]);
     });
   });
-
-  describe('when the style has a component', () => {
-    beforeEach(() => {
-      morfeo.setTheme('default', theme);
-    });
-
-    it('should resolve the style of the component and split it', () => {
-      const result = splitStyles({
-        componentName: 'Box',
-        variant: 'bordered',
-      });
-
-      expect(result).toEqual([{ bg: 'primary' }, { border: 'strong' }]);
-    });
-
-    it('should not retrieve anything in case variant or state are passed alone', () => {
-      const result = splitStyles({
-        variant: 'any variant',
-        state: 'any state',
-      });
-
-      expect(result).toEqual([]);
-    });
-  });
 });
