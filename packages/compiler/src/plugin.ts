@@ -1,21 +1,19 @@
 import { transformer } from './transformer';
 import { MorfeoPluginOptions } from './types';
-import { MORFEO_VIRTUAL_MODULE_PREFIX, writer } from './utils';
+import { writer, MORFEO_UNPLUGIN_ID, SUPPORTED_EXTENSIONS } from './utils';
 import { UnpluginContextMeta } from 'unplugin';
-
-const SUPPORTED_EXTENSIONS = ['ts', 'js', 'tsx', 'jsx'];
 
 export function getMorfeoUnpluginOptions(
   options: MorfeoPluginOptions | undefined = undefined,
   meta: UnpluginContextMeta,
 ) {
   return {
-    name: '@morfeo/compiler',
+    name: MORFEO_UNPLUGIN_ID,
     transformInclude(id: string) {
       return SUPPORTED_EXTENSIONS.some(ext => id.endsWith(ext));
     },
     resolveId(source: string) {
-      if (source.startsWith(MORFEO_VIRTUAL_MODULE_PREFIX)) {
+      if (source.startsWith(MORFEO_UNPLUGIN_ID)) {
         return source;
       }
       return null;
@@ -24,7 +22,7 @@ export function getMorfeoUnpluginOptions(
       return transformer({ input: code, fileName, options, meta });
     },
     load(id: string) {
-      if (id.startsWith(MORFEO_VIRTUAL_MODULE_PREFIX)) {
+      if (id.startsWith(MORFEO_UNPLUGIN_ID)) {
         return writer.get();
       }
 

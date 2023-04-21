@@ -4,7 +4,8 @@ import { UnpluginContextMeta } from 'unplugin';
 import { getMorfeoUnpluginOptions } from '../src/plugin';
 import {
   MORFEO_CSS_PATH,
-  MORFEO_VIRTUAL_MODULE_PREFIX,
+  MORFEO_UNPLUGIN_ID,
+  VIRTUAL_MODULES_FRAMEWORKS,
   writer,
 } from '../src/utils';
 
@@ -129,8 +130,8 @@ describe('morfeo unplugin config', () => {
     });
   });
 
-  describe('when the framework is rollup or vite', () => {
-    it.each(['rollup', 'vite'])(
+  describe('when the framework supports virtual modules', () => {
+    it.each(VIRTUAL_MODULES_FRAMEWORKS)(
       'should not write in the filesystem but instead importing a virtual module with %s',
       framework => {
         const contextMeta = { ...DEFAULT_META, framework };
@@ -144,11 +145,9 @@ describe('morfeo unplugin config', () => {
 
         const result = customPluginOptions.transform(testCode, 'fileName.ts');
 
-        expect(result?.code).toContain(MORFEO_VIRTUAL_MODULE_PREFIX);
+        expect(result?.code).toContain(MORFEO_UNPLUGIN_ID);
         expect(fsAppendMock).not.toHaveBeenCalled();
-        expect(customPluginOptions.load(MORFEO_VIRTUAL_MODULE_PREFIX)).toBe(
-          'some css',
-        );
+        expect(customPluginOptions.load(MORFEO_UNPLUGIN_ID)).toBe('some css');
       },
     );
   });

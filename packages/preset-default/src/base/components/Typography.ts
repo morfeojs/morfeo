@@ -41,10 +41,9 @@ export const Typography: ComponentConfig<TypographyVariant> = {
     p: {
       style: {
         fontSize: 'm',
-        fontWeight: 'light',
+        fontWeight: 'medium',
         letterSpacing: 'body',
         lineHeight: 'body',
-        mb: 's',
       },
       states: {},
     },
@@ -79,8 +78,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         fontSize: '2xl',
         fontWeight: 'bold',
         letterSpacing: 'heading',
-        lineHeight: 'none',
-        mb: 'xs',
+        lineHeight: 'heading',
       },
       states: {},
     },
@@ -116,7 +114,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
       style: {
         componentName: 'Typography',
         variant: 'h2',
-        fontWeight: 'light',
+        fontWeight: 'medium',
       },
       states: {},
     },
@@ -125,7 +123,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
       style: {
         componentName: 'Typography',
         variant: 'h3',
-        fontWeight: 'light',
+        fontWeight: 'medium',
       },
       states: {},
     },
@@ -133,7 +131,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
       style: {
         color: 'invertedText',
         fontSize: 'm',
-        fontWeight: 'light',
+        fontWeight: 'medium',
         letterSpacing: 'body',
         lineHeight: 'body',
       },
@@ -206,7 +204,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
       style: {
         componentName: 'Typography',
         variant: 'h2',
-        fontWeight: 'light',
+        fontWeight: 'medium',
       },
       states: {},
     },
@@ -215,7 +213,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
       style: {
         componentName: 'Typography',
         variant: 'h3',
-        fontWeight: 'light',
+        fontWeight: 'medium',
       },
       states: {},
     },
@@ -225,7 +223,6 @@ export const Typography: ComponentConfig<TypographyVariant> = {
         componentName: 'Typography',
         variant: 'h1',
         fontSize: '3xl',
-        lineHeight: 'none',
       },
       states: {},
     },
@@ -293,7 +290,7 @@ export const Typography: ComponentConfig<TypographyVariant> = {
       style: {
         fontSize: 'm',
         fontStyle: 'italic',
-        fontWeight: 'light',
+        fontWeight: 'medium',
         lineHeight: 'body',
         bg: 'gray.lightest',
         color: 'gray',

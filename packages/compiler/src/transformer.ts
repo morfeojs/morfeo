@@ -1,9 +1,9 @@
 import * as path from 'node:path';
 import * as babel from '@babel/core';
 import morfeoBabelPlugin from '@morfeo/babel-plugin';
-import { MorfeoPluginOptions } from './types';
+import type { MorfeoPluginOptions } from './types';
 import { UnpluginContextMeta } from 'unplugin';
-import { writer } from './utils';
+import { MORFEO_UNPLUGIN_ID, writer } from './utils';
 
 type LoaderOptions = {
   input: string;
@@ -36,7 +36,7 @@ export function transformer({ input, fileName, options, meta }: LoaderOptions) {
        * bot only the target functions are replaced.
        */
       caller: {
-        name: 'morfeo-caller',
+        name: MORFEO_UNPLUGIN_ID,
         supportsStaticESM: true,
         supportsDynamicImport: true,
         supportsTopLevelAwait: true,

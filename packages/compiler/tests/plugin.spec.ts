@@ -1,6 +1,11 @@
 import * as MorfeoPlugins from '../src';
 import { getMorfeoUnpluginOptions } from '../src/plugin';
-import { MORFEO_VIRTUAL_MODULE_PREFIX, writer } from '../src/utils';
+import {
+  MORFEO_UNPLUGIN_ID,
+  SUPPORTED_EXTENSIONS,
+  VIRTUAL_MODULES_FRAMEWORKS,
+  writer,
+} from '../src/utils';
 
 const writerSpy = jest
   .spyOn(writer, 'get')
@@ -19,16 +24,13 @@ describe('MorfeoPlugins', () => {
     expect(MorfeoPlugins.MorfeoEsbuildPlugin).toBeDefined();
   });
 
-  it.each(['js', 'ts', 'tsx', 'jsx'])(
-    'should recognize %s extensions',
-    extension => {
-      const pluginOptions = getMorfeoUnpluginOptions({}, { meta: 'webpack' });
+  it.each(SUPPORTED_EXTENSIONS)('should recognize %s extensions', extension => {
+    const pluginOptions = getMorfeoUnpluginOptions({}, { meta: 'webpack' });
 
-      expect(
-        pluginOptions.transformInclude(`fileName.${extension}`),
-      ).toBeTruthy();
-    },
-  );
+    expect(
+      pluginOptions.transformInclude(`fileName.${extension}`),
+    ).toBeTruthy();
+  });
 
   it.each(['wrong', 'html', 'jpeg', 'css'])(
     'should not recognize unsupported extensions like %s',
@@ -42,8 +44,11 @@ describe('MorfeoPlugins', () => {
   );
 
   it('should recognize the morfeo virtual module', () => {
-    const pluginOptions = getMorfeoUnpluginOptions({}, { meta: 'vite' });
-    const moduleId = `${MORFEO_VIRTUAL_MODULE_PREFIX}/somethingelse.css`;
+    const pluginOptions = getMorfeoUnpluginOptions(
+      {},
+      { meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] } },
+    );
+    const moduleId = `${MORFEO_UNPLUGIN_ID}/somethingelse.css`;
 
     const withMorfeoVirtualModule = pluginOptions.resolveId(moduleId);
     const withoutMorfeoVirtualModule =
@@ -54,8 +59,13 @@ describe('MorfeoPlugins', () => {
   });
 
   it('should call writer.get when the code contains reference to the morfeo virtual module', () => {
-    const pluginOptions = getMorfeoUnpluginOptions({}, { meta: 'vite' });
-    const moduleId = `${MORFEO_VIRTUAL_MODULE_PREFIX}/somethingelse.css`;
+    const pluginOptions = getMorfeoUnpluginOptions(
+      {},
+      {
+        meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] },
+      },
+    );
+    const moduleId = `${MORFEO_UNPLUGIN_ID}/somethingelse.css`;
 
     const result = pluginOptions.load(moduleId);
 
@@ -64,7 +74,12 @@ describe('MorfeoPlugins', () => {
   });
 
   it('should not call writer.get when the code does not contain any reference to the morfeo virtual module', () => {
-    const pluginOptions = getMorfeoUnpluginOptions({}, { meta: 'vite' });
+    const pluginOptions = getMorfeoUnpluginOptions(
+      {},
+      {
+        meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] },
+      },
+    );
     const moduleId = `a different module`;
 
     const result = pluginOptions.load(moduleId);
