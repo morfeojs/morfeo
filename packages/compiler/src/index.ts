@@ -1,11 +1,15 @@
 import { createUnplugin } from 'unplugin';
 import { getMorfeoUnpluginOptions } from './plugin';
+import type { PluginOption } from 'vite';
+import type { MorfeoPluginOptions } from './types';
 
 const unplugin = createUnplugin(getMorfeoUnpluginOptions);
 
-export const MorfeoVitePlugin = unplugin.vite as any;
+type VitePlugin = (options: MorfeoPluginOptions) => PluginOption;
+
+export const MorfeoVitePlugin = unplugin.vite as VitePlugin;
 export const MorfeoRollupPlugin = unplugin.rollup;
-export const MorfeoWebpackPlugin = unplugin.webpack as any;
+export const MorfeoWebpackPlugin = unplugin.webpack;
 export const MorfeoRspackPlugin = unplugin.rspack;
 export const MorfeoEsbuildPlugin = unplugin.esbuild;
 

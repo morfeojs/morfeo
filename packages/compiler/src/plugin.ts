@@ -1,12 +1,12 @@
+import type { UnpluginContextMeta } from 'unplugin';
 import { transformer } from './transformer';
-import { MorfeoPluginOptions } from './types';
+import type { MorfeoPluginOptions } from './types';
 import { writer, MORFEO_UNPLUGIN_ID, SUPPORTED_EXTENSIONS } from './utils';
-import { UnpluginContextMeta } from 'unplugin';
 
 export function getMorfeoUnpluginOptions(
   options: MorfeoPluginOptions | undefined = undefined,
   meta: UnpluginContextMeta,
-): any {
+) {
   return {
     name: MORFEO_UNPLUGIN_ID,
     transformInclude(id: string) {

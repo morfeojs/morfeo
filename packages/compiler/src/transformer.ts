@@ -1,8 +1,8 @@
 import * as path from 'node:path';
 import * as babel from '@babel/core';
 import morfeoBabelPlugin from '@morfeo/babel-plugin';
+import type { TransformResult, UnpluginContextMeta } from 'unplugin';
 import type { MorfeoPluginOptions } from './types';
-import { UnpluginContextMeta } from 'unplugin';
 import { MORFEO_UNPLUGIN_ID, writer } from './utils';
 
 type LoaderOptions = {
@@ -12,7 +12,12 @@ type LoaderOptions = {
   meta: UnpluginContextMeta;
 };
 
-export function transformer({ input, fileName, options, meta }: LoaderOptions) {
+export function transformer({
+  input,
+  fileName,
+  options,
+  meta,
+}: LoaderOptions): TransformResult {
   if (!input.includes('@morfeo/css')) {
     return;
   }
@@ -56,7 +61,6 @@ export function transformer({ input, fileName, options, meta }: LoaderOptions) {
         result!.code
       }`,
       map: result!.map,
-      ast: result!.ast,
     };
   } catch (e) {
     return;

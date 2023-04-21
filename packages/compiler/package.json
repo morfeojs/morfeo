@@ -36,7 +36,11 @@
     "unplugin": "1.3.1"
   },
   "peerDependencies": {
-    "@babel/core": "7.21.4"
+    "@babel/core": "7.21.4",
+    "vite": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/babel__core": "^7.20.0"
   },
   "publishConfig": {
     "access": "public"
@@ -53,8 +57,5 @@
   "homepage": "https://morfeo.dev",
   "bugs": {
     "url": "https://github.com/morfeojs/morfeo/issues"
-  },
-  "devDependencies": {
-    "@types/babel__core": "^7.20.0"
   }
 }
