@@ -12,7 +12,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/setup-environment
+      - uses: ./.github/actions/setup-environment
 
       - name: Publish packages
         run: pnpm run publish

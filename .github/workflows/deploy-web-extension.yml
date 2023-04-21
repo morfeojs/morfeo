@@ -13,7 +13,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/setup-environment
+      - uses: ./.github/actions/setup-environment
 
       - name: Install dependencies
         run: pnpm install
