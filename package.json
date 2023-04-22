@@ -8,7 +8,7 @@
   "scripts": {
     "build": "turbo run build",
     "build:docs": "turbo run build --filter=@morfeo/app-docs",
-    "build:packages": "turbo run build --filter=!@morfeo/{app-*,example-*}",
+    "build:packages": "turbo run build --filter=!@morfeo/app* --filter=!@morfeo/example*",
     "build:web-extension": "turbo run build --filter=@morfeo/app-web-extension",
     "deploy:web-extension": "turbo run deploy --filter=@morfeo/app-web-extension",
     "postversion": "ts-node scripts/version.ts && pnpm version:web-extension",

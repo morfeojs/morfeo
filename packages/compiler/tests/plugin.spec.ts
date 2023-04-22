@@ -25,8 +25,9 @@ describe('MorfeoPlugins', () => {
   });
 
   it.each(SUPPORTED_EXTENSIONS)('should recognize %s extensions', extension => {
-    // @ts-expect-error
-    const pluginOptions = getMorfeoUnpluginOptions({}, { meta: 'webpack' });
+    const pluginOptions = getMorfeoUnpluginOptions({}, {
+      meta: 'webpack',
+    } as any);
 
     expect(
       pluginOptions.transformInclude(`fileName.${extension}`),
@@ -36,8 +37,9 @@ describe('MorfeoPlugins', () => {
   it.each(['wrong', 'html', 'jpeg', 'css'])(
     'should not recognize unsupported extensions like %s',
     extension => {
-      // @ts-expect-error
-      const pluginOptions = getMorfeoUnpluginOptions({}, { meta: 'webpack' });
+      const pluginOptions = getMorfeoUnpluginOptions({}, {
+        meta: 'webpack',
+      } as any);
 
       expect(
         pluginOptions.transformInclude(`fileName.${extension}`),
@@ -46,11 +48,9 @@ describe('MorfeoPlugins', () => {
   );
 
   it('should recognize the morfeo virtual module', () => {
-    const pluginOptions = getMorfeoUnpluginOptions(
-      {},
-      // @ts-expect-error
-      { meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] } },
-    );
+    const pluginOptions = getMorfeoUnpluginOptions({}, {
+      meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] },
+    } as any);
     const moduleId = `${MORFEO_UNPLUGIN_ID}/somethingelse.css`;
 
     const withMorfeoVirtualModule = pluginOptions.resolveId(moduleId);
@@ -62,13 +62,9 @@ describe('MorfeoPlugins', () => {
   });
 
   it('should call writer.get when the code contains reference to the morfeo virtual module', () => {
-    const pluginOptions = getMorfeoUnpluginOptions(
-      {},
-      {
-        // @ts-expect-error
-        meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] },
-      },
-    );
+    const pluginOptions = getMorfeoUnpluginOptions({}, {
+      meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] },
+    } as any);
     const moduleId = `${MORFEO_UNPLUGIN_ID}/somethingelse.css`;
 
     const result = pluginOptions.load(moduleId);
@@ -78,13 +74,9 @@ describe('MorfeoPlugins', () => {
   });
 
   it('should not call writer.get when the code does not contain any reference to the morfeo virtual module', () => {
-    const pluginOptions = getMorfeoUnpluginOptions(
-      {},
-      {
-        // @ts-expect-error
-        meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] },
-      },
-    );
+    const pluginOptions = getMorfeoUnpluginOptions({}, {
+      meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] },
+    } as any);
     const moduleId = `a different module`;
 
     const result = pluginOptions.load(moduleId);

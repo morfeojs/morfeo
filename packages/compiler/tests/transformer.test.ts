@@ -135,8 +135,10 @@ describe('morfeo unplugin config', () => {
       'should not write in the filesystem but instead importing a virtual module with %s',
       framework => {
         const contextMeta = { ...DEFAULT_META, framework };
-        // @ts-expect-error
-        const customPluginOptions = getMorfeoUnpluginOptions({}, contextMeta);
+        const customPluginOptions = getMorfeoUnpluginOptions(
+          {},
+          contextMeta as any,
+        );
 
         const testCode = `import { createUseStyle } from "@morfeo/css";
           const useStyles = createUseStyle({
