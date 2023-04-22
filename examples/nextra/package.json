@@ -9,20 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@morfeo/css": "^0.9.0",
-    "@morfeo/next": "^0.9.0",
-    "@morfeo/preset-default": "^0.9.0",
-    "@morfeo/spec": "^0.9.0",
-    "@morfeo/utils": "^0.9.0",
-    "@morfeo/web": "^0.9.0",
+    "@morfeo/css": "workspace:*",
+    "@morfeo/next": "workspace:*",
+    "@morfeo/preset-default": "workspace:*",
+    "@morfeo/spec": "workspace:*",
+    "@morfeo/utils": "workspace:*",
+    "@morfeo/web": "workspace:*",
     "@types/node": "18.15.3",
     "clsx": "^1.2.1",
     "next": "13.2.4",
     "nextra": "2.4.0",
-    "nextra-theme-docs": "2.4.0"
-  },
-  "peerDependencies": {
+    "nextra-theme-docs": "2.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.35",
+    "@types/react-dom": "18.0.11",
+    "eslint": "8.36.0",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-config-next": "13.2.4"
   }
 }

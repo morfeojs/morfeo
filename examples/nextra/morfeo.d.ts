@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import '@morfeo/spec';
 
 import localTheme from './morfeo.theme';
