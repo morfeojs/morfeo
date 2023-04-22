@@ -1,10 +1,10 @@
 import { css } from '@morfeo/css';
 import { FeatureCard } from './FeatureCard';
-import Image from 'next/image';
 
 const classes = css({
   container: {
-    gradient: `raw:radial-gradient(circle at 50% 40%, #445ac74d 0%, transparent 50%)`,
+    gradient:
+      'raw:radial-gradient(circle at 50% 40%, #445ac74d 0%, transparent 50%)',
   },
   firstLine: {
     display: 'grid',

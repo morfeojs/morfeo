@@ -11,8 +11,8 @@ const classes = css({
     alignItems: 'center',
     justifyContent: 'center',
     py: 'raw:10rem',
-    gradient: `raw:radial-gradient(circle at 40% 40%, #445ac74d -10%, transparent 30%),
-    radial-gradient(circle at 60% 60%, rgba(183, 65, 14, 0.4) -20%, transparent 20%)`,
+    gradient: `raw:radial-gradient(circle at 40% 40%, #445ac74d 0%, transparent 40%),
+    radial-gradient(circle at 60% 60%, rgba(183, 65, 14, 0.4) 0%, transparent 30%)`,
   },
   title: {
     componentName: 'Typography',
