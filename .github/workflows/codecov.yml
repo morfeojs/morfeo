@@ -20,6 +20,9 @@ jobs:
 
       - uses: ./.github/actions/setup-environment
 
+      - name: Build packages
+        run: pnpm build:packages
+
       - name: Run tests
         run: pnpm test:ci
 
