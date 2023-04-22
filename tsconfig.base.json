@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "jsx": "react",
     "watch": false,
     "strict": true,
@@ -9,14 +12,15 @@
     "allowJs": true,
     "sourceMap": true,
     "diagnostics": false,
-    "declaration": true, 
+    "declaration": true,
     "skipLibCheck": true,
     "importHelpers": true,
     "noImplicitAny": false,
-    "traceResolution": false, 
+    "traceResolution": false,
     "esModuleInterop": true,
     "isolatedModules": false,
     "moduleResolution": "node",
+    "preserveSymlinks": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "allowUnusedLabels": false,
@@ -25,5 +29,7 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
   },
-  "exclude": ["./node_modules"]
+  "exclude": [
+    "./node_modules"
+  ]
 }
