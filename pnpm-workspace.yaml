@@ -1,6 +1,6 @@
 packages:
   - 'packages/*'
-  - 'docs/*'
+  - 'docs'
   - 'examples/*'
   - 'benchmarks/*'
-  - 'web-extension/*'
+  - 'web-extension'
