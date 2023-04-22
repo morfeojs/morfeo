@@ -1,6 +1,7 @@
 import { ReactNode, HTMLProps, createElement } from 'react';
 import { Style, Variant, Component, component, State } from '@morfeo/web';
 import { useClassName } from './useClassName';
+import { ReactElement } from 'react';
 
 export type MorfeoComponentProps<T extends Component> = {
   style?: Style;
@@ -17,7 +18,7 @@ export function MorfeoComponent<T extends Component>({
   componentName,
   state,
   ...props
-}: MorfeoComponentProps<T>) {
+}: MorfeoComponentProps<T>): ReactElement {
   const {
     tag = 'div',
     props: componentProps,

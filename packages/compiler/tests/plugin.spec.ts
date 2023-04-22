@@ -25,6 +25,7 @@ describe('MorfeoPlugins', () => {
   });
 
   it.each(SUPPORTED_EXTENSIONS)('should recognize %s extensions', extension => {
+    // @ts-expect-error
     const pluginOptions = getMorfeoUnpluginOptions({}, { meta: 'webpack' });
 
     expect(
@@ -35,6 +36,7 @@ describe('MorfeoPlugins', () => {
   it.each(['wrong', 'html', 'jpeg', 'css'])(
     'should not recognize unsupported extensions like %s',
     extension => {
+      // @ts-expect-error
       const pluginOptions = getMorfeoUnpluginOptions({}, { meta: 'webpack' });
 
       expect(
@@ -46,6 +48,7 @@ describe('MorfeoPlugins', () => {
   it('should recognize the morfeo virtual module', () => {
     const pluginOptions = getMorfeoUnpluginOptions(
       {},
+      // @ts-expect-error
       { meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] } },
     );
     const moduleId = `${MORFEO_UNPLUGIN_ID}/somethingelse.css`;
@@ -62,6 +65,7 @@ describe('MorfeoPlugins', () => {
     const pluginOptions = getMorfeoUnpluginOptions(
       {},
       {
+        // @ts-expect-error
         meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] },
       },
     );
@@ -77,6 +81,7 @@ describe('MorfeoPlugins', () => {
     const pluginOptions = getMorfeoUnpluginOptions(
       {},
       {
+        // @ts-expect-error
         meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] },
       },
     );
