@@ -1,17 +1,14 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
 import { UnpluginContextMeta } from 'unplugin';
 import { getMorfeoUnpluginOptions } from '../src/plugin';
 import {
-  MORFEO_CSS_PATH,
   MORFEO_UNPLUGIN_ID,
   VIRTUAL_MODULES_FRAMEWORKS,
   writer,
 } from '../src/utils';
 
-const DEFAULT_META: UnpluginContextMeta = {
+const DEFAULT_META = {
   framework: 'webpack',
-};
+} as any as UnpluginContextMeta;
 
 const pluginOptions = getMorfeoUnpluginOptions(undefined, DEFAULT_META);
 
@@ -35,10 +32,6 @@ jest.mock('node:fs', () => ({
 
 describe('morfeo unplugin config', () => {
   beforeEach(() => {
-    if (fs.existsSync(MORFEO_CSS_PATH)) {
-      fs.rmSync(MORFEO_CSS_PATH);
-      fs.rmdirSync(path.dirname(MORFEO_CSS_PATH));
-    }
     fsAppendMock.mockClear();
     transformSyncMock.mockClear();
   });
@@ -104,7 +97,7 @@ describe('morfeo unplugin config', () => {
 
   describe('when custom options are passed', () => {
     it('should call the babel plugin with the custom configuration', () => {
-      const pluginOptions = getMorfeoUnpluginOptions(
+      const customPluginOptions = getMorfeoUnpluginOptions(
         {
           babel: {
             plugins: ['another plugin'],
@@ -119,7 +112,7 @@ describe('morfeo unplugin config', () => {
         });
       `;
 
-      pluginOptions.transform(testCode, 'fileName.ts');
+      customPluginOptions.transform(testCode, 'fileName.ts');
 
       expect(transformSyncMock).toHaveBeenCalledWith(
         testCode,
@@ -135,7 +128,10 @@ describe('morfeo unplugin config', () => {
       'should not write in the filesystem but instead importing a virtual module with %s',
       framework => {
         const contextMeta = { ...DEFAULT_META, framework };
-        const customPluginOptions = getMorfeoUnpluginOptions({}, contextMeta);
+        const customPluginOptions = getMorfeoUnpluginOptions(
+          {},
+          contextMeta as any,
+        );
 
         const testCode = `import { createUseStyle } from "@morfeo/css";
           const useStyles = createUseStyle({
@@ -145,7 +141,9 @@ describe('morfeo unplugin config', () => {
 
         const result = customPluginOptions.transform(testCode, 'fileName.ts');
 
-        expect(result?.code).toContain(MORFEO_UNPLUGIN_ID);
+        expect(typeof result === 'object' && result?.code).toContain(
+          MORFEO_UNPLUGIN_ID,
+        );
         expect(fsAppendMock).not.toHaveBeenCalled();
         expect(customPluginOptions.load(MORFEO_UNPLUGIN_ID)).toBe('some css');
       },

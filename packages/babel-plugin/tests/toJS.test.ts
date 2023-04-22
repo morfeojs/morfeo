@@ -14,7 +14,6 @@ describe('toJS', () => {
             // @ts-expect-error
             name: 'string',
           },
-          // @ts-expect-error
           value: {
             type: 'StringLiteral',
             value: 'string value',
@@ -34,10 +33,10 @@ describe('toJS', () => {
       properties: [
         {
           type: 'SpreadElement',
+          // @ts-ignore
           key: {
             name: 'whatever',
           },
-          // @ts-ignore
           argument: {
             type: 'ArrayExpression',
             elements: [
@@ -108,7 +107,6 @@ describe('toJS', () => {
         type: 'ArrayExpression',
         elements: [
           null,
-          // @ts-expect-error
           {
             type: 'StringLiteral',
             value: 'string value',
@@ -125,14 +123,13 @@ describe('toJS', () => {
         type: 'ObjectExpression',
         name: 'whatever',
         properties: [
+          // @ts-expect-error
           {
             type: 'ObjectProperty',
-            // @ts-expect-error
             key: {
               type: 'StringLiteral',
               value: 'string',
             },
-            // @ts-expect-error
             value: {
               type: 'StringLiteral',
               value: 'string value',
@@ -156,7 +153,6 @@ describe('toJS', () => {
             argument: {
               type: 'ArrayExpression',
               elements: [
-                // @ts-expect-error
                 {
                   type: 'StringLiteral',
                   value: 'string value',
@@ -194,7 +190,6 @@ describe('toJS', () => {
                   // @ts-expect-error
                   name: 'string',
                 },
-                // @ts-expect-error
                 value: {
                   type: 'StringLiteral',
                   value: 'string value',

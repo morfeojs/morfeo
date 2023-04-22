@@ -7,15 +7,19 @@ on:
 
 jobs:
   publish-packages:
-    runs-on: ubuntu-latest 
-    permissions: 
+    runs-on: ubuntu-latest
+    permissions:
       contents: read
-      packages: write 
+      packages: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/bootstrap-morfeo
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - uses: ./.github/actions/setup-environment
 
       - name: Publish packages
-        run: yarn run publish
+        run: pnpm run publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

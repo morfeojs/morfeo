@@ -17,13 +17,13 @@
     "nextjs"
   ],
   "scripts": {
-    "build": "yarn build:esm && yarn build:commonjs",
+    "build": "pnpm build:esm && pnpm build:commonjs",
     "build:esm": "rimraf build && tsc",
     "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/compiler": "^0.9.0"
+    "@morfeo/compiler": "workspace:*"
   },
   "peerDependencies": {
     "next": "13.2.4"

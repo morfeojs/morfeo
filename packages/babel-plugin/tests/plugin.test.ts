@@ -4,7 +4,7 @@ import { morfeo } from '@morfeo/web';
 import { theme } from './theme';
 import { css } from '../src/utils';
 
-function transform(code: string, tsx: boolean = false) {
+function transform(code: string, tsx = false) {
   return babel.transform(code, {
     presets: tsx
       ? ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']

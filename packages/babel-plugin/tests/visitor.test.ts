@@ -3,7 +3,7 @@ import * as babel from '@babel/core';
 import { morfeo } from '@morfeo/web';
 import { theme } from './theme';
 
-function transform(code: string, tsx: boolean = false) {
+function transform(code: string, tsx = false) {
   return babel.transform(code, {
     presets: tsx
       ? ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']

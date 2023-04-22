@@ -2,9 +2,9 @@ name: Build Web Extension
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
 
@@ -13,9 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/bootstrap-morfeo
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - uses: ./.github/actions/setup-environment
 
       - name: Build Web Extension
-        run: yarn build:web-extension
-
+        run: pnpm build:web-extension

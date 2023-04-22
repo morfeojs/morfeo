@@ -11,12 +11,12 @@
     "build": "vite build",
     "dev": "vite",
     "preview": "vite preview",
-    "zip": "yarn build && node scripts/zip.mjs",
-    "deploy": "yarn zip && node scripts/deploy.mjs"
+    "zip": "pnpm build && node scripts/zip.mjs",
+    "deploy": "pnpm zip && node scripts/deploy.mjs"
   },
   "dependencies": {
-    "@morfeo/preset-default": "^0.9.0",
-    "@morfeo/react": "^0.9.0",
+    "@morfeo/preset-default": "workspace:*",
+    "@morfeo/react": "workspace:*",
     "change-case": "4.1.2",
     "clsx": "1.2.1",
     "polished": "4.2.2",

@@ -1,5 +1,3 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
 import { MORFEO_CSS_PATH, writer } from '../src/utils';
 
 const fsAppendMock = jest.fn();
@@ -13,10 +11,6 @@ jest.mock('node:fs', () => ({
 
 describe('writer', () => {
   beforeEach(() => {
-    if (fs.existsSync(MORFEO_CSS_PATH)) {
-      fs.rmSync(MORFEO_CSS_PATH);
-      fs.rmdirSync(path.dirname(MORFEO_CSS_PATH));
-    }
     fsAppendMock.mockClear();
     fsWriteMock.mockClear();
     writer.reset();

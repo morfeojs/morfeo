@@ -46,7 +46,7 @@ People _love_ thorough bug reports. I'm not even kidding.
 
 ## Use a Consistent Coding Style
 
-- You can try running `yarn prettify` for style unification
+- You can try running `pnpm prettify` for style unification
 
 ## License
 
@@ -64,23 +64,23 @@ Feel free to update them or use them as a **sandbox**, but remember to build the
 
 ### Install the dependencies
 
-By running the script `yarn reset` all the dependencies will be installed, packages dependencies included, the script will also trigger the builds of the packages.
+By running the script `pnpm reset` all the dependencies will be installed, packages dependencies included, the script will also trigger the builds of the packages.
 
 ### Build the packages
 
 ```bash
-yarn build:packages
+pnpm build:packages
 ```
 
 ### Run the tests
 
-To run the tests run the script `yarn test`.
-If you also want to generate the coverage, you can run `yarn run test:coverage`.
-In case you're working on something and you'd like to watch for file changes, `yarn test:watch` is available.
+To run the tests run the script `pnpm test`.
+If you also want to generate the coverage, you can run `pnpm test:coverage`.
+In case you're working on something and you'd like to watch for file changes, `pnpm test:watch` is available.
 To test a specific package you can pass to any of the previous scripts the path of the package, for example:
 
 ```bash
-yarn test:watch packages/core
+pnpm test:watch packages/core
 ```
 
 ## References

@@ -20,13 +20,13 @@
     "web extension"
   ],
   "scripts": {
-    "build": "yarn build:esm && yarn build:commonjs",
+    "build": "pnpm build:esm && pnpm build:commonjs",
     "build:esm": "rimraf build && tsc",
     "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/web": "^0.9.0"
+    "@morfeo/web": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

@@ -19,20 +19,25 @@
     "react"
   ],
   "scripts": {
-    "build": "yarn build:esm && yarn build:commonjs",
+    "build": "pnpm build:esm && pnpm build:commonjs",
     "build:esm": "rimraf build && tsc",
     "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/hooks": "^0.9.0",
-    "@morfeo/web": "^0.9.0",
+    "@morfeo/hooks": "workspace:*",
+    "@morfeo/web": "workspace:*",
     "fast-safe-stringify": "^2.1.1"
   },
   "peerDependencies": {
     "csstype": "^3.1.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "5.16.5",
+    "@types/testing-library__jest-dom": "5.14.5",
+    "csstype": "^3.1.0"
   },
   "publishConfig": {
     "access": "public"
