@@ -23,7 +23,7 @@
     "start:react-example": "turbo run start --filter=@morfeo/example-react",
     "start:svelte-example": "turbo run dev --filter=@morfeo/example-svelte",
     "test": "jest --detectOpenHandles",
-    "test:ci": "pnpm run test:coverage",
+    "test:ci": "jest --coverage",
     "test:coverage": "pnpm run test --coverage",
     "test:watch": "pnpm run test --watch",
     "version:web-extension": "ts-node scripts/version-web-extension.ts"
