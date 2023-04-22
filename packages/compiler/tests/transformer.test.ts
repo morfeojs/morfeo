@@ -1,9 +1,6 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
 import { UnpluginContextMeta } from 'unplugin';
 import { getMorfeoUnpluginOptions } from '../src/plugin';
 import {
-  MORFEO_CSS_PATH,
   MORFEO_UNPLUGIN_ID,
   VIRTUAL_MODULES_FRAMEWORKS,
   writer,
@@ -35,10 +32,6 @@ jest.mock('node:fs', () => ({
 
 describe('morfeo unplugin config', () => {
   beforeEach(() => {
-    if (fs.existsSync(MORFEO_CSS_PATH)) {
-      fs.rmSync(MORFEO_CSS_PATH);
-      fs.rmdirSync(path.dirname(MORFEO_CSS_PATH));
-    }
     fsAppendMock.mockClear();
     transformSyncMock.mockClear();
   });
