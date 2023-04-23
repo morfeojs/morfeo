@@ -579,8 +579,8 @@ importers:
         specifier: 2.0.0-beta.16
         version: 2.0.0-beta.16
       '@types/chrome':
-        specifier: 0.0.231
-        version: 0.0.231
+        specifier: 0.0.233
+        version: 0.0.233
       '@types/node':
         specifier: 18.15.11
         version: 18.15.11
@@ -4950,8 +4950,8 @@ packages:
       '@types/responselike': 1.0.0
     dev: true
 
-  /@types/chrome@0.0.231:
-    resolution: {integrity: sha512-K3dSpeorWAj2UA/1GRUbny34+PARsH/k8bj8dRZQusSqNE323QEGils9ty1LaVyR1DnfLMD9PX8cV5Q+EhwAvQ==}
+  /@types/chrome@0.0.233:
+    resolution: {integrity: sha512-T3HUW8LDhHfYPbUkOZilhnqX04sZqEFIQO0OIG8byZ7PBIk2jYys1AkNg56UbtKbsh3dABmOniK+0Q3oyo7Sxg==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.10
