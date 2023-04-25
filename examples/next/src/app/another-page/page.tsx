@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Button } from '@/components/Button';
 import { Main } from '@/components/Main';
-import { createUseStyle } from '@morfeo/css';
+import { morfeo } from '@morfeo/css';
 import { Link } from '@/components/Link';
 
 export const metadata: Metadata = {
@@ -9,19 +9,17 @@ export const metadata: Metadata = {
   description: '',
 };
 
-const useStyle = createUseStyle({
-  componentName: 'Card',
+const Card = morfeo.component('Card', {
   p: 'm',
   my: 'xl',
 });
 
 export default function AnotherPage() {
-  const { className, style } = useStyle();
   return (
     <Main>
-      <div className={className} style={style}>
+      <Card>
         <Button>Here is another page</Button>
-      </div>
+      </Card>
       <Link href="/">{'<- '}Go back</Link>
     </Main>
   );

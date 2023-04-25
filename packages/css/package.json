@@ -25,11 +25,14 @@
     "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
     "watch": "tsc -w"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@morfeo/web": "workspace:*"
   },
-  "publishConfig": {
-    "access": "public"
+  "devDependencies": {
+    "@types/react": "18.0.35"
   },
   "files": [
     "build",

@@ -33,7 +33,8 @@
     "@babel/generator": "7.21.4",
     "@babel/plugin-transform-typescript": "7.21.3",
     "@babel/traverse": "7.21.4",
-    "@babel/types": "7.21.4"
+    "@babel/types": "7.21.4",
+    "@babel/helper-module-imports": "7.21.4"
   },
   "devDependencies": {
     "@babel/core": "7.21.4",
@@ -41,7 +42,9 @@
     "@babel/plugin-transform-typescript": "7.21.3",
     "@babel/traverse": "7.21.4",
     "@babel/types": "7.21.4",
-    "@types/babel__core": "^7.20.0"
+    "@types/babel__core": "7.20.0",
+    "@types/babel__traverse": "7.18.3",
+    "@types/babel__helper-module-imports": "7.18.0"
   },
   "publishConfig": {
     "access": "public"

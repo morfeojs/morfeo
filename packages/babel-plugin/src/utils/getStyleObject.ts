@@ -17,11 +17,11 @@ type ThemeableStyleFunction = {
   property: Property;
 };
 
-export function getStyleObject(node: ObjectExpression) {
+export function getStyleObject(objectNode: ObjectExpression) {
   const styleFunctions: StyleFunction[] = [];
   const themeableStyleFunctions: ThemeableStyleFunction[] = [];
 
-  const styleObject = toJS(node, {
+  const styleObject = toJS(objectNode, {
     resolveFunction({ path, property, node }) {
       const { code } = generator(node, {
         compact: true,

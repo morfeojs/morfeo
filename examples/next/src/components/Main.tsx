@@ -1,4 +1,4 @@
-import { css } from '@morfeo/css';
+import { morfeo } from '@morfeo/css';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 type CardProps = DetailedHTMLProps<
@@ -6,7 +6,7 @@ type CardProps = DetailedHTMLProps<
   HTMLDivElement
 >;
 
-const classes = css({
+const classes = morfeo.css({
   container: {
     display: 'flex',
     minHeight: '100vh',

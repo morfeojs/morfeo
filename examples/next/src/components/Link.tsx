@@ -1,10 +1,10 @@
-import { css } from '@morfeo/css';
+import { morfeo } from '@morfeo/css';
 import NextLink from 'next/link';
 import { ComponentProps } from 'react';
 
 type LinkProps = ComponentProps<typeof NextLink>;
 
-const classes = css({
+const classes = morfeo.css({
   link: {
     componentName: 'Typography',
     variant: 'link',

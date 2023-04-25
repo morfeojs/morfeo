@@ -2,12 +2,6 @@ import type { NodePath } from '@babel/traverse';
 import type { CallExpression } from '@babel/types';
 import { getStyleObject, css } from '../utils';
 
-export function isCSSFunction(path: NodePath<CallExpression>) {
-  return path.get('callee').isIdentifier({
-    name: 'css',
-  });
-}
-
 export function createCssVisitor(
   callExpressionPath: NodePath<CallExpression>,
   state: any,
