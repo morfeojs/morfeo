@@ -26,7 +26,7 @@
     "test:watch": "pnpm run test --watch",
     "version": "changeset version && pnpm install --no-frozen-lockfile && version:web-extension && git add .",
     "version:web-extension": "ts-node scripts/version-web-extension.ts",
-    "publish": "turbo run build && changeset publish"
+    "publish": "pnpm build:packages && changeset publish"
   },
   "dependencies": {
     "@changesets/cli": "2.26.1",
