@@ -483,6 +483,10 @@ importers:
       '@morfeo/web':
         specifier: workspace:*
         version: link:../web
+    devDependencies:
+      '@types/react':
+        specifier: 18.0.35
+        version: 18.0.35
 
   packages/dev-tools:
     dependencies:
