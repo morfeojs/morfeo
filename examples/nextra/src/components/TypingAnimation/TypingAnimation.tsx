@@ -1,8 +1,8 @@
 import React from 'react';
-import { css } from '@morfeo/css';
+import { morfeo } from '@morfeo/css';
 import { useTypingAnimation } from './useTypingAnimation';
 
-const classes = css({
+const classes = morfeo.css({
   text: {
     textGradient: 'text.primary',
     position: 'relative',

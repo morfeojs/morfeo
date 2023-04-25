@@ -1,10 +1,10 @@
-import { css } from '@morfeo/css';
+import { morfeo } from '@morfeo/css';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { Card } from '../Card';
 import clsx from 'clsx';
 import Image from 'next/image';
 
-const classes = css({
+const classes = morfeo.css({
   container: {
     minHeight: 'raw:300px',
   },

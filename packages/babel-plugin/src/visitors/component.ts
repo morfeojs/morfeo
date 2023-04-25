@@ -2,30 +2,30 @@ import type { NodePath } from '@babel/traverse';
 import type { CallExpression } from '@babel/types';
 import { component } from '@morfeo/web';
 import { getStyleObject, dynamicClasses, css } from '../utils';
+import { addNamespace } from '@babel/helper-module-imports';
 
-export function isCreateUseStyle(path: NodePath<CallExpression>) {
-  return path.get('callee').isIdentifier({
-    name: 'createUseStyle',
-  });
-}
-
-export function createUseStyleVisitor(
+export function createComponentVisitor(
   callExpressionPath: NodePath<CallExpression>,
   state: any,
 ) {
   callExpressionPath.traverse({
     ObjectExpression(path) {
       path.stop();
+      const [componentNameNode, styleNode] = callExpressionPath.node.arguments;
+
+      // @ts-ignore
+      const componentNameOrTag = componentNameNode.value;
 
       const { styleObject, styleFunctions, themeableStyleFunctions } =
-        getStyleObject(path.node);
+        // @ts-ignore
+        getStyleObject(styleNode);
 
       const dynamicClassNames = themeableStyleFunctions.reduce<string[]>(
         (acc, themeableStyleFunction) => {
           const classes = dynamicClasses.create(
             themeableStyleFunction.property,
             themeableStyleFunction.path,
-            styleObject,
+            { componentName: componentNameOrTag, ...styleObject },
           );
 
           return [
@@ -39,12 +39,13 @@ export function createUseStyleVisitor(
       );
 
       const componentOptions = component(
-        styleObject.componentName,
+        componentNameOrTag,
         styleObject.variant,
         styleObject.state,
       );
 
       const propsFromTheme = componentOptions.getProps() || {};
+      const componentTag = componentOptions.getTag() || componentNameOrTag;
 
       const style = styleFunctions.reduce(
         (acc, { variable, code }) => `${acc}"${variable}": (${code})(props),`,
@@ -58,16 +59,23 @@ export function createUseStyleVisitor(
 
       state.file.metadata.morfeo += css.get();
 
+      const identifier = addNamespace(callExpressionPath, 'react', {
+        nameHint: 'JSXFactory',
+      });
+
       const template = `function (props = {}) {
-        const componentProps = ${JSON.stringify(propsFromTheme)};
+        const { tag: Component = "${componentTag}", ...componentProps } = ${JSON.stringify(
+        propsFromTheme,
+      )};
         const className = [
+          componentProps.className,
           props.className,
           ...[${dynamicClassNames}],
           ...[${staticClassNames}],
-          componentProps.className,
         ]
         .filter(Boolean)
-        .filter((className, index, array) => array.indexOf(className) === index).join(' ');
+        .filter((className, index, array) => array.indexOf(className) === index)
+        .join(' ');
 
         const style = {
           ...componentProps.style,
@@ -75,11 +83,15 @@ export function createUseStyleVisitor(
           ...props.style,
         };
 
-        return {
-          ...componentProps,
-          className,
-          style,
-        };
+        return ${identifier.name}.createElement(
+          Component,
+          {
+            ...componentProps,
+            ...props,
+            className,
+            style,
+          }
+        );
       }`;
 
       callExpressionPath.replaceWithSourceString(template);

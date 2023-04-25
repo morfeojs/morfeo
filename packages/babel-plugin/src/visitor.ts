@@ -1,9 +1,7 @@
-import type { Visitor } from '@babel/traverse';
-import {
-  isCreateUseStyle,
-  createUseStyleVisitor,
-} from './visitors/createUseStyle';
-import { createCssVisitor, isCSSFunction } from './visitors/css';
+import { Visitor } from '@babel/traverse';
+import { createCssVisitor } from './visitors/css';
+import { createComponentVisitor } from './visitors/component';
+import { isMorfeoMethodUsed } from './utils';
 
 export default function getVisitor(): Visitor {
   return {
@@ -20,11 +18,11 @@ export default function getVisitor(): Visitor {
           state.file.metadata.morfeo = '';
         }
 
-        if (isCreateUseStyle(callExpressionPath)) {
-          createUseStyleVisitor(callExpressionPath, state);
+        if (isMorfeoMethodUsed(callExpressionPath, 'component')) {
+          createComponentVisitor(callExpressionPath, state);
         }
 
-        if (isCSSFunction(callExpressionPath)) {
+        if (isMorfeoMethodUsed(callExpressionPath, 'css')) {
           createCssVisitor(callExpressionPath, state);
         }
       },

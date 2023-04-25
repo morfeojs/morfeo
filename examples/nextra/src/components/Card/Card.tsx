@@ -1,4 +1,4 @@
-import { css } from '@morfeo/css';
+import { morfeo } from '@morfeo/css';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 import clsx from 'clsx';
 
@@ -7,7 +7,7 @@ type CardProps = DetailedHTMLProps<
   HTMLDivElement
 >;
 
-const classes = css({
+const classes = morfeo.css({
   container: {
     position: 'relative',
     bg: 'raw:#111',

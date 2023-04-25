@@ -1,7 +1,7 @@
-import { css } from '@morfeo/css';
+import { morfeo } from '@morfeo/css';
 import { FeatureCard } from './FeatureCard';
 
-const classes = css({
+const classes = morfeo.css({
   container: {
     gradient:
       'raw:radial-gradient(circle at 50% 40%, #445ac74d 0%, transparent 50%)',

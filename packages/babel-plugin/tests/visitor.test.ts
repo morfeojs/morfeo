@@ -49,12 +49,12 @@ describe('general', () => {
   });
 });
 
-describe('css', () => {
+describe('morfeo.css', () => {
   it('should replace the "css" function in tsx files if morfeo from "@morfeo/css" is imported', () => {
     const testCode = `
-      import { css } from "@morfeo/css";
+      import { morfeo } from "@morfeo/css";
 
-      const classes = css({
+      const classes = morfeo.css({
         button: {
           bg: 'primary'
         }
@@ -67,31 +67,16 @@ describe('css', () => {
 
     const result = transform(testCode, true);
 
-    expect(result?.code).not.toContain('css(');
+    expect(result?.code).not.toContain('morfeo.css');
   });
 });
 
-describe('createUseStyle', () => {
-  it('should replace the "createUseStyle" function', () => {
-    const testCode = `import { createUseStyle } from "@morfeo/css";
-        const useStyles = createUseStyle({});
+describe('morfeo.component', () => {
+  it('should replace the "morfeo.component" function', () => {
+    const testCode = `import { morfeo } from "@morfeo/css";
+        const Button = morfeo.component('button', {});
       `;
     const result = transform(testCode);
-    expect(result?.code).not.toContain('createUseStyle');
-  });
-
-  it('should replace the "createUseStyle" function in tsx files if morfeo from "@morfeo/css" is imported', () => {
-    const testCode = `
-        import { createUseStyle } from "@morfeo/css";
-        const useStyles: () => Record<string, string> = createUseStyle({});
-        const Button = () => {
-          const classes = useStyles();
-          return <button className={classes.button} />
-        };
-      `;
-
-    const result = transform(testCode, true);
-
-    expect(result?.code).not.toContain('createUseStyle');
+    expect(result?.code).not.toContain('morfeo.component');
   });
 });

@@ -1,8 +1,8 @@
-import { css } from '@morfeo/css';
-import { ButtonLink } from '../Button';
+import { morfeo } from '@morfeo/css';
+import { Button, ButtonLink } from '../Button';
 import { TypingAnimation } from '../TypingAnimation/TypingAnimation';
 
-const classes = css({
+const classes = morfeo.css({
   container: {
     position: 'relative',
     textAlign: 'center',
@@ -11,8 +11,8 @@ const classes = css({
     alignItems: 'center',
     justifyContent: 'center',
     py: 'raw:10rem',
-    gradient: `raw:radial-gradient(circle at 40% 40%, #445ac74d 0%, transparent 40%),
-    radial-gradient(circle at 60% 60%, rgba(183, 65, 14, 0.4) 0%, transparent 30%)`,
+    gradient:
+      'raw:radial-gradient(circle at 40% 40%, #445ac74d 0%, transparent 40%),radial-gradient(circle at 60% 60%, rgba(183, 65, 14, 0.4) 0%, transparent 30%)',
   },
   title: {
     componentName: 'Typography',
@@ -29,7 +29,9 @@ const classes = css({
     maxWidth: 'raw:800px',
   },
   cta: {
+    display: 'flex',
     py: 'm',
+    gap: 'm',
   },
 });
 
@@ -49,7 +51,10 @@ export function Hero() {
       </h2>
 
       <div className={classes.cta}>
-        <ButtonLink href="/docs">Start learning</ButtonLink>
+        <Button variant="primary">Start learning</Button>
+        <ButtonLink href="https://github.com/morfeojs/morfeo" variant="outline">
+          Github
+        </ButtonLink>
       </div>
     </section>
   );

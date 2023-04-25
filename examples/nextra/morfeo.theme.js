@@ -83,8 +83,9 @@ const theme = {
       states: {},
       variants: {
         primary: {
+          tag: 'button',
           style: {
-            color: 'white',
+            color: 'gray.lightest',
             bg: 'primary',
             fontWeight: 'bold',
             '&:hover': {
@@ -92,6 +93,15 @@ const theme = {
             },
           },
           states: {},
+        },
+        outline: {
+          tag: 'button',
+          style: {
+            bg: 'transparent',
+            border: 'strong',
+            borderColor: 'gray.lightest',
+            color: 'gray.lightest',
+          },
         },
       },
     },

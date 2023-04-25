@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import Image from 'next/image';
 
 export default {

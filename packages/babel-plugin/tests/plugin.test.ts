@@ -21,10 +21,10 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should inject the css into the metadata', () => {
-    const result = transform(`import { createUseStyle } from "@morfeo/css";
-      const useStyle = createUseStyle({
+    const result = transform(`import { morfeo } from "@morfeo/css";
+      const Box = morfeo.component('Box', {
         bg: 'primary',
-      })
+      });
     `);
 
     expect(result?.metadata?.morfeo).toContain(
@@ -33,10 +33,10 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should not inject the css into the metadata if it was previously generated', () => {
-    const testCode = `import { createUseStyle } from "@morfeo/css";
-    const useStyle = createUseStyle({
+    const testCode = `import { morfeo } from "@morfeo/css";
+    const Box = morfeo.component('Box', {
       color: 'primary',
-    })
+    });
   `;
 
     const firstResult = transform(testCode);
@@ -51,8 +51,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should use css variable to resolve functions of non-themeable properties', () => {
-    const result = transform(`import { createUseStyle } from "@morfeo/css";
-      const useStyle = createUseStyle({
+    const result = transform(`import { morfeo } from "@morfeo/css";
+      const Container = morfeo.component('div', {
         display: props => props.display
       })
     `);
@@ -61,8 +61,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it("should use create all the possible slice's classes to resolve functions of themeable properties", () => {
-    const result = transform(`import { createUseStyle } from "@morfeo/css";
-      const useStyle = createUseStyle({
+    const result = transform(`import { morfeo } from "@morfeo/css";
+      const Container = morfeo.component('div', {
         bg: props => props.bg
       })
     `);
@@ -72,8 +72,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should be able to resolve responsive values that comes from the theme', () => {
-    const result = transform(`import { createUseStyle } from "@morfeo/css";
-      const useStyle = createUseStyle({
+    const result = transform(`import { morfeo } from "@morfeo/css";
+      const Container = morfeo.component('div', {
         bg: {
           xs: props => props.bg
         }
@@ -84,11 +84,10 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should handle functions used for component variants', () => {
-    const result = transform(`import { createUseStyle } from "@morfeo/css";
-      const useStyle = createUseStyle({
-        componentName: "Box",
+    const result = transform(`import { morfeo } from "@morfeo/css";
+      const Box = morfeo.component('Box', {
         variant: props => props.variant,
-      })
+      });
     `);
 
     Object.keys(theme.components.Box.variants).forEach(variant => {
@@ -97,8 +96,8 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should handle functions used for component states', () => {
-    const result = transform(`import { createUseStyle } from "@morfeo/css";
-      const useStyle = createUseStyle({
+    const result = transform(`import { morfeo } from "@morfeo/css";
+      const Box = morfeo.component('Box', {
         componentName: "Box",
         state: props => props.state,
       })
@@ -109,14 +108,14 @@ describe('morfeoBabelPlugin', () => {
     });
   });
 
-  it('should be able to resolve values that comes from multiple calls of createUseStyle', () => {
-    const result = transform(`import { createUseStyle } from "@morfeo/css";
-      const useStyle1 = createUseStyle({
+  it('should be able to resolve values that comes from multiple calls of morfeo.component', () => {
+    const result = transform(`import { morfeo } from "@morfeo/css";
+      const Component1 = morfeo.component('div', {
         bg: props => props.bg,
         m: "s"
       })
 
-      const useStyle2 = createUseStyle({
+      const Component2 = morfeo.component('div', {
         bg: props.bg,
         color: "primary"
       })
@@ -125,7 +124,7 @@ describe('morfeoBabelPlugin', () => {
     expect(result?.metadata?.morfeo).toContain(`.bg-primary`);
     expect(result?.metadata?.morfeo).toContain(`.m-s`);
     expect(result?.metadata?.morfeo).toContain(`.color-primary`);
-    expect(result?.code).toContain(`useStyle1`);
-    expect(result?.code).toContain(`useStyle2`);
+    expect(result?.code).toContain(`Component1`);
+    expect(result?.code).toContain(`Component2`);
   });
 });

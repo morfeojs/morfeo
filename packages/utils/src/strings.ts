@@ -42,7 +42,7 @@ function createHandler() {
     return combinations;
   }
 
-  function generateId(string: string, length: number = 1) {
+  function generateId(string: string, length = 1) {
     if (propertiesCache.has(string)) {
       return propertiesCache.get(string) as string;
     }

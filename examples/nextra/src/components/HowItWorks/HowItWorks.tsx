@@ -1,7 +1,7 @@
-import { css } from '@morfeo/css';
+import { morfeo } from '@morfeo/css';
 import { Card } from '../Card';
 
-const classes = css({
+const classes = morfeo.css({
   container: {
     textAlign: 'center',
     display: 'flex',

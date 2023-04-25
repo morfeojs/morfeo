@@ -1,4 +1,4 @@
-import { css } from '@morfeo/css';
+import { morfeo } from '@morfeo/css';
 import { CSSProperties, DetailedHTMLProps, HTMLAttributes } from 'react';
 
 type CardProps = DetailedHTMLProps<
@@ -9,7 +9,7 @@ type CardProps = DetailedHTMLProps<
   bg?: CSSProperties['color'];
 };
 
-const classes = css({
+const classes = morfeo.css({
   container: {
     componentName: 'Card',
     p: 'm',

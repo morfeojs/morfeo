@@ -1,29 +1,45 @@
 import { ReactNode, DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
-import { css } from '@morfeo/css';
+import { morfeo } from '@morfeo/css';
 import Link, { LinkProps } from 'next/link';
+import clsx from 'clsx';
+import { Variant } from '@morfeo/spec';
 
 type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
->;
+> & {
+  variant?: Variant<'Button'>;
+};
 
 type ButtonLinkProps = LinkProps & {
   children?: ReactNode;
+  variant?: Variant<'Button'>;
 };
 
-const classes = css({
-  button: {
-    componentName: 'Button',
-    variant: 'primary',
+const classes = morfeo.css({
+  base: {
     py: 'xs',
     px: 'l',
   },
+  primary: {
+    componentName: 'Button',
+    variant: 'primary',
+  },
+  outline: {
+    componentName: 'Button',
+    bg: 'raw:transparent',
+    border: 'medium',
+    borderColor: 'gray.lightest',
+    color: 'gray.lightest',
+  },
 });
 
-export function Button(props: ButtonProps) {
-  return <button {...props} className={classes.button} />;
-}
+export const Button = morfeo.component('Button', {
+  variant: (props: ButtonProps) => props.variant || 'primary',
+  py: 'xs',
+  px: 'l',
+});
 
-export function ButtonLink(props: ButtonLinkProps) {
-  return <Link {...props} className={classes.button} />;
+export function ButtonLink({ variant = 'primary', ...props }: ButtonLinkProps) {
+  return <Link {...props} className={clsx(classes.base, classes[variant])} />;
 }

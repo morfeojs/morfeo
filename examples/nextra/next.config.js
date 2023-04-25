@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { withMorfeo } = require('@morfeo/next');
 const { darkTheme } = require('@morfeo/preset-default');
 const { deepMerge } = require('@morfeo/utils');
