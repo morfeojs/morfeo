@@ -20,6 +20,10 @@ jobs:
       - uses: ./.github/actions/setup-environment
 
       - name: Publish packages
-        run: pnpm run publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: pnpm version
+          publish: pnpm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
