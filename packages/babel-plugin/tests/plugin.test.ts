@@ -51,8 +51,6 @@ describe('morfeoBabelPlugin', () => {
 
     const generatedCss = secondResult?.metadata?.morfeo || '';
 
-    generatedCss.indexOf(`color: ${theme.colors.primary}`);
-
     expect(generatedCss.indexOf(`color: ${theme.colors.primary}`)).toBe(
       generatedCss.lastIndexOf(`color: ${theme.colors.primary}`),
     );
