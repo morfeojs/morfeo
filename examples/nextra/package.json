@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@lottiefiles/react-lottie-player": "^3.5.3",
     "@morfeo/css": "workspace:*",
     "@morfeo/next": "workspace:*",
     "@morfeo/preset-default": "workspace:*",
@@ -21,14 +22,15 @@
     "nextra": "2.4.0",
     "nextra-theme-docs": "2.4.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-intersection-observer": "^9.4.3"
   },
   "devDependencies": {
     "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",
     "eslint": "8.36.0",
+    "eslint-config-next": "13.2.4",
     "eslint-plugin-react": "7.32.2",
-    "eslint-plugin-react-hooks": "4.6.0",
-    "eslint-config-next": "13.2.4"
+    "eslint-plugin-react-hooks": "4.6.0"
   }
 }
