@@ -5,6 +5,24 @@ import { baseParser } from './baseParser';
 type SizesParsers = SliceParsers<typeof sizesProperties, SizeProperty>;
 
 export const sizeParsers = {
+  h: props => {
+    return baseParser({ ...props, scale: 'sizes', property: 'height' });
+  },
+  w: props => {
+    return baseParser({ ...props, scale: 'sizes', property: 'width' });
+  },
+  minH: props => {
+    return baseParser({ ...props, scale: 'sizes', property: 'minHeight' });
+  },
+  maxH: props => {
+    return baseParser({ ...props, scale: 'sizes', property: 'maxHeight' });
+  },
+  minW: props => {
+    return baseParser({ ...props, scale: 'sizes', property: 'minWidth' });
+  },
+  maxW: props => {
+    return baseParser({ ...props, scale: 'sizes', property: 'maxWidth' });
+  },
   size: props => {
     return {
       ...baseParser({ ...props, scale: 'sizes', property: 'width' }),
