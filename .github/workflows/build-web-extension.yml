@@ -1,12 +1,9 @@
 name: Build Web Extension
 
 on:
-  push:
-    branches: [main]
   pull_request:
-    branches: [main]
-
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
   build-web-extension:
