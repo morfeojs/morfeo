@@ -24,7 +24,7 @@
     "test:ci": "NODE_OPTIONS=--max-old-space-size=8192 jest --detectOpenHandles --coverage",
     "test:coverage": "pnpm run test --coverage",
     "test:watch": "pnpm run test --watch",
-    "version": "changeset version && pnpm install --no-frozen-lockfile && version:web-extension && git add .",
+    "version:packages": "changeset version && pnpm install --no-frozen-lockfile && version:web-extension && git add .",
     "version:web-extension": "ts-node scripts/version-web-extension.ts",
     "publish:packages": "pnpm build:packages && changeset publish"
   },
