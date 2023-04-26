@@ -45,6 +45,22 @@ describe('pseudos', () => {
     });
   });
 
+  test('should put the default value outside of the media queries', () => {
+    const result = parsers.resolve({
+      color: {
+        default: 'secondary',
+        lg: 'primary',
+      },
+    });
+
+    expect(result).toEqual({
+      color: '#000',
+      [`@media (min-width: 600px)`]: {
+        color: '#e3e3e3',
+      },
+    });
+  });
+
   it('should generate media queries from raw values', () => {
     const result = parsers.resolve({
       color: {

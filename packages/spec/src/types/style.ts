@@ -3,7 +3,9 @@ import { ComponentProps } from './components';
 import { AllProperties, Property } from './properties';
 import { Theme } from './theme';
 
-export type ResponsiveValue<V extends any> = {
+export type ResponsiveValue<V> = {
+  default?: V;
+} & {
   [K in BreakPoint]?: V;
 };
 

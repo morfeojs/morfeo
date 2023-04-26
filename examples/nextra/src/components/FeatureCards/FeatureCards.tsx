@@ -8,13 +8,21 @@ const classes = morfeo.css({
   },
   firstLine: {
     display: 'grid',
-    gridTemplateColumns: '1fr 2fr 1fr',
+    gridTemplateColumns: {
+      default: '1fr',
+      sm: '1fr 1fr',
+      md: '1fr 1fr 1fr',
+      lg: '1fr 2fr 1fr',
+    },
     gap: 's',
     mb: 's',
   },
   secondLine: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: {
+      default: '1fr',
+      sm: '1fr 1fr',
+    },
     gap: 's',
   },
   gradientText: {

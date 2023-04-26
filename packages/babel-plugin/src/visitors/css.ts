@@ -20,7 +20,7 @@ export function createCssVisitor(
         {},
       );
 
-      state.file.metadata.morfeo += css.get();
+      state.file.metadata.morfeo = css.get();
 
       callExpressionPath.replaceWithSourceString(JSON.stringify(classes));
     },

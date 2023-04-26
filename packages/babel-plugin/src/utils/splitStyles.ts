@@ -1,7 +1,7 @@
 import { Style } from '@morfeo/web';
 import { DYNAMIC_VALUE_TOKEN } from '../constants';
 
-function isStyle(value: any): value is Style {
+function isStyle(value: unknown): value is Style {
   return typeof value === 'object';
 }
 

@@ -32,7 +32,7 @@ describe('morfeoBabelPlugin', () => {
     );
   });
 
-  it('should not inject the css into the metadata if it was previously generated', () => {
+  it('should not inject the css twice into the metadata if it was previously generated', () => {
     const testCode = `import { morfeo } from "@morfeo/css";
     const Box = morfeo.component('Box', {
       color: 'primary',
@@ -45,8 +45,16 @@ describe('morfeoBabelPlugin', () => {
     expect(firstResult?.metadata?.morfeo).toContain(
       `color: ${theme.colors.primary}`,
     );
-    expect(secondResult?.metadata?.morfeo).not.toContain(
+    expect(secondResult?.metadata?.morfeo).toContain(
       `color: ${theme.colors.primary}`,
+    );
+
+    const generatedCss = secondResult?.metadata?.morfeo || '';
+
+    generatedCss.indexOf(`color: ${theme.colors.primary}`);
+
+    expect(generatedCss.indexOf(`color: ${theme.colors.primary}`)).toBe(
+      generatedCss.lastIndexOf(`color: ${theme.colors.primary}`),
     );
   });
 
