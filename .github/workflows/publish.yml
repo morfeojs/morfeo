@@ -1,9 +1,11 @@
 name: Publish packages
-on:
-  release:
-    types: [created]
 
-  workflow_dispatch:
+on:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   publish-packages:
@@ -26,4 +28,5 @@ jobs:
           version: pnpm version
           publish: pnpm publish
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
