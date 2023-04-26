@@ -1,7 +1,12 @@
 import type { UnpluginContextMeta } from 'unplugin';
 import { transformer } from './transformer';
 import type { MorfeoPluginOptions } from './types';
-import { writer, MORFEO_UNPLUGIN_ID, SUPPORTED_EXTENSIONS } from './utils';
+import {
+  writer,
+  MORFEO_UNPLUGIN_ID,
+  SUPPORTED_EXTENSIONS,
+  VIRTUAL_MORFEO_CSS,
+} from './utils';
 
 export function getMorfeoUnpluginOptions(
   options: MorfeoPluginOptions | undefined = undefined,
@@ -13,7 +18,7 @@ export function getMorfeoUnpluginOptions(
       return SUPPORTED_EXTENSIONS.some(ext => id.endsWith(ext));
     },
     resolveId(source: string) {
-      if (source.startsWith(MORFEO_UNPLUGIN_ID)) {
+      if (source.startsWith(VIRTUAL_MORFEO_CSS)) {
         return source;
       }
       return null;
@@ -22,7 +27,7 @@ export function getMorfeoUnpluginOptions(
       return transformer({ input: code, fileName, options, meta });
     },
     load(id: string) {
-      if (id.startsWith(MORFEO_UNPLUGIN_ID)) {
+      if (id.startsWith(VIRTUAL_MORFEO_CSS)) {
         return writer.get();
       }
 

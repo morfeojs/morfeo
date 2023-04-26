@@ -1,5 +1,5 @@
 import { morfeo } from '@morfeo/css';
-import { Button, ButtonLink } from '../Button';
+import { ButtonLink } from '../Button';
 import { TypingAnimation } from '../TypingAnimation/TypingAnimation';
 
 const classes = morfeo.css({
@@ -51,7 +51,7 @@ export function Hero() {
       </h2>
 
       <div className={classes.cta}>
-        <Button variant="primary">Start learning</Button>
+        <ButtonLink href="/docs">Start learning</ButtonLink>
         <ButtonLink href="https://github.com/morfeojs/morfeo" variant="outline">
           Github
         </ButtonLink>

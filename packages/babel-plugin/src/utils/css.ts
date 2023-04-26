@@ -1,16 +1,17 @@
 import { Style, component, getStyles } from '@morfeo/web';
 import { splitStyles } from './splitStyles';
+import { generateClassName } from '@morfeo/utils';
+import { orderStyles } from './orderStyles';
 
 function createCSS() {
-  const cache = new Map<string, string>();
-  const alreadyInjectedClasses = new Set();
+  const cache = new Map<string, Style>();
 
-  function updateCache(className: string, css: string) {
+  function updateCache(className: string, style: Style) {
     if (cache.has(className)) {
       return;
     }
 
-    cache.set(className, css);
+    cache.set(className, style);
   }
 
   function add({ componentName, variant, state, ...style }: Style) {
@@ -23,27 +24,28 @@ function createCSS() {
     });
 
     const className = splittedStyles.reduce<string>((acc, splittedStyle) => {
-      const { classes, sheet } = getStyles({
-        style: splittedStyle,
+      const currentClassName = generateClassName(splittedStyle, {
+        /* istanbul ignore next */
+        minify: process.env.NODE_ENV === 'production',
       });
 
-      const css = sheet.toString();
+      updateCache(currentClassName, splittedStyle);
 
-      updateCache(classes.style, css);
-
-      return `${acc} ${classes.style}`.trim();
+      return `${acc} ${currentClassName}`.trim();
     }, '');
 
     return className;
   }
 
   function get() {
-    return Array.from(cache.entries()).reduce((acc, [className, css]) => {
-      if (alreadyInjectedClasses.has(className)) {
-        return acc;
-      }
+    const styles = orderStyles(Array.from(cache.values()));
 
-      alreadyInjectedClasses.add(className);
+    return styles.reduce((acc, style) => {
+      const { sheet } = getStyles({
+        style,
+      });
+
+      const css = sheet.toString();
 
       return `${acc}\n${css}`;
     }, '');
@@ -51,7 +53,6 @@ function createCSS() {
 
   function reset() {
     cache.clear();
-    alreadyInjectedClasses.clear();
   }
 
   return { add, get, reset };

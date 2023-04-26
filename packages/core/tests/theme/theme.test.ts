@@ -118,13 +118,13 @@ describe('media queries', () => {
 
   test("should get the default mediaquery if it's not specified inside the theme", () => {
     expect(theme.resolveMediaQuery('xs')).toBe(
-      `@media (max-width: ${defaultTheme.breakpoints.xs})`,
+      `@media (min-width: ${defaultTheme.breakpoints.xs})`,
     );
   });
 
   test('should set the media query with only max-width for the smallest breakpoint', () => {
     expect(theme.resolveMediaQuery('xs')).toBe(
-      `@media (max-width: ${defaultTheme.breakpoints.xs})`,
+      `@media (min-width: ${defaultTheme.breakpoints.xs})`,
     );
   });
 
@@ -136,7 +136,7 @@ describe('media queries', () => {
 
   test('should set both min-width and max-width for breakpoints that are not the highest or the smallest', () => {
     expect(theme.resolveMediaQuery('md')).toBe(
-      `@media (min-width: ${defaultTheme.breakpoints.sm}) and (max-width: ${defaultTheme.breakpoints.md})`,
+      `@media (min-width: ${defaultTheme.breakpoints.md})`,
     );
   });
 });

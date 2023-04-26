@@ -1,8 +1,8 @@
 import { UnpluginContextMeta } from 'unplugin';
 import { getMorfeoUnpluginOptions } from '../src/plugin';
 import {
-  MORFEO_UNPLUGIN_ID,
   VIRTUAL_MODULES_FRAMEWORKS,
+  VIRTUAL_MORFEO_CSS,
   writer,
 } from '../src/utils';
 
@@ -12,7 +12,7 @@ const DEFAULT_META = {
 
 const pluginOptions = getMorfeoUnpluginOptions(undefined, DEFAULT_META);
 
-const fsAppendMock = jest.fn();
+const fsWriteMock = jest.fn();
 const writerSpy = jest.spyOn(writer, 'add');
 const transformSyncMock = jest.fn().mockImplementation(() => ({
   code: '',
@@ -27,12 +27,12 @@ jest.mock('@babel/core', () => ({
 
 jest.mock('node:fs', () => ({
   ...jest.requireActual('node:fs'),
-  appendFileSync: (...args: any[]) => fsAppendMock(...args),
+  writeFileSync: (...args: any[]) => fsWriteMock(...args),
 }));
 
 describe('morfeo unplugin config', () => {
   beforeEach(() => {
-    fsAppendMock.mockClear();
+    fsWriteMock.mockClear();
     transformSyncMock.mockClear();
   });
 
@@ -85,7 +85,7 @@ describe('morfeo unplugin config', () => {
 
       const mockError = new Error('some exception');
 
-      fsAppendMock.mockImplementation(() => {
+      fsWriteMock.mockImplementation(() => {
         throw mockError;
       });
 
@@ -142,10 +142,10 @@ describe('morfeo unplugin config', () => {
         const result = customPluginOptions.transform(testCode, 'fileName.ts');
 
         expect(typeof result === 'object' && result?.code).toContain(
-          MORFEO_UNPLUGIN_ID,
+          VIRTUAL_MORFEO_CSS,
         );
-        expect(fsAppendMock).not.toHaveBeenCalled();
-        expect(customPluginOptions.load(MORFEO_UNPLUGIN_ID)).toBe('some css');
+        expect(fsWriteMock).not.toHaveBeenCalled();
+        expect(customPluginOptions.load(VIRTUAL_MORFEO_CSS)).toBe('some css');
       },
     );
   });

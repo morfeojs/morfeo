@@ -30,8 +30,7 @@ const classes = morfeo.css({
   },
   animationContainer: {
     size: {
-      xs: '100',
-      sm: '100',
+      default: '100',
       md: '75',
       lg: '75',
     },

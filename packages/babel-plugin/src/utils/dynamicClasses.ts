@@ -17,8 +17,8 @@ function createDynamicClasses() {
       return propertyToSliceCache.get(property) as ThemeKey;
     }
 
-    const sliceName = Object.keys(allPropertiesBySlice).find(sliceName =>
-      allPropertiesBySlice[sliceName].includes(property),
+    const sliceName = Object.keys(allPropertiesBySlice).find(name =>
+      allPropertiesBySlice[name].includes(property),
     ) as ThemeKey;
 
     propertyToSliceCache.set(property, sliceName);

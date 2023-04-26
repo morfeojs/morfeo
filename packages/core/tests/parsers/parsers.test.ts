@@ -103,7 +103,7 @@ describe('parsers', () => {
               '@media (min-width: 1000px)': {
                 backgroundColor: THEME.colors.primary,
               },
-              '@media (min-width: 600px) and (max-width: 800px)': {
+              '@media (min-width: 800px)': {
                 backgroundColor: THEME.colors.secondary,
               },
             },

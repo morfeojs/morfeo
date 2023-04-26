@@ -6,13 +6,7 @@ import {
   allProperties,
 } from '@morfeo/spec';
 import { deepMerge } from '@morfeo/utils';
-import {
-  Parser,
-  AllParsers,
-  ParserParams,
-  ResolvedStyle,
-  ParsersContext,
-} from '../types';
+import { Parser, AllParsers, ParserParams, ResolvedStyle } from '../types';
 import { theme } from '../theme';
 import { baseParser } from './baseParser';
 import { sizeParsers } from './sizes';
@@ -58,15 +52,15 @@ const INITIAL_PARSERS = {
 };
 
 export function createParsers() {
-  let context = { ...INITIAL_PARSERS } as any as ParsersContext;
+  let context = new Map(Object.entries(INITIAL_PARSERS));
   let cache: any = {};
 
   function get() {
-    return context;
+    return Object.fromEntries(context.entries());
   }
 
   function add<P extends Property>(property: P, parser: Parser<P>) {
-    context[property as any] = parser;
+    context.set(property, parser as any);
   }
 
   function resetCache() {
@@ -74,7 +68,7 @@ export function createParsers() {
   }
 
   function reset() {
-    context = { ...INITIAL_PARSERS } as any as ParsersContext;
+    context = new Map(Object.entries(INITIAL_PARSERS));
     resetCache();
   }
 
@@ -85,8 +79,6 @@ export function createParsers() {
   }: ParserParams<typeof property>) {
     const keys = Object.keys(value);
     return keys.reduce((acc, breakpoint) => {
-      const mediaQuery = theme.resolveMediaQuery(breakpoint as BreakPoint);
-
       const currentValue = resolveProperty({
         property,
         value: value[breakpoint],
@@ -95,6 +87,15 @@ export function createParsers() {
           [property]: value[breakpoint],
         },
       });
+
+      if (breakpoint === 'default') {
+        return {
+          ...acc,
+          ...currentValue,
+        };
+      }
+
+      const mediaQuery = theme.resolveMediaQuery(breakpoint as BreakPoint);
 
       return {
         ...acc,
@@ -111,7 +112,7 @@ export function createParsers() {
     value,
     style,
   }: ParserParams<typeof property>) {
-    const parser: Parser<typeof property> = context[property];
+    const parser = context.get(property) as Parser<typeof property>;
 
     if (theme.isResponsive(value)) {
       return resolveResponsiveProperty({

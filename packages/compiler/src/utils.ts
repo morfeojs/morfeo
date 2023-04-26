@@ -4,6 +4,8 @@ import { UnpluginContextMeta } from 'unplugin';
 
 export const MORFEO_UNPLUGIN_ID = 'unplugin-morfeo';
 
+export const VIRTUAL_MORFEO_CSS = 'virtual:morfeo';
+
 export const SUPPORTED_EXTENSIONS = ['ts', 'js', 'tsx', 'jsx'];
 
 export const VIRTUAL_MODULES_FRAMEWORKS: UnpluginContextMeta['framework'][] = [
@@ -25,20 +27,13 @@ if (!fs.existsSync(path.dirname(MORFEO_CSS_PATH))) {
 
 function createCssWriter() {
   let css = '';
-  let firstWrite = true;
 
   function collect(content: string) {
     css += content;
   }
 
   function write(content: string) {
-    let callback = fs.appendFileSync;
-    if (firstWrite) {
-      firstWrite = false;
-      callback = fs.writeFileSync;
-    }
-
-    callback(MORFEO_CSS_PATH, content, {
+    fs.writeFileSync(MORFEO_CSS_PATH, content, {
       encoding: 'utf8',
     });
   }
@@ -56,7 +51,7 @@ function createCssWriter() {
     framework: UnpluginContextMeta['framework'],
   ) {
     if (VIRTUAL_MODULES_FRAMEWORKS.includes(framework)) {
-      return `${MORFEO_UNPLUGIN_ID}/${fileName}.css`;
+      return `${VIRTUAL_MORFEO_CSS}/${fileName}.css`;
     }
 
     return MORFEO_CSS_PATH;
@@ -69,7 +64,6 @@ function createCssWriter() {
   }
 
   function reset() {
-    firstWrite = true;
     css = '';
   }
 

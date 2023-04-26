@@ -1,9 +1,9 @@
 import * as MorfeoPlugins from '../src';
 import { getMorfeoUnpluginOptions } from '../src/plugin';
 import {
-  MORFEO_UNPLUGIN_ID,
   SUPPORTED_EXTENSIONS,
   VIRTUAL_MODULES_FRAMEWORKS,
+  VIRTUAL_MORFEO_CSS,
   writer,
 } from '../src/utils';
 
@@ -51,7 +51,7 @@ describe('MorfeoPlugins', () => {
     const pluginOptions = getMorfeoUnpluginOptions({}, {
       meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] },
     } as any);
-    const moduleId = `${MORFEO_UNPLUGIN_ID}/somethingelse.css`;
+    const moduleId = `${VIRTUAL_MORFEO_CSS}/somethingelse.css`;
 
     const withMorfeoVirtualModule = pluginOptions.resolveId(moduleId);
     const withoutMorfeoVirtualModule =
@@ -65,7 +65,7 @@ describe('MorfeoPlugins', () => {
     const pluginOptions = getMorfeoUnpluginOptions({}, {
       meta: { framework: VIRTUAL_MODULES_FRAMEWORKS[0] },
     } as any);
-    const moduleId = `${MORFEO_UNPLUGIN_ID}/somethingelse.css`;
+    const moduleId = `${VIRTUAL_MORFEO_CSS}/somethingelse.css`;
 
     const result = pluginOptions.load(moduleId);
 

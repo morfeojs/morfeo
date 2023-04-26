@@ -53,29 +53,9 @@ export function createTheme() {
     );
 
     if (!hasCustomMediaQuery) {
-      const isMax = breakpoint === breakPointsKeys[breakPointsKeys.length - 1];
-      const isMin = breakpoint === breakPointsKeys[0];
-      const currentIndex = breakPointsKeys.findIndex(bp => bp === breakpoint);
-
-      if (isMax) {
-        return setMediaQuery(
-          breakpoint,
-          `@media (min-width: ${breakPoints[breakPointsKeys[currentIndex]]})`,
-        );
-      }
-
-      if (isMin) {
-        return setMediaQuery(
-          breakpoint,
-          `@media (max-width: ${breakPoints[breakPointsKeys[currentIndex]]})`,
-        );
-      }
-
       return setMediaQuery(
         breakpoint,
-        `@media (min-width: ${
-          breakPoints[breakPointsKeys[currentIndex - 1]]
-        }) and (max-width: ${breakPoints[breakPointsKeys[currentIndex]]})`,
+        `@media (min-width: ${breakPoints[breakpoint]})`,
       );
     }
 
@@ -115,7 +95,7 @@ export function createTheme() {
     callListeners();
   }
 
-  function getSafeUid(uid?: string, suffix: number = 0): string {
+  function getSafeUid(uid?: string, suffix = 0): string {
     const safeUid = uid || Object.values(listeners).length.toString();
 
     const alreadyExists = !!listeners[safeUid];

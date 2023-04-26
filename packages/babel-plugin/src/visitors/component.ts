@@ -57,7 +57,7 @@ export function createComponentVisitor(
         .split(' ')
         .map(c => `"${c}"`);
 
-      state.file.metadata.morfeo += css.get();
+      state.file.metadata.morfeo = css.get();
 
       const identifier = addNamespace(callExpressionPath, 'react', {
         nameHint: 'JSXFactory',
