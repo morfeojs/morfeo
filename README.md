@@ -1,6 +1,6 @@
 ![Morfeo logo](https://morfeo.dev/img/morfeo.png)
 
-[morfeo](https://morfeo.dev) is a framework-agnostic set of tools that will help you to build your next **design system** based on a single source of truth: the **theme**.
+[morfeo](https://morfeo.dev) is a framework-agnostic set of tools that will help you to build your next **design system** based on a single source of truth: the **theme**. 
 
 ---
 
