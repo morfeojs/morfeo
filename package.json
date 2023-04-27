@@ -26,7 +26,7 @@
     "test:watch": "pnpm run test --watch",
     "version:packages": "changeset version && pnpm install --no-frozen-lockfile && pnpm version:web-extension && git add .",
     "version:web-extension": "ts-node scripts/version-web-extension.ts",
-    "publish:packages": "pnpm build:packages && changeset publish"
+    "publish:packages": "pnpm build:packages && pnpm publish -r"
   },
   "dependencies": {
     "@changesets/cli": "2.26.1",
@@ -74,11 +74,5 @@
   "bugs": {
     "url": "https://github.com/morfeojs/morfeo/issues"
   },
-  "workspaces": [
-    "docs",
-    "packages/*",
-    "examples/*",
-    "benchmarks",
-    "web-extension"
-  ]
+  "packageManager": "pnpm@8.3.1"
 }
