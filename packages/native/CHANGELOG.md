@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.9.2
+
+### Patch Changes
+
+- 766be5f: Fixed publish command in order to replace `workspace/*` with the actual version of the package.
+- Updated dependencies [766be5f]
+  - @morfeo/core@0.9.2
+
 ## 0.9.1
 
 ### Patch Changes
