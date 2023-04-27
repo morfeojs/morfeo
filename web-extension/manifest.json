@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "__MSG_name__",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "__MSG_description__",
   "author": "Mauro Erta",
   "default_locale": "en",
