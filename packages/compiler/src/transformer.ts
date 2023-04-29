@@ -26,7 +26,7 @@ export function transformer({
     const babelPlugins = options?.babel?.plugins || [];
     const result = babel.transformSync(input, {
       ...options?.babel,
-      plugins: [...babelPlugins, [morfeoBabelPlugin, {}]],
+      plugins: [...babelPlugins, [morfeoBabelPlugin, options]],
       sourceFileName: fileName,
       filename: path.basename(fileName),
       sourceMaps: true,

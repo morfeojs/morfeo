@@ -1,10 +1,22 @@
 import { Style, component, getStyles } from '@morfeo/web';
+import { readEnv, generateClassName } from '@morfeo/utils';
+import { MorfeoBabelPluginOptions } from '../types';
 import { splitStyles } from './splitStyles';
-import { generateClassName } from '@morfeo/utils';
 import { orderStyles } from './orderStyles';
 
 function createCSS() {
   const cache = new Map<string, Style>();
+  let options: MorfeoBabelPluginOptions = {
+    emojis: false,
+    classNamePrefix: '',
+  };
+
+  function setOptions(pluginOptions: MorfeoBabelPluginOptions) {
+    options = {
+      ...options,
+      ...pluginOptions,
+    };
+  }
 
   function updateCache(className: string, style: Style) {
     if (cache.has(className)) {
@@ -25,8 +37,9 @@ function createCSS() {
 
     const className = splittedStyles.reduce<string>((acc, splittedStyle) => {
       const currentClassName = generateClassName(splittedStyle, {
-        /* istanbul ignore next */
-        minify: process.env.NODE_ENV === 'production',
+        minify: readEnv('NODE_ENV', 'development') === 'production',
+        emojis: options.emojis,
+        classNamePrefix: options.classNamePrefix,
       });
 
       updateCache(currentClassName, splittedStyle);
@@ -38,12 +51,17 @@ function createCSS() {
   }
 
   function get() {
-    const styles = orderStyles(Array.from(cache.values()));
+    const styles = orderStyles(Array.from(cache.entries()));
 
-    return styles.reduce((acc, style) => {
-      const { sheet } = getStyles({
-        style,
-      });
+    return styles.reduce((acc, [className, style]) => {
+      const { sheet } = getStyles(
+        {
+          style,
+        },
+        {
+          generateId: () => className,
+        },
+      );
 
       const css = sheet.toString();
 
@@ -55,7 +73,7 @@ function createCSS() {
     cache.clear();
   }
 
-  return { add, get, reset };
+  return { add, get, reset, setOptions };
 }
 
 export const css = createCSS();

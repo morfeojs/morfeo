@@ -39,8 +39,8 @@ function getBreakpoint(value?: ResponsiveValue<unknown>) {
 /**
  * Media queries needs to be properly sorted because otherwise they can override themselves
  */
-export function orderStyles(styles: Style[]) {
-  return styles.sort((first, second) => {
+export function orderStyles(styles: [string, Style][]) {
+  return styles.sort(([, first], [, second]) => {
     const firstResponsiveValue = getResponsiveValue(first);
     const secondResponsiveValue = getResponsiveValue(second);
 
