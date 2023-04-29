@@ -14,9 +14,9 @@
     "all": "npm run build && npm run core && npm run jss && npm run morfeo-vs"
   },
   "devDependencies": {
-    "@babel/cli": "7.21.0",
-    "@babel/core": "7.21.4",
-    "@babel/preset-env": "7.21.4",
+    "@babel/cli": "7.21.5",
+    "@babel/core": "7.21.5",
+    "@babel/preset-env": "7.21.5",
     "benchmark": "2.1.4"
   },
   "dependencies": {
