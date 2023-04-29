@@ -37,5 +37,16 @@ describe('splitStyles', () => {
         { '&:hover': { bg: 'primary' } },
       ]);
     });
+
+    it('should handle responsive properties with default values', () => {
+      const result = splitStyles({
+        p: {
+          default: 'l',
+          lg: 'm',
+        },
+      });
+
+      expect(result).toEqual([{ p: 'l' }, { p: { lg: 'm' } }]);
+    });
   });
 });
