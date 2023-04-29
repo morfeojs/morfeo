@@ -8,11 +8,15 @@ const docsTheme = require('./morfeo.theme');
 morfeo.setTheme('default', deepMerge(darkTheme, docsTheme));
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withMorfeo({});
+const nextConfig = {};
+
+const nextConfigWithMorfeo = withMorfeo(nextConfig, {
+  emojis: true,
+});
 
 const withNextra = require('nextra')({
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.jsx',
 });
 
-module.exports = withNextra(nextConfig);
+module.exports = withNextra(nextConfigWithMorfeo);

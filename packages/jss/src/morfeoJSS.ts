@@ -19,18 +19,8 @@ function createGenerateId(options?: CreateGenerateIdOptions) {
   };
 }
 
-/* istanbul ignore next */
-const isProd =
-  typeof process === 'object' && process.env
-    ? process.env.NODE_ENV === 'production'
-    : false;
-
 export const morfeoJSSPreset: Partial<JssOptions> = {
   ...defaultPreset,
-
   createGenerateId,
-  id: {
-    minify: isProd,
-  },
   plugins: [morfeoJSS, ...defaultPreset.plugins],
 };

@@ -1,53 +1,46 @@
-type Options = {
+import { EMOJI_CHARSET, REGULAR_CHARSET, SYMBOLS_MAP } from './constants';
+
+type GeneratorOptions = {
   minify?: boolean;
+  emojis?: boolean;
+  classNamePrefix?: string;
+};
+
+type GenerateIdOptions = {
+  emojis?: boolean;
+  prefix?: string;
+  length?: number;
 };
 
 function createHandler() {
   const valuesCache = new Map<string, string>();
   const propertiesCache = new Map<string, string>();
-  const chars = 'abcdefghijklmnopqrstuvwxyz';
-  const symbolsMap = {
-    '*': 'all',
-    '.': 'dot',
-    ',': 'comma',
-    '>': 'grtr',
-    '+': 'plus',
-    '~': 'tld',
-    '[': 'sqropn',
-    ']': 'sqrclsd',
-    '^': 'crt',
-    $: 'dlr',
-    '|': 'or',
-    '(': 'opn',
-    ')': 'clsd',
-    '=': 'eql',
-  };
 
-  function getCombinations(length: number) {
-    const combinations: string[] = [];
+  function getCombinations(
+    length: number,
+    { emojis, prefix = '' }: Omit<GenerateIdOptions, 'length'>,
+  ) {
+    const chars = emojis ? EMOJI_CHARSET : REGULAR_CHARSET;
+    let combinations = chars.map(char => prefix + char);
 
-    function backtrack(combination: string, start: number) {
-      if (combination.length === length) {
-        combinations.push(combination);
-        return;
-      }
-
-      for (let i = start; i < chars.length; i++) {
-        backtrack(combination + chars[i], i);
-      }
+    for (let i = 1; i < length; i++) {
+      combinations = combinations.flatMap(comb =>
+        getCombinations(length - 1, { emojis, prefix: comb }),
+      );
     }
-
-    backtrack('', 0);
 
     return combinations;
   }
 
-  function generateId(string: string, length = 1) {
+  function generateId(
+    string: string,
+    { emojis, length = 1 }: GenerateIdOptions,
+  ) {
     if (propertiesCache.has(string)) {
       return propertiesCache.get(string) as string;
     }
     const usedIds = Array.from(propertiesCache.values());
-    const combinations = getCombinations(length);
+    const combinations = getCombinations(length, { emojis });
 
     for (const combination of combinations) {
       if (!usedIds.includes(combination)) {
@@ -56,7 +49,7 @@ function createHandler() {
       }
     }
 
-    return generateId(string, length + 1);
+    return generateId(string, { emojis, length: length + 1 });
   }
 
   function escapeString(string: string) {
@@ -64,9 +57,9 @@ function createHandler() {
       return valuesCache.get(string) as string;
     }
 
-    const replaced = Object.keys(symbolsMap).reduce(
+    const replaced = Object.keys(SYMBOLS_MAP).reduce(
       (acc, symbol) =>
-        acc.replace(new RegExp('\\' + symbol, 'gi'), symbolsMap[symbol]),
+        acc.replace(new RegExp('\\' + symbol, 'gi'), SYMBOLS_MAP[symbol]),
       string,
     );
 
@@ -76,12 +69,16 @@ function createHandler() {
     return escaped;
   }
 
-  function makeRuleName(property: string, value: string, { minify }: Options) {
-    const ruleName = `${escapeString(property)}-${escapeString(value)}`;
+  function makeRuleName(
+    property: string,
+    value: string,
+    { minify, emojis, classNamePrefix }: GeneratorOptions,
+  ) {
+    const className = classNamePrefix || '';
     if (minify) {
-      return generateId(ruleName);
+      return `${className}${generateId(`${property}-${value}`, { emojis })}`;
     }
-    return ruleName;
+    return `${className}${escapeString(property)}-${escapeString(value)}`;
   }
 
   function isObject(arg: unknown): arg is Record<string, unknown> {
@@ -90,15 +87,15 @@ function createHandler() {
 
   function generator(
     style: Record<string, unknown> = {},
-    { minify }: Options = {},
+    options: GeneratorOptions = {},
   ) {
     const className = Object.keys(style).reduce((acc, curr) => {
       let value = style[curr];
       if (isObject(value)) {
-        value = generator(value, { minify });
+        value = generator(value, options);
       }
       const prefix = acc ? '_' : '';
-      const ruleName = makeRuleName(curr, value as string, { minify });
+      const ruleName = makeRuleName(curr, value as string, options);
       return `${acc}${prefix}${ruleName}`;
     }, '');
 

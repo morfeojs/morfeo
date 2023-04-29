@@ -9,57 +9,93 @@ describe('orderStyles', () => {
 
   it('should order styles based on the media queries', () => {
     const result = orderStyles([
-      {
-        bg: { lg: 'primary' },
-      },
-      {
-        bg: { md: 'secondary' },
-      },
-      {
-        bg: { sm: 'accent' },
-      },
-      {
-        bg: { xs: 'background' },
-      },
+      [
+        'bg-lg-primary',
+        {
+          bg: { lg: 'primary' },
+        },
+      ],
+      [
+        'bg-md-secondary',
+        {
+          bg: { md: 'secondary' },
+        },
+      ],
+      [
+        'bg-sm-accent',
+        {
+          bg: { sm: 'accent' },
+        },
+      ],
+      [
+        'bg-xs-background',
+        {
+          bg: { xs: 'background' },
+        },
+      ],
     ]);
 
     expect(result).toEqual([
-      {
-        bg: { xs: 'background' },
-      },
-      {
-        bg: { sm: 'accent' },
-      },
-      {
-        bg: { md: 'secondary' },
-      },
-      {
-        bg: { lg: 'primary' },
-      },
+      [
+        'bg-xs-background',
+        {
+          bg: { xs: 'background' },
+        },
+      ],
+      [
+        'bg-sm-accent',
+        {
+          bg: { sm: 'accent' },
+        },
+      ],
+      [
+        'bg-md-secondary',
+        {
+          bg: { md: 'secondary' },
+        },
+      ],
+      [
+        'bg-lg-primary',
+        {
+          bg: { lg: 'primary' },
+        },
+      ],
     ]);
   });
 
   it('should order even if responsive values are nested inside pseudo selectors', () => {
     const result = orderStyles([
-      {
-        '&:hover': {
-          bg: { lg: 'primary' },
+      [
+        'bg-hover-lg-primary',
+        {
+          '&:hover': {
+            bg: { lg: 'primary' },
+          },
         },
-      },
-      {
-        bg: { sm: 'secondary' },
-      },
+      ],
+      [
+        'bg-sm-secondary',
+        {
+          bg: { sm: 'secondary' },
+        },
+      ],
     ]);
 
     expect(result).toEqual([
-      {
-        bg: { sm: 'secondary' },
-      },
-      {
-        '&:hover': {
-          bg: { lg: 'primary' },
+      [
+        'bg-sm-secondary',
+        {
+          bg: { sm: 'secondary' },
         },
-      },
+      ],
+      [
+        'bg-hover-lg-primary',
+        {
+          '&:hover': {
+            bg: { lg: 'primary' },
+          },
+        },
+      ],
     ]);
   });
 });
