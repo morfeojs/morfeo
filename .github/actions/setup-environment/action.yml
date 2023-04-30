@@ -6,7 +6,7 @@ runs:
   using: 'composite'
 
   steps:
-    - uses: pnpm/action-setup@v2.0.1
+    - uses: pnpm/action-setup@v2.2.4
       with:
         version: 8.3.1
 
