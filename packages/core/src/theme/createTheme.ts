@@ -27,10 +27,7 @@ export function createTheme() {
     const breakpoints = getSlice('breakpoints');
     if (typeof value === 'object' && breakpoints) {
       const keys = Object.keys(value);
-      return (
-        keys.includes('default') ||
-        keys.some(key => breakpoints[key] !== undefined)
-      );
+      return keys.some(key => breakpoints[key] !== undefined);
     }
 
     return false;
