@@ -15,7 +15,7 @@ const classes = morfeo.css({
   cards: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     gap: 'm',
     flex: '3',
   },

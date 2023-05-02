@@ -2,6 +2,9 @@ import { morfeo } from '@morfeo/css';
 import { useState } from 'react';
 import { Steps } from './Steps';
 import { MobileSteps } from './MobileSteps';
+import ThemeSnippet from './ThemeSnippet.mdx';
+import CSS from './CSS.mdx';
+import Code from './Code.mdx';
 
 const classes = morfeo.css({
   container: {
@@ -27,14 +30,18 @@ const classes = morfeo.css({
   subTitle: {
     componentName: 'Typography',
     variant: 'p',
-    maxW: 'raw:800px',
+    w: '100',
     textAlign: 'center',
+  },
+  textGradient: {
+    textGradient: 'accentToPrimary',
+    fontWeight: 'bold',
   },
   inner: {
     h: '100',
     display: 'flex',
     flexDirection: {
-      default: 'column-reverse',
+      default: 'column',
       md: 'row',
     },
     gap: {
@@ -48,47 +55,43 @@ const classes = morfeo.css({
     },
   },
   preview: {
-    border: 'thin',
-    borderColor: 'primary.lightest',
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     corner: 'xs',
     flex: '2',
     position: 'relative',
     overflow: 'hidden',
-    '& image': {
+    h: 'raw:fit-content',
+    '& .nextra-code-block': {
       w: '100',
-      h: '100',
-      objectFit: 'cover',
+      corner: 'xs',
+      mb: 'none',
+      borderWidth: 's',
+      borderColor: 'primary.lightest',
     },
-  },
-  cardTitle: {
-    componentName: 'Typography',
-    variant: 'h3',
-  },
-  textContainer: {
-    w: '100',
-    p: 'm',
-    display: 'flex',
-    opacity: 'light',
-    flexDirection: 'column',
-    border: 'thin',
+    '& .nextra-code-block pre': {
+      mb: 'none',
+    },
   },
 });
 
-const stepContentList: { title: string; body: string }[] = [
+const stepContentList = [
   {
-    title: 'Set your theme',
-    body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit enim, accusantium omnis ducimus earum est. Libero numquam quos consectetur eveniet?',
+    title: 'Define your theme',
+    body: 'Create your theme or use one of our presets.',
+    snippet: <ThemeSnippet />,
   },
   {
-    title: 'Create styles based on the theme',
-    body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit enim, accusantium omnis ducimus earum est. Libero numquam quos consectetur eveniet?',
+    title: 'Use it to style your components',
+    body: 'Write CSS-in-JS styles based on your theme.',
+    snippet: <Code />,
   },
   {
-    title: 'Morfeo will generate a valid CSS-in-JS',
-    body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit enim, accusantium omnis ducimus earum est. Libero numquam quos consectetur eveniet?',
+    title: 'Morfeo will optimize the output',
+    body: 'Your code will be transformed at build time to remove all the unnecessary runtime overhead.',
+    snippet: <CSS />,
   },
 ];
 
@@ -105,9 +108,13 @@ export function HowItWorks() {
         How it <span>Works</span>
       </h2>
       <p className={classes.subTitle}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia culpa
-        harum aliquid repellendus necessitatibus. Ab repellendus beatae vitae
-        facere culpa?
+        Our goal is to provide the best{' '}
+        <span className={classes.textGradient}>Developer eXperience</span> while
+        ensuring <span className={classes.textGradient}>best practices</span>.
+        <br />
+        You can focus on your project - Under the hood we optimize your code to
+        guarantee for your customers the best{' '}
+        <span className={classes.textGradient}>User eXperience</span>.
       </p>
       <MobileSteps
         stepOnClick={handleStepIndex}
@@ -121,7 +128,7 @@ export function HowItWorks() {
           stepOnClick={handleStepIndex}
         />
         <div className={classes.preview}>
-          Code snippet {selectedStepIndex + 1}
+          {stepContentList[selectedStepIndex].snippet}
         </div>
       </div>
     </section>
