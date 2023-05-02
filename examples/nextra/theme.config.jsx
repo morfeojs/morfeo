@@ -1,5 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import Image from 'next/image';
+import { Footer } from './src/components/Footer';
 
 export default {
   logo: (
@@ -31,17 +32,7 @@ export default {
       };
     },
   },
-  footer: {
-    text: (
-      <span>
-        MIT {new Date().getFullYear()} ©{' '}
-        <a href="https://morfeo.dev" target="_blank">
-          Morfeo
-        </a>
-        .
-      </span>
-    ),
-  },
+  footer: { text: <Footer /> },
   chat: {
     link: 'https://twitter.com/morfeo_js',
     icon: (
