@@ -12,7 +12,7 @@ type Props = {
 };
 
 const classes = morfeo.css({
-  mobileStepContainer: {
+  container: {
     w: '100',
     display: {
       default: 'flex',
@@ -23,17 +23,20 @@ const classes = morfeo.css({
     gap: 'm',
     mt: 'm',
   },
-  mobileStep: {
+  step: {
     w: 'raw:50px',
     h: 'raw:50px',
-    corner: 'xl',
+    corner: 'round',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     border: 'thin',
-    opacity: 'light',
+    cursor: 'pointer',
   },
-  isActive: {
+  inactive: {
+    opacity: 'medium',
+  },
+  active: {
     opacity: 'strong',
   },
 });
@@ -48,10 +51,10 @@ export const MobileSteps: React.FC<Props> = ({
       steps.map((step, i) => (
         <div
           key={step.title}
-          className={clsx(
-            classes.mobileStep,
-            i === selectedStepIndex && classes.isActive,
-          )}
+          className={clsx(classes.step, {
+            [classes.inactive]: i !== selectedStepIndex,
+            [classes.active]: i === selectedStepIndex,
+          })}
           onClick={() => stepOnClick(i)}
         >
           {i + 1}
@@ -59,5 +62,5 @@ export const MobileSteps: React.FC<Props> = ({
       )),
     [selectedStepIndex, stepOnClick, steps],
   );
-  return <div className={classes.mobileStepContainer}>{renderSteps}</div>;
+  return <div className={classes.container}>{renderSteps}</div>;
 };

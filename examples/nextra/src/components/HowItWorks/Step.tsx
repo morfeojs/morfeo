@@ -1,6 +1,7 @@
 import { morfeo } from '@morfeo/css';
 import clsx from 'clsx';
 import { MouseEventHandler } from 'react';
+
 type Props = {
   isActive?: boolean;
   onClick?: MouseEventHandler<HTMLDivElement>;
@@ -14,7 +15,7 @@ const classes = morfeo.css({
     w: '100',
     py: {
       default: 'none',
-      md: 'l',
+      md: 's',
     },
     px: {
       default: 'none',
@@ -28,6 +29,7 @@ const classes = morfeo.css({
     borderColor: 'primary.lightest',
     corner: 'xs',
     transition: 'fast',
+    cursor: 'pointer',
   },
   title: {
     componentName: 'Typography',
@@ -47,6 +49,7 @@ const classes = morfeo.css({
   stepIndex: {
     componentName: 'Typography',
     variant: 'h2',
+    mr: 'xs',
     display: {
       default: 'none',
       md: 'block',
@@ -63,16 +66,18 @@ export const Step: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={clsx(
-        isActive ? classes.active : classes.unActive,
-        classes.container,
-      )}
+      className={clsx(classes.container, {
+        [classes.active]: isActive,
+        [classes.unActive]: !isActive,
+      })}
       onClick={onClick}
     >
       {index !== undefined && (
-        <h4 className={classes.stepIndex}>{index + 1}</h4>
+        <span className={classes.stepIndex}>{index + 1}</span>
       )}
+
       <h3 className={classes.title}>{title}</h3>
+
       <p>{body}</p>
     </div>
   );
