@@ -95,10 +95,6 @@ Checkout all our packages and choose the one that fits better your needs:
 - [@morfeo/jss](https://morfeo.dev/docs/Packages/jss)
 - And more ...
 
-And even more are coming soon:
-
-- _@morfeo/angular_ **coming soon**
-
 ---
 
 ## Web Extension
