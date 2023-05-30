@@ -2,6 +2,7 @@ import { morfeo } from '@morfeo/css';
 import { useMediaQuery } from '@/hooks';
 import { DesktopPlayer } from './DesktopChartPlayer';
 import { SmartphoneChartPlayer } from './SmartphoneChartPlayer';
+import { FadeInBox } from '../FadeInBox';
 
 const classes = morfeo.css({
   container: {
@@ -10,6 +11,7 @@ const classes = morfeo.css({
     width: '100',
     alignItems: 'center',
     justifyContent: 'center',
+    mb: '4xl',
   },
   textContainer: {
     maxWidth: 'raw:800px',
@@ -41,10 +43,7 @@ export const BundleSize: React.FC = () => {
   const isTabletOrBelow = useMediaQuery('(max-width: 768px)');
 
   return (
-    <div className={classes.container}>
-      <div className={classes.animationContainer}>
-        {isTabletOrBelow ? <SmartphoneChartPlayer /> : <DesktopPlayer />}
-      </div>
+    <FadeInBox className={classes.container}>
       <div className={classes.textContainer}>
         <h1 className={classes.title}>CSS bundle size? No problem</h1>
         <p>
@@ -53,6 +52,9 @@ export const BundleSize: React.FC = () => {
           netus mi viverra. Congue sit sagittis tempus odio arcu in. Donec amet.
         </p>
       </div>
-    </div>
+      <div className={classes.animationContainer}>
+        {isTabletOrBelow ? <SmartphoneChartPlayer /> : <DesktopPlayer />}
+      </div>
+    </FadeInBox>
   );
 };
