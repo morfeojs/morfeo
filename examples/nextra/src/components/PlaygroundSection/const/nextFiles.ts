@@ -1,5 +1,5 @@
 import { SandpackFiles } from '@codesandbox/sandpack-react/types';
-import { globalFiles } from './globalFiles';
+import { globalStyle, morfeoTheme, socialComponent } from './globalFiles';
 
 const nextConfig = `const docsTheme = require("./morfeo.theme");
 const { darkTheme } = require("@morfeo/preset-default");
@@ -106,5 +106,13 @@ export const nextFiles: SandpackFiles = {
     active: true,
   },
   'next.config.js': nextConfig,
-  ...globalFiles,
+  'components/Socials.js': socialComponent,
+  'styles.css': {
+    code: globalStyle,
+    hidden: true,
+  },
+  'morfeo.theme.js': {
+    code: morfeoTheme,
+    readOnly: true,
+  },
 };

@@ -1,5 +1,5 @@
 import { SandpackFiles } from '@codesandbox/sandpack-react/types';
-import { globalFiles } from './globalFiles';
+import { globalStyle, morfeoTheme, socialComponent } from './globalFiles';
 
 const viteIndex = `import { morfeo } from '@morfeo/css';
 import { Socials } from "./src/components/Socials";
@@ -94,5 +94,13 @@ export default defineConfig({
 export const viteFiles: SandpackFiles = {
   'App.tsx': viteIndex,
   'vite.config.ts': viteConfig,
-  ...globalFiles,
+  'components/Socials.tsx': socialComponent,
+  'styles.css': {
+    code: globalStyle,
+    hidden: true,
+  },
+  'morfeo.theme.js': {
+    code: morfeoTheme,
+    readOnly: true,
+  },
 };

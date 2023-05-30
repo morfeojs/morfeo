@@ -1,6 +1,4 @@
-import { SandpackFiles } from '@codesandbox/sandpack-react/types';
-
-const morfeoTheme = `const theme = {
+export const morfeoTheme = `const theme = {
     fontSizes: {
       '2xs': '.5rem',
       xs: '.75rem',
@@ -113,7 +111,7 @@ const morfeoTheme = `const theme = {
   module.exports = theme;
   `;
 
-const socialComponent = `import { morfeo } from '@morfeo/css';
+export const socialComponent = `import { morfeo } from '@morfeo/css';
 
 const classes = morfeo.css({
   container: {
@@ -168,7 +166,7 @@ export const Socials = () => {
 };
 `;
 
-const globalStyle = `@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+export const globalStyle = `@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -177,15 +175,3 @@ const globalStyle = `@import url('https://fonts.googleapis.com/css2?family=Monts
 * {
   margin: 0;
 }`;
-
-export const globalFiles: SandpackFiles = {
-  'components/Socials.js': socialComponent,
-  'styles.css': {
-    code: globalStyle,
-    hidden: true,
-  },
-  'morfeo.theme.js': {
-    code: morfeoTheme,
-    readOnly: true,
-  },
-};
