@@ -5,6 +5,7 @@ import { MobileSteps } from './MobileSteps';
 import ThemeSnippet from './ThemeSnippet.mdx';
 import CSS from './CSS.mdx';
 import Code from './Code.mdx';
+import { FadeInBox } from '../FadeInBox';
 
 const classes = morfeo.css({
   container: {
@@ -103,7 +104,7 @@ export function HowItWorks() {
   }
 
   return (
-    <section className={classes.container}>
+    <FadeInBox className={classes.container}>
       <h2 className={classes.title}>
         How it <span>Works</span>
       </h2>
@@ -131,6 +132,6 @@ export function HowItWorks() {
           {stepContentList[selectedStepIndex].snippet}
         </div>
       </div>
-    </section>
+    </FadeInBox>
   );
 }
