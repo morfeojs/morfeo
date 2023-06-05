@@ -19,18 +19,28 @@ const classes = morfeo.css({
     lineHeight: 'none',
   },
   buttonContainer: {
+    w: '100',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 'l',
+    gap: {
+      default: 's',
+      sm: 'l',
+    },
+    flexDirection: {
+      default: 'column',
+      sm: 'row',
+    },
   },
   primaryButton: {
     componentName: 'Button',
     variant: 'primary',
+    minW: '100',
   },
   secondaryButton: {
     componentName: 'Button',
     variant: 'outline',
+    minW: '100',
   },
 });
 

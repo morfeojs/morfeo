@@ -10,7 +10,10 @@ const classes = morfeo.css({
       content: '"|"',
       textGradient: 'text.primary',
       fontWeight: 'medium',
-      fontSize: '4xl',
+      fontSize: {
+        default: '3xl',
+        sm: '4xl',
+      },
       animation: 'blink 1s alternate infinite',
     },
     '& a': {
