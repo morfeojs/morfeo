@@ -74,5 +74,5 @@
   "bugs": {
     "url": "https://github.com/morfeojs/morfeo/issues"
   },
-  "packageManager": "pnpm@8.5.1"
+  "packageManager": "pnpm@8.6.3"
 }
