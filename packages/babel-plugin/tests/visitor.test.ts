@@ -80,3 +80,22 @@ describe('morfeo.component', () => {
     expect(result?.code).not.toContain('morfeo.component');
   });
 });
+
+describe('morfeo.experimental', () => {
+  it('should replace the "morfeo.experimental" function', () => {
+    const testCode = `import { morfeo } from "@morfeo/css";
+        const classes = morfeo.experimental({
+          button: {
+            bg: {
+              default: 'raw:blue',
+              md: 'primary',
+              sm: 'secondary'
+            }
+          }
+        });
+      `;
+    const result = transform(testCode);
+
+    expect(result?.code).not.toContain('morfeo.experimental');
+  });
+});

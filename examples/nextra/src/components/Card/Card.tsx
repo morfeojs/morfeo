@@ -1,13 +1,13 @@
 import { morfeo } from '@morfeo/css';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
-import clsx from 'clsx';
+// import clsx from 'clsx';
 
 type CardProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >;
 
-const classes = morfeo.css({
+const classes = morfeo.experimental({
   container: {
     position: 'relative',
     bg: 'raw:#111',
@@ -36,7 +36,5 @@ const classes = morfeo.css({
 });
 
 export const Card: React.FC<CardProps> = props => {
-  return (
-    <div {...props} className={clsx(classes.container, props.className)} />
-  );
+  return <div {...props} className={classes('container', props.className)} />;
 };

@@ -53,6 +53,25 @@ function css<K extends string>(_styles: Record<K, Style>): Record<K, string> {
   );
 }
 
+type ClassObject<K extends string = string> = {
+  [Key in K]: string | ClassObject;
+};
+
+type ClassResolverCallback<K extends string> = ClassObject<K> &
+  ((
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    ...args: (ClassObject | K | (string & {}) | undefined | boolean)[]
+  ) => string);
+
+function experimental<K extends string>(
+  _styles: Record<K, Style>,
+): ClassResolverCallback<K> {
+  throw new Error(
+    // TODO: Add link to documentation whenever it will be created
+    "Error: morfeo.experimental should never be executed at run-time, please be sure you're using morfeo's transpiler",
+  );
+}
+
 /**
  *
  * > **IMPORTANT**
@@ -87,4 +106,4 @@ function component<C extends Component, P extends object>(
   );
 }
 
-export const morfeo = { css, component };
+export const morfeo = { css, component, experimental };

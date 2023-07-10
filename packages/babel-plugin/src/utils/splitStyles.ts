@@ -1,14 +1,9 @@
 import { Style } from '@morfeo/web';
+import { isDefaultObject } from '@morfeo/utils';
 import { DYNAMIC_VALUE_TOKEN } from '../constants';
 
 function isStyle(value: unknown): value is Style {
   return typeof value === 'object';
-}
-
-function isDefaultObject(
-  value: Record<string, unknown>,
-): value is { default: unknown } {
-  return !!value.default;
 }
 
 export function splitStyles(object: Style): Style[] {

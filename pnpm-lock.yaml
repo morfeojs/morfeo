@@ -106,8 +106,8 @@ importers:
         specifier: 2.5.0
         version: 2.5.0
       turbo:
-        specifier: 1.10.7
-        version: 1.10.7
+        specifier: 1.9.3
+        version: 1.9.3
       typescript:
         specifier: 5.0.4
         version: 5.0.4

@@ -1,8 +1,8 @@
 import type { NodePath } from '@babel/traverse';
 import type { CallExpression } from '@babel/types';
 import { component } from '@morfeo/web';
-import { getStyleObject, dynamicClasses, css } from '../utils';
 import { addNamespace } from '@babel/helper-module-imports';
+import { getStyleObject, dynamicClasses, css } from '../utils';
 
 export function createComponentVisitor(
   callExpressionPath: NodePath<CallExpression>,

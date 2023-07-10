@@ -2,6 +2,7 @@ import { Visitor } from '@babel/traverse';
 import { createCssVisitor } from './visitors/css';
 import { createComponentVisitor } from './visitors/component';
 import { isMorfeoMethodUsed } from './utils';
+import { createExperimentalVisitor } from './visitors/experimental';
 
 export default function getVisitor(): Visitor {
   return {
@@ -24,6 +25,10 @@ export default function getVisitor(): Visitor {
 
         if (isMorfeoMethodUsed(callExpressionPath, 'css')) {
           createCssVisitor(callExpressionPath, state);
+        }
+
+        if (isMorfeoMethodUsed(callExpressionPath, 'experimental')) {
+          createExperimentalVisitor(callExpressionPath, state);
         }
       },
     },
