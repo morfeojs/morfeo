@@ -1,5 +1,4 @@
 import { morfeo } from '@morfeo/css';
-import clsx from 'clsx';
 import { MouseEventHandler } from 'react';
 
 type Props = {

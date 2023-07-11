@@ -80,7 +80,7 @@ export function FeatureCards() {
         >
           <p>
             Components and Design tokens are{' '}
-            <span className={classes('gradientText')}>automagically</span>
+            <span className={classes('gradientText')}>automagically </span>
             documented. For free. For real!
           </p>
         </FeatureCard>
