@@ -7,7 +7,6 @@ import {
   useState,
 } from 'react';
 import { Card } from '../Card';
-import clsx from 'clsx';
 import { Player } from '@lottiefiles/react-lottie-player';
 
 const classes = morfeo.css({
@@ -104,16 +103,16 @@ export function FeatureCard({
   return (
     <Card
       {...props}
-      className={classes.container}
+      className={classes('container')}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <div className={clsx(classes.content, classes[variant], props.className)}>
-        <div className={classes.bodyContainer}>
-          <span className={classes.title}>{title}</span>
+      <div className={classes('content', variant, props.className)}>
+        <div className={classes('bodyContainer')}>
+          <span className={classes('title')}>{title}</span>
           {props.children}
         </div>
-        <div className={classes[`${variant}AnimationContainer`]}>
+        <div className={classes(`${variant}AnimationContainer`)}>
           <Player src={animationSrc} ref={playerRef} keepLastFrame />
         </div>
       </div>

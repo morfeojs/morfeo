@@ -102,9 +102,9 @@ const classes = morfeo.css({
 export const WebExtensionSection: React.FC = () => {
   return (
     <section>
-      <FadeInBox className={classes.mainContainer}>
-        <div className={classes.textContainer}>
-          <h1 className={classes.title}>
+      <FadeInBox className={classes('mainContainer')}>
+        <div className={classes('textContainer')}>
+          <h1 className={classes('title')}>
             The web extension you have always <span>dreamed</span> of
           </h1>
           <p>
@@ -123,19 +123,19 @@ export const WebExtensionSection: React.FC = () => {
             height={100}
             src="/chrome_market_badge.png"
             alt="Chrome Web Store badge"
-            className={classes.badge}
+            className={classes('badge')}
           />
         </Link>
-        <div className={classes.imageCover}>
+        <div className={classes('imageCover')}>
           <Image
             src="/web_extension.png"
             alt="Morfeo screenshot"
-            className={classes.image}
+            className={classes('image')}
             fill
           />
         </div>
       </FadeInBox>
-      <div className={classes.stepContainer}>
+      <div className={classes('stepContainer')}>
         {stepList.map(step => (
           <WebExtensionStep key={step.title} {...step} />
         ))}

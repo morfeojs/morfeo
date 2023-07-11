@@ -39,5 +39,5 @@ export const Steps: React.FC<Props> = ({
       )),
     [selectedStepIndex, stepOnClick, steps],
   );
-  return <div className={classes.cards}>{renderSteps}</div>;
+  return <div className={classes('cards')}>{renderSteps}</div>;
 };

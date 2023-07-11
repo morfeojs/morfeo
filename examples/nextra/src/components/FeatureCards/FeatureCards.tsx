@@ -40,13 +40,14 @@ const classes = morfeo.css({
 
 export function FeatureCards() {
   return (
-    <div className={classes.container}>
-      <div className={classes.firstLine}>
+    <div className={classes('container')}>
+      <div className={classes('firstLine')}>
         <FeatureCard title="Theming" animationSrc={themingAnimationData}>
           <p>
-            Build your <span className={classes.gradientText}>constraints</span>
-            . With Morfeo you have full control over your design system and your
-            design language.
+            Build your{' '}
+            <span className={classes('gradientText')}>constraints</span>. With
+            Morfeo you have full control over your design system and your design
+            language.
           </p>
         </FeatureCard>
         <FeatureCard
@@ -57,7 +58,7 @@ export function FeatureCards() {
           <p>
             Next, Remix, React, Svelte? Webpack, Vite, Esbuild? You name it, we
             have it! Morfeo runs{' '}
-            <span className={classes.gradientText}>everywhere</span>.
+            <span className={classes('gradientText')}>everywhere</span>.
           </p>
         </FeatureCard>
         <FeatureCard
@@ -66,12 +67,12 @@ export function FeatureCards() {
         >
           <p>
             Always wear the{' '}
-            <span className={classes.gradientText}>protection</span>.
+            <span className={classes('gradientText')}>protection</span>.
             Type-Safely styling is possible with Morfeo.
           </p>
         </FeatureCard>
       </div>
-      <div className={classes.secondLine}>
+      <div className={classes('secondLine')}>
         <FeatureCard
           title="Web extension"
           variant="row"
@@ -79,7 +80,7 @@ export function FeatureCards() {
         >
           <p>
             Components and Design tokens are{' '}
-            <span className={classes.gradientText}>automagically</span>
+            <span className={classes('gradientText')}>automagically</span>
             documented. For free. For real!
           </p>
         </FeatureCard>
@@ -91,7 +92,7 @@ export function FeatureCards() {
           <p>
             DX of CSS-in-JS, minimum possible CSS footprint, without any runtime
             overhead. Simply{' '}
-            <span className={classes.gradientText}>Morfeo</span>.
+            <span className={classes('gradientText')}>Morfeo</span>.
           </p>
         </FeatureCard>
       </div>

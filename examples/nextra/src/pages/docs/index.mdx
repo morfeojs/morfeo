@@ -30,7 +30,7 @@ That transforms your styles into simple, optimized, plain CSS. This way you don'
 
 ### Write your component
 
-```tsx {1, 3-7} copy showLineNumbers filename="Button.tsx"
+```tsx {1, 3-7} /classes('button')/ copy showLineNumbers filename="Button.tsx"
 import { morfeo } from '@morfeo/css';
 
 const classes = morfeo.css({
@@ -40,25 +40,26 @@ const classes = morfeo.css({
 });
 
 function Button() {
-  return <button className={classes.button}>Hello, world</button>;
+  return <button className={classes('button')}>Hello, world</button>;
 }
 ```
 
 ### Morfeo will optimize your code
 
-```tsx {1-3} showLineNumbers filename="Button.tsx"
-const classes = {
-  button: 'bg-primary',
+```tsx {1-4} /classes('button')/ showLineNumbers filename="Button.tsx"
+const classes = function (...classNames) {
+  // This function will properly combine the passed classNames
+  // and return the resultant className
 };
 
 function Button() {
-  return <button className={classes.button}>Hello, world</button>;
+  return <button className={classes('button')}>Hello, world</button>;
 }
 ```
 
 ### And generate only the needed CSS
 
-```css showLineNumbers filename="morfeo.css"
+```css /.bg-primary/ showLineNumbers filename="morfeo.css"
 .bg-primary {
   background-color: #0066ff;
 }

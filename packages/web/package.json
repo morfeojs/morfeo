@@ -26,7 +26,8 @@
   "dependencies": {
     "@morfeo/core": "workspace:*",
     "@morfeo/fonts": "workspace:*",
-    "@morfeo/jss": "workspace:*"
+    "@morfeo/jss": "workspace:*",
+    "@morfeo/utils": "workspace:*"
   },
   "peerDependencies": {
     "csstype": "^3.1.0"

@@ -70,13 +70,18 @@ export const WebExtensionStep: React.FC<WebExtensionStepProps> = ({
   title,
 }) => {
   return (
-    <FadeInBox className={classes.container}>
-      <div className={classes.textContainer}>
-        <h1 className={classes.title}>{title}</h1>
+    <FadeInBox className={classes('container')}>
+      <div className={classes('textContainer')}>
+        <h1 className={classes('title')}>{title}</h1>
         <p>{body}</p>
       </div>
-      <div className={classes.imageCover}>
-        <Image src={image.src} alt={image.alt} fill className={classes.image} />
+      <div className={classes('imageCover')}>
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          className={classes('image')}
+        />
       </div>
     </FadeInBox>
   );

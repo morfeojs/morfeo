@@ -71,10 +71,10 @@ const linkBlockList: FooterLinkBlock[] = [
 
 export const Footer: React.FC = () => {
   return (
-    <div className={classes.container}>
+    <div className={classes('container')}>
       <LinkBlocks linkBlockList={linkBlockList} />
-      <div className={classes.copyrightContainer}>
-        <div className={classes.logoContainer}>
+      <div className={classes('copyrightContainer')}>
+        <div className={classes('logoContainer')}>
           <Image
             src="/logo-small.svg"
             alt="Morfeo Logo"
@@ -82,7 +82,7 @@ export const Footer: React.FC = () => {
             height={30}
           />
         </div>
-        <div className={classes.textContainer}>
+        <div className={classes('textContainer')}>
           <span>
             Copyright © {new Date().getFullYear()} Mauro Erta, VLK Studio and
             all the documentation authors.

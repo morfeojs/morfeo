@@ -104,31 +104,32 @@ export function HowItWorks() {
   }
 
   return (
-    <FadeInBox className={classes.container}>
-      <h2 className={classes.title}>
+    <FadeInBox className={classes('container')}>
+      <h2 className={classes('title')}>
         How it <span>Works</span>
       </h2>
-      <p className={classes.subTitle}>
+      <p className={classes('subTitle')}>
         Our goal is to provide the best{' '}
-        <span className={classes.textGradient}>Developer eXperience</span> while
-        ensuring <span className={classes.textGradient}>best practices</span>.
+        <span className={classes('textGradient')}>Developer eXperience</span>{' '}
+        while ensuring{' '}
+        <span className={classes('textGradient')}>best practices</span>.
         <br />
         You can focus on your project - Under the hood we optimize your code to
         guarantee for your customers the best{' '}
-        <span className={classes.textGradient}>User eXperience</span>.
+        <span className={classes('textGradient')}>User eXperience</span>.
       </p>
       <MobileSteps
         stepOnClick={handleStepIndex}
         steps={stepContentList}
         selectedStepIndex={selectedStepIndex}
       />
-      <div className={classes.inner}>
+      <div className={classes('inner')}>
         <Steps
           steps={stepContentList}
           selectedStepIndex={selectedStepIndex}
           stepOnClick={handleStepIndex}
         />
-        <div className={classes.preview}>
+        <div className={classes('preview')}>
           {stepContentList[selectedStepIndex].snippet}
         </div>
       </div>

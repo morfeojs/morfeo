@@ -6,7 +6,7 @@ type CardProps = DetailedHTMLProps<
   HTMLDivElement
 >;
 
-const classes = morfeo.experimental({
+const classes = morfeo.css({
   container: {
     position: 'relative',
     bg: 'raw:#111',

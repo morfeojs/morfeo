@@ -30,5 +30,7 @@ const classes = morfeo.css({
 });
 
 export const Card: React.FC<CardProps> = ({ direction, ...props }) => {
-  return <div {...props} data-direction={direction} className={classes.card} />;
+  return (
+    <div {...props} data-direction={direction} className={classes('card')} />
+  );
 };

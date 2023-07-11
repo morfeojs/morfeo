@@ -66,17 +66,14 @@ export const Step: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={clsx(classes.container, {
-        [classes.active]: isActive,
-        [classes.unActive]: !isActive,
-      })}
+      className={classes('container', isActive ? 'active' : 'unActive')}
       onClick={onClick}
     >
       {index !== undefined && (
-        <span className={classes.stepIndex}>{index + 1}</span>
+        <span className={classes('stepIndex')}>{index + 1}</span>
       )}
 
-      <h3 className={classes.title}>{title}</h3>
+      <h3 className={classes('title')}>{title}</h3>
 
       <p>{body}</p>
     </div>

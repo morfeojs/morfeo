@@ -69,16 +69,16 @@ const words = ['Design.', 'Build.', 'Theming.', 'Everywhere.', 'Components.'];
 
 export function Hero() {
   return (
-    <section className={classes.container}>
-      <h1 className={classes.title}>
+    <section className={classes('container')}>
+      <h1 className={classes('title')}>
         <TypingAnimation words={words} /> <br /> Without compromises.
       </h1>
-      <h2 className={classes.subtitle}>
+      <h2 className={classes('subtitle')}>
         Morfeo is a build-time CSS-in-JS solution for the next level theming,
         with the minimum amount of shipped CSS.
       </h2>
 
-      <div className={classes.cta}>
+      <div className={classes('cta')}>
         <ButtonLink href="/docs">Start learning</ButtonLink>
         <ButtonLink href="https://github.com/morfeojs/morfeo" variant="outline">
           Github

@@ -31,11 +31,11 @@ const classes = morfeo.css({
 
 export const Social: React.FC = () => {
   return (
-    <div className={classes.container}>
+    <div className={classes('container')}>
       <a
         href="https://twitter.com/morfeo_js"
         target="_blank"
-        className={classes.social}
+        className={classes('social')}
       >
         <svg width="20" height="20" viewBox="0 0 248 204">
           <path
@@ -47,7 +47,7 @@ export const Social: React.FC = () => {
       <a
         href="https://discord.com/invite/5hbsKMBRBh"
         target="_blank"
-        className={classes.social}
+        className={classes('social')}
       >
         <svg width="20" height="20" viewBox="0 -28.5 256 256">
           <g>
@@ -61,7 +61,7 @@ export const Social: React.FC = () => {
       <a
         href="https://github.com/morfeojs/morfeo"
         target="_blank"
-        className={classes.social}
+        className={classes('social')}
       >
         <svg width="20" height="20" viewBox="0 0 24 24">
           <path
