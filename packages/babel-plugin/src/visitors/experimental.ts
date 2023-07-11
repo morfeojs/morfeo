@@ -27,10 +27,12 @@ export function createExperimentalVisitor(
         nameHint: 'morfeoUtils',
       });
 
-      const template = `function (...classes) {
-        const classObject = ${JSON.stringify(classes)};
+      const stringifiedClassObject = JSON.stringify(classes);
+
+      const template = `Object.assign(function (...classes) {
+        const classObject = ${stringifiedClassObject};
         return ${identifier.name}.createClassCombiner(classObject)(...classes);
-      }`;
+      }, ${stringifiedClassObject})`;
 
       callExpressionPath.replaceWithSourceString(template);
     },

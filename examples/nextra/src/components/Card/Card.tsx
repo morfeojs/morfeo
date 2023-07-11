@@ -1,6 +1,5 @@
 import { morfeo } from '@morfeo/css';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
-// import clsx from 'clsx';
 
 type CardProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,

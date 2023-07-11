@@ -1,16 +1,16 @@
 import { deepMerge } from './deepMerge';
 
-type ClassObject = {
-  [K: string]: string | ClassObject;
+export type ClassObject<K extends string = string> = {
+  [Key in K]: string | ClassObject;
 };
 
-function traverse(classObject: ClassObject): string {
+function getLeafs(classObject: ClassObject): string {
   const keys = Object.keys(classObject);
 
   return keys.reduce((acc, curr) => {
     let value = classObject[curr];
     if (typeof value !== 'string') {
-      value = traverse(value);
+      value = getLeafs(value);
     }
 
     return acc ? `${acc} ${value}` : value;
@@ -18,7 +18,7 @@ function traverse(classObject: ClassObject): string {
 }
 
 export function createClassCombiner<C extends ClassObject>(classObject: C) {
-  function combineClasses(
+  return function combineClasses(
     ...classesOrObjects: (
       | ClassObject
       | keyof C
@@ -49,8 +49,6 @@ export function createClassCombiner<C extends ClassObject>(classObject: C) {
       ['', {}],
     );
 
-    return `${className} ${traverse(mergedClassObject)}`.trim();
-  }
-
-  return Object.assign(combineClasses, classObject);
+    return `${className} ${getLeafs(mergedClassObject)}`.trim();
+  };
 }
