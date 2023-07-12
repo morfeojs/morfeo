@@ -11,9 +11,3 @@ describe('morfeo.component', () => {
     expect(() => morfeo.component('button', {})).toThrow();
   });
 });
-
-describe('morfeo.experimental', () => {
-  it('should throw an exception in case `experimental` is executed', () => {
-    expect(() => morfeo.experimental({})).toThrow();
-  });
-});
