@@ -43,16 +43,16 @@ export const BundleSize: React.FC = () => {
   const isTabletOrBelow = useMediaQuery('(max-width: 768px)');
 
   return (
-    <FadeInBox className={classes.container}>
-      <div className={classes.textContainer}>
-        <h1 className={classes.title}>CSS bundle size? No problem</h1>
+    <FadeInBox className={classes('container')}>
+      <div className={classes('textContainer')}>
+        <h1 className={classes('title')}>CSS bundle size? No problem</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur. Varius commodo tempus
           adipiscing pharetra quis euismod. Gravida blandit gravida tincidunt
           netus mi viverra. Congue sit sagittis tempus odio arcu in. Donec amet.
         </p>
       </div>
-      <div className={classes.animationContainer}>
+      <div className={classes('animationContainer')}>
         {isTabletOrBelow ? <SmartphoneChartPlayer /> : <DesktopPlayer />}
       </div>
     </FadeInBox>

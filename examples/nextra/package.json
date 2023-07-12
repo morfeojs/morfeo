@@ -19,7 +19,6 @@
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*",
     "@types/node": "18.15.3",
-    "clsx": "^1.2.1",
     "framer-motion": "^10.12.7",
     "next": "13.4.4",
     "nextra": "2.6.1",

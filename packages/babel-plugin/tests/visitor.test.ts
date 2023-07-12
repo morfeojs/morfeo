@@ -61,7 +61,7 @@ describe('morfeo.css', () => {
       });
 
       const Button = () => {
-        return <button className={classes.button} />
+        return <button className={classes('button')} />
       };
     `;
 

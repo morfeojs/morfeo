@@ -1,6 +1,5 @@
 import { morfeo } from '@morfeo/css';
 import { useMemo } from 'react';
-import clsx from 'clsx';
 
 type Props = {
   steps: {
@@ -51,10 +50,11 @@ export const MobileSteps: React.FC<Props> = ({
       steps.map((step, i) => (
         <div
           key={step.title}
-          className={clsx(classes.step, {
-            [classes.inactive]: i !== selectedStepIndex,
-            [classes.active]: i === selectedStepIndex,
-          })}
+          className={classes(
+            'step',
+            i !== selectedStepIndex && 'inactive',
+            i === selectedStepIndex && 'active',
+          )}
           onClick={() => stepOnClick(i)}
         >
           {i + 1}
@@ -62,5 +62,5 @@ export const MobileSteps: React.FC<Props> = ({
       )),
     [selectedStepIndex, stepOnClick, steps],
   );
-  return <div className={classes.container}>{renderSteps}</div>;
+  return <div className={classes('container')}>{renderSteps}</div>;
 };

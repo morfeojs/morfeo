@@ -39,13 +39,13 @@ const classes = morfeo.css({
 
 export const LinkBlocks: React.FC<Props> = ({ linkBlockList }) => {
   return (
-    <div className={classes.container}>
+    <div className={classes('container')}>
       {linkBlockList.map(linkBlock => (
         <div key={linkBlock.title}>
-          <h3 className={classes.blockTitle}>{linkBlock.title}</h3>
-          <ul className={classes.linksList}>
+          <h3 className={classes('blockTitle')}>{linkBlock.title}</h3>
+          <ul className={classes('linksList')}>
             {linkBlock.linkList.map(({ href, label, newTab }) => (
-              <li key={label} className={classes.link}>
+              <li key={label} className={classes('link')}>
                 <a href={href} target={newTab ? '_blank' : undefined}>
                   {label}
                 </a>

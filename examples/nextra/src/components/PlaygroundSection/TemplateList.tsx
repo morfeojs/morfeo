@@ -1,6 +1,5 @@
 import { morfeo } from '@morfeo/css';
 import Image from 'next/image';
-import clsx from 'clsx';
 import { PlaygroundTemplate } from './types';
 
 type Props = {
@@ -60,13 +59,13 @@ export const PlaygroundTemplateList: React.FC<Props> = ({
   selectedTemplate,
 }) => {
   return (
-    <div className={classes.container}>
+    <div className={classes('container')}>
       {playgroundTemplateList.map(template => {
         return (
           <div
-            className={clsx(
-              classes.templateTab,
-              selectedTemplate === template && classes.active,
+            className={classes(
+              'templateTab',
+              selectedTemplate === template && 'active',
             )}
             key={template}
             onClick={() => handleTemplateChange(template)}
@@ -77,7 +76,7 @@ export const PlaygroundTemplateList: React.FC<Props> = ({
               height={30}
               alt={`${template} logo`}
             />
-            <h3 className={classes.label}>{templateLabelMap[template]}</h3>
+            <h3 className={classes('label')}>{templateLabelMap[template]}</h3>
           </div>
         );
       })}

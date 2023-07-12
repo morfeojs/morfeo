@@ -3,6 +3,7 @@ import { readEnv, generateClassName } from '@morfeo/utils';
 import { MorfeoBabelPluginOptions } from '../types';
 import { splitStyles } from './splitStyles';
 import { orderStyles } from './orderStyles';
+import { expandStyles } from './expandStyles';
 
 function createCSS() {
   const cache = new Map<string, Style>();
@@ -50,6 +51,22 @@ function createCSS() {
     return className;
   }
 
+  function expand(style: Style) {
+    function getClassName(s: Style) {
+      const className = generateClassName(s, {
+        minify: readEnv('NODE_ENV', 'development') === 'production',
+        emojis: options.emojis,
+        classNamePrefix: options.classNamePrefix,
+      });
+
+      updateCache(className, s);
+
+      return className;
+    }
+
+    return expandStyles(style, { getClassName });
+  }
+
   function get() {
     const styles = orderStyles(Array.from(cache.entries()));
 
@@ -73,7 +90,7 @@ function createCSS() {
     cache.clear();
   }
 
-  return { add, get, reset, setOptions };
+  return { add, get, expand, reset, setOptions };
 }
 
 export const css = createCSS();

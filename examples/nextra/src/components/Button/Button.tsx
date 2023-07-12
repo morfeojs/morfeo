@@ -1,7 +1,6 @@
 import { ReactNode, DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 import { morfeo } from '@morfeo/css';
 import Link, { LinkProps } from 'next/link';
-import clsx from 'clsx';
 import { Variant } from '@morfeo/spec';
 
 type ButtonProps = DetailedHTMLProps<
@@ -41,5 +40,5 @@ export const Button = morfeo.component('Button', {
 });
 
 export function ButtonLink({ variant = 'primary', ...props }: ButtonLinkProps) {
-  return <Link {...props} className={clsx(classes.base, classes[variant])} />;
+  return <Link {...props} className={classes('base', variant)} />;
 }

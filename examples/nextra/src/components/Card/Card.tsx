@@ -1,6 +1,5 @@
 import { morfeo } from '@morfeo/css';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
-import clsx from 'clsx';
 
 type CardProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
@@ -36,7 +35,5 @@ const classes = morfeo.css({
 });
 
 export const Card: React.FC<CardProps> = props => {
-  return (
-    <div {...props} className={clsx(classes.container, props.className)} />
-  );
+  return <div {...props} className={classes('container', props.className)} />;
 };

@@ -28,5 +28,5 @@ type Props = {
 
 export function TypingAnimation({ words = [] }: Props) {
   const typedReason = useTypingAnimation(words);
-  return <span className={classes.text}>{typedReason}</span>;
+  return <span className={classes('text')}>{typedReason}</span>;
 }

@@ -12,5 +12,5 @@ const classes = morfeo.css({
 });
 
 export const Link: React.FC<LinkProps> = props => {
-  return <NextLink {...props} className={classes.link} />;
+  return <NextLink {...props} className={classes('link')} />;
 };

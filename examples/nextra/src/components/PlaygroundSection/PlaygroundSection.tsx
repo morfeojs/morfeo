@@ -52,9 +52,9 @@ export const PlaygroundSection: React.FC = () => {
   );
 
   return (
-    <FadeInBox className={classes.container}>
-      <div className={classes.textContainer}>
-        <h1 className={classes.title}>Landing playground</h1>
+    <FadeInBox className={classes('container')}>
+      <div className={classes('textContainer')}>
+        <h1 className={classes('title')}>Landing playground</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolor
           sapiente autem libero, esse inventore consequatur officia laboriosam
@@ -66,7 +66,7 @@ export const PlaygroundSection: React.FC = () => {
           selectedTemplate={selectedTemplate}
         />
       </div>
-      <div className={classes.wrapper}>
+      <div className={classes('wrapper')}>
         <Sandpack
           template={selectedTemplate}
           theme={nightOwl}

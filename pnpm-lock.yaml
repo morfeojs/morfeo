@@ -177,6 +177,9 @@ importers:
       '@morfeo/spec':
         specifier: workspace:*
         version: link:../../packages/spec
+      '@morfeo/web':
+        specifier: workspace:*
+        version: link:../../packages/web
       '@types/node':
         specifier: 18.15.3
         version: 18.15.3
@@ -241,9 +244,6 @@ importers:
       '@types/node':
         specifier: 18.15.3
         version: 18.15.3
-      clsx:
-        specifier: ^1.2.1
-        version: 1.2.1
       framer-motion:
         specifier: ^10.12.7
         version: 10.12.7(react-dom@18.2.0)(react@18.2.0)
@@ -299,6 +299,9 @@ importers:
       '@morfeo/spec':
         specifier: workspace:*
         version: link:../../packages/spec
+      '@morfeo/web':
+        specifier: workspace:*
+        version: link:../../packages/web
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -634,6 +637,9 @@ importers:
       '@morfeo/jss':
         specifier: workspace:*
         version: link:../jss
+      '@morfeo/utils':
+        specifier: workspace:*
+        version: link:../utils
       csstype:
         specifier: ^3.1.0
         version: 3.1.1
