@@ -8,10 +8,8 @@ const classes = morfeo.css({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    width: '100',
     alignItems: 'center',
     justifyContent: 'center',
-    mb: '4xl',
   },
   textContainer: {
     maxWidth: 'raw:800px',
@@ -45,12 +43,21 @@ export const BundleSize: React.FC = () => {
   return (
     <FadeInBox className={classes('container')}>
       <div className={classes('textContainer')}>
-        <h1 className={classes('title')}>CSS bundle size? No problem</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Varius commodo tempus
-          adipiscing pharetra quis euismod. Gravida blandit gravida tincidunt
-          netus mi viverra. Congue sit sagittis tempus odio arcu in. Donec amet.
-        </p>
+        <FadeInBox.Title>
+          Holy f*ck,
+          <br />
+          That <span className="accent">bundles</span> of yours is absurd.
+        </FadeInBox.Title>
+        <FadeInBox.Caption>
+          It&apos;s not about <span className="line-through">body</span>{' '}
+          <span className="gradient">bundle shaming</span>, but we care about
+          your shape.
+        </FadeInBox.Caption>
+        <FadeInBox.Caption>
+          Morfeo&apos;s compiler split your style into multiple,{' '}
+          <strong>atomic</strong> CSS classes and <strong>reuses</strong> them
+          as much as possible, resulting in a really small CSS bundle.
+        </FadeInBox.Caption>
       </div>
       <div className={classes('animationContainer')}>
         {isTabletOrBelow ? <SmartphoneChartPlayer /> : <DesktopPlayer />}

@@ -42,24 +42,13 @@ const stepList: WebExtensionStepProps[] = [
 
 const classes = morfeo.css({
   mainContainer: {
-    w: '100',
     textAlign: 'center',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
     mb: {
-      default: '3xl',
       sm: 'xl',
-    },
-  },
-  title: {
-    componentName: 'Typography',
-    variant: 'display',
-    lineHeight: 'none',
-    mb: 'xs',
-    '& span': {
-      textGradient: 'text.primary',
     },
   },
   imageCover: {
@@ -75,8 +64,7 @@ const classes = morfeo.css({
     h: '100',
     objectFit: 'contain',
   },
-  textContainer: {
-    maxW: 'raw:800px',
+  spacer: {
     mb: 'm',
   },
   badge: {
@@ -90,7 +78,7 @@ const classes = morfeo.css({
       default: '5xl',
       sm: 'xl',
     },
-    '& > div:nth-child(odd)': {
+    '& > section:nth-child(odd)': {
       flexDirection: {
         default: 'column',
         sm: 'row',
@@ -103,17 +91,17 @@ export const WebExtensionSection: React.FC = () => {
   return (
     <section>
       <FadeInBox className={classes('mainContainer')}>
-        <div className={classes('textContainer')}>
-          <h1 className={classes('title')}>
-            The web extension you have always <span>dreamed</span> of
-          </h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-            necessitatibus hic dolor rerum minus blanditiis consectetur, eos
-            architecto repellat recusandae deserunt sint ratione placeat
-            voluptate quae
-          </p>
-        </div>
+        <FadeInBox.Title>
+          The web extension you have always{' '}
+          <span className="accent">dreamed</span> of
+        </FadeInBox.Title>
+        <FadeInBox.Caption>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+          necessitatibus hic dolor rerum minus blanditiis consectetur, eos
+          architecto repellat recusandae deserunt sint ratione placeat voluptate
+          quae
+        </FadeInBox.Caption>
+        <span className={classes('spacer')} />
         <Link
           href="https://chrome.google.com/webstore/detail/morfeo/phhhjdmeicikchjnpepljcdgbmipipcl"
           passHref={true}
