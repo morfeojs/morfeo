@@ -12,31 +12,9 @@ const classes = morfeo.css({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
-    py: '4xl',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-  },
-  title: {
-    componentName: 'Typography',
-    variant: 'display',
-    lineHeight: 'none',
-    color: 'gray.lightest',
-    mb: 's',
-    textAlign: 'center',
-    '& span': {
-      textGradient: 'text.primary',
-    },
-  },
-  subTitle: {
-    componentName: 'Typography',
-    variant: 'p',
-    w: '100',
-    textAlign: 'center',
-  },
-  textGradient: {
-    textGradient: 'accentToPrimary',
-    fontWeight: 'bold',
   },
   inner: {
     h: '100',
@@ -105,19 +83,18 @@ export function HowItWorks() {
 
   return (
     <FadeInBox className={classes('container')}>
-      <h2 className={classes('title')}>
-        How it <span>Works</span>
-      </h2>
-      <p className={classes('subTitle')}>
+      <FadeInBox.Title>
+        How it <span className="accent">Works</span>
+      </FadeInBox.Title>
+      <FadeInBox.Caption>
         Our goal is to provide the best{' '}
-        <span className={classes('textGradient')}>Developer eXperience</span>{' '}
-        while ensuring{' '}
-        <span className={classes('textGradient')}>best practices</span>.
+        <span className="gradient">Developer eXperience</span> while ensuring{' '}
+        <span className="gradient">best practices</span>.
         <br />
         You can focus on your project - Under the hood we optimize your code to
         guarantee for your customers the best{' '}
-        <span className={classes('textGradient')}>User eXperience</span>.
-      </p>
+        <span className="gradient">User eXperience</span>.
+      </FadeInBox.Caption>
       <MobileSteps
         stepOnClick={handleStepIndex}
         steps={stepContentList}

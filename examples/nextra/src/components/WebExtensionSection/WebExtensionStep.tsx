@@ -5,7 +5,6 @@ import { FadeInBox } from '../FadeInBox';
 
 const classes = morfeo.css({
   container: {
-    w: '100',
     h: {
       default: 'none',
       sm: '75vh',
@@ -72,7 +71,7 @@ export const WebExtensionStep: React.FC<WebExtensionStepProps> = ({
   return (
     <FadeInBox className={classes('container')}>
       <div className={classes('textContainer')}>
-        <h1 className={classes('title')}>{title}</h1>
+        <h3 className={classes('title')}>{title}</h3>
         <p>{body}</p>
       </div>
       <div className={classes('imageCover')}>

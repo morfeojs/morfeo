@@ -9,21 +9,15 @@ import { FadeInBox } from '../FadeInBox';
 
 const classes = morfeo.css({
   container: {
-    w: '100',
     minH: '100vh',
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
     gap: 'xl',
-    mb: '4xl',
   },
   textContainer: {
     maxW: 'raw:800px',
     textAlign: 'center',
-  },
-  title: {
-    componentName: 'Typography',
-    variant: 'display',
   },
   wrapper: {
     w: '100',
@@ -54,12 +48,14 @@ export const PlaygroundSection: React.FC = () => {
   return (
     <FadeInBox className={classes('container')}>
       <div className={classes('textContainer')}>
-        <h1 className={classes('title')}>Landing playground</h1>
-        <p>
+        <FadeInBox.Title>
+          Landing <span className="accent">playground</span>
+        </FadeInBox.Title>
+        <FadeInBox.Caption>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolor
           sapiente autem libero, esse inventore consequatur officia laboriosam
           itaque beatae quis id suscipit vero vel adipisci blanditiis cumque
-        </p>
+        </FadeInBox.Caption>
         <PlaygroundTemplateList
           playgroundTemplateList={playgroundTemplateList}
           handleTemplateChange={handleTemplateChange}
