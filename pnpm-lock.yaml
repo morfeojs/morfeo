@@ -460,8 +460,8 @@ importers:
         specifier: 7.22.5
         version: 7.22.5
       '@types/babel__core':
-        specifier: 7.20.0
-        version: 7.20.0
+        specifier: 7.20.1
+        version: 7.20.1
       '@types/babel__helper-module-imports':
         specifier: 7.18.0
         version: 7.18.0
@@ -9090,6 +9090,16 @@ packages:
       '@types/babel__traverse': 7.18.3
     dev: true
 
+  /@types/babel__core@7.20.1:
+    resolution: {integrity: sha512-aACu/U/omhdk15O4Nfb+fHgH/z3QsfQzpnvRZhYhThms83ZnAOZz7zZAWO7mn2yyNQaA4xTO8GLK3uqFU4bYYw==}
+    dependencies:
+      '@babel/parser': 7.22.7
+      '@babel/types': 7.22.5
+      '@types/babel__generator': 7.6.4
+      '@types/babel__template': 7.4.1
+      '@types/babel__traverse': 7.18.3
+    dev: true
+
   /@types/babel__generator@7.6.4:
     resolution: {integrity: sha512-tFkciB9j2K755yrTALxD44McOrk+gfpIpvC3sxHjRawj6PfnQxrse4Clq5y/Rq+G3mrBurMax/lG8Qn2t9mSsg==}
     dependencies:
@@ -9099,7 +9109,7 @@ packages:
   /@types/babel__helper-module-imports@7.18.0:
     resolution: {integrity: sha512-bXrjmO0EhInafHtFIaimws2rDf8Sp0E6T3cstzSL4lUAPtzZ2GhoV48U6n4IHyBIBsd88r4JIw2UPTqlyWwXcg==}
     dependencies:
-      '@types/babel__core': 7.20.0
+      '@types/babel__core': 7.20.1
       '@types/babel__traverse': 7.18.3
     dev: true
 
@@ -9112,12 +9122,6 @@ packages:
 
   /@types/babel__traverse@7.18.3:
     resolution: {integrity: sha512-1kbcJ40lLB7MHsj39U4Sh1uTd2E7rLEa79kmDpI6cy+XiXsteB3POdQomoq4FxszMrO3ZYchkhYJw7A2862b3w==}
-    dependencies:
-      '@babel/types': 7.22.5
-    dev: true
-
-  /@types/babel__traverse@7.18.5:
-    resolution: {integrity: sha512-enCvTL8m/EHS/zIvJno9nE+ndYPh1/oNFzRYRmtUqJICG2VnCSBzMLW5VN2KCQU91f23tsNKR8v7VJJQMatl7Q==}
     dependencies:
       '@babel/types': 7.22.5
     dev: true
@@ -10726,7 +10730,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.9
       '@jest/transform': 29.5.0
-      '@types/babel__core': 7.20.0
+      '@types/babel__core': 7.20.1
       babel-plugin-istanbul: 6.1.1
       babel-preset-jest: 29.5.0(@babel/core@7.22.9)
       chalk: 4.1.2
@@ -10792,8 +10796,8 @@ packages:
     dependencies:
       '@babel/template': 7.22.5
       '@babel/types': 7.22.5
-      '@types/babel__core': 7.20.0
-      '@types/babel__traverse': 7.18.5
+      '@types/babel__core': 7.20.1
+      '@types/babel__traverse': 7.18.3
     dev: true
 
   /babel-plugin-jest-hoist@29.5.0:
@@ -10802,8 +10806,8 @@ packages:
     dependencies:
       '@babel/template': 7.22.5
       '@babel/types': 7.22.5
-      '@types/babel__core': 7.20.0
-      '@types/babel__traverse': 7.18.5
+      '@types/babel__core': 7.20.1
+      '@types/babel__traverse': 7.18.3
     dev: true
 
   /babel-plugin-polyfill-corejs2@0.3.3(@babel/core@7.21.4):
@@ -17201,7 +17205,7 @@ packages:
     dependencies:
       '@babel/types': 7.22.5
       '@jest/types': 26.6.2
-      '@types/babel__traverse': 7.18.5
+      '@types/babel__traverse': 7.18.3
       '@types/prettier': 2.7.2
       chalk: 4.1.2
       expect: 26.6.2
@@ -17232,7 +17236,7 @@ packages:
       '@jest/expect-utils': 29.5.0
       '@jest/transform': 29.5.0
       '@jest/types': 29.5.0
-      '@types/babel__traverse': 7.18.5
+      '@types/babel__traverse': 7.18.3
       '@types/prettier': 2.7.2
       babel-preset-current-node-syntax: 1.0.1(@babel/core@7.22.9)
       chalk: 4.1.2
