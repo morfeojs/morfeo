@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "2.0.0-beta.18",
-    "@types/chrome": "0.0.235",
+    "@types/chrome": "0.0.241",
     "@types/node": "18.16.4",
     "@types/prismjs": "1.26.0",
     "@types/react": "^18.0.28",
