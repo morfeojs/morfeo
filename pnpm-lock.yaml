@@ -681,8 +681,8 @@ importers:
         specifier: 2.0.0-beta.18
         version: 2.0.0-beta.18
       '@types/chrome':
-        specifier: 0.0.235
-        version: 0.0.235
+        specifier: 0.0.241
+        version: 0.0.241
       '@types/node':
         specifier: 18.16.4
         version: 18.16.4
@@ -9148,8 +9148,8 @@ packages:
       '@types/responselike': 1.0.0
     dev: true
 
-  /@types/chrome@0.0.235:
-    resolution: {integrity: sha512-SPj9A4E35SBJICjnL04KZEA/eVr8Km7gbnEfAxzaU2fHpLSnN64OPnfOR3EpDJXXpSORKTn3OUDwugw+rYBBXA==}
+  /@types/chrome@0.0.241:
+    resolution: {integrity: sha512-3WxC2D8zhyDnCU1GxyznoyUulLH6ReLWUWQm5LSM7S1rvV9w+k8TUNbWrFavk6zz2E1ws05lNawnSa7rK5kY8Q==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.10
