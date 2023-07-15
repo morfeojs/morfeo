@@ -13,19 +13,23 @@ describe('dynamicClasses', () => {
         code: '({ variant }) => variant',
         property: 'variant',
         path: 'variant',
-        expected: { bordered: 'bg-primary border-strong' },
+        expected: { bordered: { bg: 'bg-primary', border: 'border-strong' } },
       },
       {
         code: '({ padding }) => props.padding',
         property: 'p',
         path: 'p.xs',
-        expected: { s: 'p-xs-s', m: 'p-xs-m', l: 'p-xs-l' },
+        expected: {
+          s: { p: { xs: 'p-xs-s' } },
+          m: { p: { xs: 'p-xs-m' } },
+          l: { p: { xs: 'p-xs-l' } },
+        },
       },
       {
         code: '({ padding }) => props.padding',
         property: 'p',
         path: 'p',
-        expected: { s: 'p-s', m: 'p-m', l: 'p-l' },
+        expected: { s: { p: 'p-s' }, m: { p: 'p-m' }, l: { p: 'p-l' } },
       },
     ] as const;
 

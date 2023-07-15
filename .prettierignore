@@ -2,3 +2,5 @@ build
 commonjs
 dev
 public
+node_modules
+.next
