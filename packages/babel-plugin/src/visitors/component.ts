@@ -52,30 +52,32 @@ export function createComponentVisitor(
         '',
       );
 
-      const staticClassNames = css
-        .add(styleObject)
-        .split(' ')
-        .map(c => `"${c}"`);
+      const staticClassNames = css.expand(styleObject);
 
       state.file.metadata.morfeo = css.get();
 
-      const identifier = addNamespace(callExpressionPath, 'react', {
+      const JSXIdentifier = addNamespace(callExpressionPath, 'react', {
         nameHint: 'JSXFactory',
       });
+
+      const MorfeoWebIdentifier = addNamespace(
+        callExpressionPath,
+        '@morfeo/web',
+        {
+          nameHint: 'MorfeoWeb',
+        },
+      );
 
       const template = `function (props = {}) {
         const { tag: Component = "${componentTag}", ...componentProps } = ${JSON.stringify(
         propsFromTheme,
       )};
-        const className = [
+        const className = ${MorfeoWebIdentifier.name}.combine(
           componentProps.className,
           props.className,
+          ${JSON.stringify(staticClassNames)},
           ...[${dynamicClassNames}],
-          ...[${staticClassNames}],
-        ]
-        .filter(Boolean)
-        .filter((className, index, array) => array.indexOf(className) === index)
-        .join(' ');
+        )
 
         const style = {
           ...componentProps.style,
@@ -83,7 +85,7 @@ export function createComponentVisitor(
           ...props.style,
         };
 
-        return ${identifier.name}.createElement(
+        return ${JSXIdentifier.name}.createElement(
           Component,
           {
             ...componentProps,

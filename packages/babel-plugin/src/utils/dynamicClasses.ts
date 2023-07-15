@@ -39,7 +39,7 @@ function createDynamicClasses() {
     const classes = Object.keys(variantsOrStates).reduce(
       (acc, variantOrState) => {
         const style = getStyleFromPath(path, variantOrState);
-        const className = css.add({
+        const expandedStyle = css.expand({
           componentName: completeStyle.componentName,
           ...(completeStyle.state ? { state: completeStyle.state } : {}),
           ...(completeStyle.variant ? { variant: completeStyle.variant } : {}),
@@ -48,7 +48,7 @@ function createDynamicClasses() {
 
         return {
           ...acc,
-          [variantOrState]: className,
+          [variantOrState]: expandedStyle,
         };
       },
       {},
@@ -70,7 +70,7 @@ function createDynamicClasses() {
 
       return {
         ...acc,
-        [sliceKey]: css.add(style),
+        [sliceKey]: css.expand(style),
       };
     }, {});
 

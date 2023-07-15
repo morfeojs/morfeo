@@ -12,11 +12,11 @@ Too deeply understand what Morfeo is, and why you should use it in your workflow
 
 ### 🎨 Theming system
 
-That makes you build your own theme (**Design Language**)
+That makes you build your own theme (**Design Language**).
 
 ### 💅 CSS-in-TS library
 
-To style your application by using your own theme
+To _safely_ style your application by using your own theme.
 
 ### 🔄 Compiler
 
@@ -44,18 +44,21 @@ function Button() {
 }
 ```
 
-### Morfeo will optimize your code
+### Morfeo will optimize your code at **build time**
 
-```tsx {1-4} /classes('button')/ showLineNumbers filename="Button.tsx"
+```tsx {1-5} /classes('button')/ showLineNumbers filename="Button.tsx"
 const classes = function (...classNames) {
-  // This function will properly combine the passed classNames
-  // and return the resultant className
+  // Interested on the internal implementation?
+  // Check our GitHub!
+  return 'bg-primary';
 };
 
 function Button() {
   return <button className={classes('button')}>Hello, world</button>;
 }
 ```
+
+> The process that happens at build time is properly described [here](./todo) in this article.
 
 ### And generate only the needed CSS
 

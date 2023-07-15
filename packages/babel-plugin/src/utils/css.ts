@@ -1,7 +1,6 @@
-import { Style, component, getStyles } from '@morfeo/web';
+import { Style, getStyles } from '@morfeo/web';
 import { readEnv, generateClassName } from '@morfeo/utils';
 import { MorfeoBabelPluginOptions } from '../types';
-import { splitStyles } from './splitStyles';
 import { orderStyles } from './orderStyles';
 import { expandStyles } from './expandStyles';
 
@@ -25,30 +24,6 @@ function createCSS() {
     }
 
     cache.set(className, style);
-  }
-
-  function add({ componentName, variant, state, ...style }: Style) {
-    const componentStyle = componentName
-      ? component(componentName, variant, state).getStyle()
-      : {};
-    const splittedStyles = splitStyles({
-      ...componentStyle,
-      ...style,
-    });
-
-    const className = splittedStyles.reduce<string>((acc, splittedStyle) => {
-      const currentClassName = generateClassName(splittedStyle, {
-        minify: readEnv('NODE_ENV', 'development') === 'production',
-        emojis: options.emojis,
-        classNamePrefix: options.classNamePrefix,
-      });
-
-      updateCache(currentClassName, splittedStyle);
-
-      return `${acc} ${currentClassName}`.trim();
-    }, '');
-
-    return className;
   }
 
   function expand(style: Style) {
@@ -90,7 +65,7 @@ function createCSS() {
     cache.clear();
   }
 
-  return { add, get, expand, reset, setOptions };
+  return { get, expand, reset, setOptions };
 }
 
 export const css = createCSS();
