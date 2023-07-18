@@ -1,7 +1,14 @@
-import { Visitor } from '@babel/traverse';
+import type { Visitor } from '@babel/traverse';
 import { createCssVisitor } from './visitors/css';
 import { createComponentVisitor } from './visitors/component';
-import { isMorfeoMethodUsed } from './utils';
+import { createGlobalVisitor } from './visitors/global';
+import { CSSCollector, getUsedMorfeoMethod } from './utils';
+
+const VISITORS_CREATOR_MAP = {
+  css: createCssVisitor,
+  global: createGlobalVisitor,
+  component: createComponentVisitor,
+};
 
 export default function getVisitor(): Visitor {
   return {
@@ -18,12 +25,17 @@ export default function getVisitor(): Visitor {
           state.file.metadata.morfeo = '';
         }
 
-        if (isMorfeoMethodUsed(callExpressionPath, 'component')) {
-          createComponentVisitor(callExpressionPath, state);
+        const usedMethod = getUsedMorfeoMethod(callExpressionPath);
+
+        if (!usedMethod) {
+          return;
         }
 
-        if (isMorfeoMethodUsed(callExpressionPath, 'css')) {
-          createCssVisitor(callExpressionPath, state);
+        const visitor = VISITORS_CREATOR_MAP[usedMethod];
+
+        if (visitor) {
+          visitor(callExpressionPath);
+          state.file.metadata.morfeo = CSSCollector.get();
         }
       },
     },

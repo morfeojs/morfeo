@@ -2,11 +2,10 @@ import type { NodePath } from '@babel/traverse';
 import type { CallExpression } from '@babel/types';
 import { component } from '@morfeo/web';
 import { addNamespace } from '@babel/helper-module-imports';
-import { getStyleObject, dynamicClasses, css } from '../utils';
+import { getStyleObject, dynamicClasses, CSSCollector } from '../utils';
 
 export function createComponentVisitor(
   callExpressionPath: NodePath<CallExpression>,
-  state: any,
 ) {
   callExpressionPath.traverse({
     ObjectExpression(path) {
@@ -52,9 +51,7 @@ export function createComponentVisitor(
         '',
       );
 
-      const staticClassNames = css.expand(styleObject);
-
-      state.file.metadata.morfeo = css.get();
+      const staticClassNames = CSSCollector.expand(styleObject);
 
       const JSXIdentifier = addNamespace(callExpressionPath, 'react', {
         nameHint: 'JSXFactory',

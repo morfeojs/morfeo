@@ -2,7 +2,7 @@ import morfeoBabelPlugin from '../src';
 import * as babel from '@babel/core';
 import { morfeo } from '@morfeo/web';
 import { theme } from './theme';
-import { css } from '../src/utils';
+import { CSSCollector } from '../src/utils';
 
 function transform(code: string, tsx = false) {
   return babel.transform(code, {
@@ -17,7 +17,7 @@ function transform(code: string, tsx = false) {
 describe('morfeoBabelPlugin', () => {
   beforeEach(() => {
     morfeo.setTheme('default', theme);
-    css.reset();
+    CSSCollector.reset();
   });
 
   it('should inject the css into the metadata', () => {
