@@ -1,33 +1,28 @@
 import type { NodePath } from '@babel/traverse';
 import type { CallExpression } from '@babel/types';
 import { addNamespace } from '@babel/helper-module-imports';
-import { getStyleObject, css } from '../utils';
+import { getStyleObject, CSSCollector } from '../utils';
 
-export function createCssVisitor(
-  callExpressionPath: NodePath<CallExpression>,
-  state: any,
-) {
+export function createCssVisitor(callExpressionPath: NodePath<CallExpression>) {
   callExpressionPath.traverse({
     ObjectExpression(path) {
       path.stop();
 
       const { styleObject } = getStyleObject(path.node);
 
-      const classes = Object.keys(styleObject).reduce(
+      const classObjects = Object.keys(styleObject).reduce(
         (acc, classKey) => ({
           ...acc,
-          [classKey]: css.expand(styleObject[classKey]),
+          [classKey]: CSSCollector.expand(styleObject[classKey]),
         }),
         {},
       );
-
-      state.file.metadata.morfeo = css.get();
 
       const identifier = addNamespace(callExpressionPath, '@morfeo/web', {
         nameHint: 'morfeoWeb',
       });
 
-      const stringifiedClassObject = JSON.stringify(classes);
+      const stringifiedClassObject = JSON.stringify(classObjects);
 
       const template = `(function () {
         const classObject = ${stringifiedClassObject};

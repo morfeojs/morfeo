@@ -3,15 +3,15 @@
   "version": "0.9.2",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "rm -rf .next && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@codesandbox/sandpack-react": "^2.6.4",
-    "@codesandbox/sandpack-themes": "^2.0.21",
-    "@lottiefiles/react-lottie-player": "^3.5.3",
+    "@codesandbox/sandpack-react": "2.6.4",
+    "@codesandbox/sandpack-themes": "2.0.21",
+    "@lottiefiles/react-lottie-player": "3.5.3",
     "@morfeo/css": "workspace:*",
     "@morfeo/next": "workspace:*",
     "@morfeo/preset-default": "workspace:*",
@@ -19,13 +19,14 @@
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*",
     "@types/node": "18.15.3",
-    "framer-motion": "^10.12.7",
-    "next": "13.4.9",
+    "framer-motion": "10.12.7",
+    "next": "13.4.10",
     "nextra": "2.9.0",
     "nextra-theme-docs": "2.9.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-intersection-observer": "^9.4.3"
+    "react-intersection-observer": "9.5.2",
+    "sharp": "0.32.3"
   },
   "devDependencies": {
     "@types/react": "18.0.35",

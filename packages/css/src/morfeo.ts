@@ -71,6 +71,31 @@ function css<K extends string>(
  * >
  * > This function is meant to be replaced at build-time, be sure the `@morfeo/compiler` plugin is used.
  *
+ * @example
+ *
+ * ```tsx
+ * import { morfeo } from '@morfeo/css';
+ *
+ * morfeo.global({
+ *    body: {
+ *      px: 'm',
+ *    }
+ * });
+ * ```
+ */
+function global(_styles: Record<string, Style>): void {
+  throw new Error(
+    // TODO: Add link to documentation whenever it will be created
+    "Error: morfeo.global should never be executed at run-time, please be sure you're using morfeo's transpiler",
+  );
+}
+
+/**
+ *
+ * > **IMPORTANT**
+ * >
+ * > This function is meant to be replaced at build-time, be sure the `@morfeo/compiler` plugin is used.
+ *
  *
  * It creates a React component styled with the style passed as the second argument, the first argument could
  * be a component name or a valid html tag
@@ -99,4 +124,4 @@ function component<C extends Component, P extends object>(
   );
 }
 
-export const morfeo = { css, component };
+export const morfeo = { css, component, global };

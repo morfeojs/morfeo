@@ -46,7 +46,7 @@ export const BundleSize: React.FC = () => {
         <FadeInBox.Title>
           Holy f*ck,
           <br />
-          That <span className="accent">bundles</span> of yours is absurd.
+          That <span className="accent">bundle</span> of yours is absurd.
         </FadeInBox.Title>
         <FadeInBox.Caption>
           It&apos;s not about <span className="line-through">body</span>{' '}

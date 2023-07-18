@@ -6,7 +6,7 @@ import {
   allPropertiesBySlice,
   component,
 } from '@morfeo/web';
-import { css } from './css';
+import { CSSCollector } from './collector';
 import { getStyleFromPath } from './getStyleFromPath';
 
 function createDynamicClasses() {
@@ -39,7 +39,7 @@ function createDynamicClasses() {
     const classes = Object.keys(variantsOrStates).reduce(
       (acc, variantOrState) => {
         const style = getStyleFromPath(path, variantOrState);
-        const expandedStyle = css.expand({
+        const expandedStyle = CSSCollector.expand({
           componentName: completeStyle.componentName,
           ...(completeStyle.state ? { state: completeStyle.state } : {}),
           ...(completeStyle.variant ? { variant: completeStyle.variant } : {}),
@@ -70,7 +70,7 @@ function createDynamicClasses() {
 
       return {
         ...acc,
-        [sliceKey]: css.expand(style),
+        [sliceKey]: CSSCollector.expand(style),
       };
     }, {});
 

@@ -11,3 +11,9 @@ describe('morfeo.component', () => {
     expect(() => morfeo.component('button', {})).toThrow();
   });
 });
+
+describe('morfeo.global', () => {
+  it('should throw an exception in case `global` is executed', () => {
+    expect(() => morfeo.global({})).toThrow();
+  });
+});

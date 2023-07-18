@@ -2,6 +2,7 @@ import getVisitor from '../src/visitor';
 import * as babel from '@babel/core';
 import { morfeo } from '@morfeo/web';
 import { theme } from './theme';
+import { CSSCollector } from '../src/utils';
 
 function transform(code: string, tsx = false) {
   return babel.transform(code, {
@@ -20,6 +21,7 @@ function transform(code: string, tsx = false) {
 
 beforeEach(() => {
   morfeo.setTheme('default', theme);
+  CSSCollector.reset();
 });
 
 describe('general', () => {
@@ -78,5 +80,24 @@ describe('morfeo.component', () => {
       `;
     const result = transform(testCode);
     expect(result?.code).not.toContain('morfeo.component');
+  });
+});
+
+describe('morfeo.global', () => {
+  it('should replace the "morfeo.global" function', () => {
+    const testCode = `import { morfeo } from "@morfeo/css";
+        morfeo.global('button', {
+          body: {
+            padding: 'raw:10px'
+          }
+        });
+      `;
+    const result = transform(testCode);
+
+    expect(result?.code).not.toContain('morfeo.global');
+    expect(
+      // @ts-ignore
+      result?.metadata.morfeo.replace(/\n/g, '').replace(/\s/g, ''),
+    ).toBe(`body{padding:10px;}`);
   });
 });

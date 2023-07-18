@@ -1,8 +1,9 @@
 import { morfeo } from '@morfeo/css';
-import NextLink from 'next/link';
-import { ComponentProps } from 'react';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 
-type LinkProps = ComponentProps<typeof NextLink>;
+type LinkProps = NextLinkProps & {
+  children?: string;
+};
 
 const classes = morfeo.css({
   link: {
