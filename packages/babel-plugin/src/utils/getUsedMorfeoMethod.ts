@@ -7,7 +7,7 @@ export function getUsedMorfeoMethod(path: NodePath<CallExpression>) {
 
   const usedMethod = AVAILABLE_MORFEO_METHODS.find(method => {
     // @ts-ignore
-    return callee?.object?.name === 'morfeo' && callee.property.name === method;
+    return callee.object?.name === 'morfeo' && callee.property.name === method;
   });
 
   return usedMethod;
