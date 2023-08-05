@@ -16,13 +16,14 @@ export default function getVisitor(): Visitor {
       if (path.node.source.value !== '@morfeo/css') {
         return path.skip();
       }
-
-      path.remove();
     },
     CallExpression: {
       enter(callExpressionPath, state: any) {
         if (!state.file.metadata.morfeo) {
-          state.file.metadata.morfeo = '';
+          state.file.metadata.morfeo = {
+            styles: {},
+            globalStyles: {},
+          };
         }
 
         const usedMethod = getUsedMorfeoMethod(callExpressionPath);

@@ -1,7 +1,7 @@
 import { ReactNode, DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 import { morfeo } from '@morfeo/css';
+import { Variant } from '@morfeo/web';
 import Link, { LinkProps } from 'next/link';
-import { Variant } from '@morfeo/spec';
 
 type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -26,17 +26,12 @@ const classes = morfeo.css({
   },
   outline: {
     componentName: 'Button',
-    bg: 'raw:transparent',
-    border: 'medium',
-    borderColor: 'gray.lightest',
-    color: 'gray.lightest',
+    variant: 'outline',
   },
 });
 
 export const Button = morfeo.component('Button', {
   variant: (props: ButtonProps) => props.variant || 'primary',
-  py: 'xs',
-  px: 'l',
 });
 
 export function ButtonLink({ variant = 'primary', ...props }: ButtonLinkProps) {

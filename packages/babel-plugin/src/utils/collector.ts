@@ -1,12 +1,12 @@
 import { type Style, getStyles } from '@morfeo/web';
-import { readEnv, generateClassName, deepMerge } from '@morfeo/utils';
+import { generateClassName, deepMerge } from '@morfeo/utils';
+import { expandStyles } from '@morfeo/css';
 import type { MorfeoBabelPluginOptions } from '../types';
-import { orderStyles } from './orderStyles';
-import { expandStyles } from './expandStyles';
 
 function createCollector() {
   const stylesCache = new Map<string, Style>();
   const globalStylesCache = new Map<string, Style>();
+
   let options: MorfeoBabelPluginOptions = {
     emojis: false,
     classNamePrefix: '',
@@ -36,20 +36,14 @@ function createCollector() {
     stylesCache.set(className, style);
   }
 
-  function expand(style: Style) {
-    function getClassName(s: Style) {
-      const className = generateClassName(s, {
-        minify: readEnv('NODE_ENV', 'development') === 'production',
-        emojis: options.emojis,
-        classNamePrefix: options.classNamePrefix,
-      });
-
-      updateCache(className, s);
-
-      return className;
-    }
-
-    return expandStyles(style, { getClassName });
+  function add(style: Style) {
+    return expandStyles(style, {
+      getClassName(s) {
+        const className = generateClassName(s);
+        updateCache(className, s);
+        return className;
+      },
+    });
   }
 
   function get() {
@@ -61,12 +55,12 @@ function createCollector() {
 
         const css = sheet.toString();
 
-        return `${acc}\n${css}`;
+        return { ...acc, [selector]: css };
       },
-      '',
+      {},
     );
 
-    const computedStyles = orderStyles(Array.from(stylesCache.entries()));
+    const computedStyles = Array.from(stylesCache.entries());
 
     const computedCss = computedStyles.reduce((acc, [className, style]) => {
       const { sheet } = getStyles(
@@ -80,17 +74,20 @@ function createCollector() {
 
       const css = sheet.toString();
 
-      return `${acc}\n${css}`;
-    }, '');
+      return { ...acc, [className]: css };
+    }, {});
 
-    return [globalCss, computedCss].filter(Boolean).join('\n');
+    stylesCache.clear();
+    globalStylesCache.clear();
+
+    return { globalStyles: globalCss, styles: computedCss };
   }
 
   function reset() {
     stylesCache.clear();
   }
 
-  return { get, addGlobal, expand, reset, setOptions };
+  return { get, add, addGlobal, reset, setOptions };
 }
 
 export const CSSCollector = createCollector();

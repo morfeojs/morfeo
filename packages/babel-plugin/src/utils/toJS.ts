@@ -8,13 +8,14 @@ const primitiveTypes = ['BooleanLiteral', 'StringLiteral', 'NumericLiteral'];
 
 type ToJSResolveFunctionParams = {
   path: string;
-  node: t.ArrowFunctionExpression | t.FunctionExpression;
   property: string;
 };
 
 type ToJSOptions = {
   prefix?: string;
-  resolveFunction?: (params: ToJSResolveFunctionParams) => string;
+  resolveFunction?: (
+    params: ToJSResolveFunctionParams,
+  ) => Record<string, unknown>;
 };
 
 export function toJS(node: t.Expression, options: ToJSOptions = {}): any {
@@ -30,9 +31,8 @@ export function toJS(node: t.Expression, options: ToJSOptions = {}): any {
       ) {
         return {
           ...acc,
-          [key]: options.resolveFunction({
+          ...options.resolveFunction({
             path,
-            node: prop.value,
             property: key,
           }),
         };

@@ -14,3 +14,8 @@ export type MorfeoBabelPluginOptions = {
    */
   classNamePrefix?: string;
 };
+
+export type MorfeoBabelResult = {
+  styles: Record<string, string>;
+  globalStyles: Record<string, string>;
+};

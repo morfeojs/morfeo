@@ -50,6 +50,12 @@ describe('parsers', () => {
     expect(allParsersAfterReset['custom']).not.toBeDefined();
   });
 
+  test('should recognize a theme property', () => {
+    parsers.add('themeableProperty' as any, jest.fn());
+    expect(parsers.isThemeableProperty('themeableProperty')).toBeTruthy();
+    expect(parsers.isThemeableProperty('unexstingProperty')).toBeFalsy();
+  });
+
   describe('when there is no parser for a specific key', () => {
     describe('if the value is not an object', () => {
       test('should return the passed object if there is no parser for that property', () => {

@@ -1,4 +1,9 @@
-const theme = {
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { darkTheme } = require('@morfeo/preset-default');
+const { deepMerge } = require('@morfeo/utils');
+const { morfeo } = require('@morfeo/web');
+
+const theme = deepMerge(darkTheme, {
   fontSizes: {
     '2xs': '.5rem',
     xs: '.75rem',
@@ -98,7 +103,7 @@ const theme = {
           tag: 'button',
           style: {
             bg: 'transparent',
-            border: 'strong',
+            border: 'medium',
             borderColor: 'gray.lightest',
             color: 'gray.lightest',
           },
@@ -106,6 +111,8 @@ const theme = {
       },
     },
   },
-};
+});
+
+morfeo.setTheme('default', theme);
 
 module.exports = theme;

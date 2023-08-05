@@ -29,6 +29,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*"
   },
   "devDependencies": {

@@ -13,7 +13,7 @@
     "@codesandbox/sandpack-themes": "2.0.21",
     "@lottiefiles/react-lottie-player": "3.5.3",
     "@morfeo/css": "workspace:*",
-    "@morfeo/next": "workspace:*",
+    "@morfeo/compiler": "workspace:*",
     "@morfeo/preset-default": "workspace:*",
     "@morfeo/spec": "workspace:*",
     "@morfeo/utils": "workspace:*",
