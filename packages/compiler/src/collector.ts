@@ -8,35 +8,42 @@ import morfeoBabelPlugin, {
   type MorfeoBabelPluginOptions,
   type MorfeoBabelResult,
 } from '@morfeo/babel-plugin';
+import { morfeo, type Theme } from '@morfeo/web';
 import { deepMerge } from '@morfeo/utils';
 import { createWriter } from './writer';
 import { logger } from './logger';
 
-type MorfeoPluginOptions = MorfeoBabelPluginOptions & {
+export type MorfeoCompilerOptions = MorfeoBabelPluginOptions & {
   babel?: TransformOptions;
-  entryPoint?: string;
+  entryPoints?: string[];
   output?: string;
+  theme: Theme;
+  watch?: boolean;
 };
 
 const DEFAULT_OPTIONS = {
   emojis: false,
   classNamePrefix: '',
-  entryPoint: path.join('.', '**/*.{ts,tsx,js,jsx}'),
+  entryPoints: [path.join('.', '**/*.{ts,tsx,js,jsx}')],
   output: path.join(__dirname, '..', 'css', 'morfeo.css'),
+  theme: {} as any,
+  watch: false,
 };
 
 function createCollector() {
   const cache = new Map<string, MorfeoBabelResult>();
-  let options: MorfeoPluginOptions = DEFAULT_OPTIONS;
+  let options: MorfeoCompilerOptions = DEFAULT_OPTIONS;
   let writer = createWriter({
     output: DEFAULT_OPTIONS.output,
   });
 
-  function init(pluginOptions: MorfeoPluginOptions) {
+  function init(pluginOptions: MorfeoCompilerOptions) {
     options = {
       ...DEFAULT_OPTIONS,
       ...pluginOptions,
     };
+
+    morfeo.setTheme('default', options.theme);
 
     writer = createWriter({
       delay: 10,
@@ -93,26 +100,26 @@ function createCollector() {
     write();
   }
 
-  function watch(filesPath: string) {
-    const watcher = chokidar.watch(filesPath, {
+  function watch(entryPoints: string[]) {
+    const watcher = chokidar.watch(entryPoints, {
       ignoreInitial: true,
     });
 
-    watcher.add(filesPath).on('add', fileName => {
+    watcher.add(entryPoints).on('add', fileName => {
       logger.debug(`${path.basename(fileName)} added`);
       collectFile(fileName);
     });
 
-    watcher.add(filesPath).on('change', fileName => {
+    watcher.add(entryPoints).on('change', fileName => {
       logger.debug(`${path.basename(fileName)} changed`);
       collectFile(fileName);
     });
   }
 
   async function collect() {
-    const entryPoint = options.entryPoint || DEFAULT_OPTIONS.entryPoint;
-    logger.debug(`Start extracting CSS from ${entryPoint}`);
-    const fileNames = await glob(entryPoint);
+    const entryPoints = options.entryPoints || DEFAULT_OPTIONS.entryPoints;
+    logger.debug(`Start extracting CSS from ${entryPoints}`);
+    const fileNames = await glob(entryPoints);
 
     logger.startTimer('css extraction');
 
@@ -121,7 +128,10 @@ function createCollector() {
       logger.debug(`CSS extracted in ${diff} seconds.`);
     });
 
-    watch(entryPoint);
+    if (options.watch) {
+      logger.debug('Watching for file changes');
+      watch(entryPoints);
+    }
   }
 
   return { init, collect };

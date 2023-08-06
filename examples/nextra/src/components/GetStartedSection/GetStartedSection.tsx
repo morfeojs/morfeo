@@ -32,16 +32,6 @@ const classes = morfeo.css({
       sm: 'row',
     },
   },
-  primaryButton: {
-    componentName: 'Button',
-    variant: 'primary',
-    minW: '100',
-  },
-  secondaryButton: {
-    componentName: 'Button',
-    variant: 'outline',
-    minW: '100',
-  },
 });
 
 export const GetStartedSection: React.FC = () => {
@@ -50,7 +40,6 @@ export const GetStartedSection: React.FC = () => {
       <h1 className={classes('title')}>Join the revolution</h1>
       <div className={classes('buttonContainer')}>
         <ButtonLink href="/docs">Start learning</ButtonLink>
-        {/* @ts-expect-error */}
         <ButtonLink href="https://github.com/morfeojs/morfeo" variant="outline">
           Github
         </ButtonLink>

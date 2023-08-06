@@ -149,6 +149,9 @@
 .after-content-or::after {
   content: "|";
 }
+.after-position-absolute::after {
+  position: absolute;
+}
 .after-textGradient-textdotprimary::after {
   background: linear-gradient(120deg, #267dff 40%, #0057d9 100%);
   background-clip: text;
@@ -169,6 +172,9 @@
 }
 .after-animation-blink1salternateinfinite::after {
   animation: blink 1s alternate infinite;
+}
+.after-transform-translateYopn-5pxclsd::after {
+  transform: translateY(-5px);
 }
 .a-textDecoration-underline a {
   text-decoration: underline;
@@ -445,40 +451,6 @@
     gap: 2.5rem;
   }
 }
-.px-s {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-.bg-primary {
-  background-color: #0066ff;
-}
-.fontSize-m {
-  font-size: 1rem;
-}
-.border-none {
-  border: 0px none;
-}
-.transition-medium {
-  transition: .6s ease;
-}
-.hover-bg-primarydotlightest:hover {
-  background-color: #4d94ff;
-}
-.minW-100 {
-  min-width: 100%;
-}
-.bg-transparent {
-  background-color: transparent;
-}
-.fontWeight-medium {
-  font-weight: 500;
-}
-.border-medium {
-  border: 2px solid #ececec;
-}
-.borderColor-graydotlightest {
-  border-color: #f5f6f7;
-}
 .flex-1 {
   flex: 1;
 }
@@ -601,40 +573,6 @@
 .p-maxWidth-raw200px p {
   max-width: 200px;
 }
-.mb-4xl {
-  margin-bottom: 5rem;
-}
-.dotaccent-color-primary .accent {
-  color: #0066ff;
-}
-.dotaccent-fontWeight-bold .accent {
-  font-weight: 700;
-}
-.dotaccent-fontStyle-italic .accent {
-  font-style: italic;
-}
-.color-text {
-  color: #ececec;
-}
-.letterSpacing-body {
-  letter-spacing: 0.02rem;
-}
-.lineHeight-body {
-  line-height: 1.7;
-}
-.dotline-through-textDecoration-line-through .line-through {
-  text-decoration: line-through;
-}
-.dotgradient-textGradient-accentToPrimary .gradient {
-  background: linear-gradient(30deg, #49bed3 40%, #0057d9 100%);
-  background-clip: text;
-  text-fill-color: transparent;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.dotgradient-fontWeight-bold .gradient {
-  font-weight: 700;
-}
 .bg-raw111 {
   background-color: #111;
 }
@@ -677,6 +615,46 @@
 .hover-before-opacity-strong:hover::before {
   opacity: 1;
 }
+.mb-4xl {
+  margin-bottom: 5rem;
+}
+.dotaccent-color-primary .accent {
+  color: #0066ff;
+}
+.dotaccent-fontWeight-bold .accent {
+  font-weight: 700;
+}
+.dotaccent-fontStyle-italic .accent {
+  font-style: italic;
+}
+.color-text {
+  color: #ececec;
+}
+.fontSize-m {
+  font-size: 1rem;
+}
+.fontWeight-medium {
+  font-weight: 500;
+}
+.letterSpacing-body {
+  letter-spacing: 0.02rem;
+}
+.lineHeight-body {
+  line-height: 1.7;
+}
+.dotline-through-textDecoration-line-through .line-through {
+  text-decoration: line-through;
+}
+.dotgradient-textGradient-accentToPrimary .gradient {
+  background: linear-gradient(30deg, #49bed3 40%, #0057d9 100%);
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dotgradient-fontWeight-bold .gradient {
+  font-weight: 700;
+}
 .maxWidth-raw800px {
   max-width: 800px;
 }
@@ -696,17 +674,30 @@
     height: 75%;
   }
 }
+.px-s {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
 .bg-invertedBackground {
   background-color: #ffffff;
 }
 .color-invertedText {
   color: #2f2f2f;
 }
+.border-none {
+  border: 0px none;
+}
+.transition-medium {
+  transition: .6s ease;
+}
 .bg-background {
   background-color: #000000;
 }
 .fontSize-s {
   font-size: .875rem;
+}
+.bg-primary {
+  background-color: #0066ff;
 }
 .color-white {
   color: #ffffff;
@@ -722,6 +713,9 @@
 }
 .bg-success {
   background-color: #01ce80;
+}
+.hover-bg-primarydotlightest:hover {
+  background-color: #4d94ff;
 }
 .size-m {
   width: 32px;
@@ -767,4 +761,13 @@
 }
 .last-child-cornerTopRight-xs:last-child {
   border-top-right-radius: 8px;
+}
+.bg-transparent {
+  background-color: transparent;
+}
+.border-medium {
+  border: 2px solid #ececec;
+}
+.borderColor-graydotlightest {
+  border-color: #f5f6f7;
 }
