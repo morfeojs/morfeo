@@ -1,10 +1,31 @@
 import type { FC, ReactHTML } from 'react';
 import React from 'react';
-import type { Component } from '@morfeo/web';
+import type { Component, State, Style, Variant } from '@morfeo/web';
 import { combine, component as morfeoComponent, parsers } from '@morfeo/web';
 import { escapeString, generateClassName } from '@morfeo/utils';
-import type { ComponentStyle } from './types';
-import { expandStyles } from './expandStyles';
+import { expandStyles } from '@morfeo/css';
+
+type ReducedStyle = Omit<Style, 'componentName' | 'variant' | 'state'>;
+
+type ValueOrFunction<T, P> =
+  | T
+  | ((props: P) => T)
+  | {
+      [K in keyof T]: ValueOrFunction<T[K], P>;
+    };
+
+type ComponentStyle<C extends Component, P> = {
+  [K in keyof ReducedStyle]: ValueOrFunction<ReducedStyle[K], P>;
+} & (C extends Component
+  ? {
+      state?: ValueOrFunction<State<C>, P>;
+      variant?: ValueOrFunction<Variant<C>, P>;
+    }
+  : {
+      componentName?: Style['componentName'];
+      state?: ValueOrFunction<State<C>, P>;
+      variant?: ValueOrFunction<Variant<C>, P>;
+    });
 
 type MorfeoComponent<P extends object> = FC<
   P & {
@@ -86,8 +107,6 @@ function splitStyleAndInlineStyle(
  * It creates a React component styled with the style passed as the second argument,
  * the first argument could be a component name or a valid html tag.
  *
- * @example
- *
  * ```tsx
  * import { morfeo } from '@morfeo/css';
  *
@@ -99,35 +118,60 @@ function splitStyleAndInlineStyle(
  *   }
  * });
  * ```
+ * It is also possible to pass an existing component or a valid html tag:
+ *
+ * ```
+ * import { morfeo } from '@morfeo/css';
+ * import { RouterLink } from 'routing-library';
+ *
+ * const Button = morfeo.component('button', {
+ *   componentName: 'Button',
+ *   variant: props => props.variant,
+ * });
+ *
+ * const Link = morfeo.component(RouterLink, {
+ *   componentName: 'Link',
+ * });
+ * ```
  */
 export function component<P extends object, C extends Component = Component>(
-  componentName: C | keyof ReactHTML,
+  componentName: C | keyof ReactHTML | React.FC<P>,
   styleWithFunctions: ComponentStyle<C, P>,
 ): MorfeoComponent<P> {
   return function (props) {
+    const isWrappedComponent = typeof componentName === 'function';
+
     const { style, inlineStyle } = splitStyleAndInlineStyle(
       styleWithFunctions,
       props,
     );
-    const componentOptions = morfeoComponent(
-      componentName as any,
-      style.variant,
-      style.state,
-    );
-    const ComponentTag = componentOptions.getTag() || componentName;
+
+    const componentOptions = isWrappedComponent
+      ? undefined
+      : morfeoComponent(componentName as any, style.variant, style.state);
+
+    const ComponentTag = isWrappedComponent
+      ? componentName
+      : componentOptions?.getTag() || componentName;
 
     const classObject = expandStyles({ componentName, ...style } as any, {
       getClassName: generateClassName,
     });
 
-    return React.createElement(ComponentTag, {
-      ...componentOptions.getProps(),
+    const componentProps = {
+      ...componentOptions?.getProps(),
       ...props,
       className: combine(classObject, props.className),
       style: {
         ...props.style,
         ...inlineStyle,
       },
-    });
+    };
+
+    if (isWrappedComponent) {
+      return <ComponentTag {...componentProps} />;
+    }
+
+    return React.createElement(ComponentTag, componentProps);
   };
 }

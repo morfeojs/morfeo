@@ -33,15 +33,15 @@ type GenerateCSSFromPropertyParams = {
 
 function generateCSSFromComponentName(
   componentName: Component,
-  { path }: GenerateCSSFromPropertyParams,
+  { path }: Pick<GenerateCSSFromPropertyParams, 'path'>,
 ) {
-  const getStyleWithContext = (style: Style) => {
+  function getStyleWithContext(style: Style) {
     if (path.length <= 1) {
       return style;
     }
 
     return objectFromPaths(path.slice(0, -1), style);
-  };
+  }
 
   CSSCollector.add(getStyleWithContext({ componentName }));
 
@@ -79,9 +79,7 @@ export function generateCSSFromProperty({
 
   if (style.componentName && ['variant', 'state'].includes(property)) {
     return generateCSSFromComponentName(style.componentName, {
-      property,
       path,
-      style,
     });
   }
 

@@ -17,7 +17,7 @@
     "@morfeo/css": "workspace:*",
     "@morfeo/compiler": "workspace:*",
     "@morfeo/preset-default": "workspace:*",
-    "@morfeo/spec": "workspace:*",
+    "@morfeo/react": "workspace:*",
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*",
     "@types/node": "18.15.3",

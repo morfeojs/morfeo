@@ -15,6 +15,27 @@ export function createWriter({
 }: WriterOptions) {
   let timeout: NodeJS.Timeout;
 
+  function safeWrite(path: string, content: string) {
+    const parts = path.split('/');
+    const checked: string[] = [];
+
+    parts.forEach((part, index) => {
+      checked.push(part);
+      const currentPath = checked.join('/');
+      if (fs.existsSync(currentPath)) {
+        return;
+      }
+
+      if (index === parts.length - 1) {
+        return;
+      }
+
+      fs.mkdirSync(currentPath);
+    });
+
+    return fs.promises.writeFile(path, content);
+  }
+
   function writer(content: string) {
     if (timeout) {
       clearTimeout(timeout);
@@ -22,7 +43,7 @@ export function createWriter({
 
     return new Promise(resolve => {
       timeout = setTimeout(() => {
-        fs.promises.writeFile(output, content).then(resolve);
+        safeWrite(output, content).then(resolve);
       }, delay);
     });
   }

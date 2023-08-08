@@ -32,9 +32,6 @@
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*"
   },
-  "devDependencies": {
-    "@types/react": "18.2.15"
-  },
   "files": [
     "build",
     "commonjs"

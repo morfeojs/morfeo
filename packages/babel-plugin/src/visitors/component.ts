@@ -21,7 +21,10 @@ export function createComponentVisitor(
       themableStyles.forEach(themableStyle =>
         generateCSSFromProperty({
           ...themableStyle,
-          style: { componentName: componentNameOrTag, ...styleObject },
+          style: {
+            componentName: componentNameOrTag,
+            ...styleObject,
+          },
         }),
       );
 

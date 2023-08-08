@@ -1,5 +1,10 @@
 import { css } from './css';
 import { global } from './global';
-import { component } from './component';
 
-export const morfeo = { css, component, global };
+const instance = { css, global };
+
+type LocalMorfeoType = typeof instance;
+
+export interface Morfeo extends LocalMorfeoType {}
+
+export const morfeo: Morfeo = instance;

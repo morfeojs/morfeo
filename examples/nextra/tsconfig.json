@@ -26,7 +26,7 @@
       ]
     },
     "types": [
-      "./morfeo.d.ts"
+      "./morfeo.d.ts",
     ]
   },
   "include": [

@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# morfeo
+src/styles/morfeo.css
+
 # production
 /build
 

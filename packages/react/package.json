@@ -25,9 +25,10 @@
     "watch": "tsc -w"
   },
   "dependencies": {
+    "@morfeo/css": "workspace:*",
     "@morfeo/hooks": "workspace:*",
-    "@morfeo/web": "workspace:*",
-    "fast-safe-stringify": "^2.1.1"
+    "@morfeo/utils": "workspace:*",
+    "@morfeo/web": "workspace:*"
   },
   "peerDependencies": {
     "csstype": "^3.1.0",
