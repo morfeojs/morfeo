@@ -20,7 +20,7 @@ import type { Style } from '@morfeo/web';
  */
 export function global(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  styles: Record<string, Style>,
+  _styles: Record<string, Style>,
 ): void {
   return;
 }

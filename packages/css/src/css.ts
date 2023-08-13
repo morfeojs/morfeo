@@ -39,6 +39,7 @@ export function css<K extends string>(
   styles: Record<K, Style>,
 ): ClassResolverCallback<K> {
   let expandedObject;
+
   function resolver(...classes) {
     if (!expandedObject) {
       expandedObject = Object.keys(styles).reduce((acc, key) => {
@@ -54,7 +55,11 @@ export function css<K extends string>(
 
   return new Proxy(resolver, {
     get(target, property) {
-      if (expandedObject && !!expandedObject[property]) {
+      if (!expandedObject) {
+        resolver();
+      }
+
+      if (!!expandedObject[property]) {
         return expandedObject[property];
       }
 
