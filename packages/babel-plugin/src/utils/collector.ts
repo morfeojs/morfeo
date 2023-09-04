@@ -77,9 +77,6 @@ function createCollector() {
       return { ...acc, [className]: css };
     }, {});
 
-    stylesCache.clear();
-    globalStylesCache.clear();
-
     return { globalStyles: globalCss, styles: computedCss };
   }
 

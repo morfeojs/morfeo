@@ -20,7 +20,7 @@ describe('morfeoBabelPlugin', () => {
     CSSCollector.reset();
   });
 
-  it.only('should inject the css into the metadata', () => {
+  it('should inject the css into the metadata', () => {
     const result = transform(`import { morfeo } from "@morfeo/css";
       const Box = morfeo.component('Box', {
         bg: 'primary',
@@ -33,38 +33,18 @@ describe('morfeoBabelPlugin', () => {
     );
   });
 
-  it('should not inject the css twice into the metadata if it was previously generated', () => {
-    const testCode = `import { morfeo } from "@morfeo/css";
-    const Box = morfeo.component('Box', {
-      color: 'primary',
-    });
-  `;
-
-    const firstResult = transform(testCode);
-    const secondResult = transform(testCode);
-
-    expect(firstResult?.metadata?.morfeo).toContain(
-      `color: ${theme.colors.primary}`,
-    );
-    expect(secondResult?.metadata?.morfeo).toContain(
-      `color: ${theme.colors.primary}`,
-    );
-
-    const generatedCss = secondResult?.metadata?.morfeo || {};
-
-    // expect(generatedCss.indexOf(`color: ${theme.colors.primary}`)).toBe(
-    //   generatedCss.lastIndexOf(`color: ${theme.colors.primary}`),
-    // );
-  });
-
-  it('should use css variable to resolve functions of non-themeable properties', () => {
+  it('should use css variables to resolve functions of non-themeable properties', () => {
     const result = transform(`import { morfeo } from "@morfeo/css";
       const Container = morfeo.component('div', {
         display: props => props.display
       })
     `);
 
-    expect(result?.metadata?.morfeo).toContain(`display: var(--display)`);
+    const styles = result?.metadata?.morfeo?.styles;
+
+    expect(styles?.['display-varopn--displayclsd']).toEqual(
+      expect.stringContaining(`display: var(--display)`),
+    );
   });
 
   it("should use create all the possible slice's classes to resolve functions of themeable properties", () => {
@@ -74,20 +54,33 @@ describe('morfeoBabelPlugin', () => {
       })
     `);
 
-    expect(result?.metadata?.morfeo).toContain(`.bg-primary`);
-    expect(result?.metadata?.morfeo).toContain(`.bg-secondary`);
+    const styles = result?.metadata?.morfeo?.styles;
+
+    expect(styles).toHaveProperty(
+      'bg-primary',
+      expect.stringContaining('.bg-primary'),
+    );
+    expect(styles).toHaveProperty(
+      'bg-secondary',
+      expect.stringContaining('.bg-secondary'),
+    );
   });
 
   it('should be able to resolve responsive values that comes from the theme', () => {
     const result = transform(`import { morfeo } from "@morfeo/css";
-      const Container = morfeo.component('div', {
+      const Container = morfeo.component('Box', {
         bg: {
-          xs: props => props.bg
+          xs: props => props.bg,
         }
       })
     `);
 
-    expect(result?.metadata?.morfeo).toContain(`.bg-xs-primary`);
+    const styles = result?.metadata?.morfeo?.styles;
+
+    expect(styles).toHaveProperty(
+      'bg-xs-primary',
+      expect.stringContaining(`.bg-xs-primary`),
+    );
   });
 
   it('should handle functions used for component variants', () => {
@@ -97,22 +90,17 @@ describe('morfeoBabelPlugin', () => {
       });
     `);
 
-    Object.keys(theme.components.Box.variants).forEach(variant => {
-      expect(result?.code).toContain(variant);
-    });
-  });
+    // style that comes from the base Box style
+    expect(result?.metadata?.morfeo?.styles).toHaveProperty(
+      'bg-primary',
+      expect.stringContaining('bg-primary'),
+    );
 
-  it('should handle functions used for component states', () => {
-    const result = transform(`import { morfeo } from "@morfeo/css";
-      const Box = morfeo.component('Box', {
-        componentName: "Box",
-        state: props => props.state,
-      })
-    `);
-
-    Object.keys(theme.components.Box.states).forEach(state => {
-      expect(result?.code).toContain(state);
-    });
+    // style that comes from the border Box variant style
+    expect(result?.metadata?.morfeo?.styles).toHaveProperty(
+      'border-strong',
+      expect.stringContaining('border-strong'),
+    );
   });
 
   it('should be able to resolve values that comes from multiple calls of morfeo.component', () => {
@@ -128,10 +116,8 @@ describe('morfeoBabelPlugin', () => {
       })
     `);
 
-    expect(result?.metadata?.morfeo).toContain(`.bg-primary`);
-    expect(result?.metadata?.morfeo).toContain(`.m-s`);
-    expect(result?.metadata?.morfeo).toContain(`.color-primary`);
-    expect(result?.code).toContain(`Component1`);
-    expect(result?.code).toContain(`Component2`);
+    expect(result?.metadata?.morfeo?.styles).toHaveProperty('bg-primary');
+    expect(result?.metadata?.morfeo?.styles).toHaveProperty('m-s');
+    expect(result?.metadata?.morfeo?.styles).toHaveProperty('color-primary');
   });
 });

@@ -73,7 +73,11 @@ export function generateCSSFromProperty({
   path,
   style,
 }: GenerateCSSFromPropertyParams) {
-  const propertySlice = getSliceFromProperty(property);
+  const isResponsive =
+    path.length > 0 && !!theme.getSlice('breakpoints')[property];
+  const propertySlice = getSliceFromProperty(
+    isResponsive ? (path[path.length - 2] as Property) : property,
+  );
   const themeSlice = theme.getSlice(propertySlice);
   const sliceKeys = Object.keys(themeSlice);
 

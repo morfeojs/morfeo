@@ -19,17 +19,17 @@ export default function getVisitor(): Visitor {
     },
     CallExpression: {
       enter(callExpressionPath, state: any) {
+        const usedMethod = getUsedMorfeoMethod(callExpressionPath);
+
+        if (!usedMethod) {
+          return;
+        }
+
         if (!state.file.metadata.morfeo) {
           state.file.metadata.morfeo = {
             styles: {},
             globalStyles: {},
           };
-        }
-
-        const usedMethod = getUsedMorfeoMethod(callExpressionPath);
-
-        if (!usedMethod) {
-          return;
         }
 
         const visitor = VISITORS_CREATOR_MAP[usedMethod];
