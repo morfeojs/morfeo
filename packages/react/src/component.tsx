@@ -35,10 +35,11 @@ type ComponentStyle<C extends Component, P> = {
 function mutateObject<T>(object: T, value: string, path: string[]) {
   if (path.length === 1) {
     object[path[0]] = value;
+
     return object;
   }
 
-  return mutateObject(object[path[0]], value, path.slice(1, path.length));
+  return mutateObject(object[path[0]] || {}, value, path.slice(1));
 }
 
 function splitStyleAndInlineStyle(
@@ -62,13 +63,17 @@ function splitStyleAndInlineStyle(
 
       if (typeof value === 'function') {
         const resolvedStyle = parsers.resolve({ [curr]: value(props) });
+
         const variable = `--${escapeString(
           [...prefix, curr].filter(Boolean).join('.'),
         )}`;
 
         return {
           ...acc,
-          style: mutateObject(acc.style, `var(${variable})`, [...prefix, curr]),
+          style: mutateObject({ ...acc.style }, `var(${variable})`, [
+            ...prefix,
+            curr,
+          ]),
           inlineStyle: {
             ...acc.inlineStyle,
             [variable]: resolvedStyle[curr],
@@ -81,6 +86,7 @@ function splitStyleAndInlineStyle(
           ...prefix,
           curr,
         ]);
+
         return {
           ...acc,
           style: {
