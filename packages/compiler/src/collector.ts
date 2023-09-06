@@ -37,7 +37,7 @@ function createCollector() {
     output: DEFAULT_OPTIONS.output,
   });
 
-  function init(pluginOptions: MorfeoCompilerOptions) {
+  function init(pluginOptions: Partial<MorfeoCompilerOptions>) {
     options = {
       ...DEFAULT_OPTIONS,
       ...pluginOptions,
