@@ -13,11 +13,6 @@ type ClassResolverCallback<K extends string> = ClassObject<K> &
   ) => string);
 
 /**
- *
- * > **IMPORTANT**
- * >
- * > This function is meant to be replaced at build-time, be sure the `@morfeo/compiler` plugin is used.
- *
  * @example
  *
  * ```tsx

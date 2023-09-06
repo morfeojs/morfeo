@@ -1,11 +1,6 @@
 import type { Style } from '@morfeo/web';
 
 /**
- *
- * > **IMPORTANT**
- * >
- * > This function is meant to be replaced at build-time, be sure the `@morfeo/compiler` plugin is used.
- *
  * @example
  *
  * ```tsx
