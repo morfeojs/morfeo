@@ -12,8 +12,6 @@ export function createGlobalVisitor(
       const { styleObject } = getStyleObject(path.node);
 
       CSSCollector.addGlobal(styleObject);
-
-      callExpressionPath.remove();
     },
   });
 }

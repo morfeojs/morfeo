@@ -32,16 +32,6 @@ const classes = morfeo.css({
       sm: 'row',
     },
   },
-  primaryButton: {
-    componentName: 'Button',
-    variant: 'primary',
-    minW: '100',
-  },
-  secondaryButton: {
-    componentName: 'Button',
-    variant: 'outline',
-    minW: '100',
-  },
 });
 
 export const GetStartedSection: React.FC = () => {

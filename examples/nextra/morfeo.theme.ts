@@ -1,4 +1,8 @@
-const theme = {
+import { darkTheme } from '@morfeo/preset-default';
+import { deepMerge } from '@morfeo/utils';
+import { morfeo } from '@morfeo/web';
+
+const theme = deepMerge(darkTheme, {
   fontSizes: {
     '2xs': '.5rem',
     xs: '.75rem',
@@ -98,7 +102,7 @@ const theme = {
           tag: 'button',
           style: {
             bg: 'transparent',
-            border: 'strong',
+            border: 'medium',
             borderColor: 'gray.lightest',
             color: 'gray.lightest',
           },
@@ -106,6 +110,8 @@ const theme = {
       },
     },
   },
-};
+} as any);
 
-module.exports = theme;
+morfeo.setTheme('default', theme);
+
+export default theme;

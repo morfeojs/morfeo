@@ -148,7 +148,11 @@ export function component<C extends Component>(
     return getConfig({ name, property: 'variants' });
   }
 
-  function _get() {
+  function getStates(): Record<State<C>, ComponentStyle> {
+    return getConfig({ name, variant, property: 'states', merge: false });
+  }
+
+  function getWithStyle() {
     return {
       ...get({ name, variant, merge: true, state }),
       style: getStyle(),
@@ -156,10 +160,11 @@ export function component<C extends Component>(
   }
 
   return {
-    get: _get,
+    get: getWithStyle,
     getTag,
     getStyle,
     getProps,
+    getStates,
     getVariants,
   };
 }

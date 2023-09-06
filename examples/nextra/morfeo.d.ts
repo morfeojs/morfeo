@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import '@morfeo/spec';
+import '@morfeo/web';
 
 import localTheme from './morfeo.theme';
 
@@ -9,7 +9,7 @@ type LocalGradients = LocalTheme['gradients'];
 type LocalFontSizes = LocalTheme['fontSizes'];
 type LocalComponents = LocalTheme['components'];
 
-declare module '@morfeo/spec' {
+declare module '@morfeo/web' {
   export interface Gradients extends LocalGradients {}
   export interface FontSizes extends LocalFontSizes {}
   export interface Components extends LocalComponents {}

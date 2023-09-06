@@ -1,5 +1,5 @@
 import { morfeo } from '@morfeo/web';
-import { expandStyles } from '../src/utils/expandStyles';
+import { expandStyles } from '../src/expandStyles';
 import { theme } from './theme';
 
 const getClassName = jest.fn(() => 'className');

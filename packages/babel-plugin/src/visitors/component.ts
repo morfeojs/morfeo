@@ -1,8 +1,8 @@
 import type { NodePath } from '@babel/traverse';
-import type { CallExpression } from '@babel/types';
-import { component } from '@morfeo/web';
-import { addNamespace } from '@babel/helper-module-imports';
-import { getStyleObject, dynamicClasses, CSSCollector } from '../utils';
+import type { CallExpression, ObjectExpression } from '@babel/types';
+import { getStyleObject, CSSCollector } from '../utils';
+import { generateCSSFromProperty } from '../utils/generateCSSFromProperty';
+import { theme } from '@morfeo/web';
 
 export function createComponentVisitor(
   callExpressionPath: NodePath<CallExpression>,
@@ -14,86 +14,26 @@ export function createComponentVisitor(
 
       // @ts-ignore
       const componentNameOrTag = componentNameNode.value;
+      const isMorfeoComponent =
+        !!theme.getSlice('components')[componentNameOrTag];
 
-      const { styleObject, styleFunctions, themeableStyleFunctions } =
-        // @ts-ignore
-        getStyleObject(styleNode);
-
-      const dynamicClassNames = themeableStyleFunctions.reduce<string[]>(
-        (acc, themeableStyleFunction) => {
-          const classes = dynamicClasses.create(
-            themeableStyleFunction.property,
-            themeableStyleFunction.path,
-            { componentName: componentNameOrTag, ...styleObject },
-          );
-
-          return [
-            ...acc,
-            `${JSON.stringify(classes)}[(${
-              themeableStyleFunction.code
-            })(props)]`,
-          ];
-        },
-        [],
+      const { styleObject, themableStyles } = getStyleObject(
+        styleNode as ObjectExpression,
       );
 
-      const componentOptions = component(
-        componentNameOrTag,
-        styleObject.variant,
-        styleObject.state,
+      const completeStyleObject = {
+        ...(isMorfeoComponent ? { componentName: componentNameOrTag } : {}),
+        ...styleObject,
+      };
+
+      themableStyles.forEach(themableStyle =>
+        generateCSSFromProperty({
+          ...themableStyle,
+          style: completeStyleObject,
+        }),
       );
 
-      const propsFromTheme = componentOptions.getProps() || {};
-      const componentTag = componentOptions.getTag() || componentNameOrTag;
-
-      const style = styleFunctions.reduce(
-        (acc, { variable, code }) => `${acc}"${variable}": (${code})(props),`,
-        '',
-      );
-
-      const staticClassNames = CSSCollector.expand(styleObject);
-
-      const JSXIdentifier = addNamespace(callExpressionPath, 'react', {
-        nameHint: 'JSXFactory',
-      });
-
-      const MorfeoWebIdentifier = addNamespace(
-        callExpressionPath,
-        '@morfeo/web',
-        {
-          nameHint: 'MorfeoWeb',
-        },
-      );
-
-      const template = `function (props = {}) {
-        const { tag: Component = "${componentTag}", ...componentProps } = ${JSON.stringify(
-        propsFromTheme,
-      )};
-        const className = ${MorfeoWebIdentifier.name}.combine(
-          componentProps.className,
-          props.className,
-          ${JSON.stringify(staticClassNames)},
-          ...[${dynamicClassNames}],
-        )
-
-        const style = {
-          ...componentProps.style,
-          ...{${style}},
-          ...props.style,
-        };
-
-        return ${JSXIdentifier.name}.createElement(
-          Component,
-          {
-            ...componentProps,
-            ...props,
-            className,
-            style,
-          }
-        );
-      }`;
-
-      callExpressionPath.replaceWithSourceString(template);
+      CSSCollector.add(completeStyleObject);
     },
   });
 }

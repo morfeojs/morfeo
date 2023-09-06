@@ -52,7 +52,7 @@ const INITIAL_PARSERS = {
 };
 
 export function createParsers() {
-  let context = new Map(Object.entries(INITIAL_PARSERS));
+  const context = new Map(Object.entries(INITIAL_PARSERS));
   let cache: any = {};
 
   function get() {
@@ -68,8 +68,17 @@ export function createParsers() {
   }
 
   function reset() {
-    context = new Map(Object.entries(INITIAL_PARSERS));
+    context.clear();
+
+    Object.entries(INITIAL_PARSERS).forEach(([property, resolver]) =>
+      context.set(property, resolver),
+    );
+
     resetCache();
+  }
+
+  function isThemeableProperty(property: string): property is Property {
+    return !!context.has(property);
   }
 
   function resolveResponsiveProperty({
@@ -206,6 +215,7 @@ export function createParsers() {
     reset,
     resolve,
     resolveProperty,
+    isThemeableProperty,
   };
 
   globalThis.__MORFEO_PARSERS = parsers;

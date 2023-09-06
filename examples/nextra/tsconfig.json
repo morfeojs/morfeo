@@ -26,8 +26,7 @@
       ]
     },
     "types": [
-      "@morfeo/preset-default",
-      "./morfeo.d.ts"
+      "./morfeo.d.ts",
     ]
   },
   "include": [

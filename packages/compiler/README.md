@@ -2,7 +2,7 @@
 
 ![Morfeo logo](https://morfeo.dev/img/morfeo.png)
 
-**@morfeo/compiler** exposes plugins for the most used bundler to enable the evaluation at build time of morfeo.
+**@morfeo/compiler**: Morfeo's `compiler` plugin.
 
 ---
 
@@ -14,39 +14,11 @@
 
 ```bash
 # With npm
-npm install --save-dev @morfeo/compiler
+npm install @morfeo/compiler
 
 # With yarn
-yarn add --dev @morfeo/compiler
-```
+yarn add @morfeo/compiler
 
-Once the plugin is installed you can add it the plugins in your bundler configuration:
-
-### Webpack
-
-`webpack.config.js`
-
-```javascript
-const { MorfeoWebpackPlugin } = require('@morfeo/compiler');
-
-module.exports = {
-  ...yourWebpackConfiguration,
-  plugins: [
-    ...yourOtherPlugins,
-    MorfeoWebpackPlugin({}),
-  ],
-};
-```
-
-### Vite
-
-`vite.config.ts`
-
-```typescript
-import { defineConfig } from 'vite';
-import { MorfeoVitePlugin } from '@morfeo/compiler';
-
-export default defineConfig({
-  plugins: [...yourOtherPlugins, MorfeoVitePlugin()],
-});
+# With pnpm
+pnpm install @morfeo/compiler
 ```

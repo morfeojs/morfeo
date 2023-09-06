@@ -8,6 +8,7 @@ const classes = morfeo.css({
     position: 'relative',
     '&::after': {
       content: '"|"',
+      position: 'absolute',
       textGradient: 'text.primary',
       fontWeight: 'medium',
       fontSize: {
@@ -15,6 +16,7 @@ const classes = morfeo.css({
         sm: '4xl',
       },
       animation: 'blink 1s alternate infinite',
+      transform: 'translateY(-5px)',
     },
     '& a': {
       textDecoration: 'underline',

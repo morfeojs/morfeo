@@ -4,6 +4,7 @@ import { theme, component } from '../../src';
 const defaultTheme = {
   colors: {
     primary: 'black',
+    error: 'red',
   },
   components: {
     NoVariants: {
@@ -29,6 +30,21 @@ const defaultTheme = {
           style: {
             bg: 'secondary',
           },
+        },
+      },
+    },
+    WithStates: {
+      tag: 'p',
+      style: {
+        color: 'primary',
+      },
+      props: {
+        label: 'component with states',
+      },
+      variants: {},
+      states: {
+        error: {
+          color: 'error',
         },
       },
     },
@@ -111,6 +127,13 @@ describe('component', () => {
     expect(props).toEqual(mergedConfig.props);
     expect(style).toEqual(mergedConfig.style);
     expect(variants).toEqual(mergedVariants);
+  });
+
+  test('should retrieve the states of a component', () => {
+    const config = component('WithStates' as any);
+    const states = config.getStates();
+
+    expect(states).toEqual({ error: { color: 'error' } });
   });
 
   test('should be possible to use componentName and variant inside the style of another component', () => {

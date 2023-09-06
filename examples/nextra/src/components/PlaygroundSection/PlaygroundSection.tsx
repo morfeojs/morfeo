@@ -78,7 +78,6 @@ export const PlaygroundSection: React.FC = () => {
               '@morfeo/css': 'latest',
               '@morfeo/next': 'latest',
               '@morfeo/preset-default': 'latest',
-              '@morfeo/spec': 'latest',
               '@morfeo/utils': 'latest',
               '@types/react-dom': '18.2.4',
               '@babel/core': 'latest',
