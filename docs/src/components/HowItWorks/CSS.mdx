@@ -1,0 +1,25 @@
+```css showLineNumbers {1,5}
+.bg-primary {
+  background-color: #0066ff;
+}
+
+.py-m: {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+```
+
+```tsx showLineNumbers {1-4} /classes('button')/
+const classes = function() {
+  // ...
+  return 'bg-primary py-m';
+}
+
+function Button() {
+  return (
+    <button className={classes('button')}>
+      Click me
+    </button>;
+  )
+}
+```

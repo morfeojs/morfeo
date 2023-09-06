@@ -1,0 +1,18 @@
+```tsx showLineNumbers {1, 3-8} /classes('button')/
+import { morfeo } from '@morfeo/css';
+
+const classes = morfeo.css({
+  button: {
+    bg: 'primary',
+    py: 'm',
+  },
+});
+
+function Button() {
+  return (
+    <button className={classes('button')}>
+      Click me
+    </button>;
+  )
+}
+```

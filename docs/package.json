@@ -3,55 +3,40 @@
   "version": "0.9.2",
   "private": true,
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "dev:morfeo": "morfeo --watch",
+    "dev:next": "rm -rf .next && next dev",
+    "dev": "concurrently \"pnpm run dev:*\"",
+    "build": "morfeo && next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@docusaurus/core": "2.3.1",
-    "@docusaurus/preset-classic": "2.3.1",
-    "@docusaurus/theme-live-codeblock": "2.3.1",
-    "@docusaurus/theme-search-algolia": "2.3.1",
-    "@mdx-js/react": "1.6.22",
-    "@morfeo/dev-tools": "workspace:*",
+    "@codesandbox/sandpack-react": "2.6.4",
+    "@codesandbox/sandpack-themes": "2.0.21",
+    "@lottiefiles/react-lottie-player": "3.5.3",
+    "@morfeo/css": "workspace:*",
+    "@morfeo/compiler": "workspace:*",
     "@morfeo/preset-default": "workspace:*",
     "@morfeo/react": "workspace:*",
     "@morfeo/utils": "workspace:*",
-    "@svgr/webpack": "7.0.0",
-    "clsx": "1.2.1",
-    "file-loader": "6.2.0",
-    "js-cookie": "3.0.5",
-    "url-loader": "4.1.1"
+    "@morfeo/web": "workspace:*",
+    "@types/node": "18.15.3",
+    "framer-motion": "10.12.7",
+    "next": "13.4.10",
+    "nextra": "2.9.0",
+    "nextra-theme-docs": "2.9.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-intersection-observer": "9.5.2",
+    "sharp": "0.32.3"
   },
-  "peerDependencies": {
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/morfeojs/morfeo",
-    "directory": "docs"
-  },
-  "homepage": "https://morfeo.dev",
-  "bugs": {
-    "url": "https://github.com/morfeojs/morfeo/issues"
+  "devDependencies": {
+    "@types/react": "18.0.35",
+    "@types/react-dom": "18.0.11",
+    "eslint": "8.36.0",
+    "concurrently": "8.2.0",
+    "eslint-config-next": "13.2.4",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0"
   }
 }
