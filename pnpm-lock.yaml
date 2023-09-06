@@ -452,19 +452,6 @@ importers:
 
   packages/babel-plugin:
     dependencies:
-      '@babel/helper-module-imports':
-        specifier: 7.22.5
-        version: 7.22.5
-      '@morfeo/css':
-        specifier: workspace:*
-        version: link:../css
-      '@morfeo/utils':
-        specifier: workspace:*
-        version: link:../utils
-      '@morfeo/web':
-        specifier: workspace:*
-        version: link:../web
-    devDependencies:
       '@babel/core':
         specifier: 7.22.9
         version: 7.22.9
@@ -480,12 +467,19 @@ importers:
       '@babel/types':
         specifier: 7.22.5
         version: 7.22.5
+      '@morfeo/css':
+        specifier: workspace:*
+        version: link:../css
+      '@morfeo/utils':
+        specifier: workspace:*
+        version: link:../utils
+      '@morfeo/web':
+        specifier: workspace:*
+        version: link:../web
+    devDependencies:
       '@types/babel__core':
         specifier: 7.20.1
         version: 7.20.1
-      '@types/babel__helper-module-imports':
-        specifier: 7.18.0
-        version: 7.18.0
       '@types/babel__traverse':
         specifier: 7.18.3
         version: 7.18.3
@@ -9229,13 +9223,6 @@ packages:
     resolution: {integrity: sha512-tFkciB9j2K755yrTALxD44McOrk+gfpIpvC3sxHjRawj6PfnQxrse4Clq5y/Rq+G3mrBurMax/lG8Qn2t9mSsg==}
     dependencies:
       '@babel/types': 7.22.5
-
-  /@types/babel__helper-module-imports@7.18.0:
-    resolution: {integrity: sha512-bXrjmO0EhInafHtFIaimws2rDf8Sp0E6T3cstzSL4lUAPtzZ2GhoV48U6n4IHyBIBsd88r4JIw2UPTqlyWwXcg==}
-    dependencies:
-      '@types/babel__core': 7.20.1
-      '@types/babel__traverse': 7.18.3
-    dev: true
 
   /@types/babel__template@7.4.1:
     resolution: {integrity: sha512-azBFKemX6kMg5Io+/rdGT0dkGreboUVR0Cdm3fz9QJWpaQGJRQXl7C+6hOTCZcMll7KFyEQpgbYI2lHdsS4U7g==}
