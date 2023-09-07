@@ -22,7 +22,7 @@
     "publish:packages": "pnpm build:packages && pnpm publish -r"
   },
   "dependencies": {
-    "@changesets/cli": "2.26.1",
+    "@changesets/cli": "2.26.2",
     "csstype": "3.1.1",
     "next": "13.4.10",
     "react": "18.2.0",
