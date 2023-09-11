@@ -1,5 +1,4 @@
 import { Theme, ThemeKey, Property } from '@morfeo/spec';
-import { theme } from '../theme';
 import { ParserParams } from '../types';
 
 type BaseParser<T extends ThemeKey, P extends Property> = ParserParams<P> & {
@@ -24,6 +23,7 @@ function isSliceValue<T extends ThemeKey>(slice: Theme[T], value: unknown) {
 }
 
 export function baseParser<T extends ThemeKey, P extends Property = Property>({
+  theme,
   value,
   scale,
   property,

@@ -1,24 +1,13 @@
 import { enableMorfeoDevTool } from '../src';
-import { morfeo, ThemeName } from '@morfeo/web';
+import { morfeo } from '@morfeo/web';
 
 describe('enableMorfeoDevTool', () => {
   beforeAll(() => {
-    morfeo.setTheme('default', {
+    morfeo.theme.set({
       colors: {
         primary: 'default primary',
       },
     });
-    morfeo.setTheme('light' as ThemeName, {
-      colors: {
-        primary: 'light primary',
-      },
-    });
-    morfeo.setTheme('dark' as ThemeName, {
-      colors: {
-        primary: 'dark primary',
-      },
-    });
-    morfeo.setCurrentTheme('default');
   });
 
   test('should call the window.postMessage callback when the function is called', () => {
@@ -32,7 +21,11 @@ describe('enableMorfeoDevTool', () => {
   test('should call the window.postMessage callback when the theme change', () => {
     const spyPostMessage = jest.spyOn(window, 'postMessage');
 
-    morfeo.setCurrentTheme('light' as ThemeName);
+    morfeo.theme.set({
+      colors: {
+        primary: 'updated value',
+      },
+    });
 
     expect(spyPostMessage).toHaveBeenCalled();
   });

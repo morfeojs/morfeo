@@ -1,4 +1,4 @@
-import { parsers, theme } from '../src';
+import { morfeo } from '../src';
 import { shadowOffset } from '../src/parsers';
 
 const THEME = {
@@ -44,12 +44,12 @@ const THEME = {
 } as any;
 
 beforeAll(() => {
-  theme.set(THEME);
+  morfeo.theme.set(THEME);
 });
 
 describe('shadows', () => {
   test('should generate the property `boxShadow` based on the strong shadow', () => {
-    const result = parsers.resolve({ shadow: 'strong' });
+    const result = morfeo.parsers.resolve({ shadow: 'strong' });
     expect(result).toEqual({
       shadowColor: 'black',
       shadowOffset: { height: 10, width: 10 },
@@ -59,7 +59,7 @@ describe('shadows', () => {
   });
 
   test('should generate the property `shadow` based on the light shadow', () => {
-    const result = parsers.resolve({ shadow: 'light' });
+    const result = morfeo.parsers.resolve({ shadow: 'light' });
     expect(result).toEqual({
       shadowColor: 'white',
       shadowOffset: { height: 0, width: 40 },
@@ -69,7 +69,7 @@ describe('shadows', () => {
   });
 
   test('should generate the property `shadow` based on the medium shadow', () => {
-    const result = parsers.resolve({ shadow: 'medium' });
+    const result = morfeo.parsers.resolve({ shadow: 'medium' });
 
     expect(result).toEqual({
       elevation: 2,
@@ -80,12 +80,12 @@ describe('shadows', () => {
   });
 
   test('should return an empty object if the shadow is not found', () => {
-    const result = parsers.resolve({ shadow: 'none' });
+    const result = morfeo.parsers.resolve({ shadow: 'none' });
     expect(result).toEqual({});
   });
 
   test('should use custom colors if they are not inside the theme', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       shadow: 'custom' as any,
     });
     expect(result).toEqual({
@@ -94,7 +94,7 @@ describe('shadows', () => {
   });
 
   test('should not put any value with any empty configuration', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       shadow: 'noOffset' as any,
     });
     expect(result).toEqual({});
@@ -102,8 +102,9 @@ describe('shadows', () => {
 
   test('should return an empty object if `shadowOffset` is undefined', () => {
     const result = shadowOffset({
-      value: undefined,
-    });
+      theme: morfeo.theme,
+      instance: morfeo.parsers,
+    } as any);
     expect(result).toEqual({});
   });
 });

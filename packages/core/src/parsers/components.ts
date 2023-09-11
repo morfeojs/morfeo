@@ -1,13 +1,17 @@
-import { component } from '../theme';
 import { ParserParams } from '../types';
 
-export function components({ value, style }: ParserParams<'componentName'>) {
+export function components({
+  value,
+  style,
+  theme,
+  instance,
+}: ParserParams<'componentName'>) {
   const { variant, state } = style || {};
   if (!value) {
     return {};
   }
-  const componentStyle = component(value, variant, state).getStyle();
-  return globalThis.__MORFEO_PARSERS.resolve(componentStyle);
+  const componentStyle = theme.component(value, variant, state).getStyle();
+  return instance.resolve(componentStyle);
 }
 
 export const componentsParses = {

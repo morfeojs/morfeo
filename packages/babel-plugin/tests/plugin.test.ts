@@ -16,12 +16,12 @@ function transform(code: string, tsx = false) {
 
 describe('morfeoBabelPlugin', () => {
   beforeEach(() => {
-    morfeo.setTheme('default', theme);
+    morfeo.theme.set(theme);
     CSSCollector.reset();
   });
 
   it('should inject the css into the metadata', () => {
-    const result = transform(`import { morfeo } from "@morfeo/css";
+    const result = transform(`import { morfeo } from "@morfeo/web";
       const Box = morfeo.component('Box', {
         bg: 'primary',
       });
@@ -34,7 +34,7 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should use css variables to resolve functions of non-themeable properties', () => {
-    const result = transform(`import { morfeo } from "@morfeo/css";
+    const result = transform(`import { morfeo } from "@morfeo/web";
       const Container = morfeo.component('div', {
         display: props => props.display
       })
@@ -48,7 +48,7 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it("should use create all the possible slice's classes to resolve functions of themeable properties", () => {
-    const result = transform(`import { morfeo } from "@morfeo/css";
+    const result = transform(`import { morfeo } from "@morfeo/web";
       const Container = morfeo.component('div', {
         bg: props => props.bg
       })
@@ -67,7 +67,7 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should be able to resolve responsive values that comes from the theme', () => {
-    const result = transform(`import { morfeo } from "@morfeo/css";
+    const result = transform(`import { morfeo } from "@morfeo/web";
       const Container = morfeo.component('Box', {
         bg: {
           xs: props => props.bg,
@@ -84,7 +84,7 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should handle functions used for component variants', () => {
-    const result = transform(`import { morfeo } from "@morfeo/css";
+    const result = transform(`import { morfeo } from "@morfeo/web";
       const Box = morfeo.component('Box', {
         variant: props => props.variant,
       });
@@ -104,7 +104,7 @@ describe('morfeoBabelPlugin', () => {
   });
 
   it('should be able to resolve values that comes from multiple calls of morfeo.component', () => {
-    const result = transform(`import { morfeo } from "@morfeo/css";
+    const result = transform(`import { morfeo } from "@morfeo/web";
       const Component1 = morfeo.component('div', {
         bg: props => props.bg,
         m: "s"

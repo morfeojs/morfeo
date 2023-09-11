@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@morfeo/css": "workspace:*",
     "@morfeo/preset-default": "workspace:*",
     "@morfeo/spec": "workspace:*",
     "@morfeo/web": "workspace:*",

@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/css';
+import { morfeo } from '@morfeo/web';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 type CardProps = DetailedHTMLProps<

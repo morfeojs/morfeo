@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/css';
+import { morfeo } from '@morfeo/web';
 import { useState } from 'react';
 import { Steps } from './Steps';
 import { MobileSteps } from './MobileSteps';

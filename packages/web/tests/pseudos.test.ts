@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/core';
-import { parsers, theme } from '../src';
+import { morfeo } from '../src';
 
 const THEME: Theme = {
   colors: {
@@ -10,14 +10,14 @@ const THEME: Theme = {
 
 describe('pseudos', () => {
   beforeAll(() => {
-    theme.set(THEME);
+    morfeo.theme.set(THEME);
   });
   afterAll(() => {
-    theme.reset();
+    morfeo.theme.reset();
   });
 
   test('should generate the style for the pseudo attribute', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       '&:hover': {
         bg: 'primary',
       },

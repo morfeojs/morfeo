@@ -18,29 +18,36 @@ import { Gradients } from './gradients';
 import { Transitions } from './transitions';
 import { MediaQueries } from './mediaQueries';
 import { Components } from './components';
-import { ColorSchemas } from './colorSchemas';
+
+type MultiThemeableSlice<T> = {
+  [K in keyof T]:
+    | T[K]
+    | {
+        light?: T[K];
+        dark?: T[K];
+      };
+};
 
 export type BaseTheme = {
-  radii: Radii;
-  sizes: Sizes;
-  fonts: Fonts;
-  colors: Colors;
-  shadows: Shadows;
-  borders: Borders;
-  spacings: Spacings;
-  zIndices: ZIndices;
-  fontSizes: FontSizes;
-  gradients: Gradients;
-  opacities: Opacities;
-  fontWeights: FontWeights;
-  lineHeights: LineHeights;
-  breakpoints: BreakPoints;
-  transitions: Transitions;
-  borderWidths: BorderWidths;
-  mediaQueries: MediaQueries;
-  borderStyles: BorderStyles;
-  colorSchemas: ColorSchemas;
-  letterSpacings: LetterSpacings;
+  radii: MultiThemeableSlice<Radii>;
+  sizes: MultiThemeableSlice<Sizes>;
+  fonts: MultiThemeableSlice<Fonts>;
+  colors: MultiThemeableSlice<Colors>;
+  shadows: MultiThemeableSlice<Shadows>;
+  borders: MultiThemeableSlice<Borders>;
+  spacings: MultiThemeableSlice<Spacings>;
+  zIndices: MultiThemeableSlice<ZIndices>;
+  fontSizes: MultiThemeableSlice<FontSizes>;
+  gradients: MultiThemeableSlice<Gradients>;
+  opacities: MultiThemeableSlice<Opacities>;
+  fontWeights: MultiThemeableSlice<FontWeights>;
+  lineHeights: MultiThemeableSlice<LineHeights>;
+  breakpoints: MultiThemeableSlice<BreakPoints>;
+  transitions: MultiThemeableSlice<Transitions>;
+  borderWidths: MultiThemeableSlice<BorderWidths>;
+  mediaQueries: MultiThemeableSlice<MediaQueries>;
+  borderStyles: MultiThemeableSlice<BorderStyles>;
+  letterSpacings: MultiThemeableSlice<LetterSpacings>;
 };
 
 export interface Theme extends BaseTheme {

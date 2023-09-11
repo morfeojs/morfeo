@@ -1,5 +1,5 @@
 import {
-  theme,
+  morfeo,
   Gradient,
   ParserParams,
   GradientConfig,
@@ -19,7 +19,7 @@ function getGradientPercentages({
   let percentage = 0;
 
   return colors.reduce((prev, colorKey) => {
-    const color = theme.getValue('colors', colorKey) || colorKey;
+    const color = morfeo.theme.getValue('colors', colorKey) || colorKey;
     const current = `${color} ${start + percentage}%`;
     percentage += part;
     return prev ? `${prev}, ${current}` : current;
@@ -35,7 +35,7 @@ function getGradientProperty({ kind }: GradientConfig) {
 }
 
 function getGradientBackground(value: Gradient) {
-  const config = theme.getValue('gradients', value);
+  const config = morfeo.theme.getValue('gradients', value);
   const { angle = 180, kind } = config;
   const property = getGradientProperty(config);
   const percentages = getGradientPercentages(config);
@@ -46,7 +46,7 @@ function getGradientBackground(value: Gradient) {
 
 function guard(callback: Parser<GradientProperty>) {
   return function (params: ParserParams<GradientProperty>) {
-    const config = theme.getValue('gradients', params.value as Gradient);
+    const config = morfeo.theme.getValue('gradients', params.value as Gradient);
     if (!config) {
       return { background: params.value };
     }

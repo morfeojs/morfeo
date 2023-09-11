@@ -15,12 +15,12 @@ function transform(code: string, tsx = false) {
 }
 
 beforeEach(() => {
-  morfeo.setTheme('default', theme);
+  morfeo.theme.set(theme);
   CSSCollector.reset();
 });
 
 describe('general', () => {
-  it('should not inject any css into the metadata in case "@morfeo/css" is not imported', () => {
+  it('should not inject any css into the metadata in case "@morfeo/web" is not imported', () => {
     const testCode = `import { something } from "somewhere";
       const testVar = something();
     `;
@@ -30,7 +30,7 @@ describe('general', () => {
   });
 
   it('should not inject any css into the metadata in case any api is used', () => {
-    const testCode = `import "@morfeo/css";
+    const testCode = `import "@morfeo/web";
       const useStyles = () => {};
     `;
     const result = transform(testCode);
@@ -42,7 +42,7 @@ describe('general', () => {
 describe('morfeo.css', () => {
   it('should inject css into the metadata', () => {
     const testCode = `
-      import { morfeo } from "@morfeo/css";
+      import { morfeo } from "@morfeo/web";
 
       const classes = morfeo.css({
         button: {
@@ -68,7 +68,7 @@ describe('morfeo.css', () => {
 
 describe('morfeo.component', () => {
   it('should inject css into the metadata', () => {
-    const testCode = `import { morfeo } from "@morfeo/css";
+    const testCode = `import { morfeo } from "@morfeo/web";
         const Button = morfeo.component('button', {
           bg: 'primary'
         });
@@ -86,7 +86,7 @@ describe('morfeo.component', () => {
 
 describe('morfeo.global', () => {
   it('should inject css into the metadata', () => {
-    const testCode = `import { morfeo } from "@morfeo/css";
+    const testCode = `import { morfeo } from "@morfeo/web";
         morfeo.global('button', {
           body: {
             padding: 'raw:10px'

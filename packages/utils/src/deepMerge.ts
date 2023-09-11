@@ -1,3 +1,9 @@
+export function deepMerge<T extends Record<string, unknown>[]>(
+  ...objects: T
+): ArrayOfObjectsToObject<T> {
+  return objects.reduce<any>((acc, curr) => merge(acc, curr), {});
+}
+
 function merge<T>(oldState: T, newState?: T): T {
   if (typeof oldState !== typeof newState) {
     return newState || oldState;
@@ -22,10 +28,12 @@ function merge<T>(oldState: T, newState?: T): T {
   );
 }
 
-export function deepMerge<T>(...objects: T[]): T {
-  let merged = { ...objects[0] };
-  for (let i = 1; i < objects.length; i += 1) {
-    merged = merge(merged, objects[i]);
-  }
-  return merged;
-}
+type ArrayOfObjectsToObject<
+  A extends object[],
+  Acc extends Record<string, unknown> = {},
+> = A extends [
+  infer T extends Record<string, unknown>,
+  ...infer Rest extends Record<string, unknown>[],
+]
+  ? ArrayOfObjectsToObject<Rest, Acc & T>
+  : Acc;

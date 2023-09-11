@@ -1,5 +1,5 @@
 import { deepMerge } from '@morfeo/utils';
-import { theme, component } from '../../src';
+import { morfeo } from '../../src';
 
 const defaultTheme = {
   colors: {
@@ -79,19 +79,19 @@ const defaultTheme = {
 
 describe('component', () => {
   beforeEach(() => {
-    theme.set(defaultTheme as any);
-    theme.cleanUp();
+    morfeo.theme.set(defaultTheme as any);
+    morfeo.theme.cleanUp();
   });
 
   afterEach(() => {
-    theme.reset();
+    morfeo.theme.reset();
   });
 
   test('should get the component configuration inside the theme', () => {
-    const config = component('NoVariants' as any).get();
-    const tag = component('NoVariants' as any).getTag();
-    const props = component('NoVariants' as any).getProps();
-    const style = component('NoVariants' as any).getStyle();
+    const config = morfeo.theme.component('NoVariants' as any).get();
+    const tag = morfeo.theme.component('NoVariants' as any).getTag();
+    const props = morfeo.theme.component('NoVariants' as any).getProps();
+    const style = morfeo.theme.component('NoVariants' as any).getStyle();
     expect(config).toEqual(defaultTheme.components.NoVariants);
     expect(tag).toEqual(defaultTheme.components.NoVariants.tag);
     expect(props).toEqual(defaultTheme.components.NoVariants.props);
@@ -99,25 +99,32 @@ describe('component', () => {
   });
 
   test('should return the base config if the variant does not exist', () => {
-    const config = component('NoVariants' as any, 'invalidVariant').get();
+    const config = morfeo.theme
+      .component('NoVariants' as any, 'invalidVariant')
+      .get();
     expect(config).toEqual(defaultTheme.components.NoVariants);
   });
 
   test('should return `undefined` if the component does not exist', () => {
-    const props = component(
-      'Invalid Component' as any,
-      'invalidVariant',
-    ).getProps();
+    const props = morfeo.theme
+      .component('Invalid Component' as any, 'invalidVariant')
+      .getProps();
 
     expect(props).toEqual(undefined);
   });
 
   test('should merge the configuration of the base component with its variant', () => {
-    const config = component('WithVariants' as any, 'h1').get();
-    const tag = component('WithVariants' as any, 'h1').getTag();
-    const variants = component('WithVariants' as any, 'h1').getVariants();
-    const props = component('WithVariants' as any, 'h1').getProps();
-    const style = component('WithVariants' as any, 'h1').getStyle();
+    const config = morfeo.theme.component('WithVariants' as any, 'h1').get();
+    const tag = morfeo.theme.component('WithVariants' as any, 'h1').getTag();
+    const variants = morfeo.theme
+      .component('WithVariants' as any, 'h1')
+      .getVariants();
+    const props = morfeo.theme
+      .component('WithVariants' as any, 'h1')
+      .getProps();
+    const style = morfeo.theme
+      .component('WithVariants' as any, 'h1')
+      .getStyle();
     const { variants: mergedVariants, ...mergedConfig } = deepMerge(
       defaultTheme.components.WithVariants,
       defaultTheme.components.WithVariants.variants.h1 as any,
@@ -130,14 +137,16 @@ describe('component', () => {
   });
 
   test('should retrieve the states of a component', () => {
-    const config = component('WithStates' as any);
+    const config = morfeo.theme.component('WithStates' as any);
     const states = config.getStates();
 
     expect(states).toEqual({ error: { color: 'error' } });
   });
 
   test('should be possible to use componentName and variant inside the style of another component', () => {
-    const style = component('VariantCycle' as any, 'three').getStyle();
+    const style = morfeo.theme
+      .component('VariantCycle' as any, 'three')
+      .getStyle();
 
     expect(style).toEqual({
       color: 'primary',
@@ -146,12 +155,13 @@ describe('component', () => {
   });
 
   test('getStyle and get().style should return the same values', () => {
-    const styleFromGetStyle = component(
-      'VariantCycle' as any,
-      'three',
-    ).getStyle();
+    const styleFromGetStyle = morfeo.theme
+      .component('VariantCycle' as any, 'three')
+      .getStyle();
 
-    const { style } = component('VariantCycle' as any, 'three').get();
+    const { style } = morfeo.theme
+      .component('VariantCycle' as any, 'three')
+      .get();
 
     expect(styleFromGetStyle).toEqual(style);
   });

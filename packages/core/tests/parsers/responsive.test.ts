@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/spec';
-import { parsers, theme } from '../../src';
+import { morfeo } from '../../src';
 
 const THEME: Theme = {
   colors: {
@@ -25,14 +25,14 @@ const THEME: Theme = {
 
 describe('pseudos', () => {
   beforeAll(() => {
-    theme.set(THEME);
+    morfeo.theme.set(THEME);
   });
   afterAll(() => {
-    theme.reset();
+    morfeo.theme.reset();
   });
 
   test('should generate media queries', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       color: {
         lg: 'primary',
       },
@@ -46,7 +46,7 @@ describe('pseudos', () => {
   });
 
   test('should put the default value outside of the media queries', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       color: {
         default: 'secondary',
         lg: 'primary',
@@ -62,7 +62,7 @@ describe('pseudos', () => {
   });
 
   it('should generate media queries from raw values', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       color: {
         lg: 'raw:#0066ff',
       },
@@ -76,7 +76,7 @@ describe('pseudos', () => {
   });
 
   test('should merge multiple media queries', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       color: {
         lg: 'primary',
       },
@@ -94,7 +94,7 @@ describe('pseudos', () => {
   });
 
   test('should generate media queries from default components', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       componentName: 'Box',
     });
 

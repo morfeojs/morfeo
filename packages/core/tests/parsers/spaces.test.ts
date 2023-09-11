@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/spec';
-import { parsers, theme } from '../../src';
+import { morfeo } from '../../src';
 
 const THEME: Theme = {
   spacings: {
@@ -10,14 +10,14 @@ const THEME: Theme = {
 
 describe('spacings', () => {
   beforeAll(() => {
-    theme.set(THEME);
+    morfeo.theme.set(THEME);
   });
   afterAll(() => {
-    theme.reset();
+    morfeo.theme.reset();
   });
 
   test('should resolve the value of the padding aliases', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       p: 'm',
       pt: 'l',
       pl: 'm',
@@ -35,7 +35,7 @@ describe('spacings', () => {
   });
 
   test('should resolve the value of the margin aliases', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       m: 'm',
       mt: 'l',
       ml: 'm',
@@ -53,7 +53,7 @@ describe('spacings', () => {
   });
 
   test('should resolve the value of mx, px aliases', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       px: 'm',
       mx: 'l',
     });
@@ -67,7 +67,7 @@ describe('spacings', () => {
   });
 
   test('should resolve the value of my, py aliases', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       py: 'm',
       my: 'l',
     });

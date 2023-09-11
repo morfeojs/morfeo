@@ -1,4 +1,4 @@
-import { MorfeoCompilerOptions } from '@morfeo/compiler';
+import type { MorfeoCompilerOptions } from '@morfeo/compiler';
 import theme from './morfeo.theme';
 
 const config: MorfeoCompilerOptions = {

@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/css';
+import { morfeo } from '@morfeo/web';
 import { FeatureCard } from './FeatureCard';
 import webExtensionAnimationData from '@/lotties/web_extension.lottie.json';
 import typescriptFirstAnimationData from '@/lotties/typescript_first.lottie.json';

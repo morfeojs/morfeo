@@ -1,4 +1,4 @@
-import { Gradient, parsers, theme } from '../src';
+import { Gradient, morfeo } from '../src';
 
 const THEME = {
   colors: {
@@ -35,47 +35,49 @@ const THEME = {
 };
 
 beforeEach(() => {
-  theme.set(THEME as any);
+  morfeo.theme.set(THEME as any);
 });
 
 describe('gradient', () => {
   test('should generate the prop `background` with a linear-gradient referred to primary', () => {
-    const style = parsers.resolve({ gradient: 'primary' });
+    const style = morfeo.parsers.resolve({ gradient: 'primary' });
     expect(style).toEqual({
       background: 'linear-gradient(0deg, red 0%, blue 100%)',
     });
   });
 
   test('should generate the prop `background` with a linear-gradient referred to secondary', () => {
-    const style = parsers.resolve({ bgGradient: 'secondary' });
+    const style = morfeo.parsers.resolve({ bgGradient: 'secondary' });
     expect(style).toEqual({
       background: 'linear-gradient(180deg, blue 10%, yellow 50%, red 90%)',
     });
   });
 
   test('should generate the prop `backgroundColor` with a radial-gradient value', () => {
-    const style = parsers.resolve({ gradient: 'radial' as any });
+    const style = morfeo.parsers.resolve({ gradient: 'radial' as any });
     expect(style).toEqual({
       background: 'radial-gradient(circle, red 0%, blue 100%)',
     });
   });
 
   test('should set the default angle to 180deg if not passed', () => {
-    const style = parsers.resolve({ bgGradient: 'defaultAngle' as any });
+    const style = morfeo.parsers.resolve({ bgGradient: 'defaultAngle' as any });
     expect(style).toEqual({
       background: 'linear-gradient(180deg, red 0%, blue 100%)',
     });
   });
 
   test('should generate gradient for colors not provided by the theme', () => {
-    const style = parsers.resolve({ bgGradient: 'notThemeColors' as any });
+    const style = morfeo.parsers.resolve({
+      bgGradient: 'notThemeColors' as any,
+    });
     expect(style).toEqual({
       background: 'linear-gradient(180deg, grey 0%, black 100%)',
     });
   });
 
   test('should generate text gradient if the prop `textGradient` is passed', () => {
-    const style = parsers.resolve({ textGradient: 'primary' as any });
+    const style = morfeo.parsers.resolve({ textGradient: 'primary' as any });
     expect(style).toEqual({
       background: 'linear-gradient(0deg, red 0%, blue 100%)',
       backgroundClip: 'text',
@@ -86,7 +88,7 @@ describe('gradient', () => {
   });
 
   test('should generate the gradient from raw values', () => {
-    const style = parsers.resolve({
+    const style = morfeo.parsers.resolve({
       gradient: 'raw:linear-gradient(0deg, red 0%, blue 100%)',
     });
 
@@ -96,7 +98,7 @@ describe('gradient', () => {
   });
 
   test('should generate the gradient from only 1 color', () => {
-    const style = parsers.resolve({
+    const style = morfeo.parsers.resolve({
       gradient: 'justOneColor' as Gradient,
     });
 
@@ -106,7 +108,7 @@ describe('gradient', () => {
   });
 
   test('should generate the text-gradient from raw values', () => {
-    const style = parsers.resolve({
+    const style = morfeo.parsers.resolve({
       textGradient: 'raw:linear-gradient(0deg, red 0%, blue 100%)',
     });
 

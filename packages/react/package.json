@@ -25,7 +25,6 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@morfeo/css": "workspace:*",
     "@morfeo/hooks": "workspace:*",
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*"

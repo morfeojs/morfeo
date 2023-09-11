@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/css';
+import { morfeo } from '@morfeo/web';
 import { ButtonLink } from '../Button';
 import { TypingAnimation } from '../TypingAnimation/TypingAnimation';
 

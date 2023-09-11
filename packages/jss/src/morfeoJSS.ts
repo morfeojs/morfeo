@@ -1,4 +1,4 @@
-import { parsers, Style } from '@morfeo/core';
+import { morfeo, Style } from '@morfeo/core';
 import preset from 'jss-preset-default';
 import { CreateGenerateIdOptions, JssOptions, Plugin, Rule } from 'jss';
 import { generateClassName } from '@morfeo/utils';
@@ -7,7 +7,7 @@ const defaultPreset = preset();
 
 export const morfeoJSS: Plugin = {
   onProcessStyle(style) {
-    return parsers.resolve(style as Style);
+    return morfeo.parsers.resolve(style as Style);
   },
 };
 

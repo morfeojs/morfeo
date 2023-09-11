@@ -1,6 +1,6 @@
 import { Theme } from '@morfeo/spec';
 import { shadows } from '../../src/parsers/shadows';
-import { parsers, theme } from '../../src';
+import { morfeo } from '../../src';
 
 const THEME: Theme = {
   colors: {
@@ -43,35 +43,50 @@ const THEME: Theme = {
 
 describe('shadows', () => {
   beforeAll(() => {
-    theme.set(THEME);
+    morfeo.theme.set(THEME);
   });
   afterAll(() => {
-    theme.reset();
+    morfeo.theme.reset();
   });
 
   test('should generate the property `boxShadow` based on the strong shadow', () => {
-    const result = shadows({ property: 'boxShadow', value: 'strong' });
+    const result = shadows({
+      property: 'boxShadow',
+      value: 'strong',
+      theme: morfeo.theme,
+      instance: morfeo.parsers,
+    });
     expect(result).toEqual({
       boxShadow: '10px 10px 30px white',
     });
   });
 
   test('should generate the property `boxShadow` if the prop `shadow` is passed', () => {
-    const result = parsers.resolve({ shadow: 'strong' });
+    const result = morfeo.parsers.resolve({ shadow: 'strong' });
     expect(result).toEqual({
       boxShadow: '10px 10px 30px white',
     });
   });
 
   test('should generate the property `boxShadow` based on the light shadow', () => {
-    const result = shadows({ property: 'boxShadow', value: 'light' });
+    const result = shadows({
+      property: 'boxShadow',
+      value: 'light',
+      theme: morfeo.theme,
+      instance: morfeo.parsers,
+    });
     expect(result).toEqual({
       boxShadow: '40px 30px 30px white',
     });
   });
 
   test('should generate the property `boxShadow` based on the medium shadow', () => {
-    const result = shadows({ property: 'boxShadow', value: 'medium' });
+    const result = shadows({
+      property: 'boxShadow',
+      value: 'medium',
+      theme: morfeo.theme,
+      instance: morfeo.parsers,
+    });
     expect(result).toEqual({
       boxShadow: '0 30 0 white',
     });
@@ -81,6 +96,8 @@ describe('shadows', () => {
     const result = shadows({
       property: 'boxShadow',
       value: 'invalid box shadow' as any,
+      theme: morfeo.theme,
+      instance: morfeo.parsers,
     });
     expect(result).toEqual({ boxShadow: 'invalid box shadow' });
   });
@@ -89,6 +106,8 @@ describe('shadows', () => {
     const result = shadows({
       property: 'boxShadow',
       value: 'custom' as any,
+      theme: morfeo.theme,
+      instance: morfeo.parsers,
     });
     expect(result).toEqual({
       boxShadow: '0 0 0 not inside theme',
@@ -99,6 +118,8 @@ describe('shadows', () => {
     const result = shadows({
       property: 'boxShadow',
       value: 'noColor' as any,
+      theme: morfeo.theme,
+      instance: morfeo.parsers,
     });
     expect(result).toEqual({
       boxShadow: '0 0 0 black',

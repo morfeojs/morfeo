@@ -26,7 +26,7 @@ const THEME: Theme = {
 
 describe('morfeo', () => {
   beforeAll(() => {
-    morfeo.setTheme('default', THEME);
+    morfeo.theme.set(THEME);
   });
 
   test('should generate the style for the element', () => {

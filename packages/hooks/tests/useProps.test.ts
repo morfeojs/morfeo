@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { theme } from '@morfeo/core';
+import { morfeo } from '@morfeo/core';
 import { useProps } from '../src';
 
 const THEME = {
@@ -32,7 +32,7 @@ const THEME = {
 } as any;
 
 beforeAll(() => {
-  theme.set(THEME);
+  morfeo.theme.set(THEME);
 });
 
 describe('useProps', () => {

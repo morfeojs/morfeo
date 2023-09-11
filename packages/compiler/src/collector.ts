@@ -8,7 +8,7 @@ import morfeoBabelPlugin, {
   type MorfeoBabelPluginOptions,
   type MorfeoBabelResult,
 } from '@morfeo/babel-plugin';
-import { morfeo, type Theme } from '@morfeo/web';
+import { type Theme, morfeo, getStyles } from '@morfeo/web';
 import { deepMerge } from '@morfeo/utils';
 import { createWriter } from './writer';
 import { logger } from './logger';
@@ -36,6 +36,7 @@ function createCollector() {
   let writer = createWriter({
     output: DEFAULT_OPTIONS.output,
   });
+  let variables = '';
 
   function init(pluginOptions: Partial<MorfeoCompilerOptions>) {
     options = {
@@ -43,7 +44,18 @@ function createCollector() {
       ...pluginOptions,
     };
 
-    morfeo.setTheme('default', options.theme);
+    morfeo.theme.set(options.theme);
+
+    const variablesObject = morfeo.variables || { light: {}, dark: {} };
+
+    variables = getStyles({
+      '@global': {
+        ':root': variablesObject.light,
+        [morfeo.theme.resolveMultiThemeValue('dark')]: {
+          ':root': variablesObject.dark,
+        },
+      },
+    } as any).sheet.toString();
 
     writer = createWriter({
       delay: 10,
@@ -67,7 +79,7 @@ function createCollector() {
       ...Object.values(mergedCss.styles),
     ].join('\n');
 
-    return writer(css);
+    return writer(`${variables}${css}`);
   }
 
   async function extract(fileName: string): Promise<MorfeoBabelResult> {

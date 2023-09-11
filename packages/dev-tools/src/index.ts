@@ -1,5 +1,5 @@
 import { MORFEO_DEVTOOLS } from './constants';
-import { morfeo, Theme, theme } from '@morfeo/web';
+import { morfeo, Theme } from '@morfeo/web';
 
 function onChange(newTheme: Theme) {
   if (globalThis && globalThis.postMessage) {
@@ -7,8 +7,7 @@ function onChange(newTheme: Theme) {
       {
         type: MORFEO_DEVTOOLS,
         theme: newTheme,
-        themes: morfeo.getThemes(),
-        current: morfeo.getCurrentTheme(),
+        current: morfeo.theme.get(),
       },
       '*',
     );
@@ -16,6 +15,6 @@ function onChange(newTheme: Theme) {
 }
 
 export function enableMorfeoDevTool() {
-  theme.subscribe(onChange);
-  onChange(theme.get());
+  morfeo.theme.subscribe(onChange);
+  onChange(morfeo.theme.get());
 }

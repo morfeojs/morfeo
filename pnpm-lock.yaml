@@ -126,9 +126,6 @@ importers:
       '@morfeo/compiler':
         specifier: workspace:*
         version: link:../packages/compiler
-      '@morfeo/css':
-        specifier: workspace:*
-        version: link:../packages/css
       '@morfeo/preset-default':
         specifier: workspace:*
         version: link:../packages/preset-default
@@ -193,9 +190,6 @@ importers:
 
   examples/next:
     dependencies:
-      '@morfeo/css':
-        specifier: workspace:*
-        version: link:../../packages/css
       '@morfeo/preset-default':
         specifier: workspace:*
         version: link:../../packages/preset-default
@@ -248,9 +242,6 @@ importers:
       '@morfeo/compiler':
         specifier: workspace:*
         version: link:../../packages/compiler
-      '@morfeo/css':
-        specifier: workspace:*
-        version: link:../../packages/css
       '@morfeo/preset-default':
         specifier: workspace:*
         version: link:../../packages/preset-default
@@ -306,9 +297,6 @@ importers:
       '@babel/types':
         specifier: 7.22.17
         version: 7.22.17
-      '@morfeo/css':
-        specifier: workspace:*
-        version: link:../css
       '@morfeo/utils':
         specifier: workspace:*
         version: link:../utils
@@ -372,22 +360,11 @@ importers:
         specifier: ^2.2.0
         version: 2.5.0
 
-  packages/css:
-    dependencies:
-      '@morfeo/utils':
-        specifier: workspace:*
-        version: link:../utils
-      '@morfeo/web':
-        specifier: workspace:*
-        version: link:../web
-
   packages/dev-tools:
     dependencies:
       '@morfeo/web':
         specifier: workspace:*
         version: link:../web
-
-  packages/fonts: {}
 
   packages/hooks:
     dependencies:
@@ -445,9 +422,6 @@ importers:
 
   packages/react:
     dependencies:
-      '@morfeo/css':
-        specifier: workspace:*
-        version: link:../css
       '@morfeo/hooks':
         specifier: workspace:*
         version: link:../hooks
@@ -492,9 +466,6 @@ importers:
       '@morfeo/core':
         specifier: workspace:*
         version: link:../core
-      '@morfeo/fonts':
-        specifier: workspace:*
-        version: link:../fonts
       '@morfeo/jss':
         specifier: workspace:*
         version: link:../jss

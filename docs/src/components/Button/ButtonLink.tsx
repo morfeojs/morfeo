@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { morfeo } from '@morfeo/css';
+import { morfeo } from '@morfeo/web';
 import { Variant } from '@morfeo/web';
 import Link, { LinkProps } from 'next/link';
 

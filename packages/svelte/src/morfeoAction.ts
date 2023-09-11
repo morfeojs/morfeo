@@ -1,5 +1,5 @@
 import { getStyles } from '@morfeo/jss';
-import { component, Style } from '@morfeo/web';
+import { morfeo, Style } from '@morfeo/web';
 
 const DEFAULT_ELEMENT_NAME = 'morfeo-element';
 
@@ -28,7 +28,9 @@ function setAdditionalProps(
   if (!componentName) {
     return {};
   }
-  const props = component(componentName, variant, state).getProps();
+  const props = morfeo.theme
+    .component(componentName, variant, state)
+    .getProps();
 
   if (!props) {
     return;

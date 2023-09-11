@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/spec';
-import { parsers, theme } from '../../src';
+import { morfeo } from '../../src';
 import { components } from '../../src/parsers/components';
 
 const THEME: Theme = {
@@ -42,16 +42,18 @@ const THEME: Theme = {
 
 describe('components', () => {
   beforeAll(() => {
-    theme.set(THEME);
+    morfeo.theme.set(THEME);
   });
   afterAll(() => {
-    theme.reset();
+    morfeo.theme.reset();
   });
 
   test('should return the default components style', () => {
     const result = components({
       property: 'componentName',
       value: 'Box',
+      instance: morfeo.parsers,
+      theme: morfeo.theme,
     });
     expect(result).toEqual({ backgroundColor: '#e3e3e3' });
   });
@@ -60,6 +62,8 @@ describe('components', () => {
     const result = components({
       property: 'componentName',
       value: 'Not Found' as any,
+      instance: morfeo.parsers,
+      theme: morfeo.theme,
     });
     expect(result).toEqual({});
   });
@@ -67,17 +71,19 @@ describe('components', () => {
   test('should return an empty object if the componentName is not specified', () => {
     const result = components({
       property: 'componentName',
+      instance: morfeo.parsers,
+      theme: morfeo.theme,
     } as any);
     expect(result).toEqual({});
   });
 
   test('should take the style of the component from the theme', () => {
-    const result = parsers.resolve({ componentName: 'Box' });
+    const result = morfeo.parsers.resolve({ componentName: 'Box' });
     expect(result).toEqual({ backgroundColor: '#e3e3e3' });
   });
 
   test('should merge the base component style with the variant primary', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       componentName: 'Box',
       variant: 'primary',
     });
@@ -85,17 +91,20 @@ describe('components', () => {
   });
 
   test('should merge the base component style with rest of the style', () => {
-    const result = parsers.resolve({ componentName: 'Box', p: 'm' });
+    const result = morfeo.parsers.resolve({ componentName: 'Box', p: 'm' });
     expect(result).toEqual({ backgroundColor: '#e3e3e3', padding: '10px' });
   });
 
   test('should override the base component style with rest of the style', () => {
-    const result = parsers.resolve({ bg: 'secondary', componentName: 'Box' });
+    const result = morfeo.parsers.resolve({
+      bg: 'secondary',
+      componentName: 'Box',
+    });
     expect(result).toEqual({ backgroundColor: '#000' });
   });
 
   test('should extends the style of another component', () => {
-    theme.set({
+    morfeo.theme.set({
       ...THEME,
       components: {
         ...THEME.components,
@@ -107,13 +116,15 @@ describe('components', () => {
         },
       } as any,
     });
-    const result = parsers.resolve({ componentName: 'Typography' as any });
+    const result = morfeo.parsers.resolve({
+      componentName: 'Typography' as any,
+    });
     expect(result).toEqual({ color: '#000', backgroundColor: '#e3e3e3' });
   });
 
   test('should extends the style of another component variant', () => {
-    theme.reset();
-    theme.set({
+    morfeo.theme.reset();
+    morfeo.theme.set({
       ...THEME,
       components: {
         ...THEME.components,
@@ -138,7 +149,7 @@ describe('components', () => {
       } as any,
     });
 
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       componentName: 'Typography' as any,
       variant: 'h2',
     });
@@ -147,7 +158,7 @@ describe('components', () => {
   });
 
   test('should return the state style if state is declared', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       componentName: 'Box',
       state: 'danger',
     });
@@ -159,7 +170,7 @@ describe('components', () => {
   });
 
   test('should return the variant state style if state is declared within the variant', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       componentName: 'Box',
       variant: 'primary',
       state: 'danger',
@@ -172,7 +183,7 @@ describe('components', () => {
   });
 
   test("should return the default style if the declared state doesn't exist", () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       componentName: 'Box',
       state: 'warning',
     });
@@ -180,7 +191,7 @@ describe('components', () => {
   });
 
   test("should return the default variant style if the declared state doesn't exist", () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       componentName: 'Box',
       variant: 'primary',
       state: 'warning',

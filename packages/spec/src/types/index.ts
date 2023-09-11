@@ -15,4 +15,3 @@ export * from './properties';
 export * from './transitions';
 export * from './breakpoints';
 export * from './mediaQueries';
-export * from './colorSchemas';

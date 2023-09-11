@@ -13,7 +13,7 @@ const VISITORS_CREATOR_MAP = {
 export default function getVisitor(): Visitor {
   return {
     ImportDeclaration(path) {
-      if (path.node.source.value !== '@morfeo/css') {
+      if (path.node.source.value !== '@morfeo/web') {
         return path.skip();
       }
     },

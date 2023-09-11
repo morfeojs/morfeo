@@ -6,7 +6,7 @@ function parseStyles<K extends string>(styles: Record<K, Style>) {
   return styleKeys.reduce(
     (acc, curr) => ({
       ...acc,
-      [curr]: morfeo.resolve(styles[curr]),
+      [curr]: morfeo.parsers.resolve(styles[curr]),
     }),
     {},
   ) as Record<K, ResolvedStyle>;

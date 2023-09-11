@@ -5,7 +5,7 @@ import '@morfeo/react';
 import App from './App';
 import './styles/morfeo.css';
 
-initPreset('light');
+initPreset();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

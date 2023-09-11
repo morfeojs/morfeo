@@ -1,7 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import browser from 'webextension-polyfill';
-import { resetCss } from '@morfeo/react';
-import { getThemeFromAppAndInitMorfeo } from '../_shared/utils';
+import { resetCss, getThemeFromAppAndInitMorfeo } from '../_shared/utils';
 import { MORFEO_DEVTOOL_PANEL_NAME, ASSETS_PATHS } from '../_shared/constants';
 import Devtool from './Devtool';
 import { useEffect } from 'react';
