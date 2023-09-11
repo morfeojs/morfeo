@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import { morfeo, Theme, ThemeMode } from '@morfeo/core';
+import { morfeo, Theme } from '@morfeo/core';
 import { useSyncMorfeo } from '../src';
 
 const THEME_1 = {

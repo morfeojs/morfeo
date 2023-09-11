@@ -75,7 +75,6 @@ export const PlaygroundSection: React.FC = () => {
           customSetup={{
             dependencies: {
               '@morfeo/web': 'latest',
-              '@morfeo/web': 'latest',
               '@morfeo/next': 'latest',
               '@morfeo/preset-default': 'latest',
               '@morfeo/utils': 'latest',

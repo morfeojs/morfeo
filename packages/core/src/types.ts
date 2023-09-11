@@ -1,6 +1,5 @@
 import { AllProperties, Property, Style } from '@morfeo/spec';
 import { ThemeHandler } from './theme/createTheme';
-import { createComponent } from './theme/createComponent';
 
 export type ParserProperty = keyof AllProperties;
 
