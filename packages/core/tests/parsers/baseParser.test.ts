@@ -20,7 +20,7 @@ describe('baseParser', () => {
       scale: 'colors',
       value: 'primary',
       theme: morfeo.theme,
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
     });
 
     expect(result).toEqual({ color: 'black' });
@@ -32,7 +32,7 @@ describe('baseParser', () => {
       scale: 'spacings',
       value: '10px' as any,
       theme: morfeo.theme,
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
     });
 
     expect(result).toEqual({ padding: '10px' });
@@ -45,7 +45,7 @@ describe('baseParser', () => {
       value: 10 as any,
       failOnNotFound: true,
       theme: morfeo.theme,
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
     });
 
     expect(result).toEqual({});

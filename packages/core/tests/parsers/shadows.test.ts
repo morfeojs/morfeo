@@ -54,7 +54,7 @@ describe('shadows', () => {
       property: 'boxShadow',
       value: 'strong',
       theme: morfeo.theme,
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
     });
     expect(result).toEqual({
       boxShadow: '10px 10px 30px white',
@@ -73,7 +73,7 @@ describe('shadows', () => {
       property: 'boxShadow',
       value: 'light',
       theme: morfeo.theme,
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
     });
     expect(result).toEqual({
       boxShadow: '40px 30px 30px white',
@@ -85,7 +85,7 @@ describe('shadows', () => {
       property: 'boxShadow',
       value: 'medium',
       theme: morfeo.theme,
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
     });
     expect(result).toEqual({
       boxShadow: '0 30 0 white',
@@ -97,7 +97,7 @@ describe('shadows', () => {
       property: 'boxShadow',
       value: 'invalid box shadow' as any,
       theme: morfeo.theme,
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
     });
     expect(result).toEqual({ boxShadow: 'invalid box shadow' });
   });
@@ -107,7 +107,7 @@ describe('shadows', () => {
       property: 'boxShadow',
       value: 'custom' as any,
       theme: morfeo.theme,
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
     });
     expect(result).toEqual({
       boxShadow: '0 0 0 not inside theme',
@@ -119,7 +119,7 @@ describe('shadows', () => {
       property: 'boxShadow',
       value: 'noColor' as any,
       theme: morfeo.theme,
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
     });
     expect(result).toEqual({
       boxShadow: '0 0 0 black',

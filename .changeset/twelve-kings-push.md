@@ -13,7 +13,6 @@
 '@morfeo/preset-default': patch
 '@morfeo/react': patch
 '@morfeo/spec': patch
-'@morfeo/svelte': patch
 '@morfeo/web': patch
 '@morfeo/app-web-extension': patch
 ---

@@ -52,7 +52,7 @@ describe('components', () => {
     const result = components({
       property: 'componentName',
       value: 'Box',
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
       theme: morfeo.theme,
     });
     expect(result).toEqual({ backgroundColor: '#e3e3e3' });
@@ -62,7 +62,7 @@ describe('components', () => {
     const result = components({
       property: 'componentName',
       value: 'Not Found' as any,
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
       theme: morfeo.theme,
     });
     expect(result).toEqual({});
@@ -71,7 +71,7 @@ describe('components', () => {
   test('should return an empty object if the componentName is not specified', () => {
     const result = components({
       property: 'componentName',
-      instance: morfeo.parsers,
+      parsers: morfeo.parsers,
       theme: morfeo.theme,
     } as any);
     expect(result).toEqual({});
