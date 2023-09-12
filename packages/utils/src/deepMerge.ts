@@ -6,7 +6,7 @@ export function deepMerge<T extends Record<string, unknown>[]>(
 
 function merge<T>(oldState: T, newState?: T): T {
   if (typeof oldState !== typeof newState) {
-    return newState || oldState;
+    return newState ?? oldState;
   }
 
   if (Array.isArray(newState)) {

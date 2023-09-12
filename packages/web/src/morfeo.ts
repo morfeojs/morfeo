@@ -1,4 +1,4 @@
-import { morfeo, Property, Theme, ThemeMode } from '@morfeo/core';
+import { morfeo, Property, ThemeMode } from '@morfeo/core';
 import { gradientParsers } from './parsers';
 import { css } from './css';
 import { global } from './global';
@@ -15,7 +15,7 @@ const coreThemeSetter = morfeo.theme.set;
 function themeSetter(...args: Parameters<typeof morfeo.theme.set>) {
   const currentTheme = args[0];
   const { theme, light, dark } = extractCssVariables(
-    deepMerge(defaultTheme, currentTheme) as Theme,
+    deepMerge(defaultTheme, currentTheme),
   );
 
   morfeo.variables = { light, dark };

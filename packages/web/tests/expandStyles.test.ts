@@ -5,7 +5,16 @@ const getClassName = jest.fn(() => 'className');
 
 describe('expandStyles', () => {
   beforeEach(() => {
-    morfeo.theme.set(defaultTheme);
+    morfeo.theme.set({
+      ...defaultTheme,
+      components: {
+        Box: {
+          style: {
+            bg: 'whatever',
+          },
+        },
+      },
+    } as any);
   });
 
   it('should expand a style', () => {

@@ -22,9 +22,10 @@ describe('pseudos', () => {
         bg: 'primary',
       },
     });
+
     expect(result).toEqual({
       '&:hover': {
-        backgroundColor: '#e3e3e3',
+        backgroundColor: 'var(--colors-primary)',
       },
     });
   });

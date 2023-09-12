@@ -1,6 +1,4 @@
 import { Theme, ThemeKey } from '@morfeo/core';
-import { deepMerge } from '@morfeo/utils';
-import { defaultTheme } from '../defaultTheme';
 
 const slicesToTransform: ThemeKey[] = [
   'radii',
@@ -23,19 +21,23 @@ type DeepPartial<T> = {
   [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
 };
 
-export function extractCssVariables(partialTheme: DeepPartial<Theme>) {
-  const theme = deepMerge(defaultTheme, partialTheme) as Theme;
+type SliceConfig<SN extends (typeof slicesToTransform)[number]> = {
+  slice: Theme[SN];
+  light: Record<string, string>;
+  dark: Record<string, string>;
+};
+
+export function extractCssVariables<T extends DeepPartial<Theme>>(theme: T) {
   function extractSliceVariables<SN extends (typeof slicesToTransform)[number]>(
     sliceName: SN,
-  ) {
+  ): SliceConfig<SN> {
     const slice = theme[sliceName];
+    if (!slice) {
+      return { slice: slice as Theme[SN], light: {}, dark: {} };
+    }
     const sliceKeys = Object.keys(slice);
 
-    return sliceKeys.reduce<{
-      slice: Theme[SN];
-      light: Record<string, string>;
-      dark: Record<string, string>;
-    }>(
+    return sliceKeys.reduce<SliceConfig<SN>>(
       (acc, sliceKey) => {
         const sliceValue = slice[sliceKey];
 
@@ -69,7 +71,7 @@ export function extractCssVariables(partialTheme: DeepPartial<Theme>) {
               : acc.dark,
         };
       },
-      { light: {}, dark: {}, slice },
+      { light: {}, dark: {}, slice } as SliceConfig<SN>,
     );
   }
 

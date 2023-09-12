@@ -1,4 +1,5 @@
-import { Gradient, morfeo } from '../src';
+import { deepMerge } from '@morfeo/utils';
+import { Gradient, defaultTheme, morfeo } from '../src';
 
 const THEME = {
   colors: {
@@ -26,10 +27,10 @@ const THEME = {
       colors: ['primary', 'secondary'],
     },
     notThemeColors: {
-      colors: ['grey', 'black'],
+      colors: ['pink', 'tomato'],
     },
     justOneColor: {
-      colors: ['grey'],
+      colors: ['pink'],
     },
   },
 };
@@ -41,29 +42,34 @@ beforeEach(() => {
 describe('gradient', () => {
   test('should generate the prop `background` with a linear-gradient referred to primary', () => {
     const style = morfeo.parsers.resolve({ gradient: 'primary' });
+
     expect(style).toEqual({
-      background: 'linear-gradient(0deg, red 0%, blue 100%)',
+      background:
+        'linear-gradient(0deg, var(--colors-primary) 0%, var(--colors-secondary) 100%)',
     });
   });
 
   test('should generate the prop `background` with a linear-gradient referred to secondary', () => {
     const style = morfeo.parsers.resolve({ bgGradient: 'secondary' });
     expect(style).toEqual({
-      background: 'linear-gradient(180deg, blue 10%, yellow 50%, red 90%)',
+      background:
+        'linear-gradient(180deg, var(--colors-secondary) 10%, var(--colors-ternary) 50%, var(--colors-primary) 90%)',
     });
   });
 
   test('should generate the prop `backgroundColor` with a radial-gradient value', () => {
     const style = morfeo.parsers.resolve({ gradient: 'radial' as any });
     expect(style).toEqual({
-      background: 'radial-gradient(circle, red 0%, blue 100%)',
+      background:
+        'radial-gradient(circle, var(--colors-primary) 0%, var(--colors-secondary) 100%)',
     });
   });
 
   test('should set the default angle to 180deg if not passed', () => {
     const style = morfeo.parsers.resolve({ bgGradient: 'defaultAngle' as any });
     expect(style).toEqual({
-      background: 'linear-gradient(180deg, red 0%, blue 100%)',
+      background:
+        'linear-gradient(180deg, var(--colors-primary) 0%, var(--colors-secondary) 100%)',
     });
   });
 
@@ -72,14 +78,16 @@ describe('gradient', () => {
       bgGradient: 'notThemeColors' as any,
     });
     expect(style).toEqual({
-      background: 'linear-gradient(180deg, grey 0%, black 100%)',
+      background: 'linear-gradient(180deg, pink 0%, tomato 100%)',
     });
   });
 
   test('should generate text gradient if the prop `textGradient` is passed', () => {
     const style = morfeo.parsers.resolve({ textGradient: 'primary' as any });
+
     expect(style).toEqual({
-      background: 'linear-gradient(0deg, red 0%, blue 100%)',
+      background:
+        'linear-gradient(0deg, var(--colors-primary) 0%, var(--colors-secondary) 100%)',
       backgroundClip: 'text',
       textFillColor: 'transparent',
       '-webkit-background-clip': 'text',
@@ -89,11 +97,12 @@ describe('gradient', () => {
 
   test('should generate the gradient from raw values', () => {
     const style = morfeo.parsers.resolve({
-      gradient: 'raw:linear-gradient(0deg, red 0%, blue 100%)',
+      gradient:
+        'raw:linear-gradient(0deg, red 0%, var(--colors-secondary) 100%)',
     });
 
     expect(style).toEqual({
-      background: 'linear-gradient(0deg, red 0%, blue 100%)',
+      background: 'linear-gradient(0deg, red 0%, var(--colors-secondary) 100%)',
     });
   });
 
@@ -103,7 +112,7 @@ describe('gradient', () => {
     });
 
     expect(style).toEqual({
-      background: 'linear-gradient(180deg, grey 0%)',
+      background: 'linear-gradient(180deg, pink 0%)',
     });
   });
 
