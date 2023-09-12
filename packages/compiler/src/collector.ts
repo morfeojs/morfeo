@@ -36,7 +36,6 @@ function createCollector() {
   let writer = createWriter({
     output: DEFAULT_OPTIONS.output,
   });
-  let variables = '';
 
   function init(pluginOptions: Partial<MorfeoCompilerOptions>) {
     options = {
@@ -46,17 +45,6 @@ function createCollector() {
 
     morfeo.theme.set(options.theme);
 
-    const variablesObject = morfeo.variables || { light: {}, dark: {} };
-
-    variables = getStyles({
-      '@global': {
-        ':root': variablesObject.light,
-        [morfeo.theme.resolveMultiThemeValue('dark')]: {
-          ':root': variablesObject.dark,
-        },
-      },
-    } as any).sheet.toString();
-
     writer = createWriter({
       delay: 10,
       output: pluginOptions.output || DEFAULT_OPTIONS.output,
@@ -64,22 +52,37 @@ function createCollector() {
   }
 
   async function write() {
-    const mergedCss = Array.from(cache.entries()).reduce(
-      (acc, [, { globalStyles, styles }]) => {
-        return {
-          globalStyles: deepMerge(acc.globalStyles, globalStyles),
-          styles: deepMerge(acc.styles, styles),
-        };
-      },
-      { globalStyles: {}, styles: {} },
-    );
+    function onWrite() {
+      const variablesObject = morfeo.variables || { light: {}, dark: {} };
 
-    const css = [
-      ...Object.values(mergedCss.globalStyles),
-      ...Object.values(mergedCss.styles),
-    ].join('\n');
+      const variables = getStyles({
+        '@global': {
+          ':root': variablesObject.light,
+          [morfeo.theme.resolveMultiThemeValue('dark')]: {
+            ':root': variablesObject.dark,
+          },
+        },
+      } as any).sheet.toString();
 
-    return writer(`${variables}${css}`);
+      const mergedCss = Array.from(cache.entries()).reduce(
+        (acc, [, { globalStyles, styles }]) => {
+          return {
+            globalStyles: deepMerge(acc.globalStyles, globalStyles),
+            styles: deepMerge(acc.styles, styles),
+          };
+        },
+        { globalStyles: {}, styles: {} },
+      );
+
+      const css = [
+        ...Object.values(mergedCss.globalStyles),
+        ...Object.values(mergedCss.styles),
+      ].join('\n');
+
+      return `${variables}\n${css}`;
+    }
+
+    return writer(onWrite);
   }
 
   async function extract(fileName: string): Promise<MorfeoBabelResult> {

@@ -36,14 +36,14 @@ export function createWriter({
     return fs.promises.writeFile(path, content);
   }
 
-  function writer(content: string) {
+  function writer(onWrite: () => string) {
     if (timeout) {
       clearTimeout(timeout);
     }
 
     return new Promise(resolve => {
       timeout = setTimeout(() => {
-        safeWrite(output, content).then(resolve);
+        safeWrite(output, onWrite()).then(resolve);
       }, delay);
     });
   }
