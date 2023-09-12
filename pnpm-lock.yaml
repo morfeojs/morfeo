@@ -449,16 +449,6 @@ importers:
 
   packages/spec: {}
 
-  packages/svelte:
-    dependencies:
-      '@morfeo/jss':
-        specifier: workspace:*
-        version: link:../jss
-    devDependencies:
-      '@morfeo/web':
-        specifier: workspace:*
-        version: link:../web
-
   packages/utils: {}
 
   packages/web:
