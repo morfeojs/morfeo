@@ -1,4 +1,4 @@
-import { Themes, ThemeName, ThemeKey } from '@morfeo/react';
+import { ThemeKey, Theme } from '@morfeo/react';
 
 export enum ActionType {
   SET = 'morfeo/set',
@@ -7,9 +7,8 @@ export enum ActionType {
 
 export type MorfeoDevToolAction = {
   type: ActionType;
-  themes: Themes;
+  theme: Theme;
   fonts?: string;
-  current: ThemeName;
 };
 
 export enum SliceStatus {

@@ -27,7 +27,7 @@ export const propertiesMap = {
   lineHeights: 'lineHeight',
 };
 
-type FontSlice = typeof fontSlices[number];
+type FontSlice = (typeof fontSlices)[number];
 
 type Props = {
   main?: FontSlice;
@@ -45,12 +45,12 @@ export const Detail: React.FC<Props> = ({ main = 'fonts' }) => {
   );
   const { state = {} as RouteState } = route;
   const { detailKey } = state;
-  const themeFonts = useThemeSlice('fonts')
+  const themeFonts = useThemeSlice('fonts');
 
   const firstFont = useMemo(() => {
-    const fontArray = Object.keys(themeFonts || {})
-    return fontArray[0] as Font
-  }, [themeFonts])
+    const fontArray = Object.keys(themeFonts || {});
+    return fontArray[0] as Font;
+  }, [themeFonts]);
 
   const filteredFontSlices = useMemo(
     () => fontSlices.filter(slice => slice !== main),
@@ -60,15 +60,15 @@ export const Detail: React.FC<Props> = ({ main = 'fonts' }) => {
     [propertiesMap[main]]: detailKey,
     ...filteredFontSlices.reduce((acc, curr) => {
       if (filtersState[curr]) {
-        return { 
-          ...acc, 
+        return {
+          ...acc,
           [propertiesMap[curr]]: filtersState[curr],
         };
       }
 
       return acc;
     }, {}),
-    ...firstFont && main !== 'fonts' && { fontFamily: firstFont as Font }
+    ...(firstFont && main !== 'fonts' && { fontFamily: firstFont as Font }),
   };
   const fontStyle = useStyle(style);
 
@@ -86,7 +86,7 @@ export const Detail: React.FC<Props> = ({ main = 'fonts' }) => {
     () =>
       filteredFontSlices.map(slice => {
         const title = capitalCase(noCase(slice));
-        const values = morfeo.getTheme()[slice];
+        const values = morfeo.theme.getSlice(slice);
         const options = Object.keys(values || {}).map(option => ({
           label: capitalCase(noCase(option)),
           value: option,
