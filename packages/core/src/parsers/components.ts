@@ -4,14 +4,14 @@ export function components({
   value,
   style,
   theme,
-  instance,
+  parsers,
 }: ParserParams<'componentName'>) {
   const { variant, state } = style || {};
   if (!value) {
     return {};
   }
   const componentStyle = theme.component(value, variant, state).getStyle();
-  return instance.resolve(componentStyle);
+  return parsers.resolve(componentStyle);
 }
 
 export const componentsParses = {

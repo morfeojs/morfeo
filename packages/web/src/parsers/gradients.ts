@@ -1,25 +1,26 @@
 import {
-  morfeo,
+  Parser,
   Gradient,
+  ThemeHandler,
   ParserParams,
   GradientConfig,
   ParsersContext,
   GradientProperty,
-  Parser,
 } from '@morfeo/core';
 
 function getGradientPercentages({
   start = 0,
   end = 100,
   colors,
-}: GradientConfig) {
+  theme,
+}: GradientConfig & { theme: ThemeHandler }) {
   const { length } = colors;
   const diff = end - start;
   const part = diff / (length - 1 > 0 ? length - 1 : 1);
   let percentage = 0;
 
   return colors.reduce((prev, colorKey) => {
-    const color = morfeo.theme.getValue('colors', colorKey) || colorKey;
+    const color = theme.getValue('colors', colorKey) || colorKey;
     const current = `${color} ${start + percentage}%`;
     percentage += part;
     return prev ? `${prev}, ${current}` : current;
@@ -34,11 +35,11 @@ function getGradientProperty({ kind }: GradientConfig) {
   return 'linear-gradient';
 }
 
-function getGradientBackground(value: Gradient) {
-  const config = morfeo.theme.getValue('gradients', value);
+function getGradientBackground(value: Gradient, theme: ThemeHandler) {
+  const config = theme.getValue('gradients', value);
   const { angle = 180, kind } = config;
   const property = getGradientProperty(config);
-  const percentages = getGradientPercentages(config);
+  const percentages = getGradientPercentages({ ...config, theme });
   const gradientAngle = kind === 'radial' ? 'circle' : `${angle}deg`;
 
   return `${property}(${gradientAngle}, ${percentages})`;
@@ -46,7 +47,7 @@ function getGradientBackground(value: Gradient) {
 
 function guard(callback: Parser<GradientProperty>) {
   return function (params: ParserParams<GradientProperty>) {
-    const config = morfeo.theme.getValue('gradients', params.value as Gradient);
+    const config = params.theme.getValue('gradients', params.value as Gradient);
     if (!config) {
       return { background: params.value };
     }
@@ -55,8 +56,8 @@ function guard(callback: Parser<GradientProperty>) {
   };
 }
 
-function gradient({ value }: ParserParams<GradientProperty>) {
-  const bg = getGradientBackground(value as Gradient);
+function gradient({ value, theme }: ParserParams<GradientProperty>) {
+  const bg = getGradientBackground(value as Gradient, theme);
   return {
     background: bg,
   };

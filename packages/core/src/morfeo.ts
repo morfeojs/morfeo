@@ -5,10 +5,14 @@ function createMorfeo() {
   const theme = createTheme();
   const parsers = createParsers(theme);
 
-  return {
+  const instance = {
     theme,
     parsers,
   };
+
+  globalThis.__MORFEO_INSTANCE = instance;
+
+  return instance;
 }
 
 type MorfeoInstance = ReturnType<typeof createMorfeo>;
@@ -32,4 +36,4 @@ export interface Morfeo extends MorfeoInstance {}
  *
  * const currentTheme = morfeo.theme.get();
  */
-export const morfeo: Morfeo = createMorfeo();
+export const morfeo: Morfeo = globalThis.__MORFEO_INSTANCE || createMorfeo();

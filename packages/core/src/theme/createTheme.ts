@@ -89,7 +89,7 @@ export function createTheme() {
     return setMediaQuery(breakpoint, mediaQuery);
   }
 
-  function resolveMultiThemeValue<T>(mode: string) {
+  function resolveMultiThemeValue(mode: ThemeMode) {
     return `@media (prefers-color-scheme: ${mode})`;
   }
 

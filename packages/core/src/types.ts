@@ -10,12 +10,11 @@ export interface ParserParams<P extends keyof Style> {
   property: P;
   style?: Style;
   theme: ThemeHandler;
-  instance: {
+  parsers: {
     resolve: (style: Style) => ResolvedStyle;
   };
 }
 
-// @TODO: type the return value based on the property
 export type Parser<P extends ParserProperty = ParserProperty> = (
   params: ParserParams<P>,
 ) => Record<string, any>;

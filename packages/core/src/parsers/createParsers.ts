@@ -6,7 +6,13 @@ import {
   allProperties,
 } from '@morfeo/spec';
 import { deepMerge } from '@morfeo/utils';
-import { Parser, AllParsers, ParserParams, ResolvedStyle } from '../types';
+import {
+  Parser,
+  AllParsers,
+  ParserParams,
+  ResolvedStyle,
+  ThemeMode,
+} from '../types';
 import { baseParser } from './baseParser';
 import { sizeParsers } from './sizes';
 import { radiiParsers } from './radii';
@@ -49,7 +55,7 @@ const INITIAL_PARSERS = {
 
 type PropertyResolverParams<P extends Property> = Omit<
   ParserParams<P>,
-  'instance' | 'theme'
+  'parsers' | 'theme'
 >;
 
 export function createParsers(themeInstance: ThemeHandler) {
@@ -135,7 +141,7 @@ export function createParsers(themeInstance: ThemeHandler) {
         },
       });
 
-      const mediaQuery = theme.resolveMultiThemeValue(mode);
+      const mediaQuery = theme.resolveMultiThemeValue(mode as ThemeMode);
 
       return {
         ...acc,
@@ -180,7 +186,7 @@ export function createParsers(themeInstance: ThemeHandler) {
         property,
         value,
         style,
-        instance,
+        parsers: instance,
         theme,
       });
     }
