@@ -1,5 +1,4 @@
-import { deepMerge } from '@morfeo/utils';
-import { Gradient, defaultTheme, morfeo } from '../src';
+import { Gradient, morfeo } from '../src';
 
 const THEME = {
   colors: {

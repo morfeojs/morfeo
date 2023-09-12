@@ -1,4 +1,3 @@
-import { morfeo } from '../src';
 import { extractCssVariables } from '../src/utils/extractCssVariables';
 
 describe('createTheme', () => {
