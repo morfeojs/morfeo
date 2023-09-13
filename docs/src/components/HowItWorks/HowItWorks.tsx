@@ -68,8 +68,8 @@ const stepContentList = [
     snippet: <Code />,
   },
   {
-    title: 'Morfeo will optimize the output',
-    body: 'Your code will be transformed at build time to remove all the unnecessary runtime overhead.',
+    title: 'Morfeo will do the rest',
+    body: 'The needed CSS will be extracted at build-time without you even notice it.',
     snippet: <CSS />,
   },
 ];

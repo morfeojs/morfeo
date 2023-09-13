@@ -2,7 +2,7 @@ import { Steps } from 'nextra-theme-docs';
 
 # Welcome 👋
 
-In brief, Morfeo is a set of tools to build your **Design System** and **Style** your application, with nearly zero runtime thanks to its **Compiler**.
+In brief, Morfeo is a set of tools to build your **Design System** and **Style** your application, with nearly zero runtime.
 
 ## Understand Morfeo
 
@@ -18,9 +18,10 @@ That makes you build your own theme (**Design Language**).
 
 To _safely_ style your application by using your own theme.
 
-### 🔄 Compiler
+### 🔍 Static Analysis
 
-That transforms your styles into simple, optimized, plain CSS. This way you don't have to pay any price for the nice **Developer Experience** Morfeo is providing.
+Morfeo will look at your code at bundle-time to collect all the `css-in-ts` you've written and then extract
+only the css you need.
 
 </Steps>
 
@@ -44,21 +45,13 @@ function Button() {
 }
 ```
 
-### Morfeo will optimize your code at **build time**
+### Morfeo will figure out the right classes
 
 ```tsx {1-5} /classes('button')/ showLineNumbers filename="Button.tsx"
-const classes = function (...classNames) {
-  // Interested on the internal implementation?
-  // Check our GitHub!
-  return 'bg-primary';
-};
-
 function Button() {
-  return <button className={classes('button')}>Hello, world</button>;
+  return <button className="bg-primary">Hello, world</button>;
 }
 ```
-
-> The process that happens at build time is properly described [here](./todo) in this article.
 
 ### And generate only the needed CSS
 
@@ -67,5 +60,7 @@ function Button() {
   background-color: #0066ff;
 }
 ```
+
+> The process that happens at build time is properly described [here](./todo) in this article.
 
 </Steps>
