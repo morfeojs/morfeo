@@ -50,13 +50,14 @@ function createCollector() {
           new Set([
             ...DEFAULT_BABEL_PRESETS,
             ...(options.babel?.presets || []),
-            ...(pluginOptions.babel?.presets || []),
+            ...(pluginOptions?.babel?.presets || []),
           ]),
         ),
         plugins: Array.from(
           new Set([
             ...DEFAULT_BABEL_PLUGINS,
-            ...(pluginOptions.babel?.plugins || []),
+            ...(options.babel?.plugins || []),
+            ...(pluginOptions?.babel?.plugins || []),
             [morfeoBabelPlugin, {}],
           ]),
         ),
