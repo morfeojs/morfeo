@@ -1,6 +1,6 @@
 import type { ObjectExpression } from '@babel/types';
 import { escapeString } from '@morfeo/utils';
-import { Property, parsers, theme } from '@morfeo/web';
+import { Property, morfeo } from '@morfeo/web';
 import { toJS } from './toJS';
 
 export function getStyleObject(objectNode: ObjectExpression) {
@@ -8,10 +8,10 @@ export function getStyleObject(objectNode: ObjectExpression) {
   const styleObject = toJS(objectNode, {
     resolveFunction({ path, property }) {
       const parts = path.split('.');
-      const isResponsive = theme.isResponsive({ [property]: '' });
+      const isResponsive = morfeo.theme.isResponsive({ [property]: '' });
       // In case the values is responsive, the right property is the parent one.
       const propertyToCheck = isResponsive ? parts[parts.length - 2] : property;
-      const isThemeable = parsers.isThemeableProperty(propertyToCheck);
+      const isThemeable = morfeo.parsers.isThemeableProperty(propertyToCheck);
 
       if (isThemeable) {
         themableStyles.push({ property: property as Property, path: parts });

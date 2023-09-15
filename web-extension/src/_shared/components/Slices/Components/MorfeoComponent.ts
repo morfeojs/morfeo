@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { component, Component, getStyles } from '@morfeo/react';
+import { morfeo, Component, getStyles } from '@morfeo/react';
 import clsx from 'clsx';
 
 const SELF_CLOSING_TAGS = [
@@ -38,7 +38,7 @@ export const MorfeoComponent: React.FC<Props> = ({
     tag = 'div',
     props: componentProps = {},
     meta,
-  } = component(name, variant).get() || {};
+  } = morfeo.theme.component(name, variant).get() || {};
   const { devtoolConfig } = meta || {};
   const { classes } = getStyles({
     [name]: {

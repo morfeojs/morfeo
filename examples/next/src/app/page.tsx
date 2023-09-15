@@ -3,6 +3,8 @@ import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { Main } from '@/components/Main';
 import { Link } from '@/components/Link';
+import '../styles/morfeo.css';
+import '../../morfeo.theme';
 
 export const metadata: Metadata = {
   title: 'Morfeo | NextJS',

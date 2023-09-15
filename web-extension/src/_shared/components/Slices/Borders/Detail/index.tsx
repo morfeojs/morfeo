@@ -43,7 +43,7 @@ export const Detail: React.FC<Props> = ({ mainSlice }) => {
   const dropdowns = useMemo(() => {
     return dropDownsMap[mainSlice].map(slice => {
       const title = capitalCase(noCase(slice));
-      const values = morfeo.getTheme()[slice];
+      const values = morfeo.theme.getSlice(slice);
       const options = Object.keys(values || {}).map(option => ({
         label: capitalCase(noCase(option)),
         value: option,

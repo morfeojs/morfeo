@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo} from 'react';
-import { Color, Component, component, morfeo } from '@morfeo/react';
+import React, { useCallback, useMemo } from 'react';
+import { Color, Component, morfeo } from '@morfeo/react';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
@@ -16,7 +16,7 @@ type Props = {
 };
 
 const Info: React.FC<Props> = ({ name, variant }) => {
-  const variants = component(name, variant).getVariants();
+  const variants = morfeo.theme.component(name, variant).getVariants();
   const numberOfVariants = Object.keys(variants || {}).length;
 
   return (
@@ -41,9 +41,7 @@ const Info: React.FC<Props> = ({ name, variant }) => {
 
 export const Preview: React.FC<Props> = ({ name, variant }) => {
   const { navigate } = useRouter();
-  const { meta } =
-  component(name, variant).get() || {};
-  const currentThemeName = morfeo.getCurrentTheme();
+  const { meta } = morfeo.theme.component(name, variant).get() || {};
   const { devtoolConfig } = meta || {};
   const onClick = useCallback(() => {
     navigate(RouteName.COMPONENT, {
@@ -55,10 +53,10 @@ export const Preview: React.FC<Props> = ({ name, variant }) => {
 
   const computedBackground = useMemo(() => {
     if (typeof devtoolConfig?.background === 'object') {
-      return devtoolConfig?.background[currentThemeName]
+      return devtoolConfig?.background['light'];
     }
-    return (devtoolConfig?.background as Color) || '#fff' as Color
-  }, [currentThemeName, devtoolConfig?.background])
+    return (devtoolConfig?.background as Color) || ('#fff' as Color);
+  }, [devtoolConfig?.background]);
 
   return (
     <Card

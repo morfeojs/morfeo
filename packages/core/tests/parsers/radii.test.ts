@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/spec';
-import { parsers, theme } from '../../src';
+import { morfeo } from '../../src';
 
 const THEME: Theme = {
   radii: {
@@ -10,7 +10,7 @@ const THEME: Theme = {
 
 describe('radii', () => {
   beforeAll(() => {
-    theme.set(THEME);
+    morfeo.theme.set(THEME);
   });
 
   const borderProperties = {
@@ -27,7 +27,7 @@ describe('radii', () => {
 
   Object.keys(borderProperties).forEach(property => {
     test(`should resolve the value of the property ${property} from the radii slice`, () => {
-      const result = parsers.resolve({
+      const result = morfeo.parsers.resolve({
         [property]: 'm',
       });
       expect(result).toEqual({

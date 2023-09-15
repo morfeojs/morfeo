@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/css';
+import { morfeo } from '@morfeo/web';
 import { FooterLinkBlock } from './types';
 
 type Props = {

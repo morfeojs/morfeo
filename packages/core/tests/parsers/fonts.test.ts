@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/spec';
-import { parsers, theme } from '../../src';
+import { morfeo } from '../../src';
 
 const THEME: Theme = {
   fontSizes: {
@@ -20,16 +20,16 @@ const THEME: Theme = {
 } as any;
 
 beforeAll(() => {
-  theme.set(THEME);
+  morfeo.theme.set(THEME);
 });
 
 afterAll(() => {
-  theme.reset();
+  morfeo.theme.reset();
 });
 
 describe('fonts', () => {
   test('should generate a style with fontFamily property', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       fontFamily: 'regular' as any,
     });
     expect(result).toEqual({
@@ -40,7 +40,7 @@ describe('fonts', () => {
 
 describe('fontSizes', () => {
   test('should generate a style with fontSize property', () => {
-    const result = parsers.resolve({ fontSize: 'l' });
+    const result = morfeo.parsers.resolve({ fontSize: 'l' });
     expect(result).toEqual({
       fontSize: '30px',
     });
@@ -49,7 +49,7 @@ describe('fontSizes', () => {
 
 describe('fontWeights', () => {
   test('should generate a style with fontWeight property', () => {
-    const result = parsers.resolve({ fontWeight: 'bold' });
+    const result = morfeo.parsers.resolve({ fontWeight: 'bold' });
     expect(result).toEqual({
       fontWeight: '900',
     });
@@ -58,7 +58,7 @@ describe('fontWeights', () => {
 
 describe('letterSpacings', () => {
   test('should generate a style with letterSpacing property', () => {
-    const result = parsers.resolve({ letterSpacing: 'body' });
+    const result = morfeo.parsers.resolve({ letterSpacing: 'body' });
     expect(result).toEqual({
       letterSpacing: '10px',
     });
@@ -67,7 +67,7 @@ describe('letterSpacings', () => {
 
 describe('lineHeights', () => {
   test('should generate a style with lineHeight property', () => {
-    const result = parsers.resolve({ lineHeight: 'body' });
+    const result = morfeo.parsers.resolve({ lineHeight: 'body' });
     expect(result).toEqual({
       lineHeight: '40px',
     });

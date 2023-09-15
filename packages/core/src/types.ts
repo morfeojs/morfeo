@@ -1,4 +1,5 @@
-import { AllProperties, Property, Style, Theme } from '@morfeo/spec';
+import { AllProperties, Property, Style } from '@morfeo/spec';
+import { ThemeHandler } from './theme/createTheme';
 
 export type ParserProperty = keyof AllProperties;
 
@@ -8,9 +9,12 @@ export interface ParserParams<P extends keyof Style> {
   value: Style[P];
   property: P;
   style?: Style;
+  theme: ThemeHandler;
+  parsers: {
+    resolve: (style: Style) => ResolvedStyle;
+  };
 }
 
-// @TODO: type the return value based on the property
 export type Parser<P extends ParserProperty = ParserProperty> = (
   params: ParserParams<P>,
 ) => Record<string, any>;
@@ -30,8 +34,4 @@ export type ParsersContext = {
   [P in Property]: Parser<P>;
 };
 
-export interface Themes {
-  default?: Theme;
-}
-
-export type ThemeName = keyof Themes;
+export type ThemeMode = 'light' | 'dark';

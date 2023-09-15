@@ -7,15 +7,12 @@
 '@morfeo/example-next': patch
 '@morfeo/example-react': patch
 '@morfeo/core': patch
-'@morfeo/css': patch
 '@morfeo/dev-tools': patch
-'@morfeo/fonts': patch
 '@morfeo/hooks': patch
 '@morfeo/native': patch
 '@morfeo/preset-default': patch
 '@morfeo/react': patch
 '@morfeo/spec': patch
-'@morfeo/svelte': patch
 '@morfeo/web': patch
 '@morfeo/app-web-extension': patch
 ---

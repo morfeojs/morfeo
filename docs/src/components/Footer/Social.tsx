@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/css';
+import { morfeo } from '@morfeo/web';
 
 const classes = morfeo.css({
   container: {

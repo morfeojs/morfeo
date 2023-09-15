@@ -1,14 +1,14 @@
-import { morfeo, theme as themeHandler } from '@morfeo/core';
+import { morfeo } from '@morfeo/core';
 import { useSyncExternalStore } from 'react';
 
-function subscribe(...callback: Parameters<typeof themeHandler.subscribe>) {
-  const uid = themeHandler.subscribe(...callback);
-  return () => themeHandler.cleanUp(uid);
+function subscribe(...callback: Parameters<typeof morfeo.theme.subscribe>) {
+  const uid = morfeo.theme.subscribe(...callback);
+  return () => morfeo.theme.cleanUp(uid);
 }
 
 /**
  * It subscribes the component/hook where is used to theme changes
  */
 export function useSyncMorfeo() {
-  return useSyncExternalStore(subscribe, morfeo.getTheme, morfeo.getTheme);
+  return useSyncExternalStore(subscribe, morfeo.theme.get, morfeo.theme.get);
 }

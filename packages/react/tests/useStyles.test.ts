@@ -8,16 +8,14 @@ const theme = {
   },
 } as any;
 
-morfeo.setTheme('default', theme);
-
 beforeEach(() => {
-  morfeo.setCurrentTheme('default');
+  morfeo.theme.set(theme);
 });
 
 test('should generate the correct style with the override of `useStyle`', async () => {
   const { result } = renderHook(() => useStyle({ bg: 'primary' }));
 
   expect(result.current.backgroundColor).toBe(
-    morfeo.getTheme()['colors']['primary'],
+    morfeo.theme.getValue('colors', 'primary'),
   );
 });

@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/spec';
-import { parsers, theme } from '../../src';
+import { morfeo } from '../../src';
 
 const THEME: Theme = {
   sizes: {
@@ -11,14 +11,14 @@ const THEME: Theme = {
 
 describe('sizes', () => {
   beforeAll(() => {
-    theme.set(THEME);
+    morfeo.theme.set(THEME);
   });
   afterAll(() => {
-    theme.reset();
+    morfeo.theme.reset();
   });
 
   test('should resolve the value of the property `size`', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       size: 'm',
       minSize: 's',
       maxSize: 'l',
@@ -33,7 +33,7 @@ describe('sizes', () => {
     });
   });
   test('should resolve the value of the property "h" and "w"', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       h: 'm',
       w: 'l',
     });
@@ -43,7 +43,7 @@ describe('sizes', () => {
     });
   });
   test('should resolve the value of the property "minH" and "maxH"', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       minH: 'm',
       maxH: 'l',
     });
@@ -53,7 +53,7 @@ describe('sizes', () => {
     });
   });
   test('should resolve the value of the property "minW" and "maxW"', () => {
-    const result = parsers.resolve({
+    const result = morfeo.parsers.resolve({
       minW: 'm',
       maxW: 'l',
     });

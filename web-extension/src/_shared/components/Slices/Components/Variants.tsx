@@ -1,4 +1,4 @@
-import { Component, component } from '@morfeo/react';
+import { Component, morfeo } from '@morfeo/react';
 import { Grid, Item } from '../../Grid';
 import { Preview } from './Preview';
 
@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const Variants: React.FC<Props> = ({ componentName }) => {
-  const variants = component(componentName).getVariants();
+  const variants = morfeo.theme.component(componentName).getVariants();
   const variantKeys = Object.keys(variants || {});
 
   const filtered = variantKeys.filter(

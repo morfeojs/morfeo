@@ -1,6 +1,3 @@
-const { withMorfeo } = require('@morfeo/next');
-const { initPreset } = require('@morfeo/preset-default');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -8,6 +5,4 @@ const nextConfig = {
   },
 };
 
-initPreset();
-
-module.exports = withMorfeo(nextConfig);
+module.exports = nextConfig;

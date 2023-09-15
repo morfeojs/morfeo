@@ -1,4 +1,4 @@
-import { Color, Component, component, morfeo } from '@morfeo/react';
+import { Color, Component, morfeo } from '@morfeo/react';
 import clsx from 'clsx';
 import { useMemo, useState, useCallback } from 'react';
 import { useRouter } from '../../../../hooks';
@@ -12,34 +12,36 @@ export const Detail = () => {
   const { state } = route;
   const { detailKey: componentName = '', componentVariant } = state || {};
   const { meta } =
-    component(componentName as Component, componentVariant).get() || {};
+    morfeo.theme
+      .component(componentName as Component, componentVariant)
+      .get() || {};
   const { devtoolConfig } = meta || {};
   const [defaultStyleActive, setDefaultStyleActive] = useState(true);
 
-  const currentThemeName = morfeo.getCurrentTheme();
-
   const computedBackground = useMemo(() => {
     if (typeof devtoolConfig?.background === 'object') {
-      return devtoolConfig?.background[currentThemeName];
+      return devtoolConfig?.background['light'];
     }
     return (devtoolConfig?.background as Color) || ('#fff' as Color);
-  }, [currentThemeName, devtoolConfig?.background]);
+  }, [devtoolConfig?.background]);
 
   const onDefaultStyleCheckboxChange = useCallback(() => {
     setDefaultStyleActive(state => !state);
-  }, [])
+  }, []);
 
   return (
     <div className={styles.container}>
       {devtoolConfig?.style && (
         <div className={styles.defaultStyleAlertContainer}>
-          <input type="checkbox" checked={defaultStyleActive} onChange={onDefaultStyleCheckboxChange} />
+          <input
+            type="checkbox"
+            checked={defaultStyleActive}
+            onChange={onDefaultStyleCheckboxChange}
+          />
           <div className="ml-2xs">
             <Icon name="warning" />
           </div>
-          <h4 className="morfeo-typography-h4">
-            Web extension default style
-          </h4>
+          <h4 className="morfeo-typography-h4">Web extension default style</h4>
           <div>
             <Icon name="warning" />
           </div>

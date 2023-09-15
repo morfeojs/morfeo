@@ -1,5 +1,4 @@
-import { baseParser } from '../../src/parsers/baseParser';
-import { theme } from '../../src/theme';
+import { morfeo, baseParser } from '../../src';
 
 const THEME = {
   colors: {
@@ -9,10 +8,10 @@ const THEME = {
 
 describe('baseParser', () => {
   beforeAll(() => {
-    theme.set(THEME);
+    morfeo.theme.set(THEME);
   });
   afterAll(() => {
-    theme.reset();
+    morfeo.theme.reset();
   });
 
   test('should resolve the value from the theme slice', () => {
@@ -20,6 +19,8 @@ describe('baseParser', () => {
       property: 'color',
       scale: 'colors',
       value: 'primary',
+      theme: morfeo.theme,
+      parsers: morfeo.parsers,
     });
 
     expect(result).toEqual({ color: 'black' });
@@ -30,6 +31,8 @@ describe('baseParser', () => {
       property: 'padding',
       scale: 'spacings',
       value: '10px' as any,
+      theme: morfeo.theme,
+      parsers: morfeo.parsers,
     });
 
     expect(result).toEqual({ padding: '10px' });
@@ -41,6 +44,8 @@ describe('baseParser', () => {
       scale: 'colors',
       value: 10 as any,
       failOnNotFound: true,
+      theme: morfeo.theme,
+      parsers: morfeo.parsers,
     });
 
     expect(result).toEqual({});

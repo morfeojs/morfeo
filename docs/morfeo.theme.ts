@@ -1,8 +1,8 @@
-import { darkTheme } from '@morfeo/preset-default';
+import { theme as defaultTheme } from '@morfeo/preset-default';
 import { deepMerge } from '@morfeo/utils';
 import { morfeo } from '@morfeo/web';
 
-const theme = deepMerge(darkTheme, {
+const theme = deepMerge(defaultTheme, {
   fontSizes: {
     '2xs': '.5rem',
     xs: '.75rem',
@@ -14,6 +14,12 @@ const theme = deepMerge(darkTheme, {
     '3xl': '3rem',
     '4xl': '5rem',
     none: '0',
+  },
+  colors: {
+    background: {
+      light: defaultTheme.colors.background,
+      dark: defaultTheme.colors.background,
+    },
   },
   gradients: {
     primary: {
@@ -110,8 +116,8 @@ const theme = deepMerge(darkTheme, {
       },
     },
   },
-} as any);
+});
 
-morfeo.setTheme('default', theme);
+morfeo.theme.set(theme);
 
 export default theme;

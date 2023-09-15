@@ -6,8 +6,13 @@ import {
   allProperties,
 } from '@morfeo/spec';
 import { deepMerge } from '@morfeo/utils';
-import { Parser, AllParsers, ParserParams, ResolvedStyle } from '../types';
-import { theme } from '../theme';
+import {
+  Parser,
+  AllParsers,
+  ParserParams,
+  ResolvedStyle,
+  ThemeMode,
+} from '../types';
 import { baseParser } from './baseParser';
 import { sizeParsers } from './sizes';
 import { radiiParsers } from './radii';
@@ -16,11 +21,9 @@ import { shadowsParsers } from './shadows';
 import { bordersParsers } from './borders';
 import { spacingsParsers } from './spacings';
 import { componentsParses } from './components';
-import { colorSchemasParsers } from './colorSchemasParsers';
+import { ThemeHandler } from '../theme/createTheme';
 
 const allPropertiesKeys = Object.keys(allProperties) as (keyof AllProperties)[];
-
-const uncachebleProps = ['colorSchema'];
 
 const DEFAULT_PARSERS = allPropertiesKeys.reduce(
   (acc, key) => ({
@@ -43,7 +46,6 @@ const ADDITIONAL_PARSERS = {
   ...bordersParsers,
   ...spacingsParsers,
   ...componentsParses,
-  ...colorSchemasParsers,
 };
 
 const INITIAL_PARSERS = {
@@ -51,9 +53,16 @@ const INITIAL_PARSERS = {
   ...ADDITIONAL_PARSERS,
 };
 
-export function createParsers() {
+type PropertyResolverParams<P extends Property> = Omit<
+  ParserParams<P>,
+  'parsers' | 'theme'
+>;
+
+export function createParsers(themeInstance: ThemeHandler) {
   const context = new Map(Object.entries(INITIAL_PARSERS));
   let cache: any = {};
+  let instance: any;
+  let theme = themeInstance;
 
   function get() {
     return Object.fromEntries(context.entries());
@@ -85,7 +94,7 @@ export function createParsers() {
     property,
     value,
     style,
-  }: ParserParams<typeof property>) {
+  }: PropertyResolverParams<typeof property>) {
     const keys = Object.keys(value);
     return keys.reduce((acc, breakpoint) => {
       const currentValue = resolveProperty({
@@ -116,12 +125,45 @@ export function createParsers() {
     }, {});
   }
 
+  function resolveMultiThemeProperty({
+    property,
+    value,
+    style,
+  }: PropertyResolverParams<typeof property>) {
+    const keys = Object.keys(value);
+    return keys.reduce((acc, mode) => {
+      const currentValue = resolveProperty({
+        property,
+        value: value[mode],
+        style: {
+          ...style,
+          [property]: value[mode],
+        },
+      });
+
+      const mediaQuery = theme.resolveMultiThemeValue(mode as ThemeMode);
+
+      return {
+        ...acc,
+        [mediaQuery]: currentValue,
+      };
+    }, {});
+  }
+
   function resolveProperty({
     property,
     value,
     style,
-  }: ParserParams<typeof property>) {
+  }: PropertyResolverParams<typeof property>) {
     const parser = context.get(property) as Parser<typeof property>;
+
+    if (theme.isMultiThemeValue(value)) {
+      return resolveMultiThemeProperty({
+        property,
+        value,
+        style,
+      });
+    }
 
     if (theme.isResponsive(value)) {
       return resolveResponsiveProperty({
@@ -144,6 +186,8 @@ export function createParsers() {
         property,
         value,
         style,
+        parsers: instance,
+        theme,
       });
     }
 
@@ -174,14 +218,7 @@ export function createParsers() {
         style,
       };
 
-      const hasStyleUncachebleProps = uncachebleProps.some(prop =>
-        properties.includes(prop),
-      );
-
-      if (
-        (typeof value === 'string' || typeof value === 'number') &&
-        !hasStyleUncachebleProps
-      ) {
+      if (typeof value === 'string' || typeof value === 'number') {
         if (cache[property] === undefined) {
           cache[property] = {};
         }
@@ -218,7 +255,7 @@ export function createParsers() {
     isThemeableProperty,
   };
 
-  globalThis.__MORFEO_PARSERS = parsers;
+  instance = parsers;
 
   return parsers;
 }

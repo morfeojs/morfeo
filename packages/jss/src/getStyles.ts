@@ -1,4 +1,4 @@
-import { Style, theme } from '@morfeo/core';
+import { Style, morfeo } from '@morfeo/core';
 import { deepMerge } from '@morfeo/utils';
 import { StyleSheetFactoryOptions } from 'jss';
 import jss from './initJSS';
@@ -51,11 +51,11 @@ export function getStyles<K extends string>(
     classes = sheet.classes;
     return classes;
   };
-  const uid = theme.subscribe(onThemeChange);
+  const uid = morfeo.theme.subscribe(onThemeChange);
 
   const destroy = () => {
     sheet.detach();
-    theme.cleanUp(uid);
+    morfeo.theme.cleanUp(uid);
   };
 
   return { classes, sheet, jss, destroy, update };

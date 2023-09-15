@@ -1,9 +1,8 @@
 import type { ReactHTML } from 'react';
 import React from 'react';
 import type { Component, State, Style, Variant } from '@morfeo/web';
-import { combine, component as morfeoComponent, parsers } from '@morfeo/web';
+import { combine, morfeo, expandStyles } from '@morfeo/web';
 import { escapeString, generateClassName } from '@morfeo/utils';
-import { expandStyles } from '@morfeo/css';
 
 type NeededProps = {
   className?: string;
@@ -51,7 +50,10 @@ function splitStyleAndInlineStyle(
     (acc, curr) => {
       const value = params[curr];
 
-      if (parsers.isThemeableProperty(curr) && typeof value === 'function') {
+      if (
+        morfeo.parsers.isThemeableProperty(curr) &&
+        typeof value === 'function'
+      ) {
         return {
           ...acc,
           style: {
@@ -62,7 +64,7 @@ function splitStyleAndInlineStyle(
       }
 
       if (typeof value === 'function') {
-        const resolvedStyle = parsers.resolve({ [curr]: value(props) });
+        const resolvedStyle = morfeo.parsers.resolve({ [curr]: value(props) });
 
         const variable = `--${escapeString(
           [...prefix, curr].filter(Boolean).join('.'),
@@ -112,7 +114,7 @@ function splitStyleAndInlineStyle(
  * the first argument could be a component name or a valid html tag.
  *
  * ```tsx
- * import { morfeo } from '@morfeo/css';
+ * import { morfeo } from '@morfeo/react';
  *
  * const Button = morfeo.component('Button', {
  *   variant: props => props.variant,
@@ -125,7 +127,7 @@ function splitStyleAndInlineStyle(
  * It is also possible to pass an existing component or a valid html tag:
  *
  * ```
- * import { morfeo } from '@morfeo/css';
+ * import { morfeo } from '@morfeo/react';
  * import { RouterLink } from 'routing-library';
  *
  * const Button = morfeo.component('button', {
@@ -139,7 +141,7 @@ function splitStyleAndInlineStyle(
  * ```
  */
 export function component<
-  P extends NeededProps,
+  P extends NeededProps & {},
   C extends Component = Component,
 >(
   componentName: C | keyof ReactHTML | React.FC<P>,
@@ -150,6 +152,7 @@ export function component<
     ref,
   ) {
     const isWrappedComponent = typeof componentName === 'function';
+    const { variant, state, ...rest } = props as any;
 
     const { style, inlineStyle } = splitStyleAndInlineStyle(
       styleWithFunctions,
@@ -158,7 +161,11 @@ export function component<
 
     const componentOptions = isWrappedComponent
       ? undefined
-      : morfeoComponent(componentName as any, style.variant, style.state);
+      : morfeo.theme.component(
+          componentName as any,
+          style.variant,
+          style.state,
+        );
 
     const ComponentTag = isWrappedComponent
       ? componentName
@@ -171,7 +178,7 @@ export function component<
     const componentProps = {
       ref,
       ...componentOptions?.getProps(),
-      ...props,
+      ...rest,
       className: combine(classObject, props.className),
       style: {
         ...props.style,

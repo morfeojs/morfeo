@@ -8,10 +8,13 @@ import morfeoBabelPlugin, {
   type MorfeoBabelPluginOptions,
   type MorfeoBabelResult,
 } from '@morfeo/babel-plugin';
-import { morfeo, type Theme } from '@morfeo/web';
+import { type Theme, morfeo, getStyles } from '@morfeo/web';
 import { deepMerge } from '@morfeo/utils';
 import { createWriter } from './writer';
 import { logger } from './logger';
+
+const DEFAULT_BABEL_PRESETS = ['@babel/preset-env', '@babel/preset-typescript'];
+const DEFAULT_BABEL_PLUGINS = ['@babel/plugin-syntax-jsx'];
 
 export type MorfeoCompilerOptions = MorfeoBabelPluginOptions & {
   babel?: TransformOptions;
@@ -41,9 +44,27 @@ function createCollector() {
     options = {
       ...DEFAULT_OPTIONS,
       ...pluginOptions,
+      babel: {
+        ...pluginOptions.babel,
+        presets: Array.from(
+          new Set([
+            ...DEFAULT_BABEL_PRESETS,
+            ...(options.babel?.presets || []),
+            ...(pluginOptions.babel?.presets || []),
+          ]),
+        ),
+        plugins: Array.from(
+          new Set([
+            ...DEFAULT_BABEL_PLUGINS,
+            ...(options.babel?.plugins || []),
+            ...(pluginOptions.babel?.plugins || []),
+            [morfeoBabelPlugin, {}],
+          ]),
+        ),
+      },
     };
 
-    morfeo.setTheme('default', options.theme);
+    morfeo.theme.set(options.theme);
 
     writer = createWriter({
       delay: 10,
@@ -52,31 +73,44 @@ function createCollector() {
   }
 
   async function write() {
-    const mergedCss = Array.from(cache.entries()).reduce(
-      (acc, [, { globalStyles, styles }]) => {
-        return {
-          globalStyles: deepMerge(acc.globalStyles, globalStyles),
-          styles: deepMerge(acc.styles, styles),
-        };
-      },
-      { globalStyles: {}, styles: {} },
-    );
+    function onWrite() {
+      const { light = {}, dark = {} } = morfeo.theme.getMetadata();
 
-    const css = [
-      ...Object.values(mergedCss.globalStyles),
-      ...Object.values(mergedCss.styles),
-    ].join('\n');
+      const variables = getStyles({
+        '@global': {
+          ':root': light,
+          [morfeo.theme.resolveMultiThemeValue('dark')]: {
+            ':root': dark,
+          },
+        },
+      } as any).sheet.toString();
 
-    return writer(css);
+      const mergedCss = Array.from(cache.entries()).reduce(
+        (acc, [, { globalStyles, styles }]) => {
+          return {
+            globalStyles: deepMerge(acc.globalStyles, globalStyles),
+            styles: deepMerge(acc.styles, styles),
+          };
+        },
+        { globalStyles: {}, styles: {} },
+      );
+
+      const css = [
+        ...Object.values(mergedCss.globalStyles),
+        ...Object.values(mergedCss.styles),
+      ].join('\n');
+
+      return `${variables}\n${css}`;
+    }
+
+    return writer(onWrite);
   }
 
   async function extract(fileName: string): Promise<MorfeoBabelResult> {
     const fileContent = fs.readFileSync(fileName, { encoding: 'utf-8' });
-    const babelPlugins = options.babel?.plugins || [];
 
     const result = await babel.transformAsync(fileContent, {
       ...options.babel,
-      plugins: [...babelPlugins, [morfeoBabelPlugin, {}]],
       sourceFileName: fileName,
       filename: path.basename(fileName),
       sourceMaps: false,

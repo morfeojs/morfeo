@@ -16,7 +16,6 @@ import {
   transitionsMap,
   borderWidthsMap,
   borderStylesMap,
-  colorSchemasMap,
   letterSpacingsMap,
 } from './properties';
 import { createPropertiesMap } from './createPropertiesMap';
@@ -65,10 +64,6 @@ export const transitionsProperties = createPropertiesMap(
   transitionsMap,
   'transitions',
 );
-export const colorSchemasProperties = createPropertiesMap(
-  colorSchemasMap,
-  'colorSchemas',
-);
 
 export const componentsProperties = createPropertiesMap(
   componentsMap,
@@ -93,7 +88,6 @@ export const allPropertiesBySlice = {
   transitions: transitionsMap,
   borderWidths: borderWidthsMap,
   borderStyles: borderStylesMap,
-  colorSchemas: colorSchemasMap,
   letterSpacings: letterSpacingsMap,
 };
 
@@ -115,6 +109,5 @@ export const allProperties = {
   ...transitionsProperties,
   ...borderWidthsProperties,
   ...borderStylesProperties,
-  ...colorSchemasProperties,
   ...letterSpacingProperties,
 };

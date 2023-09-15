@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/css';
+import { morfeo } from '@morfeo/web';
 import { useMediaQuery } from '@/hooks';
 import { DesktopPlayer } from './DesktopChartPlayer';
 import { SmartphoneChartPlayer } from './SmartphoneChartPlayer';

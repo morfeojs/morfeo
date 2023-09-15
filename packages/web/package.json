@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "@morfeo/core": "workspace:*",
-    "@morfeo/fonts": "workspace:*",
     "@morfeo/jss": "workspace:*",
     "@morfeo/utils": "workspace:*"
   },

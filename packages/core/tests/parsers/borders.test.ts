@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/spec';
-import { parsers, theme } from '../../src';
+import { morfeo } from '../../src';
 
 const THEME: Theme = {
   borders: {
@@ -26,30 +26,30 @@ const THEME: Theme = {
 } as any;
 
 beforeAll(() => {
-  theme.set(THEME);
+  morfeo.theme.set(THEME);
 });
 
 afterAll(() => {
-  theme.reset();
+  morfeo.theme.reset();
 });
 
 describe('borders', () => {
   test('should generate a style with border property', () => {
-    const result = parsers.resolve({ border: 'primary' as any });
+    const result = morfeo.parsers.resolve({ border: 'primary' as any });
     expect(result).toEqual({
       border: '3px solid red',
     });
   });
 
   test('should generate a border style without borderStyle', () => {
-    const result = parsers.resolve({ border: 'secondary' } as any);
+    const result = morfeo.parsers.resolve({ border: 'secondary' } as any);
     expect(result).toEqual({
       border: '5px red',
     });
   });
 
   test('should generate a border style from a regular css string', () => {
-    const result = parsers.resolve({ border: '4px dotted blue' } as any);
+    const result = morfeo.parsers.resolve({ border: '4px dotted blue' } as any);
     expect(result).toEqual({
       border: '4px dotted blue',
     });
@@ -58,7 +58,7 @@ describe('borders', () => {
 
 describe('borderStyles', () => {
   test('should generate a style with fontSize property', () => {
-    const result = parsers.resolve({ borderStyle: 'solid' });
+    const result = morfeo.parsers.resolve({ borderStyle: 'solid' });
     expect(result).toEqual({
       borderStyle: 'solid',
     });
@@ -67,7 +67,7 @@ describe('borderStyles', () => {
 
 describe('borderWidths', () => {
   test('should generate a style with fontWeight property', () => {
-    const result = parsers.resolve({ borderWidth: 'm' });
+    const result = morfeo.parsers.resolve({ borderWidth: 'm' });
     expect(result).toEqual({
       borderWidth: '3px',
     });

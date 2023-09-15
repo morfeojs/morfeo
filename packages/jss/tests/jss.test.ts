@@ -1,14 +1,14 @@
-import { theme } from '@morfeo/core';
+import { morfeo } from '@morfeo/core';
 import { getStyles, getStyleSheet } from '../src';
 import { THEME } from './theme';
 
 describe('jss', () => {
   beforeAll(() => {
-    theme.set(THEME);
+    morfeo.theme.set(THEME);
   });
 
   afterAll(() => {
-    theme.reset();
+    morfeo.theme.reset();
   });
 
   test('should generate the sheet', () => {

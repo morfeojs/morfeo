@@ -12,17 +12,12 @@
   },
   "peerDependencies": {
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@babel/preset-react": "7.22.5",
-    "@babel/preset-typescript": "7.18.6"
+    "react-dom": "18.2.0"
   },
   "dependencies": {
     "@morfeo/compiler": "workspace:*",
-    "@morfeo/css": "workspace:*",
     "@morfeo/preset-default": "workspace:*",
-    "@morfeo/spec": "workspace:*",
-    "@morfeo/react": "workspace:*",
-    "@morfeo/web": "workspace:*"
+    "@morfeo/react": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

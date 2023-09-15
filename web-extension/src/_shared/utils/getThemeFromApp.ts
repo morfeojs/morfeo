@@ -1,5 +1,5 @@
 import browser from 'webextension-polyfill';
-import { morfeo, ThemeName } from '@morfeo/react';
+import { morfeo } from '@morfeo/react';
 import { ActionType, MorfeoDevToolAction } from '../types';
 
 function appendFonts({ fonts }: MorfeoDevToolAction) {
@@ -20,13 +20,8 @@ function appendFonts({ fonts }: MorfeoDevToolAction) {
 
 function onMessageReceived(message: MorfeoDevToolAction) {
   if (message && message.type === ActionType.SET) {
-    const { themes, current } = message;
-    const themeNames = Object.keys(themes || {}) as ThemeName[];
-    themeNames.forEach(themeName => {
-      morfeo.setTheme(themeName, themes[themeName] || {});
-    });
-    morfeo.setCurrentTheme(current);
-
+    const { theme } = message;
+    morfeo.theme.set(theme || {});
     appendFonts(message);
   }
 }

@@ -1,6 +1,5 @@
-import { type Style, getStyles } from '@morfeo/web';
+import { type Style, getStyles, expandStyles } from '@morfeo/web';
 import { generateClassName, deepMerge } from '@morfeo/utils';
-import { expandStyles } from '@morfeo/css';
 import type { MorfeoBabelPluginOptions } from '../types';
 
 function createCollector() {

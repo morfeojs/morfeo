@@ -6,7 +6,6 @@ import {
   ShadowProperty,
   shadowsProperties,
 } from '@morfeo/spec';
-import { theme } from '../theme';
 
 type ShadowsParsers = SliceParsers<typeof shadowsProperties, ShadowProperty>;
 
@@ -20,7 +19,11 @@ function firstValid(...params: (string | number | undefined)[]) {
   return 0;
 }
 
-export function shadows({ value, property }: ParserParams<ShadowProperty>) {
+export function shadows({
+  value,
+  theme,
+  property,
+}: ParserParams<ShadowProperty>) {
   const config = theme.getValue('shadows', value as Shadow);
   if (!config) {
     return {

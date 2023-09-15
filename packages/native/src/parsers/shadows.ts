@@ -1,6 +1,5 @@
 import {
-  theme,
-  parsers,
+  morfeo,
   Style,
   Shadows,
   ParserParams,
@@ -18,7 +17,7 @@ function getFirstValidNumber(...numbers: number[]): number {
   return 0;
 }
 
-export function shadowOffset({ value }) {
+export function shadowOffset({ value, theme }: ParserParams<any>) {
   const { width, height } = value || { width: 0, height: 0 };
   const parsedWidth = getFirstValidNumber(
     theme.getValue('sizes', width),
@@ -43,11 +42,11 @@ export function shadowOffset({ value }) {
   };
 }
 
-export function shadows({ value }: ParserParams<ShadowProperty>) {
+export function shadows({ value, theme }: ParserParams<ShadowProperty>) {
   const { color, offset, opacity, radius, elevation } =
     theme.getValue('shadows', value as keyof Shadows) || {};
 
-  return parsers.resolve({
+  return morfeo.parsers.resolve({
     ...(elevation ? { elevation } : {}),
     ...(color ? { shadowColor: color } : {}),
     ...(offset ? { shadowOffset: offset } : {}),
