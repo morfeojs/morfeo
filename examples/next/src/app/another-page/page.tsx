@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Button } from '@/components/Button';
 import { Main } from '@/components/Main';
-import { morfeo } from '@morfeo/web';
+import { morfeo } from '@morfeo/react';
 import { Link } from '@/components/Link';
 
 export const metadata: Metadata = {
