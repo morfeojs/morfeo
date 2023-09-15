@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/web';
+import { morfeo } from '@morfeo/react';
 import { CSSProperties, DetailedHTMLProps, HTMLAttributes } from 'react';
 
 type CardProps = DetailedHTMLProps<
@@ -13,6 +13,7 @@ const classes = morfeo.css({
   card: {
     componentName: 'Card',
     p: 'm',
+    bg: 'white',
     transition: 'fast',
     shadow: 'none',
     '&:hover': {

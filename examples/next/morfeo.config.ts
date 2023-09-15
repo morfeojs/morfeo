@@ -5,7 +5,6 @@ const config: MorfeoCompilerOptions = {
   theme,
   entryPoints: ['./src/**/*.{ts,tsx,js,jsx}'],
   output: './src/styles/morfeo.css',
-  environment: 'next',
 };
 
 export default config;

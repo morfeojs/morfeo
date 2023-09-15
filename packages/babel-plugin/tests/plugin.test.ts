@@ -6,10 +6,8 @@ import { CSSCollector } from '../src/utils';
 
 function transform(code: string, tsx = false) {
   return babel.transform(code, {
-    presets: tsx
-      ? ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']
-      : [],
-    plugins: [morfeoBabelPlugin],
+    presets: tsx ? ['@babel/preset-env', '@babel/preset-typescript'] : [],
+    plugins: ['@babel/plugin-syntax-jsx', morfeoBabelPlugin],
     filename: 'fileName.tsx',
   });
 }

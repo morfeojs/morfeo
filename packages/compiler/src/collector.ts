@@ -13,24 +13,8 @@ import { deepMerge } from '@morfeo/utils';
 import { createWriter } from './writer';
 import { logger } from './logger';
 
-const presets = {
-  default: {
-    presets: ['@babel/preset-env', '@babel/preset-typescript'],
-    plugins: [],
-  },
-  react: {
-    presets: [
-      '@babel/preset-env',
-      '@babel/preset-react',
-      '@babel/preset-typescript',
-    ],
-    plugins: [],
-  },
-  next: {
-    presets: ['next/babel'],
-    plugins: [],
-  },
-};
+const DEFAULT_BABEL_PRESETS = ['@babel/preset-env', '@babel/preset-typescript'];
+const DEFAULT_BABEL_PLUGINS = ['@babel/plugin-syntax-jsx'];
 
 export type MorfeoCompilerOptions = MorfeoBabelPluginOptions & {
   babel?: TransformOptions;
@@ -38,18 +22,16 @@ export type MorfeoCompilerOptions = MorfeoBabelPluginOptions & {
   output?: string;
   theme: Theme;
   watch?: boolean;
-  environment?: keyof typeof presets;
 };
 
 const DEFAULT_OPTIONS = {
   emojis: false,
   classNamePrefix: '',
-  entryPoints: [path.join('.', '**/*.{ts,tsx,js,jsx}')] as string[],
+  entryPoints: [path.join('.', '**/*.{ts,tsx,js,jsx}')],
   output: path.join(__dirname, '..', 'css', 'morfeo.css'),
   theme: {} as any,
   watch: false,
-  environment: 'default',
-} as const;
+};
 
 function createCollector() {
   const cache = new Map<string, MorfeoBabelResult>();
@@ -59,11 +41,6 @@ function createCollector() {
   });
 
   function init(pluginOptions: Partial<MorfeoCompilerOptions>) {
-    const babelOptionsByEnv = pluginOptions.environment
-      ? presets[pluginOptions.environment] ||
-        presets[DEFAULT_OPTIONS.environment]
-      : presets[DEFAULT_OPTIONS.environment];
-
     options = {
       ...DEFAULT_OPTIONS,
       ...pluginOptions,
@@ -71,14 +48,14 @@ function createCollector() {
         ...pluginOptions?.babel,
         presets: Array.from(
           new Set([
-            ...babelOptionsByEnv.presets,
+            ...DEFAULT_BABEL_PRESETS,
             ...(options.babel?.presets || []),
             ...(pluginOptions.babel?.presets || []),
           ]),
         ),
         plugins: Array.from(
           new Set([
-            ...babelOptionsByEnv.plugins,
+            ...DEFAULT_BABEL_PLUGINS,
             ...(pluginOptions.babel?.plugins || []),
             [morfeoBabelPlugin, {}],
           ]),

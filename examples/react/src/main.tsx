@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { initPreset } from '@morfeo/preset-default';
-import '@morfeo/react';
 import App from './App';
 import './styles/morfeo.css';
 
