@@ -45,7 +45,7 @@ function createCollector() {
       ...DEFAULT_OPTIONS,
       ...pluginOptions,
       babel: {
-        ...pluginOptions?.babel,
+        ...pluginOptions.babel,
         presets: Array.from(
           new Set([
             ...DEFAULT_BABEL_PRESETS,
