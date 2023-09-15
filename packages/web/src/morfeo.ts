@@ -18,7 +18,7 @@ function themeSetter(...args: Parameters<typeof morfeo.theme.set>) {
     deepMerge(defaultTheme, currentTheme),
   );
 
-  morfeo.variables = { light, dark };
+  morfeo.theme.setMetadata({ light, dark });
 
   return coreThemeSetter(theme);
 }
@@ -31,6 +31,8 @@ declare module '@morfeo/core' {
   export interface Morfeo {
     css: typeof css;
     global: typeof global;
-    variables: Record<ThemeMode, Record<string, string>>;
   }
+
+  export interface ThemeMetadata
+    extends Record<ThemeMode, Record<string, string>> {}
 }

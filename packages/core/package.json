@@ -27,9 +27,6 @@
     "@morfeo/spec": "workspace:*",
     "@morfeo/utils": "workspace:*"
   },
-  "peerDependencies": {
-    "tslib": "^2.2.0"
-  },
   "publishConfig": {
     "access": "public"
   },

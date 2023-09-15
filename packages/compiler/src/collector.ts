@@ -13,22 +13,43 @@ import { deepMerge } from '@morfeo/utils';
 import { createWriter } from './writer';
 import { logger } from './logger';
 
+const presets = {
+  default: {
+    presets: ['@babel/preset-env', '@babel/preset-typescript'],
+    plugins: [],
+  },
+  react: {
+    presets: [
+      '@babel/preset-env',
+      '@babel/preset-react',
+      '@babel/preset-typescript',
+    ],
+    plugins: [],
+  },
+  next: {
+    presets: ['next/babel'],
+    plugins: [],
+  },
+};
+
 export type MorfeoCompilerOptions = MorfeoBabelPluginOptions & {
   babel?: TransformOptions;
   entryPoints?: string[];
   output?: string;
   theme: Theme;
   watch?: boolean;
+  environment?: keyof typeof presets;
 };
 
 const DEFAULT_OPTIONS = {
   emojis: false,
   classNamePrefix: '',
-  entryPoints: [path.join('.', '**/*.{ts,tsx,js,jsx}')],
+  entryPoints: [path.join('.', '**/*.{ts,tsx,js,jsx}')] as string[],
   output: path.join(__dirname, '..', 'css', 'morfeo.css'),
   theme: {} as any,
   watch: false,
-};
+  environment: 'default',
+} as const;
 
 function createCollector() {
   const cache = new Map<string, MorfeoBabelResult>();
@@ -38,9 +59,31 @@ function createCollector() {
   });
 
   function init(pluginOptions: Partial<MorfeoCompilerOptions>) {
+    const babelOptionsByEnv = pluginOptions.environment
+      ? presets[pluginOptions.environment] ||
+        presets[DEFAULT_OPTIONS.environment]
+      : presets[DEFAULT_OPTIONS.environment];
+
     options = {
       ...DEFAULT_OPTIONS,
       ...pluginOptions,
+      babel: {
+        ...pluginOptions?.babel,
+        presets: Array.from(
+          new Set([
+            ...babelOptionsByEnv.presets,
+            ...(options.babel?.presets || []),
+            ...(pluginOptions.babel?.presets || []),
+          ]),
+        ),
+        plugins: Array.from(
+          new Set([
+            ...babelOptionsByEnv.plugins,
+            ...(pluginOptions.babel?.plugins || []),
+            [morfeoBabelPlugin, {}],
+          ]),
+        ),
+      },
     };
 
     morfeo.theme.set(options.theme);
@@ -53,13 +96,13 @@ function createCollector() {
 
   async function write() {
     function onWrite() {
-      const variablesObject = morfeo.variables || { light: {}, dark: {} };
+      const { light = {}, dark = {} } = morfeo.theme.getMetadata();
 
       const variables = getStyles({
         '@global': {
-          ':root': variablesObject.light,
+          ':root': light,
           [morfeo.theme.resolveMultiThemeValue('dark')]: {
-            ':root': variablesObject.dark,
+            ':root': dark,
           },
         },
       } as any).sheet.toString();
@@ -87,11 +130,9 @@ function createCollector() {
 
   async function extract(fileName: string): Promise<MorfeoBabelResult> {
     const fileContent = fs.readFileSync(fileName, { encoding: 'utf-8' });
-    const babelPlugins = options.babel?.plugins || [];
 
     const result = await babel.transformAsync(fileContent, {
       ...options.babel,
-      plugins: [...babelPlugins, [morfeoBabelPlugin, {}]],
       sourceFileName: fileName,
       filename: path.basename(fileName),
       sourceMaps: false,

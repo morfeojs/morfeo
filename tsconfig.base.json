@@ -5,7 +5,6 @@
       "esnext"
     ],
     "jsx": "react",
-    "watch": false,
     "strict": true,
     "target": "es6",
     "module": "ES2015",

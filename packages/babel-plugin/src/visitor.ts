@@ -10,10 +10,12 @@ const VISITORS_CREATOR_MAP = {
   component: createComponentVisitor,
 };
 
+const allowedImports = ['@morfeo/web', '@morfeo/react'];
+
 export default function getVisitor(): Visitor {
   return {
     ImportDeclaration(path) {
-      if (path.node.source.value !== '@morfeo/web') {
+      if (!allowedImports.includes(path.node.source.value)) {
         return path.skip();
       }
     },

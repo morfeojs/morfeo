@@ -114,7 +114,7 @@ function splitStyleAndInlineStyle(
  * the first argument could be a component name or a valid html tag.
  *
  * ```tsx
- * import { morfeo } from '@morfeo/web';
+ * import { morfeo } from '@morfeo/react';
  *
  * const Button = morfeo.component('Button', {
  *   variant: props => props.variant,
@@ -127,7 +127,7 @@ function splitStyleAndInlineStyle(
  * It is also possible to pass an existing component or a valid html tag:
  *
  * ```
- * import { morfeo } from '@morfeo/web';
+ * import { morfeo } from '@morfeo/react';
  * import { RouterLink } from 'routing-library';
  *
  * const Button = morfeo.component('button', {
@@ -141,7 +141,7 @@ function splitStyleAndInlineStyle(
  * ```
  */
 export function component<
-  P extends NeededProps,
+  P extends NeededProps & {},
   C extends Component = Component,
 >(
   componentName: C | keyof ReactHTML | React.FC<P>,
@@ -152,6 +152,7 @@ export function component<
     ref,
   ) {
     const isWrappedComponent = typeof componentName === 'function';
+    const { variant, state, ...rest } = props as any;
 
     const { style, inlineStyle } = splitStyleAndInlineStyle(
       styleWithFunctions,
@@ -177,7 +178,7 @@ export function component<
     const componentProps = {
       ref,
       ...componentOptions?.getProps(),
-      ...props,
+      ...rest,
       className: combine(classObject, props.className),
       style: {
         ...props.style,

@@ -9,9 +9,12 @@ type EnsurePlainValue<T> = T extends { light?: infer A; dark?: infer A }
   ? A
   : T;
 
+export interface ThemeMetadata {}
+
 export function createTheme() {
   let context: Theme | undefined = undefined;
   const defaultMode: ThemeMode = 'light';
+  let metadata: ThemeMetadata = {};
 
   let listeners: Record<string | number, ThemeListener> = {};
 
@@ -147,6 +150,14 @@ export function createTheme() {
     listeners = {};
   }
 
+  function getMetadata() {
+    return metadata;
+  }
+
+  function setMetadata(data: ThemeMetadata) {
+    metadata = data;
+  }
+
   const theme = {
     get,
     set,
@@ -157,6 +168,8 @@ export function createTheme() {
     getValue,
     setValue,
     subscribe,
+    getMetadata,
+    setMetadata,
     isResponsive,
     isMultiThemeValue,
     resolveMediaQuery,

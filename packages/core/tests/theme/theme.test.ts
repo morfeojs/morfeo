@@ -139,4 +139,16 @@ describe('media queries', () => {
       `@media (min-width: ${defaultTheme.breakpoints.md})`,
     );
   });
+
+  describe('metadata', () => {
+    test('should retrieve the metadata previously set', () => {
+      morfeo.theme.setMetadata({
+        key: 'any value',
+      });
+
+      expect(morfeo.theme.getMetadata()).toEqual({
+        key: 'any value',
+      });
+    });
+  });
 });

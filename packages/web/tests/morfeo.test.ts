@@ -45,3 +45,45 @@ describe('morfeo.global', () => {
     expect(morfeo.global({})).toBeUndefined();
   });
 });
+
+describe('morfeo.theme', () => {
+  test('should inject into the metadata the css variables', () => {
+    morfeo.theme.set({
+      colors: {
+        // @ts-expect-error
+        newColor: 'any value',
+      },
+    });
+
+    expect(morfeo.theme.getMetadata()).toEqual(
+      expect.objectContaining({
+        light: expect.objectContaining({
+          '--colors-newColor': 'any value',
+        }),
+      }),
+    );
+  });
+
+  test('should populate the dark variables in case dark mode is specified', () => {
+    morfeo.theme.set({
+      colors: {
+        // @ts-expect-error
+        newColor: {
+          light: 'light value',
+          dark: 'dark value',
+        },
+      },
+    });
+
+    expect(morfeo.theme.getMetadata()).toEqual(
+      expect.objectContaining({
+        light: expect.objectContaining({
+          '--colors-newColor': 'light value',
+        }),
+        dark: expect.objectContaining({
+          '--colors-newColor': 'dark value',
+        }),
+      }),
+    );
+  });
+});
