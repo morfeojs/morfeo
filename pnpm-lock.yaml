@@ -161,8 +161,8 @@ importers:
         specifier: 18.0.11
         version: 18.0.11
       concurrently:
-        specifier: 8.2.0
-        version: 8.2.0
+        specifier: 8.2.1
+        version: 8.2.1
       eslint:
         specifier: 8.36.0
         version: 8.36.0
@@ -5475,6 +5475,22 @@ packages:
       yargs: 17.7.2
     dev: true
 
+  /concurrently@8.2.1:
+    resolution: {integrity: sha512-nVraf3aXOpIcNud5pB9M82p1tynmZkrSGQ1p6X/VY8cJ+2LMVqAgXsJxYYefACSHbTYlm92O1xuhdGTjwoEvbQ==}
+    engines: {node: ^14.13.0 || >=16.0.0}
+    hasBin: true
+    dependencies:
+      chalk: 4.1.2
+      date-fns: 2.30.0
+      lodash: 4.17.21
+      rxjs: 7.8.1
+      shell-quote: 1.8.1
+      spawn-command: 0.0.2
+      supports-color: 8.1.1
+      tree-kill: 1.2.2
+      yargs: 17.7.2
+    dev: true
+
   /connect-injector@0.4.4:
     resolution: {integrity: sha512-hdBG8nXop42y2gWCqOV8y1O3uVk4cIU+SoxLCPyCUKRImyPiScoNiSulpHjoktRU1BdI0UzoUdxUa87thrcmHw==}
     engines: {node: '>= 0.8.0'}
@@ -6724,7 +6740,7 @@ packages:
       minimatch: 3.1.2
       object.values: 1.1.6
       resolve: 1.22.2
-      semver: 6.3.1
+      semver: 6.3.0
       tsconfig-paths: 3.14.2
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
@@ -6787,7 +6803,7 @@ packages:
       minimatch: 3.1.2
       object.entries: 1.1.6
       object.fromentries: 2.0.6
-      semver: 6.3.1
+      semver: 6.3.0
     dev: true
 
   /eslint-plugin-jsx-a11y@6.7.1(eslint@8.39.0):
