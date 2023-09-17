@@ -446,6 +446,9 @@ importers:
 
   web-extension:
     dependencies:
+      '@morfeo/jss':
+        specifier: workspace:*
+        version: link:../packages/jss
       '@morfeo/preset-default':
         specifier: workspace:*
         version: link:../packages/preset-default

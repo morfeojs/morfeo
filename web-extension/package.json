@@ -15,6 +15,7 @@
     "deploy": "pnpm zip && node scripts/deploy.mjs"
   },
   "dependencies": {
+    "@morfeo/jss": "workspace:*",
     "@morfeo/preset-default": "workspace:*",
     "@morfeo/react": "workspace:*",
     "change-case": "4.1.2",

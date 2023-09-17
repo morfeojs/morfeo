@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from 'react';
-import { morfeo, Component, getStyles } from '@morfeo/react';
+import { morfeo, Component } from '@morfeo/react';
+import { getStyles } from '@morfeo/jss';
 import clsx from 'clsx';
 
 const SELF_CLOSING_TAGS = [
