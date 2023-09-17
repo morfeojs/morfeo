@@ -44,7 +44,7 @@
     "glob": "10.3.4"
   },
   "peerDependencies": {
-    "@babel/core": "7.22.17"
+    "@babel/core": "7.22.20"
   },
   "devDependencies": {
     "@types/babel__core": "^7.20.0"
