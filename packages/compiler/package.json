@@ -39,7 +39,7 @@
     "@morfeo/preset-default": "workspace:*",
     "chokidar": "3.5.3",
     "commander": "11.0.0",
-    "cosmiconfig": "8.2.0",
+    "cosmiconfig": "8.3.6",
     "cosmiconfig-typescript-loader": "5.0.0",
     "glob": "10.3.4"
   },
