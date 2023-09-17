@@ -49,7 +49,7 @@ export function createComponent(theme: Omit<ThemeHandler, 'component'>) {
       if (currentStateStyle) {
         const variantWithStateStyle = {
           ...variants[variant],
-          style: deepMerge(variants[variant].style as any, currentStateStyle),
+          style: deepMerge(variants[variant].style, currentStateStyle),
         };
         return variantWithStateStyle;
       }
