@@ -98,19 +98,19 @@ export function createParsers(themeInstance: ThemeHandler) {
   >) {
     const resolvers = Array.from(propertiesResolvers);
 
-    return resolvers.reduce<undefined | Style>((acc, resolver) => {
+    for (const resolver of resolvers) {
       const next: PropertyResolverParams<typeof property>['next'] = params => {
         return resolveProperty({
           property: params?.property || property,
           value: params?.value || value,
-          style: params?.style || acc || style,
+          style: params?.style || style,
         });
       };
 
       const params: PropertyResolverParams<typeof property> = {
         property,
         value,
-        style: acc || style,
+        style: style,
         next,
         parsers: instance,
         theme,
@@ -118,12 +118,10 @@ export function createParsers(themeInstance: ThemeHandler) {
 
       const result = resolver(params);
 
-      if (!result) {
-        return acc;
+      if (result) {
+        return result;
       }
-
-      return { ...acc, ...result };
-    }, undefined);
+    }
   }
 
   function resolveProperty({

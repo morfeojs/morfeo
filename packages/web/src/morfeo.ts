@@ -1,9 +1,9 @@
-import { morfeo, Property } from '@morfeo/core';
+import { morfeo, Property, Theme } from '@morfeo/core';
 import { gradientParsers } from './parsers';
 import { css } from './css';
 import { global } from './global';
 import { extractCssVariables } from './utils/extractCssVariables';
-import { deepMerge } from '@morfeo/utils';
+import { deepMerge, DeepPartial } from '@morfeo/utils';
 import { defaultTheme } from './defaultTheme';
 import { responsiveProperty } from './resolvers/responsiveProperty';
 import { multiThemeProperty } from './resolvers/multiThemeProperty';
@@ -15,15 +15,14 @@ Object.keys(gradientParsers).forEach(property => {
 
 const coreThemeSetter = morfeo.theme.set;
 
-function themeSetter(...args: Parameters<typeof morfeo.theme.set>) {
-  const currentTheme = args[0];
+function themeSetter(currentTheme: DeepPartial<Theme>) {
   const { theme, light, dark } = extractCssVariables(
     deepMerge(defaultTheme, currentTheme),
   );
 
   morfeo.theme.setMetadata({ light, dark });
 
-  return coreThemeSetter(theme);
+  return coreThemeSetter(theme as any);
 }
 
 morfeo.css = css;

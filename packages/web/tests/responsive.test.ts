@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/core';
-import { morfeo } from '../src';
+import { morfeo, resolveMediaQuery } from '../src';
 
 const THEME: Theme = {
   colors: {
@@ -127,5 +127,17 @@ describe('responsive', () => {
         padding: 'var(--spacings-m)',
       },
     });
+  });
+
+  test('should generate media queries from custom media query', () => {
+    morfeo.theme.set({
+      mediaQueries: {
+        sm: '@media (max-width: 200px)',
+      },
+    });
+
+    const result = resolveMediaQuery(morfeo.theme, 'sm');
+
+    expect(result).toBe('@media (max-width: 200px)');
   });
 });

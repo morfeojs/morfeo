@@ -1,5 +1,5 @@
 import { Theme, ThemeKey } from '@morfeo/spec';
-import { deepMerge } from '@morfeo/utils';
+import { DeepPartial, deepMerge } from '@morfeo/utils';
 import { createComponent } from './createComponent';
 
 type ThemeListener = (theme: Theme) => void;
@@ -31,9 +31,7 @@ export function createTheme() {
     Object.values(listeners).map(listener => listener(get()));
   }
 
-  function set(theme: {
-    [TK in ThemeKey]?: Partial<Theme[TK]>;
-  }) {
+  function set(theme: DeepPartial<Theme>) {
     context = deepMerge(context || {}, theme) as Theme;
     callListeners();
   }
