@@ -1,4 +1,4 @@
-import { morfeo, defaultTheme, Theme } from '@morfeo/web';
+import { morfeo, defaultTheme } from '@morfeo/web';
 import { loadFontsParams } from './loadFontsParams';
 import { components } from './components';
 

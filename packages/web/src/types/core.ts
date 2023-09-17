@@ -1,6 +1,5 @@
 import {
   Theme,
-  Fonts,
   Colors,
   Shadows,
   Property,
