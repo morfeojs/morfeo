@@ -23,9 +23,6 @@
     "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
     "watch": "tsc -w"
   },
-  "dependencies": {
-    "@morfeo/spec": "workspace:*"
-  },
   "peerDependencies": {
     "@morfeo/web": "workspace:*"
   },

@@ -1,17 +1,11 @@
-import {
-  Style,
-  Property,
-  BreakPoint,
-  AllProperties,
-  allProperties,
-} from '@morfeo/spec';
+import { Style, Property, AllProperties, allProperties } from '@morfeo/spec';
 import { deepMerge } from '@morfeo/utils';
 import {
   Parser,
   AllParsers,
-  ParserParams,
   ResolvedStyle,
-  ThemeMode,
+  PropertyResolver,
+  PropertyResolverParams,
 } from '../types';
 import { baseParser } from './baseParser';
 import { sizeParsers } from './sizes';
@@ -53,16 +47,12 @@ const INITIAL_PARSERS = {
   ...ADDITIONAL_PARSERS,
 };
 
-type PropertyResolverParams<P extends Property> = Omit<
-  ParserParams<P>,
-  'parsers' | 'theme'
->;
-
 export function createParsers(themeInstance: ThemeHandler) {
   const context = new Map(Object.entries(INITIAL_PARSERS));
   let cache: any = {};
   let instance: any;
   let theme = themeInstance;
+  const propertiesResolvers = new Set<PropertyResolver>();
 
   function get() {
     return Object.fromEntries(context.entries());
@@ -90,88 +80,67 @@ export function createParsers(themeInstance: ThemeHandler) {
     return !!context.has(property);
   }
 
-  function resolveResponsiveProperty({
-    property,
-    value,
-    style,
-  }: PropertyResolverParams<typeof property>) {
-    const keys = Object.keys(value);
-    return keys.reduce((acc, breakpoint) => {
-      const currentValue = resolveProperty({
-        property,
-        value: value[breakpoint],
-        style: {
-          ...style,
-          [property]: value[breakpoint],
-        },
-      });
+  function onResolveProperty(callback: PropertyResolver) {
+    propertiesResolvers.add(callback);
 
-      if (breakpoint === 'default') {
-        return {
-          ...acc,
-          ...currentValue,
-        };
-      }
-
-      const mediaQuery = theme.resolveMediaQuery(breakpoint as BreakPoint);
-
-      return {
-        ...acc,
-        [mediaQuery]: {
-          ...acc[mediaQuery],
-          ...currentValue,
-        },
-      };
-    }, {});
+    return () => {
+      propertiesResolvers.delete(callback);
+    };
   }
 
-  function resolveMultiThemeProperty({
+  function callResolvers({
     property,
     value,
     style,
-  }: PropertyResolverParams<typeof property>) {
-    const keys = Object.keys(value);
-    return keys.reduce((acc, mode) => {
-      const currentValue = resolveProperty({
-        property,
-        value: value[mode],
-        style: {
-          ...style,
-          [property]: value[mode],
-        },
-      });
+  }: Pick<
+    PropertyResolverParams<typeof property>,
+    'property' | 'value' | 'style'
+  >) {
+    const resolvers = Array.from(propertiesResolvers);
 
-      const mediaQuery = theme.resolveMultiThemeValue(mode as ThemeMode);
-
-      return {
-        ...acc,
-        [mediaQuery]: currentValue,
+    return resolvers.reduce<undefined | Style>((acc, resolver) => {
+      const next: PropertyResolverParams<typeof property>['next'] = params => {
+        return resolveProperty({
+          property: params?.property || property,
+          value: params?.value || value,
+          style: params?.style || acc || style,
+        });
       };
-    }, {});
+
+      const params: PropertyResolverParams<typeof property> = {
+        property,
+        value,
+        style: acc || style,
+        next,
+        parsers: instance,
+        theme,
+      };
+
+      const result = resolver(params);
+
+      if (!result) {
+        return acc;
+      }
+
+      return { ...acc, ...result };
+    }, undefined);
   }
 
   function resolveProperty({
     property,
     value,
     style,
-  }: PropertyResolverParams<typeof property>) {
+  }: Pick<
+    PropertyResolverParams<typeof property>,
+    'property' | 'value' | 'style'
+  >) {
+    const result = callResolvers({ property, value, style });
+
+    if (result) {
+      return result;
+    }
+
     const parser = context.get(property) as Parser<typeof property>;
-
-    if (theme.isMultiThemeValue(value)) {
-      return resolveMultiThemeProperty({
-        property,
-        value,
-        style,
-      });
-    }
-
-    if (theme.isResponsive(value)) {
-      return resolveResponsiveProperty({
-        property,
-        value,
-        style,
-      });
-    }
 
     if (typeof value === 'string' && value.includes('raw:')) {
       return resolveProperty({
@@ -252,6 +221,7 @@ export function createParsers(themeInstance: ThemeHandler) {
     reset,
     resolve,
     resolveProperty,
+    onResolveProperty,
     isThemeableProperty,
   };
 

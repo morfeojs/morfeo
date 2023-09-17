@@ -1,4 +1,4 @@
-import { ComponentConfig } from '@morfeo/spec';
+import { ComponentConfig } from '@morfeo/web';
 
 type LabelVariant = 'small';
 

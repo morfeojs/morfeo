@@ -1,4 +1,5 @@
-import { type Style, getStyles, expandStyles } from '@morfeo/web';
+import { type Style, expandStyles } from '@morfeo/web';
+import { getStyles } from '@morfeo/jss';
 import { generateClassName, deepMerge } from '@morfeo/utils';
 import type { MorfeoBabelPluginOptions } from '../types';
 

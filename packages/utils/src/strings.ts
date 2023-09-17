@@ -85,10 +85,7 @@ function createHandler() {
     return typeof arg === 'object';
   }
 
-  function generator(
-    style: Record<string, unknown> = {},
-    options: GeneratorOptions = {},
-  ) {
+  function generator(style: object = {}, options: GeneratorOptions = {}) {
     const className = Object.keys(style).reduce((acc, curr) => {
       let value = style[curr];
       if (isObject(value)) {

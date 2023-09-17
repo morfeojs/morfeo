@@ -6,6 +6,7 @@ import {
   GradientConfig,
   ParsersContext,
   GradientProperty,
+  ResolvedStyle,
 } from '@morfeo/core';
 
 function getGradientPercentages({
@@ -46,10 +47,10 @@ function getGradientBackground(value: Gradient, theme: ThemeHandler) {
 }
 
 function guard(callback: Parser<GradientProperty>) {
-  return function (params: ParserParams<GradientProperty>) {
+  return function (params: ParserParams<GradientProperty>): ResolvedStyle {
     const config = params.theme.getValue('gradients', params.value as Gradient);
     if (!config) {
-      return { background: params.value };
+      return { background: params.value } as ResolvedStyle;
     }
 
     return callback(params);

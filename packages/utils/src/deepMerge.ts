@@ -1,4 +1,4 @@
-export function deepMerge<T extends Record<string, unknown>[]>(
+export function deepMerge<T extends object[]>(
   ...objects: T
 ): ArrayOfObjectsToObject<T> {
   return objects.reduce<any>((acc, curr) => merge(acc, curr), {});

@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "@morfeo/core": "workspace:*",
-    "@morfeo/jss": "workspace:*",
     "@morfeo/utils": "workspace:*"
   },
   "peerDependencies": {

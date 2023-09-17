@@ -1,4 +1,4 @@
-import { ComponentConfig, Size } from '@morfeo/spec';
+import { ComponentConfig, Size } from '@morfeo/web';
 
 export const Main: ComponentConfig = {
   tag: 'main',

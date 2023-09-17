@@ -1,4 +1,4 @@
-import { morfeo, Style } from '@morfeo/core';
+import { morfeo, Style } from '@morfeo/web';
 import preset from 'jss-preset-default';
 import { CreateGenerateIdOptions, JssOptions, Plugin, Rule } from 'jss';
 import { generateClassName } from '@morfeo/utils';

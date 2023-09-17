@@ -11,11 +11,10 @@ export function initPreset() {
   morfeo.theme.set(theme);
 }
 
+type LocalTheme = { components: typeof components };
+
 declare module '@morfeo/web' {
-  export interface Themes {
-    light: Theme;
-    dark: Theme;
-  }
+  export interface Theme extends LocalTheme {}
 }
 
 export { theme, loadFontsParams };

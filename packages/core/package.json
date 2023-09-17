@@ -19,8 +19,8 @@
   ],
   "scripts": {
     "build": "pnpm build:esm && pnpm build:commonjs",
-    "build:esm": "rimraf build && tsc",
-    "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
+    "build:esm": "tsc",
+    "build:commonjs": "tsc --module CommonJS --outdir commonjs",
     "watch": "tsc -w"
   },
   "dependencies": {

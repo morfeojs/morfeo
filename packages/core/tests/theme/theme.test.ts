@@ -90,65 +90,14 @@ describe('theme', () => {
   });
 });
 
-describe('media queries', () => {
-  test('should recognize a response value', () => {
-    expect(morfeo.theme.isResponsive({ lg: 'any value' })).toBeTruthy();
-  });
-
-  test('should return false for a plain value', () => {
-    expect(morfeo.theme.isResponsive('any value')).toBeFalsy();
-  });
-
-  test('should return false for a non-compliant object', () => {
-    expect(morfeo.theme.isResponsive({ foo: 'any value' })).toBeFalsy();
-  });
-
-  test('should get the mediaquery based on the breakpoint', () => {
-    morfeo.theme.set({
-      ...defaultTheme,
-      mediaQueries: {
-        md: '@media screen and (min-width: {{md}}) and (max-width: {{lg}})',
-      },
+describe('metadata', () => {
+  test('should retrieve the metadata previously set', () => {
+    morfeo.theme.setMetadata({
+      key: 'any value',
     });
 
-    expect(morfeo.theme.resolveMediaQuery('md')).toBe(
-      `@media screen and (min-width: ${defaultTheme.breakpoints.md}) and (max-width: ${defaultTheme.breakpoints.lg})`,
-    );
-  });
-
-  test("should get the default mediaquery if it's not specified inside the theme", () => {
-    expect(morfeo.theme.resolveMediaQuery('xs')).toBe(
-      `@media (min-width: ${defaultTheme.breakpoints.xs})`,
-    );
-  });
-
-  test('should set the media query with only max-width for the smallest breakpoint', () => {
-    expect(morfeo.theme.resolveMediaQuery('xs')).toBe(
-      `@media (min-width: ${defaultTheme.breakpoints.xs})`,
-    );
-  });
-
-  test('should set the media query with only min-width for the highest breakpoint', () => {
-    expect(morfeo.theme.resolveMediaQuery('lg')).toBe(
-      `@media (min-width: ${defaultTheme.breakpoints.lg})`,
-    );
-  });
-
-  test('should set both min-width and max-width for breakpoints that are not the highest or the smallest', () => {
-    expect(morfeo.theme.resolveMediaQuery('md')).toBe(
-      `@media (min-width: ${defaultTheme.breakpoints.md})`,
-    );
-  });
-
-  describe('metadata', () => {
-    test('should retrieve the metadata previously set', () => {
-      morfeo.theme.setMetadata({
-        key: 'any value',
-      });
-
-      expect(morfeo.theme.getMetadata()).toEqual({
-        key: 'any value',
-      });
+    expect(morfeo.theme.getMetadata()).toEqual({
+      key: 'any value',
     });
   });
 });

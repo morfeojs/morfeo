@@ -1,4 +1,4 @@
-import { BreakPoints } from '@morfeo/core';
+import { BreakPoints } from '../types';
 
 export const breakpoints: BreakPoints = {
   lg: '1920px',

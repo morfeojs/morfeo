@@ -1,5 +1,5 @@
-import { Theme } from '@morfeo/spec';
-import { morfeo } from '../../src';
+import { Theme } from '@morfeo/core';
+import { morfeo } from '../src';
 
 const THEME: Theme = {
   colors: {
@@ -11,6 +11,7 @@ const THEME: Theme = {
   },
   breakpoints: {
     lg: '600px',
+    md: '400px',
   },
   components: {
     Box: {
@@ -23,12 +24,35 @@ const THEME: Theme = {
   },
 } as any;
 
-describe('pseudos', () => {
+describe('responsive', () => {
   beforeAll(() => {
     morfeo.theme.set(THEME);
   });
   afterAll(() => {
     morfeo.theme.reset();
+  });
+
+  test('should inject the media queries', () => {
+    const result = morfeo.parsers.resolve({
+      // @ts-expect-error
+      custom: {
+        bg: {
+          lg: 'primary',
+          md: 'secondary',
+        },
+      },
+    });
+
+    expect(result).toEqual({
+      custom: {
+        '@media (min-width: 600px)': {
+          backgroundColor: 'var(--colors-primary)',
+        },
+        '@media (min-width: 400px)': {
+          backgroundColor: 'var(--colors-secondary)',
+        },
+      },
+    });
   });
 
   test('should generate media queries', () => {
@@ -40,7 +64,7 @@ describe('pseudos', () => {
 
     expect(result).toEqual({
       [`@media (min-width: 600px)`]: {
-        color: '#e3e3e3',
+        color: 'var(--colors-primary)',
       },
     });
   });
@@ -54,9 +78,9 @@ describe('pseudos', () => {
     });
 
     expect(result).toEqual({
-      color: '#000',
+      color: 'var(--colors-secondary)',
       [`@media (min-width: 600px)`]: {
-        color: '#e3e3e3',
+        color: 'var(--colors-primary)',
       },
     });
   });
@@ -87,8 +111,8 @@ describe('pseudos', () => {
 
     expect(result).toEqual({
       [`@media (min-width: 600px)`]: {
-        color: '#e3e3e3',
-        padding: '10px',
+        color: 'var(--colors-primary)',
+        padding: 'var(--spacings-m)',
       },
     });
   });
@@ -100,7 +124,7 @@ describe('pseudos', () => {
 
     expect(result).toEqual({
       [`@media (min-width: 600px)`]: {
-        padding: '10px',
+        padding: 'var(--spacings-m)',
       },
     });
   });
