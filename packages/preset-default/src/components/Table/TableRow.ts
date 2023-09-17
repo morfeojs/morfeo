@@ -1,4 +1,4 @@
-import { Color, ComponentConfig } from '@morfeo/spec';
+import { Color, ComponentConfig } from '@morfeo/web';
 
 export const TableRow: ComponentConfig = {
   tag: 'tr',

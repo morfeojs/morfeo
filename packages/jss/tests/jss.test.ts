@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/core';
+import { morfeo } from '@morfeo/web';
 import { getStyles, getStyleSheet } from '../src';
 import { THEME } from './theme';
 
@@ -19,7 +19,7 @@ describe('jss', () => {
     });
 
     expect(sheet.getRule('button').toString()).toContain(
-      'background-color: #e3e3e3;',
+      'background-color: var(--colors-primary);',
     );
   });
 
@@ -33,7 +33,9 @@ describe('jss', () => {
       },
     });
 
-    expect(sheet.toString()).toContain('background-color: #e3e3e3;');
+    expect(sheet.toString()).toContain(
+      'background-color: var(--colors-primary);',
+    );
   });
 
   test('should generate the classnames', () => {
@@ -61,6 +63,8 @@ describe('jss', () => {
 
     update({ button: { bg: 'secondary' } });
 
-    expect(sheet.toString()).toContain('background-color: #000;');
+    expect(sheet.toString()).toContain(
+      'background-color: var(--colors-secondary);',
+    );
   });
 });

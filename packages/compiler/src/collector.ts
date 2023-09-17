@@ -8,7 +8,8 @@ import morfeoBabelPlugin, {
   type MorfeoBabelPluginOptions,
   type MorfeoBabelResult,
 } from '@morfeo/babel-plugin';
-import { type Theme, morfeo, getStyles } from '@morfeo/web';
+import { type Theme, morfeo, resolveMultiThemeValue } from '@morfeo/web';
+import { getStyles } from '@morfeo/jss';
 import { deepMerge } from '@morfeo/utils';
 import { createWriter } from './writer';
 import { logger } from './logger';
@@ -79,7 +80,7 @@ function createCollector() {
       const variables = getStyles({
         '@global': {
           ':root': light,
-          [morfeo.theme.resolveMultiThemeValue('dark')]: {
+          [resolveMultiThemeValue('dark')]: {
             ':root': dark,
           },
         },

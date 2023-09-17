@@ -279,6 +279,9 @@ importers:
       '@babel/types':
         specifier: 7.22.17
         version: 7.22.17
+      '@morfeo/jss':
+        specifier: workspace:*
+        version: link:../jss
       '@morfeo/utils':
         specifier: workspace:*
         version: link:../utils
@@ -301,6 +304,9 @@ importers:
       '@morfeo/babel-plugin':
         specifier: workspace:*
         version: link:../babel-plugin
+      '@morfeo/jss':
+        specifier: workspace:*
+        version: link:../jss
       '@morfeo/preset-default':
         specifier: workspace:*
         version: link:../preset-default
@@ -370,9 +376,9 @@ importers:
         specifier: ^10.6.0
         version: 10.10.0
     devDependencies:
-      '@morfeo/core':
+      '@morfeo/web':
         specifier: workspace:*
-        version: link:../core
+        version: link:../web
 
   packages/native:
     dependencies:
@@ -390,10 +396,6 @@ importers:
         version: 0.71.7(@babel/core@7.22.17)(@babel/preset-env@7.22.15)(react@18.2.0)
 
   packages/preset-default:
-    dependencies:
-      '@morfeo/spec':
-        specifier: workspace:*
-        version: link:../spec
     devDependencies:
       '@morfeo/web':
         specifier: workspace:*
@@ -435,9 +437,6 @@ importers:
       '@morfeo/core':
         specifier: workspace:*
         version: link:../core
-      '@morfeo/jss':
-        specifier: workspace:*
-        version: link:../jss
       '@morfeo/utils':
         specifier: workspace:*
         version: link:../utils
@@ -447,6 +446,9 @@ importers:
 
   web-extension:
     dependencies:
+      '@morfeo/jss':
+        specifier: workspace:*
+        version: link:../packages/jss
       '@morfeo/preset-default':
         specifier: workspace:*
         version: link:../packages/preset-default

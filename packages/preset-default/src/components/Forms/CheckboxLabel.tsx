@@ -1,4 +1,4 @@
-import { ComponentConfig, Spacing } from '@morfeo/spec';
+import { ComponentConfig, Spacing } from '@morfeo/web';
 
 export const CheckboxLabel: ComponentConfig = {
   tag: 'label',
@@ -11,4 +11,4 @@ export const CheckboxLabel: ComponentConfig = {
     top: '-5px' as Spacing,
   },
   variants: {},
-}
+};

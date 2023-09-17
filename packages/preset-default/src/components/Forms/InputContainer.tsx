@@ -1,4 +1,4 @@
-import { ComponentConfig } from "@morfeo/spec";
+import { ComponentConfig } from '@morfeo/web';
 
 export const InputContainer: ComponentConfig = {
   tag: 'div',
@@ -7,7 +7,7 @@ export const InputContainer: ComponentConfig = {
     position: 'relative',
     mb: 'l',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   variants: {},
-}
+};

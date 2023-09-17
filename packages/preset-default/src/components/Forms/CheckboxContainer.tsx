@@ -1,13 +1,12 @@
-import { ComponentConfig } from "@morfeo/spec";
-
+import { ComponentConfig } from '@morfeo/web';
 
 export const CheckboxContainer: ComponentConfig = {
   tag: 'div',
   states: {},
   style: {
-    pb: 'l', 
+    pb: 'l',
     display: 'flex',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
   variants: {},
-}
+};

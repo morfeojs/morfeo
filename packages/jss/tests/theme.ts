@@ -1,4 +1,4 @@
-import { Theme } from '@morfeo/core';
+import { Theme } from '@morfeo/web';
 
 export const THEME: Theme = {
   colors: {

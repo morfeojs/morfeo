@@ -25,6 +25,7 @@
     "watch": "tsc -w"
   },
   "dependencies": {
+    "@morfeo/jss": "workspace:*",
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*",
     "@babel/core": "7.22.17",

@@ -31,10 +31,10 @@
     "jss-preset-default": "^10.6.0"
   },
   "peerDependencies": {
-    "@morfeo/core": "workspace:*"
+    "@morfeo/web": "workspace:*"
   },
   "devDependencies": {
-    "@morfeo/core": "workspace:*"
+    "@morfeo/web": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

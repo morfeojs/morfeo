@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@morfeo/babel-plugin": "workspace:*",
+    "@morfeo/jss": "workspace:*",
     "@morfeo/web": "workspace:*",
     "@morfeo/utils": "workspace:*",
     "@morfeo/preset-default": "workspace:*",

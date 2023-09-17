@@ -17,7 +17,7 @@ export interface ParserParams<P extends keyof Style> {
 
 export type Parser<P extends ParserProperty = ParserProperty> = (
   params: ParserParams<P>,
-) => Record<string, any>;
+) => ResolvedStyle;
 
 export type SliceParsers<
   M extends Record<string, string>,
@@ -34,4 +34,12 @@ export type ParsersContext = {
   [P in Property]: Parser<P>;
 };
 
-export type ThemeMode = 'light' | 'dark';
+export type PropertyResolverParams<P extends Property> = ParserParams<P> & {
+  next: (
+    params?: Pick<ParserParams<P>, 'property' | 'value' | 'style'>,
+  ) => ResolvedStyle;
+};
+
+export type PropertyResolver = <P extends Property>(
+  props: PropertyResolverParams<P>,
+) => ResolvedStyle | void;

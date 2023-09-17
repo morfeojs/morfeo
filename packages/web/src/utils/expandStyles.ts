@@ -75,7 +75,9 @@ export function expandStyles(
   return traverse(
     deepMerge(
       componentName
-        ? morfeo.theme.component(componentName, variant, state).getStyle()
+        ? (morfeo.theme
+            .component(componentName as any, variant, state)
+            .getStyle() as any)
         : {},
       rest,
     ),

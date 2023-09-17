@@ -1,6 +1,10 @@
 import type { ObjectExpression } from '@babel/types';
 import { escapeString } from '@morfeo/utils';
-import { Property, morfeo } from '@morfeo/web';
+import {
+  Property,
+  morfeo,
+  isResponsive as isValueResponsive,
+} from '@morfeo/web';
 import { toJS } from './toJS';
 
 export function getStyleObject(objectNode: ObjectExpression) {
@@ -8,7 +12,12 @@ export function getStyleObject(objectNode: ObjectExpression) {
   const styleObject = toJS(objectNode, {
     resolveFunction({ path, property }) {
       const parts = path.split('.');
-      const isResponsive = morfeo.theme.isResponsive({ [property]: '' });
+      const isResponsive = isValueResponsive(
+        morfeo.theme.getSlice('breakpoints'),
+        {
+          [property]: '',
+        },
+      );
       // In case the values is responsive, the right property is the parent one.
       const propertyToCheck = isResponsive ? parts[parts.length - 2] : property;
       const isThemeable = morfeo.parsers.isThemeableProperty(propertyToCheck);

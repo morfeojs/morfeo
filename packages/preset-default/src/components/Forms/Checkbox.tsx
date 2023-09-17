@@ -1,5 +1,4 @@
-
-import { ComponentConfig } from "@morfeo/spec";
+import { ComponentConfig } from '@morfeo/web';
 
 export const Checkbox: ComponentConfig = {
   tag: 'input',
@@ -9,7 +8,7 @@ export const Checkbox: ComponentConfig = {
   states: {},
   style: {
     size: 'xs',
-    mr: 'xs'
+    mr: 'xs',
   },
   variants: {},
-}
+};

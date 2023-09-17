@@ -81,43 +81,6 @@ describe('parsers', () => {
           },
         });
       });
-
-      describe('if the value is also a responsive value', () => {
-        beforeEach(() => {
-          morfeo.theme.set({
-            ...THEME,
-            breakpoints: {
-              lg: '1000px',
-              md: '800px',
-              sm: '600px',
-              xs: '400px',
-            },
-          });
-        });
-
-        test('should inject the media queries', () => {
-          const result = morfeo.parsers.resolve({
-            // @ts-expect-error
-            custom: {
-              bg: {
-                lg: 'primary',
-                md: 'secondary',
-              },
-            },
-          });
-
-          expect(result).toEqual({
-            custom: {
-              '@media (min-width: 1000px)': {
-                backgroundColor: THEME.colors.primary,
-              },
-              '@media (min-width: 800px)': {
-                backgroundColor: THEME.colors.secondary,
-              },
-            },
-          });
-        });
-      });
     });
   });
 });
