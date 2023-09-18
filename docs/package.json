@@ -30,8 +30,8 @@
     "sharp": "0.32.3"
   },
   "devDependencies": {
-    "@types/react": "18.0.35",
-    "@types/react-dom": "18.0.11",
+    "@types/react": "18.2.22",
+    "@types/react-dom": "18.2.7",
     "eslint": "8.36.0",
     "concurrently": "8.2.1",
     "eslint-config-next": "13.2.4",
