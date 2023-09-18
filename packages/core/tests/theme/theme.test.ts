@@ -8,24 +8,14 @@ const defaultTheme: Theme = {
   spacings: {
     m: '10px',
   },
-  breakpoints: {
-    lg: '900px',
-    md: '600px',
-    sm: '400px',
-    xs: '200px',
-  },
 } as any;
 
-beforeEach(() => {
-  morfeo.theme.set(defaultTheme);
-  morfeo.theme.cleanUp();
-});
-
-afterEach(() => {
-  morfeo.theme.reset();
-});
-
 describe('theme', () => {
+  beforeEach(() => {
+    morfeo.theme.reset();
+    morfeo.theme.set(defaultTheme);
+  });
+
   test('should have been an instance of theme', () => {
     const result = morfeo.theme.get();
     expect(result).toEqual(defaultTheme);
@@ -46,19 +36,13 @@ describe('theme', () => {
     expect(morfeo.theme.get().colors.primary).toEqual('white');
   });
 
-  test('should add a value inside the colors slice', () => {
-    morfeo.theme.setValue('colors', 'secondary', 'white');
-
-    expect(morfeo.theme.get().colors.secondary).toEqual('white');
-  });
-
   test('should call all the added listeners each time the theme is updated', () => {
     const firstListener = jest.fn();
     const secondListener = jest.fn();
     morfeo.theme.subscribe(firstListener);
     morfeo.theme.subscribe(secondListener);
-    morfeo.theme.setSlice('colors', { primary: 'white' });
-    morfeo.theme.setSlice('spacings', { l: '50px' });
+    morfeo.theme.set({ colors: { primary: 'white' } });
+    morfeo.theme.set({ spacings: { l: '50px' } });
     expect(firstListener).toHaveBeenCalledTimes(2);
     expect(secondListener).toHaveBeenCalledTimes(2);
   });
@@ -69,35 +53,56 @@ describe('theme', () => {
     expect(morfeo.theme.get()).toEqual({});
   });
 
-  test('should generate a unique id for each listener', () => {
-    const firstUid = morfeo.theme.subscribe(jest.fn(), 'test');
-    const secondUid = morfeo.theme.subscribe(jest.fn(), 'test');
-    const thirdUid = morfeo.theme.subscribe(jest.fn());
-
-    expect(firstUid).toBe('test');
-    expect(secondUid).toBe('test-0');
-    expect(thirdUid).toBe('2');
-  });
-
-  test('should remove the specified listener with the cleanUp method', () => {
+  test('should return the callback to unsubscribe the listener', () => {
     const listener = jest.fn();
-    const uid = morfeo.theme.subscribe(listener, 'test');
+    const unsubscribe = morfeo.theme.subscribe(listener);
 
-    morfeo.theme.cleanUp(uid);
-    morfeo.theme.setValue('colors', 'primary', 'black');
+    unsubscribe();
+
+    morfeo.theme.set({
+      colors: {
+        primary: 'black',
+      },
+    });
 
     expect(listener).not.toHaveBeenCalled();
   });
-});
 
-describe('metadata', () => {
-  test('should retrieve the metadata previously set', () => {
-    morfeo.theme.setMetadata({
-      key: 'any value',
+  describe('metadata', () => {
+    test('should retrieve the metadata previously set', () => {
+      morfeo.theme.setMetadata({
+        key: 'any value',
+      });
+
+      expect(morfeo.theme.getMetadata()).toEqual({
+        key: 'any value',
+      });
+    });
+  });
+
+  describe('parsers', () => {
+    describe('should pre-parse the theme in case a resolver was added', () => {
+      const parser = jest.fn().mockReturnValue({ parsed: true });
+      const unsubscribe = morfeo.theme.onSetTheme(parser);
+
+      morfeo.theme.set({});
+
+      expect(morfeo.theme.get()).toEqual({ parsed: true });
+
+      unsubscribe();
     });
 
-    expect(morfeo.theme.getMetadata()).toEqual({
-      key: 'any value',
+    describe('should not apply the parser anymore in case it has been unsubscribed', () => {
+      const parser = jest.fn();
+      const unsubscribe = morfeo.theme.onSetTheme(parser);
+
+      morfeo.theme.set({});
+
+      unsubscribe();
+
+      morfeo.theme.set({});
+
+      expect(parser).toHaveBeenCalledTimes(1);
     });
   });
 });

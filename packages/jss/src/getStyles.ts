@@ -51,11 +51,11 @@ export function getStyles<K extends string>(
     classes = sheet.classes;
     return classes;
   };
-  const uid = morfeo.theme.subscribe(onThemeChange);
+  const unsubscribe = morfeo.theme.subscribe(onThemeChange);
 
   const destroy = () => {
     sheet.detach();
-    morfeo.theme.cleanUp(uid);
+    unsubscribe();
   };
 
   return { classes, sheet, jss, destroy, update };

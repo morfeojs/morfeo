@@ -80,7 +80,6 @@ const defaultTheme = {
 describe('component', () => {
   beforeEach(() => {
     morfeo.theme.set(defaultTheme as any);
-    morfeo.theme.cleanUp();
   });
 
   afterEach(() => {
