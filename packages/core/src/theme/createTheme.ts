@@ -3,6 +3,7 @@ import { DeepPartial, deepMerge } from '@morfeo/utils';
 import { createComponent } from './createComponent';
 
 type ThemeListener = (theme: Theme) => void;
+type ThemeParser = (theme: DeepPartial<Theme>) => DeepPartial<Theme>;
 
 export interface ThemeMetadata {}
 
@@ -10,7 +11,8 @@ export function createTheme() {
   let context: Theme | undefined = undefined;
   let metadata: ThemeMetadata = {};
 
-  let listeners: Record<string | number, ThemeListener> = {};
+  const listeners = new Set<ThemeListener>();
+  const parsers = new Set<ThemeParser>();
 
   function get() {
     return context || ({} as Theme);
@@ -27,55 +29,44 @@ export function createTheme() {
     return getSlice(slice)[key];
   }
 
-  function callListeners() {
-    Object.values(listeners).map(listener => listener(get()));
+  function notifyListener() {
+    for (const listener of listeners) {
+      listener(get());
+    }
+  }
+
+  function callParsers(theme: DeepPartial<Theme>) {
+    let result = theme;
+    for (const parser of parsers) {
+      result = parser(result);
+    }
+    return result;
   }
 
   function set(theme: DeepPartial<Theme>) {
-    context = deepMerge(context || {}, theme) as Theme;
-    callListeners();
-  }
-
-  function setSlice<T extends ThemeKey>(slice: T, value: Partial<Theme[T]>) {
-    set({ [slice]: value });
-  }
-
-  function setValue<T extends ThemeKey, K extends keyof Theme[T]>(
-    slice: T,
-    key: keyof Theme[T],
-    value: Theme[T][K],
-  ) {
-    setSlice(slice, { [key]: value } as any);
+    context = callParsers(deepMerge(context || {}, theme)) as Theme;
+    notifyListener();
   }
 
   function reset() {
     context = {} as Theme;
-    callListeners();
+    notifyListener();
   }
 
-  function getSafeUid(uid?: string, suffix = 0): string {
-    const safeUid = uid || Object.values(listeners).length.toString();
+  function subscribe(callback: ThemeListener) {
+    listeners.add(callback);
 
-    const alreadyExists = !!listeners[safeUid];
-    if (alreadyExists) {
-      return getSafeUid(`${safeUid}-${suffix}`, suffix + 1);
-    }
-
-    return safeUid;
+    return function cleanUp() {
+      listeners.delete(callback);
+    };
   }
 
-  function subscribe(callback: ThemeListener, uid?: string) {
-    const safeUid = getSafeUid(uid);
-    listeners[safeUid] = callback;
-    return safeUid;
-  }
+  function onSetTheme(callback: ThemeParser) {
+    parsers.add(callback);
 
-  function cleanUp(uid?: string) {
-    if (uid) {
-      delete listeners[uid];
-      return;
-    }
-    listeners = {};
+    return function cleanUp() {
+      parsers.delete(callback);
+    };
   }
 
   function getMetadata() {
@@ -90,12 +81,10 @@ export function createTheme() {
     get,
     set,
     reset,
-    cleanUp,
     getSlice,
-    setSlice,
     getValue,
-    setValue,
     subscribe,
+    onSetTheme,
     getMetadata,
     setMetadata,
   };
