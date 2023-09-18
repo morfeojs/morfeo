@@ -293,8 +293,8 @@ importers:
         specifier: 7.20.2
         version: 7.20.2
       '@types/babel__traverse':
-        specifier: 7.20.1
-        version: 7.20.1
+        specifier: 7.20.2
+        version: 7.20.2
 
   packages/compiler:
     dependencies:
@@ -3810,7 +3810,7 @@ packages:
       '@babel/types': 7.22.19
       '@types/babel__generator': 7.6.4
       '@types/babel__template': 7.4.1
-      '@types/babel__traverse': 7.20.1
+      '@types/babel__traverse': 7.20.2
     dev: true
 
   /@types/babel__core@7.20.2:
@@ -3820,7 +3820,7 @@ packages:
       '@babel/types': 7.22.19
       '@types/babel__generator': 7.6.4
       '@types/babel__template': 7.4.1
-      '@types/babel__traverse': 7.20.1
+      '@types/babel__traverse': 7.20.2
 
   /@types/babel__generator@7.6.4:
     resolution: {integrity: sha512-tFkciB9j2K755yrTALxD44McOrk+gfpIpvC3sxHjRawj6PfnQxrse4Clq5y/Rq+G3mrBurMax/lG8Qn2t9mSsg==}
@@ -3833,8 +3833,8 @@ packages:
       '@babel/parser': 7.22.7
       '@babel/types': 7.22.19
 
-  /@types/babel__traverse@7.20.1:
-    resolution: {integrity: sha512-MitHFXnhtgwsGZWtT68URpOvLN4EREih1u3QtQiN4VdAxWKRVvGCSvw/Qth0M0Qq3pJpnGOu5JaM/ydK7OGbqg==}
+  /@types/babel__traverse@7.20.2:
+    resolution: {integrity: sha512-ojlGK1Hsfce93J0+kn3H5R73elidKUaZonirN33GSmgTUMpzI/MIFfSpF3haANe3G1bEBS9/9/QEqwTzwqFsKw==}
     dependencies:
       '@babel/types': 7.22.19
 
@@ -4713,7 +4713,7 @@ packages:
       '@babel/template': 7.22.15
       '@babel/types': 7.22.19
       '@types/babel__core': 7.20.2
-      '@types/babel__traverse': 7.20.1
+      '@types/babel__traverse': 7.20.2
 
   /babel-plugin-polyfill-corejs2@0.3.3(@babel/core@7.22.20):
     resolution: {integrity: sha512-8hOdmFYFSZhqg2C/JgLUQ+t52o5nirNwaWM2B9LWteozwIvM14VSwdsCAUET10qT+kmySAlseadmfeeSWFCy+Q==}
@@ -8958,7 +8958,7 @@ packages:
       '@jest/expect-utils': 29.5.0
       '@jest/transform': 29.5.0
       '@jest/types': 29.5.0
-      '@types/babel__traverse': 7.20.1
+      '@types/babel__traverse': 7.20.2
       '@types/prettier': 2.7.2
       babel-preset-current-node-syntax: 1.0.1(@babel/core@7.22.20)
       chalk: 4.1.2
