@@ -1,5 +1,5 @@
+# build
 build
-commonjs
 
 # dependencies
 node_modules
@@ -7,8 +7,6 @@ signold
 
 # testing
 coverage
-
-# productionbuild
 
 # misc
 .DS_Store

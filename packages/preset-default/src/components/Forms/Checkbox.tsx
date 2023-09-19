@@ -1,6 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-export const Checkbox: ComponentConfig = {
+export const Checkbox = {
   tag: 'input',
   props: {
     type: 'checkbox',

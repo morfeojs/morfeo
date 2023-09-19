@@ -1,34 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-type TypographyVariant =
-  | 'p'
-  | 'p2'
-  | 'p3'
-  | 'p4'
-  | 'h1'
-  | 'h2'
-  | 'h3'
-  | 'h4'
-  | 'h5'
-  | 'h6'
-  | 'p.inverted'
-  | 'p2.inverted'
-  | 'p3.inverted'
-  | 'p4.inverted'
-  | 'h1.inverted'
-  | 'h2.inverted'
-  | 'h3.inverted'
-  | 'h4.inverted'
-  | 'h5.inverted'
-  | 'h6.inverted'
-  | 'display'
-  | 'link'
-  | 'cta'
-  | 'code'
-  | 'quote'
-  | 'blockQuote';
-
-export const Typography: ComponentConfig<TypographyVariant> = {
+export const Typography = {
   tag: 'p',
   style: {
     fontFamily: 'default',

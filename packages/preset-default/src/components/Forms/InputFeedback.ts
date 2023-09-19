@@ -1,8 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-type InputFeedbackVariant = 'error' | 'warning' | 'success';
-
-export const InputFeedback: ComponentConfig<InputFeedbackVariant> = {
+export const InputFeedback = {
   tag: 'p',
   states: {},
   style: {

@@ -1,19 +1,4 @@
-import { ComponentConfig, Size } from '@morfeo/web';
-
-type CardVariant =
-  | 'hoverable'
-  | 'primary'
-  | 'warning'
-  | 'error'
-  | 'success'
-  | 'basic'
-  | 'outlined'
-  | 'outlined.primary'
-  | 'outlined.warning'
-  | 'outlined.error'
-  | 'outlined.success';
-
-export const Card: ComponentConfig<CardVariant> = {
+export const Card = {
   tag: 'div',
   style: {
     componentName: 'Box',
@@ -132,7 +117,7 @@ export const Card: ComponentConfig<CardVariant> = {
   meta: {
     devtoolConfig: {
       style: {
-        size: '80px' as Size,
+        size: 'raw:80px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

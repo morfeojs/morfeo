@@ -1,11 +1,9 @@
-import { Color, ComponentConfig } from '@morfeo/web';
-
-export const TableRow: ComponentConfig = {
+export const TableRow = {
   tag: 'tr',
   states: {},
   style: {
     '&:nth-child(even)': {
-      bg: 'rgba(100,100,100,0.1)' as Color,
+      bg: 'raw:rgba(100,100,100,0.1)',
     },
     '&:last-child': {
       borderBottom: 'strong',
@@ -14,12 +12,12 @@ export const TableRow: ComponentConfig = {
   variants: {},
 };
 
-export const TableRowDark: ComponentConfig = {
+export const TableRowDark = {
   tag: 'tr',
   states: {},
   style: {
     '&:nth-child(even)': {
-      bg: 'rgba(255,255,255,0.1)' as Color,
+      bg: 'raw:rgba(255,255,255,0.1)',
     },
     '&:last-child': {
       borderBottom: 'strong',

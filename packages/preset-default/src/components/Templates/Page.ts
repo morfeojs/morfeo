@@ -1,6 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-export const Page: ComponentConfig = {
+export const Page = {
   tag: 'div',
   states: {},
   style: {

@@ -1,15 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-type InputVariant =
-  | 'error'
-  | 'success'
-  | 'warning'
-  | 'small'
-  | 'small.error'
-  | 'small.warning'
-  | 'small.success';
-
-export const Input: ComponentConfig<InputVariant> = {
+export const Input = {
   tag: 'input',
   states: {},
   style: {

@@ -1,14 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-type SectionVariant =
-  | 'quarter'
-  | 'half'
-  | 'full'
-  | 'quarter.primary'
-  | 'half.primary'
-  | 'full.primary';
-
-export const Section: ComponentConfig<SectionVariant> = {
+export const Section = {
   tag: 'section',
   style: {
     componentName: 'Box',

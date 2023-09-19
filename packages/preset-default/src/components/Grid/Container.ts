@@ -1,8 +1,4 @@
-import { ComponentConfig, Size } from '@morfeo/web';
-
-type ContainerVariant = 'fluid' | 'noGutter' | 'gridGutter';
-
-export const Container: ComponentConfig<ContainerVariant> = {
+export const Container = {
   tag: 'div',
   states: {},
   style: {
@@ -10,8 +6,8 @@ export const Container: ComponentConfig<ContainerVariant> = {
     width: {
       xs: '100',
       sm: '100',
-      md: '960px' as Size,
-      lg: '960px' as Size,
+      md: 'raw:960px',
+      lg: 'raw:960px',
     },
     px: {
       xs: 's',

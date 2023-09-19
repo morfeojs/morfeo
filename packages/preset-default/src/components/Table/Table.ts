@@ -1,6 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-export const Table: ComponentConfig = {
+export const Table = {
   tag: 'table',
   states: {},
   style: {

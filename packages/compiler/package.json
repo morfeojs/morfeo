@@ -7,21 +7,13 @@
   "private": false,
   "version": "0.9.3",
   "license": "MIT",
-  "main": "commonjs/index.js",
-  "module": "build/index.js",
-  "types": "build/index",
-  "typings": "build/index",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
+  "types": "./build/index.mts",
   "exports": {
-    ".": {
-      "import": {
-        "types": "./build/index.d.ts",
-        "default": "./build/index.js"
-      },
-      "require": {
-        "types": "./commonjs/index.d.ts",
-        "default": "./commonjs/index.js"
-      }
-    }
+    "import": "./build/index.mjs",
+    "require": "./build/index.js",
+    "types": "./build/index.d.mts"
   },
   "bin": {
     "morfeo": ".bin/morfeo.js"
@@ -35,9 +27,7 @@
     "css-in-ts"
   ],
   "scripts": {
-    "build": "pnpm build:esm && pnpm build:commonjs",
-    "build:esm": "rimraf build && tsc",
-    "build:commonjs": "rimraf commonjs && tsc --module CommonJS --outdir commonjs",
+    "build": "tsup",
     "watch": "tsc -w"
   },
   "publishConfig": {

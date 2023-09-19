@@ -23,7 +23,6 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "allowUnusedLabels": false,
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,

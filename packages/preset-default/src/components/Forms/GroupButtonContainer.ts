@@ -1,6 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-export const GroupButtonContainer: ComponentConfig = {
+export const GroupButtonContainer = {
   states: {},
   style: {
     componentName: 'Box',

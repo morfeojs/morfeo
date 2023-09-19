@@ -1,15 +1,11 @@
-import { ComponentConfig, Size } from '@morfeo/web';
-
-type FooterVariant = 'primary';
-
-export const Footer: ComponentConfig<FooterVariant> = {
+export const Footer = {
   tag: 'footer',
   states: {},
   style: {
     componentName: 'Box',
     width: '100',
     py: '2xl',
-    minHeight: '200px' as Size,
+    minHeight: 'raw:200px',
     px: {
       xs: 's',
       sm: 's',

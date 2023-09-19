@@ -1,6 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-export const TableBody: ComponentConfig = {
+export const TableBody = {
   tag: 'tbody',
   style: {},
   states: {},
