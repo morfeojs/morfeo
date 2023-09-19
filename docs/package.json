@@ -19,7 +19,7 @@
     "@morfeo/react": "workspace:*",
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*",
-    "@types/node": "18.15.3",
+    "@types/node": "18.17.17",
     "framer-motion": "10.12.7",
     "next": "13.4.19",
     "nextra": "2.12.3",
