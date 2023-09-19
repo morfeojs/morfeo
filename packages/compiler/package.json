@@ -11,6 +11,18 @@
   "module": "build/index.js",
   "types": "build/index",
   "typings": "build/index",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./build/index.d.ts",
+        "default": "./build/index.js"
+      },
+      "require": {
+        "types": "./commonjs/index.d.ts",
+        "default": "./commonjs/index.js"
+      }
+    }
+  },
   "bin": {
     "morfeo": ".bin/morfeo.js"
   },

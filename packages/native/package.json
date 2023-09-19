@@ -11,6 +11,10 @@
   "module": "build/index.js",
   "types": "build/index",
   "typings": "build/index",
+  "exports": {
+    "types": "./build/index.d.ts",
+    "default": "./build/index.js"
+  },
   "keywords": [
     "design",
     "system",
