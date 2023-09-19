@@ -17,4 +17,8 @@
 '@morfeo/app-web-extension': patch
 ---
 
-Introduced `classNamePrefix` and `emojis` option to the build-time plugin package
+- `theme` and `parsers` utilities into the `morfeo` instance
+- removed any dependency with bundlers and used static analysis in a separate proccess instead
+- simplified DX
+- dark mode at build time
+- removed svelte/fonts/css packages

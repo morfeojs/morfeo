@@ -9,11 +9,27 @@
   "license": "MIT",
   "main": "commonjs/index.js",
   "module": "build/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./build/index.d.ts",
+        "default": "./build/index.js"
+      },
+      "require": {
+        "types": "./commonjs/index.d.ts",
+        "default": "./commonjs/index.js"
+      }
+    }
+  },
   "types": "build/index",
   "typings": "build/index",
   "keywords": [
     "design",
     "system",
+    "theming",
+    "css",
+    "css-in-js",
+    "css-in-ts",
     "morfeo",
     "morfeo-js"
   ],
