@@ -15,8 +15,8 @@ export const components = {
   ...templates,
   ...tables,
   Hr,
-  Box,
   Card,
+  Box,
   Typography,
 };
 

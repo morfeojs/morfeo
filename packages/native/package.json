@@ -7,13 +7,13 @@
   "private": false,
   "version": "0.9.3",
   "license": "MIT",
-  "main": "build/index.js",
-  "module": "build/index.js",
-  "types": "build/index",
-  "typings": "build/index",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
+  "types": "./build/index.mts",
   "exports": {
-    "types": "./build/index.d.ts",
-    "default": "./build/index.js"
+    "import": "./build/index.mjs",
+    "require": "./build/index.js",
+    "types": "./build/index.d.mts"
   },
   "keywords": [
     "design",
@@ -25,7 +25,7 @@
     "react-native"
   ],
   "scripts": {
-    "build": "rimraf build && tsc",
+    "build": "tsup",
     "watch": "tsc -w"
   },
   "dependencies": {

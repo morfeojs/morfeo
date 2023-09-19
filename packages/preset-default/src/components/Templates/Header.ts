@@ -1,8 +1,4 @@
-import { ComponentConfig, Size } from '@morfeo/web';
-
-type HeaderVariant = 'primary' | 'primary.fixed' | 'fixed';
-
-export const Header: ComponentConfig<HeaderVariant> = {
+export const Header = {
   tag: 'header',
   states: {},
   style: {
@@ -16,7 +12,7 @@ export const Header: ComponentConfig<HeaderVariant> = {
       lg: 'm',
     },
     width: '100',
-    minHeight: '60px' as Size,
+    minHeight: 'raw:60px',
     color: 'text',
   },
   variants: {

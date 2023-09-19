@@ -1,8 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-type HrVariant = 'primary' | 'reduced' | 'reduced.primary';
-
-export const Hr: ComponentConfig<HrVariant> = {
+export const Hr = {
   tag: 'hr',
   style: {
     width: '100',

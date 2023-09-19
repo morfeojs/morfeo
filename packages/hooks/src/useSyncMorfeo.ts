@@ -1,10 +1,10 @@
-import { morfeo } from '@morfeo/core';
+import { morfeo, Theme } from '@morfeo/core';
 import { useSyncExternalStore } from 'react';
 
 /**
  * It subscribes the component/hook where is used to theme changes
  */
-export function useSyncMorfeo() {
+export function useSyncMorfeo(): Theme {
   return useSyncExternalStore(
     morfeo.theme.subscribe,
     morfeo.theme.get,

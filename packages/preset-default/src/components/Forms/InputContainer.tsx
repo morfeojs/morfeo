@@ -1,6 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-export const InputContainer: ComponentConfig = {
+export const InputContainer = {
   tag: 'div',
   states: {},
   style: {

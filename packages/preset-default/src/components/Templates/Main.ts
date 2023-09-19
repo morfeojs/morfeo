@@ -1,12 +1,10 @@
-import { ComponentConfig, Size } from '@morfeo/web';
-
-export const Main: ComponentConfig = {
+export const Main = {
   tag: 'main',
   states: {},
   style: {
     componentName: 'Box',
     width: '100',
-    minHeight: 'calc(100vh - 260px)' as Size,
+    minHeight: 'raw:calc(100vh - 260px)',
   },
   variants: {},
   meta: {

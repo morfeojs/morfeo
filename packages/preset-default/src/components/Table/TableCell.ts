@@ -1,6 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-export const TableCell: ComponentConfig = {
+export const TableCell = {
   tag: 'td',
   style: {
     p: 'xs',

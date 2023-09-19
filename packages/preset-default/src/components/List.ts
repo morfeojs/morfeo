@@ -1,8 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-type ListVariant = 'item' | 'item.arrow' | 'item.outlinedBullet';
-
-export const List: ComponentConfig<ListVariant> = {
+export const List = {
   tag: 'ul',
   style: {
     my: 'l',

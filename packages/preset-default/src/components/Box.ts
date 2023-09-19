@@ -1,8 +1,4 @@
-import { ComponentConfig, Size } from '@morfeo/web';
-
-type BoxVariant = 'block' | 'column' | 'row';
-
-export const Box: ComponentConfig<BoxVariant> = {
+export const Box = {
   tag: 'div',
   style: {
     position: 'relative',
@@ -37,7 +33,7 @@ export const Box: ComponentConfig<BoxVariant> = {
   meta: {
     devtoolConfig: {
       style: {
-        size: '80px' as Size,
+        size: 'raw:80px',
         bg: 'gray.lighter',
         display: 'flex',
         alignItems: 'center',

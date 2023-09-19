@@ -1,8 +1,4 @@
-import { ComponentConfig } from '@morfeo/web';
-
-type LabelVariant = 'small';
-
-export const Label: ComponentConfig<LabelVariant> = {
+export const Label = {
   tag: 'label',
   style: {
     fontSize: 's',
