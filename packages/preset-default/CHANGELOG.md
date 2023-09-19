@@ -1,5 +1,17 @@
 # Change Log
 
+## 0.9.3
+
+### Patch Changes
+
+- fec3234: - `theme` and `parsers` utilities into the `morfeo` instance
+  - removed any dependency with bundlers and used static analysis in a separate proccess instead
+  - simplified DX
+  - dark mode at build time
+  - removed svelte/fonts/css packages
+- Updated dependencies [fec3234]
+  - @morfeo/web@0.9.3
+
 ## 0.9.2
 
 ### Patch Changes
