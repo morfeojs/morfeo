@@ -1,8 +1,7 @@
 'use client';
 
 import { ButtonHTMLAttributes, DetailedHTMLProps, useState } from 'react';
-import { morfeo } from '@morfeo/react';
-import { Variant } from '@morfeo/spec';
+import { morfeo, Variant } from '@morfeo/react';
 
 type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,

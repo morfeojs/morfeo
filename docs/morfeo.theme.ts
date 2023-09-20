@@ -1,8 +1,8 @@
 import { theme as defaultTheme } from '@morfeo/preset-default';
 import { deepMerge } from '@morfeo/utils';
-import { morfeo } from '@morfeo/web';
+import { morfeo } from '@morfeo/react';
 
-const theme = deepMerge(defaultTheme, {
+const localTheme = {
   fontSizes: {
     '2xs': '.5rem',
     xs: '.75rem',
@@ -14,12 +14,6 @@ const theme = deepMerge(defaultTheme, {
     '3xl': '3rem',
     '4xl': '5rem',
     none: '0',
-  },
-  colors: {
-    background: {
-      light: defaultTheme.colors.background,
-      dark: defaultTheme.colors.background,
-    },
   },
   gradients: {
     primary: {
@@ -116,8 +110,22 @@ const theme = deepMerge(defaultTheme, {
       },
     },
   },
-});
+} as const;
+
+const theme = deepMerge(defaultTheme, localTheme);
 
 morfeo.theme.set(theme);
 
 export default theme;
+
+type LocalTheme = typeof localTheme;
+
+type LocalGradients = LocalTheme['gradients'];
+type LocalFontSizes = LocalTheme['fontSizes'];
+type LocalComponents = LocalTheme['components'];
+
+declare module '@morfeo/react' {
+  export interface Gradients extends LocalGradients {}
+  export interface FontSizes extends LocalFontSizes {}
+  export interface Components extends LocalComponents {}
+}

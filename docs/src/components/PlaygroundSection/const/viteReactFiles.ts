@@ -1,7 +1,7 @@
 import { SandpackFiles } from '@codesandbox/sandpack-react/types';
 import { globalStyle, morfeoTheme, socialComponent } from './globalFiles';
 
-const viteIndex = `import { morfeo } from '@morfeo/web';
+const viteIndex = `import { morfeo } from '@morfeo/react';
 import { Socials } from "./src/components/Socials";
 
 const classes = morfeo.css({
@@ -83,7 +83,7 @@ import { MorfeoVitePlugin } from '@morfeo/compiler';
 import docsTheme from './morfeo.theme';
 import {darkTheme} from '@morfeo/preset-default';
 import {deepMerge} from '@morfeo/utils';
-import {morfeo} from '@morfeo/web';
+import {morfeo} from '@morfeo/react';
 
 morfeo.setTheme("default", deepMerge(darkTheme, docsTheme));
 

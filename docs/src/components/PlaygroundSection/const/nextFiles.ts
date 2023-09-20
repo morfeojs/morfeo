@@ -4,7 +4,7 @@ import { globalStyle, morfeoTheme, socialComponent } from './globalFiles';
 const nextConfig = `const docsTheme = require("./morfeo.theme");
 const { darkTheme } = require("@morfeo/preset-default");
 const { deepMerge } = require("@morfeo/utils");
-const { morfeo } = require("@morfeo/web");
+const { morfeo } = require("@morfeo/react");
 const { withMorfeo } = require("@morfeo/next");
 
 /** @type {import('next').NextConfig} */
@@ -18,7 +18,7 @@ morfeo.setTheme("default", deepMerge(darkTheme, docsTheme));
 module.exports = withMorfeo(nextConfig);
 `;
 
-const nextIndex = `import { morfeo } from '@morfeo/web';
+const nextIndex = `import { morfeo } from '@morfeo/react';
 import { Socials } from "../components/Socials";
 
 const classes = morfeo.css({

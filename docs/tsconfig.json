@@ -25,9 +25,6 @@
         "./src/*"
       ]
     },
-    "types": [
-      "./morfeo.d.ts",
-    ]
   },
   "include": [
     "next-env.d.ts",

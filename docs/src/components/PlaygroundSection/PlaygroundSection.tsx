@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/web';
+import { morfeo } from '@morfeo/react';
 import { Sandpack } from '@codesandbox/sandpack-react';
 import { nightOwl } from '@codesandbox/sandpack-themes';
 import { playgroundFiles } from './playgroundFiles';
@@ -74,7 +74,7 @@ export const PlaygroundSection: React.FC = () => {
           files={selectedTemplateFiles}
           customSetup={{
             dependencies: {
-              '@morfeo/web': 'latest',
+              '@morfeo/react': 'latest',
               '@morfeo/next': 'latest',
               '@morfeo/preset-default': 'latest',
               '@morfeo/utils': 'latest',

@@ -15,7 +15,7 @@
     "@morfeo/compiler": "workspace:*",
     "@morfeo/react": "workspace:*",
     "@types/node": "18.15.3",
-    "next": "13.4.19",
+    "next": "13.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
