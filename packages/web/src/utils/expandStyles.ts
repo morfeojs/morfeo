@@ -1,6 +1,5 @@
 import { deepMerge, isDefaultObject } from '@morfeo/utils';
 import { Style, morfeo } from '@morfeo/core';
-import { isMultiThemeValue } from './multiTheming';
 
 type Callback = (value: Style) => Style;
 
