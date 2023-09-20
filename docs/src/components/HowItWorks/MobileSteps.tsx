@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/web';
+import { morfeo } from '@morfeo/react';
 import { useMemo } from 'react';
 
 type Props = {

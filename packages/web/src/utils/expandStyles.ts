@@ -46,7 +46,7 @@ export function expandStyles(
                 restStyle,
                 pipe(
                   getContext,
-                  (value: Style) => ({ [curr]: value } as Style),
+                  (value: Style) => ({ [curr]: value }) as Style,
                 ),
               ),
             },
@@ -57,7 +57,7 @@ export function expandStyles(
           ...acc,
           [curr]: traverse(
             currentStyle,
-            pipe(getContext, (value: Style) => ({ [curr]: value } as Style)),
+            pipe(getContext, (value: Style) => ({ [curr]: value })),
           ),
         };
       }

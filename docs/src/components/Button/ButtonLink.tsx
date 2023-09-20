@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { morfeo } from '@morfeo/web';
-import { Variant } from '@morfeo/web';
+import { morfeo } from '@morfeo/react';
+import { Variant } from '@morfeo/react';
 import Link, { LinkProps } from 'next/link';
 
 type ButtonLinkProps = LinkProps & {

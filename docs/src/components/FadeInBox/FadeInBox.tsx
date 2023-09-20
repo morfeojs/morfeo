@@ -1,6 +1,6 @@
 import { motion, MotionProps } from 'framer-motion';
 import { PropsWithChildren, ReactNode, RefObject } from 'react';
-import { morfeo } from '@morfeo/web';
+import { morfeo } from '@morfeo/react';
 
 type Props = {
   ref?: RefObject<HTMLDivElement>;
