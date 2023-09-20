@@ -21,7 +21,7 @@
     "@morfeo/web": "workspace:*",
     "@types/node": "18.17.18",
     "framer-motion": "10.12.7",
-    "next": "13.5.1",
+    "next": "13.5.2",
     "nextra": "2.12.3",
     "nextra-theme-docs": "2.12.3",
     "react": "18.2.0",
@@ -33,7 +33,7 @@
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "eslint": "8.49.0",
-    "eslint-config-next": "13.5.1",
+    "eslint-config-next": "13.5.2",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0"
   }
