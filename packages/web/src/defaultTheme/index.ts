@@ -22,6 +22,11 @@ const fonts = {
   default: 'Montserrat',
 };
 
+const colorSchemes = {
+  dark: '@media (prefers-color-scheme: dark)',
+  light: '@media (prefers-color-scheme: light)',
+};
+
 export const defaultTheme: Omit<Theme, 'components'> = {
   radii,
   sizes,
@@ -41,6 +46,7 @@ export const defaultTheme: Omit<Theme, 'components'> = {
   borderWidths,
   borderStyles,
   mediaQueries: {},
+  colorSchemes,
   letterSpacings,
 };
 

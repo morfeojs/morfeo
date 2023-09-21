@@ -9,13 +9,13 @@ import {
 import { Properties } from 'csstype';
 import { BreakPoint, BreakPoints } from './breakpoints';
 import { MediaQueries } from './mediaQueries';
-import { ColorSchema } from './schemas';
+import { ColorScheme, ColorSchemes } from './schemes';
 
 type MultiThemeableSlice<T> = {
   [K in keyof T]:
     | T[K]
     | {
-        [key in ColorSchema]?: T[K];
+        [key in ColorScheme]?: T[K];
       };
 };
 
@@ -25,9 +25,8 @@ export type ResponsiveValue<V> = {
   [K in BreakPoint]?: V;
 };
 
-type ColorSchemableValue<V> = {
-  dark?: V;
-  light?: V;
+export type ColorSchemebleValue<V> = {
+  [K in ColorScheme]?: V;
 };
 
 type CssTypeProperties = Omit<Properties<string | number>, Property>;
@@ -37,7 +36,7 @@ type AcceptRaw<V> = `raw:${string}` | V;
 type WebPropertyValue<V> =
   | AcceptRaw<V>
   | ResponsiveValue<AcceptRaw<V>>
-  | ColorSchemableValue<AcceptRaw<V> | ResponsiveValue<AcceptRaw<V>>>;
+  | ColorSchemebleValue<AcceptRaw<V> | ResponsiveValue<AcceptRaw<V>>>;
 
 type CssStyle = {
   [K in keyof CssTypeProperties]: WebPropertyValue<CssTypeProperties[K]>;
@@ -56,6 +55,7 @@ type WebTheme = {
   shadows: MultiThemeableSlice<Shadows>;
   gradients: MultiThemeableSlice<Gradients>;
   breakpoints: BreakPoints;
+  colorSchemes: ColorSchemes;
   mediaQueries: MediaQueries;
 };
 

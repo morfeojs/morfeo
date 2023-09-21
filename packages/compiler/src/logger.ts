@@ -19,7 +19,7 @@ type LogOptions = {
 function log(options: LogOptions) {
   const prefix = [
     colors.bgBlue,
-    'Ⓜ️  morfeo',
+    'Ⓜ️',
     colors.reset,
     colors[options.color || 'cyan'],
     options.label,

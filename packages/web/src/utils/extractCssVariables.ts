@@ -1,4 +1,6 @@
 import { Theme, ThemeKey } from '@morfeo/core';
+import { deepMerge } from '@morfeo/utils';
+import { ColorScheme, ColorSchemes } from '../types';
 
 const slicesToTransform: ThemeKey[] = [
   'radii',
@@ -23,68 +25,84 @@ type DeepPartial<T> = {
 
 type SliceConfig<SN extends (typeof slicesToTransform)[number]> = {
   slice: Theme[SN];
-  light: Record<string, string>;
-  dark: Record<string, string>;
+  variables: {
+    [K in ColorScheme]?: Record<string, string>;
+  };
 };
 
-export function extractCssVariables<T extends DeepPartial<Theme>>(theme: T) {
+export function extractCssVariables<T extends DeepPartial<Theme>>(
+  theme: T,
+): Omit<SliceConfig<any>, 'slice'> & { theme: T } {
+  const schemesKeys = Object.keys(
+    (theme.colorSchemes || {}) as ColorSchemes,
+  ) as ColorScheme[];
+
   function extractSliceVariables<SN extends (typeof slicesToTransform)[number]>(
     sliceName: SN,
   ): SliceConfig<SN> {
     const slice = theme[sliceName];
     if (!slice) {
-      return { slice: slice as Theme[SN], light: {}, dark: {} };
+      return { slice: slice as Theme[SN], variables: {} };
     }
     const sliceKeys = Object.keys(slice);
 
     return sliceKeys.reduce<SliceConfig<SN>>(
       (acc, sliceKey) => {
         const sliceValue = slice[sliceKey];
+        const isPlain = typeof sliceValue !== 'object';
+        const variableName = `--${sliceName}-${sliceKey}`.replace(/\./, '-');
+        const { variables: oldVariables } = acc;
 
-        const lightValue =
-          typeof sliceValue === 'object' ? sliceValue.light : sliceValue;
-        const darkValue =
-          typeof sliceValue === 'object'
-            ? sliceValue.dark || lightValue
-            : sliceValue;
+        const variables = schemesKeys.reduce((old, scheme) => {
+          if (isPlain) {
+            return deepMerge(old, {
+              light: { [variableName]: sliceValue },
+            });
+          }
+
+          if (!sliceValue[scheme]) {
+            return old;
+          }
+
+          return deepMerge(old, {
+            [scheme]: {
+              [variableName]: sliceValue[scheme],
+            },
+          });
+        }, oldVariables);
 
         const isCssVariable =
-          typeof lightValue === 'string' && lightValue.indexOf('var(') >= 0;
+          isPlain &&
+          typeof sliceValue === 'string' &&
+          sliceValue.indexOf('var(') >= 0;
 
-        const variableName = `--${sliceName}-${sliceKey}`.replace(/\./, '-');
+        const plainValue = isPlain
+          ? sliceValue
+          : sliceKeys
+              .map(key => variables[key])
+              .find(scheme => (scheme ? scheme[variableName] : false));
 
         return {
           slice: {
             ...acc.slice,
-            [sliceKey]: isCssVariable ? lightValue : `var(${variableName})`,
+            [sliceKey]: isCssVariable ? plainValue : `var(${variableName})`,
           },
-          light: {
-            ...acc.light,
-            [variableName]: lightValue,
-          },
-          dark:
-            darkValue && lightValue !== darkValue
-              ? {
-                  ...acc.dark,
-                  [variableName]: darkValue,
-                }
-              : acc.dark,
+          variables,
         };
       },
-      { light: {}, dark: {}, slice } as SliceConfig<SN>,
+      { slice, variables: {} } as SliceConfig<SN>,
     );
   }
 
   return slicesToTransform.reduce(
-    (acc, sliceName) => {
-      const { light, dark, slice } = extractSliceVariables(sliceName);
+    ({ theme, variables: oldVariables }, sliceName) => {
+      const { slice, variables } = extractSliceVariables(sliceName);
 
       return {
-        theme: { ...acc.theme, [sliceName]: slice },
-        light: { ...acc.light, ...light },
-        dark: { ...acc.dark, ...dark },
+        theme: { ...theme, [sliceName]: slice },
+        variables: deepMerge(oldVariables, variables),
       };
     },
-    { light: {}, dark: {}, theme },
+    { theme, variables: {} },
   );
 }

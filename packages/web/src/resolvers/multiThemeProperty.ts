@@ -1,30 +1,32 @@
 import { PropertyResolver } from '@morfeo/core';
-import { isMultiThemeValue, resolveMultiThemeValue } from '../utils';
-import { ColorSchema } from '../types';
+import { isMultiThemeValue } from '../utils';
+import { ColorScheme } from '../types';
 
 export const multiThemeProperty: PropertyResolver = ({
   property,
   value,
   style,
+  theme,
   next,
 }) => {
-  if (!isMultiThemeValue(value)) {
+  if (!isMultiThemeValue(theme.getSlice('colorSchemes'), value)) {
     return;
   }
 
   const keys = Object.keys(value);
-  return keys.reduce((acc, mode) => {
+  return keys.reduce((acc, scheme) => {
     const currentValue = next({
       property,
-      value: value[mode],
+      value: value[scheme],
       style: {
         ...style,
-        [property]: value[mode],
+        [property]: value[scheme],
       },
     });
 
-    const preferredColorSchemeMedia = resolveMultiThemeValue(
-      mode as ColorSchema,
+    const preferredColorSchemeMedia = theme.getValue(
+      'colorSchemes',
+      scheme as ColorScheme,
     );
 
     return {

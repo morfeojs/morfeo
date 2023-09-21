@@ -1,4 +1,4 @@
-import { morfeo, Property, Theme } from '@morfeo/core';
+import { morfeo, Property, Theme, ThemeMetadata } from '@morfeo/core';
 import { deepMerge, DeepPartial } from '@morfeo/utils';
 import { gradientParsers } from './parsers';
 import { css } from './css';
@@ -7,18 +7,18 @@ import { extractCssVariables } from './utils/extractCssVariables';
 import { defaultTheme } from './defaultTheme';
 import { responsiveProperty } from './resolvers/responsiveProperty';
 import { multiThemeProperty } from './resolvers/multiThemeProperty';
-import { ColorSchema } from './types';
+import { ColorScheme } from './types';
 
 Object.keys(gradientParsers).forEach(property => {
   morfeo.parsers.add(property as Property, gradientParsers[property] as any);
 });
 
 function onSetTheme(currentTheme: DeepPartial<Theme>) {
-  const { theme, light, dark } = extractCssVariables(
+  const { theme, variables } = extractCssVariables(
     deepMerge(defaultTheme, currentTheme),
   );
 
-  morfeo.theme.setMetadata({ light, dark });
+  morfeo.theme.setMetadata(variables as ThemeMetadata);
 
   return theme;
 }
@@ -38,5 +38,5 @@ declare module '@morfeo/core' {
   }
 
   export interface ThemeMetadata
-    extends Record<ColorSchema, Record<string, string>> {}
+    extends Record<ColorScheme, Record<string, string>> {}
 }

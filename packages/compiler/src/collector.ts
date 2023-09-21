@@ -8,7 +8,7 @@ import morfeoBabelPlugin, {
   type MorfeoBabelPluginOptions,
   type MorfeoBabelResult,
 } from '@morfeo/babel-plugin';
-import { type Theme, morfeo, resolveMultiThemeValue } from '@morfeo/web';
+import { type Theme, morfeo, ColorScheme } from '@morfeo/web';
 import { getStyles } from '@morfeo/jss';
 import { deepMerge } from '@morfeo/utils';
 import { createWriter } from './writer';
@@ -37,6 +37,7 @@ const DEFAULT_OPTIONS = {
 function createCollector() {
   const cache = new Map<string, MorfeoBabelResult>();
   let options: MorfeoCompilerOptions = DEFAULT_OPTIONS;
+  let cssVariables = '';
   let writer = createWriter({
     output: DEFAULT_OPTIONS.output,
   });
@@ -67,6 +68,30 @@ function createCollector() {
 
     morfeo.theme.set(options.theme);
 
+    const { light, ...variablesObject } = morfeo.theme.getMetadata();
+
+    const restVariables = Object.keys(variablesObject).reduce((acc, curr) => {
+      const selector = morfeo.theme.getValue(
+        'colorSchemes',
+        curr as ColorScheme,
+      );
+      return {
+        ...acc,
+        [selector]: selector.startsWith('@media')
+          ? {
+              ':root': variablesObject[curr],
+            }
+          : variablesObject[curr],
+      };
+    }, {});
+
+    cssVariables = getStyles({
+      '@global': {
+        ':root': light,
+        ...restVariables,
+      },
+    } as any).sheet.toString();
+
     writer = createWriter({
       delay: 10,
       output: pluginOptions.output || DEFAULT_OPTIONS.output,
@@ -75,17 +100,6 @@ function createCollector() {
 
   async function write() {
     function onWrite() {
-      const { light = {}, dark = {} } = morfeo.theme.getMetadata();
-
-      const variables = getStyles({
-        '@global': {
-          ':root': light,
-          [resolveMultiThemeValue('dark')]: {
-            ':root': dark,
-          },
-        },
-      } as any).sheet.toString();
-
       const mergedCss = Array.from(cache.entries()).reduce(
         (acc, [, { globalStyles, styles }]) => {
           return {
@@ -101,7 +115,7 @@ function createCollector() {
         ...Object.values(mergedCss.styles),
       ].join('\n');
 
-      return `${variables}\n${css}`;
+      return `${cssVariables}\n${css}`;
     }
 
     return writer(onWrite);
