@@ -25,9 +25,8 @@ export type ResponsiveValue<V> = {
   [K in BreakPoint]?: V;
 };
 
-type ColorSchemebleValue<V> = {
-  dark?: V;
-  light?: V;
+export type ColorSchemebleValue<V> = {
+  [K in ColorScheme]?: V;
 };
 
 type CssTypeProperties = Omit<Properties<string | number>, Property>;
