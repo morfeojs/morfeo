@@ -1,15 +1,12 @@
-import { ColorSchema } from '../types';
+import { ColorScheme, ColorSchemes } from '../types';
 
 export function isMultiThemeValue(
+  schemes: ColorSchemes,
   value: any,
-): value is { light?: any; dark?: any } {
+): value is { [K in ColorScheme]?: any } {
   if (value && typeof value === 'object') {
-    return !!value.light || !!value.dark;
+    return Object.keys(schemes).some(scheme => value[scheme]);
   }
 
   return false;
-}
-
-export function resolveMultiThemeValue(mode: ColorSchema) {
-  return `@media (prefers-color-scheme: ${mode})`;
 }
