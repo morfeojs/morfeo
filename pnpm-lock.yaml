@@ -281,8 +281,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0(@types/node@18.17.18)(cosmiconfig@8.3.6)(typescript@4.9.5)
       glob:
-        specifier: 10.3.4
-        version: 10.3.4
+        specifier: 10.3.5
+        version: 10.3.5
     devDependencies:
       '@types/babel__core':
         specifier: ^7.20.0
@@ -7395,8 +7395,8 @@ packages:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
     dev: false
 
-  /glob@10.3.4:
-    resolution: {integrity: sha512-6LFElP3A+i/Q8XQKEvZjkEWEOTgAIALR9AO2rwT8bgPhDd1anmqDJDZ6lLddI4ehxxxR1S5RIqKe1uapMQfYaQ==}
+  /glob@10.3.5:
+    resolution: {integrity: sha512-bYUpUD7XDEHI4Q2O5a7PXGvyw4deKR70kHiDxzQbe925wbZknhOzUt2xBgTkYL6RBcVeXYuD9iNYeqoWbBZQnA==}
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
     dependencies:
@@ -11922,7 +11922,7 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
-      glob: 10.3.4
+      glob: 10.3.5
     dev: true
 
   /robust-predicates@3.0.2:

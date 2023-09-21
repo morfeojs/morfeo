@@ -43,7 +43,7 @@
     "commander": "11.0.0",
     "cosmiconfig": "8.3.6",
     "cosmiconfig-typescript-loader": "5.0.0",
-    "glob": "10.3.4"
+    "glob": "10.3.5"
   },
   "peerDependencies": {
     "@babel/core": "7.22.20"
