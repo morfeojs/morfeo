@@ -1,5 +1,7 @@
 import { deepMerge } from '@morfeo/utils';
-import { morfeo } from '../../src';
+import { createMorfeo } from '../../src';
+
+const morfeo = createMorfeo();
 
 const defaultTheme = {
   colors: {

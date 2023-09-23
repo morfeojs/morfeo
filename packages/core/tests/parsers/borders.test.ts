@@ -1,5 +1,7 @@
 import { Theme } from '@morfeo/spec';
-import { morfeo } from '../../src';
+import { createMorfeo } from '../../src';
+
+const morfeo = createMorfeo();
 
 const THEME: Theme = {
   borders: {

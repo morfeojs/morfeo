@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/spec';
-import { morfeo } from '../../src';
+import { createMorfeo } from '../../src';
 import { components } from '../../src/parsers/components';
 
 const THEME: Theme = {
@@ -39,6 +39,8 @@ const THEME: Theme = {
     },
   },
 } as any;
+
+const morfeo = createMorfeo();
 
 describe('components', () => {
   beforeAll(() => {
