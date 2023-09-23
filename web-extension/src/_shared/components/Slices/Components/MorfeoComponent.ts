@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
-import { morfeo, Component } from '@morfeo/react';
-import { getStyles } from '@morfeo/jss';
+import { Component } from '@morfeo/react';
 import clsx from 'clsx';
+import { morfeo, jss } from 'src/devtool/morfeo';
 
 const SELF_CLOSING_TAGS = [
   'area',
@@ -41,7 +41,7 @@ export const MorfeoComponent: React.FC<Props> = ({
     meta,
   } = morfeo.theme.component(name, variant).get() || {};
   const { devtoolConfig } = meta || {};
-  const { classes } = getStyles({
+  const { classes } = jss.getStyles({
     [name]: {
       ...(applyDefaultStyle && devtoolConfig?.style),
       componentName: name as Component,

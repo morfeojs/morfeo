@@ -1,6 +1,6 @@
 import browser from 'webextension-polyfill';
-import { morfeo } from '@morfeo/react';
 import { ActionType, MorfeoDevToolAction } from '../types';
+import { Morfeo, createMorfeo } from '@morfeo/react';
 
 function appendFonts({ fonts }: MorfeoDevToolAction) {
   if (fonts) {
@@ -18,7 +18,7 @@ function appendFonts({ fonts }: MorfeoDevToolAction) {
   }
 }
 
-function onMessageReceived(message: MorfeoDevToolAction) {
+function onMessageReceived(morfeo: Morfeo, message: MorfeoDevToolAction) {
   if (message && message.type === ActionType.SET) {
     const { theme } = message;
     morfeo.theme.set(theme || {});
@@ -44,17 +44,21 @@ export function getThemeFromApp(): Promise<MorfeoDevToolAction> {
 export async function getThemeFromAppAndInitMorfeo(
   callback?: (message: MorfeoDevToolAction) => void,
 ) {
+  const morfeo = createMorfeo();
+
   browser.runtime.onMessage.addListener((message: MorfeoDevToolAction) => {
     if (callback) {
       callback(message);
     }
-    onMessageReceived(message);
+    onMessageReceived(morfeo, message);
   });
 
   getThemeFromApp().then((message: MorfeoDevToolAction) => {
     if (callback) {
       callback(message);
     }
-    onMessageReceived(message);
+    onMessageReceived(morfeo, message);
   });
+
+  return morfeo;
 }

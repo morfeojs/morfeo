@@ -1,5 +1,4 @@
 import type { Visitor } from '@babel/traverse';
-import * as t from '@babel/types';
 import type { MorfeoBabelPluginOptions } from './types';
 import { createCssVisitor } from './visitors/css';
 import { createComponentVisitor } from './visitors/component';

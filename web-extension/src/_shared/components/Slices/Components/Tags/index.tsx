@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component, morfeo } from '@morfeo/react';
+import { Component, useMorfeo } from '@morfeo/react';
 import clsx from 'clsx';
 import styles from './style.module.css';
 
@@ -9,6 +9,7 @@ type Props = {
 };
 
 export const Tags: React.FC<Props> = ({ name, variant }) => {
+  const morfeo = useMorfeo();
   const { meta } = morfeo.theme.component(name, variant).get();
   const { tags = [] } = meta || {};
 

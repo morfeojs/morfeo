@@ -9,7 +9,7 @@ export function useIsUsingMorfeo() {
   );
 
   const onMessage = (message?: MorfeoDevToolAction) => {
-    setIsUsingMorfeo(!!message && !!message.themes && !!message.current);
+    setIsUsingMorfeo(!!message && !!message.theme);
   };
 
   useEffect(() => {

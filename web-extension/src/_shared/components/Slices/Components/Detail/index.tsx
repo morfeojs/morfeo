@@ -1,4 +1,4 @@
-import { Color, Component, morfeo } from '@morfeo/react';
+import { Color, Component, useMorfeo } from '@morfeo/react';
 import clsx from 'clsx';
 import { useMemo, useState, useCallback } from 'react';
 import { useRouter } from '../../../../hooks';
@@ -9,6 +9,7 @@ import { Icon } from '../../../Icon';
 
 export const Detail = () => {
   const { route } = useRouter();
+  const morfeo = useMorfeo();
   const { state } = route;
   const { detailKey: componentName = '', componentVariant } = state || {};
   const { meta } =

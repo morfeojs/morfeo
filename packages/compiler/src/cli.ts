@@ -3,7 +3,6 @@ import * as path from 'path';
 import { cosmiconfig } from 'cosmiconfig';
 import { TypeScriptLoader } from 'cosmiconfig-typescript-loader';
 import { CosmiconfigResult } from 'cosmiconfig/dist/types';
-import type { Morfeo } from '@morfeo/web';
 import { Command } from 'commander';
 import { MorfeoCompilerOptions, collector } from './collector';
 import { logger } from './logger';

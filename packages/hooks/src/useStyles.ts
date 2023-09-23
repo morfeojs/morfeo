@@ -1,4 +1,4 @@
-import type { Style, ResolvedStyle, Morfeo } from '@morfeo/core';
+import type { Style, ResolvedStyle } from '@morfeo/core';
 import { useMorfeo } from './MorfeoProvider';
 
 /**
