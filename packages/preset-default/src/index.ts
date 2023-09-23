@@ -1,4 +1,4 @@
-import { morfeo, defaultTheme, Theme } from '@morfeo/web';
+import { defaultTheme, Morfeo, Theme } from '@morfeo/web';
 import { loadFontsParams } from './loadFontsParams';
 import { components } from './components';
 
@@ -7,7 +7,7 @@ const theme = {
   components: components,
 } as Theme;
 
-export function initPreset() {
+export function initPreset(morfeo: Morfeo) {
   morfeo.theme.set(theme);
 }
 

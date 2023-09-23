@@ -1,13 +1,15 @@
 import * as babel from '@babel/core';
-import { morfeo } from '@morfeo/web';
+import { createMorfeo } from '@morfeo/web';
 import { theme } from './theme';
 import { CSSCollector } from '../src/utils';
 import morfeoBabelPlugin from '../src';
 
+const morfeo = createMorfeo();
+
 function transform(code: string, tsx = false) {
   return babel.transform(code, {
     presets: tsx ? ['@babel/preset-env', '@babel/preset-typescript'] : [],
-    plugins: ['@babel/plugin-syntax-jsx', morfeoBabelPlugin],
+    plugins: ['@babel/plugin-syntax-jsx', [morfeoBabelPlugin, { morfeo }]],
     filename: 'fileName.tsx',
   });
 }

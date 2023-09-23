@@ -1,26 +1,24 @@
-import { Style, morfeo } from '@morfeo/web';
+import { Morfeo, Style } from '@morfeo/web';
 import { deepMerge } from '@morfeo/utils';
-import { StyleSheetFactoryOptions } from 'jss';
-import jss from './initJSS';
-import { MorfeoSheetsRegistry } from './registry';
+import { Jss, StyleSheetFactoryOptions } from 'jss';
 
-export function getStyleSheet<K extends string>(
+type MorfeoJSSOptions = StyleSheetFactoryOptions & {
+  jss: Jss;
+  morfeo: Morfeo;
+};
+
+function getStyleSheet<K extends string>(
   styles: Record<K, Style>,
-  options?: StyleSheetFactoryOptions,
+  { jss, ...options }: MorfeoJSSOptions,
 ) {
-  const sheet = jss.createStyleSheet<K>(styles as any, options);
-
-  MorfeoSheetsRegistry.add(sheet);
-
-  return sheet;
+  return jss.createStyleSheet<K>(styles as any, options);
 }
 
 export function getStyles<K extends string>(
   styles: Record<K, Style>,
-  options?: StyleSheetFactoryOptions,
+  { jss, morfeo, ...options }: MorfeoJSSOptions,
 ) {
-  let sheet = getStyleSheet<K>(styles, options);
-  sheet.attach();
+  let sheet = getStyleSheet<K>(styles, { jss, morfeo, ...options });
 
   let classes = sheet.classes;
   let currentStyles = { ...styles };
@@ -30,8 +28,11 @@ export function getStyles<K extends string>(
 
     sheet = getStyleSheet(currentStyles, {
       ...options,
+      jss,
+      morfeo,
       generateId: ({ key }) => classes[key],
     });
+
     sheet.attach();
   }
 
@@ -53,10 +54,10 @@ export function getStyles<K extends string>(
   };
   const unsubscribe = morfeo.theme.subscribe(onThemeChange);
 
-  const destroy = () => {
+  function destroy() {
     sheet.detach();
     unsubscribe();
-  };
+  }
 
   return { classes, sheet, jss, destroy, update };
 }

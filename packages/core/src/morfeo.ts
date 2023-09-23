@@ -1,7 +1,7 @@
 import { createParsers } from './parsers/createParsers';
 import { createTheme } from './theme/createTheme';
 
-function createMorfeo() {
+export function createMorfeo() {
   const theme = createTheme();
   const parsers = createParsers(theme);
 

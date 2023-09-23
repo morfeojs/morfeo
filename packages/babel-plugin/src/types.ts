@@ -1,4 +1,10 @@
+import { Morfeo } from '@morfeo/web';
+
 export type MorfeoBabelPluginOptions = {
+  /**
+   * The instance of morfeo returned by the function `createMorfeo`
+   */
+  morfeo: Morfeo;
   /**
    * If set to `true` the generated minified classes will be emojis.
    * Nothing less, nothing more.

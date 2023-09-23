@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/core';
-import { morfeo } from '../src';
+import { createMorfeo } from '../src';
 
 const THEME: Theme = {
   colors: {
@@ -7,6 +7,8 @@ const THEME: Theme = {
     secondary: '#000',
   },
 } as any;
+
+const morfeo = createMorfeo(THEME);
 
 describe('pseudos', () => {
   beforeAll(() => {

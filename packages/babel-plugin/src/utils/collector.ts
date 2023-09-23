@@ -1,22 +1,26 @@
 import { type Style, expandStyles } from '@morfeo/web';
-import { getStyles } from '@morfeo/jss';
+import { createMorfeoJSS } from '@morfeo/jss';
 import { generateClassName, deepMerge } from '@morfeo/utils';
 import type { MorfeoBabelPluginOptions } from '../types';
+
+const DEFAULT_OPTIONS = {
+  emojis: false,
+  classNamePrefix: '',
+};
 
 function createCollector() {
   const stylesCache = new Map<string, Style>();
   const globalStylesCache = new Map<string, Style>();
+  let morfeoJSS: ReturnType<typeof createMorfeoJSS>;
 
-  let options: MorfeoBabelPluginOptions = {
-    emojis: false,
-    classNamePrefix: '',
-  };
+  let options: MorfeoBabelPluginOptions;
 
   function setOptions(pluginOptions: MorfeoBabelPluginOptions) {
     options = {
-      ...options,
+      ...DEFAULT_OPTIONS,
       ...pluginOptions,
     };
+    morfeoJSS = createMorfeoJSS(options.morfeo);
   }
 
   function addGlobal(styles: Record<string, Style>) {
@@ -28,6 +32,14 @@ function createCollector() {
     });
   }
 
+  function getCSS(styles, jssOptions = {}) {
+    const { sheet } = morfeoJSS.getStyles(styles, {
+      ...jssOptions,
+    });
+
+    return sheet.toString();
+  }
+
   function updateCache(className: string, style: Style) {
     if (stylesCache.has(className)) {
       return;
@@ -37,7 +49,7 @@ function createCollector() {
   }
 
   function add(style: Style) {
-    return expandStyles(style, {
+    return expandStyles(options.morfeo, style, {
       getClassName(s) {
         const className = generateClassName(s);
         updateCache(className, s);
@@ -49,11 +61,9 @@ function createCollector() {
   function get() {
     const globalCss = Array.from(globalStylesCache.entries()).reduce(
       (acc, [selector, style]) => {
-        const { sheet } = getStyles({
+        const css = getCSS({
           '@global': { [selector]: style },
         });
-
-        const css = sheet.toString();
 
         return { ...acc, [selector]: css };
       },
@@ -63,7 +73,7 @@ function createCollector() {
     const computedStyles = Array.from(stylesCache.entries());
 
     const computedCss = computedStyles.reduce((acc, [className, style]) => {
-      const { sheet } = getStyles(
+      const css = getCSS(
         {
           style,
         },
@@ -71,8 +81,6 @@ function createCollector() {
           generateId: () => className,
         },
       );
-
-      const css = sheet.toString();
 
       return { ...acc, [className]: css };
     }, {});

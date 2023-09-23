@@ -1,4 +1,6 @@
-import { morfeo } from '../src';
+import { createMorfeo } from '../src';
+
+const morfeo = createMorfeo();
 
 describe('morfeo.css', () => {
   it('should return the css classes based on the passed styles', () => {

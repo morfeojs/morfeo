@@ -185,9 +185,6 @@ importers:
 
   examples/react:
     dependencies:
-      '@morfeo/compiler':
-        specifier: workspace:*
-        version: link:../../packages/compiler
       '@morfeo/preset-default':
         specifier: workspace:*
         version: link:../../packages/preset-default
@@ -201,6 +198,9 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
+      '@morfeo/compiler':
+        specifier: workspace:*
+        version: link:../../packages/compiler
       '@vitejs/plugin-react':
         specifier: ^3.1.0
         version: 3.1.0(vite@4.3.9)

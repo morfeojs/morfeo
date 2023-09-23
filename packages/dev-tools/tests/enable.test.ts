@@ -1,19 +1,17 @@
 import { enableMorfeoDevTool } from '../src';
-import { morfeo } from '@morfeo/web';
+import { createMorfeo } from '@morfeo/web';
+
+const morfeo = createMorfeo({
+  colors: {
+    primary: 'default primary',
+  },
+});
 
 describe('enableMorfeoDevTool', () => {
-  beforeAll(() => {
-    morfeo.theme.set({
-      colors: {
-        primary: 'default primary',
-      },
-    });
-  });
-
   test('should call the window.postMessage callback when the function is called', () => {
     const spyPostMessage = jest.spyOn(window, 'postMessage');
 
-    enableMorfeoDevTool();
+    enableMorfeoDevTool(morfeo);
 
     expect(spyPostMessage).toHaveBeenCalled();
   });

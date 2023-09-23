@@ -1,7 +1,7 @@
 import { SandpackFiles } from '@codesandbox/sandpack-react/types';
 import { globalStyle, morfeoTheme, socialComponent } from './globalFiles';
 
-const viteIndex = `import { morfeo } from '@morfeo/react';
+const viteIndex = `import { morfeo } from 'src/morfeo.theme';;
 import { Socials } from "./src/components/Socials";
 
 const classes = morfeo.css({

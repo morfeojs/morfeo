@@ -5,14 +5,12 @@ import { CSSCollector } from './utils';
 
 export default function morfeoBabelPlugin(
   _babel: ConfigAPI,
-  options?: MorfeoBabelPluginOptions,
+  options: MorfeoBabelPluginOptions,
 ): PluginObj {
-  if (options) {
-    CSSCollector.setOptions(options);
-  }
+  CSSCollector.setOptions(options);
 
   return {
     name: '@morfeo/babel-plugin',
-    visitor: getVisitor(),
+    visitor: getVisitor(options),
   };
 }

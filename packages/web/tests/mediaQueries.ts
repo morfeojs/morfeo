@@ -1,4 +1,11 @@
-import { morfeo, defaultTheme, resolveMediaQuery, isResponsive } from '../src';
+import {
+  createMorfeo,
+  defaultTheme,
+  resolveMediaQuery,
+  isResponsive,
+} from '../src';
+
+const morfeo = createMorfeo();
 
 describe('media queries', () => {
   beforeEach(() => {

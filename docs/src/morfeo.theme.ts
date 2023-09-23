@@ -1,6 +1,6 @@
 import { theme as defaultTheme } from '@morfeo/preset-default';
 import { deepMerge } from '@morfeo/utils';
-import { morfeo } from '@morfeo/react';
+import { createMorfeo } from '@morfeo/react';
 
 const localTheme = {
   fontSizes: {
@@ -114,7 +114,7 @@ const localTheme = {
 
 const theme = deepMerge(defaultTheme, localTheme);
 
-morfeo.theme.set(theme);
+export const morfeo = createMorfeo(theme);
 
 export default theme;
 

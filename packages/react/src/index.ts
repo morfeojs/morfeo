@@ -1,15 +1,24 @@
-import * as MorfeoWeb from '@morfeo/web';
-import { component } from './component';
+import { Morfeo, createMorfeo } from '@morfeo/web';
+import { createMorfeoComponent } from './component';
 
 declare module '@morfeo/web' {
   export interface Morfeo {
-    component: typeof component;
+    component: ReturnType<typeof createMorfeoComponent>;
   }
 }
 
-MorfeoWeb.morfeo.component = component;
+function createReactMorfeo(...args: Parameters<typeof createMorfeo>): Morfeo {
+  const morfeo = createMorfeo(...args);
+  const component = createMorfeoComponent(morfeo);
+
+  return {
+    ...morfeo,
+    component,
+  };
+}
 
 export * from '@morfeo/web';
 export * from '@morfeo/hooks';
 
 export { useStyle, useStyles } from './hooks';
+export { createReactMorfeo as createMorfeo };

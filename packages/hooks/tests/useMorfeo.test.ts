@@ -1,6 +1,6 @@
-import { renderHook, act } from '@testing-library/react';
-import { morfeo, Theme } from '@morfeo/core';
-import { useSyncMorfeo } from '../src';
+import { renderHook, act } from './renderHook';
+import { Theme, createMorfeo } from '@morfeo/core';
+import { useMorfeo } from '../src';
 
 const THEME_1 = {
   colors: {
@@ -16,11 +16,7 @@ const THEME_2 = {
   },
 } as Theme;
 
-function useHookForTest() {
-  useSyncMorfeo();
-
-  return morfeo.theme.get();
-}
+const morfeo = createMorfeo();
 
 describe('useSyncMorfeo', () => {
   beforeEach(() => {
@@ -29,15 +25,17 @@ describe('useSyncMorfeo', () => {
 
   describe('when the theme changes', () => {
     it('should trigger a re-render and return the dark theme', () => {
-      const { result } = renderHook(() => useHookForTest());
-      const oldThemeMode = result.current;
+      const { result } = renderHook(() => useMorfeo(), {
+        instance: morfeo,
+      });
+      const oldThemeMode = result.current.theme.get();
 
       act(() => {
         morfeo.theme.set(THEME_2);
       });
 
       expect(oldThemeMode).toEqual(THEME_1);
-      expect(result.current).toEqual(THEME_2);
+      expect(result.current.theme.get()).toEqual(THEME_2);
     });
   });
 });

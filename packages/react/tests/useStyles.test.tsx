@@ -1,6 +1,7 @@
-import { morfeo } from '@morfeo/web';
+import React from 'react';
+import { createMorfeo } from '@morfeo/web';
 import { renderHook } from '@testing-library/react';
-import { useStyle } from '../src';
+import { useStyle, MorfeoProvider } from '../src';
 
 const theme = {
   colors: {
@@ -8,12 +9,12 @@ const theme = {
   },
 } as any;
 
-beforeEach(() => {
-  morfeo.theme.set(theme);
-});
+const morfeo = createMorfeo(theme);
 
 test('should generate the correct style with the override of `useStyle`', async () => {
-  const { result } = renderHook(() => useStyle({ bg: 'primary' }));
+  const { result } = renderHook(() => useStyle({ bg: 'primary' }), {
+    wrapper: props => <MorfeoProvider instance={morfeo} {...props} />,
+  });
 
   expect(result.current.backgroundColor).toBe(
     morfeo.theme.getValue('colors', 'primary'),

@@ -1,5 +1,5 @@
-import { renderHook, act } from '@testing-library/react';
-import { Theme, morfeo } from '@morfeo/core';
+import { Theme, createMorfeo } from '@morfeo/core';
+import { renderHook, act } from './renderHook';
 import { useStyles, useStyle } from '../src';
 
 const THEME_1 = {
@@ -19,18 +19,22 @@ const THEME_2 = {
   },
 } as Theme;
 
+const morfeo = createMorfeo();
+
 beforeEach(() => {
   morfeo.theme.set(THEME_1);
 });
 
 describe('useStyles', () => {
   test('should return the parsed styles', () => {
-    const { result } = renderHook(() =>
-      useStyles({
-        button: {
-          bg: 'primary',
-        },
-      }),
+    const { result } = renderHook(
+      () =>
+        useStyles({
+          button: {
+            bg: 'primary',
+          },
+        }),
+      { instance: morfeo },
     );
 
     expect(result.current).toEqual({ button: { backgroundColor: 'black' } });
@@ -39,13 +43,17 @@ describe('useStyles', () => {
 
 describe('useStyle', () => {
   test('should return the theme slice `colors`', () => {
-    const { result } = renderHook(() => useStyle({ p: 's' }));
+    const { result } = renderHook(() => useStyle({ p: 's' }), {
+      instance: morfeo,
+    });
 
     expect(result.current).toEqual({ padding: '10px' });
   });
 
   test('should change the result after theme update', async () => {
-    const { result } = renderHook(() => useStyle({ color: 'primary' }));
+    const { result } = renderHook(() => useStyle({ color: 'primary' }), {
+      instance: morfeo,
+    });
 
     expect(result.current).toEqual({ color: 'black' });
 

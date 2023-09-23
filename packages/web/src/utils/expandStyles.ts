@@ -1,5 +1,5 @@
 import { deepMerge, isDefaultObject } from '@morfeo/utils';
-import { Style, morfeo } from '@morfeo/core';
+import { Morfeo, Style } from '@morfeo/core';
 
 type Callback = (value: Style) => Style;
 
@@ -22,6 +22,7 @@ export type ExpandedStyle = {
 };
 
 export function expandStyles(
+  instance: Morfeo,
   { componentName, variant, state, ...rest }: Style,
   options: ExpandStyleOptions,
 ): ExpandedStyle {
@@ -75,7 +76,7 @@ export function expandStyles(
   return traverse(
     deepMerge(
       componentName
-        ? (morfeo.theme
+        ? (instance.theme
             .component(componentName as any, variant, state)
             .getStyle() as any)
         : {},

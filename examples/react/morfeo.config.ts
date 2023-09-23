@@ -1,8 +1,8 @@
 import { MorfeoCompilerOptions } from '@morfeo/compiler';
-import { theme } from '@morfeo/preset-default';
+import { morfeo } from './src/morfeo';
 
 const config: MorfeoCompilerOptions = {
-  theme,
+  morfeo,
   entryPoints: ['./src/**/*.{ts,tsx,js,jsx}'],
   output: './src/styles/morfeo.css',
 };

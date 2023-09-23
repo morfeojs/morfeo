@@ -1,10 +1,4 @@
-import {
-  morfeo,
-  Style,
-  Shadows,
-  ParserParams,
-  ShadowProperty,
-} from '@morfeo/core';
+import { Style, Shadows, ParserParams, ShadowProperty } from '@morfeo/core';
 
 function getFirstValidNumber(...numbers: number[]): number {
   for (let number of numbers) {
@@ -42,11 +36,15 @@ export function shadowOffset({ value, theme }: ParserParams<any>) {
   };
 }
 
-export function shadows({ value, theme }: ParserParams<ShadowProperty>) {
+export function shadows({
+  value,
+  theme,
+  parsers,
+}: ParserParams<ShadowProperty>) {
   const { color, offset, opacity, radius, elevation } =
     theme.getValue('shadows', value as keyof Shadows) || {};
 
-  return morfeo.parsers.resolve({
+  return parsers.resolve({
     ...(elevation ? { elevation } : {}),
     ...(color ? { shadowColor: color } : {}),
     ...(offset ? { shadowOffset: offset } : {}),

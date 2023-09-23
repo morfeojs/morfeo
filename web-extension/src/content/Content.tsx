@@ -2,13 +2,12 @@ import browser from 'webextension-polyfill';
 import { MORFEO_DEVTOOLS } from '../_shared/constants';
 import { ActionType, MorfeoDevToolAction } from '../_shared/types';
 
-function sendTheme({ current, themes, fonts }: MorfeoDevToolAction) {
+function sendTheme({ theme, fonts }: MorfeoDevToolAction) {
   browser.runtime
     .sendMessage({
       type: ActionType.SET,
       fonts,
-      themes,
-      current,
+      theme,
     })
     .then(() => undefined)
     .catch(() => undefined);
@@ -26,7 +25,7 @@ function getFonts() {
 
 function onMessage(event: MessageEvent) {
   if (event.data && event.data.type === MORFEO_DEVTOOLS) {
-    const { themes, current } = event.data;
+    const { theme } = event.data;
     const fonts = getFonts();
 
     sendTheme({ ...event.data, fonts });
@@ -34,7 +33,7 @@ function onMessage(event: MessageEvent) {
     browser.runtime.onMessage.addListener(request => {
       if (request && request.type === ActionType.GET) {
         const fonts = getFonts();
-        sendTheme({ themes, current, fonts } as MorfeoDevToolAction);
+        sendTheme({ theme, fonts } as MorfeoDevToolAction);
       }
     });
   }

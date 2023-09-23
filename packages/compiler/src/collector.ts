@@ -8,20 +8,16 @@ import morfeoBabelPlugin, {
   type MorfeoBabelPluginOptions,
   type MorfeoBabelResult,
 } from '@morfeo/babel-plugin';
-import { type Theme, morfeo, ColorScheme } from '@morfeo/web';
-import { getStyles } from '@morfeo/jss';
+import type { ColorScheme } from '@morfeo/web';
+import { createMorfeoJSS } from '@morfeo/jss';
 import { deepMerge } from '@morfeo/utils';
 import { createWriter } from './writer';
 import { logger } from './logger';
-
-const DEFAULT_BABEL_PRESETS = ['@babel/preset-env', '@babel/preset-typescript'];
-const DEFAULT_BABEL_PLUGINS = ['@babel/plugin-syntax-jsx'];
 
 export type MorfeoCompilerOptions = MorfeoBabelPluginOptions & {
   babel?: TransformOptions;
   entryPoints?: string[];
   output?: string;
-  theme: Theme;
   watch?: boolean;
 };
 
@@ -32,49 +28,65 @@ const DEFAULT_OPTIONS = {
   output: path.join(__dirname, '..', 'css', 'morfeo.css'),
   theme: {} as any,
   watch: false,
+  babel: {
+    presets: ['@babel/preset-env', '@babel/preset-typescript'],
+    plugins: ['@babel/plugin-syntax-jsx'],
+  },
 };
 
 function createCollector() {
   const cache = new Map<string, MorfeoBabelResult>();
-  let options: MorfeoCompilerOptions = DEFAULT_OPTIONS;
+  let options: MorfeoCompilerOptions;
   let cssVariables = '';
   let writer = createWriter({
     output: DEFAULT_OPTIONS.output,
   });
+  let morfeoJSS: ReturnType<typeof createMorfeoJSS>;
 
-  function init(pluginOptions: Partial<MorfeoCompilerOptions>) {
+  function init({
+    morfeo: instance,
+    ...pluginOptions
+  }: Partial<MorfeoCompilerOptions>) {
+    if (options) {
+      return;
+    }
+
+    if (!instance) {
+      throw new Error('Morfeo instance needs to be specified');
+    }
+
+    morfeoJSS = createMorfeoJSS(instance);
+
     options = {
       ...DEFAULT_OPTIONS,
       ...pluginOptions,
+      morfeo: instance,
       babel: {
         ...pluginOptions.babel,
         presets: Array.from(
           new Set([
-            ...DEFAULT_BABEL_PRESETS,
-            ...(options.babel?.presets || []),
+            ...(DEFAULT_OPTIONS.babel?.presets || []),
             ...(pluginOptions.babel?.presets || []),
           ]),
         ),
         plugins: Array.from(
           new Set([
-            ...DEFAULT_BABEL_PLUGINS,
-            ...(options.babel?.plugins || []),
+            ...(DEFAULT_OPTIONS.babel?.plugins || []),
             ...(pluginOptions.babel?.plugins || []),
-            [morfeoBabelPlugin, {}],
+            [morfeoBabelPlugin, { morfeo: instance }],
           ]),
         ),
       },
     };
 
-    morfeo.theme.set(options.theme);
-
-    const { light, ...variablesObject } = morfeo.theme.getMetadata();
+    const { light, ...variablesObject } = options.morfeo.theme.getMetadata();
 
     const restVariables = Object.keys(variablesObject).reduce((acc, curr) => {
-      const selector = morfeo.theme.getValue(
+      const selector = options.morfeo.theme.getValue(
         'colorSchemes',
         curr as ColorScheme,
       );
+
       return {
         ...acc,
         [selector]: selector.startsWith('@media')
@@ -85,12 +97,14 @@ function createCollector() {
       };
     }, {});
 
-    cssVariables = getStyles({
-      '@global': {
-        ':root': light,
-        ...restVariables,
-      },
-    } as any).sheet.toString();
+    cssVariables = morfeoJSS
+      .getStyles({
+        '@global': {
+          ':root': light,
+          ...restVariables,
+        },
+      } as any)
+      .sheet.toString();
 
     writer = createWriter({
       delay: 10,

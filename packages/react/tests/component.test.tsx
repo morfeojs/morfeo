@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { morfeo } from '../src';
+import { createMorfeo } from '../src';
 
 const THEME = {
   colors: {
@@ -28,7 +28,7 @@ const THEME = {
   },
 } as any;
 
-morfeo.theme.set(THEME);
+const morfeo = createMorfeo(THEME);
 
 test('should render a custom component by passing an html tag and a valid style', () => {
   const Component = morfeo.component('div', {
