@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "@morfeo/utils": "workspace:*",
-    "jss": "^10.6.0",
-    "jss-preset-default": "^10.6.0"
+    "jss": "10.10.0",
+    "jss-preset-default": "10.10.0"
   },
   "peerDependencies": {
     "@morfeo/web": "workspace:*"

@@ -1,6 +1,7 @@
+'use client';
+
 import React, {
   useContext,
-  createContext,
   PropsWithChildren,
   useSyncExternalStore,
 } from 'react';
@@ -10,7 +11,7 @@ type MorfeoProviderProps = PropsWithChildren<{
   instance: Morfeo;
 }>;
 
-const context = createContext<Morfeo | undefined>(undefined);
+const context = React.createContext<Morfeo | undefined>(undefined);
 
 export function MorfeoProvider({ instance, children }: MorfeoProviderProps) {
   return <context.Provider value={instance}>{children}</context.Provider>;
