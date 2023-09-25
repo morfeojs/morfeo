@@ -1,9 +1,10 @@
-import { morfeo, Component } from '@morfeo/react';
+import { Component, useMorfeo } from '@morfeo/react';
 import { paramCase } from 'change-case';
 import { CodeTab } from '../types';
 
 export function components(value: string, params?: any): CodeTab[] {
   const { variant } = params || {};
+  const morfeo = useMorfeo();
   const { tag } = morfeo.theme.component(value as Component).get() || {};
   const componentTag = tag || 'div';
   const variantStyle = variant ? `,\n  variant: "${variant}"` : '';

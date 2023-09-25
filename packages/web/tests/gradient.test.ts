@@ -1,4 +1,4 @@
-import { Gradient, morfeo } from '../src';
+import { Gradient, createMorfeo } from '../src';
 
 const THEME = {
   colors: {
@@ -33,6 +33,8 @@ const THEME = {
     },
   },
 };
+
+const morfeo = createMorfeo(THEME as any);
 
 beforeEach(() => {
   morfeo.theme.set(THEME as any);

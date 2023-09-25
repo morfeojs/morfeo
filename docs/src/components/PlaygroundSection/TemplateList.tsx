@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/react';
+import { morfeo } from 'src/morfeo.theme';
 import Image from 'next/image';
 import { PlaygroundTemplate } from './types';
 

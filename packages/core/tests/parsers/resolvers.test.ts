@@ -1,4 +1,6 @@
-import { morfeo } from '../../src';
+import { createMorfeo } from '../../src';
+
+const morfeo = createMorfeo();
 
 describe('resolvers', () => {
   test('should call a custom resolver if registered', () => {

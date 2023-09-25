@@ -22,18 +22,18 @@
     "clsx": "2.0.0",
     "polished": "4.2.2",
     "prismjs": "1.29.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-transition-group": "4.4.5",
     "webextension-polyfill": "0.10.0"
   },
   "devDependencies": {
-    "@crxjs/vite-plugin": "2.0.0-beta.18",
+    "@crxjs/vite-plugin": "2.0.0-beta.19",
     "@types/chrome": "0.0.246",
     "@types/prismjs": "1.26.0",
     "@types/react-transition-group": "4.4.6",
     "@types/webextension-polyfill": "0.10.2",
-    "@vitejs/plugin-react": "4.0.4",
+    "@vitejs/plugin-react": "4.1.0",
     "chrome-webstore-upload": "1.0.0",
     "vite": "4.4.9",
     "zip-folder": "1.0.0"

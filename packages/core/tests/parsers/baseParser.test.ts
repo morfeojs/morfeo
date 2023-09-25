@@ -1,4 +1,6 @@
-import { morfeo, baseParser } from '../../src';
+import { createMorfeo, baseParser } from '../../src';
+
+const morfeo = createMorfeo();
 
 const THEME = {
   colors: {

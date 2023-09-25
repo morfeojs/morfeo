@@ -1,4 +1,4 @@
-import { morfeo, Style, Property, Component, allProperties } from '@morfeo/web';
+import { Style, Property, Component, allProperties, Morfeo } from '@morfeo/web';
 import { CSSCollector } from './collector';
 
 function getSliceFromProperty(property: Property) {
@@ -22,9 +22,11 @@ type GenerateCSSFromPropertyParams = {
   property: Property;
   path: string[];
   style: Style;
+  morfeo: Morfeo;
 };
 
 function generateCSSFromComponentName(
+  morfeo: Morfeo,
   componentName: Component,
   { path }: Pick<GenerateCSSFromPropertyParams, 'path'>,
 ) {
@@ -65,6 +67,7 @@ export function generateCSSFromProperty({
   property,
   path,
   style,
+  morfeo,
 }: GenerateCSSFromPropertyParams) {
   const isResponsive =
     path.length > 0 && !!morfeo.theme.getSlice('breakpoints')[property];
@@ -75,7 +78,7 @@ export function generateCSSFromProperty({
   const sliceKeys = Object.keys(themeSlice);
 
   if (style.componentName && ['variant', 'state'].includes(property)) {
-    return generateCSSFromComponentName(style.componentName, {
+    return generateCSSFromComponentName(morfeo, style.componentName, {
       path,
     });
   }

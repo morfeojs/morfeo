@@ -1,5 +1,5 @@
-import { morfeo, ThemeKey, Theme } from '@morfeo/core';
-import { useSyncMorfeo } from './useSyncMorfeo';
+import type { ThemeKey, Theme } from '@morfeo/core';
+import { useMorfeo } from './MorfeoProvider';
 
 /**
  * Same as `morfeo.theme.get()` but it will cause a re-render
@@ -8,7 +8,7 @@ import { useSyncMorfeo } from './useSyncMorfeo';
  * @returns the theme object
  */
 export function useTheme() {
-  useSyncMorfeo();
+  const morfeo = useMorfeo();
   return morfeo.theme.get();
 }
 

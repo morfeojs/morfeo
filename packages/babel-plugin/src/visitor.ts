@@ -1,4 +1,5 @@
 import type { Visitor } from '@babel/traverse';
+import type { MorfeoBabelPluginOptions } from './types';
 import { createCssVisitor } from './visitors/css';
 import { createComponentVisitor } from './visitors/component';
 import { createGlobalVisitor } from './visitors/global';
@@ -10,15 +11,10 @@ const VISITORS_CREATOR_MAP = {
   component: createComponentVisitor,
 };
 
-const allowedImports = ['@morfeo/web', '@morfeo/react'];
-
-export default function getVisitor(): Visitor {
+export default function getVisitor({
+  morfeo,
+}: MorfeoBabelPluginOptions): Visitor {
   return {
-    ImportDeclaration(path) {
-      if (!allowedImports.includes(path.node.source.value)) {
-        return path.skip();
-      }
-    },
     CallExpression: {
       enter(callExpressionPath, state: any) {
         const usedMethod = getUsedMorfeoMethod(callExpressionPath);
@@ -37,7 +33,7 @@ export default function getVisitor(): Visitor {
         const visitor = VISITORS_CREATOR_MAP[usedMethod];
 
         if (visitor) {
-          visitor(callExpressionPath);
+          visitor(morfeo, callExpressionPath);
           state.file.metadata.morfeo = CSSCollector.get();
         }
       },

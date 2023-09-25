@@ -1,4 +1,4 @@
-import { morfeo } from '../src';
+import { createMorfeo } from '../src';
 import { shadowOffset } from '../src/parsers';
 
 const THEME = {
@@ -42,6 +42,8 @@ const THEME = {
     },
   },
 } as any;
+
+const morfeo = createMorfeo();
 
 beforeAll(() => {
   morfeo.theme.set(THEME);

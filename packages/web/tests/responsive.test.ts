@@ -1,5 +1,5 @@
 import { Theme } from '@morfeo/core';
-import { morfeo, resolveMediaQuery } from '../src';
+import { createMorfeo, resolveMediaQuery } from '../src';
 
 const THEME: Theme = {
   colors: {
@@ -23,6 +23,8 @@ const THEME: Theme = {
     },
   },
 } as any;
+
+const morfeo = createMorfeo(THEME);
 
 describe('responsive', () => {
   beforeAll(() => {

@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { morfeo, useStyle, useThemeSlice, Font } from '@morfeo/react';
+import { useStyle, useThemeSlice, Font, useMorfeo } from '@morfeo/react';
 import { capitalCase, noCase, paramCase } from 'change-case';
 import clsx from 'clsx';
 import { Card } from '../../../Card';
@@ -39,6 +39,7 @@ const MAX_LENGTH = 20;
 
 export const Detail: React.FC<Props> = ({ main = 'fonts' }) => {
   const { route } = useRouter();
+  const morfeo = useMorfeo();
   const [text, setText] = useState('Lorem ipsum');
   const [filtersState, setFiltersState] = useState<Record<FontSlice, string>>(
     {} as FiltersState,

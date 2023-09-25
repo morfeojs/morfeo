@@ -4,8 +4,6 @@ import type { Style } from '@morfeo/core';
  * @example
  *
  * ```tsx
- * import { morfeo } from '@morfeo/web';
- *
  * morfeo.global({
  *    body: {
  *      px: 'm',

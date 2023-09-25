@@ -32,9 +32,9 @@
     "@morfeo/web": "workspace:*"
   },
   "peerDependencies": {
-    "csstype": "^3.1.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "csstype": "3.1.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "@testing-library/jest-dom": "6.1.3",
     "@testing-library/react": "14.0.0"
   },
@@ -42,8 +42,7 @@
     "access": "public"
   },
   "files": [
-    "build",
-    "commonjs"
+    "build"
   ],
   "repository": {
     "type": "git",

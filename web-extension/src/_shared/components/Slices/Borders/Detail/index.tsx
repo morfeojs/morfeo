@@ -5,9 +5,9 @@ import { BorderCard } from '../BorderCard/BorderCard';
 import styles from './style.module.css';
 import { BorderSlice } from '../index';
 import { capitalCase, noCase } from 'change-case';
-import { morfeo } from '@morfeo/react';
 import { DropDown } from '../../../DropDown';
 import { Grid, Item } from '../../../Grid';
+import { useMorfeo } from '@morfeo/react';
 
 export type Props = {
   mainSlice: BorderSlice;
@@ -20,6 +20,7 @@ const dropDownsMap = {
 };
 
 export const Detail: React.FC<Props> = ({ mainSlice }) => {
+  const morfeo = useMorfeo();
   const [filters, setFilters] = useState({
     borderStyles: '',
     borderWidths: '',

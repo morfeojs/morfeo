@@ -1,18 +1,13 @@
-import { morfeo } from '@morfeo/web';
-import { getStyles, getStyleSheet } from '../src';
+import { createMorfeo } from '@morfeo/web';
+import { createMorfeoJSS } from '../src';
 import { THEME } from './theme';
 
+const morfeo = createMorfeo(THEME);
+const morfeoJSS = createMorfeoJSS(morfeo);
+
 describe('jss', () => {
-  beforeAll(() => {
-    morfeo.theme.set(THEME);
-  });
-
-  afterAll(() => {
-    morfeo.theme.reset();
-  });
-
   test('should generate the sheet', () => {
-    const sheet = getStyleSheet({
+    const { sheet } = morfeoJSS.getStyles({
       button: {
         bg: 'primary',
       },
@@ -24,7 +19,7 @@ describe('jss', () => {
   });
 
   test('should generate the css also for responsive values', () => {
-    const sheet = getStyleSheet({
+    const { sheet } = morfeoJSS.getStyles({
       button: {
         color: 'secondary',
         bg: {
@@ -39,7 +34,7 @@ describe('jss', () => {
   });
 
   test('should generate the classnames', () => {
-    const { classes } = getStyles({
+    const { classes } = morfeoJSS.getStyles({
       button: {
         bg: 'primary',
       },
@@ -48,14 +43,8 @@ describe('jss', () => {
     expect(classes).toHaveProperty('button');
   });
 
-  test('should detach the sheet', () => {
-    const { destroy, sheet } = getStyles({});
-    destroy();
-    expect(sheet.attached).toBeFalsy();
-  });
-
   test('should return a function to update the stylesheet', () => {
-    const { sheet, update } = getStyles({
+    const { sheet, update } = morfeoJSS.getStyles({
       button: {
         bg: 'primary',
       },

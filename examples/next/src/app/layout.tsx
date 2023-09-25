@@ -1,5 +1,4 @@
 import './globals.css';
-import '../../morfeo.theme';
 import '../styles/morfeo.css';
 
 type LayoutProps = {

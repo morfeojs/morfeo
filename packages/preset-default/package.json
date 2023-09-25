@@ -35,8 +35,7 @@
     "access": "public"
   },
   "files": [
-    "build",
-    "commonjs"
+    "build"
   ],
   "repository": {
     "type": "git",

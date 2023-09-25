@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/react';
+import { morfeo } from '@/morfeo.theme';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 
 type LinkProps = NextLinkProps & {

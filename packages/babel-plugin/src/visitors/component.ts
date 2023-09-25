@@ -1,10 +1,11 @@
 import type { NodePath } from '@babel/traverse';
 import type { CallExpression, ObjectExpression } from '@babel/types';
+import type { Morfeo } from '@morfeo/web';
 import { getStyleObject, CSSCollector } from '../utils';
 import { generateCSSFromProperty } from '../utils/generateCSSFromProperty';
-import { morfeo } from '@morfeo/web';
 
 export function createComponentVisitor(
+  morfeo: Morfeo,
   callExpressionPath: NodePath<CallExpression>,
 ) {
   callExpressionPath.traverse({
@@ -18,6 +19,7 @@ export function createComponentVisitor(
         !!morfeo.theme.getSlice('components')[componentNameOrTag];
 
       const { styleObject, themableStyles } = getStyleObject(
+        morfeo,
         styleNode as ObjectExpression,
       );
 
@@ -29,6 +31,7 @@ export function createComponentVisitor(
       themableStyles.forEach(themableStyle =>
         generateCSSFromProperty({
           ...themableStyle,
+          morfeo,
           style: completeStyleObject,
         }),
       );

@@ -1,7 +1,9 @@
-import { morfeo, expandStyles } from '../src';
+import { expandStyles, createMorfeo } from '../src';
 import { defaultTheme } from '../src/defaultTheme';
 
 const getClassName = jest.fn(() => 'className');
+
+const morfeo = createMorfeo();
 
 describe('expandStyles', () => {
   beforeEach(() => {
@@ -19,6 +21,7 @@ describe('expandStyles', () => {
 
   it('should expand a style', () => {
     const result = expandStyles(
+      morfeo,
       {
         bg: 'background',
         '&:hover': {
@@ -38,6 +41,7 @@ describe('expandStyles', () => {
 
   it('should expand a style with responsive values', () => {
     const result = expandStyles(
+      morfeo,
       {
         bg: 'background',
         p: {
@@ -65,6 +69,7 @@ describe('expandStyles', () => {
 
   it('should not include an undefined value', () => {
     const result = expandStyles(
+      morfeo,
       {
         bg: 'background',
         color: undefined,
@@ -79,6 +84,7 @@ describe('expandStyles', () => {
 
   it('should expand a style containing a componentName', () => {
     const result = expandStyles(
+      morfeo,
       {
         componentName: 'Box',
       },

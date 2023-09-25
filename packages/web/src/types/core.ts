@@ -4,6 +4,7 @@ import {
   Shadows,
   Property,
   Gradients,
+  CustomStyle,
   AllProperties,
 } from '@morfeo/core';
 import { Properties } from 'csstype';
@@ -47,7 +48,7 @@ type BaseWebStyle = CssStyle & {
 };
 
 type WebStyle = Omit<BaseWebStyle, 'componentName' | 'variant' | 'state'> & {
-  [key: `&:${string}`]: WebStyle;
+  [key: `&${string}`]: CustomStyle;
 };
 
 type WebTheme = {

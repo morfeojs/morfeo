@@ -65,7 +65,7 @@ function runMorfeo(config: Partial<MorfeoCompilerOptions>) {
 function onError() {
   logger.warning('morfeo configuration file not found.');
 
-  runMorfeo(configFromCli);
+  runMorfeo(configFromCli as any);
 }
 
 function onFound(result: CosmiconfigResult) {

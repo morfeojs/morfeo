@@ -1,7 +1,13 @@
-import { morfeo, Property, Theme, ThemeMetadata } from '@morfeo/core';
+import {
+  Theme,
+  Morfeo,
+  Property,
+  createMorfeo,
+  ThemeMetadata,
+} from '@morfeo/core';
 import { deepMerge, DeepPartial } from '@morfeo/utils';
 import { gradientParsers } from './parsers';
-import { css } from './css';
+import { createCss } from './css';
 import { global } from './global';
 import { extractCssVariables } from './utils/extractCssVariables';
 import { defaultTheme } from './defaultTheme';
@@ -9,31 +15,45 @@ import { responsiveProperty } from './resolvers/responsiveProperty';
 import { multiThemeProperty } from './resolvers/multiThemeProperty';
 import { ColorScheme } from './types';
 
-Object.keys(gradientParsers).forEach(property => {
-  morfeo.parsers.add(property as Property, gradientParsers[property] as any);
-});
+export function createMorfeoWeb(
+  initialTheme: DeepPartial<Theme> = defaultTheme,
+): Morfeo {
+  const instance = createMorfeo();
 
-function onSetTheme(currentTheme: DeepPartial<Theme>) {
-  const { theme, variables } = extractCssVariables(
-    deepMerge(defaultTheme, currentTheme),
-  );
+  function onSetTheme(currentTheme: DeepPartial<Theme>) {
+    const { theme, variables } = extractCssVariables(
+      deepMerge(defaultTheme, currentTheme),
+    );
 
-  morfeo.theme.setMetadata(variables as ThemeMetadata);
+    instance.theme.setMetadata(variables as ThemeMetadata);
 
-  return theme;
+    return theme;
+  }
+
+  Object.keys(gradientParsers).forEach(property => {
+    instance.parsers.add(
+      property as Property,
+      gradientParsers[property] as any,
+    );
+  });
+
+  instance.theme.onSetTheme(onSetTheme);
+
+  instance.parsers.onResolveProperty(multiThemeProperty);
+  instance.parsers.onResolveProperty(responsiveProperty);
+
+  instance.theme.set(initialTheme);
+
+  return {
+    ...instance,
+    css: createCss(instance as Morfeo),
+    global,
+  };
 }
-
-morfeo.css = css;
-morfeo.global = global;
-
-morfeo.theme.onSetTheme(onSetTheme);
-
-morfeo.parsers.onResolveProperty(multiThemeProperty);
-morfeo.parsers.onResolveProperty(responsiveProperty);
 
 declare module '@morfeo/core' {
   export interface Morfeo {
-    css: typeof css;
+    css: ReturnType<typeof createCss>;
     global: typeof global;
   }
 

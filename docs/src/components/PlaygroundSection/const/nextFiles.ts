@@ -18,7 +18,7 @@ morfeo.setTheme("default", deepMerge(darkTheme, docsTheme));
 module.exports = withMorfeo(nextConfig);
 `;
 
-const nextIndex = `import { morfeo } from '@morfeo/react';
+const nextIndex = `import { morfeo } from 'src/morfeo.theme';;
 import { Socials } from "../components/Socials";
 
 const classes = morfeo.css({

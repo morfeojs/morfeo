@@ -1,4 +1,4 @@
-import { morfeo } from '@morfeo/react';
+import { morfeo } from 'src/morfeo.theme';
 import { LinkBlocks } from './LinkBlocks';
 import { FooterLinkBlock } from './types';
 import Image from 'next/image';

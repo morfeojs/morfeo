@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { Color, Component, morfeo } from '@morfeo/react';
+import { Color, Component, useMorfeo } from '@morfeo/react';
 import { useRouter } from '../../../hooks/useRouter';
 import { RouteName } from '../../../contexts';
 import { SliceName } from '../../../contexts/Routing/types';
@@ -16,6 +16,7 @@ type Props = {
 };
 
 const Info: React.FC<Props> = ({ name, variant }) => {
+  const morfeo = useMorfeo();
   const variants = morfeo.theme.component(name, variant).getVariants();
   const numberOfVariants = Object.keys(variants || {}).length;
 
@@ -41,6 +42,7 @@ const Info: React.FC<Props> = ({ name, variant }) => {
 
 export const Preview: React.FC<Props> = ({ name, variant }) => {
   const { navigate } = useRouter();
+  const morfeo = useMorfeo();
   const { meta } = morfeo.theme.component(name, variant).get() || {};
   const { devtoolConfig } = meta || {};
   const onClick = useCallback(() => {

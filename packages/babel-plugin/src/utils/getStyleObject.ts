@@ -1,13 +1,13 @@
 import type { ObjectExpression } from '@babel/types';
 import { escapeString } from '@morfeo/utils';
 import {
+  Morfeo,
   Property,
-  morfeo,
   isResponsive as isValueResponsive,
 } from '@morfeo/web';
 import { toJS } from './toJS';
 
-export function getStyleObject(objectNode: ObjectExpression) {
+export function getStyleObject(morfeo: Morfeo, objectNode: ObjectExpression) {
   const themableStyles: { property: Property; path: string[] }[] = [];
   const styleObject = toJS(objectNode, {
     resolveFunction({ path, property }) {
