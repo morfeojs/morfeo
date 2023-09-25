@@ -442,8 +442,8 @@ importers:
         specifier: 4.4.6
         version: 4.4.6
       '@types/webextension-polyfill':
-        specifier: 0.10.2
-        version: 0.10.2
+        specifier: 0.10.3
+        version: 0.10.3
       '@vitejs/plugin-react':
         specifier: 4.1.0
         version: 4.1.0(vite@4.4.9)
@@ -4002,8 +4002,8 @@ packages:
     resolution: {integrity: sha512-MFETx3tbTjE7Uk6vvnWINA/1iJ7LuMdO4fcq8UfF0pRbj01aGLduVvQcRyswuACJdpnHgg8E3rQLhaRdNEJS0w==}
     dev: false
 
-  /@types/webextension-polyfill@0.10.2:
-    resolution: {integrity: sha512-L+T72DVTi/1azY6gw7PRmL49kvobLKQQWfOmHDBRSCkAvaCV4wk222J3ZODYA9Gf/UqUvtItu8FPJgWX5ktO9g==}
+  /@types/webextension-polyfill@0.10.3:
+    resolution: {integrity: sha512-7RqGPhr+Ib7IKrOIeXRTB2TVojq/bMRieoYVfgHoicQ+VvI6OOzBNF0fZXA+5JVJIEtfE/o426S+bMgg/XhvXg==}
     dev: true
 
   /@types/yargs-parser@21.0.0:
