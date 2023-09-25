@@ -11,17 +11,10 @@ const VISITORS_CREATOR_MAP = {
   component: createComponentVisitor,
 };
 
-const allowedImports = ['@morfeo/web', '@morfeo/react'];
-
 export default function getVisitor({
   morfeo,
 }: MorfeoBabelPluginOptions): Visitor {
   return {
-    ImportDeclaration(path) {
-      if (!allowedImports.includes(path.node.source.value)) {
-        // return path.skip();
-      }
-    },
     CallExpression: {
       enter(callExpressionPath, state: any) {
         const usedMethod = getUsedMorfeoMethod(callExpressionPath);
