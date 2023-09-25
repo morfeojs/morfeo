@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { Component } from '@morfeo/react';
 import clsx from 'clsx';
-import { morfeo, jss } from 'src/devtool/morfeo';
+import { morfeo, jss } from '../../../../devtool/morfeo';
 
 const SELF_CLOSING_TAGS = [
   'area',
