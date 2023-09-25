@@ -30,12 +30,12 @@
     "@morfeo/jss": "workspace:*",
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*",
-    "@babel/core": "7.22.20",
-    "@babel/traverse": "7.22.20",
-    "@babel/types": "7.22.19",
+    "@babel/core": "7.23.0",
+    "@babel/traverse": "7.23.0",
+    "@babel/types": "7.23.0",
     "@babel/preset-env": "7.22.20",
     "@babel/plugin-syntax-jsx": "7.22.5",
-    "@babel/preset-typescript": "7.22.15"
+    "@babel/preset-typescript": "7.23.0"
   },
   "devDependencies": {
     "@types/babel__core": "7.20.2",
@@ -45,8 +45,7 @@
     "access": "public"
   },
   "files": [
-    "build",
-    "commonjs"
+    "build"
   ],
   "repository": {
     "type": "git",

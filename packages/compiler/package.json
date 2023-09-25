@@ -46,15 +46,14 @@
     "glob": "10.3.5"
   },
   "peerDependencies": {
-    "@babel/core": "7.22.20"
+    "@babel/core": "7.23.0"
   },
   "devDependencies": {
     "@types/babel__core": "7.20.2"
   },
   "files": [
     ".bin",
-    "build",
-    "commonjs"
+    "build"
   ],
   "repository": {
     "type": "git",
