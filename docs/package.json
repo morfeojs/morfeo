@@ -20,7 +20,7 @@
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*",
     "framer-motion": "10.16.4",
-    "next": "13.5.2",
+    "next": "13.5.3",
     "nextra": "2.13.0",
     "nextra-theme-docs": "2.13.0",
     "react": "18.2.0",
@@ -29,6 +29,6 @@
     "sharp": "0.32.6"
   },
   "devDependencies": {
-    "eslint-config-next": "13.5.2"
+    "eslint-config-next": "13.5.3"
   }
 }
