@@ -1,19 +1,14 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import { cosmiconfig } from 'cosmiconfig';
 import { TypeScriptLoader } from 'cosmiconfig-typescript-loader';
 import { CosmiconfigResult } from 'cosmiconfig/dist/types';
 import { Command } from 'commander';
 import { MorfeoCompilerOptions, collector } from './collector';
 import { logger } from './logger';
+import { init } from './init';
+import { packageJson } from './utils';
+import * as path from 'path';
 
 const moduleName = 'morfeo';
-
-const packageJson = JSON.parse(
-  fs.readFileSync(path.join(__dirname, '..', 'package.json'), {
-    encoding: 'utf8',
-  }),
-);
 
 const program = new Command();
 
@@ -30,7 +25,16 @@ program
     '-w, --watch [boolean]',
     'Indicated if morfeo should watch for file changes',
   )
-  .parse(process.argv);
+  .action(() => {
+    explorer.search().then(onFound).catch(onError);
+  });
+
+program
+  .command('init')
+  .description('Create morfeo configuration files')
+  .action(init);
+
+program.parse(process.argv);
 
 const { path: morfeoPath, ...cliOptions } = program.opts();
 
@@ -74,5 +78,3 @@ function onFound(result: CosmiconfigResult) {
 
   return runMorfeo(result?.config);
 }
-
-explorer.search().then(onFound).catch(onError);

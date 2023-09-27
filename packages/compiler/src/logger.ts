@@ -52,6 +52,18 @@ function createLogger() {
     log({ message, label: 'warning', type: 'debug', color: 'yellow' });
   }
 
+  function announcement(message: string) {
+    const padding = ' '.repeat((process.stdout.columns - message.length) / 2);
+
+    console.log(
+      `${colors.bgBlue}${padding}${message}${padding}${colors.reset}`,
+    );
+  }
+
+  function whitespace(lines = 1) {
+    console.log('\n'.repeat(lines));
+  }
+
   function startTimer(id: string) {
     if (!timers.has(id)) {
       timers.set(id, Date.now());
@@ -74,6 +86,8 @@ function createLogger() {
     error,
     warning,
     success,
+    announcement,
+    whitespace,
     endTimer,
     startTimer,
   };
