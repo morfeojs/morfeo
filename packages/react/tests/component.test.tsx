@@ -28,7 +28,7 @@ const THEME = {
   },
 } as any;
 
-const morfeo = createMorfeo(THEME);
+const morfeo = createMorfeo({ theme: THEME });
 
 test('should render a custom component by passing an html tag and a valid style', () => {
   const Component = morfeo.component('div', {

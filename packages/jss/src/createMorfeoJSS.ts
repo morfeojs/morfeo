@@ -1,8 +1,7 @@
-import type { Morfeo, Style } from '@morfeo/web';
+import type { Morfeo, Style, ThemeMetadata } from '@morfeo/web';
 import preset from 'jss-preset-default';
 import {
   create,
-  CreateGenerateIdOptions,
   JssOptions,
   Plugin,
   Rule,
@@ -13,7 +12,7 @@ import { getStyles as get } from './getStyles';
 
 const defaultPreset = preset();
 
-function createGenerateId(options?: CreateGenerateIdOptions) {
+function createGenerateId(options?: ThemeMetadata) {
   return (rule: Rule) => {
     // @ts-expect-error
     const style = rule.style;
@@ -32,7 +31,8 @@ export function createMorfeoJSS(morfeo: Morfeo) {
 
   const morfeoJSSPreset: Partial<JssOptions> = {
     ...defaultPreset,
-    createGenerateId,
+    createGenerateId: options =>
+      createGenerateId({ ...morfeo.theme.getMetadata(), ...options }),
     plugins: [morfeoJSS, ...defaultPreset.plugins],
   };
 

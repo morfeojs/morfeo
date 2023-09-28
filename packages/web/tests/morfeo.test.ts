@@ -57,13 +57,13 @@ describe('morfeo.theme', () => {
       },
     });
 
-    expect(morfeo.theme.getMetadata()).toEqual(
-      expect.objectContaining({
+    expect(morfeo.theme.getMetadata()).toEqual({
+      variables: expect.objectContaining({
         light: expect.objectContaining({
           '--colors-newColor': 'any value',
         }),
       }),
-    );
+    });
   });
 
   test('should populate the dark variables in case dark mode is specified', () => {
@@ -77,8 +77,8 @@ describe('morfeo.theme', () => {
       },
     });
 
-    expect(morfeo.theme.getMetadata()).toEqual(
-      expect.objectContaining({
+    expect(morfeo.theme.getMetadata()).toEqual({
+      variables: expect.objectContaining({
         light: expect.objectContaining({
           '--colors-newColor': 'light value',
         }),
@@ -86,6 +86,6 @@ describe('morfeo.theme', () => {
           '--colors-newColor': 'dark value',
         }),
       }),
-    );
+    });
   });
 });

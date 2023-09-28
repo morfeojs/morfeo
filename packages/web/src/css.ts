@@ -39,7 +39,8 @@ export function createCss(instance: Morfeo) {
       if (!expandedObject) {
         expandedObject = Object.keys(styles).reduce((acc, key) => {
           const object = expandStyles(instance, styles[key], {
-            getClassName: generateClassName,
+            getClassName: style =>
+              generateClassName(style, instance.theme.getMetadata()),
           });
 
           return { ...acc, [key]: object };

@@ -23,8 +23,7 @@
     "react"
   ],
   "scripts": {
-    "build": "tsup",
-    "watch": "tsc -w"
+    "build": "tsup"
   },
   "dependencies": {
     "@morfeo/hooks": "workspace:*",

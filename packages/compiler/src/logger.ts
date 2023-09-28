@@ -16,7 +16,7 @@ type LogOptions = {
   color?: keyof typeof colors;
 };
 
-function log(options: LogOptions) {
+function getMessage(options: LogOptions) {
   const prefix = [
     colors.bgBlue,
     'Ⓜ️',
@@ -26,7 +26,11 @@ function log(options: LogOptions) {
     colors.reset,
   ];
 
-  console[options.type]([...prefix, options.message].filter(Boolean).join(' '));
+  return [...prefix, options.message].filter(Boolean).join(' ');
+}
+
+function log(options: LogOptions) {
+  console[options.type](getMessage(options));
 }
 
 function createLogger() {

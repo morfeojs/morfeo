@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 import { Variant } from '@morfeo/react';
-import { morfeo } from 'src/morfeo.theme';
+import { morfeo } from 'src/morfeo';
 
 type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,

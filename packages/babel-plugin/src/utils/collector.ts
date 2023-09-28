@@ -3,11 +3,6 @@ import { createMorfeoJSS } from '@morfeo/jss';
 import { generateClassName, deepMerge } from '@morfeo/utils';
 import type { MorfeoBabelPluginOptions } from '../types';
 
-const DEFAULT_OPTIONS = {
-  emojis: false,
-  classNamePrefix: '',
-};
-
 function createCollector() {
   const stylesCache = new Map<string, Style>();
   const globalStylesCache = new Map<string, Style>();
@@ -17,7 +12,6 @@ function createCollector() {
 
   function setOptions(pluginOptions: MorfeoBabelPluginOptions) {
     options = {
-      ...DEFAULT_OPTIONS,
       ...pluginOptions,
     };
     morfeoJSS = createMorfeoJSS(options.morfeo);
@@ -51,7 +45,9 @@ function createCollector() {
   function add(style: Style) {
     return expandStyles(options.morfeo, style, {
       getClassName(s) {
-        const className = generateClassName(s);
+        const className = generateClassName(s, {
+          prefix: options.morfeo.theme.getMetadata().prefix,
+        });
         updateCache(className, s);
         return className;
       },

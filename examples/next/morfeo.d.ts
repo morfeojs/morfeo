@@ -1,6 +1,6 @@
 import '@morfeo/react';
 
-import { theme as localTheme } from './src/morfeo.theme';
+import { theme as localTheme } from './src/morfeo';
 
 type LocalTheme = typeof localTheme;
 

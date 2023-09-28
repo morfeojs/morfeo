@@ -34,7 +34,7 @@ const THEME = {
   },
 };
 
-const morfeo = createMorfeo(THEME as any);
+const morfeo = createMorfeo({ theme: THEME as any });
 
 beforeEach(() => {
   morfeo.theme.set(THEME as any);

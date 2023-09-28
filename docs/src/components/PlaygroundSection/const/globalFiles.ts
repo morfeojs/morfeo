@@ -111,7 +111,7 @@ export const morfeoTheme = `const theme = {
   module.exports = theme;
   `;
 
-export const socialComponent = `import { morfeo } from 'src/morfeo.theme';;
+export const socialComponent = `import { morfeo } from 'src/morfeo';;
 
 const classes = morfeo.css({
   container: {

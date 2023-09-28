@@ -2,8 +2,10 @@ import { enableMorfeoDevTool } from '../src';
 import { createMorfeo } from '@morfeo/web';
 
 const morfeo = createMorfeo({
-  colors: {
-    primary: 'default primary',
+  theme: {
+    colors: {
+      primary: 'default primary',
+    },
   },
 });
 

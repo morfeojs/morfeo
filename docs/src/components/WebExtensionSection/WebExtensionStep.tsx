@@ -1,4 +1,4 @@
-import { morfeo } from 'src/morfeo.theme';
+import { morfeo } from 'src/morfeo';
 import Image from 'next/image';
 import { WebExtensionStepProps } from './types';
 import { FadeInBox } from '../FadeInBox';

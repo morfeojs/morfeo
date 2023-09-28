@@ -23,8 +23,7 @@
     "utils"
   ],
   "scripts": {
-    "build": "tsup",
-    "watch": "tsc -w"
+    "build": "tsup"
   },
   "publishConfig": {
     "access": "public"

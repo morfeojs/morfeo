@@ -24,8 +24,7 @@
     "web extension"
   ],
   "scripts": {
-    "build": "tsup",
-    "watch": "tsc -w"
+    "build": "tsup"
   },
   "dependencies": {
     "@morfeo/web": "workspace:*"

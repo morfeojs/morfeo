@@ -16,16 +16,14 @@ import { logger } from './logger';
 
 export type MorfeoCompilerOptions = MorfeoBabelPluginOptions & {
   babel?: TransformOptions;
-  entryPoints?: string[];
-  output?: string;
   watch?: boolean;
+  entryPoints: string[];
+  output: string;
 };
 
 const DEFAULT_OPTIONS = {
-  emojis: false,
-  classNamePrefix: '',
-  entryPoints: [path.join('.', '**/*.{ts,tsx,js,jsx}')],
-  output: path.join(__dirname, '..', 'css', 'morfeo.css'),
+  entryPoints: [path.join('./src', '**/*.{ts,tsx,js,jsx}')],
+  output: path.join('./src', 'styles', 'morfeo.css'),
   theme: {} as any,
   watch: false,
   babel: {
@@ -57,6 +55,10 @@ function createCollector() {
 
     morfeoJSS = createMorfeoJSS(instance);
 
+    const {
+      variables: { light, ...variablesObject },
+    } = instance.theme.getMetadata();
+
     options = {
       ...DEFAULT_OPTIONS,
       ...pluginOptions,
@@ -78,8 +80,6 @@ function createCollector() {
         ),
       },
     };
-
-    const { light, ...variablesObject } = options.morfeo.theme.getMetadata();
 
     const restVariables = Object.keys(variablesObject).reduce((acc, curr) => {
       const selector = options.morfeo.theme.getValue(
@@ -108,7 +108,7 @@ function createCollector() {
 
     writer = createWriter({
       delay: 10,
-      output: pluginOptions.output || DEFAULT_OPTIONS.output,
+      output: options.output || DEFAULT_OPTIONS.output,
     });
   }
 
@@ -181,6 +181,7 @@ function createCollector() {
 
   async function collect() {
     const entryPoints = options.entryPoints || DEFAULT_OPTIONS.entryPoints;
+
     logger.debug(`Start extracting CSS from ${entryPoints}`);
     const fileNames = await glob(entryPoints);
 
