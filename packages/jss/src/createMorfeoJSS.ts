@@ -2,7 +2,6 @@ import type { Morfeo, Style, ThemeMetadata } from '@morfeo/web';
 import preset from 'jss-preset-default';
 import {
   create,
-  CreateGenerateIdOptions,
   JssOptions,
   Plugin,
   Rule,
