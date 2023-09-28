@@ -32,6 +32,7 @@ type SliceConfig<SN extends (typeof slicesToTransform)[number]> = {
 
 export function extractCssVariables<T extends DeepPartial<Theme>>(
   theme: T,
+  prefix: string = '',
 ): Omit<SliceConfig<any>, 'slice'> & { theme: T } {
   const schemesKeys = Object.keys(
     (theme.colorSchemes || {}) as ColorSchemes,
@@ -50,7 +51,10 @@ export function extractCssVariables<T extends DeepPartial<Theme>>(
       (acc, sliceKey) => {
         const sliceValue = slice[sliceKey];
         const isPlain = typeof sliceValue !== 'object';
-        const variableName = `--${sliceName}-${sliceKey}`.replace(/\./, '-');
+        const variableName = `--${prefix}${sliceName}-${sliceKey}`.replace(
+          /\./,
+          '-',
+        );
         const { variables: oldVariables } = acc;
 
         const variables = schemesKeys.reduce((old, scheme) => {

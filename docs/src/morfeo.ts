@@ -114,7 +114,12 @@ const localTheme = {
 
 const theme = deepMerge(defaultTheme, localTheme);
 
-export const morfeo = createMorfeo(theme);
+export const morfeo = createMorfeo({
+  theme,
+  prefix: 'mrf-',
+  output: './styles/morfeo.css',
+  entryPoints: ['./**/*.{ts,tsx,js,jsx}'],
+});
 
 export default theme;
 

@@ -2,7 +2,7 @@ import { createMorfeo } from '@morfeo/web';
 import { createMorfeoJSS } from '../src';
 import { THEME } from './theme';
 
-const morfeo = createMorfeo(THEME);
+const morfeo = createMorfeo({ theme: THEME });
 const morfeoJSS = createMorfeoJSS(morfeo);
 
 describe('jss', () => {

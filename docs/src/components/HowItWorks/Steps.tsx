@@ -1,4 +1,4 @@
-import { morfeo } from 'src/morfeo.theme';
+import { morfeo } from 'src/morfeo';
 import { Step } from './Step';
 import { useMemo } from 'react';
 

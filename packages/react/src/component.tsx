@@ -175,7 +175,8 @@ export function createMorfeoComponent(morfeo: Morfeo) {
           morfeo,
           { componentName, ...style } as any,
           {
-            getClassName: generateClassName,
+            getClassName: style =>
+              generateClassName(style, morfeo.theme.getMetadata()),
           },
         );
 

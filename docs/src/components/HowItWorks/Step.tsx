@@ -1,4 +1,4 @@
-import { morfeo } from 'src/morfeo.theme';
+import { morfeo } from 'src/morfeo';
 import { MouseEventHandler } from 'react';
 
 type Props = {

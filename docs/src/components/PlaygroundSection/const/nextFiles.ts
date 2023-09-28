@@ -1,7 +1,7 @@
 import { SandpackFiles } from '@codesandbox/sandpack-react/types';
 import { globalStyle, morfeoTheme, socialComponent } from './globalFiles';
 
-const nextConfig = `const docsTheme = require("./morfeo.theme");
+const nextConfig = `const docsTheme = require("./morfeo");
 const { darkTheme } = require("@morfeo/preset-default");
 const { deepMerge } = require("@morfeo/utils");
 const { morfeo } = require("@morfeo/react");
@@ -18,7 +18,7 @@ morfeo.setTheme("default", deepMerge(darkTheme, docsTheme));
 module.exports = withMorfeo(nextConfig);
 `;
 
-const nextIndex = `import { morfeo } from 'src/morfeo.theme';;
+const nextIndex = `import { morfeo } from 'src/morfeo';;
 import { Socials } from "../components/Socials";
 
 const classes = morfeo.css({
@@ -111,7 +111,7 @@ export const nextFiles: SandpackFiles = {
     code: globalStyle,
     hidden: true,
   },
-  'morfeo.theme.js': {
+  'morfeo.js': {
     code: morfeoTheme,
     readOnly: true,
   },

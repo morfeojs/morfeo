@@ -1,5 +1,4 @@
 import { generateClassName, stringsHandler } from '../src';
-import { EMOJI_CHARSET, REGULAR_CHARSET } from '../src/constants';
 
 describe('generateClassName', () => {
   beforeEach(() => {
@@ -50,60 +49,5 @@ describe('generateClassName', () => {
     });
 
     expect(className).toBe('divgrtrp-bg-primary');
-  });
-
-  describe('when the minify option is true', () => {
-    it('should minify strings', () => {
-      const className = generateClassName(
-        {
-          bg: 'primary',
-        },
-        { minify: true },
-      );
-
-      expect(className).toBe(REGULAR_CHARSET[0]);
-    });
-
-    it('should return the same minified class for the same style', () => {
-      const commonStyle = {
-        bg: 'primary',
-      };
-      const differentStyle = {
-        bg: 'secondary',
-      };
-      const firstClassName = generateClassName(commonStyle, { minify: true });
-      const secondClassName = generateClassName(commonStyle, { minify: true });
-      const thirdClassName = generateClassName(differentStyle, {
-        minify: true,
-      });
-
-      expect(firstClassName).toBe('a');
-      expect(firstClassName).toBe(secondClassName);
-      expect(thirdClassName).not.toBe(secondClassName);
-    });
-
-    it('should return a 2 chars length string in case all the combinations with 1 char are already used', () => {
-      const chars = REGULAR_CHARSET;
-      const fakeStyles = chars.map(char => ({ [char]: char }));
-
-      fakeStyles.map(style => generateClassName(style, { minify: true }));
-
-      const className = generateClassName({ bg: 'primary' }, { minify: true });
-
-      expect(className).toHaveLength(2);
-    });
-  });
-
-  describe('when the emoji flag is true', () => {
-    it('should generate className containing emojis', () => {
-      const className = generateClassName(
-        {
-          bg: 'primary',
-        },
-        { minify: true, emojis: true },
-      );
-
-      expect(className).toBe(EMOJI_CHARSET[0]);
-    });
   });
 });

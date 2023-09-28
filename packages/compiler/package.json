@@ -27,26 +27,24 @@
     "css-in-ts"
   ],
   "scripts": {
-    "build": "tsup",
-    "watch": "tsc -w"
+    "build": "tsup"
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
+    "@babel/core": "7.23.0",
     "@morfeo/babel-plugin": "workspace:*",
     "@morfeo/jss": "workspace:*",
-    "@morfeo/web": "workspace:*",
-    "@morfeo/utils": "workspace:*",
     "@morfeo/preset-default": "workspace:*",
+    "@morfeo/utils": "workspace:*",
+    "@morfeo/web": "workspace:*",
+    "@topcli/spinner": "2.1.2",
     "chokidar": "3.5.3",
     "commander": "11.0.0",
     "cosmiconfig": "8.3.6",
     "cosmiconfig-typescript-loader": "5.0.0",
     "glob": "10.3.8"
-  },
-  "peerDependencies": {
-    "@babel/core": "7.23.0"
   },
   "devDependencies": {
     "@types/babel__core": "7.20.2"

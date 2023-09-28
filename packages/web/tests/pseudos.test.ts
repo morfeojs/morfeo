@@ -8,7 +8,7 @@ const THEME: Theme = {
   },
 } as any;
 
-const morfeo = createMorfeo(THEME);
+const morfeo = createMorfeo({ theme: THEME });
 
 describe('pseudos', () => {
   beforeAll(() => {

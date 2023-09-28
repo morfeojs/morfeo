@@ -1,7 +1,7 @@
 import { SandpackFiles } from '@codesandbox/sandpack-react/types';
 import { globalStyle, morfeoTheme, socialComponent } from './globalFiles';
 
-const viteIndex = `import { morfeo } from 'src/morfeo.theme';;
+const viteIndex = `import { morfeo } from 'src/morfeo';;
 import { Socials } from "./src/components/Socials";
 
 const classes = morfeo.css({
@@ -80,7 +80,7 @@ export default function App() {
 const viteConfig = `import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { MorfeoVitePlugin } from '@morfeo/compiler';
-import docsTheme from './morfeo.theme';
+import docsTheme from './morfeo';
 import {darkTheme} from '@morfeo/preset-default';
 import {deepMerge} from '@morfeo/utils';
 import {morfeo} from '@morfeo/react';
@@ -99,7 +99,7 @@ export const viteFiles: SandpackFiles = {
     code: globalStyle,
     hidden: true,
   },
-  'morfeo.theme.js': {
+  'morfeo.js': {
     code: morfeoTheme,
     readOnly: true,
   },

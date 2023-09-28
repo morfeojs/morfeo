@@ -22,8 +22,7 @@
     "morfeo-js"
   ],
   "scripts": {
-    "build": "tsup",
-    "watch": "tsc -w"
+    "build": "tsup"
   },
   "dependencies": {
     "@morfeo/spec": "workspace:*",

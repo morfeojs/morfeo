@@ -3,7 +3,7 @@
   "version": "0.9.3",
   "private": true,
   "scripts": {
-    "dev:morfeo": "morfeo --watch",
+    "dev:morfeo": "morfeo --path=src/morfeo.ts --watch",
     "dev:next": "rm -rf .next && next dev",
     "dev": "concurrently \"pnpm run dev:*\"",
     "build": "next build",

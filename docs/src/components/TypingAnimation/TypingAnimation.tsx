@@ -1,5 +1,5 @@
 import React from 'react';
-import { morfeo } from 'src/morfeo.theme';
+import { morfeo } from 'src/morfeo';
 import { useTypingAnimation } from './useTypingAnimation';
 
 const classes = morfeo.css({

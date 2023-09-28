@@ -1,56 +1,12 @@
-import { EMOJI_CHARSET, REGULAR_CHARSET, SYMBOLS_MAP } from './constants';
+import { SYMBOLS_MAP } from './constants';
 
 type GeneratorOptions = {
-  minify?: boolean;
-  emojis?: boolean;
-  classNamePrefix?: string;
-};
-
-type GenerateIdOptions = {
-  emojis?: boolean;
   prefix?: string;
-  length?: number;
 };
 
 function createHandler() {
   const valuesCache = new Map<string, string>();
   const propertiesCache = new Map<string, string>();
-
-  function getCombinations(
-    length: number,
-    { emojis, prefix = '' }: Omit<GenerateIdOptions, 'length'>,
-  ) {
-    const chars = emojis ? EMOJI_CHARSET : REGULAR_CHARSET;
-    let combinations = chars.map(char => prefix + char);
-
-    for (let i = 1; i < length; i++) {
-      combinations = combinations.flatMap(comb =>
-        getCombinations(length - 1, { emojis, prefix: comb }),
-      );
-    }
-
-    return combinations;
-  }
-
-  function generateId(
-    string: string,
-    { emojis, length = 1 }: GenerateIdOptions,
-  ) {
-    if (propertiesCache.has(string)) {
-      return propertiesCache.get(string) as string;
-    }
-    const usedIds = Array.from(propertiesCache.values());
-    const combinations = getCombinations(length, { emojis });
-
-    for (const combination of combinations) {
-      if (!usedIds.includes(combination)) {
-        propertiesCache.set(string, combination);
-        return combination;
-      }
-    }
-
-    return generateId(string, { emojis, length: length + 1 });
-  }
 
   function escapeString(string: string) {
     if (valuesCache.has(string)) {
@@ -72,12 +28,9 @@ function createHandler() {
   function makeRuleName(
     property: string,
     value: string,
-    { minify, emojis, classNamePrefix }: GeneratorOptions,
+    { prefix }: GeneratorOptions,
   ) {
-    const className = classNamePrefix || '';
-    if (minify) {
-      return `${className}${generateId(`${property}-${value}`, { emojis })}`;
-    }
+    const className = prefix || '';
     return `${className}${escapeString(property)}-${escapeString(value)}`;
   }
 

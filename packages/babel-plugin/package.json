@@ -23,21 +23,23 @@
     "css-in-js"
   ],
   "scripts": {
-    "build": "tsup",
-    "watch": "tsc -w"
+    "build": "tsup"
   },
   "dependencies": {
     "@morfeo/jss": "workspace:*",
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*",
-    "@babel/core": "7.23.0",
     "@babel/traverse": "7.23.0",
     "@babel/types": "7.23.0",
     "@babel/preset-env": "7.22.20",
     "@babel/plugin-syntax-jsx": "7.22.5",
     "@babel/preset-typescript": "7.23.0"
   },
+  "peerDependencies": {
+    "@babel/core": "7.23.0"
+  },
   "devDependencies": {
+    "@babel/core": "7.23.0",
     "@types/babel__core": "7.20.2",
     "@types/babel__traverse": "7.20.2"
   },

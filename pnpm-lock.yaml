@@ -207,9 +207,6 @@ importers:
 
   packages/babel-plugin:
     dependencies:
-      '@babel/core':
-        specifier: 7.23.0
-        version: 7.23.0
       '@babel/plugin-syntax-jsx':
         specifier: 7.22.5
         version: 7.22.5(@babel/core@7.23.0)
@@ -235,6 +232,9 @@ importers:
         specifier: workspace:*
         version: link:../web
     devDependencies:
+      '@babel/core':
+        specifier: 7.23.0
+        version: 7.23.0
       '@types/babel__core':
         specifier: 7.20.2
         version: 7.20.2
@@ -262,6 +262,9 @@ importers:
       '@morfeo/web':
         specifier: workspace:*
         version: link:../web
+      '@topcli/spinner':
+        specifier: 2.1.2
+        version: 2.1.2
       chokidar:
         specifier: 3.5.3
         version: 3.5.3
@@ -3815,6 +3818,23 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
+  /@topcli/spinner@2.1.2:
+    resolution: {integrity: sha512-vpkhANKccY+zzu6QeavBM+VO/nhCYT7HJiKZTa86uTc3RzJ+pOkt1SgGLZExAzXM8tmDHGfBwXQQaRBak42+EA==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@topcli/wcwidth': 1.0.1
+      ansi-regex: 6.0.1
+      cli-cursor: 4.0.0
+      cli-spinners: 2.9.1
+      kleur: 4.1.5
+      strip-ansi: 7.1.0
+    dev: false
+
+  /@topcli/wcwidth@1.0.1:
+    resolution: {integrity: sha512-fS1k22N6DU5DpDfw61Kz0GDb3hNmJAgDcc8fNWSGBETKuuJnx+0fGSeL0w6dL1YRRjSOxWQJLiwW+byfv84EyQ==}
+    engines: {node: '>=14'}
+    dev: false
+
   /@tsconfig/node10@1.0.9:
     resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==}
 
@@ -5217,8 +5237,15 @@ packages:
       restore-cursor: 3.1.0
     dev: false
 
-  /cli-spinners@2.8.0:
-    resolution: {integrity: sha512-/eG5sJcvEIwxcdYM86k5tPwn0MUzkX5YY3eImTGpJOZgVe4SdTMY14vQpcxgBzJ0wXwAYrS8E+c3uHeK4JNyzQ==}
+  /cli-cursor@4.0.0:
+    resolution: {integrity: sha512-VGtlMu3x/4DOtIUwEkRezxUZ2lBacNJCHash0N0WeZDBS+7Ux1dm3XWAgWYxLJFMMdOeXMHXorshEFhbMSGelg==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      restore-cursor: 4.0.0
+    dev: false
+
+  /cli-spinners@2.9.1:
+    resolution: {integrity: sha512-jHgecW0pxkonBJdrKsqxgRX9AcG+u/5k0Q7WPDfi8AogLAdwxEkyYYNWwZ5GvVFoFx2uiY1eNcSK00fh+1+FyQ==}
     engines: {node: '>=6'}
     dev: false
 
@@ -11070,7 +11097,7 @@ packages:
       bl: 4.1.0
       chalk: 4.1.2
       cli-cursor: 3.1.0
-      cli-spinners: 2.8.0
+      cli-spinners: 2.9.1
       is-interactive: 1.0.0
       is-unicode-supported: 0.1.0
       log-symbols: 4.1.0
@@ -11994,6 +12021,14 @@ packages:
   /restore-cursor@3.1.0:
     resolution: {integrity: sha512-l+sSefzHpj5qimhFSE5a8nufZYAM3sBSVMAPtYkmC+4EH2anSGaEMXSD0izRQbu9nfyQ9y5JrVmp7E8oZrUjvA==}
     engines: {node: '>=8'}
+    dependencies:
+      onetime: 5.1.2
+      signal-exit: 3.0.7
+    dev: false
+
+  /restore-cursor@4.0.0:
+    resolution: {integrity: sha512-I9fPXU9geO9bHOt9pHHOhOkYerIMsmVaWB0rA2AI9ERh/+x/i7MV5HKBNrg+ljO5eoPVgCcnFuRjJ9uH6I/3eg==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       onetime: 5.1.2
       signal-exit: 3.0.7
