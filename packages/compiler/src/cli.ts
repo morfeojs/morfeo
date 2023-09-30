@@ -21,7 +21,7 @@ Examples:
   Watching for file changes:
   $ morfeo extract --watch
 
-  Custom config src/morfeo.ts:
+  Custom config ./morfeo.config.ts:
   $ morfeo extract --config ./morfeo.config.ts
 `,
   )
