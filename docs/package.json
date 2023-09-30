@@ -3,10 +3,11 @@
   "version": "0.9.3",
   "private": true,
   "scripts": {
-    "dev:morfeo": "morfeo --path ./src/morfeo.ts --watch",
+    "dev:morfeo": "morfeo extract ./src/morfeo.ts --watch",
     "dev:next": "rm -rf .next && next dev",
     "dev": "concurrently \"pnpm run dev:*\"",
-    "build": "morfeo && next build",
+    "build:morfeo": "morfeo extract ./src/morfeo.ts",
+    "build": "pnpm build:morfeo && next build",
     "start": "next start",
     "lint": "next lint"
   },

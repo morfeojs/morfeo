@@ -52,12 +52,16 @@ function createLogger() {
     log({ message, label: 'warning', type: 'debug', color: 'yellow' });
   }
 
-  function announcement(message: string) {
-    const padding = ' '.repeat((process.stdout.columns - message.length) / 2);
-
-    console.log(
-      `${colors.bgBlue}${padding}${message}${padding}${colors.reset}`,
-    );
+  function announcement() {
+    console.log(`${colors.cyan}
+ _ _ _
+ ' ) ) )        /)
+  / / / __ __  // _  __
+ / ' (_(_)/ (_//_</_(_)
+             />
+            </
+${colors.reset}      
+`);
   }
 
   function whitespace(lines = 1) {

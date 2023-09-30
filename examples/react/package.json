@@ -4,10 +4,10 @@
   "version": "0.9.3",
   "type": "module",
   "scripts": {
-    "dev:morfeo": "morfeo --path=src/morfeo.ts --watch",
+    "dev:morfeo": "morfeo extract ./src/morfeo.ts --watch",
     "dev:vite": "vite",
     "dev": "concurrently \"pnpm run dev:*\"",
-    "build": "morfeo --path=src/morfeo.ts && tsc && vite build",
+    "build": "morfeo extract ./src/morfeo.ts && tsc && vite build",
     "preview": "vite preview"
   },
   "peerDependencies": {

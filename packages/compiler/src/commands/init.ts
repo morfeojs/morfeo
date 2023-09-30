@@ -1,29 +1,29 @@
 import input from '@inquirer/input';
 import * as fs from 'fs';
-import { logger } from './logger';
+import { logger } from '../logger';
 import path from 'path';
-import { packageJson } from './utils';
+import { packageJson } from '../utils';
 
 export async function init() {
   let entryPoints: string;
   let cssPath: string;
   let instancePath: string;
 
-  logger.whitespace();
-  logger.announcement('** INITIALIZE MORFEO **');
-  logger.whitespace();
+  logger.announcement();
 
   try {
     entryPoints = await input({
-      message: 'From which paths do you want to extract the CSS?',
+      message: 'Where is your code?',
       default: './src/**/*.{ts,tsx,js,jsx}',
     });
+
     cssPath = await input({
       message: 'Where do you want to place the extracted CSS?',
       default: './src/styles/morfeo.css',
     });
+
     instancePath = await input({
-      message: 'Where do you want to place the morfeo instance?',
+      message: 'Where do you want to create the morfeo instance?',
       default: './src/morfeo.ts',
     });
 
@@ -35,45 +35,16 @@ export async function init() {
   }
 
   await Promise.all([
-    writeConfigFile({
-      targetPath: 'morfeo.config.ts',
-      entryPoints,
-      cssPath,
+    writeCssFile(cssPath),
+    writeInstanceFile({
+      cssPath: getRelativePath(instancePath, cssPath),
+      entryPoints: getRelativePath(instancePath, entryPoints),
       instancePath,
     }),
-    writeCssFile(cssPath),
-    writeInstanceFile(instancePath, isReactCodebase()),
     writeToGitIgnore(['# morfeo', cssPath]),
   ]);
-}
 
-async function writeConfigFile(params: {
-  targetPath: string;
-  entryPoints: string;
-  cssPath: string;
-  instancePath: string;
-}) {
-  try {
-    await fs.promises.writeFile(
-      path.join(process.cwd(), params.targetPath),
-      `import type { MorfeoCompilerOptions } from '@morfeo/compiler';
-import { morfeo } from '${getPathWithoutFileExtension(params.instancePath)}';
-
-const config: MorfeoCompilerOptions = {
-  morfeo,
-  entryPoints: ['${params.entryPoints}'],
-  output: '${params.cssPath}',
-};
-
-export default config;`,
-    );
-
-    logger.success(`Configuration file created at ${params.targetPath}`);
-  } catch {
-    logger.error(
-      `Error while creating configuration file at ${params.targetPath}`,
-    );
-  }
+  logger.success('Morfeo has been initialized');
 }
 
 async function writeCssFile(targetPath: string) {
@@ -89,20 +60,34 @@ async function writeCssFile(targetPath: string) {
   }
 }
 
-async function writeInstanceFile(targetPath: string, isReactCodebase: boolean) {
+async function writeInstanceFile({
+  cssPath,
+  entryPoints,
+  instancePath,
+}: {
+  cssPath: string;
+  entryPoints: string;
+  instancePath: string;
+}) {
   try {
     await fs.promises.writeFile(
-      path.join(process.cwd(), targetPath),
-      `import { createMorfeo } from '${
-        isReactCodebase ? '@morfeo/react' : '@morfeo/web'
+      path.join(process.cwd(), instancePath),
+      `import { createMorfeo } from '@morfeo/${
+        isReactCodebase() ? 'react' : 'web'
       }';
   
-export const morfeo = createMorfeo();`,
+export const morfeo = createMorfeo({
+  entryPoints: ['${entryPoints}'],
+  output: '${cssPath}'
+});
+`,
     );
 
-    logger.success(`Morfeo instance file created at ${targetPath}`);
+    logger.success(`Morfeo instance file created at ${instancePath}`);
   } catch {
-    logger.error(`Error while creating morfeo instance file at ${targetPath}`);
+    logger.error(
+      `Error while creating morfeo instance file at ${instancePath}`,
+    );
   }
 }
 
@@ -140,6 +125,7 @@ function isReactCodebase() {
   );
 }
 
-function getPathWithoutFileExtension(path: string) {
-  return path.replace(/\.[^/.]+$/, '');
+function getRelativePath(fromPath: string, toPath: string) {
+  const relativePath = path.relative(path.dirname(fromPath), toPath);
+  return relativePath.startsWith('./') ? relativePath : `./${relativePath}`;
 }
