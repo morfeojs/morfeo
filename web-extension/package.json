@@ -31,7 +31,7 @@
     "@crxjs/vite-plugin": "2.0.0-beta.19",
     "@types/chrome": "0.0.246",
     "@types/prismjs": "1.26.1",
-    "@types/react-transition-group": "4.4.6",
+    "@types/react-transition-group": "4.4.7",
     "@types/webextension-polyfill": "0.10.4",
     "@vitejs/plugin-react": "4.1.0",
     "chrome-webstore-upload": "1.0.0",
