@@ -1,5 +1,4 @@
 import { Theme } from '@morfeo/core';
-import { borderStyles } from './borderStyles';
 import { borderWidths } from './borderWidths';
 import { borders } from './borders';
 import { breakpoints } from './breakpoints';
@@ -44,7 +43,6 @@ export const defaultTheme: Omit<Theme, 'components'> = {
   transitions,
   fontWeights,
   borderWidths,
-  borderStyles,
   mediaQueries: {},
   colorSchemes,
   letterSpacings,

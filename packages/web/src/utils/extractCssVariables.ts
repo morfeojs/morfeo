@@ -15,7 +15,6 @@ const slicesToTransform: ThemeKey[] = [
   'lineHeights',
   'transitions',
   'borderWidths',
-  'borderStyles',
   'letterSpacings',
 ];
 

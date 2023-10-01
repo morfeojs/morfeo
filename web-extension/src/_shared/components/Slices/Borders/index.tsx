@@ -10,13 +10,9 @@ import { BorderCard } from './BorderCard/BorderCard';
 import { getSortedSliceValues } from '../../../utils/getSortedSliceValues';
 export { Detail } from './Detail';
 
-export const borderSlices = [
-  'borders',
-  'borderWidths',
-  'borderStyles',
-] as const;
+export const borderSlices = ['borders', 'borderWidths'] as const;
 
-export type BorderSlice = typeof borderSlices[number];
+export type BorderSlice = (typeof borderSlices)[number];
 
 type Props = {
   value: Border;

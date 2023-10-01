@@ -69,8 +69,6 @@ const map: Record<ThemeKey, SnippetMapCallback> = {
     general({ slice: 'fontWeights', value, property: 'fontWeight' }),
   borderWidths: (value: string) =>
     general({ slice: 'borderWidths', value, property: 'borderWidth' }),
-  borderStyles: (value: string) =>
-    general({ slice: 'borderStyles', value, property: 'borderStyle' }),
   letterSpacings: (value: string) =>
     general({ slice: 'letterSpacings', value, property: 'letterSpacing' }),
   components,
