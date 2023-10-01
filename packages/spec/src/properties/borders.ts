@@ -27,18 +27,3 @@ export const borderWidthsMap = [
   'borderInlineStartWidth',
   'outlineWidth',
 ] as const;
-
-export const borderStylesMap = [
-  'borderStyle',
-  'borderTopStyle',
-  'borderLeftStyle',
-  'borderRightStyle',
-  'borderBlockStyle',
-  'borderBottomStyle',
-  'borderInlineStyle',
-  'borderBlockEndStyle',
-  'borderInlineEndStyle',
-  'borderBlockStartStyle',
-  'borderInlineStartStyle',
-  'outlineStyle',
-] as const;

@@ -54,7 +54,7 @@ function createLogger() {
 
   function announcement() {
     console.log(`${colors.cyan}
- _ _ _
+  _ _ _
  ' ) ) )        /)
   / / / __ __  // _  __
  / ' (_(_)/ (_//_</_(_)

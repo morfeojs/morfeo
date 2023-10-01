@@ -8,7 +8,7 @@ type BorderProperties = SliceParsers<
 >;
 
 function borderParser({ value, property, ...rest }: ParserParams<'border'>) {
-  function makeBorder({ color, style, width }: BorderConfig) {
+  function makeBorder({ color, style: borderStyle, width }: BorderConfig) {
     const { borderColor } = baseParser({
       property: 'borderColor',
       scale: 'colors',
@@ -20,13 +20,6 @@ function borderParser({ value, property, ...rest }: ParserParams<'border'>) {
       property: 'borderWidth',
       scale: 'borderWidths',
       value: width,
-      ...rest,
-    });
-
-    const { borderStyle } = baseParser({
-      property: 'borderStyle',
-      scale: 'borderStyles',
-      value: style,
       ...rest,
     });
 

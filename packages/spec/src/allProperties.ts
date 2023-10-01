@@ -15,7 +15,6 @@ import {
   lineHeightsMap,
   transitionsMap,
   borderWidthsMap,
-  borderStylesMap,
   letterSpacingsMap,
 } from './properties';
 import { createPropertiesMap } from './createPropertiesMap';
@@ -51,10 +50,7 @@ export const borderWidthsProperties = createPropertiesMap(
   borderWidthsMap,
   'borderWidths',
 );
-export const borderStylesProperties = createPropertiesMap(
-  borderStylesMap,
-  'borderStyles',
-);
+
 export const opacitiesProperties = createPropertiesMap(
   opacitiesMap,
   'opacities',
@@ -87,7 +83,6 @@ export const allPropertiesBySlice = {
   lineHeights: lineHeightsMap,
   transitions: transitionsMap,
   borderWidths: borderWidthsMap,
-  borderStyles: borderStylesMap,
   letterSpacings: letterSpacingsMap,
 };
 
@@ -108,6 +103,5 @@ export const allProperties = {
   ...lineHeightProperties,
   ...transitionsProperties,
   ...borderWidthsProperties,
-  ...borderStylesProperties,
   ...letterSpacingProperties,
 };

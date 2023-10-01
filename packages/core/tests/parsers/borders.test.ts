@@ -22,9 +22,6 @@ const THEME: Theme = {
     m: '3px',
     l: '5px',
   },
-  borderStyles: {
-    solid: 'solid',
-  },
 } as any;
 
 beforeAll(() => {
@@ -43,7 +40,7 @@ describe('borders', () => {
     });
   });
 
-  test('should generate a border style without borderStyle', () => {
+  test('should generate a border without borderStyle', () => {
     const result = morfeo.parsers.resolve({ border: 'secondary' } as any);
     expect(result).toEqual({
       border: '5px red',
@@ -54,15 +51,6 @@ describe('borders', () => {
     const result = morfeo.parsers.resolve({ border: '4px dotted blue' } as any);
     expect(result).toEqual({
       border: '4px dotted blue',
-    });
-  });
-});
-
-describe('borderStyles', () => {
-  test('should generate a style with fontSize property', () => {
-    const result = morfeo.parsers.resolve({ borderStyle: 'solid' });
-    expect(result).toEqual({
-      borderStyle: 'solid',
     });
   });
 });

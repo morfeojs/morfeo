@@ -9,7 +9,7 @@ import {
   LineHeights,
   LetterSpacings,
 } from './fonts';
-import { Borders, BorderWidths, BorderStyles } from './borders';
+import { Borders, BorderWidths } from './borders';
 import { Opacities } from './opacities';
 import { Spacings } from './spacings';
 import { ZIndices } from './zIndices';
@@ -33,7 +33,6 @@ export type BaseTheme = {
   lineHeights: LineHeights;
   transitions: Transitions;
   borderWidths: BorderWidths;
-  borderStyles: BorderStyles;
   letterSpacings: LetterSpacings;
 };
 

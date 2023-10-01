@@ -29,7 +29,7 @@ describe('theme', () => {
   });
 
   test('should return any empty object if the slice does not exist', () => {
-    expect(morfeo.theme.getSlice('borderStyles')).toEqual({});
+    expect(morfeo.theme.getSlice('sizes')).toEqual({});
   });
 
   test('should update the theme', () => {
