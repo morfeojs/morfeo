@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@babel/core": "7.23.0",
-    "@inquirer/input": "1.2.12",
+    "@inquirer/input": "1.2.13",
     "@morfeo/babel-plugin": "workspace:*",
     "@morfeo/jss": "workspace:*",
     "@morfeo/preset-default": "workspace:*",
