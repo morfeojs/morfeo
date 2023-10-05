@@ -5,7 +5,7 @@ import {
   createMorfeo,
   ThemeMetadata,
 } from '@morfeo/core';
-import { deepMerge, DeepPartial } from '@morfeo/utils';
+import { DeepPartial, deepMerge } from '@morfeo/utils';
 import { gradientParsers } from './parsers';
 import { createCss } from './css';
 import { global } from './global';
@@ -15,7 +15,7 @@ import { responsiveProperty } from './resolvers/responsiveProperty';
 import { multiThemeProperty } from './resolvers/multiThemeProperty';
 import { ColorScheme } from './types';
 
-export type CreateMorfeoOptions = {
+export type CreateMorfeoOptions<T extends Partial<Theme>> = {
   /**
    * Your custom theme that will be used to resolve the styles.
    *
@@ -25,7 +25,7 @@ export type CreateMorfeoOptions = {
    * export const morfeo = createMorfeo({ theme: myCustomTheme });
    * ```
    */
-  theme?: DeepPartial<Theme>;
+  theme?: DeepPartial<T>;
   /**
    * If specified all the classes and variables will be prefixed by this value
    *
@@ -68,15 +68,19 @@ export type CreateMorfeoOptions = {
   entryPoints?: string[];
 };
 
-export function createMorfeoWeb({
+type WithDefaultTheme<T extends Partial<Theme>> = typeof defaultTheme & T;
+
+export function createMorfeoWeb<T extends Partial<Theme>>({
   theme: initialTheme,
   ...options
-}: CreateMorfeoOptions = {}): Morfeo {
-  const instance = createMorfeo();
+}: CreateMorfeoOptions<T> = {}): Morfeo<WithDefaultTheme<T>> {
+  type MergedTheme = WithDefaultTheme<T>;
 
-  function onSetTheme(currentTheme: DeepPartial<Theme>) {
+  const instance = createMorfeo<MergedTheme>();
+
+  function onSetTheme(currentTheme: Partial<MergedTheme>) {
     const { theme, variables } = extractCssVariables(
-      deepMerge(defaultTheme, currentTheme),
+      deepMerge(defaultTheme, currentTheme) as MergedTheme,
       options.prefix,
     );
 
@@ -92,27 +96,28 @@ export function createMorfeoWeb({
     );
   });
 
-  instance.theme.onSetTheme(onSetTheme);
+  instance.theme.onSetTheme(onSetTheme as any);
 
   instance.parsers.onResolveProperty(multiThemeProperty);
   instance.parsers.onResolveProperty(responsiveProperty);
 
-  instance.theme.set(initialTheme || defaultTheme);
+  instance.theme.set(initialTheme || (defaultTheme as any));
 
   return {
     ...instance,
-    css: createCss(instance as Morfeo),
-    global,
+    css: createCss<MergedTheme>(instance as any),
+    global: global<MergedTheme>,
   };
 }
 
 declare module '@morfeo/core' {
-  export interface Morfeo {
-    css: ReturnType<typeof createCss>;
-    global: typeof global;
+  export interface Morfeo<T extends Partial<Theme>> {
+    css: ReturnType<typeof createCss<T>>;
+    global: typeof global<T>;
   }
 
-  export interface ThemeMetadata extends CreateMorfeoOptions {
+  export interface ThemeMetadata
+    extends Omit<CreateMorfeoOptions<Theme>, 'theme'> {
     variables: Record<ColorScheme, Record<string, string>>;
   }
 }

@@ -1,6 +1,13 @@
 import type { ReactHTML } from 'react';
 import React from 'react';
-import type { Component, Morfeo, State, Style, Variant } from '@morfeo/web';
+import type {
+  Theme,
+  Morfeo,
+  Component,
+  MorfeoStyle,
+  ComponentState,
+  ComponentVariant,
+} from '@morfeo/web';
 import { combine, expandStyles } from '@morfeo/web';
 import { escapeString, generateClassName } from '@morfeo/utils';
 
@@ -9,7 +16,10 @@ type NeededProps = {
   style?: any;
 };
 
-type ReducedStyle = Omit<Style, 'componentName' | 'variant' | 'state'>;
+type ReducedStyle<T extends Partial<Theme>> = Omit<
+  MorfeoStyle<T>,
+  'componentName' | 'variant' | 'state'
+>;
 
 type ValueOrFunction<T, P> =
   | T
@@ -18,17 +28,21 @@ type ValueOrFunction<T, P> =
       [K in keyof T]: ValueOrFunction<T[K], P>;
     };
 
-type ComponentStyle<C extends Component, P> = {
-  [K in keyof ReducedStyle]: ValueOrFunction<ReducedStyle[K], P>;
+type ComponentStyle<
+  T extends Partial<Theme>,
+  C extends keyof T['components'],
+  P,
+> = {
+  [K in keyof ReducedStyle<T>]: ValueOrFunction<ReducedStyle<T>[K], P>;
 } & (C extends Component
   ? {
-      state?: ValueOrFunction<State<C>, P>;
-      variant?: ValueOrFunction<Variant<C>, P>;
+      state?: ValueOrFunction<ComponentState<T, C>, P>;
+      variant?: ValueOrFunction<ComponentVariant<T, C>, P>;
     }
   : {
-      componentName?: Style['componentName'];
-      state?: ValueOrFunction<State<C>, P>;
-      variant?: ValueOrFunction<Variant<C>, P>;
+      componentName?: MorfeoStyle<T>['componentName'];
+      state?: ValueOrFunction<ComponentState<T, C>, P>;
+      variant?: ValueOrFunction<ComponentVariant<T, C>, P>;
     });
 
 function mutateObject<T>(object: T, value: string, path: string[]) {
@@ -41,9 +55,11 @@ function mutateObject<T>(object: T, value: string, path: string[]) {
   return mutateObject(object[path[0]] || {}, value, path.slice(1));
 }
 
-export function createMorfeoComponent(morfeo: Morfeo) {
+export function createMorfeoComponent<T extends Partial<Theme>>(
+  morfeo: Morfeo<T>,
+) {
   function splitStyleAndInlineStyle(
-    params: ComponentStyle<any, any>,
+    params: ComponentStyle<any, any, any>,
     props: any,
     prefix: string[] = [],
   ) {
@@ -144,10 +160,10 @@ export function createMorfeoComponent(morfeo: Morfeo) {
    */
   return function component<
     P extends NeededProps & {},
-    C extends Component = Component,
+    C extends keyof T['components'] = keyof T['components'],
   >(
     componentName: C | keyof ReactHTML | React.FC<P>,
-    styleWithFunctions: ComponentStyle<C, P>,
+    styleWithFunctions: ComponentStyle<T, C, P>,
   ) {
     const MorfeoComponent = React.forwardRef<HTMLElement, P>(
       function (props, ref) {
@@ -155,7 +171,7 @@ export function createMorfeoComponent(morfeo: Morfeo) {
         const { variant, state, ...rest } = props as any;
 
         const { style, inlineStyle } = splitStyleAndInlineStyle(
-          styleWithFunctions,
+          styleWithFunctions as any,
           props,
         );
 
@@ -171,8 +187,8 @@ export function createMorfeoComponent(morfeo: Morfeo) {
           ? componentName
           : componentOptions?.getTag() || componentName;
 
-        const classObject = expandStyles(
-          morfeo,
+        const classObject = expandStyles<T>(
+          morfeo as any,
           { componentName, ...style } as any,
           {
             getClassName: style =>
@@ -202,7 +218,7 @@ export function createMorfeoComponent(morfeo: Morfeo) {
     MorfeoComponent.displayName =
       typeof componentName === 'function'
         ? componentName.displayName
-        : componentName;
+        : (componentName as string);
 
     return MorfeoComponent;
   };

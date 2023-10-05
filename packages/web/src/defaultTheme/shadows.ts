@@ -1,6 +1,6 @@
-import { Shadows } from '@morfeo/core';
+import { ShadowConfig } from '@morfeo/core';
 
-export const shadows: Shadows = {
+export const shadows = {
   none: {
     color: 'gray',
     opacity: 'light',

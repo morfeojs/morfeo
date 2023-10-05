@@ -1,20 +1,15 @@
-import { colorProperties, ColorProperty, Color } from '@morfeo/spec';
+import { colorProperties, ColorProperty, Color, Theme } from '@morfeo/spec';
 import { ParserParams, SliceParsers } from '../../types';
 import { baseParser } from '../baseParser';
 import { placeholderParser } from './placeholderParsers';
 
-type ColorsParsers = SliceParsers<
-  typeof colorProperties,
-  keyof typeof colorProperties
->;
-
-export function parseColor({
+export function parseColor<T extends Partial<Theme> = Partial<Theme>>({
   value,
   theme,
   property,
   ...rest
-}: ParserParams<ColorProperty>) {
-  const color = theme.getValue('colors', value as Color);
+}: ParserParams<T, ColorProperty>) {
+  const color = theme.getValue('colors', value as keyof T['colors']) as string;
 
   if (color && color.indexOf('$') === 0) {
     return placeholderParser({ value, property, color, theme, ...rest });
@@ -34,10 +29,12 @@ const baseColorsParsers = Object.keys(colorProperties).reduce(
     ...acc,
     [prop]: parseColor,
   }),
-  {} as ColorsParsers,
+  {},
 );
 
 export const colorsParsers = {
   ...baseColorsParsers,
-  bg: props => parseColor({ ...props, property: 'backgroundColor' }),
-} as ColorsParsers;
+  bg: <T extends Partial<Theme> = Partial<Theme>>(
+    props: ParserParams<T, ColorProperty>,
+  ) => parseColor<T>({ ...props, property: 'backgroundColor' }),
+};

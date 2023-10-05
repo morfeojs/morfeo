@@ -1,6 +1,4 @@
-import { Transitions } from '@morfeo/core';
-
-export const transitions: Transitions = {
+export const transitions = {
   slow: '1s ease',
   medium: '.6s ease',
   fast: '.3s ease',

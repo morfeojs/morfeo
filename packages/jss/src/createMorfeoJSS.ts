@@ -1,4 +1,4 @@
-import type { Morfeo, Style, ThemeMetadata } from '@morfeo/web';
+import type { Morfeo, MorfeoStyle, Theme, ThemeMetadata } from '@morfeo/web';
 import preset from 'jss-preset-default';
 import {
   create,
@@ -20,12 +20,12 @@ function createGenerateId(options?: ThemeMetadata) {
   };
 }
 
-export function createMorfeoJSS(morfeo: Morfeo) {
+export function createMorfeoJSS<T extends Partial<Theme>>(morfeo: Morfeo<T>) {
   const jss = create();
 
   const morfeoJSS: Plugin = {
     onProcessStyle(style) {
-      return morfeo.parsers.resolve(style as Style);
+      return morfeo.parsers.resolve(style as MorfeoStyle<T>);
     },
   };
 
@@ -39,10 +39,10 @@ export function createMorfeoJSS(morfeo: Morfeo) {
   jss.setup(morfeoJSSPreset);
 
   function getStyles<K extends string>(
-    styles: Record<K, Style>,
+    styles: Record<K, MorfeoStyle<T>>,
     options?: StyleSheetFactoryOptions,
   ) {
-    return get(styles, { jss, morfeo, ...options });
+    return get<K, T>(styles, { jss, morfeo, ...options });
   }
 
   return { getStyles };

@@ -1,4 +1,4 @@
-import type { Style } from '@morfeo/core';
+import type { MorfeoStyle, Theme } from '@morfeo/core';
 
 /**
  * @example
@@ -11,9 +11,9 @@ import type { Style } from '@morfeo/core';
  * });
  * ```
  */
-export function global(
+export function global<T extends Partial<Theme>>(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  _styles: Record<string, Style>,
+  _styles: Record<string, MorfeoStyle<T>>,
 ): void {
   return;
 }

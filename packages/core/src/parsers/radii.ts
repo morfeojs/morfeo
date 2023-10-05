@@ -1,11 +1,4 @@
-import { radiiProperties } from '@morfeo/spec';
-import { SliceParsers } from '../types';
 import { baseParser } from './baseParser';
-
-type RadiiParsers = SliceParsers<
-  typeof radiiProperties,
-  keyof typeof radiiProperties
->;
 
 const radiiAliasesMap = {
   corner: 'borderRadius',
@@ -30,4 +23,4 @@ export const radiiParsers = Object.keys(radiiAliasesMap).reduce(
       }),
   }),
   {},
-) as RadiiParsers;
+);

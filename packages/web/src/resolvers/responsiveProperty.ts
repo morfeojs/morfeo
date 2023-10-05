@@ -1,6 +1,5 @@
 import { PropertyResolver } from '@morfeo/core';
 import { isResponsive, resolveMediaQuery } from '../utils';
-import { BreakPoint } from '../types';
 
 export const responsiveProperty: PropertyResolver = ({
   property,
@@ -9,7 +8,7 @@ export const responsiveProperty: PropertyResolver = ({
   next,
   theme,
 }) => {
-  if (!isResponsive(theme.getSlice('breakpoints'), value)) {
+  if (!isResponsive(theme.getSlice('breakpoints') as any, value)) {
     return;
   }
 
@@ -32,7 +31,7 @@ export const responsiveProperty: PropertyResolver = ({
       };
     }
 
-    const mediaQuery = resolveMediaQuery(theme, breakpoint as BreakPoint);
+    const mediaQuery = resolveMediaQuery(theme as any, breakpoint as any);
 
     return {
       ...acc,

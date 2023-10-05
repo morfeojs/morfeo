@@ -1,4 +1,11 @@
-import { Style, Property, AllProperties, allProperties } from '@morfeo/spec';
+import {
+  Theme,
+  Property,
+  MorfeoStyle,
+  AllProperties,
+  allProperties,
+  ComponentName,
+} from '@morfeo/spec';
 import { deepMerge } from '@morfeo/utils';
 import {
   Parser,
@@ -47,7 +54,9 @@ const INITIAL_PARSERS = {
   ...ADDITIONAL_PARSERS,
 };
 
-export function createParsers(themeInstance: ThemeHandler) {
+export function createParsers<T extends Partial<Theme>>(
+  themeInstance: ThemeHandler<T>,
+) {
   const context = new Map(Object.entries(INITIAL_PARSERS));
   let cache: any = {};
   let instance: any;
@@ -58,7 +67,7 @@ export function createParsers(themeInstance: ThemeHandler) {
     return Object.fromEntries(context.entries());
   }
 
-  function add<P extends Property>(property: P, parser: Parser<P>) {
+  function add<P extends Property>(property: P, parser: Parser<T, P>) {
     context.set(property, parser as any);
   }
 
@@ -93,13 +102,16 @@ export function createParsers(themeInstance: ThemeHandler) {
     value,
     style,
   }: Pick<
-    PropertyResolverParams<typeof property>,
+    PropertyResolverParams<T, typeof property>,
     'property' | 'value' | 'style'
   >) {
     const resolvers = Array.from(propertiesResolvers);
 
     for (const resolver of resolvers) {
-      const next: PropertyResolverParams<typeof property>['next'] = params => {
+      const next: PropertyResolverParams<
+        T,
+        typeof property
+      >['next'] = params => {
         return resolveProperty({
           property: params?.property || property,
           value: params?.value || value,
@@ -107,13 +119,13 @@ export function createParsers(themeInstance: ThemeHandler) {
         });
       };
 
-      const params: PropertyResolverParams<typeof property> = {
+      const params: PropertyResolverParams<T, typeof property> = {
         property,
         value,
         style: style,
         next,
         parsers: instance,
-        theme,
+        theme: theme as ThemeHandler<T>,
       };
 
       const result = resolver(params);
@@ -129,7 +141,7 @@ export function createParsers(themeInstance: ThemeHandler) {
     value,
     style,
   }: Pick<
-    PropertyResolverParams<typeof property>,
+    PropertyResolverParams<T, typeof property>,
     'property' | 'value' | 'style'
   >) {
     const result = callResolvers({ property, value, style });
@@ -138,7 +150,7 @@ export function createParsers(themeInstance: ThemeHandler) {
       return result;
     }
 
-    const parser = context.get(property) as Parser<typeof property>;
+    const parser = context.get(property) as Parser<T, typeof property>;
 
     if (typeof value === 'string' && value.includes('raw:')) {
       return resolveProperty({
@@ -165,7 +177,9 @@ export function createParsers(themeInstance: ThemeHandler) {
     return { [property]: value };
   }
 
-  function resolve(style: Style): ResolvedStyle {
+  function resolve<C extends ComponentName<T> = ComponentName<T>>(
+    style: MorfeoStyle<T, C>,
+  ): ResolvedStyle {
     const { componentName, ...rest } = style;
     const properties = Object.keys(rest);
 
@@ -174,7 +188,7 @@ export function createParsers(themeInstance: ThemeHandler) {
           property: 'componentName',
           value: componentName,
           style,
-        })
+        } as any)
       : undefined;
 
     function getPropertyStyle(property: string) {
@@ -194,12 +208,12 @@ export function createParsers(themeInstance: ThemeHandler) {
           return cache[property][value];
         }
 
-        cache[property][value] = resolveProperty(params);
+        cache[property][value] = resolveProperty(params as any);
 
         return cache[property][value];
       }
 
-      return resolveProperty(params);
+      return resolveProperty(params as any);
     }
 
     const parsedStyle = properties.reduce((acc, property) => {

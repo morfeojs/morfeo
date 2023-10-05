@@ -1,24 +1,28 @@
-import { Morfeo, Style } from '@morfeo/web';
+import { Morfeo, MorfeoStyle, Theme } from '@morfeo/web';
 import { deepMerge } from '@morfeo/utils';
 import { Jss, StyleSheetFactoryOptions } from 'jss';
 
-type MorfeoJSSOptions = StyleSheetFactoryOptions & {
-  jss: Jss;
-  morfeo: Morfeo;
-};
+type MorfeoJSSOptions<T extends Partial<Theme> = Partial<Theme>> =
+  StyleSheetFactoryOptions & {
+    jss: Jss;
+    morfeo: Morfeo<T>;
+  };
 
-function getStyleSheet<K extends string>(
-  styles: Record<K, Style>,
-  { jss, ...options }: MorfeoJSSOptions,
+function getStyleSheet<K extends string, T extends Partial<Theme>>(
+  styles: Record<K, MorfeoStyle<T>>,
+  { jss, ...options }: MorfeoJSSOptions<T>,
 ) {
   return jss.createStyleSheet<K>(styles as any, options);
 }
 
-export function getStyles<K extends string>(
-  styles: Record<K, Style>,
-  { jss, morfeo, ...options }: MorfeoJSSOptions,
+export function getStyles<
+  K extends string,
+  T extends Partial<Theme> = Partial<Theme>,
+>(
+  styles: Record<K, MorfeoStyle<T>>,
+  { jss, morfeo, ...options }: MorfeoJSSOptions<T>,
 ) {
-  let sheet = getStyleSheet<K>(styles, { jss, morfeo, ...options });
+  let sheet = getStyleSheet<K, T>(styles, { jss, morfeo, ...options });
 
   let classes = sheet.classes;
   let currentStyles = { ...styles };
@@ -36,8 +40,11 @@ export function getStyles<K extends string>(
     sheet.attach();
   }
 
-  const update = (props: Record<K, Style>): Record<K, string> => {
-    currentStyles = deepMerge(currentStyles, props) as Record<K, Style>;
+  const update = (props: Record<K, MorfeoStyle<T>>): Record<K, string> => {
+    currentStyles = deepMerge(currentStyles, props) as Record<
+      K,
+      MorfeoStyle<T>
+    >;
     sheet.addRules(currentStyles as any, {
       ...options,
       generateId: rule => {
@@ -50,7 +57,7 @@ export function getStyles<K extends string>(
     });
 
     classes = sheet.classes;
-    return classes;
+    return classes as Record<K, string>;
   };
   const unsubscribe = morfeo.theme.subscribe(onThemeChange);
 

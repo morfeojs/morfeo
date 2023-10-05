@@ -1,6 +1,4 @@
-import { ZIndices } from '@morfeo/core';
-
-export const zIndices: ZIndices = {
+export const zIndices = {
   none: 0,
   lowest: -1,
   lower: 1,

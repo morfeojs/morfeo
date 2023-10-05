@@ -1,8 +1,4 @@
-import { SpacingProperty, spacingsProperties } from '@morfeo/spec';
-import { SliceParsers } from '../types';
 import { baseParser } from './baseParser';
-
-type SpacingsParsers = SliceParsers<typeof spacingsProperties, SpacingProperty>;
 
 export const spacingsParsers = {
   p: props => baseParser({ ...props, scale: 'spacings', property: 'padding' }),
@@ -47,4 +43,4 @@ export const spacingsParsers = {
       ...baseParser({ ...props, scale: 'spacings', property: 'marginBottom' }),
     };
   },
-} as SpacingsParsers;
+};

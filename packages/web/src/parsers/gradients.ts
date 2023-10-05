@@ -1,34 +1,37 @@
 import {
+  Theme,
   Parser,
   Gradient,
   ThemeHandler,
   ParserParams,
+  ResolvedStyle,
   GradientConfig,
   ParsersContext,
   GradientProperty,
-  ResolvedStyle,
 } from '@morfeo/core';
 
-function getGradientPercentages({
+function getGradientPercentages<T extends Partial<Theme>>({
   start = 0,
   end = 100,
   colors,
   theme,
-}: GradientConfig & { theme: ThemeHandler }) {
+}: GradientConfig<T> & { theme: ThemeHandler<T> }) {
   const { length } = colors;
   const diff = end - start;
   const part = diff / (length - 1 > 0 ? length - 1 : 1);
   let percentage = 0;
 
   return colors.reduce((prev, colorKey) => {
-    const color = theme.getValue('colors', colorKey) || colorKey;
+    const color = (theme.getValue('colors', colorKey) || colorKey) as string;
     const current = `${color} ${start + percentage}%`;
     percentage += part;
     return prev ? `${prev}, ${current}` : current;
   }, '');
 }
 
-function getGradientProperty({ kind }: GradientConfig) {
+function getGradientProperty<T extends Partial<Theme>>({
+  kind,
+}: GradientConfig<T>) {
   if (kind === 'radial') {
     return 'radial-gradient';
   }
@@ -36,8 +39,11 @@ function getGradientProperty({ kind }: GradientConfig) {
   return 'linear-gradient';
 }
 
-function getGradientBackground(value: Gradient, theme: ThemeHandler) {
-  const config = theme.getValue('gradients', value);
+function getGradientBackground<T extends Partial<Theme>>(
+  value: Gradient<T>,
+  theme: ThemeHandler<T>,
+) {
+  const config = theme.getValue('gradients', value) as GradientConfig<T>;
   const { angle = 180, kind } = config;
   const property = getGradientProperty(config);
   const percentages = getGradientPercentages({ ...config, theme });
@@ -46,9 +52,14 @@ function getGradientBackground(value: Gradient, theme: ThemeHandler) {
   return `${property}(${gradientAngle}, ${percentages})`;
 }
 
-function guard(callback: Parser<GradientProperty>) {
-  return function (params: ParserParams<GradientProperty>): ResolvedStyle {
-    const config = params.theme.getValue('gradients', params.value as Gradient);
+function guard<T extends Partial<Theme>>(
+  callback: Parser<T, GradientProperty>,
+) {
+  return function (params: ParserParams<T, GradientProperty>): ResolvedStyle {
+    const config = params.theme.getValue(
+      'gradients',
+      params.value as Gradient<T>,
+    );
     if (!config) {
       return { background: params.value } as ResolvedStyle;
     }
@@ -57,14 +68,19 @@ function guard(callback: Parser<GradientProperty>) {
   };
 }
 
-function gradient({ value, theme }: ParserParams<GradientProperty>) {
-  const bg = getGradientBackground(value as Gradient, theme);
+function gradient<T extends Partial<Theme>>({
+  value,
+  theme,
+}: ParserParams<T, GradientProperty>) {
+  const bg = getGradientBackground(value as Gradient<T>, theme);
   return {
     background: bg,
   };
 }
 
-function textGradient(params: ParserParams<GradientProperty>) {
+function textGradient<T extends Partial<Theme>>(
+  params: ParserParams<T, GradientProperty>,
+) {
   const baseStyle = guard(gradient)(params);
   return {
     ...baseStyle,

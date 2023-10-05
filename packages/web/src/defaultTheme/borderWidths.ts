@@ -1,6 +1,4 @@
-import { BorderWidths } from '@morfeo/core';
-
-export const borderWidths: BorderWidths = {
+export const borderWidths = {
   none: '0px',
   '2xs': '0.2px',
   xs: '0.5px',

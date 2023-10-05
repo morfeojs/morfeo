@@ -26,11 +26,12 @@ const colorSchemes = {
   light: '@media (prefers-color-scheme: light)',
 };
 
-export const defaultTheme: Omit<Theme, 'components'> = {
+export const defaultTheme = {
   radii,
   sizes,
   fonts,
-  colors: colors as any,
+  colors,
+  // @ts-ignore
   shadows,
   borders,
   spacings,
@@ -47,17 +48,3 @@ export const defaultTheme: Omit<Theme, 'components'> = {
   colorSchemes,
   letterSpacings,
 };
-
-type LocalFonts = typeof fonts;
-type LocalSizes = typeof sizes;
-type LocalColors = typeof colors;
-type LocalSpacings = typeof spacings;
-type LocalFontSizes = typeof fontSizes;
-
-declare module '@morfeo/core' {
-  export interface Sizes extends LocalSizes {}
-  export interface Fonts extends LocalFonts {}
-  export interface Colors extends LocalColors {}
-  export interface Spacings extends LocalSpacings {}
-  export interface FontSizes extends LocalFontSizes {}
-}

@@ -1,6 +1,6 @@
-import { Borders } from '@morfeo/core';
+import { BorderConfig } from '@morfeo/core';
 
-export const borders: Borders = {
+export const borders = {
   none: {
     width: 'none',
     style: 'none',
@@ -20,4 +20,4 @@ export const borders: Borders = {
     style: 'solid',
     color: 'text',
   },
-};
+} satisfies Record<string, BorderConfig>;

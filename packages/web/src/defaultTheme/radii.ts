@@ -1,6 +1,4 @@
-import { Radii } from '@morfeo/core';
-
-export const radii: Radii = {
+export const radii = {
   '2xs': '4px',
   xs: '8px',
   s: '12px',

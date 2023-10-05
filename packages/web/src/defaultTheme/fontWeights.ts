@@ -1,6 +1,4 @@
-import { FontWeights } from '@morfeo/core';
-
-export const fontWeights: FontWeights = {
+export const fontWeights = {
   thin: '100',
   extraLight: '200',
   light: '300',

@@ -1,6 +1,4 @@
-import { Gradients } from '@morfeo/core';
-
-export const gradients: Gradients = {
+export const gradients = {
   primary: {
     colors: ['primary', 'secondary'],
   },

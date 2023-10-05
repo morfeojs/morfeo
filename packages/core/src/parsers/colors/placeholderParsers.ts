@@ -1,18 +1,18 @@
 import { ParserParams } from '../../types';
-import { Color, ColorProperty } from '@morfeo/spec';
+import { ColorProperty, Theme } from '@morfeo/spec';
 import { baseParser } from '../baseParser';
 
-export const placeholderParser = ({
+export function placeholderParser<T extends Partial<Theme>>({
   value,
   theme,
   color,
   property,
   ...rest
-}: ParserParams<ColorProperty> & { color: string }) => {
+}: ParserParams<T, ColorProperty> & { color: string }) {
   const originalValue = color.substring(1);
   const originalAssignedStyle = theme.getValue(
     'colors',
-    originalValue as Color,
+    originalValue as keyof T['colors'],
   );
 
   if (!originalAssignedStyle) {
@@ -24,8 +24,8 @@ export const placeholderParser = ({
   return baseParser({
     ...rest,
     theme,
-    value: originalValue as Color,
+    value: originalValue,
     property,
     scale: 'colors',
   });
-};
+}

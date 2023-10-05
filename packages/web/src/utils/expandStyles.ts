@@ -1,9 +1,9 @@
 import { deepMerge, isDefaultObject } from '@morfeo/utils';
-import { Morfeo, Style } from '@morfeo/core';
+import type { Morfeo, MorfeoStyle, Theme, ThemeHandler } from '@morfeo/core';
 
-type Callback = (value: Style) => Style;
+type Callback = (value: MorfeoStyle<Theme>) => MorfeoStyle<Theme>;
 
-function noop(value: Style) {
+function noop(value: MorfeoStyle<Theme>) {
   return value;
 }
 
@@ -14,20 +14,20 @@ function pipe(...callbacks: Callback[]) {
 }
 
 type ExpandStyleOptions = {
-  getClassName: (style: Style) => string;
+  getClassName: (style: MorfeoStyle<Theme>) => string;
 };
 
 export type ExpandedStyle = {
   [key: string]: string | ExpandedStyle;
 };
 
-export function expandStyles(
-  instance: Morfeo,
-  { componentName, variant, state, ...rest }: Style,
+export function expandStyles<T extends Partial<Theme> = Partial<Theme>>(
+  instance: Morfeo<T>,
+  { componentName, variant, state, ...rest }: MorfeoStyle<Theme>,
   options: ExpandStyleOptions,
 ): ExpandedStyle {
-  function traverse(style: Style, getContext: Callback = noop) {
-    function getClassName(s: Style) {
+  function traverse(style: MorfeoStyle<Theme>, getContext: Callback = noop) {
+    function getClassName(s: MorfeoStyle<Theme>) {
       return options.getClassName(getContext(s));
     }
 
@@ -42,12 +42,15 @@ export function expandStyles(
           return {
             ...acc,
             [curr]: {
-              default: getClassName({ [curr]: defaultValue } as Style),
+              default: getClassName({
+                [curr]: defaultValue,
+              } as MorfeoStyle<Theme>),
               ...traverse(
                 restStyle,
                 pipe(
                   getContext,
-                  (value: Style) => ({ [curr]: value }) as Style,
+                  (value: MorfeoStyle<Theme>) =>
+                    ({ [curr]: value }) as MorfeoStyle<Theme>,
                 ),
               ),
             },
@@ -58,7 +61,9 @@ export function expandStyles(
           ...acc,
           [curr]: traverse(
             currentStyle,
-            pipe(getContext, (value: Style) => ({ [curr]: value })),
+            pipe(getContext, (value: MorfeoStyle<Theme>) => ({
+              [curr]: value,
+            })),
           ),
         };
       }
@@ -77,7 +82,8 @@ export function expandStyles(
     deepMerge(
       componentName
         ? (instance.theme
-            .component(componentName as any, variant, state)
+            // @ts-ignore
+            .component(componentName, variant, state)
             .getStyle() as any)
         : {},
       rest,

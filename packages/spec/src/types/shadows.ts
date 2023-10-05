@@ -1,30 +1,20 @@
 import { shadowsMap } from '../properties';
-import { BorderWidth } from './borders';
-import { Color } from './colors';
-import { Opacity } from './opacities';
-import { Radius } from './radii';
+import { Theme } from './theme';
 
-export interface ShadowConfig {
-  color?: Color;
+export interface ShadowConfig<T extends Partial<Theme>> {
+  color?: keyof T['colors'];
   offset?: {
-    width: BorderWidth;
-    height: BorderWidth;
+    width: keyof T['borderWidths'];
+    height: keyof T['borderWidths'];
   };
-  radius?: Radius;
-  opacity?: Opacity;
+  radius?: keyof T['radii'];
+  opacity?: keyof T['opacities'];
 }
 
-export interface Shadows {
-  none: ShadowConfig;
-  light: ShadowConfig;
-  strong: ShadowConfig;
-  medium: ShadowConfig;
-}
-
-export type Shadow = keyof Shadows;
+export type Shadow<T extends Partial<Theme>> = keyof T['shadows'];
 
 type BaseShadowProps = {
-  [K in (typeof shadowsMap)[number]]: Shadow;
+  [K in (typeof shadowsMap)[number]]: Shadow<Theme>;
 };
 
 export interface ShadowProps extends BaseShadowProps {}

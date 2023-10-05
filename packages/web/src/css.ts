@@ -1,4 +1,4 @@
-import type { Morfeo, Style } from '@morfeo/core';
+import type { ComponentName, Morfeo, MorfeoStyle, Theme } from '@morfeo/core';
 import { createClassCombiner, generateClassName } from '@morfeo/utils';
 import { expandStyles } from './utils';
 
@@ -12,7 +12,7 @@ type ClassResolverCallback<K extends string> = ClassObject<K> &
     ...args: (ClassObject | K | (string & {}) | undefined | boolean)[]
   ) => string);
 
-export function createCss(instance: Morfeo) {
+export function createCss<T extends Partial<Theme>>(instance: Morfeo<T>) {
   /**
    * @example
    *
@@ -31,14 +31,14 @@ export function createCss(instance: Morfeo) {
    * ```
    */
   return function css<K extends string>(
-    styles: Record<K, Style>,
+    styles: Record<K, MorfeoStyle<T, ComponentName<T>>>,
   ): ClassResolverCallback<K> {
     let expandedObject;
 
     function resolver(...classes) {
       if (!expandedObject) {
         expandedObject = Object.keys(styles).reduce((acc, key) => {
-          const object = expandStyles(instance, styles[key], {
+          const object = expandStyles(instance as Morfeo<any>, styles[key], {
             getClassName: style =>
               generateClassName(style, instance.theme.getMetadata()),
           });

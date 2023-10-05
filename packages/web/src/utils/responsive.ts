@@ -1,9 +1,9 @@
-import { ThemeHandler } from '@morfeo/core';
+import { Theme, ThemeHandler } from '@morfeo/core';
 import { parseNumber } from '@morfeo/utils';
 import { BreakPoint, BreakPoints } from '../types';
 
 export function isResponsive(
-  breakpoints: BreakPoints,
+  breakpoints: Record<string, string>,
   value: any,
 ): value is object {
   if (typeof value === 'object' && breakpoints) {
@@ -23,7 +23,7 @@ function createMediaQueryResolver() {
   }
 
   function resolveMediaQuery(
-    theme: ThemeHandler,
+    theme: ThemeHandler<Theme>,
     breakpoint: BreakPoint,
   ): string {
     if (mediaQueriesCache.has(breakpoint)) {

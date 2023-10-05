@@ -1,24 +1,15 @@
-import {
-  Theme,
-  Colors,
-  Shadows,
-  Property,
-  Gradients,
-  CustomStyle,
-  AllProperties,
-} from '@morfeo/core';
+import { Theme, Property, MorfeoStyle, AllProperties } from '@morfeo/core';
 import { Properties } from 'csstype';
 import { BreakPoint, BreakPoints } from './breakpoints';
-import { MediaQueries } from './mediaQueries';
-import { ColorScheme, ColorSchemes } from './schemes';
 
-type MultiThemeableSlice<T> = {
-  [K in keyof T]:
-    | T[K]
-    | {
-        [key in ColorScheme]?: T[K];
-      };
-};
+import { ColorScheme } from './schemes';
+import { defaultTheme } from '../defaultTheme';
+
+type MultiThemeableSlice<V> =
+  | V
+  | {
+      [key in ColorScheme]?: V;
+    };
 
 export type ResponsiveValue<V> = {
   default?: V;
@@ -43,25 +34,30 @@ type CssStyle = {
   [K in keyof CssTypeProperties]: WebPropertyValue<CssTypeProperties[K]>;
 };
 
-type BaseWebStyle = CssStyle & {
-  [K in Property]?: WebPropertyValue<keyof Theme[AllProperties[K]]>;
+type BaseWebStyle<T extends Partial<Theme>> = CssStyle & {
+  [K in Property]?: AllProperties[K] extends keyof T
+    ? WebPropertyValue<keyof T[AllProperties[K]]>
+    : WebPropertyValue<keyof Theme[AllProperties[K]]>;
 };
 
-type WebStyle = Omit<BaseWebStyle, 'componentName' | 'variant' | 'state'> & {
-  [key: `&${string}`]: CustomStyle;
+type WebStyle<
+  T extends Partial<Theme>,
+  C extends keyof T['components'] = keyof T['components'],
+> = Omit<BaseWebStyle<T>, 'componentName' | 'variant' | 'state'> & {
+  [key: `&${string}`]: MorfeoStyle<T, C>;
 };
 
-type WebTheme = {
-  colors: MultiThemeableSlice<Colors>;
-  shadows: MultiThemeableSlice<Shadows>;
-  gradients: MultiThemeableSlice<Gradients>;
-  breakpoints: BreakPoints;
-  colorSchemes: ColorSchemes;
-  mediaQueries: MediaQueries;
+type WebTheme = typeof defaultTheme & {
+  mediaQueries: { [K in keyof BreakPoints]?: string };
 };
 
 declare module '@morfeo/core' {
-  export interface CustomStyle extends WebStyle {}
+  export interface CustomStyle<
+    T extends Partial<Theme>,
+    C extends keyof T['components'] = keyof T['components'],
+  > extends WebStyle<T, C> {}
+
   export interface ResolvedStyle extends Properties<string | number> {}
-  export interface Theme extends WebTheme {}
+
+  export interface CustomTheme extends WebTheme {}
 }

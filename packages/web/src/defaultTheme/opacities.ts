@@ -1,5 +1,4 @@
-import { Opacities } from '@morfeo/core';
-export const opacities: Opacities = {
+export const opacities = {
   none: 0,
   light: 0.2,
   medium: 0.6,

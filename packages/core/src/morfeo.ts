@@ -1,9 +1,16 @@
+import { Theme } from '@morfeo/spec';
 import { createParsers } from './parsers/createParsers';
 import { createTheme } from './theme/createTheme';
 
-export function createMorfeo() {
-  const theme = createTheme();
-  const parsers = createParsers(theme);
+type CreateMorfeo<T extends Partial<Theme>> = {
+  theme: T;
+};
+
+export function createMorfeo<T extends Partial<Theme>>(
+  options?: CreateMorfeo<T>,
+) {
+  const theme = createTheme<T>(options?.theme);
+  const parsers = createParsers<T>(theme);
 
   return {
     theme,
@@ -11,6 +18,9 @@ export function createMorfeo() {
   };
 }
 
-type MorfeoInstance = ReturnType<typeof createMorfeo>;
+type MorfeoInstance<T extends Partial<Theme>> = ReturnType<
+  typeof createMorfeo<T>
+>;
 
-export interface Morfeo extends MorfeoInstance {}
+export interface Morfeo<T extends Partial<Theme> = Partial<Theme>>
+  extends MorfeoInstance<T> {}

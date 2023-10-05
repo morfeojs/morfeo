@@ -1,6 +1,6 @@
-import { Theme, ThemeKey } from '@morfeo/core';
+import type { Theme, ThemeKey } from '@morfeo/core';
 import { deepMerge } from '@morfeo/utils';
-import { ColorScheme, ColorSchemes } from '../types';
+import type { ColorScheme } from '../types';
 
 const slicesToTransform: ThemeKey[] = [
   'radii',
@@ -33,9 +33,7 @@ export function extractCssVariables<T extends DeepPartial<Theme>>(
   theme: T,
   prefix: string = '',
 ): Omit<SliceConfig<any>, 'slice'> & { theme: T } {
-  const schemesKeys = Object.keys(
-    (theme.colorSchemes || {}) as ColorSchemes,
-  ) as ColorScheme[];
+  const schemesKeys = Object.keys(theme.colorSchemes || {}) as ColorScheme[];
 
   function extractSliceVariables<SN extends (typeof slicesToTransform)[number]>(
     sliceName: SN,

@@ -1,7 +1,7 @@
-import { ColorScheme, ColorSchemes } from '../types';
+import { ColorScheme } from '../types';
 
 export function isMultiThemeValue(
-  schemes: ColorSchemes,
+  schemes: Record<string, string>,
   value: any,
 ): value is { [K in ColorScheme]?: any } {
   if (value && typeof value === 'object') {

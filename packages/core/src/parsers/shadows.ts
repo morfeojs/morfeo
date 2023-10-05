@@ -1,13 +1,10 @@
-import { ParserParams, SliceParsers } from '../types';
+import { ParserParams } from '../types';
 import {
-  Radius,
-  Shadow,
-  BorderWidth,
   ShadowProperty,
   shadowsProperties,
+  Theme,
+  ShadowConfig,
 } from '@morfeo/spec';
-
-type ShadowsParsers = SliceParsers<typeof shadowsProperties, ShadowProperty>;
 
 function firstValid(...params: (string | number | undefined)[]) {
   for (const param of params) {
@@ -19,12 +16,16 @@ function firstValid(...params: (string | number | undefined)[]) {
   return 0;
 }
 
-export function shadows({
+export function shadows<T extends Partial<Theme> = Partial<Theme>>({
   value,
   theme,
   property,
-}: ParserParams<ShadowProperty>) {
-  const config = theme.getValue('shadows', value as Shadow);
+}: ParserParams<T, ShadowProperty>) {
+  const config = theme.getValue(
+    'shadows',
+    value as keyof T['shadows'],
+  ) as ShadowConfig<T>;
+
   if (!config) {
     return {
       [property]: value,
@@ -32,37 +33,36 @@ export function shadows({
   }
 
   const color = config.color
-    ? theme.getSlice('colors')[config.color] || config.color
+    ? theme.getSlice('colors')?.[config.color] || config.color
     : 'black';
 
   const { width, height } = config.offset || { width: 0, height: 0 };
   const parsedWidth = firstValid(
-    theme.getValue('borderWidths', width as BorderWidth),
-    width,
+    theme.getValue('borderWidths', width as keyof T['borderWidths']) as string,
+    width as string,
   );
   const parsedHeight = firstValid(
-    theme.getValue('borderWidths', height as BorderWidth),
-    height,
+    theme.getValue('borderWidths', height as keyof T['borderWidths']) as string,
+    height as string,
   );
   const radius = firstValid(
-    theme.getValue('radii', config.radius as Radius),
-    config.radius,
+    theme.getValue('radii', config.radius as keyof T['radii']) as string,
+    config.radius as string,
   );
 
   return {
-    [property]: `${parsedWidth} ${parsedHeight} ${radius} ${color}`,
+    [property]: `${parsedWidth} ${parsedHeight} ${radius} ${color as string}`,
   };
 }
 
-export const shadowsParsers: ShadowsParsers = Object.keys(
-  shadowsProperties,
-).reduce(
-  (acc, prop) => ({
-    ...acc,
-    [prop]: shadows,
-  }),
-  {} as ShadowsParsers,
-);
-
-shadowsParsers.shadow = ({ property, ...props }) =>
-  shadows({ property: 'boxShadow', ...props });
+export const shadowsParsers = {
+  ...Object.keys(shadowsProperties).reduce(
+    (acc, prop) => ({
+      ...acc,
+      [prop]: shadows,
+    }),
+    {},
+  ),
+  shadow: ({ property, ...props }) =>
+    shadows({ property: 'boxShadow', ...props } as any),
+};

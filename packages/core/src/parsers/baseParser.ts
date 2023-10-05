@@ -1,18 +1,15 @@
 import { Theme, ThemeKey, Property } from '@morfeo/spec';
-import { ParserParams } from '../types';
+import { ParserParams, ResolvedStyle } from '../types';
 
-type BaseParser<T extends ThemeKey, P extends Property> = ParserParams<P> & {
+type BaseParser<
+  T extends Partial<Theme>,
+  K extends keyof T,
+  P extends Property,
+> = ParserParams<T, P> & {
   /**
    * Indicates the theme key where the parser will resolve the value of the property
    */
-  scale: T;
-  /**
-   * In case of the value of the `property` is not resolved:
-   * - If `true` the parser will return an empty object.
-   * - if `false` the parser will return the not resolved value
-   * @default false
-   */
-  failOnNotFound?: boolean;
+  scale: K;
 };
 
 function isSliceValue<T extends ThemeKey>(slice: Theme[T], value: unknown) {
@@ -22,20 +19,14 @@ function isSliceValue<T extends ThemeKey>(slice: Theme[T], value: unknown) {
   );
 }
 
-export function baseParser<T extends ThemeKey, P extends Property = Property>({
-  theme,
-  value,
-  scale,
-  property,
-  failOnNotFound,
-}: BaseParser<T, P>) {
+export function baseParser<
+  T extends Partial<Theme>,
+  K extends keyof T,
+  P extends Property = Property,
+>({ theme, value, scale, property }: BaseParser<T, K, P>): ResolvedStyle {
   const slice = theme.getSlice(scale);
   if (slice && isSliceValue(slice, value)) {
     return { [property]: slice[value as any] };
-  }
-
-  if (failOnNotFound) {
-    return {};
   }
 
   return { [property]: value };

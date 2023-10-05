@@ -1,33 +1,45 @@
 import {
-  Component,
+  Theme,
+  MorfeoStyle,
+  ComponentName,
+  ComponentState,
   ComponentConfig,
-  State,
-  Style,
-  Variant,
+  ComponentVariant,
 } from '@morfeo/spec';
-import { deepMerge } from '@morfeo/utils';
+import { DeepPartial, deepMerge } from '@morfeo/utils';
 import { ThemeHandler } from './createTheme';
 
-type ComponentStyle = Omit<ComponentConfig, 'variants'>;
+type ComponentStyle<T extends Partial<Theme>> = Omit<
+  ComponentConfig<T>,
+  'variants'
+>;
 
-type GetConfigProperty<C extends Component> = {
+type GetConfigProperty<T extends Partial<Theme>, C extends ComponentName<T>> = {
   name: C;
   merge?: boolean;
-  variant?: Variant<C>;
-  property: keyof ComponentConfig;
-  state?: State<C>;
+  state?: ComponentState<T, C>;
+  variant?: ComponentVariant<T, C>;
+  property: keyof ComponentConfig<T>;
 };
 
-export function createComponent(theme: Omit<ThemeHandler, 'component'>) {
-  function get<C extends Component>({
+function isValidConfig<T extends Partial<Theme>>(
+  config: any,
+): config is ComponentConfig<T> {
+  return !!config && typeof config === 'object';
+}
+
+export function createComponent<T extends Partial<Theme>>(
+  theme: Omit<ThemeHandler<T>, 'component'>,
+) {
+  function get<C extends ComponentName<T>>({
     name,
     variant,
     merge,
     state,
-  }: Omit<GetConfigProperty<C>, 'property'>) {
+  }: Omit<GetConfigProperty<T, C>, 'property'>) {
     const config = theme.getValue('components', name);
 
-    if (!config) {
+    if (!isValidConfig<T>(config)) {
       return config;
     }
 
@@ -35,7 +47,7 @@ export function createComponent(theme: Omit<ThemeHandler, 'component'>) {
       if (state) {
         return {
           ...config,
-          style: deepMerge(config.style, config.states[state]),
+          style: deepMerge(config.style, config.states[state as any]),
         };
       }
       return config;
@@ -45,35 +57,39 @@ export function createComponent(theme: Omit<ThemeHandler, 'component'>) {
 
     if (variants) {
       const currentStateStyle =
-        state && variants[variant].states && variants[variant].states[state];
+        state &&
+        variants[variant as any].states &&
+        variants[variant as any].states[state as any];
       if (currentStateStyle) {
         const variantWithStateStyle = {
-          ...variants[variant],
-          style: deepMerge(variants[variant].style, currentStateStyle),
+          ...variants[variant as any],
+          style: deepMerge(variants[variant as any].style, currentStateStyle),
         };
         return variantWithStateStyle;
       }
-      return merge ? deepMerge(rest, variants[variant]) : variants[variant];
+      return merge
+        ? deepMerge(rest, variants[variant as any])
+        : variants[variant as any];
     }
 
     return config;
   }
 
-  function getConfig<C extends Component>({
+  function getConfig<C extends ComponentName<T>>({
     name,
     merge = true,
     variant,
     property,
     state,
-  }: GetConfigProperty<C>) {
+  }: GetConfigProperty<T, C>) {
     const config = get({ name, variant, merge, state });
     return config ? config[property] : undefined;
   }
 
-  function getComponentStyle<C extends Component>(
+  function getComponentStyle<C extends ComponentName<T>>(
     name: C,
-    variant?: Variant<C>,
-    state?: State<C>,
+    variant?: ComponentVariant<T, C>,
+    state?: ComponentState<T, C>,
   ) {
     const stateForBaseStyle = variant && state ? {} : state;
     const baseStyle =
@@ -120,16 +136,16 @@ export function createComponent(theme: Omit<ThemeHandler, 'component'>) {
    *
    * const typographyTag = component('Typography').getTag();
    */
-  return function component<C extends Component>(
+  return function component<C extends ComponentName<T>>(
     name: C,
-    variant?: Variant<C>,
-    state?: State<C>,
+    variant?: ComponentVariant<T, C>,
+    state?: ComponentState<T, C>,
   ) {
     function getTag() {
       return getConfig({ name, variant, property: 'tag' });
     }
 
-    function getStyle(): Style {
+    function getStyle(): MorfeoStyle<T, C> {
       const style = getComponentStyle(name, variant, state);
       return style;
     }
@@ -138,11 +154,11 @@ export function createComponent(theme: Omit<ThemeHandler, 'component'>) {
       return getConfig({ name, variant, property: 'props' });
     }
 
-    function getVariants(): Record<Variant<C>, ComponentStyle> {
+    function getVariants(): Record<ComponentVariant<T, C>, ComponentStyle<T>> {
       return getConfig({ name, property: 'variants' });
     }
 
-    function getStates(): Record<State<C>, ComponentStyle> {
+    function getStates(): Record<ComponentState<T, C>, ComponentStyle<T>> {
       return getConfig({ name, variant, property: 'states', merge: false });
     }
 

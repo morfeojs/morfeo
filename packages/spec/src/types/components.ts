@@ -1,11 +1,12 @@
-import { Style } from './style';
+import { MorfeoStyle } from './style';
 import { Color } from './colors';
+import { Theme } from './theme';
 
-export interface ComponentMeta {
+export interface ComponentMeta<T extends Partial<Theme>> {
   description?: string;
   tags?: string[];
   devtoolConfig?: {
-    style?: Style;
+    style?: MorfeoStyle<T>;
     background?: Color | Record<string, Color>;
     label?: string;
     hide?: boolean;
@@ -13,47 +14,49 @@ export interface ComponentMeta {
 }
 
 type ComponentStyle<
-  Props extends Style = Style,
+  T extends Partial<Theme>,
+  Props extends MorfeoStyle<T> = MorfeoStyle<T>,
   State extends string = string,
 > = {
   tag?: string;
-  style: Style;
+  style: MorfeoStyle<T>;
   props?: Props;
-  meta?: ComponentMeta;
-  states: Record<State, Style>;
+  meta?: ComponentMeta<T>;
+  states: Record<State, MorfeoStyle<T>>;
 };
 
 export type ComponentConfig<
-  Variant extends string = string,
-  Props extends Style = Style,
+  T extends Partial<Theme>,
+  Props extends MorfeoStyle<T> = MorfeoStyle<T>,
   State extends string = string,
-> = ComponentStyle<Props, State> & {
-  variants: Record<Variant, ComponentStyle<Props>>;
+> = ComponentStyle<T, Props, State> & {
+  variants: Record<string, ComponentStyle<T, Props>>;
 };
 export interface Components {
-  Box: ComponentConfig;
+  Box: ComponentConfig<Theme>;
 }
 
 export type Component = keyof Components;
 
-type VariantMap = {
-  [K in Component]: keyof Components[K]['variants'];
-};
+export type ComponentName<T extends Partial<Theme>> = keyof T['components'];
 
-type StateMap = {
-  [K in Component]: keyof Components[K]['states'];
-};
+export type ComponentVariant<
+  T extends Partial<Theme>,
+  C extends keyof T['components'],
+> = T['components'] extends Object
+  ? keyof T['components'][C]['variants']
+  : never;
 
-export type Variant<C extends Component> = VariantMap[C] extends string
-  ? VariantMap[C]
-  : string;
+export type ComponentState<
+  T extends Partial<Theme>,
+  C extends keyof T['components'],
+> = T['components'] extends Object ? keyof T['components'][C]['states'] : never;
 
-export type State<C extends Component = Component> = StateMap[C] extends string
-  ? StateMap[C]
-  : string;
-
-export type ComponentProps<C extends Component = Component> = {
+export type ComponentProps<
+  T extends Partial<Theme>,
+  C extends keyof T['components'],
+> = {
   componentName?: C;
-  variant?: Variant<C>;
-  state?: State<C>;
+  variant?: ComponentVariant<T, C>;
+  state?: ComponentState<T, C>;
 };

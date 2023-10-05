@@ -2,16 +2,28 @@ import { ComponentProps } from './components';
 import { AllProperties, Property } from './properties';
 import { Theme } from './theme';
 
-export type PropertyValue<P extends Property> =
-  | keyof Theme[AllProperties[P]]
+export type PropertyValue<P extends Property, T extends Partial<Theme>> =
+  | keyof T[AllProperties[P]]
   | `raw:${string}`;
 
-export interface CustomStyle {}
+export interface CustomStyle<
+  T extends Partial<Theme>,
+  C extends keyof T['components'] = keyof T['components'],
+> {}
 
-type ThemeStyle = {
-  [K in Property]?: PropertyValue<K>;
-} & ComponentProps;
+type ThemedStyle<
+  T extends Partial<Theme>,
+  C extends keyof T['components'] = keyof T['components'],
+> = {
+  [K in Property]?: PropertyValue<K, T>;
+} & ComponentProps<T, C>;
 
-type BaseStyle = Omit<ThemeStyle, keyof CustomStyle> & CustomStyle;
+export type BaseStyle<
+  T extends Partial<Theme>,
+  C extends keyof T['components'] = keyof T['components'],
+> = Omit<ThemedStyle<T, C>, keyof CustomStyle<T, C>> & CustomStyle<T, C>;
 
-export interface Style extends BaseStyle {}
+export interface MorfeoStyle<
+  T extends Partial<Theme>,
+  C extends keyof T['components'] = keyof T['components'],
+> extends BaseStyle<T, C> {}

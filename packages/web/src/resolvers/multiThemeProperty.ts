@@ -1,4 +1,4 @@
-import { PropertyResolver } from '@morfeo/core';
+import { PropertyResolver, PropertyResolverParams, Theme } from '@morfeo/core';
 import { isMultiThemeValue } from '../utils';
 import { ColorScheme } from '../types';
 
@@ -9,24 +9,24 @@ export const multiThemeProperty: PropertyResolver = ({
   theme,
   next,
 }) => {
-  if (!isMultiThemeValue(theme.getSlice('colorSchemes'), value)) {
+  if (!isMultiThemeValue(theme.getSlice('colorSchemes') as any, value)) {
     return;
   }
 
-  const keys = Object.keys(value);
+  const keys = Object.keys(value as Record<string, any>);
   return keys.reduce((acc, scheme) => {
     const currentValue = next({
       property,
-      value: value[scheme],
+      value: value?.[scheme],
       style: {
         ...style,
-        [property]: value[scheme],
+        [property]: value?.[scheme],
       },
     });
 
     const preferredColorSchemeMedia = theme.getValue(
       'colorSchemes',
-      scheme as ColorScheme,
+      scheme as any,
     );
 
     return {

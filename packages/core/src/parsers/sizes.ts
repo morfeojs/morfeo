@@ -2,8 +2,6 @@ import { SizeProperty, sizesProperties } from '@morfeo/spec';
 import { SliceParsers } from '../types';
 import { baseParser } from './baseParser';
 
-type SizesParsers = SliceParsers<typeof sizesProperties, SizeProperty>;
-
 export const sizeParsers = {
   h: props => {
     return baseParser({ ...props, scale: 'sizes', property: 'height' });
@@ -41,4 +39,4 @@ export const sizeParsers = {
       ...baseParser({ ...props, scale: 'sizes', property: 'maxHeight' }),
     };
   },
-} as SizesParsers;
+};
