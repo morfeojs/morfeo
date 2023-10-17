@@ -1,20 +1,22 @@
 ```tsx showLineNumbers
-import { theme } from '@morfeo/react';
+import { createMorfeo } from '@morfeo/react';
 
-theme.set({
-  colors: {
-    primary: '#0066ff',
-    secondary: '#db2494',
-    success: '#01ce80',
-    warning: '#fbb03b',
-    accent: '#30b0c7',
-    error: '#ff3b30',
-  },
-  spacings: {
-    s: '1rem',
-    m: '1.5rem',
-    l: '2rem',
-    xl: '2.5rem',
+export const { morfeo } = createMorfeo({
+  theme: {
+    colors: {
+      primary: '#0066ff',
+      secondary: '#db2494',
+      success: '#01ce80',
+      warning: '#fbb03b',
+      accent: '#30b0c7',
+      error: '#ff3b30',
+    },
+    spacings: {
+      s: '1rem',
+      m: '1.5rem',
+      l: '2rem',
+      xl: '2.5rem',
+    },
   },
 });
 ```

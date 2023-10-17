@@ -1,0 +1,86 @@
+import { FileTree, Tabs, Callout } from 'nextra/components';
+
+# Installation
+
+The easiest way to install Morfeo is by letting the CLI do it, just run:
+
+```sh copy
+npx morfeo init
+```
+
+After running you'll be asked to answer some questions:
+
+```console
+  _ _ _
+ ' ) ) )        /)
+  / / / __ __  // _  __
+ / ' (_(_)/ (_//_</_(_)
+             />
+            </
+
+
+? Where is your code? ./src/**/*.{ts,tsx,js,jsx}
+? Where do you want to place the extracted CSS? ./src/styles/morfeo.css
+? Where do you want to create the morfeo instance? ./src/morfeo.ts
+```
+
+based on your answers, the CLI will automatically create all the needed configurations:
+
+## CLI Changes
+
+Inside the package.json will be added the following dependencies/scripts:
+
+```json filename="package.json" showLineNumbers {3-4, 7, 10}
+{
+  "scripts": {
+    "dev:morfeo": "morfeo extract --watch",
+    "build:morfeo": "morfeo extract"
+  },
+  "dependencies": {
+    "@morfeo/web": "<latest-version>"
+  },
+  "devDependencies": {
+    "@morfeo/compiler": "<latest-version>"
+  }
+}
+```
+
+<Callout type="info">
+  In case `react` is detected, the CLI will automatically install
+  `@morfeo/react` instead of `@morfeo/web`
+</Callout>
+
+Also, a couple of files will be added:
+
+<FileTree>
+  <FileTree.Folder name="src" defaultOpen>
+    <FileTree.Folder name="styles" defaultOpen>
+      <FileTree.File name="morfeo.css" />
+    </FileTree.Folder>
+    <FileTree.File name="morfeo.ts" />
+  </FileTree.Folder>
+  <FileTree.File name="package.json" />
+</FileTree>
+
+And, finally, the gitignore will be updated in the following way:
+
+```txt filename=".gitignore"
+# morfeo
+/src/morfeo.css
+```
+
+## Manual Changes
+
+Now, it's your turn:
+As you can see the CLI added the file `morfeo.css`, please import this file in the main entry point of your application:
+
+```tsx filename="src/index.tsx" {1} showLineNumbers
+import './styles/morfeo.css';
+
+export function App() {
+  // Your app
+  return <></>;
+}
+```
+
+That's it, you're now ready to use morfeo.

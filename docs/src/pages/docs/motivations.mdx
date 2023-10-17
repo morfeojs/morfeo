@@ -1,0 +1,54 @@
+import { Steps, Callout } from 'nextra/components';
+
+# Motivations
+
+We are not designers, not us in the Morfeo's team, not me that I'm writing these docs, and probably not even you reading them.
+
+We're developers, frontend developers more specifically, which means that most of the time we build user interfaces designed by other people.
+
+Maybe this is not your case, maybe you're _also_ a designer or maybe you just have really good taste - either way, before or later you'll collaborate with other people, some of them will be like you, and some not, but when people collaborate they need to be good in one thing: **communication**.
+
+Communication in the software world is really underestimated, I never saw a company failing where all the departments were clear in their intentions, the sharing of ideas and practices was welcomed, and documentation was good and easy to browse. Instead, everywhere I saw people hiding information, not writing clear tasks or documentation, or not sharing good Figma files, the project didn't reach production, or if it did it was not successful nor scalable/maintainable.
+
+## Morfeo's approach
+
+I know it's obvious, but every product is the result of the people who worked on it: if those people cannot properly talk with each other, how will the product be understandable to your users?
+
+Here is where **Morfeo** started: how can we make a _developer tool_ that will help (us) developers communicate better with each other and with the designers?
+
+Our answer is:
+
+1. We need a **shared language** that both devs and designers can speak and understand;
+2. We need a way to **convert** this language into **visual elements**;
+3. And, finally, we need a way to **ensure** that the language is always **spoken correctly**.
+
+<Callout type="info">
+If you think about it, these are the same principles behind a spoken language:
+
+1. A set of words that are the only available blocks we use to speak the language;
+2. A representation of those words to write them down;
+3. And a grammar that tells us how to put those words together.
+
+</Callout>
+
+From a technical perspective, we implemented these 3 concepts in this way:
+
+<Steps style={{ position: 'relative' }}>
+
+### Design Language
+
+The **shared language** is an object, usually called `theme` or `design language`, a single source of truth that contains all the primitive (and only) blocks to construct all the layouts.
+
+### Parser
+
+that converts this theme into valid `HTML` & `CSS` (for the web at least).
+
+### Typescript
+
+which will yell at us if we don't use the theme to describe our UIs.
+
+</Steps>
+
+These are the main concepts around Morfeo, all the decisions we took to create Morfeo's API are made around those concepts and to reach our goal:
+
+Provide a tool to create good-looking UIs in the simplest and most efficient possible way.

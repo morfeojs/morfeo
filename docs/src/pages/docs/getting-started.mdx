@@ -1,0 +1,100 @@
+# Getting started
+
+If you already followed the [Installation](./installation.mdx) step, you have in your codebase a file that exports the morfeo instance:
+
+```typescript filename="src/morfeo.ts" showLineNumbers {3-5}
+import { createMorfeo } from '@morfeo/web';
+
+export const morfeo = createMorfeo({
+  /* */
+});
+```
+
+This instance exposes 3 APIs:
+
+1. `morfeo.css` - the base API to generate styles
+2. `morfeo.global` - creates global styles
+3. `morfeo.component` - a single API to create components and stylize them - 🚨 React only (For now 😉)
+
+## morfeo.css
+
+This API takes as a parameter an object of styles and returns a function:
+
+```tsx filename="Card.tsx" showLineNumbers {1, 3-16, 18, 20}
+import { morfeo } from '../morfeo';
+
+const classes = morfeo.css({
+  container: {
+    p: 'm',
+  },
+  rounded: {
+    radius: 'm',
+  },
+  button: {
+    p: 's',
+    bg: 'primary',
+    color: 'white',
+    radius: 's',
+  },
+});
+
+function Card({ className, rounded = false }) {
+  return (
+    <div className={classes('container', rounded && 'rounded', className)}>
+      This is your first component made with Morfeo
+      <button className={classes('button')}>I like it 👍!</button>
+    </div>
+  );
+}
+```
+
+the returned function can accept:
+
+- a list of namespaces - the keys of the object of styles (Your IDE will suggest them 😉)
+- any string (`className` in our example) that will be added to the list of classes.
+- a list of [class objects](/#)
+
+In this example, the returned classes would be something like:
+
+```typescript
+classes('button'); // "p-s bg-primary color-white radius-s"
+classes('container', rounded && 'rounded', 'additional class'); // "p-m radius-m additional class"
+classes({
+  classObjectExample: {
+    p: 'p-m',
+    bg: 'bg-primary',
+  },
+}); // "p-m bg-primary"
+```
+
+You can read more about the `morfeo.css` in the [API section](/#)
+
+## morfeo.global
+
+> TBD
+
+```tsx filename="Card.tsx" showLineNumbers
+import { morfeo } from '../morfeo';
+
+morfeo.global({
+  body: {
+    margin: 'none',
+    padding: 'none',
+    fontFamily: 'Inter',
+  },
+});
+```
+
+## morfeo.component ⚛️
+
+> TBD
+
+```tsx filename="Card.tsx" showLineNumbers
+import { morfeo } from '../morfeo';
+
+export const Card = morfeo.component('div', {
+  p: 'm',
+  bg: 'white'
+  radius: 'l',
+})
+```

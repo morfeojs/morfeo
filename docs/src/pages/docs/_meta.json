@@ -1,3 +1,9 @@
 {
-  "index": "Getting Started"
+  "index": "Welcome",
+  "motivations": "Motivations",
+  "---": {
+    "type": "separator"
+  },
+  "installation": "Installation",
+  "getting-started": "Getting Started"
 }

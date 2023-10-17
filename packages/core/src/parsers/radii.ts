@@ -17,6 +17,15 @@ const radiiAliasesMap = {
   cornerStartStart: 'borderStartStartRadius',
   cornerBottomLeft: 'borderBottomLeftRadius',
   cornerBottomRight: 'borderBottomRightRadius',
+  radius: 'borderRadius',
+  radiusEndEnd: 'borderEndEndRadius',
+  radiusTopLeft: 'borderTopLeftRadius',
+  radiusEndStart: 'borderEndStartRadius',
+  radiusTopRight: 'borderTopRightRadius',
+  radiusStartEnd: 'borderStartEndRadius',
+  radiusStartStart: 'borderStartStartRadius',
+  radiusBottomLeft: 'borderBottomLeftRadius',
+  radiusBottomRight: 'borderBottomRightRadius',
 };
 
 export const radiiParsers = Object.keys(radiiAliasesMap).reduce(

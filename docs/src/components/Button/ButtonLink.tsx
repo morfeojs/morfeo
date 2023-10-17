@@ -1,11 +1,10 @@
 import { ReactNode } from 'react';
 import { morfeo } from 'src/morfeo';
-import { Variant } from '@morfeo/react';
 import Link, { LinkProps } from 'next/link';
 
 type ButtonLinkProps = LinkProps & {
   children?: ReactNode;
-  variant?: Variant<'Button'>;
+  variant?: string;
 };
 
 const classes = morfeo.css({
