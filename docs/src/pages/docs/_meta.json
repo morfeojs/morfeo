@@ -1,9 +1,14 @@
 {
   "index": "Welcome",
   "motivations": "Motivations",
-  "---": {
-    "type": "separator"
+  "guides-separator": {
+    "type": "separator",
+    "title": "Guides"
   },
   "installation": "Installation",
-  "getting-started": "Getting Started"
+  "getting-started": "Getting Started",
+  "api-separator": {
+    "type": "separator",
+    "title": "API"
+  }
 }
