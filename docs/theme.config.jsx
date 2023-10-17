@@ -1,6 +1,11 @@
 /* eslint-disable import/no-anonymous-default-export */
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useConfig } from 'nextra-theme-docs';
 import { Footer } from './src/components/Footer';
+
+const BASE_URL =
+  process.env.NODE_ENV === 'production' ? 'https://morfeo.dev' : '';
 
 export default {
   logo: (
@@ -18,12 +23,71 @@ export default {
       </a>
     ),
   },
-  useNextSeoProps() {
-    return {
-      titleTemplate: '%s – Morfeo',
-      defaultTitle: 'Morfeo',
-    };
+  head: function useHead() {
+    const { asPath, defaultLocale, locale } = useRouter();
+    const { frontMatter, title } = useConfig();
+
+    const url =
+      BASE_URL + (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
+
+    const socialCard = `${BASE_URL}/api/og?title=${title}`;
+
+    return (
+      <>
+        <meta name="msapplication-TileColor" content="#030303" />
+        <meta name="theme-color" content="#030303" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={frontMatter.title || 'Morfeo'} />
+        <meta
+          property="og:description"
+          content={
+            frontMatter.description ||
+            'Morfeo is a set of tools to build your Design System and Style your application, with nearly zero runtime.'
+          }
+        />
+        <meta property="og:site_name" content="Morfeo" />
+        <meta property="og:type" content="website" />
+        <meta name="og:image" content={socialCard} />
+        <meta name="og:image:alt" content={title} />
+        <meta name="og:image:height" content="630" />
+        <meta name="og:image:width" content="1200" />
+        <meta name="og:image:type" content="image/png" />
+        <meta name="og:locale" content={locale} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={socialCard} />
+        <meta name="twitter:site:domain" content="morfeo.dev" />
+        <meta name="twitter:url" content={BASE_URL} />
+
+        <meta name="apple-mobile-web-app-title" content="Morfeo" />
+        <link
+          rel="icon"
+          href={`${BASE_URL}/favicon.svg`}
+          type="image/svg+xml"
+        />
+        <link rel="icon" href={`${BASE_URL}/favicon.ico`} type="image/ico" />
+      </>
+    );
   },
+  useNextSeoProps() {
+    const { asPath } = useRouter();
+    if (asPath !== '/') {
+      return {
+        titleTemplate: '%s – Morfeo',
+      };
+    }
+  },
+  editLink: {
+    text: 'Edit this page on GitHub →',
+  },
+  feedback: {
+    content: 'Question? Give us feedback →',
+    labels: 'feedback',
+  },
+  toc: {
+    backToTop: true,
+  },
+  navigation: true,
   themeSwitch: {
     component: null,
     useOptions() {
