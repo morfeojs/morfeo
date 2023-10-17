@@ -47,8 +47,6 @@ export default async function handler(request: NextRequest) {
             letterSpacing: -4,
             backgroundImage: 'linear-gradient(90deg, #fff 40%, #aaa)',
             backgroundClip: 'text',
-            // @ts-ignore
-            '-webkit-background-clip': 'text',
             color: 'transparent',
           }}
         >
