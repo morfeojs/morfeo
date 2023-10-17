@@ -4,9 +4,6 @@ import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 import { Footer } from './src/components/Footer';
 
-const BASE_URL =
-  process.env.NODE_ENV === 'production' ? 'https://morfeo.dev' : '';
-
 export default {
   logo: (
     <Image src="/logo-small.svg" alt="Morfeo Logo" width={30} height={30} />
@@ -24,13 +21,13 @@ export default {
     ),
   },
   head: function useHead() {
-    const { asPath, defaultLocale, locale } = useRouter();
+    const { asPath, defaultLocale, locale, basePath } = useRouter();
     const { frontMatter, title } = useConfig();
 
     const url =
-      BASE_URL + (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
+      basePath + (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
 
-    const socialCard = `${BASE_URL}/api/og?title=${title}`;
+    const socialCard = encodeURI(`${basePath}/api/og?title=${title}`);
 
     return (
       <>
@@ -57,15 +54,15 @@ export default {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={socialCard} />
         <meta name="twitter:site:domain" content="morfeo.dev" />
-        <meta name="twitter:url" content={BASE_URL} />
+        <meta name="twitter:url" content={basePath} />
 
         <meta name="apple-mobile-web-app-title" content="Morfeo" />
         <link
           rel="icon"
-          href={`${BASE_URL}/favicon.svg`}
+          href={`${basePath}/favicon.svg`}
           type="image/svg+xml"
         />
-        <link rel="icon" href={`${BASE_URL}/favicon.ico`} type="image/ico" />
+        <link rel="icon" href={`${basePath}/favicon.ico`} type="image/ico" />
       </>
     );
   },
