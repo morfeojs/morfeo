@@ -1,7 +1,7 @@
+import Image from 'next/image';
 import { morfeo } from 'src/morfeo';
 import { LinkBlocks } from './LinkBlocks';
 import { FooterLinkBlock } from './types';
-import Image from 'next/image';
 import { Social } from './Social';
 
 const classes = morfeo.css({
@@ -46,25 +46,33 @@ const linkBlockList: FooterLinkBlock[] = [
   {
     title: 'Navigation',
     linkList: [
-      { href: '', label: 'Getting started' },
-      { href: '', label: 'Web Extension' },
-      { href: '', label: 'Theme' },
-      { href: '', label: 'Packages' },
+      { href: '/docs', label: 'Getting started' },
+      { href: '/docs', label: 'Web Extension' },
+      { href: '/docs', label: 'Theme' },
+      { href: '/docs', label: 'Packages' },
     ],
   },
   {
     title: 'Community',
     linkList: [
-      { href: '', label: 'Stack Overflow', newTab: true },
-      { href: '', label: 'Discord', newTab: true },
+      {
+        href: 'https://stackoverflow.com/questions/tagged/morfeo',
+        label: 'Stack Overflow',
+        newTab: true,
+      },
+      { href: 'https://discord.gg/5hbsKMBRBh', label: 'Discord', newTab: true },
     ],
   },
   {
     title: 'More',
     linkList: [
-      { href: '', label: 'Blog' },
-      { href: '', label: 'Github', newTab: true },
-      { href: '', label: 'Privacy Police' },
+      { href: '/blog', label: 'Blog' },
+      {
+        href: 'https://github.com/morfeojs/morfeo',
+        label: 'Github',
+        newTab: true,
+      },
+      { href: '/privacy', label: 'Privacy Police' },
     ],
   },
 ];

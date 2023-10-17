@@ -1,8 +1,8 @@
 import input from '@inquirer/input';
 import * as fs from 'fs';
+import * as path from 'path';
 import { logger } from '../logger';
-import path from 'path';
-import { packageJson } from '../utils';
+import { packageJson, consumerPackageJson } from '../utils';
 
 export async function init() {
   let entryPoints: string;
@@ -42,6 +42,7 @@ export async function init() {
       instancePath,
     }),
     writeToGitIgnore(['# morfeo', cssPath]),
+    updatePackageJson(instancePath),
   ]);
 
   logger.success('Morfeo has been initialized');
@@ -120,8 +121,46 @@ async function writeToGitIgnore(lines: string[]) {
 
 function isReactCodebase() {
   return (
-    'react' in (packageJson.dependencies ?? {}) ||
-    'react' in (packageJson.peerDependencies ?? {})
+    'react' in (consumerPackageJson.dependencies ?? {}) ||
+    'react' in (consumerPackageJson.peerDependencies ?? {})
+  );
+}
+
+function insertInOrder(object: object, key: string, value: string) {
+  return Object.fromEntries(
+    [...Object.entries(object), [key, value]].sort((first, second) => {
+      return first[0].localeCompare(second[0]);
+    }),
+  );
+}
+
+function updatePackageJson(instancePath: string) {
+  const dependency = isReactCodebase() ? '@morfeo/react' : '@morfeo/web';
+  const devDependency = '@morfeo/compiler';
+
+  const newPackageJson = { ...consumerPackageJson };
+
+  newPackageJson['dependencies'] = insertInOrder(
+    consumerPackageJson.dependencies || {},
+    dependency,
+    packageJson.version,
+  );
+
+  newPackageJson['devDependencies'] = insertInOrder(
+    consumerPackageJson.devDependencies || {},
+    devDependency,
+    packageJson.version,
+  );
+
+  newPackageJson['scripts'] = {
+    ...consumerPackageJson['scripts'],
+    'dev:morfeo': `morfeo extract ${instancePath} --watch`,
+    'build:morfeo': `morfeo extract ${instancePath}`,
+  };
+
+  return fs.promises.writeFile(
+    path.join(process.cwd(), 'package.json'),
+    JSON.stringify(newPackageJson, undefined, 2) + '\n',
   );
 }
 

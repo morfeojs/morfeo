@@ -2,26 +2,26 @@ import { Steps } from 'nextra-theme-docs';
 
 # Welcome 👋
 
-In brief, Morfeo is a set of tools to build your **Design System** and **Style** your application, with nearly zero runtime.
+Morfeo is a set of tools to build your **Design System** and **Style** your application, with nearly zero runtime.
 
 ## Understand Morfeo
 
-Too deeply understand what Morfeo is, and why you should use it in your workflow, you can think about Morfeo as a combination between 3 main parts:
+To deeply understand what Morfeo is, and why you should use it in your workflow, you can think about Morfeo as a combination of 3 main parts:
 
 <Steps style={{ position: 'relative' }}>
 
 ### 🎨 Theming system
 
-That makes you build your own theme (**Design Language**).
+That makes you build your own theme (**Design Language**) or use the default one.
 
 ### 💅 CSS-in-TS library
 
-To _safely_ style your application by using your own theme.
+To _safely_ style your application based on your theme.
 
 ### 🔍 Static Analysis
 
 Morfeo will look at your code at bundle-time to collect all the `css-in-ts` you've written and then extract
-only the css you need.
+only the CSS you need.
 
 </Steps>
 
@@ -31,8 +31,8 @@ only the css you need.
 
 ### Write your component
 
-```tsx {1, 3-7} /classes('button')/ copy showLineNumbers filename="Button.tsx"
-import { morfeo } from '@morfeo/web';
+```tsx showLineNumbers filename="Button.tsx" {1, 3-7} /classes('button')/ copy
+import { morfeo } from '../morfeo';
 
 const classes = morfeo.css({
   button: {
@@ -47,7 +47,7 @@ function Button() {
 
 ### Morfeo will figure out the right classes
 
-```tsx {1-5} /classes('button')/ showLineNumbers filename="Button.tsx"
+```tsx showLineNumbers filename="Button.tsx" /className="bg-primary"/
 function Button() {
   return <button className="bg-primary">Hello, world</button>;
 }
@@ -55,7 +55,7 @@ function Button() {
 
 ### And generate only the needed CSS
 
-```css /.bg-primary/ showLineNumbers filename="morfeo.css"
+```css showLineNumbers filename="morfeo.css" /.bg-primary/
 .bg-primary {
   background-color: #0066ff;
 }

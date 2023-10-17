@@ -9,6 +9,6 @@ type ButtonProps = DetailedHTMLProps<
   variant?: Variant<'Button'>;
 };
 
-export const Button = morfeo.component('Button', {
+export const Button = morfeo.component('Button' as any, {
   variant: (props: ButtonProps) => props.variant || 'primary',
 });

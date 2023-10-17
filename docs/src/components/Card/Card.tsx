@@ -32,6 +32,12 @@ const classes = morfeo.css({
       },
     },
   },
+  docCard: {
+    minHeight: 'raw:100px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export const Card: React.FC<CardProps> = props => {

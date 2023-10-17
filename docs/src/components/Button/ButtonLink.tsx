@@ -5,7 +5,7 @@ import Link, { LinkProps } from 'next/link';
 
 type ButtonLinkProps = LinkProps & {
   children?: ReactNode;
-  variant?: Variant<'Button'>;
+  variant?: string;
 };
 
 const classes = morfeo.css({
