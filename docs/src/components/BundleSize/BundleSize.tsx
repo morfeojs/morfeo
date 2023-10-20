@@ -37,31 +37,37 @@ const classes = morfeo.css({
   },
 });
 
-export const BundleSize: React.FC = () => {
+type BundleSizeProps = {
+  showText?: boolean;
+};
+
+export function BundleSize({ showText = true }: BundleSizeProps) {
   const isTabletOrBelow = useMediaQuery('(max-width: 768px)');
 
   return (
     <FadeInBox className={classes('container')}>
-      <div className={classes('textContainer')}>
-        <FadeInBox.Title>
-          Holy f*ck,
-          <br />
-          That <span className="accent">bundle</span> of yours is absurd.
-        </FadeInBox.Title>
-        <FadeInBox.Caption>
-          It&apos;s not about <span className="line-through">body</span>{' '}
-          <span className="gradient">bundle shaming</span>, but we care about
-          your shape.
-        </FadeInBox.Caption>
-        <FadeInBox.Caption>
-          Morfeo&apos;s compiler split your style into multiple,{' '}
-          <strong>atomic</strong> CSS classes and <strong>reuses</strong> them
-          as much as possible, resulting in a really small CSS bundle.
-        </FadeInBox.Caption>
-      </div>
+      {showText && (
+        <div className={classes('textContainer')}>
+          <FadeInBox.Title>
+            Holy f*ck,
+            <br />
+            That <span className="accent">bundle</span> of yours is absurd.
+          </FadeInBox.Title>
+          <FadeInBox.Caption>
+            It&apos;s not about <span className="line-through">body</span>{' '}
+            <span className="gradient">bundle shaming</span>, but we care about
+            your shape.
+          </FadeInBox.Caption>
+          <FadeInBox.Caption>
+            Morfeo&apos;s compiler split your style into multiple,{' '}
+            <strong>atomic</strong> CSS classes and <strong>reuses</strong> them
+            as much as possible, resulting in a really small CSS bundle.
+          </FadeInBox.Caption>
+        </div>
+      )}
       <div className={classes('animationContainer')}>
         {isTabletOrBelow ? <SmartphoneChartPlayer /> : <DesktopPlayer />}
       </div>
     </FadeInBox>
   );
-};
+}

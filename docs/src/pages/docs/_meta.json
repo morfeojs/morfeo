@@ -1,6 +1,11 @@
 {
   "index": "Welcome",
+  "core-concepts-separator": {
+    "type": "separator",
+    "title": "Core Concepts"
+  },
   "motivations": "Motivations",
+  "how-it-works": "How it works",
   "guides-separator": {
     "type": "separator",
     "title": "Guides"
