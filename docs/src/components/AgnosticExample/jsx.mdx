@@ -1,0 +1,15 @@
+```tsx filename="Button.tsx" showLineNumbers
+const classes = morfeo.css({
+  button: {
+    p: 'm', // p is an alias for padding
+    bg: 'primary', // bg is an alias for backgroundColor
+    '&:hover': {
+      bg: 'secondary',
+    },
+  },
+});
+
+function Button() {
+  return <button className={classes('button')} />; // bg-primary p-m hover-bg-secondary
+}
+```

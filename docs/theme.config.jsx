@@ -23,6 +23,9 @@ export default {
   head: function useHead() {
     const { asPath, defaultLocale, locale, basePath } = useRouter();
     const { frontMatter, title } = useConfig();
+    const description =
+      frontMatter.description ||
+      'Morfeo is a set of tools to build your Design System and Style your application, with nearly zero runtime.';
 
     const url =
       basePath + (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
@@ -36,13 +39,7 @@ export default {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:url" content={url} />
         <meta property="og:title" content={frontMatter.title || 'Morfeo'} />
-        <meta
-          property="og:description"
-          content={
-            frontMatter.description ||
-            'Morfeo is a set of tools to build your Design System and Style your application, with nearly zero runtime.'
-          }
-        />
+        <meta property="og:description" content={description} />
         <meta property="og:site_name" content="Morfeo" />
         <meta property="og:type" content="website" />
         <meta name="og:image" content={socialCard} />

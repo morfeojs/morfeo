@@ -1,0 +1,174 @@
+import { Callout } from 'nextra-theme-docs';
+import { AgnosticExample } from '../../components/AgnosticExample';
+import { BundleSize } from '../../components/BundleSize';
+
+# How it works
+
+The purpose of Morfeo is to allow developers and designers to share a design language and to create styles based on it without sacrificing performance.
+
+To accomplish this goal, Morfeo is composed of 3 main parts:
+
+![how it works](/images/how-it-works.png)
+
+> Kudos to [Excalidraw](https://excalidraw.com/)
+
+## Theme
+
+The theme is the central piece of Morfeo, it allows us to define the design language that will be used to generate styles.
+Morfeo's theme specification can be found [here](#todo), it is strongly inspired by [System-UI](https://github.com/system-ui/theme-specification) but it has some important differences:
+
+The Theme is an _extendible_ object that describes the design language of your application, it's a composition of `slices` that contains different elements like `colors`, `gradients`, `spacings` and others:
+
+```typescript showLineNumbers {22}
+interface Theme {
+  radii: Radii;
+  sizes: Sizes;
+  fonts: Fonts;
+  colors: Colors;
+  shadows: Shadows;
+  borders: Borders;
+  spacings: Spacings;
+  zIndices: ZIndices;
+  fontSizes: FontSizes;
+  gradients: Gradients;
+  opacities: Opacities;
+  fontWeights: FontWeights;
+  lineHeights: LineHeights;
+  breakpoints: BreakPoints;
+  transitions: Transitions;
+  borderWidths: BorderWidths;
+  mediaQueries: MediaQueries;
+  borderStyles: BorderStyles;
+  letterSpacings: LetterSpacings;
+
+  components: Components;
+}
+```
+
+The main difference between Morfeo's theme and others is the `components` slice that contains the specifications of your components.
+
+To understand how Morfeo works, let's define a simple theme:
+
+```typescript filename="src/morfeo.ts" showLineNumbers copy
+import { createMorfeo } from '@morfeo/web';
+
+const theme = {
+  colors: {
+    primary: '#e189f6',
+    secondary: '#57a1e6',
+  },
+  spacings: {
+    s: '1rem',
+    m: '1.5rem',
+    l: '2rem',
+  },
+  radii: {
+    s: '12px',
+    m: '16px',
+    l: '20px',
+  },
+};
+
+export const morfeo = createMorfeo({
+  theme,
+});
+```
+
+<Callout type="info">
+
+Even tho is missing most of the slices, the theme defined in the example is actually a valid theme.
+This is because Morfeo comes with a default theme that is always merged with yours.
+
+</Callout>
+
+### Why a theme
+
+The theme is our **source of truth**, the goal of Morfeo is to enable developers to write styles like this:
+
+```typescript
+{
+  padding: 'm',
+  background: 'primary'
+}
+```
+
+Instead of something like this:
+
+```typescript
+{
+  padding: '17px',
+  background: '#0066ff'
+}
+```
+
+Because of a simple reason, **control**!
+
+Just by looking at this simple example, it's clear what can go wrong:
+
+- Why the padding is `17px`?
+- Why the background color is `#0066ff`?
+
+This kind of freedom, in a large codebase, will become a mess quickly.
+
+With Morfeo, you can use values that refer to the theme instead of exact values, this way you're always sure that you're creating styles that **reflect your identity** and that are **consistent** with the rest of the application.
+
+## CSS-in-TS
+
+The other important piece of Morfeo is the parser that converts a **style that uses theme values** into a list of **CSS classes** that will style the element accordingly.
+
+The parser is a kind of hybrid API that works on both **build** and **run time**, at build time a separate package (`@morfeo/compiler`) will extract CSS from the JS/TS files, at runtime instead Morfeo will just compute the class names based on the style.
+Let's give an example:
+
+<AgnosticExample />
+
+<Callout type="default">
+
+Even though in most of our examples we're using React, Morfeo is completely agnostic.
+
+</Callout>
+
+The `Run-Time` work is minimal, mostly the traversal of the object to compute the class names:
+
+![morfeo's runtime](/images/run-time.png)
+
+> Mean while the run-time cost to use Morfeo is minimal, our goal is to reduce it as much as possible, possibly to zero when possible.
+
+The `Build-Time` process is handled by the package `@morfeo/compiler` and it will be discussed in the next, final, chapter.
+
+## CLI
+
+We said at the beginning: Morfeo's goal is to give developers a way to build better UIs **without sacrificing performance**.
+That's why, unlike other `CSS-in-JS/TS` solutions, Morfeo's **does not** inject any CSS at run-time, all the generated CSS is extracted at **compile time**.
+
+Also, Morfeo generates **Atomic CSS** bundled in a **single** and **small** file:
+
+<BundleSize showText={false} />
+
+The benefits of this choice are massive since there is **no duplication of CSS rules** and, most importantly, the CSS bundle does not grow with your application, and you'll not even notice since all of these happen behind the scenes.
+
+All you need to do to enable the build time process is to run the command:
+
+```sh
+morfeo extract
+```
+
+<Callout type="default">
+
+We suggest you run Morfeo's CLI and your application together in development:
+
+```sh
+concurrently \"morfeo extract\" \"npm run dev\"
+```
+
+</Callout>
+
+You can even customize the output, for example, prefix class names and CSS variables with a custom prefix in order to avoid conflicts with other libraries/styles, all of these can be made through the `createMorfeo` function that acts also as a configuration file:
+
+```typescript
+export const morfeo = createMorfeo({
+  theme,
+  prefix: 'mrf-', // custom prefix for class names and CSS variables
+  output: './css/my-css-filename.css', // custom path for the generated CSS
+  entryPoints: ['./**/*.{ts,tsx,js,jsx}'], // specify where your codebase is
+});
+```
