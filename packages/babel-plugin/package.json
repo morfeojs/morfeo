@@ -29,7 +29,7 @@
     "@morfeo/jss": "workspace:*",
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*",
-    "@babel/traverse": "7.23.0",
+    "@babel/traverse": "7.23.2",
     "@babel/types": "7.23.0",
     "@babel/preset-env": "7.22.20",
     "@babel/plugin-syntax-jsx": "7.22.5",
