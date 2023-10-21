@@ -47,7 +47,7 @@
     "glob": "10.3.10"
   },
   "devDependencies": {
-    "@types/babel__core": "7.20.2"
+    "@types/babel__core": "7.20.3"
   },
   "files": [
     ".bin",
