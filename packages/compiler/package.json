@@ -33,7 +33,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@babel/core": "7.23.0",
+    "@babel/core": "7.23.2",
     "@inquirer/input": "1.2.13",
     "@morfeo/babel-plugin": "workspace:*",
     "@morfeo/jss": "workspace:*",
