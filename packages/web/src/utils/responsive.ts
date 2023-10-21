@@ -42,7 +42,7 @@ function createMediaQueryResolver() {
     if (!hasCustomMediaQuery) {
       return setMediaQuery(
         breakpoint,
-        `@media (min-width: ${breakPoints[breakpoint]})`,
+        `@media screen and (min-width: ${breakPoints[breakpoint]})`,
       );
     }
 

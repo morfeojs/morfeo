@@ -47,10 +47,10 @@ describe('responsive', () => {
 
     expect(result).toEqual({
       custom: {
-        '@media (min-width: 600px)': {
+        '@media screen and (min-width: 600px)': {
           backgroundColor: 'var(--colors-primary)',
         },
-        '@media (min-width: 400px)': {
+        '@media screen and (min-width: 400px)': {
           backgroundColor: 'var(--colors-secondary)',
         },
       },
@@ -65,7 +65,7 @@ describe('responsive', () => {
     });
 
     expect(result).toEqual({
-      [`@media (min-width: 600px)`]: {
+      [`@media screen and (min-width: 600px)`]: {
         color: 'var(--colors-primary)',
       },
     });
@@ -81,7 +81,7 @@ describe('responsive', () => {
 
     expect(result).toEqual({
       color: 'var(--colors-secondary)',
-      [`@media (min-width: 600px)`]: {
+      [`@media screen and (min-width: 600px)`]: {
         color: 'var(--colors-primary)',
       },
     });
@@ -95,7 +95,7 @@ describe('responsive', () => {
     });
 
     expect(result).toEqual({
-      [`@media (min-width: 600px)`]: {
+      [`@media screen and (min-width: 600px)`]: {
         color: '#0066ff',
       },
     });
@@ -112,7 +112,7 @@ describe('responsive', () => {
     });
 
     expect(result).toEqual({
-      [`@media (min-width: 600px)`]: {
+      [`@media screen and (min-width: 600px)`]: {
         color: 'var(--colors-primary)',
         padding: 'var(--spacings-m)',
       },
@@ -125,7 +125,7 @@ describe('responsive', () => {
     });
 
     expect(result).toEqual({
-      [`@media (min-width: 600px)`]: {
+      [`@media screen and (min-width: 600px)`]: {
         padding: 'var(--spacings-m)',
       },
     });
@@ -134,12 +134,12 @@ describe('responsive', () => {
   test('should generate media queries from custom media query', () => {
     morfeo.theme.set({
       mediaQueries: {
-        sm: '@media (max-width: 200px)',
+        sm: '@media screen and (max-width: 200px)',
       },
     });
 
     const result = resolveMediaQuery(morfeo.theme, 'sm');
 
-    expect(result).toBe('@media (max-width: 200px)');
+    expect(result).toBe('@media screen and (max-width: 200px)');
   });
 });

@@ -1,0 +1,184 @@
+---
+title: 🌚 Dark Mode 🌞
+---
+
+import { Tabs, Callout } from 'nextra-theme-docs';
+
+# Dark Mode
+
+There are 2 ways to customize styles for dark mode, one at **[Style level](#style-level)**, similar to how Morfeo's handles [responsive styles](/responsive), and one at **[Theme level](#theme-level)**.
+
+## Style Level
+
+```tsx filename="components/Card" showLineNumbers {6-9, 10-13}
+import { morfeo } from '../morfeo';
+
+const classes = morfeo.css({
+  container: {
+    px: 'm',
+    bg: {
+      light: 'black',
+      dark: 'white',
+    },
+    color: {
+      light: 'white',
+      dark: 'black',
+    },
+  },
+});
+
+export function Card() {
+  return (
+    <div className={classes('container')}>
+      This card will have a different background and text color based on the
+      user's preferred scheme.
+    </div>
+  );
+}
+```
+
+## Theme Level
+
+In most of the applications, the difference between dark and light modes is just `colors` and something color-related like `gradients` and `shadows`.
+
+Morfeo makes you customize exactly these slices so then it will apply the right styles at the right `color schemes` automatically, so you don't have to worry about it while styling your components:
+
+<Tabs items={['Theme', 'Example', 'Generated CSS']}>
+<Tabs.Tab>
+
+<Callout type="info">
+
+The values of the colors `background` and `text`, when used inside a style, will automatically be adapted based on the current user's preferred color schema.
+
+</Callout>
+
+```typescript filename="morfeo.ts" showLineNumbers
+const theme = {
+  // ...
+  colors: {
+    background: {
+      light: '#ffffff',
+      dark: '#000000',
+    },
+    text: {
+      light: '#2f2f2f',
+      dark: '#ececec',
+    },
+  },
+};
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+<Callout type="info">
+
+This time we don't need to specify inside the styles the different behaviors in dark mode.
+
+</Callout>
+
+```tsx filename="components/Card" showLineNumbers
+import { morfeo } from '../morfeo';
+
+const classes = morfeo.css({
+  container: {
+    px: 'm',
+    bg: 'background',
+    color: 'text',
+  },
+});
+
+export function Card() {
+  return (
+    <div className={classes('container')}>
+      This card will have a different background and text color based on the
+      user's preferred scheme.
+    </div>
+  );
+}
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+<Callout type="info">
+
+Here is the trick, the CSS variables have different values based on the current preferred color scheme.
+
+</Callout>
+
+```css filename="morfeo.css" showLineNumbers
+:root {
+  --colors-text: #2f2f2f;
+  --colors-background: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --colors-background: #000000;
+    --colors-text: #ececec;
+  }
+}
+```
+
+</Tabs.Tab>
+</Tabs>
+
+## Customization
+
+Sometimes you want to switch between a light and dark mode in other ways than the `@media (prefers-colors-scheme)` rule, Morfeo lets you customize this completely by overriding the slice `colorSchemes`, for example:
+
+```typescript showLineNumbers
+const theme = {
+  // ...
+  colorSchemes: {
+    dark: '[data-theme="dark"]',
+    light: '[data-theme="light"]',
+    /**
+     * No one is blocking you from creating custom color schemes too, but be aware that the only
+     * possible values for "@media (prefers-colors-scheme)" are light and dark.
+     */
+    custom: '[data-theme="custom"]',
+  },
+};
+```
+
+With this customization, you're telling Morfeo to use dark-specific values under any HTML element that has the `data-theme` attribute equal to `dark`:
+
+```tsx filename="components/Card" showLineNumbers {20, 26}
+import { morfeo } from '../morfeo';
+
+const classes = morfeo.css({
+  button: {
+    bg: {
+      light: 'primary',
+      dark: 'secondary',
+    },
+  },
+});
+
+export function Card() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  function toggleDarkMode() {
+    setSchema(prev => !prev);
+  }
+
+  return (
+    <div data-theme={darkMode ? 'dark' : 'light'}>
+      The following button will have the background color equal to "primary" if
+      in light mode, "secondary" otherwise.
+      <button className={classes('button')} onClick={toggleDarkMode}>
+        Toggle
+      </button>
+      <div data-theme="light">
+        Here instead, the button will always have a "primary" background because
+        light mode is forced.
+        <button className={classes('button')} onClick={toggleDarkMode}>
+          Toggle
+        </button>
+      </div>
+    </div>
+  );
+}
+```

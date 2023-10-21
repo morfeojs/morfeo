@@ -1,3 +1,7 @@
+---
+title: 🛠️ Installation 🔌
+---
+
 import { FileTree, Tabs, Callout } from 'nextra/components';
 
 # Installation
@@ -35,7 +39,7 @@ bunx morfeo init
 </Tabs.Tab>
 </Tabs>
 
-After running you'll be asked to answer some questions:
+After running it, you'll be asked to answer some questions:
 
 ```console
   _ _ _
@@ -123,9 +127,9 @@ export const morfeo = createMorfeo({
 
 And, finally, the `.gitignore` will be updated in the following way:
 
-```txt filename=".gitignore"
-# morfeo
-/src/morfeo.css
+```diff filename=".gitignore"
++ # morfeo
++ /src/morfeo.css
 ```
 
 ## Manual Changes
