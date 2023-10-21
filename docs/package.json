@@ -20,7 +20,7 @@
     "@morfeo/react": "workspace:*",
     "@morfeo/utils": "workspace:*",
     "@morfeo/web": "workspace:*",
-    "@vercel/og": "0.5.19",
+    "@vercel/og": "0.5.20",
     "framer-motion": "10.16.4",
     "next": "13.5.6",
     "nextra": "2.13.2",
