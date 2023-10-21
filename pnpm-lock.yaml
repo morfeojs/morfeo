@@ -436,8 +436,8 @@ importers:
         specifier: 2.0.0-beta.19
         version: 2.0.0-beta.19
       '@types/chrome':
-        specifier: 0.0.246
-        version: 0.0.246
+        specifier: 0.0.248
+        version: 0.0.248
       '@types/prismjs':
         specifier: 1.26.1
         version: 1.26.1
@@ -3961,8 +3961,8 @@ packages:
       '@types/responselike': 1.0.0
     dev: true
 
-  /@types/chrome@0.0.246:
-    resolution: {integrity: sha512-MxGxEomGxsJiL9xe/7ZwVgwdn8XVKWbPvxpVQl3nWOjrS0Ce63JsfzxUc4aU3GvRcUPYsfufHmJ17BFyKxeA4g==}
+  /@types/chrome@0.0.248:
+    resolution: {integrity: sha512-qtBzxZD1v3eWZn8XxH1i07pAhzJDHnxJBBVy7bmntXxXKxjzNXYxD41teqa5yOcX/Yy8brRFGZESEzGoINvBDg==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.10
