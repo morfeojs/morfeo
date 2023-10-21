@@ -239,8 +239,8 @@ importers:
         specifier: 7.23.2
         version: 7.23.2
       '@types/babel__core':
-        specifier: 7.20.2
-        version: 7.20.2
+        specifier: 7.20.3
+        version: 7.20.3
       '@types/babel__traverse':
         specifier: 7.20.2
         version: 7.20.2
@@ -285,8 +285,8 @@ importers:
         version: 10.3.10
     devDependencies:
       '@types/babel__core':
-        specifier: 7.20.2
-        version: 7.20.2
+        specifier: 7.20.3
+        version: 7.20.3
 
   packages/core:
     dependencies:
@@ -836,6 +836,7 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.23.0
+    dev: true
 
   /@babel/parser@7.23.0:
     resolution: {integrity: sha512-vvPKKdMemU85V9WE/l5wZEmImpCtLqbnTvqDS2U1fJ96KrxoW7KrXhNsNCblQlg8Ck4b85yxdTyelsMUgFUXiw==}
@@ -3924,6 +3925,16 @@ packages:
       '@types/babel__generator': 7.6.4
       '@types/babel__template': 7.4.1
       '@types/babel__traverse': 7.20.2
+    dev: true
+
+  /@types/babel__core@7.20.3:
+    resolution: {integrity: sha512-54fjTSeSHwfan8AyHWrKbfBWiEUrNTZsUwPTDSNaaP1QDQIZbeNUg3a59E9D+375MzUw/x1vx2/0F5LBz+AeYA==}
+    dependencies:
+      '@babel/parser': 7.23.0
+      '@babel/types': 7.23.0
+      '@types/babel__generator': 7.6.4
+      '@types/babel__template': 7.4.1
+      '@types/babel__traverse': 7.20.2
 
   /@types/babel__generator@7.6.4:
     resolution: {integrity: sha512-tFkciB9j2K755yrTALxD44McOrk+gfpIpvC3sxHjRawj6PfnQxrse4Clq5y/Rq+G3mrBurMax/lG8Qn2t9mSsg==}
@@ -4445,7 +4456,7 @@ packages:
       '@babel/core': 7.22.20
       '@babel/plugin-transform-react-jsx-self': 7.22.5(@babel/core@7.22.20)
       '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.22.20)
-      '@types/babel__core': 7.20.2
+      '@types/babel__core': 7.20.3
       react-refresh: 0.14.0
       vite: 4.4.10(@types/node@18.18.3)
     transitivePeerDependencies:
@@ -4816,7 +4827,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.2
       '@jest/transform': 29.7.0
-      '@types/babel__core': 7.20.2
+      '@types/babel__core': 7.20.3
       babel-plugin-istanbul: 6.1.1
       babel-preset-jest: 29.6.3(@babel/core@7.23.2)
       chalk: 4.1.2
@@ -4843,7 +4854,7 @@ packages:
     dependencies:
       '@babel/template': 7.22.15
       '@babel/types': 7.23.0
-      '@types/babel__core': 7.20.2
+      '@types/babel__core': 7.20.3
       '@types/babel__traverse': 7.20.2
 
   /babel-plugin-polyfill-corejs2@0.3.3(@babel/core@7.23.2):
