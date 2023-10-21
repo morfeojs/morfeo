@@ -31,15 +31,15 @@
     "@morfeo/web": "workspace:*",
     "@babel/traverse": "7.23.2",
     "@babel/types": "7.23.0",
-    "@babel/preset-env": "7.22.20",
+    "@babel/preset-env": "7.23.2",
     "@babel/plugin-syntax-jsx": "7.22.5",
-    "@babel/preset-typescript": "7.23.0"
+    "@babel/preset-typescript": "7.23.2"
   },
   "peerDependencies": {
-    "@babel/core": "7.23.0"
+    "@babel/core": "7.23.2"
   },
   "devDependencies": {
-    "@babel/core": "7.23.0",
+    "@babel/core": "7.23.2",
     "@types/babel__core": "7.20.2",
     "@types/babel__traverse": "7.20.2"
   },
