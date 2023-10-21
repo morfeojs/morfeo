@@ -46,7 +46,7 @@ const linkBlockList: FooterLinkBlock[] = [
   {
     title: 'Navigation',
     linkList: [
-      { href: '/docs', label: 'Getting started' },
+      { href: '/docs/getting-started', label: 'Getting started' },
       { href: '/docs', label: 'Web Extension' },
       { href: '/docs', label: 'Theme' },
       { href: '/docs', label: 'Packages' },
@@ -66,7 +66,6 @@ const linkBlockList: FooterLinkBlock[] = [
   {
     title: 'More',
     linkList: [
-      { href: '/blog', label: 'Blog' },
       {
         href: 'https://github.com/morfeojs/morfeo',
         label: 'Github',

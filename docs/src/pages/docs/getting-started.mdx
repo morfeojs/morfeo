@@ -1,3 +1,5 @@
+import { Tabs } from 'nextra-theme-docs';
+
 # Getting started
 
 If you already followed the [Installation](./installation.mdx) step, you have in your codebase a file that exports the morfeo instance:
@@ -67,29 +69,73 @@ classes({
 }); // "p-m bg-primary"
 ```
 
-You can read more about the `morfeo.css` in the [API section](/#)
+<details>
+<summary>More about morfeo.css</summary>
+
+The `classes` function also exposes all the generated class objects:
+
+```typescript
+classes.container; // { p: 'p-m' }
+classes.button; // { p: 'p-s', bg: 'bg-primary', .... }
+
+// Technically, valid syntax
+classes(classes.container, classes.button);
+```
+
+You can read more about the `morfeo.css` in the [API section](#todo)
+
+</details>
 
 ## morfeo.global
 
-> TBD
+This function should be used to create global styles, in this case the style keys needs to be valid css selectors, for instance:
 
-```tsx filename="Card.tsx" showLineNumbers
+<Tabs items={['Typescript', 'Generated CSS']}>
+
+<Tabs.Tab>
+
+```tsx filename="globals.ts" showLineNumbers
 import { morfeo } from '../morfeo';
 
 morfeo.global({
   body: {
     margin: 'none',
     padding: 'none',
-    fontFamily: 'Inter',
+    fontFamily: 'default',
+  },
+  '#root': {
+    px: 'xl',
   },
 });
 ```
 
-## morfeo.component ⚛️
+</Tabs.Tab>
+<Tabs.Tab>
 
-> TBD
+```css filename="morfeo.css" showLineNumbers
+body {
+  margin: var(--spacings-none);
+  padding: var(--spacings-none);
+  font-family: var(--fonts-default);
+}
 
-```tsx filename="Card.tsx" showLineNumbers
+#root {
+  padding-left: var(--spacings-xl);
+  padding-right: var(--spacings-xl);
+}
+```
+
+</Tabs.Tab>
+
+</Tabs>
+
+## ⚛️ morfeo.component
+
+This function is for now supported only on `React`, in fact in case `@morfeo/react` is noot installed, your **IDE** will not even suggest you this function.
+
+This API is made specifically to give the best DX to create components, here is a simple example:
+
+```typescript filename="Card.ts" showLineNumbers
 import { morfeo } from '../morfeo';
 
 export const Card = morfeo.component('div', {
@@ -98,3 +144,162 @@ export const Card = morfeo.component('div', {
   radius: 'l',
 })
 ```
+
+The snippet above is the equivalent of:
+
+```tsx filename="Card.tsx" showLineNumbers
+import { morfeo } from '../morfeo';
+
+const classes = morfeo.css({
+  container: {
+    p: 'm',
+    bg: 'white'
+    radius: 'l',
+  }
+});
+
+export function Card({ className, children,  ...rest }) {
+  return (
+    <div className={classes('container', className)}>
+      {children}
+    </div>
+  );
+}
+```
+
+But is not only a way to reduce the number of lines, `morfeo.component` can do way more stuff than `morfeo.css` like:
+
+- Accepting **functions instead of plain values**
+- Automatically **style the component** through the `components` slice
+- Style external components
+
+### Function parameters
+
+<Tabs items={['Typescript', 'Usage']}>
+
+<Tabs.Tab>
+
+```tsx filename="components/Card.ts" showLineNumbers
+import { morfeo } from '../morfeo';
+
+export const Card = morfeo.component('div', {
+  bg: props => props.background || 'white',
+  radius: 'm',
+});
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```tsx filename="App.tsx" showLineNumbers
+import { Card } from './components/Card';
+
+function App() {
+  return <Card bg="primary">Hey hello!</Card>;
+}
+```
+
+</Tabs.Tab>
+
+</Tabs>
+
+### Referring Theme's Components
+
+The first parameter of the `morfeo.component` can be the name of the theme component, in this case the style, the HTML tag and also initial properties will be automatically taken from the theme:
+
+<Tabs items={['Typescript', 'Usage', 'Theme']}>
+
+<Tabs.Tab>
+
+```tsx filename="components/Card.ts" showLineNumbers
+import { morfeo } from '../morfeo';
+
+export const Card = morfeo.component('Card', {
+  variant: props => props.variant,
+});
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```tsx filename="App.tsx" showLineNumbers
+import { Card } from './components/Card';
+
+function App() {
+  return <Card variant="outline">Hey hello!</Card>;
+}
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```typescript filename="morfeo.ts" showLineNumbers
+const theme = {
+  // ...,
+  components: {
+    Card: {
+      tag: 'div',
+      style: {
+        radius: 'm',
+        bg: 'white',
+      },
+      variants: {
+        outline: {
+          style: {
+            border: 'medium',
+            borderColor: 'gray.darkest',
+          },
+        },
+        primary: {
+          style: {
+            bg: 'primary',
+          },
+        },
+      },
+    },
+  },
+};
+```
+
+</Tabs.Tab>
+
+</Tabs>
+
+### Styling existing components
+
+You can even pass an existing component as the first parameter, in this case `morfeo.component` will just pass to the wrapped component the `className` and `style` needed to style it accordingly:
+
+<Tabs items={['Typescript', 'Usage']}>
+
+<Tabs.Tab>
+
+```tsx filename="components/Card.ts" showLineNumbers
+import { morfeo } from '../morfeo';
+import { Box } from './Box';
+
+// Box needs to be a component that accepts `className` and `style`.
+// Card will automatically infer the Props of Box
+export const Card = morfeo.component(Box, {
+  bg: props => props.background || 'white',
+  radius: 'm',
+});
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```tsx filename="App.tsx" showLineNumbers
+import { Card } from './components/Card';
+
+function App() {
+  return (
+    <Card bg="primary" boxSpecificProperty="whatever">
+      Hey hello!
+    </Card>
+  );
+}
+```
+
+</Tabs.Tab>
+
+</Tabs>

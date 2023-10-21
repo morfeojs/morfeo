@@ -11,7 +11,7 @@ export default {
   project: {
     link: 'https://github.com/morfeojs/morfeo',
   },
-  docsRepositoryBase: 'https://github.com/morfeojs/morfeo/tree/main/docs/pages',
+  docsRepositoryBase: 'https://github.com/morfeojs/morfeo/tree/main/docs',
   banner: {
     key: '1.0-release',
     text: (
@@ -89,6 +89,19 @@ export default {
         dark: 'Dark',
       };
     },
+  },
+  nextThemes: {
+    defaultTheme: 'dark',
+  },
+  sidebar: {
+    titleComponent({ title, type }) {
+      if (type === 'separator') {
+        return <span className="cursor-default">{title}</span>;
+      }
+      return <>{title}</>;
+    },
+    defaultMenuCollapseLevel: 1,
+    toggleButton: true,
   },
   footer: { text: <Footer /> },
   chat: {

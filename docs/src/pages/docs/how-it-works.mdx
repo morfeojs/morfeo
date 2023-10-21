@@ -36,9 +36,9 @@ interface Theme {
   lineHeights: LineHeights;
   breakpoints: BreakPoints;
   transitions: Transitions;
+  colorSchemes: ColorsSchemes;
   borderWidths: BorderWidths;
   mediaQueries: MediaQueries;
-  borderStyles: BorderStyles;
   letterSpacings: LetterSpacings;
 
   components: Components;
@@ -76,8 +76,8 @@ export const morfeo = createMorfeo({
 
 <Callout type="info">
 
-Even tho is missing most of the slices, the theme defined in the example is actually a valid theme.
-This is because Morfeo comes with a default theme that is always merged with yours.
+Even tho is missing most of the slices, the one above is a valid theme.
+This is because Morfeo comes with a [default theme](#todo) that is always merged with yours.
 
 </Callout>
 
@@ -140,27 +140,32 @@ The `Build-Time` process is handled by the package `@morfeo/compiler` and it wil
 We said at the beginning: Morfeo's goal is to give developers a way to build better UIs **without sacrificing performance**.
 That's why, unlike other `CSS-in-JS/TS` solutions, Morfeo's **does not** inject any CSS at run-time, all the generated CSS is extracted at **compile time**.
 
-Also, Morfeo generates **Atomic CSS** bundled in a **single** and **small** file:
+Also, Morfeo generates **Atomic CSS** bundled in a **single** and **small** file, the benefits of this choice are massive since there is **no duplication of CSS rules** and, most importantly, the CSS bundle **does not grow with your application**:
 
 <BundleSize showText={false} />
-
-The benefits of this choice are massive since there is **no duplication of CSS rules** and, most importantly, the CSS bundle does not grow with your application, and you'll not even notice since all of these happen behind the scenes.
 
 All you need to do to enable the build time process is to run the command:
 
 ```sh
-morfeo extract
+morfeo extract --watch
 ```
 
-<Callout type="default">
+<details>
+  <summary>More about this command</summary>
 
 We suggest you run Morfeo's CLI and your application together in development:
 
 ```sh
-concurrently \"morfeo extract\" \"npm run dev\"
+concurrently \"morfeo extract --watch\" \"npm run dev\"
 ```
 
-</Callout>
+You'll also need to install `concurrently`:
+
+```sh npm2yarn
+npm i concurrently
+```
+
+</details>
 
 You can even customize the output, for example, prefix class names and CSS variables with a custom prefix in order to avoid conflicts with other libraries/styles, all of these can be made through the `createMorfeo` function that acts also as a configuration file:
 

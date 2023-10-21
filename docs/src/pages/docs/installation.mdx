@@ -4,9 +4,36 @@ import { FileTree, Tabs, Callout } from 'nextra/components';
 
 The easiest way to install Morfeo is by letting the CLI do it, just run:
 
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+<Tabs.Tab>
+
 ```sh copy
 npx morfeo init
 ```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```sh copy
+yarn dlx morfeo init
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```sh copy
+pnpm dlx morfeo init
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```sh copy
+bunx morfeo init
+```
+
+</Tabs.Tab>
+</Tabs>
 
 After running you'll be asked to answer some questions:
 
@@ -28,29 +55,7 @@ based on your answers, the CLI will automatically create all the needed configur
 
 ## CLI Changes
 
-Inside the package.json will be added the following dependencies/scripts:
-
-```json filename="package.json" showLineNumbers {3-4, 7, 10}
-{
-  "scripts": {
-    "dev:morfeo": "morfeo extract --watch",
-    "build:morfeo": "morfeo extract"
-  },
-  "dependencies": {
-    "@morfeo/web": "<latest-version>"
-  },
-  "devDependencies": {
-    "@morfeo/compiler": "<latest-version>"
-  }
-}
-```
-
-<Callout type="info">
-  In case `react` is detected, the CLI will automatically install
-  `@morfeo/react` instead of `@morfeo/web`
-</Callout>
-
-Also, a couple of files will be added:
+After running the command a couple of files will be added/changed:
 
 <FileTree>
   <FileTree.Folder name="src" defaultOpen>
@@ -62,7 +67,61 @@ Also, a couple of files will be added:
   <FileTree.File name="package.json" />
 </FileTree>
 
-And, finally, the gitignore will be updated in the following way:
+### package.json
+
+Inside the package.json will be added the following dependencies/scripts:
+
+```diff filename="package.json" showLineNumbers {3-4, 7, 10}
+{
+  "scripts": {
++    "dev:morfeo": "morfeo extract --watch",
++    "build:morfeo": "morfeo extract"
+  },
+  "dependencies": {
++    "@morfeo/web": "<latest-version>"
+  },
+  "devDependencies": {
++    "@morfeo/compiler": "<latest-version>"
+  }
+}
+```
+
+<Callout type="info">
+  In case `react` is detected, the CLI will automatically install
+  `@morfeo/react` instead of `@morfeo/web`
+</Callout>
+
+### morfeo.ts
+
+This file will initially look like this:
+
+```typescript filename="morfeo.ts" showLineNumbers
+import { createMorfeo } from '@morfeo/web'; // or `@morfeo/react`
+
+export const morfeo = createMorfeo({
+  output: './styles/morfeo.css', // based on what your answers
+  entryPoints: ['./**/*.{ts,tsx,js,jsx}'], // based on what your answers
+});
+```
+
+This file exposes the `morfeo` instance you'll use all around your application to style your components.
+Based on the options passed to `createMorfeo` you can customize Morfeo's behavior, for example you can give a `custom theme` or a custom `prefix` for you class names:
+
+```typescript filename="morfeo.ts" showLineNumbers {2,5,6}
+import { createMorfeo } from '@morfeo/web'; // or `@morfeo/react`
+import { myCustomTheme } from './myCustomTheme';
+
+export const morfeo = createMorfeo({
+  theme: myCustomTheme,
+  prefix: 'my-prefix-',
+  output: './styles/morfeo.css',
+  entryPoints: ['./**/*.{ts,tsx,js,jsx}'],
+});
+```
+
+### .gitignore
+
+And, finally, the `.gitignore` will be updated in the following way:
 
 ```txt filename=".gitignore"
 # morfeo
