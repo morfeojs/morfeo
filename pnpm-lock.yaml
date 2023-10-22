@@ -439,8 +439,8 @@ importers:
         specifier: 0.0.248
         version: 0.0.248
       '@types/prismjs':
-        specifier: 1.26.1
-        version: 1.26.1
+        specifier: 1.26.2
+        version: 1.26.2
       '@types/react-transition-group':
         specifier: 4.4.7
         version: 4.4.7
@@ -4104,8 +4104,8 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: false
 
-  /@types/prismjs@1.26.1:
-    resolution: {integrity: sha512-Q7jDsRbzcNHIQje15CS/piKhu6lMLb9jwjxSfEIi4KcFKXW23GoJMkwQiJ8VObyfx+VmUaDcJxXaWN+cTCjVog==}
+  /@types/prismjs@1.26.2:
+    resolution: {integrity: sha512-/r7Cp7iUIk7gts26mHXD66geUC+2Fo26TZYjQK6Nr4LDfi6lmdRmMqM0oPwfiMhUwoBAOFe8GstKi2pf6hZvwA==}
     dev: true
 
   /@types/prop-types@15.7.5:
