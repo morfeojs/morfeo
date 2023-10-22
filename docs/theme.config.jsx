@@ -3,6 +3,60 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 import { Footer } from './src/components/Footer';
+import { Card } from './src/components/Card';
+import { morfeo } from './src/morfeo';
+
+const classes = morfeo.css({
+  container: {
+    display: 'flex',
+    w: '100',
+    position: 'relative',
+    '&:hover [role="status"]::before': {
+      opacity: 'strong',
+    },
+  },
+  label: {
+    flex: '1',
+  },
+  badge: {
+    px: '2xs',
+    top: 'none',
+    right: 'none',
+    corner: 'raw:4px',
+    position: 'absolute',
+    bg: 'raw:#111',
+    display: 'flex',
+    transition: 'fast',
+    '&::before': {
+      content: "''",
+      corner: 'raw:5px',
+      position: 'absolute',
+      top: 'raw:-1px',
+      left: 'raw:-1px',
+      gradient: 'accentToPrimary',
+      height: 'raw:calc(100% + 2px)',
+      width: 'raw:calc(100% + 2px)',
+      zIndex: 'raw:-1',
+      transition: 'fast',
+      opacity: 'light',
+    },
+  },
+});
+
+const UnderConstruction = ({ children }) => {
+  return (
+    <div className={classes('container')} title="Page under development">
+      <span className={classes('label')}>{children}</span>
+      <span
+        role="status"
+        className={classes('badge')}
+        title="Page under development"
+      >
+        ⚠️
+      </span>
+    </div>
+  );
+};
 
 export default {
   logo: (
@@ -94,10 +148,15 @@ export default {
     defaultTheme: 'dark',
   },
   sidebar: {
-    titleComponent({ title, type }) {
+    titleComponent({ title, type, route }) {
       if (type === 'separator') {
         return <span className="cursor-default">{title}</span>;
       }
+
+      if (route === '#') {
+        return <UnderConstruction>{title}</UnderConstruction>;
+      }
+
       return <>{title}</>;
     },
     defaultMenuCollapseLevel: 1,

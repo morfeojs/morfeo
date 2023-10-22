@@ -14,15 +14,15 @@
   "getting-started": "Getting Started",
   "responsive": "Responsive",
   "dark-mode": "Dark Mode",
-  "pseudo-selectors": "🚧 Pseudo Selectors",
-  "theme-components": "🚧 Theme's Components",
-  "escaping-the-theme": "🚧 Escaping the Theme",
+  "pseudo-selectors": "Pseudo Selectors",
+  "theme-components": "Theme's Components",
+  "escaping-the-theme": "Escaping the Theme",
   "api-separator": {
     "type": "separator",
     "title": "API"
   },
-  "create-morfeo": "🚧 createMorfeo",
-  "morfeo-css": "🚧 morfeo.css",
-  "morfeo-global": "🚧 morfeo.global",
-  "morfeo-component": "🚧 morfeo.component"
+  "create-morfeo": "createMorfeo",
+  "morfeo-css": "morfeo.css",
+  "morfeo-global": "morfeo.global",
+  "morfeo-component": "morfeo.component"
 }

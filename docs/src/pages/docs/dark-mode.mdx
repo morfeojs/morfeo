@@ -6,9 +6,11 @@ import { Tabs, Callout } from 'nextra-theme-docs';
 
 # Dark Mode
 
-There are 2 ways to customize styles for dark mode, one at **[Style level](#style-level)**, similar to how Morfeo's handles [responsive styles](/responsive), and one at **[Theme level](#theme-level)**.
+There are 2 ways to customize styles for dark mode in Morfeo, one at **[Style level](#style-level)**, similar to how Morfeo's handles [Responsive Styles](/responsive), and one at **[Theme level](#theme-level)**.
 
 ## Style Level
+
+Just like with the `Responsive Value`, we can pass to properties an object that specifies the value that the property should have for dark (or light) mode:
 
 ```tsx filename="components/Card" showLineNumbers {6-9, 10-13}
 import { morfeo } from '../morfeo';
@@ -48,21 +50,24 @@ Morfeo makes you customize exactly these slices so then it will apply the right 
 
 <Callout type="info">
 
-The values of the colors `background` and `text`, when used inside a style, will automatically be adapted based on the current user's preferred color schema.
+The values of the colors `background` and `text`, when used inside a style, will automatically be adapted based on the current user's preferred color scheme.
 
 </Callout>
 
-```typescript filename="morfeo.ts" showLineNumbers
+```typescript filename="morfeo.ts" showLineNumbers {4,6,11}
 const theme = {
   // ...
   colors: {
+    primary: '#0066ff', // Always the same no matter the color scheme.
+    // Dynamic color
     background: {
-      light: '#ffffff',
-      dark: '#000000',
+      light: '#ffffff', // Used only in light mode
+      dark: '#000000', // Used only in dark mode
     },
+    // Dynamic color
     text: {
-      light: '#2f2f2f',
-      dark: '#ececec',
+      light: '#2f2f2f', // Used only in light mode
+      dark: '#ececec', // Used only in dark mode
     },
   },
 };
@@ -77,7 +82,7 @@ This time we don't need to specify inside the styles the different behaviors in 
 
 </Callout>
 
-```tsx filename="components/Card" showLineNumbers
+```tsx filename="components/Card" showLineNumbers {6-7, 14-15}
 import { morfeo } from '../morfeo';
 
 const classes = morfeo.css({
@@ -128,12 +133,14 @@ Here is the trick, the CSS variables have different values based on the current 
 
 Sometimes you want to switch between a light and dark mode in other ways than the `@media (prefers-colors-scheme)` rule, Morfeo lets you customize this completely by overriding the slice `colorSchemes`, for example:
 
-```typescript showLineNumbers
+```diff showLineNumbers
 const theme = {
   // ...
   colorSchemes: {
-    dark: '[data-theme="dark"]',
-    light: '[data-theme="light"]',
+-    dark: '@media (prefers-color-scheme: 'dark')',
++    dark: '[data-theme="dark"]',
+-    light: '@media (prefers-color-scheme: 'light')',
++    light: '[data-theme="light"]',
     /**
      * No one is blocking you from creating custom color schemes too, but be aware that the only
      * possible values for "@media (prefers-colors-scheme)" are light and dark.

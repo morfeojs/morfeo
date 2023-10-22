@@ -6,14 +6,14 @@ import { Tabs } from 'nextra-theme-docs';
 
 # Responsive
 
-Handling responsiveness in Morfeo it's straightforward:
+In Morfeo, handling responsiveness it's straightforward, let's start with an example:
 
-```tsx filename="components/Card" showLineNumbers {5-8}
+```tsx filename="components/Card" showLineNumbers {5-8,17}
 import { morfeo } from '../morfeo';
 
 const classes = morfeo.css({
   container: {
-    px: {
+    padding: {
       default: 'm',
       sm: 's',
     },
@@ -25,27 +25,30 @@ const classes = morfeo.css({
 export function Card() {
   return (
     <div className={classes('container')}>
-      This card will have different padding horizontal based on the screen size!
+      This card will have different padding based on the screen size!
     </div>
   );
 }
 ```
 
+As you can see the property `padding` is not a plain value like `s`, `m` or `l`, but an object.
+We call this object `ResponsiveValue` and you can use it to specify the value that the property should have for each `breakpoint` (or for only some of them).
+
 ## How it works
 
-Instead of plain values/theme-values you can pass to any style property an object called `Responsive Object` that has the following shape:
+The `Responsive Value` has the following shape:
 
-<Tabs items={['Responsive Object', 'Example', 'Generated CSS']}>
+<Tabs items={['Responsive Value', 'Example', 'Generated CSS']}>
 <Tabs.Tab>
 
 ```typescript showLineNumbers
-type ResponsiveObject<V> = {
-  default?: V;
+type ResponsiveValue<Value> = {
+  default?: Value;
   // keys of the breakpoints slice
-  xs?: V;
-  sm?: V;
-  md?: V;
-  lg?: V;
+  xs?: Value;
+  sm?: Value;
+  md?: Value;
+  lg?: Value;
 };
 ```
 
@@ -109,7 +112,20 @@ morfeo.component('div', {
 </Tabs.Tab>
 </Tabs>
 
-I don't think we need to specify what `default` does, instead, values passed to `xs`, `sm`, `md` and `lg` are applied only to specific screen sizes, in particular the ones specified into the `breakpoints` theme's slice, these are the defaults:
+The values passed to `xs`, `sm`, `md` and `lg` are applied only to the corresponding `breakpoints`, which are defined in the `breakpoints` theme's slice, you don't have to specify them all but only the ones that defers from the `default`:
+
+```typescript
+morfeo.css({
+  example: {
+    bg: {
+      default: 'primary', // the background color will always be `primary`
+      sm: 'secondary', // except for devices with screen size <= 768px
+    },
+  },
+});
+```
+
+The following are the default breakpoints provided by Morfeo's default theme:
 
 ```typescript showLineNumbers
 const theme = {
@@ -144,33 +160,37 @@ The generated media queries are, by default, mobile-first:
 
 ## Customizations
 
+Even though we think the defaults of Morfeo are pretty solid, you can always customize them based on your needs.
+
 ### Custom breakpoints
 
 You can customize both the keys and the values of the breakpoints slice with a custom theme:
 
-```typescript showLineNumbers
+```diff showLineNumbers {5,7,9,11}
 const theme = {
   // ...
   breakpoints: {
-    large: '1920px',
-    medium: '1366px',
-    small: '768px',
-    xsmall: '375px',
+-    lg: '1920px',
++    large: '2000px',
+-    md: '1366px',
++    medium: '1500x',
+-    sm: '768px',
++    small: '800px',
+-    xs: '375px',
++    xsmall: '400px',
   },
 };
 ```
 
-In this case, also the `Responsive Object` is adapted to **your new language**:
+In this case, also the `Responsive Value` is adapted to **your new language**:
 
-```typescript showLineNumbers
+```typescript showLineNumbers {5,6}
 morfeo.css({
   container: {
     padding: {
-      default: 'm',
+      default: 's',
       large: 'l',
       medium: 'm',
-      small: 's',
-      xsmall: 's',
     },
   },
 });

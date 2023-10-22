@@ -8,11 +8,6 @@
   margin: 0;
 }
 
-html, body {
-  height: 100vh;
-  overflow-y: scroll;  
-}
-
 @keyframes blink {
   0% {
     opacity: 0.2;

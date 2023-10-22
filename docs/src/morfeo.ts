@@ -118,7 +118,7 @@ export const morfeo = createMorfeo({
   theme,
   prefix: 'mrf-',
   output: './styles/morfeo.css',
-  entryPoints: ['./**/*.{ts,tsx,js,jsx}'],
+  entryPoints: ['./**/*.{ts,tsx,js,jsx}', '../theme.config.jsx'],
 });
 
 export default theme;
