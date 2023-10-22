@@ -34,6 +34,6 @@ const classes = morfeo.css({
   },
 });
 
-export const Card: React.FC<CardProps> = props => {
-  return <div {...props} className={classes('container', props.className)} />;
-};
+export function Card({ className, ...props }: CardProps) {
+  return <div {...props} className={classes('container', className)} />;
+}

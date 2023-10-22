@@ -180,7 +180,6 @@ But is not only a way to reduce the number of lines, `morfeo.component` can do w
 ### Function parameters
 
 <Tabs items={['Typescript', 'Usage']}>
-
 <Tabs.Tab>
 
 ```tsx filename="components/Card.ts" showLineNumbers
@@ -204,7 +203,6 @@ function App() {
 ```
 
 </Tabs.Tab>
-
 </Tabs>
 
 ### Referring Theme's Components
@@ -212,7 +210,6 @@ function App() {
 The first parameter of the `morfeo.component` can be the name of the theme component, in this case the style, the HTML tag and also initial properties will be automatically taken from the theme:
 
 <Tabs items={['Typescript', 'Usage', 'Theme']}>
-
 <Tabs.Tab>
 
 ```tsx filename="components/Card.ts" showLineNumbers
@@ -266,7 +263,6 @@ const theme = {
 ```
 
 </Tabs.Tab>
-
 </Tabs>
 
 ### Styling existing components
@@ -274,7 +270,6 @@ const theme = {
 You can even pass an existing component as the first parameter, in this case `morfeo.component` will just pass to the wrapped component the `className` and `style` needed to style it accordingly:
 
 <Tabs items={['Typescript', 'Usage']}>
-
 <Tabs.Tab>
 
 ```tsx filename="components/Card.ts" showLineNumbers
@@ -305,5 +300,4 @@ function App() {
 ```
 
 </Tabs.Tab>
-
 </Tabs>

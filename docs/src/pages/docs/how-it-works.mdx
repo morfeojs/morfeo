@@ -2,8 +2,7 @@
 title: 🔍 How it works 🧩
 ---
 
-import { Callout, Bleed } from 'nextra-theme-docs';
-import { AgnosticExample } from '../../components/AgnosticExample';
+import { Callout, Bleed, Tabs } from 'nextra-theme-docs';
 import { BundleSize } from '../../components/BundleSize';
 
 # How it works
@@ -80,7 +79,7 @@ export const morfeo = createMorfeo({
 
 <Callout type="info">
 
-Even tho is missing most of the slices, the one above is a valid theme.
+Even though is missing most of the slices, the one above is a valid theme.
 This is because Morfeo comes with a [default theme](#todo) that is always merged with yours.
 
 </Callout>
@@ -109,8 +108,8 @@ Because of a simple reason, **control**!
 
 Just by looking at this simple example, it's clear what can go wrong:
 
-- Why the padding is `17px`?
-- Why the background color is `#0066ff`?
+- Why the padding is `17px`? Is it compliant with the rest of the application?
+- Why the background color is `#0066ff`? Is this color in line with your brand?
 
 This kind of freedom, in a large codebase, will become a mess quickly.
 
@@ -123,7 +122,44 @@ The other important piece of Morfeo is the parser that converts a **style that u
 The parser is a kind of hybrid API that works on both **build** and **run time**, at build time a separate package (`@morfeo/compiler`) will extract CSS from the JS/TS files, at runtime instead Morfeo will just compute the class names based on the style.
 Let's give an example:
 
-<AgnosticExample />
+<Tabs items={['JSX', 'Generated CSS']}>
+<Tabs.Tab>
+
+```tsx filename="Button.tsx" showLineNumbers
+const classes = morfeo.css({
+  button: {
+    p: 'm', // p is an alias for padding
+    bg: 'primary', // bg is an alias for backgroundColor
+    '&:hover': {
+      bg: 'secondary',
+    },
+  },
+});
+
+function Button() {
+  return <button className={classes('button')} />; // bg-primary p-m hover-bg-secondary
+}
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```css filename="morfeo.css" showLineNumbers
+.p-m {
+  padding: var(--spacings-m);
+}
+
+.bg-primary {
+  background-color: var(--colors-primary);
+}
+
+.hover-bg-secondary:hover {
+  background-color: var(--colors-secondary);
+}
+```
+
+</Tabs.Tab>
+</Tabs>
 
 <Callout type="default">
 

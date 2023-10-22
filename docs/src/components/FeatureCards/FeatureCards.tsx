@@ -77,6 +77,7 @@ export function FeatureCards() {
           title="Web extension"
           variant="row"
           animationSrc={webExtensionAnimationData}
+          comingSoon
         >
           <p>
             Components and Design tokens are{' '}
@@ -85,13 +86,13 @@ export function FeatureCards() {
           </p>
         </FeatureCard>
         <FeatureCard
-          title="Build time"
+          title="Compile time"
           variant="row"
           animationSrc={buildTimeAnimationData}
         >
           <p>
-            DX of CSS-in-JS, minimum possible CSS footprint, without any runtime
-            overhead. Simply{' '}
+            DX of CSS-in-JS, minimum possible CSS footprint, and no style
+            injection at runtime. Simply{' '}
             <span className={classes('gradientText')}>Morfeo</span>.
           </p>
         </FeatureCard>

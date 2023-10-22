@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 import { Footer } from './src/components/Footer';
-import { Card } from './src/components/Card';
 import { morfeo } from './src/morfeo';
 
 const classes = morfeo.css({

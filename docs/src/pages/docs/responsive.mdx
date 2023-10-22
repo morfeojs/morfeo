@@ -36,27 +36,11 @@ We call this object `ResponsiveValue` and you can use it to specify the value th
 
 ## How it works
 
-The `Responsive Value` has the following shape:
-
-<Tabs items={['Responsive Value', 'Example', 'Generated CSS']}>
+<Tabs items={['Example', 'Generated CSS']}>
 <Tabs.Tab>
 
 ```typescript showLineNumbers
-type ResponsiveValue<Value> = {
-  default?: Value;
-  // keys of the breakpoints slice
-  xs?: Value;
-  sm?: Value;
-  md?: Value;
-  lg?: Value;
-};
-```
-
-</Tabs.Tab>
-<Tabs.Tab>
-
-```typescript showLineNumbers
-morfeo.css({
+const classes = morfeo.css({
   container: {
     padding: {
       default: 'm',
@@ -67,23 +51,13 @@ morfeo.css({
     },
   },
 });
-
-morfeo.component('div', {
-  padding: {
-    default: 'm',
-    xs: 's',
-    sm: 's',
-    md: 'm',
-    lg: 'l',
-  },
-});
 ```
 
 </Tabs.Tab>
 <Tabs.Tab>
 
 ```css showLineNumbers
-.p-s {
+.p-m {
   padding: var(--spacings-m);
 }
 
@@ -112,7 +86,27 @@ morfeo.component('div', {
 </Tabs.Tab>
 </Tabs>
 
-The values passed to `xs`, `sm`, `md` and `lg` are applied only to the corresponding `breakpoints`, which are defined in the `breakpoints` theme's slice, you don't have to specify them all but only the ones that defers from the `default`:
+<details>
+<summary>More about it</summary>
+
+The typescript definition of the `ResponsiveValue` type is _more or less_ the following:
+
+```typescript showLineNumbers
+type ResponsiveValue<Value> = {
+  default?: Value;
+  // keys of the breakpoints slice
+  xs?: Value;
+  sm?: Value;
+  md?: Value;
+  lg?: Value;
+};
+```
+
+The keys `xs` | `sm` | `md` | `lg` are the `breakpoints` defined in your theme, in case you override them also this type will automatically change accordingly.
+
+</details>
+
+The values passed to `xs`, `sm`, `md` and `lg` are applied only to the corresponding `breakpoints`, which are defined in the `breakpoints` theme's slice, you don't have to specify them all but only the ones that are different from the `default`:
 
 ```typescript
 morfeo.css({

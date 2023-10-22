@@ -11,6 +11,7 @@ const classes = morfeo.css({
   base: {
     py: 'xs',
     px: 'l',
+    cursor: 'pointer',
   },
   primary: {
     componentName: 'Button',
@@ -19,6 +20,7 @@ const classes = morfeo.css({
   outline: {
     componentName: 'Button',
     variant: 'outline',
+    bg: 'background',
   },
 });
 

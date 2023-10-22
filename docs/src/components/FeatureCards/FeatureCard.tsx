@@ -8,10 +8,12 @@ import {
 } from 'react';
 import { Card } from '../Card';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { Shine } from '../Shine';
 
 const classes = morfeo.css({
   container: {
     minHeight: 'raw:300px',
+    position: 'relative',
     '& svg': {
       transition: 'fast',
       filter: 'grayscale(0.3)',
@@ -70,6 +72,15 @@ const classes = morfeo.css({
     size: 'raw:150px',
     mb: '2xs',
   },
+  comingSoon: {
+    position: 'absolute',
+    top: 's',
+    right: 's',
+    zIndex: 'highest',
+  },
+  comingSoonCard: {
+    p: '2xs',
+  },
 });
 
 type FeatureCardProps = DetailedHTMLProps<
@@ -79,12 +90,14 @@ type FeatureCardProps = DetailedHTMLProps<
   title: string;
   variant?: 'row' | 'column';
   animationSrc: Player['props']['src'];
+  comingSoon?: boolean;
 };
 
 export function FeatureCard({
   title,
   variant = 'column',
   animationSrc,
+  comingSoon,
   ...props
 }: FeatureCardProps) {
   const [isHover, setIsHover] = useState(false);
@@ -107,14 +120,26 @@ export function FeatureCard({
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
+      {comingSoon ? (
+        <Shine
+          color={morfeo.theme.getValue('colors', 'primary.darkest')}
+          radius={500}
+          spread={2}
+          className={classes('comingSoon')}
+        >
+          <Card className={classes('comingSoonCard')}>Coming Soon</Card>
+        </Shine>
+      ) : undefined}
       <div className={classes('content', variant, props.className)}>
         <div className={classes('bodyContainer')}>
           <span className={classes('title')}>{title}</span>
           {props.children}
         </div>
-        <div className={classes(`${variant}AnimationContainer`)}>
-          <Player src={animationSrc} ref={playerRef} keepLastFrame />
-        </div>
+        <Shine>
+          <div className={classes(`${variant}AnimationContainer`)}>
+            <Player src={animationSrc} ref={playerRef} keepLastFrame />
+          </div>
+        </Shine>
       </div>
     </Card>
   );
