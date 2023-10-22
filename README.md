@@ -1,6 +1,7 @@
-![Morfeo logo](https://morfeo.dev/img/morfeo.png)
+![X Banner](https://github.com/morfeojs/morfeo/assets/13780027/a7d3d5ae-fe23-4fa4-92be-167cbf76868d)
 
-[morfeo](https://morfeo.dev) is a framework-agnostic set of tools that will help you to build your next **design system** based on a single source of truth: the **theme**.
+
+Morfeo is a build-time CSS-in-TS solution for the next level theming, with the minimum amount of shipped CSS.
 
 ---
 
@@ -8,7 +9,6 @@
 [![codecov](https://codecov.io/gh/morfeojs/morfeo/branch/main/graph/badge.svg?token=CZBHY8J802)](https://codecov.io/gh/morfeojs/morfeo)
 [![GitHub license](https://img.shields.io/github/license/morfeojs/morfeo)](https://github.com/morfeojs/morfeo/blob/main/LICENSE)
 [![Contributing](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/morfeojs/morfeo/blob/main/CONTRIBUTING.md)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/93b009d2-94be-4d40-baa3-9f86a51922ce/deploy-status)](https://app.netlify.com/sites/cocky-kare-d8d81e/deploys)
 [![DeepScan grade](https://deepscan.io/api/teams/15451/projects/18608/branches/460695/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=15451&pid=18608&bid=460695)
 
 ---
@@ -21,7 +21,7 @@
 
 Hello, I'm working to finalize version 1.0.0 of Morfeo, it will include many nice features such as static extraction of `CSS`, optimization of the extracted `CSS`, minimal runtime overhead, and a beautiful `DX`.
 
-Until the v1, Morfeo is NOT PRODUCTION READY since its API can change drastically - but if you're interested on what I'm doing please, contact me through [Discord](https://badgen.net/badge/icon/discord?icon=discord&label) or open an issue and I'll be glad to answer.
+Until the v1, Morfeo is NOT PRODUCTION READY since its API can change drastically - but if you're interested in what we're doing have a look to the new [docs](https://morfeo-docs.vercel.app/) or contact us through [Discord](https://badgen.net/badge/icon/discord?icon=discord&label) or open an issue and we'll be glad to answer.
 
 ---
 
@@ -31,11 +31,7 @@ Morfeo is a build-time CSS-in-JS solution for the next level theming, with the m
 
 If this project helped you, please ⭐️ this repository!
 
-If you really enjoyed Morfeo and you want to help us to make it grow, or you just want to show your love, become a sponsor!
-
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png)](https://www.buymeacoffee.com/morfeo)
-
-In case you used Morfeo in your project and you want to show it to the world, please, use one of these badges in your `README`:
+In case you used Morfeo in your project and you want to show it to the world, you can use one of these badges in your `README` or your website:
 
 [![Made with Morfeo](https://img.shields.io/badge/made%20with%20morfeo-0066ff?logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2aWV3Qm94PSIxOTAuMjIyIDE3OS4xMjkgNTAgNTAuMDA0IiB3aWR0aD0iNTAiIGhlaWdodD0iNTAuMDA0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIGQ9Ik0yNy41NzIsNDcuOTIxbDAsMGwxOC40NSwtMTguNDExYzAuMDQ3LC0wLjA1MSAwLjA5NywtMC4xMDEgMC4xNDgsLTAuMTQ4bDAsMGwwLDBjMC40NjMsLTAuNDI2IDEuMDgxLC0wLjY4NyAxLjc1OSwtMC42ODdjMS40MzQsMCAyLjU5OCwxLjE2NSAyLjU5OCwyLjU5OGwwLDE2LjEzMWMwLDEuNDM0IC0xLjE2NCwyLjU5OCAtMi41OTgsMi41OThsLTQ0LjgwNCwwYy0xLjQzNCwwIC0yLjU5OCwtMS4xNjQgLTIuNTk4LC0yLjU5OGwwLDBjMCwwIDAsLTE2LjEzMSAwLC0xNi4xMzFjMCwtMS40MzMgMS4xNjQsLTIuNTk4IDIuNTk4LC0yLjU5OGMwLjc1MSwwIDEuNDI5LDAuMzIgMS45MDMsMC44M2wwLDBsMTguNDUxLDE4LjQxNmMwLjM0MSwwLjM1NiAxLjIxNiwwLjk5NyAyLjA0NywwLjk5N2MwLjgzLDAgMS41MjMsLTAuNDkgMi4wNDYsLTAuOTk3WiIgc3R5bGU9ImZpbGw6IHJnYigyNTUsIDI1NSwgMjU1KTsiIHRyYW5zZm9ybT0ibWF0cml4KDEsIDAsIDAsIDEsIDE4OS42OTUxNzUsIDE3OS4xMzA1NTQpIi8+CiAgPHBhdGggZD0iTTQ3LjI0NCwwLjAwMmMwLjA1NCwtMC4wMDIgMC4xMDgsLTAuMDA0IDAuMTYyLC0wLjAwNGMwLjA1NCwwIDAuMTA4LDAuMDAyIDAuMTYxLDAuMDA0bDAuMDAxLDBjMS41OTksMC4wODUgMi44NzEsMS40MSAyLjg3MSwzLjAyOWMwLDAuOTE3IC0wLjQwOCwxLjczOSAtMS4wNTEsMi4yOTVsMCwwbC0yMS43OSwyMS43OWMtMC41NDIsMC41MDYgLTEuMjc2LDAuODE1IC0yLjA3NCwwLjgxNWMtMC45MDcsMCAtMS43MzEsLTAuNCAtMi4yODcsLTEuMDMxbC0yMS42NTksLTIxLjY3MWwwLDBjLTAuNTgxLC0wLjU1MiAtMC45NDQsLTEuMzMzIC0wLjk0NCwtMi4xOThjMCwtMS42NzQgMS4zNTksLTMuMDMzIDMuMDMzLC0zLjAzM2MwLjA1NSwwIDAuMTA5LDAuMDAyIDAuMTYyLDAuMDA0bDAsMGw0My40MTUsMFoiIHN0eWxlPSJmaWxsOiByZ2IoMjU1LCAyNTUsIDI1NSk7IiB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCAxODkuNjk1MTc1LCAxNzkuMTMwNTU0KSIvPgo8L3N2Zz4=)](https://morfeo.dev)
 
