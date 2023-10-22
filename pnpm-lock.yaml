@@ -442,8 +442,8 @@ importers:
         specifier: 1.26.2
         version: 1.26.2
       '@types/react-transition-group':
-        specifier: 4.4.7
-        version: 4.4.7
+        specifier: 4.4.8
+        version: 4.4.8
       '@types/webextension-polyfill':
         specifier: 0.10.4
         version: 0.10.4
@@ -4131,10 +4131,10 @@ packages:
       - react-native
     dev: false
 
-  /@types/react-transition-group@4.4.7:
-    resolution: {integrity: sha512-ICCyBl5mvyqYp8Qeq9B5G/fyBSRC0zx3XM3sCC6KkcMsNeAHqXBKkmat4GqdJET5jtYUpZXrxI5flve5qhi2Eg==}
+  /@types/react-transition-group@4.4.8:
+    resolution: {integrity: sha512-QmQ22q+Pb+HQSn04NL3HtrqHwYMf4h3QKArOy5F8U5nEVMaihBs3SR10WiOM1iwPz5jIo8x/u11al+iEGZZrvg==}
     dependencies:
-      '@types/react': 18.2.24
+      '@types/react': 18.2.31
     dev: true
 
   /@types/react@18.2.23:
@@ -4144,14 +4144,6 @@ packages:
       '@types/scheduler': 0.16.3
       csstype: 3.1.2
     dev: false
-
-  /@types/react@18.2.24:
-    resolution: {integrity: sha512-Ee0Jt4sbJxMu1iDcetZEIKQr99J1Zfb6D4F3qfUWoR1JpInkY1Wdg4WwCyBjL257D0+jGqSl1twBjV8iCaC0Aw==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.3
-      csstype: 3.1.2
-    dev: true
 
   /@types/react@18.2.31:
     resolution: {integrity: sha512-c2UnPv548q+5DFh03y8lEDeMfDwBn9G3dRwfkrxQMo/dOtRHUUO57k6pHvBIfH/VF4Nh+98mZ5aaSe+2echD5g==}
