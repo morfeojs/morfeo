@@ -41,18 +41,19 @@ bunx morfeo init
 
 After running it, you'll be asked to answer some questions:
 
-```console
+```ansi
+[0;36m
   _ _ _
  ' ) ) )        /)
   / / / __ __  // _  __
  / ' (_(_)/ (_//_</_(_)
              />
             </
+[0m
 
-
-? Where is your code? ./src/**/*.{ts,tsx,js,jsx}
-? Where do you want to place the extracted CSS? ./src/styles/morfeo.css
-? Where do you want to create the morfeo instance? ./src/morfeo.ts
+[0;32m? Where is your code?[0m ./src/**/*.{ts,tsx,js,jsx}
+[0;32m[0;32m? Where do you want to place the extracted CSS?[0m ./src/styles/morfeo.css
+[0;32m? Where do you want to create the morfeo instance?[0m ./src/morfeo.ts
 ```
 
 based on your answers, the CLI will automatically create all the needed configurations:
@@ -109,7 +110,7 @@ export const morfeo = createMorfeo({
 ```
 
 This file exposes the `morfeo` instance you'll use all around your application to style your components.
-Based on the options passed to `createMorfeo` you can customize Morfeo's behavior, for example you can give a `custom theme` or a custom `prefix` for you class names:
+Based on the options passed to `createMorfeo` you can customize Morfeo's behavior, for example, you can give a `custom theme` or a custom `prefix` for your class names:
 
 ```typescript filename="morfeo.ts" showLineNumbers {2,5,6}
 import { createMorfeo } from '@morfeo/web'; // or `@morfeo/react`

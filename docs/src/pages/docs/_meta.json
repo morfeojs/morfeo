@@ -14,7 +14,7 @@
   "getting-started": "Getting Started",
   "responsive": "Responsive",
   "dark-mode": "Dark Mode",
-  "pseudo-selectors": "Pseudo Selectors",
+  "pseudos": "Pseudo Classes / Elements",
   "theme-components": "Theme's Components",
   "escaping-the-theme": "Escaping the Theme",
   "api-separator": {

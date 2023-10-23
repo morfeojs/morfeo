@@ -59,9 +59,13 @@ function Button() {
 
 ### And generate only the needed CSS
 
-```css showLineNumbers filename="morfeo.css" /.bg-primary/
+```css showLineNumbers filename="morfeo.css" {2,6}
+:root {
+  --colors-primary: #0066ff;
+}
+
 .bg-primary {
-  background-color: #0066ff;
+  background-color: var(--colors-primary);
 }
 ```
 

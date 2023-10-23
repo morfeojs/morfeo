@@ -1,0 +1,162 @@
+---
+title: 💅 Pseudo Classes / Elements 🎯
+---
+
+import { Tabs, Callout } from 'nextra/components';
+import { Button } from '@/components/Button';
+import { morfeo } from '@/morfeo';
+
+# Pseudos
+
+Morfeo's styling system aims to substitute completely CSS, which means that everything you can do with CSS you can also do with Morfeo - and pseudo classes/elements are just one of the cases where you can have the full power of type-safely styling while having all the freedom to write complex and nested style, let's start with a simple example:
+
+```tsx showLineNumbers {8}
+const classes = morfeo.css({
+  button: {
+    bg: 'primary',
+    radius: 'm',
+    px: 'm',
+    py: 's',
+    transition: 'fast',
+    '&:hover': {
+      bg: 'primary.light',
+    },
+  },
+});
+
+export function Button(props) {
+  return <button {...props} className={classes('button', props.className)} />;
+}
+```
+
+Will results in something like:
+
+<div style={morfeo.parsers.resolve({ display: 'flex', py: 's',  w: '100' })}>
+<Button>
+
+Try to `hover` me!
+
+</Button>
+</div>
+
+<Callout type="info">
+
+The style `&:hover` will be applied when the user `hovers` the button, just like you'd expect in regular CSS.
+
+</Callout>
+
+## Pseudo Classes
+
+With the same principles, we can use the same concepts with any pseudo-classes:
+
+<Tabs items={["Example", "Generated CSS"]}>
+<Tabs.Tab>
+
+```typescript showLineNumbers {8}
+const classes = morfeo.css({
+  button: {
+    bg: 'primary',
+    radius: 'm',
+    px: 'm',
+    py: 's',
+    transition: 'fast',
+    '&:disabled': {
+      opacity: 'light',
+      cursor: 'not-allowed',
+    },
+  },
+});
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```css showLineNumbers {1, 5}
+.disabled-opacity-light:disabled {
+  opacity: var(--opacities-light);
+}
+
+.disabled-cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+```
+
+</Tabs.Tab>
+</Tabs>
+
+Instead of `&:disable` or `&:hover` you can of course use any pseudo-class, check the [MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes) for a complete list
+
+## Pseudo Elements
+
+Pseudo-Elements works in the same way:
+
+<Tabs items={['Example', 'Generated CSS']}>
+<Tabs.Tab>
+
+```typescript showLineNumbers {4}
+const classes = morfeo.css({
+  paragraph: {
+    color: 'text',
+    '&::first-line': {
+      textTransform: 'uppercase',
+    },
+  },
+});
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```css showLineNumbers {1}
+.first-line-text-transform-uppercase::first-line {
+  text-transform: uppercase;
+}
+```
+
+</Tabs.Tab>
+</Tabs>
+
+<Callout type="info">
+
+Note that for pseudo-elements, just like in regular CSS, you need the double colons "::"
+
+</Callout>
+
+For a complete list of all the available pseudo-elements, check the [MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements).
+
+## Mix of both
+
+You can also combine pseduo-classes and pseudo-elements together:
+
+<Tabs items={['Example', 'Generated CSS']}>
+<Tabs.Tab>
+
+```typescript showLineNumbers {4-5}
+const classes = morfeo.css({
+  tag: {
+    position: 'relative',
+    '&:hover': {
+      '&::after': {
+        content: "'Show more ->'",
+        position: 'absolute',
+      },
+    },
+  },
+});
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```css showLineNumbers {1, 5}
+.hover-after-content-show-more:hover::after {
+  content: 'Show more ->';
+}
+
+.hover-after-position-absolute:hover::after {
+  position: absolute;
+}
+```
+
+</Tabs.Tab>
+</Tabs>

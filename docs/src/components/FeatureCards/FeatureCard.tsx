@@ -32,6 +32,7 @@ const classes = morfeo.css({
   },
   bodyContainer: {
     flex: '1',
+    alignSelf: 'flex-start',
   },
   title: {
     componentName: 'Typography',
@@ -135,11 +136,11 @@ export function FeatureCard({
           <span className={classes('title')}>{title}</span>
           {props.children}
         </div>
-        <Shine>
-          <div className={classes(`${variant}AnimationContainer`)}>
+        <div className={classes(`${variant}AnimationContainer`)}>
+          <Shine>
             <Player src={animationSrc} ref={playerRef} keepLastFrame />
-          </div>
-        </Shine>
+          </Shine>
+        </div>
       </div>
     </Card>
   );
