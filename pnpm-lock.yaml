@@ -103,8 +103,8 @@ importers:
   docs:
     dependencies:
       '@codesandbox/sandpack-react':
-        specifier: 2.8.0
-        version: 2.8.0(@lezer/common@1.0.2)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 2.9.0
+        version: 2.9.0(@lezer/common@1.0.2)(react-dom@18.2.0)(react@18.2.0)
       '@codesandbox/sandpack-themes':
         specifier: 2.0.21
         version: 2.0.21
@@ -2272,8 +2272,8 @@ packages:
       strict-event-emitter: 0.4.6
     dev: false
 
-  /@codesandbox/sandpack-client@2.7.1:
-    resolution: {integrity: sha512-fU3+vs5IjVyHRCtawdqfIlYLXnCGaDPSE6uGNMLhxhStQVVrCbfTtXi4faRGEkkaW1x2Fm+AsqsK53kJtQuhCQ==}
+  /@codesandbox/sandpack-client@2.9.0:
+    resolution: {integrity: sha512-KkG/YusBsL0RnI3P079cckHrRleLaGQVM5Plzn6xWOPM04Dce52MMkr6XIU77ZMjZm/zZ5pmgXLW7M6HoyIy/A==}
     dependencies:
       '@codesandbox/nodebox': 0.1.8
       buffer: 6.0.3
@@ -2282,8 +2282,8 @@ packages:
       static-browser-server: 1.0.3
     dev: false
 
-  /@codesandbox/sandpack-react@2.8.0(@lezer/common@1.0.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-cgOOREDKH0UV0wdGQkjStj47FqorMptK8lVwmRKlorG2S7H8UpNK3mIveKBK9jfpUnUl+l5670u4vDtBEZ55/A==}
+  /@codesandbox/sandpack-react@2.9.0(@lezer/common@1.0.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-A0quGugVyWbRktpdq2Nc6W1+XV0QnHq1lbqDCHAs2ijfWxvhhNaqMr6lWDaG/NTUGRNLUNETbipcNaBeC0dxhw==}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
       react-dom: ^16.8.0 || ^17 || ^18
@@ -2296,7 +2296,7 @@ packages:
       '@codemirror/language': 6.6.0
       '@codemirror/state': 6.2.0
       '@codemirror/view': 6.11.0
-      '@codesandbox/sandpack-client': 2.7.1
+      '@codesandbox/sandpack-client': 2.9.0
       '@lezer/highlight': 1.1.4
       '@react-hook/intersection-observer': 3.1.1(react@18.2.0)
       '@stitches/core': 1.2.8
