@@ -46,8 +46,8 @@ export function FeatureCards() {
           <p>
             Build your{' '}
             <span className={classes('gradientText')}>constraints</span>. With
-            Morfeo you have full control over your design system and your design
-            language.
+            Morfeo you have full control over your Design system and your Design
+            Language.
           </p>
         </FeatureCard>
         <FeatureCard
@@ -86,7 +86,7 @@ export function FeatureCards() {
           </p>
         </FeatureCard>
         <FeatureCard
-          title="Compile time"
+          title="Ahead of Time"
           variant="row"
           animationSrc={buildTimeAnimationData}
         >

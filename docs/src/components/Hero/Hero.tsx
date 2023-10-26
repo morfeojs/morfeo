@@ -74,8 +74,8 @@ export function Hero() {
         <TypingAnimation words={words} /> <br /> Without compromises.
       </h1>
       <h2 className={classes('subtitle')}>
-        Morfeo is a build-time CSS-in-TS solution for the next level theming,
-        with the minimum amount of shipped CSS.
+        The <b>Build Time</b>, <b>CSS-in-TS</b> Solution for Next-Level{' '}
+        <b>Theming</b> with Minimal Shipped <b>CSS</b>.
       </h2>
 
       <div className={classes('cta')}>

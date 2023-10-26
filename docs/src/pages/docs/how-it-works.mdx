@@ -1,5 +1,5 @@
 ---
-title: 🔍 How it works 🧩
+title: How it works
 ---
 
 import { Callout, Bleed, Tabs } from 'nextra-theme-docs';
@@ -178,7 +178,7 @@ The `Build-Time` process is handled by the package `@morfeo/compiler` and it wil
 ## CLI
 
 We said at the beginning: Morfeo's goal is to give developers a way to build better UIs **without sacrificing performance**.
-That's why, unlike other `CSS-in-JS/TS` solutions, Morfeo's **does not** inject any CSS at run-time, all the generated CSS is extracted at **compile time**.
+That's why, unlike other `CSS-in-JS/TS` solutions, Morfeo's **does not** inject any CSS at run-time, all the generated CSS is extracted **ahead of time**.
 
 Also, Morfeo generates **Atomic CSS** bundled in a **single** and **small** file, the benefits of this choice are massive since there is **no duplication of CSS rules** and, most importantly, the CSS bundle **does not grow with your application**:
 
