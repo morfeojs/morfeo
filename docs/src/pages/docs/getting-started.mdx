@@ -6,7 +6,7 @@ import { Tabs } from 'nextra-theme-docs';
 
 # Getting started
 
-If you already followed the [Installation](./installation.mdx) step, you have in your codebase a file that exports the morfeo instance:
+If you already followed the [Installation](/docs/installation) step, you have in your codebase a file that exports the `morfeo` instance:
 
 ```typescript filename="src/morfeo.ts" showLineNumbers {3-5}
 import { createMorfeo } from '@morfeo/web';
@@ -92,7 +92,7 @@ You can read more about the `morfeo.css` in the [API section](#todo)
 
 ## morfeo.global
 
-This function should be used to create global styles, in this case the style keys needs to be valid css selectors, for instance:
+This function should be used to create global styles, in this case the style keys need to be valid CSS selectors, for instance:
 
 <Tabs items={['Typescript', 'Generated CSS']}>
 
@@ -135,7 +135,7 @@ body {
 
 ## ⚛️ morfeo.component
 
-This function is for now supported only on `React`, in fact in case `@morfeo/react` is not installed, your **IDE** will not even suggest you this function.
+This function is for now supported only on `React`, in fact in case `@morfeo/react` is not installed, your **IDE** will not even suggest this function.
 
 This API is made specifically to give the best DX to create components, here is a simple example:
 
@@ -207,7 +207,7 @@ function App() {
 
 ### Referring Theme's Components
 
-The first parameter of the `morfeo.component` can be the name of the theme component, in this case the style, the HTML tag and also initial properties will be automatically taken from the theme:
+The first parameter of the `morfeo.component` can be the name of the theme component, in this case, the style, the HTML tag and initial properties will be automatically taken from the theme:
 
 <Tabs items={['Typescript', 'Usage', 'Theme']}>
 <Tabs.Tab>

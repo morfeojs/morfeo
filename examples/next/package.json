@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev:morfeo": "morfeo extract ./src/morfeo.ts --watch",
-    "dev:next": "rm -rf .next && next dev",
+    "dev:next": "rm -rf .next && next dev --turbo",
     "dev": "concurrently \"pnpm run dev:*\"",
     "build:morfeo": "morfeo extract ./src/morfeo.ts",
     "build": "pnpm build:morfeo && next build",

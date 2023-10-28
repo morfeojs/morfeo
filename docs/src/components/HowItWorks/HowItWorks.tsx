@@ -42,8 +42,8 @@ const classes = morfeo.css({
     flex: '2',
     position: 'relative',
     overflow: 'hidden',
-    h: 'raw:fit-content',
     '& .nextra-code-block': {
+      h: '100',
       w: '100',
       corner: 'xs',
       mb: 'none',
@@ -51,6 +51,11 @@ const classes = morfeo.css({
       borderColor: 'primary.lightest',
     },
     '& .nextra-code-block pre': {
+      h: '100',
+      mb: 'none',
+    },
+    '& .nextra-code-block pre code': {
+      h: '100',
       mb: 'none',
     },
   },

@@ -95,12 +95,12 @@ export default {
         <meta property="og:description" content={description} />
         <meta property="og:site_name" content="Morfeo" />
         <meta property="og:type" content="website" />
-        <meta name="og:image" content={socialCard} />
-        <meta name="og:image:alt" content={title} />
-        <meta name="og:image:height" content="630" />
-        <meta name="og:image:width" content="1200" />
-        <meta name="og:image:type" content="image/png" />
-        <meta name="og:locale" content={locale} />
+        <meta property="og:image" content={socialCard} />
+        <meta property="og:image:alt" content={title} />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:locale" content={locale} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={socialCard} />
         <meta name="twitter:site:domain" content="morfeo.dev" />
