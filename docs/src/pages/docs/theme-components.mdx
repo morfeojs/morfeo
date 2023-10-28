@@ -318,11 +318,16 @@ export const morfeo = createMorfeo({ theme });
 <Tabs.Tab>
 
 ```typescript showLineNumbers {6}
-// Automatically generates a <button />
 export const Button = morfeo.component('Button', {
   variant: props => props.variant,
   state: props => props.state,
 });
+```
+
+Resultant HTML
+
+```tsx
+<button>Click me</button>
 ```
 
 </Tabs.Tab>
@@ -397,7 +402,7 @@ export const Button = morfeo.component('Button', {
 Resultant HTML
 
 ```tsx
-<button type="submit" data-testid="morfeo-button">
+<button type="button" data-testid="morfeo-button">
   Click me
 </button>
 ```
