@@ -41,7 +41,7 @@ export async function init() {
       entryPoints: getRelativePath(instancePath, entryPoints),
       instancePath,
     }),
-    writeToGitIgnore(['# morfeo', cssPath]),
+    writeToGitIgnore(cssPath),
     updatePackageJson(instancePath),
   ]);
 
@@ -92,7 +92,7 @@ export const morfeo = createMorfeo({
   }
 }
 
-async function writeToGitIgnore(lines: string[]) {
+async function writeToGitIgnore(cssPath: string) {
   try {
     const gitIgnorePath = path.join(process.cwd(), '.gitignore');
 
@@ -108,9 +108,9 @@ async function writeToGitIgnore(lines: string[]) {
 
     await fs.promises.writeFile(
       gitIgnorePath,
-      `${gitIgnoreContent}\n${lines
-        .map(line => `${line[0] === '.' ? '' : '.'}${line.slice(1)}`)
-        .join('\n')}`,
+      `${gitIgnoreContent}\n#morfeo\n${
+        cssPath[0] === '.' ? '' : '.'
+      }${cssPath.slice(1)}`,
     );
 
     logger.success(`Added morfeo CSS file to .gitignore`);

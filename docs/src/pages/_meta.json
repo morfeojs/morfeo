@@ -7,6 +7,10 @@
       "layout": "full"
     }
   },
+  "privacy": {
+    "display": "hidden",
+    "title": "Privacy Policy"
+  },
   "docs": {
     "title": "Documentation",
     "type": "page"
