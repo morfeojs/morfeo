@@ -65,14 +65,6 @@ export default {
     link: 'https://github.com/morfeojs/morfeo',
   },
   docsRepositoryBase: 'https://github.com/morfeojs/morfeo/tree/main/docs',
-  banner: {
-    key: '1.0-release',
-    text: (
-      <a href="/docs" target="_blank">
-        🎉 Morfeo 1.0.0 is coming. Read more →
-      </a>
-    ),
-  },
   head: function useHead() {
     const { asPath, defaultLocale, locale, basePath } = useRouter();
     const { frontMatter, title } = useConfig();
