@@ -26,7 +26,7 @@
     "nextra": "2.13.2",
     "nextra-theme-docs": "2.13.2",
     "react-intersection-observer": "9.5.2",
-    "sharp": "0.32.6"
+    "sharp": "0.35.0"
   },
   "peerDependencies": {
     "react": "18.2.0",
